@@ -10,17 +10,34 @@ function cardHTML(it,num,opts={}){
    <div class="ptext">${it.q}</div>
    <div class="choices">${it.choices.map((c,i)=>`<button class="ch" data-i="${i}"><b>(${L[i]})</b><span>${c}</span></button>`).join('')}</div>
    <div class="fb"></div>
-   <div class="sol" hidden><button class="ai-btn" type="button" title="Open Google AI Mode in a new tab to explain this problem">✦ Ask AI</button><details><summary>Show full solution</summary><div class="solbody">${it.sol}</div></details></div>
+   <div class="sol" hidden><div class="sol-acts"><button class="hist-btn" type="button" hidden title="Show the wrong answers you picked before">History</button><button class="ai-btn" type="button" title="Open Google AI Mode in a new tab to explain this problem">✦ Ask AI</button></div><details><summary>Show full solution</summary><div class="solbody">${it.sol}</div></details><div class="hist-box" hidden></div></div>
   </div>`;
 }
-function revealCard(el,it,chosen,openSol){
-  el.querySelectorAll('.ch').forEach(b=>{const i=+b.dataset.i;b.disabled=true;b.classList.remove('sel');
+/* hist = earlier wrong picks (problem sets only); a correct answer after misses gets a History button */
+function revealCard(el,it,chosen,openSol,hist){
+  el.querySelectorAll('.ch').forEach(b=>{const i=+b.dataset.i;b.disabled=true;b.classList.remove('sel','wrong','right');
     if(i===it.ans)b.classList.add('right');else if(i===chosen)b.classList.add('wrong')});
-  const fb=el.querySelector('.fb');const st=el.querySelector('.status');
+  const fb=el.querySelector('.fb');const st=el.querySelector('.status');const tries=hist?hist.length:0;
   if(chosen===null||chosen===undefined){fb.className='fb no';fb.textContent='Skipped. The answer is ('+L[it.ans]+').';st.innerHTML='<span class="pill g">Blank</span>'}
-  else if(chosen===it.ans){fb.className='fb ok';fb.textContent='Correct!';st.innerHTML='<span class="pill ok">Correct</span>'}
+  else if(chosen===it.ans){fb.className='fb ok';fb.textContent=tries?'Correct on try '+(tries+1)+'!':'Correct!';
+    st.innerHTML=tries?'<span class="pill g">Solved on try '+(tries+1)+'</span>':'<span class="pill ok">Correct</span>'}
   else{fb.className='fb no';fb.textContent='Not quite. The answer is ('+L[it.ans]+').';st.innerHTML='<span class="pill no">Missed</span>'}
-  const sol=el.querySelector('.sol');sol.hidden=false;if(openSol)sol.querySelector('details').open=true;
+  const sol=el.querySelector('.sol');sol.hidden=false;sol.querySelector('details').open=!!openSol;
+  const hb=el.querySelector('.hist-btn'),box=el.querySelector('.hist-box');
+  const showHist=chosen===it.ans&&tries>0;hb.hidden=!showHist;box.hidden=true;hb.classList.remove('on');sol.classList.toggle('has-hist',showHist);
+  if(showHist)box.innerHTML='<div class="hist-h">Your earlier wrong answers</div><ol>'+hist.map(i=>'<li><b>('+L[i]+')</b> '+it.choices[i]+'</li>').join('')+'</ol>';
+}
+/* a wrong pick in a problem set: keep the answer hidden and offer another try */
+function wrongCard(el,it,p){
+  el.querySelectorAll('.ch').forEach(b=>{const i=+b.dataset.i;b.disabled=true;b.classList.remove('sel','right','wrong');if(i===p.c)b.classList.add('wrong')});
+  const fb=el.querySelector('.fb');fb.className='fb no';
+  fb.innerHTML='Not quite. <span class="fb-acts"><button class="retry-btn" type="button">↻ Try again</button><button class="show-btn" type="button">Show answer</button></span>';
+  el.querySelector('.status').innerHTML='<span class="pill no">Missed'+(p.w.length>1?' ×'+p.w.length:'')+'</span>';
+  el.querySelector('.sol').hidden=true;
+}
+function retryCard(el){
+  el.querySelectorAll('.ch').forEach(b=>{b.disabled=false;b.classList.remove('sel','right','wrong')});
+  const fb=el.querySelector('.fb');fb.className='fb';fb.textContent='';el.querySelector('.sol').hidden=true;
 }
 
 /* ---------- problem set ---------- */
@@ -35,11 +52,27 @@ function setView(sid,body){
     const items=set.map((it,i)=>[it,i+1]).filter(([it])=>{const p=PROG.q[it.id];
       if(filter==='all')return true;if(filter==='c'||filter==='g')return it.src===filter;if(filter==='new')return!p;if(filter==='miss')return p&&!p.ok;return String(it.lvl)===filter});
     list.innerHTML=items.length?items.map(([it,n])=>cardHTML(it,n)).join(''):'<div class="empty">No problems match this filter.</div>';
-    for(const [it] of items){const p=PROG.q[it.id];if(p)revealCard(list.querySelector(`[data-id="${it.id}"]`),it,p.c,false)}
+    for(const [it] of items){if(PROG.q[it.id])paint(list.querySelector(`[data-id="${it.id}"]`),it,false)}
     renderMath(list);
   }
-  list.addEventListener('click',e=>{const b=e.target.closest('.ch');if(!b||b.disabled)return;const card=b.closest('.prob');const it=set.find(x=>x.id===card.dataset.id);
-    const c=+b.dataset.i;PROG.q[it.id]={c,ok:c===it.ans};saveProg();revealCard(card,it,c,c!==it.ans);body.querySelector('#sstat').innerHTML=statHTML()});
+  /* PROG.q[id] = {c: latest pick, ok: right on the first try, w: wrong picks in order, show: answer revealed after a miss} */
+  function paint(card,it,fresh){const p=PROG.q[it.id];const w=p.w||(p.ok?[]:[p.c]);
+    if(p.c===it.ans)revealCard(card,it,p.c,false,w);
+    else if(p.show){revealCard(card,it,p.c,fresh,w);const fb=card.querySelector('.fb');
+      fb.insertAdjacentHTML('beforeend',' <span class="fb-acts"><button class="retry-btn" type="button">↻ Try again</button></span>')}
+    else wrongCard(card,it,{...p,w});
+  }
+  list.addEventListener('click',e=>{
+    const card=e.target.closest('.prob');if(!card)return;const it=set.find(x=>x.id===card.dataset.id);if(!it)return;
+    const hb=e.target.closest('.hist-btn');
+    if(hb){const box=card.querySelector('.hist-box');box.hidden=!box.hidden;hb.classList.toggle('on',!box.hidden);if(!box.hidden)renderMath(box);return}
+    if(e.target.closest('.retry-btn')){const p=PROG.q[it.id];if(p&&p.show){delete p.show;saveProg()}retryCard(card);return}
+    if(e.target.closest('.show-btn')){const p=PROG.q[it.id];p.show=true;saveProg();paint(card,it,true);renderMath(card);return}
+    const b=e.target.closest('.ch');if(!b||b.disabled)return;
+    const c=+b.dataset.i,prev=PROG.q[it.id];const w=prev?(prev.w||(prev.ok?[]:[prev.c])).slice():[];
+    if(c!==it.ans)w.push(c);
+    PROG.q[it.id]={c,ok:c===it.ans&&!w.length,w};saveProg();paint(card,it,true);renderMath(card);
+    body.querySelector('#sstat').innerHTML=statHTML()});
   body.querySelector('#flt').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;
     if(b.id==='resetset'){if(confirm('Clear your answers for this problem set?')){for(const it of set)delete PROG.q[it.id];saveProg();setView(sid,body)}return}
     filter=b.dataset.f;body.querySelectorAll('#flt .chip[data-f]').forEach(x=>x.classList.toggle('on',x===b));draw()});

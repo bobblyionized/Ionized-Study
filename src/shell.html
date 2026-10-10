@@ -117,9 +117,19 @@ table.t th{background:var(--accent-weak)}
 .lfigs{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:flex-start;margin:10px 0}
 .lfig{margin:0;display:inline-block;text-align:center;vertical-align:top}
 .lfig figcaption{font-size:13px;color:var(--muted);margin-top:-2px;max-width:240px}
-.ai-btn{display:inline-flex;position:absolute;right:0;top:8px;align-items:center;gap:5px;border:1px solid var(--line);background:var(--card);color:var(--accent);
+.sol-acts{position:absolute;right:0;top:8px;display:flex;gap:6px}
+.ai-btn,.hist-btn,.retry-btn,.show-btn{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:var(--card);color:var(--accent);
   border-radius:999px;padding:3px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
-.ai-btn:hover{border-color:var(--accent)}
+.ai-btn:hover,.hist-btn:hover,.retry-btn:hover,.show-btn:hover{border-color:var(--accent)}
+.hist-btn[hidden]{display:none}
+.hist-btn.on{background:var(--accent-weak);border-color:var(--accent)}
+.sol.has-hist details summary{padding-right:190px}
+.hist-box{background:var(--warn-weak);border-left:4px solid var(--warn);border-radius:8px;padding:8px 14px;margin:8px 0 4px}
+.hist-box[hidden]{display:none}
+.hist-h{font-size:12px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--warn);margin-bottom:2px}
+.hist-box ol{margin:0;padding-left:22px;line-height:1.9}
+.fb-acts{display:inline-flex;gap:6px;margin-left:8px;vertical-align:middle;flex-wrap:wrap}
+.retry-btn{color:var(--accent)}.show-btn{color:var(--muted);font-weight:600}
 .sol details summary{padding-right:96px}
 .filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
 .chip{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:20px;padding:4px 12px;font:inherit;font-size:13.5px;cursor:pointer}
