@@ -4310,7 +4310,10 @@ W: 36
 W: 22
 W: 12
 W: 16
-S: $\sum r=6$ and $\sum rs=11$, so $\sum r^2=36-22=14$. (The roots are $1,2,3$: $1+4+9=14$.)
+S: Vieta's formulas for $x^3+bx^2+cx+d$: $r+s+t=-b$, $rs+st+tr=c$, $rst=-d$. Here $r+s+t=6$ and $rs+st+tr=11$.
+Square the sum: $(r+s+t)^2=r^2+s^2+t^2+2(rs+st+tr)$.
+So $r^2+s^2+t^2=36-2\cdot11=14$.
+(Check: the roots are $1,2,3$, and $1+4+9=14$.)
 ---
 Q: What is the product of the roots of $2x^3-3x^2+4x-5=0$?
 L: 1
@@ -4319,7 +4322,8 @@ W: -\frac{5}{2}
 W: \frac{2}{5}
 W: 5
 W: -5
-S: $rst=-\frac da=-\frac{-5}{2}=\frac52$.
+S: For $ax^3+bx^2+cx+d$, the product of the roots is $-\dfrac da$ (from $a(x-r)(x-s)(x-t)$, whose constant term is $-a\,rst$).
+$rst=-\dfrac{-5}{2}=\dfrac52$.
 ---
 Q: Let $r,s,t$ be the roots of $x^3-2x^2-5x+6=0$. What is $\dfrac1r+\dfrac1s+\dfrac1t$?
 L: 2
@@ -4328,7 +4332,9 @@ W: -\frac{5}{6}
 W: \frac{6}{5}
 W: -\frac{6}{5}
 W: \frac{1}{3}
-S: $\frac{rs+st+tr}{rst}=\frac{-5}{-6}=\frac56$. (The roots are $1,-2,3$: $1-\frac12+\frac13=\frac56$.)
+S: Combine over a common denominator: $\dfrac1r+\dfrac1s+\dfrac1t=\dfrac{st+rt+rs}{rst}$.
+Vieta: $rs+st+tr=-5$ and $rst=-6$. So the sum is $\dfrac{-5}{-6}=\dfrac56$.
+(Check: the roots are $1,-2,3$, and $1-\frac12+\frac13=\frac56$.)
 ---
 Q: Let $r,s,t$ be the roots of $x^3-4x^2+3x-7=0$. What is $(1+r)(1+s)(1+t)$?
 L: 2
@@ -4337,8 +4343,9 @@ W: 7
 W: 14
 W: -15
 W: 8
-S: Expand: $1+\sum r+\sum rs+rst=1+4+3+7=15$.
-Or: $p(x)=(x-r)(x-s)(x-t)$, so $(1+r)(1+s)(1+t)=-p(-1)=-(-1-4-3-7)=15$.
+S: Expand: $(1+r)(1+s)(1+t)=1+(r+s+t)+(rs+st+tr)+rst$.
+Vieta: $r+s+t=4$, $rs+st+tr=3$, $rst=7$. Total: $1+4+3+7=15$.
+Slicker: $p(x)=(x-r)(x-s)(x-t)$, so $p(-1)=(-1-r)(-1-s)(-1-t)=-(1+r)(1+s)(1+t)$. $p(-1)=-1-4-3-7=-15$, giving $15$.
 ---
 Q: The roots of $x^3+ax^2+bx+c=0$ are $1$, $2$, and $3$. What is $a+b+c$?
 L: 2
@@ -4347,7 +4354,8 @@ W: 0
 W: 6
 W: -6
 W: 1
-S: $p(1)=1+a+b+c=0$ because $1$ is a root, so $a+b+c=-1$.
+S: $1$ is a root, so $p(1)=0$: $1+a+b+c=0$, which gives $a+b+c=-1$ immediately.
+(Or: $p(x)=(x-1)(x-2)(x-3)=x^3-6x^2+11x-6$, and $-6+11-6=-1$.)
 ---
 Q: The roots of $x^4-10x^3+35x^2-50x+24=0$ are $1,2,3,4$. What is the sum of their reciprocals?
 L: 2
@@ -4356,7 +4364,9 @@ W: \frac{12}{25}
 W: \frac{35}{24}
 W: \frac{5}{12}
 W: 2
-S: $\sum\frac1r=\frac{\sum rst}{rstu}=\frac{50}{24}=\frac{25}{12}$. (Check: $1+\frac12+\frac13+\frac14=\frac{25}{12}$.)
+S: $\dfrac1{r_1}+\dfrac1{r_2}+\dfrac1{r_3}+\dfrac1{r_4}=\dfrac{\text{(sum of triple products)}}{\text{(product of all four)}}$.
+For $x^4-10x^3+35x^2-50x+24$: sum of triple products $=50$, product $=24$.
+So the sum is $\frac{50}{24}=\frac{25}{12}$. (Check: $1+\frac12+\frac13+\frac14=\frac{12+6+4+3}{12}=\frac{25}{12}$.)
 ---
 Q: The roots of $x^3-12x^2+39x-28=0$ form an arithmetic progression. What is the largest root?
 L: 3
@@ -4365,8 +4375,9 @@ W: 6
 W: 4
 W: 9
 W: 8
-S: Roots $m-d, m, m+d$: the sum $3m=12$ gives $m=4$.
-Product: $(16-d^2)\cdot4=28$, so $d^2=9$ and the roots are $1,4,7$. (Check: $4+28+7=39$ ✓.)
+S: Call the roots $m-d$, $m$, $m+d$. Their sum is $3m=12$ (Vieta), so $m=4$.
+Their product is $(m-d)m(m+d)=4(16-d^2)=28$, so $16-d^2=7$ and $d^2=9$, $d=3$.
+Roots: $1,4,7$. Check the middle coefficient: $1\cdot4+4\cdot7+7\cdot1=4+28+7=39$. ✓ The largest root is $7$.
 ---
 Q: Let $r,s,t$ be the roots of $x^3-x-1=0$. What is $r^3+s^3+t^3$?
 L: 3
@@ -4375,7 +4386,9 @@ W: 0
 W: 1
 W: -3
 W: 6
-S: Each root satisfies $r^3=r+1$, so $\sum r^3=\sum r+3=0+3=3$.
+S: Use the equation itself: each root satisfies $r^3=r+1$ (rearranging $r^3-r-1=0$).
+So $r^3+s^3+t^3=(r+s+t)+3$.
+The sum of roots is $0$ (no $x^2$ term), so the answer is $0+3=3$.
 ---
 @@ poly-rem
 Q: What is the remainder when $x^3-4x^2+2x+7$ is divided by $x-3$?
@@ -4385,7 +4398,8 @@ W: -4
 W: 7
 W: 2
 W: 10
-S: Remainder theorem: $p(3)=27-36+6+7=4$.
+S: Remainder Theorem: dividing $p(x)$ by $x-a$ leaves remainder $p(a)$.
+$p(3)=27-36+6+7=4$.
 ---
 Q: For what value of $k$ is $x^3+kx^2-5x+6$ divisible by $x-2$?
 L: 1
@@ -4394,7 +4408,8 @@ W: 1
 W: -2
 W: 2
 W: -4
-S: $p(2)=8+4k-10+6=4k+4=0$, so $k=-1$.
+S: $p(x)$ is divisible by $x-2$ exactly when $p(2)=0$ (Factor Theorem).
+$p(2)=8+4k-10+6=4k+4=0$, so $k=-1$.
 ---
 Q: A polynomial leaves remainder $5$ when divided by $x-1$ and remainder $7$ when divided by $x-3$. What is its remainder when divided by $(x-1)(x-3)$?
 L: 2
@@ -4403,7 +4418,9 @@ W: x-4
 W: 2x+3
 W: x+5
 W: 4x+1
-S: The remainder is $ax+b$ with $a+b=p(1)=5$ and $3a+b=p(3)=7$. So $a=1$, $b=4$: the remainder is $x+4$.
+S: Dividing by a quadratic leaves a remainder of degree at most $1$: $p(x)=(x-1)(x-3)q(x)+ax+b$.
+Plug in the roots of the divisor: $p(1)=a+b=5$ and $p(3)=3a+b=7$.
+Subtract: $2a=2$, $a=1$, $b=4$. Remainder: $x+4$.
 ---
 Q: What is the remainder when $x^{100}$ is divided by $x^2-1$?
 L: 2
@@ -4412,7 +4429,9 @@ W: x
 W: 0
 W: x+1
 W: -1
-S: The remainder $ax+b$ must match $x^{100}$ at $x=\pm1$: $a+b=1$ and $-a+b=1$. So $a=0$, $b=1$.
+S: Write $x^{100}=(x^2-1)q(x)+ax+b$. At $x=1$: $1=a+b$. At $x=-1$: $1=-a+b$.
+Adding: $b=1$; then $a=0$. The remainder is the constant $1$.
+(Reason: $x^{100}=(x^2)^{50}$ and $x^2\equiv1$ modulo $x^2-1$.)
 ---
 Q: What is the remainder when $x^{2026}+x+1$ is divided by $x+1$?
 L: 1
@@ -4421,7 +4440,8 @@ W: 3
 W: -1
 W: 0
 W: 2
-S: $p(-1)=1-1+1=1$.
+S: Remainder Theorem with divisor $x+1=x-(-1)$: the remainder is $p(-1)$.
+$(-1)^{2026}+(-1)+1=1-1+1=1$.
 ---
 Q: A monic cubic polynomial satisfies $p(1)=1$, $p(2)=2$, and $p(3)=3$. What is $p(4)$?
 L: 2
@@ -4430,7 +4450,9 @@ W: 4
 W: 6
 W: 24
 W: 11
-S: $p(x)-x$ is monic cubic with roots $1,2,3$, so $p(x)=x+(x-1)(x-2)(x-3)$ and $p(4)=4+6=10$.
+S: Let $q(x)=p(x)-x$. Then $q(1)=q(2)=q(3)=0$, and $q$ is monic cubic (subtracting $x$ doesn't change the $x^3$ term).
+So $q(x)=(x-1)(x-2)(x-3)$ and $p(x)=x+(x-1)(x-2)(x-3)$.
+$p(4)=4+3\cdot2\cdot1=10$.
 ---
 Q: What is the remainder when $x^{81}+x^{49}+x^{25}+x^9+x$ is divided by $x^3-x$?
 L: 3
@@ -4439,8 +4461,9 @@ W: 5
 W: x
 W: 5x^2
 W: 0
-S: The remainder $r(x)=ax^2+bx+c$ agrees with $p$ at the roots $0,1,-1$ of $x^3-x$.
-$r(0)=0$, $r(1)=5$, $r(-1)=-5$, so $c=0$, $a+b=5$, $a-b=-5$. Thus $a=0$, $b=5$, and $r(x)=5x$.
+S: $x^3-x=x(x-1)(x+1)$ has roots $0,1,-1$. The remainder $r(x)=ax^2+bx+c$ agrees with $p$ at those roots.
+$p(0)=0$, $p(1)=5$ (five terms each $1$), $p(-1)=-5$ (each odd power gives $-1$).
+$c=0$; $a+b=5$; $a-b=-5$. So $a=0$, $b=5$, and $r(x)=5x$.
 ---
 Q: The polynomial $x^3+2x^2+ax+b$ is divisible by $x^2-1$. What is $ab$?
 L: 2
@@ -4449,7 +4472,9 @@ W: -2
 W: 1
 W: 3
 W: -3
-S: $p(1)=3+a+b=0$ and $p(-1)=1-a+b=0$. Subtracting: $2+2a=0$, so $a=-1$ and $b=-2$. Then $ab=2$.
+S: Divisible by $x^2-1=(x-1)(x+1)$ means $p(1)=0$ and $p(-1)=0$.
+$p(1)=1+2+a+b=0\Rightarrow a+b=-3$. $p(-1)=-1+2-a+b=0\Rightarrow-a+b=-1$.
+Adding: $2b=-4$, $b=-2$; then $a=-1$. So $ab=2$.
 ---
 @@ poly-roots
 Q: What is the sum of the rational roots of $2x^3-3x^2-3x+2=0$?
@@ -4459,7 +4484,9 @@ W: 2
 W: -\frac{3}{2}
 W: 1
 W: 3
-S: Try $x=2$: $16-12-6+2=0$ ✓. Dividing gives $2x^2+x-1=(2x-1)(x+1)$, so the roots are $2,\frac12,-1$, all rational. Sum: $\frac32$.
+S: Rational Root Theorem: candidates are $\pm1,\pm2,\pm\frac12$. Try $x=2$: $16-12-6+2=0$. ✓
+Divide by $x-2$: $2x^3-3x^2-3x+2=(x-2)(2x^2+x-1)=(x-2)(2x-1)(x+1)$.
+The roots $2,\frac12,-1$ are all rational, with sum $\frac32$ (matching Vieta: $-\frac{-3}{2}$).
 ---
 Q: A quadratic with rational coefficients has $2+\sqrt3$ as a root. What is its other root?
 L: 1
@@ -4468,7 +4495,8 @@ W: -2-\sqrt{3}
 W: \sqrt{3}-2
 W: 2+\sqrt{2}
 W: 4-\sqrt{3}
-S: Irrational roots of rational polynomials come in conjugate pairs $a\pm\sqrt b$. The other root is $2-\sqrt3$.
+S: If $2+\sqrt3$ is a root of a polynomial with rational coefficients, so is its conjugate $2-\sqrt3$ (replacing $\sqrt3$ by $-\sqrt3$ leaves the rational coefficients unchanged).
+A quadratic has exactly two roots, so the other root is $2-\sqrt3$. (The quadratic is $x^2-4x+1$.)
 ---
 Q: A monic cubic with real coefficients has roots $1+i$ and $2$. What is its constant term?
 L: 2
@@ -4477,7 +4505,9 @@ W: 4
 W: -2
 W: 2
 W: -8
-S: $1-i$ is also a root. $p(x)=(x^2-2x+2)(x-2)$, with constant term $2\cdot(-2)=-4$.
+S: Real coefficients force the conjugate $1-i$ to be a root too.
+$(x-(1+i))(x-(1-i))=(x-1)^2+1=x^2-2x+2$.
+$p(x)=(x^2-2x+2)(x-2)$, whose constant term is $2\cdot(-2)=-4$.
 ---
 Q: According to the rational root theorem, how many distinct rational numbers are possible roots of $6x^3+ax^2+bx+4$ (for integers $a,b$)?
 L: 2
@@ -4486,7 +4516,9 @@ W: 24
 W: 12
 W: 8
 W: 20
-S: Candidates are $\pm\frac pq$ with $p\mid4$ and $q\mid6$. The distinct positive values are $1,2,4,\frac12,\frac13,\frac23,\frac43,\frac16$ (8 of them). With signs: $16$.
+S: A rational root $\frac pq$ in lowest terms needs $p\mid4$ and $q\mid6$: $p\in\{1,2,4\}$, $q\in\{1,2,3,6\}$.
+Distinct positive values: $1,2,4,\frac12,\frac13,\frac23,\frac43,\frac16$ (others like $\frac22$, $\frac42$, $\frac26$ repeat these). That's $8$.
+With both signs: $16$.
 ---
 Q: How many distinct real roots does $x^3-3x^2+4=0$ have?
 L: 1
@@ -4495,7 +4527,9 @@ W: 3
 W: 1
 W: 0
 W: 4
-S: $x=-1$ is a root: $-1-3+4=0$. Dividing: $x^2-4x+4=(x-2)^2$. The roots are $-1,2,2$, so there are $2$ distinct real roots.
+S: Test small integers: $x=-1$ gives $-1-3+4=0$. ✓
+Divide by $x+1$: $x^3-3x^2+4=(x+1)(x^2-4x+4)=(x+1)(x-2)^2$.
+The roots are $-1$ and $2$ (double), so there are $2$ distinct real roots.
 ---
 Q: The equation $x^3+ax+10=0$ has $x=2$ as a root. What is the product of the other two roots?
 L: 2
@@ -4504,7 +4538,9 @@ W: 5
 W: -10
 W: 10
 W: 2
-S: $8+2a+10=0$ gives $a=-9$. The product of all three roots is $-10$, so the other two multiply to $\frac{-10}{2}=-5$.
+S: $2$ is a root: $8+2a+10=0$, so $a=-9$.
+Vieta for $x^3+0x^2-9x+10$: the product of all three roots is $-10$.
+So the other two roots multiply to $\frac{-10}{2}=-5$. (Indeed $x^3-9x+10=(x-2)(x^2+2x-5)$.)
 ---
 Q: Let $p(x)$ be the monic polynomial of least degree with rational coefficients that has $\sqrt2+\sqrt3$ as a root. What is $p(1)$?
 L: 3
@@ -4513,7 +4549,8 @@ W: 8
 W: -10
 W: 2
 W: 0
-S: Let $x=\sqrt2+\sqrt3$. Then $x^2=5+2\sqrt6$, so $(x^2-5)^2=24$ and $x^4-10x^2+1=0$.
+S: Let $x=\sqrt2+\sqrt3$ and eliminate the radicals. Square: $x^2=5+2\sqrt6$, so $x^2-5=2\sqrt6$.
+Square again: $(x^2-5)^2=24$, i.e. $x^4-10x^2+1=0$. This quartic is the minimal polynomial (no lower degree works, since $\sqrt2+\sqrt3$ has four conjugates $\pm\sqrt2\pm\sqrt3$).
 $p(1)=1-10+1=-8$.
 ---
 Q: How many real roots does $x^4-4x^2+3=0$ have?
@@ -4523,7 +4560,8 @@ W: 2
 W: 0
 W: 3
 W: 1
-S: $(x^2-1)(x^2-3)=0$ gives $x=\pm1,\pm\sqrt3$, so there are $4$ real roots.
+S: Treat it as a quadratic in $x^2$: $(x^2-1)(x^2-3)=0$.
+$x^2=1$ gives $\pm1$; $x^2=3$ gives $\pm\sqrt3$. All four are real.
 ---
 @@ poly-sym
 Q: Let $r,s,t$ be the roots of $x^3-2x^2+3x-4=0$. What is $r^2+s^2+t^2$?
@@ -4533,7 +4571,9 @@ W: 2
 W: 10
 W: -10
 W: 4
-S: $e_1^2-2e_2=4-6=-2$. (Negative, so some roots are not real.)
+S: Vieta: $e_1=r+s+t=2$, $e_2=rs+st+tr=3$.
+$r^2+s^2+t^2=e_1^2-2e_2=4-6=-2$.
+A negative sum of squares means not all roots are real (two are complex conjugates).
 ---
 Q: Let $r,s,t$ be the roots of $x^3-2x^2+3x-4=0$. What is $r^3+s^3+t^3$?
 L: 3
@@ -4542,7 +4582,9 @@ W: -2
 W: 12
 W: 8
 W: 26
-S: $p_3=e_1^3-3e_1e_2+3e_3=8-3\cdot2\cdot3+3\cdot4=8-18+12=2$.
+S: Use the identity $r^3+s^3+t^3=e_1^3-3e_1e_2+3e_3$, with $e_1=2$, $e_2=3$, $e_3=rst=4$.
+$8-3\cdot2\cdot3+3\cdot4=8-18+12=2$.
+(Alternative: each root satisfies $r^3=2r^2-3r+4$, so the sum is $2(-2)-3(2)+12=2$.)
 ---
 Q: What is the sum of the coefficients of the expansion of $(3x-2)^{10}$?
 L: 1
@@ -4551,7 +4593,8 @@ W: 3^{10}
 W: 1024
 W: 0
 W: -1
-S: The sum of coefficients is $p(1)=(3-2)^{10}=1$.
+S: The sum of the coefficients of $p(x)$ is $p(1)$.
+$p(1)=(3-2)^{10}=1$.
 ---
 Q: Let $r,s,t$ be the roots of $x^3-5x+1=0$. What is $\dfrac1r+\dfrac1s+\dfrac1t$?
 L: 2
@@ -4560,7 +4603,8 @@ W: -5
 W: \frac{1}{5}
 W: 0
 W: 1
-S: $\frac{e_2}{e_3}=\frac{-5}{-1}=5$.
+S: $\frac1r+\frac1s+\frac1t=\frac{rs+st+tr}{rst}=\frac{e_2}{e_3}$.
+For $x^3+0x^2-5x+1$: $e_2=-5$ and $e_3=-1$. So the sum is $\frac{-5}{-1}=5$.
 ---
 Q: Let $p(x)=x^3-7x^2+2$. What is the sum of the roots of $p(x-3)$?
 L: 2
@@ -4569,7 +4613,8 @@ W: 7
 W: 4
 W: -2
 W: 10
-S: The roots of $p(x-3)$ are the roots of $p$ shifted by $+3$. The original sum is $7$; adding $3$ to each of the three roots gives $7+9=16$.
+S: If $r$ is a root of $p$, then $x=r+3$ makes $p(x-3)=p(r)=0$. So each root shifts up by $3$.
+The roots of $p$ sum to $7$ (Vieta). Three roots each increased by $3$: $7+9=16$.
 ---
 Q: What is the sum of the coefficients of $(x^2-x+1)^5(x+2)$?
 L: 1
@@ -4578,7 +4623,7 @@ W: 0
 W: 1
 W: 32
 W: 6
-S: Plug in $x=1$: $1^5\cdot3=3$.
+S: Sum of coefficients $=$ value at $x=1$: $(1-1+1)^5\cdot(1+2)=1\cdot3=3$.
 ---
 Q: What is the sum of the squares of the roots of $x^4-3x^3+x^2-7x+2=0$?
 L: 2
@@ -4587,7 +4632,8 @@ W: 9
 W: 11
 W: 5
 W: -7
-S: $e_1=3$, $e_2=1$, so $\sum r^2=9-2=7$.
+S: Vieta for $x^4-3x^3+x^2-7x+2$: $e_1=3$, $e_2=1$.
+Sum of squares $=e_1^2-2e_2=9-2=7$.
 ---
 Q: Let $r,s$ be the roots of $x^2-3x+1=0$. What is $r^4+s^4$?
 L: 3
@@ -4596,7 +4642,9 @@ W: 49
 W: 45
 W: 81
 W: 21
-S: $r^2+s^2=9-2=7$, and $r^4+s^4=(r^2+s^2)^2-2(rs)^2=49-2=47$.
+S: Vieta: $r+s=3$, $rs=1$.
+$r^2+s^2=(r+s)^2-2rs=9-2=7$.
+$r^4+s^4=(r^2+s^2)^2-2(rs)^2=49-2=47$.
 ---
 @@ poly-coef
 Q: What is the sum of the coefficients of the even powers of $x$ in $(x+1)^{10}$?
@@ -4606,7 +4654,8 @@ W: 1024
 W: 256
 W: 511
 W: 513
-S: $\frac{p(1)+p(-1)}2=\frac{1024+0}{2}=512$.
+S: Let $p(x)=(x+1)^{10}$. $p(1)$ adds all coefficients; $p(-1)$ adds the even-power ones and subtracts the odd-power ones.
+So the even-power coefficients sum to $\frac{p(1)+p(-1)}{2}=\frac{2^{10}+0}{2}=512$.
 ---
 Q: What is the coefficient of $x$ in $(2x-1)^5$?
 L: 2
@@ -4615,7 +4664,7 @@ W: -10
 W: 32
 W: 5
 W: -5
-S: The term is $\binom51(2x)(-1)^4=10x$.
+S: General term: $\binom5k(2x)^k(-1)^{5-k}$. For $x^1$, $k=1$: $\binom51\cdot2\cdot(-1)^4=5\cdot2\cdot1=10$.
 ---
 Q: If $\deg p=3$ and $\deg q=4$, what is the degree of $p(q(x))$?
 L: 1
@@ -4624,7 +4673,8 @@ W: 7
 W: 81
 W: 64
 W: 34
-S: The leading term is $a(bx^4)^3$, of degree $12$.
+S: If $q$ has leading term $bx^4$, then $p(q(x))$ has leading term $a(bx^4)^3=ab^3x^{12}$.
+Degrees multiply under composition: $3\cdot4=12$.
 ---
 Q: A polynomial satisfies $p(x+1)-p(x)=2x+1$ for all $x$, and $p(0)=3$. What is $p(5)$?
 L: 2
@@ -4633,7 +4683,8 @@ W: 25
 W: 31
 W: 30
 W: 26
-S: $p(5)=p(0)+\sum_{x=0}^{4}(2x+1)=3+(1+3+5+7+9)=3+25=28$. (So $p(x)=x^2+3$.)
+S: Telescoping: $p(5)-p(0)=\sum_{x=0}^{4}\big(p(x+1)-p(x)\big)=\sum_{x=0}^4(2x+1)=1+3+5+7+9=25$.
+So $p(5)=3+25=28$. (In fact $p(x)=x^2+3$.)
 ---
 Q: What is the coefficient of $x^2$ in $(1+x)(1+2x)(1+3x)$?
 L: 1
@@ -4642,7 +4693,8 @@ W: 6
 W: 14
 W: 36
 W: 12
-S: Sum of the pairwise products of $1,2,3$: $2+3+6=11$.
+S: The $x^2$ term comes from choosing $x$ from two factors and $1$ from the third: $(x)(2x)(1)+(x)(1)(3x)+(1)(2x)(3x)$.
+Coefficient: $1\cdot2+1\cdot3+2\cdot3=2+3+6=11$.
 ---
 Q: A quadratic polynomial satisfies $p(0)=2$, $p(1)=3$, and $p(2)=6$. What is $p(3)$?
 L: 1
@@ -4651,7 +4703,9 @@ W: 9
 W: 10
 W: 12
 W: 13
-S: The differences are $1, 3$, so the second difference is $2$. The next difference is $5$, and $p(3)=6+5=11$. (So $p(x)=x^2+2$.)
+S: First differences: $3-2=1$, $6-3=3$. Second difference: $3-1=2$, constant for a quadratic.
+Next first difference: $3+2=5$, so $p(3)=6+5=11$.
+(The quadratic is $x^2+2$.)
 ---
 Q: A cubic polynomial satisfies $p(k)=\dfrac1k$ for $k=1,2,3,4$. What is $p(5)$?
 L: 3
@@ -4660,8 +4714,9 @@ W: \frac{1}{5}
 W: \frac{1}{6}
 W: -\frac{1}{5}
 W: 1
-S: $q(x)=xp(x)-1$ is a quartic with roots $1,2,3,4$: $q(x)=c(x-1)(x-2)(x-3)(x-4)$.
-$q(0)=-1=24c$, so $c=-\frac1{24}$. Then $5p(5)-1=q(5)=-\frac{24}{24}=-1$, so $p(5)=0$.
+S: Let $q(x)=xp(x)-1$, a polynomial of degree $4$ with $q(k)=k\cdot\frac1k-1=0$ for $k=1,2,3,4$.
+So $q(x)=c(x-1)(x-2)(x-3)(x-4)$. At $x=0$: $q(0)=-1=c\cdot24$, so $c=-\frac1{24}$.
+$q(5)=-\frac1{24}\cdot4\cdot3\cdot2\cdot1=-1$, and $q(5)=5p(5)-1$, so $5p(5)=0$ and $p(5)=0$.
 ---
 Q: What is the sum of the coefficients of $(x-2y)^5$ when it is expanded?
 L: 1
@@ -4670,7 +4725,8 @@ W: 1
 W: 243
 W: -243
 W: 32
-S: Set $x=y=1$: $(1-2)^5=-1$.
+S: The sum of the coefficients of a polynomial in $x$ and $y$ is its value at $x=y=1$.
+$(1-2)^5=(-1)^5=-1$.
 @@ ineq-solve
 Q: How many integers $x$ satisfy $x^2-5x-14\lt 0$?
 L: 1
@@ -4679,7 +4735,9 @@ W: 9
 W: 7
 W: 10
 W: 6
-S: $(x-7)(x+2)\lt 0$ means $-2\lt x\lt 7$, so $x=-1,0,\dots,6$: $8$ integers.
+S: Factor: $x^2-5x-14=(x-7)(x+2)$.
+A product is negative when the factors have opposite signs, which happens strictly between the roots: $-2\lt x\lt7$.
+The integers there are $-1,0,1,2,3,4,5,6$: that's $8$.
 ---
 Q: What is the largest integer $x$ satisfying $3-2x>11$?
 L: 1
@@ -4688,7 +4746,9 @@ W: -4
 W: 4
 W: -3
 W: 5
-S: $-2x>8$, so $x\lt -4$ (dividing by a negative flips the sign). The largest integer is $-5$.
+S: Subtract $3$: $-2x\gt8$.
+Divide by $-2$; dividing by a negative <b>reverses</b> the inequality: $x\lt-4$.
+The largest integer strictly less than $-4$ is $-5$.
 ---
 Q: How many integers satisfy $\dfrac{x-1}{x+3}\le0$?
 L: 2
@@ -4697,8 +4757,10 @@ W: 5
 W: 3
 W: 6
 W: 2
-S: Sign chart with zeros at $-3$ (excluded) and $1$ (included): $-3\lt x\le1$.
-The integers are $-2,-1,0,1$: four.
+S: The fraction can change sign only at $x=1$ (numerator zero) and $x=-3$ (denominator zero).
+Test each region: $x\lt-3$: $\frac{-}{-}\gt0$. $-3\lt x\lt1$: $\frac{-}{+}\lt0$ ✓. $x\gt1$: $\frac{+}{+}\gt0$.
+Include $x=1$ (the fraction equals $0$, and we want $\le0$); exclude $x=-3$ (undefined).
+Solution: $-3\lt x\le1$. Integers: $-2,-1,0,1$, which is $4$.
 ---
 Q: How many integers $x$ satisfy $|2x-3|\lt 7$?
 L: 1
@@ -4707,7 +4769,9 @@ W: 7
 W: 5
 W: 8
 W: 14
-S: $-7\lt 2x-3\lt 7$, so $-2\lt x\lt 5$: the integers $-1,0,1,2,3,4$.
+S: $|u|\lt7$ means $-7\lt u\lt7$: $-7\lt2x-3\lt7$.
+Add $3$: $-4\lt2x\lt10$. Divide by $2$: $-2\lt x\lt5$.
+Integers: $-1,0,1,2,3,4$, which is $6$.
 ---
 Q: Which describes all real $x$ with $\dfrac1x>2$?
 L: 2
@@ -4716,8 +4780,10 @@ W: x\lt\frac{1}{2}
 W: x>\frac{1}{2}
 W: x>0
 W: x\lt 0
-S: If $x\lt 0$ the left side is negative, so $x>0$. Then $1>2x$ gives $x\lt \frac12$. So $0\lt x\lt \frac12$.
-(Multiplying by $x$ without knowing its sign is the trap.)
+S: If $x\lt0$, then $\frac1x$ is negative and can't exceed $2$. So $x\gt0$.
+For $x\gt0$ we may multiply by $x$ without flipping: $1\gt2x$, so $x\lt\frac12$.
+Answer: $0\lt x\lt\frac12$.
+(Multiplying by $x$ right away, without knowing its sign, is the classic trap.)
 ---
 Q: How many integers $x$ with $-10\le x\le10$ satisfy $(x-1)(x-2)(x-3)>0$?
 L: 2
@@ -4726,7 +4792,9 @@ W: 8
 W: 9
 W: 6
 W: 10
-S: The product is positive on $(1,2)$ and on $(3,\infty)$. There are no integers in $(1,2)$; the integers $4,\dots,10$ give $7$.
+S: The roots $1,2,3$ split the line into intervals. For $x\gt3$ all three factors are positive; the sign flips at each root going left.
+So the product is positive on $(1,2)$ and on $(3,\infty)$, negative on $(-\infty,1)$ and $(2,3)$.
+There are no integers in $(1,2)$, and in $(3,10]$ the integers are $4,5,\dots,10$: $7$ of them.
 ---
 Q: How many integers $n$ satisfy $(n^2-9)(n^2-49)\lt 0$?
 L: 2
@@ -4735,7 +4803,9 @@ W: 3
 W: 8
 W: 7
 W: 12
-S: The factors must have opposite signs: $9\lt n^2\lt 49$, so $n=\pm4,\pm5,\pm6$.
+S: The product of two numbers is negative when they have opposite signs.
+$n^2-9\lt n^2-49$ is impossible, so we need $n^2-9\gt0$ and $n^2-49\lt0$: $9\lt n^2\lt49$.
+That's $3\lt|n|\lt7$: $n=\pm4,\pm5,\pm6$, which is $6$ integers.
 ---
 Q: What is the sum of all integers $x$ satisfying $x^2\le2x+15$?
 L: 2
@@ -4744,7 +4814,9 @@ W: 15
 W: 8
 W: 2
 W: 12
-S: $x^2-2x-15=(x-5)(x+3)\le0$, so $-3\le x\le5$. The integers sum to $-3-2-1+0+1+\dots+5=9$.
+S: Move everything to one side: $x^2-2x-15\le0$, i.e. $(x-5)(x+3)\le0$.
+This holds between the roots, inclusive: $-3\le x\le5$.
+The integers $-3,\dots,5$ sum to $(-3-2-1)+(0+1+2+3)+(4+5)=-6+6+9=9$. (Pairs $\pm1,\pm2,\pm3$ cancel, leaving $0+4+5$.)
 ---
 @@ ineq-amgm
 Q: What is the minimum value of $x+\dfrac{16}{x}$ for $x>0$?
@@ -4754,7 +4826,9 @@ W: 4
 W: 16
 W: 17
 W: 10
-S: AM–GM: $x+\frac{16}x\ge2\sqrt{16}=8$, with equality at $x=4$.
+S: AM–GM: for positive $a,b$, $\frac{a+b}{2}\ge\sqrt{ab}$, i.e. $a+b\ge2\sqrt{ab}$.
+With $a=x$ and $b=\frac{16}{x}$, the product is the constant $16$, so $x+\frac{16}x\ge2\sqrt{16}=8$.
+Equality holds when $x=\frac{16}{x}$, i.e. $x=4$. The minimum is $8$.
 ---
 Q: Positive numbers satisfy $x+2y=12$. What is the largest possible value of $xy$?
 L: 2
@@ -4763,7 +4837,9 @@ W: 36
 W: 24
 W: 12
 W: 16
-S: AM–GM on $x$ and $2y$: $x\cdot2y\le\left(\frac{x+2y}{2}\right)^2=36$, so $xy\le18$, with equality at $x=6$, $y=3$.
+S: Apply AM–GM to the two terms $x$ and $2y$, whose sum is fixed at $12$: $x\cdot2y\le\left(\frac{x+2y}{2}\right)^2=36$.
+So $2xy\le36$, i.e. $xy\le18$.
+Equality when $x=2y$: then $4y=12$, $y=3$, $x=6$, and $xy=18$.
 ---
 Q: For positive $x,y$, what is the minimum value of $\left(x+\dfrac1x\right)\left(y+\dfrac4y\right)$?
 L: 2
@@ -4772,7 +4848,10 @@ W: 4
 W: 6
 W: 9
 W: 16
-S: $x+\frac1x\ge2$ (at $x=1$) and $y+\frac4y\ge4$ (at $y=2$). Both minima occur at once, so the minimum is $8$.
+S: Minimize each factor separately with AM–GM.
+$x+\frac1x\ge2\sqrt{1}=2$, with equality at $x=1$.
+$y+\frac4y\ge2\sqrt4=4$, with equality at $y=2$.
+Both factors are positive and can be minimized simultaneously ($x=1$, $y=2$), so the minimum product is $2\cdot4=8$.
 ---
 Q: What is the minimum value of $9x+\dfrac1x$ for $x>0$?
 L: 1
@@ -4781,7 +4860,8 @@ W: 10
 W: 3
 W: 9
 W: 18
-S: $9x+\frac1x\ge2\sqrt9=6$, with equality at $x=\frac13$.
+S: AM–GM on $9x$ and $\frac1x$: their product is $9$, so $9x+\frac1x\ge2\sqrt9=6$.
+Equality when $9x=\frac1x$, i.e. $x^2=\frac19$, $x=\frac13$. The minimum is $6$.
 ---
 Q: What is the minimum value of $x^2+\dfrac2x$ for $x>0$?
 L: 3
@@ -4790,7 +4870,10 @@ W: 2\sqrt{2}
 W: 2
 W: 4
 W: \frac{5}{2}
-S: Split so the product is constant: $x^2+\frac1x+\frac1x\ge3\sqrt[3]{x^2\cdot\frac1x\cdot\frac1x}=3$, with equality at $x=1$.
+S: Plain AM–GM on $x^2$ and $\frac2x$ doesn't help, because their product $2x$ isn't constant.
+Split $\frac2x$ into $\frac1x+\frac1x$ so the three terms have a constant product: $x^2\cdot\frac1x\cdot\frac1x=1$.
+Three-term AM–GM: $x^2+\frac1x+\frac1x\ge3\sqrt[3]{1}=3$, with equality when $x^2=\frac1x$, i.e. $x=1$.
+Check: $1+2=3$. The minimum is $3$.
 ---
 Q: Positive reals $a,b,c$ satisfy $abc=8$. What is the minimum value of $a+b+c$?
 L: 1
@@ -4799,7 +4882,8 @@ W: 8
 W: 4
 W: 24
 W: 12
-S: $a+b+c\ge3\sqrt[3]{8}=6$, with equality at $a=b=c=2$.
+S: Three-term AM–GM: $\frac{a+b+c}{3}\ge\sqrt[3]{abc}=\sqrt[3]8=2$.
+So $a+b+c\ge6$, with equality at $a=b=c=2$.
 ---
 Q: For positive $a,b$, what is the minimum of $(a+b)\left(\dfrac1a+\dfrac1b\right)$?
 L: 1
@@ -4808,7 +4892,9 @@ W: 2
 W: 1
 W: 8
 W: 0
-S: Expand: $2+\frac ab+\frac ba\ge2+2=4$, with equality at $a=b$.
+S: Expand: $(a+b)\left(\frac1a+\frac1b\right)=1+\frac ab+\frac ba+1=2+\frac ab+\frac ba$.
+AM–GM: $\frac ab+\frac ba\ge2\sqrt{\frac ab\cdot\frac ba}=2$.
+So the expression is at least $4$, with equality at $a=b$.
 ---
 Q: Positive reals satisfy $xy=4$. What is the minimum of $x+4y$?
 L: 2
@@ -4817,7 +4903,8 @@ W: 4
 W: 5
 W: 10
 W: 16
-S: $x+4y\ge2\sqrt{4xy}=2\sqrt{16}=8$, with equality at $x=4$, $y=1$.
+S: AM–GM on $x$ and $4y$: $x+4y\ge2\sqrt{4xy}=2\sqrt{16}=8$ (using $xy=4$).
+Equality when $x=4y$; with $xy=4$ this gives $4y^2=4$, $y=1$, $x=4$. The minimum is $8$.
 ---
 @@ ineq-cs
 Q: Real numbers satisfy $x^2+y^2=25$. What is the maximum of $3x+4y$?
@@ -4827,7 +4914,9 @@ W: 35
 W: 5
 W: 7
 W: 20
-S: Cauchy–Schwarz: $(3x+4y)^2\le(9+16)(x^2+y^2)=625$, so the maximum is $25$, at $(x,y)=(3,4)$.
+S: Cauchy–Schwarz: $(3x+4y)^2\le(3^2+4^2)(x^2+y^2)=25\cdot25=625$, so $3x+4y\le25$.
+Equality when $(x,y)$ is proportional to $(3,4)$: $(x,y)=(3,4)$, giving $9+16=25$. ✓
+(Geometrically: the line $3x+4y=c$ is tangent to the circle of radius $5$ when $c=25$.)
 ---
 Q: Real numbers satisfy $x+2y=5$. What is the minimum value of $x^2+y^2$?
 L: 2
@@ -4836,7 +4925,9 @@ W: \sqrt{5}
 W: 25
 W: \frac{5}{2}
 W: 10
-S: $(x+2y)^2\le(1+4)(x^2+y^2)$, so $x^2+y^2\ge\frac{25}{5}=5$, at $(1,2)$.
+S: Cauchy–Schwarz: $(1\cdot x+2\cdot y)^2\le(1^2+2^2)(x^2+y^2)$, so $25\le5(x^2+y^2)$ and $x^2+y^2\ge5$.
+Equality when $(x,y)\propto(1,2)$: $x=1$, $y=2$ (check $1+4=5$ ✓).
+(Geometrically: $x^2+y^2$ is the squared distance from the origin to the line, $\left(\frac{5}{\sqrt5}\right)^2=5$.)
 ---
 Q: Real numbers satisfy $x+y+z=6$. What is the minimum value of $x^2+y^2+z^2$?
 L: 1
@@ -4845,7 +4936,8 @@ W: 36
 W: 6
 W: 18
 W: 2
-S: The minimum is $\frac{S^2}{n}=\frac{36}3=12$, at $x=y=z=2$.
+S: QM–AM (or Cauchy–Schwarz with $(1,1,1)$): $x^2+y^2+z^2\ge\frac{(x+y+z)^2}{3}$.
+$\frac{36}{3}=12$, with equality at $x=y=z=2$.
 ---
 Q: Real numbers satisfy $x^2+y^2+z^2=27$. What is the maximum of $x+y+z$?
 L: 2
@@ -4854,7 +4946,8 @@ W: 27
 W: 3\sqrt{3}
 W: 81
 W: 3
-S: $(x+y+z)^2\le3(x^2+y^2+z^2)=81$, so the maximum is $9$, at $x=y=z=3$.
+S: Cauchy–Schwarz: $(x+y+z)^2\le(1^2+1^2+1^2)(x^2+y^2+z^2)=3\cdot27=81$.
+So $x+y+z\le9$, with equality at $x=y=z=3$ (check $27$ ✓).
 ---
 Q: Positive reals satisfy $a+b=1$. What is the minimum of $\dfrac1a+\dfrac4b$?
 L: 2
@@ -4863,7 +4956,9 @@ W: 5
 W: 4
 W: 8
 W: 6
-S: Titu: $\frac{1^2}a+\frac{2^2}b\ge\frac{(1+2)^2}{a+b}=9$, with equality at $a=\frac13$, $b=\frac23$.
+S: Titu's lemma (Cauchy–Schwarz in Engel form): $\frac{u^2}{a}+\frac{v^2}{b}\ge\frac{(u+v)^2}{a+b}$.
+Write $\frac1a+\frac4b=\frac{1^2}{a}+\frac{2^2}{b}\ge\frac{(1+2)^2}{a+b}=\frac{9}{1}=9$.
+Equality when $\frac1a=\frac2b$, i.e. $b=2a$: $a=\frac13$, $b=\frac23$. Check: $3+6=9$. ✓
 ---
 Q: What is the maximum value of $2\sin\theta+3\cos\theta$?
 L: 2
@@ -4872,7 +4967,9 @@ W: 5
 W: 13
 W: \sqrt{5}
 W: 6
-S: $(2\sin\theta+3\cos\theta)^2\le(4+9)(\sin^2\theta+\cos^2\theta)=13$, and equality is attainable. The maximum is $\sqrt{13}$.
+S: Cauchy–Schwarz with $(2,3)$ and $(\sin\theta,\cos\theta)$: $(2\sin\theta+3\cos\theta)^2\le(4+9)(\sin^2\theta+\cos^2\theta)=13$.
+So the expression is at most $\sqrt{13}$, and equality is reached when $(\sin\theta,\cos\theta)\propto(2,3)$.
+(Same as $a\sin\theta+b\cos\theta\le\sqrt{a^2+b^2}$.)
 ---
 Q: Positive reals satisfy $a+b+c=3$. What is the minimum value of $a^2+b^2+c^2$?
 L: 1
@@ -4881,7 +4978,8 @@ W: 9
 W: 1
 W: \sqrt{3}
 W: 6
-S: The minimum is $\frac{3^2}{3}=3$, at $a=b=c=1$.
+S: $a^2+b^2+c^2\ge\frac{(a+b+c)^2}{3}=\frac93=3$ (Cauchy–Schwarz or QM–AM).
+Equality at $a=b=c=1$.
 ---
 Q: Real numbers satisfy $3x+4y=36$. What is the minimum of $(x-1)^2+(y-2)^2$?
 L: 3
@@ -4890,7 +4988,8 @@ W: 5
 W: 36
 W: 16
 W: 49
-S: This is the squared distance from $(1,2)$ to the line: $\frac{(3+8-36)^2}{9+16}=\frac{625}{25}=25$.
+S: $(x-1)^2+(y-2)^2$ is the squared distance from $(x,y)$ to the point $(1,2)$, and $(x,y)$ ranges over the line $3x+4y-36=0$.
+The minimum is the squared perpendicular distance: $\left(\frac{|3\cdot1+4\cdot2-36|}{\sqrt{9+16}}\right)^2=\left(\frac{25}{5}\right)^2=25$.
 ---
 @@ ineq-abs
 Q: What is the minimum value of $|x-1|+|x-4|+|x-10|$?
@@ -4900,7 +4999,9 @@ W: 13
 W: 6
 W: 8
 W: 10
-S: The minimum is at the median $x=4$: $3+0+6=9$.
+S: $|x-a|$ is the distance from $x$ to $a$, so we want the point minimizing the total distance to $1$, $4$, $10$.
+That's the median, $x=4$: moving left increases the distance to $4$ and $10$ more than it saves on $1$, and moving right is similar.
+Value: $|4-1|+|4-4|+|4-10|=3+0+6=9$.
 ---
 Q: A triangle has sides $5$, $9$, and $x$, where $x$ is an integer. How many values of $x$ are possible?
 L: 1
@@ -4909,7 +5010,8 @@ W: 8
 W: 10
 W: 13
 W: 14
-S: $9-5\lt x\lt 9+5$, so $5\le x\le13$, which is $9$ values.
+S: Triangle inequality: each side is less than the sum of the other two, so $9-5\lt x\lt9+5$, i.e. $4\lt x\lt14$.
+Integers $5$ through $13$: that's $9$ values.
 ---
 Q: What is the minimum value of $|x-2|+|x-6|$?
 L: 1
@@ -4918,7 +5020,9 @@ W: 0
 W: 2
 W: 8
 W: 6
-S: For any $x$ between $2$ and $6$ the sum of the two distances is $4$, and it is larger outside that interval.
+S: $|x-2|+|x-6|$ is the total distance from $x$ to $2$ and to $6$.
+For any $x$ between $2$ and $6$, the two distances add up to exactly $6-2=4$; outside, the sum is larger.
+Minimum: $4$.
 ---
 Q: How many non-congruent triangles have integer side lengths and perimeter $12$?
 L: 2
@@ -4927,7 +5031,10 @@ W: 4
 W: 2
 W: 5
 W: 6
-S: Take $a\le b\le c$ with $c\lt 6$. $c=5$: $(2,5,5),(3,4,5)$. $c=4$: $(4,4,4)$. So there are $3$.
+S: List $a\le b\le c$ with $a+b+c=12$. The triangle inequality $a+b\gt c$ means $c\lt6$, and $c\ge4$ (it's the largest of three numbers summing to $12$).
+• $c=5$: $a+b=7$ with $a\le b\le5$: $(2,5,5)$ and $(3,4,5)$.
+• $c=4$: $a+b=8$ with $a\le b\le4$: $(4,4,4)$.
+Total: $3$ triangles.
 ---
 Q: Real numbers satisfy $|a|=3$ and $|b|=5$. What is the minimum possible value of $|a+b|$?
 L: 1
@@ -4936,7 +5043,8 @@ W: 8
 W: 0
 W: 3
 W: 15
-S: $|a+b|\ge|b|-|a|=2$, with equality when $a$ and $b$ have opposite signs (e.g. $a=3, b=-5$).
+S: Triangle inequality for absolute values: $|a+b|\ge|b|-|a|=5-3=2$.
+Equality happens when $a$ and $b$ point in opposite directions, e.g. $a=3$, $b=-5$: $|a+b|=2$.
 ---
 Q: What is the minimum value of $|x-1|+|x-2|+\cdots+|x-9|$?
 L: 2
@@ -4945,7 +5053,8 @@ W: 25
 W: 45
 W: 16
 W: 18
-S: At the median $x=5$: $4+3+2+1+0+1+2+3+4=20$.
+S: The sum of distances from $x$ to $1,2,\dots,9$ is minimized at the median, $x=5$.
+At $x=5$: $4+3+2+1+0+1+2+3+4=20$.
 ---
 Q: A triangle has sides $7$, $12$, and $c$, where $c$ is an integer. What is the largest possible value of $c$?
 L: 1
@@ -4954,7 +5063,8 @@ W: 19
 W: 17
 W: 5
 W: 6
-S: $c\lt 7+12=19$, so the largest integer is $18$.
+S: Triangle inequality: $c\lt7+12=19$ (and $c\gt12-7=5$).
+The largest integer less than $19$ is $18$.
 ---
 Q: What is the area of the region $|x|+|y|\le3$?
 L: 2
@@ -4963,7 +5073,8 @@ W: 9
 W: 36
 W: 12
 W: 6
-S: It is a square with vertices $(\pm3,0),(0,\pm3)$ and diagonals $6$. Area $=\frac{6\cdot6}2=18$.
+S: In quadrant I the region is $x+y\le3$, a right triangle with legs $3$ and area $\frac92$. By symmetry the full region (a square rotated $45^\circ$, vertices $(\pm3,0),(0,\pm3)$) has four such pieces.
+Area $=4\cdot\frac92=18$. (Or: a rhombus with diagonals $6$ and $6$, area $\frac{6\cdot6}{2}=18$.)
 ---
 @@ ineq-opt
 Q: Positive integers have sum $10$. What is the largest possible value of their product?
@@ -4973,7 +5084,8 @@ W: 32
 W: 30
 W: 25
 W: 27
-S: Use as many 3s as possible: $10=3+3+4$ (or $3+3+2+2$). The product is $36$.
+S: To maximize a product with a fixed sum, use parts of size $3$ when possible: a part $\ge5$ can be split into $2+(n-2)$ with product $2(n-2)\gt n$; a $4$ is the same as $2\cdot2$; and $2\cdot2\cdot2\lt3\cdot3$; and a $1$ never helps.
+$10=3+3+4$ (or $3+3+2+2$), giving $3\cdot3\cdot4=36$.
 ---
 Q: Real numbers satisfy $x+y=8$. What is the minimum of $x^2+y^2$?
 L: 1
@@ -4982,7 +5094,8 @@ W: 64
 W: 16
 W: 8
 W: 0
-S: At $x=y=4$: $32$. (In general $x^2+y^2\ge\frac{(x+y)^2}2$.)
+S: Write $x=4+t$, $y=4-t$. Then $x^2+y^2=(16+8t+t^2)+(16-8t+t^2)=32+2t^2\ge32$.
+Minimum $32$ at $t=0$, i.e. $x=y=4$. (In general $x^2+y^2\ge\frac{(x+y)^2}{2}$.)
 ---
 Q: A rectangle is inscribed in a semicircle of radius $1$, with one side on the diameter. What is its maximum possible area?
 L: 3
@@ -4991,7 +5104,9 @@ W: 2
 W: \frac{1}{2}
 W: \sqrt{2}
 W: \frac{\pi}{2}
-S: With top corners at $(\pm\cos\theta,\sin\theta)$, the area is $2\cos\theta\sin\theta=\sin2\theta\le1$, attained at $\theta=45^\circ$.
+S: Put the semicircle's center at the origin. The top corners of the rectangle are on the circle: $(\pm\cos\theta,\sin\theta)$.
+Width $2\cos\theta$, height $\sin\theta$, area $2\sin\theta\cos\theta=\sin2\theta$.
+$\sin2\theta\le1$, with equality at $\theta=45^\circ$ (width $\sqrt2$, height $\frac{\sqrt2}2$). Maximum area: $1$.
 ---
 Q: What is the minimum value of $x^2+4y^2-4x+8y+11$?
 L: 2
@@ -5000,7 +5115,10 @@ W: 11
 W: 7
 W: 0
 W: -1
-S: $(x-2)^2+4(y+1)^2+11-4-4=(x-2)^2+4(y+1)^2+3\ge3$.
+S: Complete the square in $x$ and $y$ separately:
+$x^2-4x=(x-2)^2-4$ and $4y^2+8y=4(y^2+2y)=4(y+1)^2-4$.
+Expression $=(x-2)^2+4(y+1)^2-4-4+11=(x-2)^2+4(y+1)^2+3\ge3$.
+Minimum $3$ at $x=2$, $y=-1$.
 ---
 Q: Integers $x$ and $y$ satisfy $x+y=15$. What is the largest possible value of $xy$?
 L: 1
@@ -5009,7 +5127,8 @@ W: 225
 W: 54
 W: 50
 W: 57
-S: The real optimum is $7.5$; the nearest integers give $7\cdot8=56$.
+S: With $y=15-x$, $xy=x(15-x)$, a downward parabola peaking at $x=7.5$.
+$x$ must be an integer, so take the closest: $x=7$ or $8$. Either way $xy=7\cdot8=56$.
 ---
 Q: What is the smallest value of $(x+1)^2+(x-3)^2$?
 L: 1
@@ -5018,7 +5137,8 @@ W: 16
 W: 4
 W: 10
 W: 0
-S: The sum is smallest at the midpoint $x=1$: $4+4=8$.
+S: Expand: $(x+1)^2+(x-3)^2=2x^2-4x+10=2(x-1)^2+8$.
+Minimum $8$ at $x=1$, the midpoint of $-1$ and $3$ (each term is then $4$).
 ---
 Q: Real numbers satisfy $x^2+y^2=18$. What is the largest possible value of $xy$?
 L: 1
@@ -5027,7 +5147,8 @@ W: 18
 W: 6
 W: 3\sqrt{2}
 W: 36
-S: $2xy\le x^2+y^2=18$, so $xy\le9$, at $x=y=3$.
+S: $(x-y)^2\ge0$ gives $x^2+y^2\ge2xy$, so $2xy\le18$ and $xy\le9$.
+Equality when $x=y$: $2x^2=18$, $x=y=3$.
 ---
 Q: What is the maximum value of $4x-x^2-y^2+6y$?
 L: 2
@@ -5036,7 +5157,8 @@ W: 4
 W: 9
 W: 6
 W: 25
-S: $-(x-2)^2-(y-3)^2+4+9\le13$, at $(2,3)$.
+S: Complete the squares: $4x-x^2=-(x-2)^2+4$ and $6y-y^2=-(y-3)^2+9$.
+Expression $=13-(x-2)^2-(y-3)^2\le13$, with equality at $(2,3)$.
 @@ arith
 Q: The $3$rd term of an arithmetic sequence is $17$ and the $10$th term is $52$. What is the $25$th term?
 L: 1
@@ -8221,7 +8343,9 @@ W: 47
 W: 120
 W: 240
 W: 30
-S: $(ab)(bc)(ca)=(abc)^2=12\cdot15\cdot20=3600$, so $V=60$ (the edges are $3,4,5$).
+S: Let the edges be $a,b,c$, so the face areas are $ab=12$, $bc=15$, $ca=20$.
+Multiply all three: $(ab)(bc)(ca)=a^2b^2c^2=(abc)^2=12\cdot15\cdot20=3600$.
+Volume $abc=\sqrt{3600}=60$. (The edges are $3,4,5$: e.g. $ab=12$, $bc=15$ give $\frac ac=\frac45$, and with $ca=20$, $a=4$, $c=5$, $b=3$.)
 ---
 Q: A cube has surface area $150$. What is its volume?
 L: 1
@@ -8230,7 +8354,8 @@ W: 25
 W: 150
 W: 216
 W: 64
-S: $6s^2=150$, so $s=5$ and $V=125$.
+S: A cube has $6$ square faces, so its surface area is $6s^2=150$, giving $s^2=25$ and $s=5$.
+Volume $=s^3=125$.
 ---
 Q: What is the length of the space diagonal of a $3\times4\times12$ box?
 L: 1
@@ -8239,7 +8364,8 @@ W: 19
 W: 12
 W: 5
 W: 15
-S: $\sqrt{9+16+144}=13$.
+S: The space diagonal of an $a\times b\times c$ box is $\sqrt{a^2+b^2+c^2}$ (Pythagoras twice: first the floor diagonal $\sqrt{a^2+b^2}$, then up).
+$\sqrt{9+16+144}=\sqrt{169}=13$.
 ---
 Q: What is the volume of a cylinder with radius $3$ and height $5$?
 L: 1
@@ -8248,7 +8374,8 @@ W: 15\pi
 W: 30\pi
 W: 90\pi
 W: 75\pi
-S: $\pi\cdot9\cdot5=45\pi$.
+S: Volume of a cylinder $=$ base area $\times$ height $=\pi r^2h$.
+$\pi\cdot3^2\cdot5=45\pi$.
 ---
 Q: A rectangular box has edges summing to $48$ (all $12$ edges) and a space diagonal of $9$. What is its surface area?
 L: 3
@@ -8257,7 +8384,10 @@ W: 72
 W: 81
 W: 144
 W: 54
-S: $4(a+b+c)=48$, so $a+b+c=12$. Then $2(ab+bc+ca)=(a+b+c)^2-(a^2+b^2+c^2)=144-81=63$.
+S: A box has $4$ edges of each length, so $4(a+b+c)=48$ and $a+b+c=12$.
+The space diagonal gives $a^2+b^2+c^2=81$.
+Surface area is $2(ab+bc+ca)$, and $(a+b+c)^2=a^2+b^2+c^2+2(ab+bc+ca)$.
+So $2(ab+bc+ca)=144-81=63$.
 ---
 Q: A cube has a space diagonal of length $6$. What is its volume?
 L: 2
@@ -8266,7 +8396,9 @@ W: 216
 W: 8\sqrt{3}
 W: 72
 W: 36\sqrt{2}
-S: $s\sqrt3=6$, so $s=2\sqrt3$ and $V=(2\sqrt3)^3=24\sqrt3$.
+S: A cube of side $s$ has space diagonal $\sqrt{s^2+s^2+s^2}=s\sqrt3$.
+$s\sqrt3=6$ gives $s=\frac{6}{\sqrt3}=2\sqrt3$.
+$V=(2\sqrt3)^3=8\cdot3\sqrt3=24\sqrt3$.
 ---
 Q: A cylinder of height $4$ has lateral surface area $24\pi$. What is its volume?
 L: 2
@@ -8275,7 +8407,9 @@ W: 24\pi
 W: 48\pi
 W: 12\pi
 W: 72\pi
-S: $2\pi r\cdot4=24\pi$, so $r=3$ and $V=\pi\cdot9\cdot4=36\pi$.
+S: Unrolled, the lateral surface is a rectangle with sides $2\pi r$ (the circumference) and $h$: area $2\pi rh$.
+$2\pi r\cdot4=24\pi$ gives $r=3$.
+$V=\pi r^2h=\pi\cdot9\cdot4=36\pi$.
 ---
 Q: A $4\times4\times4$ cube is painted on the outside and cut into $64$ unit cubes. How many unit cubes have exactly two painted faces?
 L: 2
@@ -8284,7 +8418,9 @@ W: 8
 W: 12
 W: 36
 W: 16
-S: These are the non-corner cubes on the edges: $12$ edges × $(4-2)=24$.
+S: A unit cube has exactly two painted faces when it sits on an edge of the big cube but not at a corner.
+Each of the $12$ edges has $4$ cubes, of which $2$ are corners, leaving $4-2=2$ per edge.
+$12\cdot2=24$.
 ---
 @@ solid-pyr
 Q: What is the volume of a cone with radius $3$ and height $4$?
@@ -8294,7 +8430,8 @@ W: 36\pi
 W: 15\pi
 W: 24\pi
 W: 4\pi
-S: $\frac13\pi\cdot9\cdot4=12\pi$.
+S: A cone is $\frac13$ of the cylinder with the same base and height: $V=\frac13\pi r^2h$.
+$\frac13\pi\cdot9\cdot4=12\pi$.
 ---
 Q: What is the lateral surface area of a cone with radius $3$ and height $4$?
 L: 1
@@ -8303,7 +8440,8 @@ W: 12\pi
 W: 24\pi
 W: 9\pi
 W: 20\pi
-S: Slant height $5$; lateral area $\pi r\ell=15\pi$.
+S: The slant height is the hypotenuse of the right triangle with legs $r=3$ and $h=4$: $\ell=5$.
+Lateral area $=\pi r\ell=\pi\cdot3\cdot5=15\pi$. (Unrolled, the side is a sector of radius $\ell$ and arc length $2\pi r$, area $\frac12\cdot2\pi r\cdot\ell$.)
 ---
 Q: A square pyramid has base side $6$ and height $4$. What is its volume?
 L: 1
@@ -8312,7 +8450,8 @@ W: 144
 W: 60
 W: 24
 W: 96
-S: $\frac13\cdot36\cdot4=48$.
+S: Pyramid volume $=\frac13\cdot$ base area $\cdot$ height.
+Base area $6^2=36$, so $V=\frac13\cdot36\cdot4=48$.
 ---
 Q: What is the volume of a regular tetrahedron with edge length $6$?
 L: 2
@@ -8321,7 +8460,9 @@ W: 36\sqrt{2}
 W: 54
 W: 9\sqrt{2}
 W: 18\sqrt{3}
-S: $\frac{s^3\sqrt2}{12}=\frac{216\sqrt2}{12}=18\sqrt2$.
+S: A regular tetrahedron with edge $s$ has volume $\frac{s^3\sqrt2}{12}$.
+(Derivation: base area $\frac{\sqrt3}4s^2$, height $s\sqrt{\frac23}$, and $\frac13\cdot\frac{\sqrt3}{4}s^2\cdot s\sqrt{\frac23}=\frac{s^3\sqrt2}{12}$.)
+$\frac{216\sqrt2}{12}=18\sqrt2$.
 ---
 Q: A $240^\circ$ sector of a circle with radius $6$ is rolled into a cone. What is the cone's volume?
 L: 3
@@ -8330,8 +8471,10 @@ W: 16\sqrt{5}\pi
 W: \frac{64\pi}{3}
 W: 32\pi
 W: \frac{16\sqrt{5}\pi}{3}
-S: The arc $\frac23\cdot12\pi=8\pi$ becomes the base circumference, so $r=4$. The slant height is $6$, so $h=\sqrt{36-16}=2\sqrt5$.
-$V=\frac13\pi\cdot16\cdot2\sqrt5=\frac{32\sqrt5\pi}3$.
+S: When the sector rolls up, its radius becomes the slant height ($\ell=6$) and its arc becomes the base circumference.
+Arc length: $\frac{240}{360}\cdot2\pi\cdot6=8\pi=2\pi r$, so $r=4$.
+Height: $h=\sqrt{\ell^2-r^2}=\sqrt{36-16}=2\sqrt5$.
+$V=\frac13\pi r^2h=\frac13\pi\cdot16\cdot2\sqrt5=\frac{32\sqrt5\pi}{3}$.
 ---
 Q: A cone of volume $64\pi$ is cut by a plane parallel to its base, halfway up its height. What is the volume of the bottom piece (the frustum)?
 L: 2
@@ -8340,7 +8483,9 @@ W: 32\pi
 W: 48\pi
 W: 8\pi
 W: 60\pi
-S: The top cone is similar with ratio $\frac12$, so it has $\frac18$ of the volume, $8\pi$. The frustum is $56\pi$.
+S: The piece above the cut is a smaller cone, similar to the original with ratio $\frac12$ (half the height, half the radius).
+Volumes scale by the cube of the ratio: $\left(\frac12\right)^3=\frac18$, so the top cone is $\frac18\cdot64\pi=8\pi$.
+The frustum is the rest: $64\pi-8\pi=56\pi$.
 ---
 Q: A square pyramid has base side $10$, and its slant height (from apex to the midpoint of a base edge) is $13$. What is its volume?
 L: 2
@@ -8349,7 +8494,9 @@ W: 1300
 W: 1200
 W: 500
 W: 520
-S: $h=\sqrt{13^2-5^2}=12$; $V=\frac13\cdot100\cdot12=400$.
+S: The slant height, the height, and half the base side form a right triangle (apex, center of the base, midpoint of an edge).
+$h=\sqrt{13^2-5^2}=\sqrt{144}=12$.
+$V=\frac13\cdot10^2\cdot12=400$.
 ---
 Q: What is the total surface area of a cone with radius $5$ and height $12$?
 L: 1
@@ -8358,7 +8505,8 @@ W: 65\pi
 W: 25\pi
 W: 100\pi
 W: 115\pi
-S: $\ell=13$: $\pi\cdot25+\pi\cdot5\cdot13=90\pi$.
+S: Slant height: $\ell=\sqrt{5^2+12^2}=13$.
+Total surface area $=$ base $+$ lateral $=\pi r^2+\pi r\ell=25\pi+65\pi=90\pi$.
 ---
 @@ solid-sphere
 Q: A sphere has surface area $36\pi$. What is its volume?
@@ -8368,7 +8516,8 @@ W: 108\pi
 W: 27\pi
 W: 12\pi
 W: 288\pi
-S: $4\pi r^2=36\pi$, so $r=3$ and $V=\frac43\pi\cdot27=36\pi$.
+S: Surface area $4\pi r^2=36\pi$ gives $r^2=9$, $r=3$.
+Volume $\frac43\pi r^3=\frac43\pi\cdot27=36\pi$.
 ---
 Q: What is the volume of the sphere inscribed in a cube of side $6$?
 L: 1
@@ -8377,7 +8526,8 @@ W: 288\pi
 W: 216
 W: 72\pi
 W: 27\pi
-S: $r=3$: $\frac43\pi\cdot27=36\pi$.
+S: A sphere inscribed in a cube touches all six faces, so its diameter equals the side: $r=3$.
+$V=\frac43\pi\cdot3^3=36\pi$.
 ---
 Q: A cube is inscribed in a sphere of radius $\sqrt3$. What is the cube's volume?
 L: 2
@@ -8386,7 +8536,8 @@ W: 3\sqrt{3}
 W: 27
 W: 8\sqrt{3}
 W: 6
-S: The space diagonal is the diameter: $s\sqrt3=2\sqrt3$, so $s=2$ and $V=8$.
+S: A cube inscribed in a sphere has its vertices on the sphere, so the space diagonal is a diameter: $s\sqrt3=2\sqrt3$.
+So $s=2$ and the volume is $2^3=8$.
 ---
 Q: What is the ratio of a sphere's volume to the volume of the smallest cylinder containing it?
 L: 1
@@ -8395,7 +8546,9 @@ W: \frac{1}{2}
 W: \frac{3}{4}
 W: \frac{4}{3}
 W: \frac{3}{2}
-S: $\frac{\frac43\pi r^3}{\pi r^2\cdot2r}=\frac23$ (Archimedes).
+S: The smallest cylinder containing a sphere of radius $r$ has radius $r$ and height $2r$, volume $\pi r^2\cdot2r=2\pi r^3$.
+Ratio: $\dfrac{\frac43\pi r^3}{2\pi r^3}=\dfrac{4}{6}=\dfrac23$.
+(Archimedes was so proud of this he asked for it on his tombstone.)
 ---
 Q: A metal sphere of radius $6$ is melted and recast into spheres of radius $2$. How many small spheres are made?
 L: 1
@@ -8404,7 +8557,8 @@ W: 9
 W: 3
 W: 54
 W: 81
-S: The volume ratio is $\left(\frac62\right)^3=27$.
+S: Melting preserves volume. Volume scales with the cube of the radius, so one big sphere holds $\left(\frac62\right)^3=27$ small spheres' worth of metal.
+Answer: $27$.
 ---
 Q: What is the total surface area of a solid hemisphere of radius $3$, including its flat base?
 L: 2
@@ -8413,7 +8567,9 @@ W: 18\pi
 W: 36\pi
 W: 9\pi
 W: 45\pi
-S: Curved part $2\pi r^2=18\pi$ plus base $\pi r^2=9\pi$: $27\pi$.
+S: A hemisphere's curved surface is half a sphere's: $\frac12\cdot4\pi r^2=2\pi r^2=18\pi$.
+The flat base is a disk: $\pi r^2=9\pi$.
+Total: $18\pi+9\pi=27\pi$.
 ---
 Q: The radius of a sphere increases by $50\%$. By what factor does its volume increase?
 L: 1
@@ -8422,7 +8578,8 @@ W: \frac{3}{2}
 W: \frac{9}{4}
 W: 3
 W: 2
-S: The volume scales by the cube of the factor: $\left(\frac32\right)^3=\frac{27}8$.
+S: Increasing by $50\%$ multiplies the radius by $\frac32$.
+Volume is proportional to $r^3$, so it's multiplied by $\left(\frac32\right)^3=\frac{27}{8}$ (an increase of $237.5\%$).
 ---
 Q: A sphere is tangent to all twelve edges of a cube of side $2$. What is the sphere's volume?
 L: 3
@@ -8431,8 +8588,9 @@ W: \frac{4\pi}{3}
 W: 4\sqrt{3}\pi
 W: \frac{32\pi}{3}
 W: \frac{16\sqrt{2}\pi}{3}
-S: The distance from the center to an edge midpoint is half a face diagonal: $r=\sqrt2$.
-$V=\frac43\pi(\sqrt2)^3=\frac{8\sqrt2\pi}3$.
+S: The sphere is centered at the cube's center and touches each edge at its midpoint.
+From the center to an edge midpoint: offsets of $1$ in two directions and $0$ in the third, so $r=\sqrt{1^2+1^2}=\sqrt2$ (half a face diagonal).
+$V=\frac43\pi(\sqrt2)^3=\frac43\pi\cdot2\sqrt2=\frac{8\sqrt2\pi}{3}$.
 ---
 @@ solid-dist
 Q: What is the distance between $(1,2,3)$ and $(4,6,15)$?
@@ -8442,7 +8600,8 @@ W: 12
 W: 15
 W: 19
 W: \sqrt{185}
-S: $\sqrt{9+16+144}=13$.
+S: 3D distance formula: $\sqrt{(\Delta x)^2+(\Delta y)^2+(\Delta z)^2}$.
+$\Delta=(3,4,12)$: $\sqrt{9+16+144}=\sqrt{169}=13$.
 ---
 Q: An ant walks on the surface of a unit cube from one vertex to the opposite vertex. What is the shortest possible path length?
 L: 2
@@ -8451,7 +8610,9 @@ W: \sqrt{3}
 W: 2
 W: 1+\sqrt{2}
 W: 3
-S: Unfold two adjacent faces into a $1\times2$ rectangle; the path is its diagonal, $\sqrt{1+4}=\sqrt5$.
+S: Unfold the cube so the ant's path lies on two adjacent faces laid flat: they form a $1\times2$ rectangle, with the start and end at opposite corners.
+The shortest path is the straight diagonal: $\sqrt{1^2+2^2}=\sqrt5$.
+(The straight line through the cube, $\sqrt3$, isn't allowed: the ant stays on the surface.)
 ---
 Q: A plane through the midpoints of six edges of a unit cube cuts a regular hexagon. What is the hexagon's area?
 L: 3
@@ -8460,8 +8621,8 @@ W: \frac{\sqrt{3}}{2}
 W: 1
 W: \frac{3\sqrt{3}}{2}
 W: \sqrt{2}
-S: Adjacent edge midpoints are $\frac{\sqrt2}2$ apart, so the side is $\frac{\sqrt2}2$.
-Area $=\frac{3\sqrt3}{2}\cdot\frac12=\frac{3\sqrt3}4$.
+S: The six edge midpoints that this plane passes through form a regular hexagon. Two adjacent ones differ by $\frac12$ in two coordinates, so the side is $\sqrt{\frac14+\frac14}=\frac{\sqrt2}{2}$.
+A regular hexagon with side $s$ has area $\frac{3\sqrt3}{2}s^2=\frac{3\sqrt3}{2}\cdot\frac12=\frac{3\sqrt3}{4}$.
 ---
 Q: A plane passes through the three vertices of a unit cube that are adjacent to one vertex. What is the area of the cross-section?
 L: 2
@@ -8470,7 +8631,8 @@ W: \frac{\sqrt{3}}{4}
 W: 1
 W: \sqrt{2}
 W: \frac{\sqrt{2}}{2}
-S: An equilateral triangle with side $\sqrt2$ (face diagonals): $\frac{\sqrt3}4\cdot2=\frac{\sqrt3}2$.
+S: The three vertices adjacent to a corner are pairwise joined by face diagonals of length $\sqrt2$, so the cross-section is an equilateral triangle with side $\sqrt2$.
+Area $=\frac{\sqrt3}{4}(\sqrt2)^2=\frac{\sqrt3}{4}\cdot2=\frac{\sqrt3}{2}$.
 ---
 Q: How far is the center of a cube of side $6$ from one of its vertices?
 L: 1
@@ -8479,7 +8641,8 @@ W: 6\sqrt{3}
 W: 3\sqrt{2}
 W: 6
 W: 9
-S: Half the space diagonal: $\frac{6\sqrt3}{2}=3\sqrt3$.
+S: The center is the midpoint of every space diagonal. The space diagonal is $6\sqrt3$, so the distance is half: $3\sqrt3$.
+(Or: offsets of $3$ in each direction, $\sqrt{9+9+9}=3\sqrt3$.)
 ---
 Q: A scale model is built at a $1:20$ scale. The model has volume $30\text{ cm}^3$. What is the real object's volume, in $\text{cm}^3$?
 L: 1
@@ -8488,7 +8651,8 @@ W: 600
 W: 12000
 W: 24000
 W: 4800
-S: Volumes scale by $20^3=8000$: $30\cdot8000=240000$.
+S: Lengths scale by $20$, areas by $20^2$, and volumes by $20^3=8000$.
+Real volume: $30\cdot8000=240{,}000\text{ cm}^3$.
 ---
 Q: An ant travels on the surface of a $2\times3\times4$ box from one corner to the opposite corner. What is the shortest possible path length?
 L: 3
@@ -8497,7 +8661,9 @@ W: \sqrt{29}
 W: \sqrt{45}
 W: 9
 W: \sqrt{53}
-S: The three unfoldings give $\sqrt{(2+3)^2+4^2}=\sqrt{41}$, $\sqrt{(2+4)^2+3^2}=\sqrt{45}$, and $\sqrt{(3+4)^2+2^2}=\sqrt{53}$. The shortest is $\sqrt{41}$. ($\sqrt{29}$ is the straight line through the inside.)
+S: Unfold the two faces the ant crosses. For a box $a\times b\times c$, the three possible unfoldings give paths of length $\sqrt{(a+b)^2+c^2}$, $\sqrt{(a+c)^2+b^2}$, $\sqrt{(b+c)^2+a^2}$.
+With $2,3,4$: $\sqrt{25+16}=\sqrt{41}$, $\sqrt{36+9}=\sqrt{45}$, $\sqrt{49+4}=\sqrt{53}$.
+The shortest is $\sqrt{41}$, from adding the two <b>shorter</b> edges. ($\sqrt{29}$ is the interior diagonal, which the ant can't use.)
 ---
 Q: What is the distance between the centers of two adjacent faces of a cube of side $4$?
 L: 1
@@ -8506,7 +8672,8 @@ W: 4
 W: 2
 W: 4\sqrt{2}
 W: 2\sqrt{3}
-S: The centers are offset by $2$ in two directions: $\sqrt{4+4}=2\sqrt2$.
+S: Place the cube with a corner at the origin. The centers of two adjacent faces are, for example, $(2,2,0)$ (bottom) and $(2,0,2)$ (front).
+They differ by $2$ in two coordinates: distance $\sqrt{4+4}=2\sqrt2$.
 @@ div-pf
 Q: How many positive divisors does $360$ have?
 L: 1
@@ -15572,149 +15739,149 @@ GENS['poly-vieta']=[
 r=>{const a=ri(r,-6,6),b=ri(r,-6,6),c=ri(r,-6,6);const [B,C,D]=cubicFromRoots(a,b,c);const kind=pick(r,['sum','prod','pair','sq']);
  const val={sum:a+b+c,prod:a*b*c,pair:C,sq:a*a+b*b+c*c}[kind];const ex={sum:'r+s+t',prod:'rst',pair:'rs+st+tr',sq:'r^2+s^2+t^2'}[kind];
  return{lvl:1,q:T`Let $r,s,t$ be the roots of $${cubicTex(B,C,D)}=0$. What is $${ex}$?`,a:val,w:[-val,B,D,C,(a+b+c)**2,val+1],
- s:T`Vieta: $r+s+t=${-B}$, $rs+st+tr=${C}$, $rst=${-D}$.${kind==='sq'?' Then $r^2+s^2+t^2=('+(-B)+')^2-2('+C+')='+val+'$.':''} So $${ex}=${val}$.`}},
+ s:T`Vieta's formulas for $x^3+bx^2+cx+d$ with roots $r,s,t$: $r+s+t=-b$, $rs+st+tr=c$, $rst=-d$.<br>Here: $r+s+t=${-B}$, $rs+st+tr=${C}$, $rst=${-D}$.${kind==='sq'?T`<br>Square the sum: $(r+s+t)^2=r^2+s^2+t^2+2(rs+st+tr)$, so $r^2+s^2+t^2=(${-B})^2-2(${C})=${B*B}-${P(2*C)}=${val}$.`:''}<br>So $${ex}=${val}$. (The roots are $${a},${b},${c}$.)`}},
 r=>{const a=ri(r,-6,6)||1,b=ri(r,-6,6)||2,c=ri(r,-6,6)||3;const [B,C,D]=cubicFromRoots(a,b,c);const k=ri(r,-3,3);const v=(k-a)*(k-b)*(k-c);
  return{lvl:2,q:T`Let $r,s,t$ be the roots of $p(x)=${cubicTex(B,C,D)}$. What is $(${k}-r)(${k}-s)(${k}-t)$?`,a:v,w:[-v,v+1,(k+a)*(k+b)*(k+c),D,k**3],
- s:T`$(x-r)(x-s)(x-t)=p(x)$, so the product is $p(${k})=${v}$.`}},
+ s:T`Since $p$ is monic with roots $r,s,t$, $p(x)=(x-r)(x-s)(x-t)$ for every $x$.<br>Setting $x=${k}$: $(${k}-r)(${k}-s)(${k}-t)=p(${k})$.<br>$p(${k})=${k**3}+${P(B*k*k)}+${P(C*k)}+${P(D)}=${v}$.`}},
 r=>{const m=ri(r,2,8),d=ri(r,1,5);const rts=[m-d,m,m+d];const [B,C,D]=cubicFromRoots(...rts);
  return{lvl:3,q:T`The roots of $${cubicTex(B,C,D)}=0$ form an arithmetic progression. What is the largest root?`,a:m+d,w:[m,m+d+1,m-d,2*m,-B],
- s:T`Roots $m-d,m,m+d$ sum to $3m=${-B}$, so $m=${m}$. From $m(m^2-d^2)=${-D}$, $d=${d}$. The largest root is $${m+d}$.`}},
+ s:T`Write the roots as $m-d$, $m$, $m+d$.<br>Sum (Vieta): $3m=${-B}$, so $m=${m}$.<br>Product: $(m-d)m(m+d)=m(m^2-d^2)=${-D}$, so $${m}(${m*m}-d^2)=${-D}$, giving $d^2=${d*d}$ and $d=${d}$.<br>Roots: $${m-d},${m},${m+d}$. Check the middle coefficient: $${(m-d)*m}+${m*(m+d)}+${(m-d)*(m+d)}=${C}$. ✓ The largest root is $${m+d}$.`}},
 ];
 GENS['poly-rem']=[
 r=>{const B=ri(r,-6,6),C=ri(r,-9,9),D=ri(r,-9,9),a=ri(r,-4,4);const v=a**3+B*a*a+C*a+D;
  return{lvl:1,q:T`What is the remainder when $${cubicTex(B,C,D)}$ is divided by $x${a<0?'+':'-'}${Math.abs(a)}$?`,a:v,w:[-v,(-a)**3+B*a*a-C*a+D,D,v+1,v-a],
- s:T`Remainder theorem: the remainder is $p(${a})=${a**3}+${P(B*a*a)}+${P(C*a)}+${P(D)}=${v}$.`}},
+ s:T`Remainder Theorem: dividing $p(x)$ by $x-a$ leaves remainder $p(a)$. Here $a=${a}$.<br>$p(${a})=${a**3}+${P(B*a*a)}+${P(C*a)}+${P(D)}=${v}$.${a<0?T`<br>(Dividing by $x+${-a}$ means evaluating at $${a}$.)`:''}`}},
 r=>{const a=ri(r,-3,3)||2,B=ri(r,-5,5),D=ri(r,-9,9);const k=-(a**3+B*a*a+D);if(k%a)return GENS['poly-rem'][1](r);const C=k/a;
  return{lvl:1,q:T`For what value of $k$ is $${poly([[1,3],[B,2]],'x')}+kx${D<0?'-':'+'}${Math.abs(D)}$ divisible by $x${a<0?'+':'-'}${Math.abs(a)}$?`,a:C,w:[-C,C+1,C-1,D,2*C],
- s:T`Need $p(${a})=0$: $${a**3}+${P(B*a*a)}+${P(a)}k+${P(D)}=0$, so $k=${C}$.`}},
+ s:T`Factor Theorem: $x-${P(a)}$ divides $p(x)$ exactly when $p(${a})=0$.<br>$p(${a})=${a**3}+${P(B*a*a)}+${P(a)}k+${P(D)}=${a**3+B*a*a+D}+${P(a)}k$.<br>Set it to $0$: $${a}k=${-(a**3+B*a*a+D)}$, so $k=${C}$.`}},
 r=>{const a=ri(r,-4,3),b=a+ri(r,1,4),pa=ri(r,-9,9),pb=ri(r,-9,9);const m=F(pb-pa,b-a),c=F(pa).sub(m.mul(a));if(!m.isInt()||!c.isInt())return GENS['poly-rem'][2](r);
  const rt=(mm,cc)=>O(poly([[mm,1],[cc,0]],'x'),mm*10+cc*0.01+0.5);
  return{lvl:2,q:T`A polynomial leaves remainder $${pa}$ when divided by $x${a<0?'+':'-'}${Math.abs(a)}$ and remainder $${pb}$ when divided by $x${b<0?'+':'-'}${Math.abs(b)}$. What is its remainder when divided by $(x${a<0?'+':'-'}${Math.abs(a)})(x${b<0?'+':'-'}${Math.abs(b)})$?`,
  a:rt(m.n,c.n),w:[rt(-m.n,c.n),rt(m.n,-c.n),rt(m.n+1,c.n-a),rt(c.n||1,m.n),rt(m.n,c.n+1)],
- s:T`The remainder is $mx+c$ with $${a===0?'':a+'m+'}c=${pa}$ and $${b}m+c=${pb}$. Solving: $m=${m.n}$, $c=${c.n}$.`}},
+ s:T`Dividing by a quadratic leaves a remainder of degree at most 1: $p(x)=(x${a<0?'+':'-'}${Math.abs(a)})(x${b<0?'+':'-'}${Math.abs(b)})q(x)+mx+c$.<br>Plug in the roots of the divisor (the first term vanishes):<br>$x=${a}$: $${a}m+c=${pa}$. $\ x=${b}$: $${b}m+c=${pb}$.<br>Subtract: $${b-a}m=${pb-pa}$, so $m=${m.n}$; then $c=${pa}-${P(a*m.n)}=${c.n}$.<br>Remainder: $${poly([[m.n,1],[c.n,0]],'x')}$.`}},
 r=>{const a=ri(r,-3,3),m=ri(r,a+4,a+8);const v=m+(m-a)*(m-a-1)*(m-a-2);
  return{lvl:2,q:T`A monic cubic polynomial satisfies $p(${a})=${a}$, $p(${a+1})=${a+1}$, and $p(${a+2})=${a+2}$. What is $p(${m})$?`,a:v,w:[m,(m-a)*(m-a-1)*(m-a-2),v+m,v-1,m*m],
- s:T`$p(x)-x$ is monic with roots $${a},${a+1},${a+2}$, so $p(${m})=${m}+(${m-a})(${m-a-1})(${m-a-2})=${v}$.`}},
+ s:T`Let $q(x)=p(x)-x$. Then $q(${a})=q(${a+1})=q(${a+2})=0$, and $q$ is still a monic cubic.<br>So $q(x)=(x-${P(a)})(x-${P(a+1)})(x-${P(a+2)})$ and $p(x)=x+q(x)$.<br>$p(${m})=${m}+(${m-a})(${m-a-1})(${m-a-2})=${m}+${(m-a)*(m-a-1)*(m-a-2)}=${v}$.`}},
 ];
 GENS['poly-roots']=[
 r=>{const q=ri(r,2,4),p=ri(r,-5,5)||1,b=ri(r,-4,4),c=ri(r,-4,4);const rr=F(p,q);if(rr.d===1||b===c)return GENS['poly-roots'][0](r);
  const A=q,B=-(p+q*(b+c)),C=q*b*c+p*(b+c),D=-p*b*c;const s_=rr.add(b+c);
  return{lvl:1,q:T`What is the sum of the roots of $${poly([[A,3],[B,2],[C,1],[D,0]],'x')}=0$?`,a:s_,w:[s_.neg(),F(b+c),rr,F(-D,A),s_.add(1)],
- s:T`Vieta: $-\frac{${B}}{${A}}=${s_.tex()}$. (The roots are $${rr.tex()}$, $${b}$, $${c}$.)`}},
+ s:T`Vieta: for $ax^3+bx^2+cx+d$, the sum of the roots is $-\frac ba$.<br>$-\frac{${B}}{${A}}=${s_.tex()}$.<br>(Factoring confirms it: the roots are $${rr.tex()}$, $${b}$, and $${c}$, and $${rr.tex()}+${P(b)}+${P(c)}=${s_.tex()}$.)`}},
 r=>{const a=ri(r,-6,6),b=pick(r,[2,3,5,6,7,10,11]);const C=a*a-b;
  return{lvl:1,q:T`A monic quadratic with rational coefficients has $${a}+\sqrt{${b}}$ as a root. What is its constant term?`,a:C,w:[a*a+b,-C,2*a,b-a*a+1,a*a],
- s:T`The other root is $${a}-\sqrt{${b}}$. The product of the roots is $${a*a}-${b}=${C}$.`}},
+ s:T`A polynomial with rational coefficients that has the root $${a}+\sqrt{${b}}$ also has the conjugate root $${a}-\sqrt{${b}}$.<br>For a monic quadratic, the constant term is the product of the roots: $(${a}+\sqrt{${b}})(${a}-\sqrt{${b}})=${a*a}-${b}=${C}$.<br>(The quadratic is $x^2-${2*a}x+${P(C)}$.)`}},
 r=>{const a=ri(r,-4,4),b=ri(r,1,4),c=ri(r,-5,5)||1;const q=a*a+b*b;const D=-c*q;
  return{lvl:2,q:T`A monic cubic with real coefficients has roots $${a}${b===1?'+':'+'+b}i$ and $${c}$. What is its constant term?`,a:D,w:[-D,c*q,-(a*a-b*b)*c,q,D+c],
- s:T`$${a}-${b===1?'':b}i$ is also a root. $p(x)=(x^2-${2*a}x+${q})(x-${P(c)})$, with constant term $${q}\cdot${P(-c)}=${D}$.`}},
+ s:T`Real coefficients force the conjugate $${a}-${b===1?'':b}i$ to be a root as well.<br>The conjugate pair gives $(x-${P(a)})^2+${b*b}=x^2-${2*a}x+${q}$.<br>$p(x)=(x^2-${2*a}x+${q})(x-${P(c)})$, whose constant term is $${q}\cdot${P(-c)}=${D}$.`}},
 r=>{const lead=pick(r,[2,3,4,6,8,9,10,12]),cst=pick(r,[1,2,3,4,5,6,8,9,10,12]);const set=new Set();
  for(let p=1;p<=cst;p++)if(cst%p===0)for(let q=1;q<=lead;q++)if(lead%q===0){const f=F(p,q);set.add(f.n+'/'+f.d)}
  const n=2*set.size;let nd=0;for(let p=1;p<=cst;p++)if(cst%p===0)nd++;let nq=0;for(let q=1;q<=lead;q++)if(lead%q===0)nq++;
  return{lvl:2,q:T`According to the rational root theorem, how many distinct rational numbers could be roots of $${lead}x^3+ax^2+bx+${cst}$ (for integers $a,b$)?`,a:n,w:[2*nd*nq,nd*nq,n/2,n+2],
- s:T`Candidates are $\pm\frac pq$ with $p\mid${cst}$ and $q\mid${lead}$. After removing duplicates there are ${set.size} positive values, so $${n}$ in all.`}},
+ s:T`Rational Root Theorem: a rational root $\frac pq$ (lowest terms) has $p\mid${cst}$ and $q\mid${lead}$.<br>Numerators: ${nd} choices; denominators: ${nq} choices. But many fractions repeat (like $\frac22=1$), so list the distinct positive values: $${[...set].map(s=>{const [p,q]=s.split('/');return q==='1'?p:'\\frac{'+p+'}{'+q+'}'}).join(',\\ ')}$, which is ${set.size}.<br>With $\pm$ signs: $${n}$.`}},
 ];
 GENS['poly-sym']=[
 r=>{const a=ri(r,-5,5),b=ri(r,-5,5),c=ri(r,-5,5);const [B,C,D]=cubicFromRoots(a,b,c);const cube=r()<.5;const v=cube?a**3+b**3+c**3:a*a+b*b+c*c;
  return{lvl:cube?3:2,q:T`Let $r,s,t$ be the roots of $${cubicTex(B,C,D)}=0$. What is $${cube?'r^3+s^3+t^3':'r^2+s^2+t^2'}$?`,a:v,w:cube?[B**3,-(B**3),v+3*D,v-3*D,(a+b+c)**2]:[B*B,B*B+2*C,C,v+2,-v],
- s:cube?T`$p_3=e_1^3-3e_1e_2+3e_3$ with $e_1=${-B},e_2=${C},e_3=${-D}$: $${(-B)**3}-${P(3*(-B)*C)}+${P(3*(-D))}=${v}$.`:T`$p_2=e_1^2-2e_2=${B*B}-${P(2*C)}=${v}$.`}},
+ s:T`Vieta: $e_1=r+s+t=${-B}$, $e_2=rs+st+tr=${C}$, $e_3=rst=${-D}$.<br>${cube?T`Newton's identity: $r^3+s^3+t^3=e_1^3-3e_1e_2+3e_3=${(-B)**3}-3(${-B})(${C})+3(${-D})=${(-B)**3}-${P(3*(-B)*C)}+${P(3*(-D))}=${v}$.`:T`$r^2+s^2+t^2=e_1^2-2e_2=${B*B}-2(${C})=${v}$.`}<br>(The roots are $${a},${b},${c}$.)`}},
 r=>{const a=ri(r,1,5),b=ri(r,-4,4)||1,n=ri(r,3,12);const v=(a+b)**n;if(Math.abs(v)>1e7)return GENS['poly-sym'][1](r);
  return{lvl:1,q:T`What is the sum of the coefficients of $(${poly([[a,1],[b,0]],'x')})^{${n}}$?`,a:v,w:[a**n,(a-b)**n,2**n,v+1,-v],
- s:T`Plug in $x=1$: $(${a}${b<0?'-':'+'}${Math.abs(b)})^{${n}}=${v}$.`}},
+ s:T`The sum of the coefficients of any polynomial is its value at $x=1$ (each power of $x$ becomes $1$).<br>$(${a}\cdot1${b<0?'-':'+'}${Math.abs(b)})^{${n}}=(${a+b})^{${n}}=${v}$.`}},
 r=>{const B=ri(r,-9,9),C=ri(r,-9,9),D=ri(r,-9,9),k=ri(r,-4,5)||1;
  return{lvl:2,q:T`Let $p(x)=${cubicTex(B,C,D)}$. What is the sum of the roots of $p(x${k<0?'+':'-'}${Math.abs(k)})$?`,a:-B+3*k,w:[-B,-B+k,-B-3*k,B+3*k,3*k],
- s:T`The roots of $p(x-${P(k)})$ are the roots of $p$ plus $${k}$. The original sum is $${-B}$, so the new sum is $${-B}+3\cdot${P(k)}=${-B+3*k}$.`}},
+ s:T`If $r$ is a root of $p$, then $x=r+${P(k)}$ is a root of $p(x-${P(k)})$, since $p\big((r+${P(k)})-${P(k)}\big)=p(r)=0$. So every root shifts by $${k}$.<br>Vieta: the roots of $p$ sum to $${-B}$.<br>Three roots each shifted by $${k}$: $${-B}+3\cdot${P(k)}=${-B+3*k}$.`}},
 r=>{const s_=ri(r,1,6),q=ri(r,-3,3)||1;let p=[2,s_];for(let i=2;i<=4;i++)p.push(s_*p[i-1]-q*p[i-2]);const n=pick(r,[3,4]);
  return{lvl:3,q:T`Let $r,s$ be the roots of $${poly([[1,2],[-s_,1],[q,0]],'x')}=0$. What is $r^${n}+s^${n}$?`,a:p[n],w:[s_**n,p[n]+2*q,p[n-1],p[n]-q,s_**n-q],
- s:T`Power sums satisfy $p_k=${s_}p_{k-1}-${P(q)}p_{k-2}$ with $p_0=2,p_1=${s_}$: $${p.slice(0,n+1).join(',\\ ')}$.`}},
+ s:T`Let $p_k=r^k+s^k$. Each root satisfies $x^2=${s_}x-${P(q)}$, so multiplying by $x^{k-2}$ and adding over both roots gives $p_k=${s_}p_{k-1}-${P(q)}p_{k-2}$.<br>Start: $p_0=2$, $p_1=r+s=${s_}$.<br>${p.slice(2,n+1).map((v,i)=>T`$p_${i+2}=${s_}\cdot${P(p[i+1])}-${P(q)}\cdot${P(p[i])}=${v}$`).join('<br>')}<br>Answer: $${p[n]}$.`}},
 ];
 GENS['poly-coef']=[
 r=>{const a=ri(r,1,5),b=ri(r,1,5),c=ri(r,1,6);const v=a*b+b*c+c*a;
  return{lvl:1,q:T`What is the coefficient of $x^2$ in $(1+${a===1?'':a}x)(1+${b===1?'':b}x)(1+${c===1?'':c}x)$?`,a:v,w:[a+b+c,a*b*c,v+1,(a+b+c)**2,v-1],
- s:T`Choose $x$ from two factors and $1$ from the third: $${a}\cdot${b}+${b}\cdot${c}+${c}\cdot${a}=${v}$.`}},
+ s:T`Expanding, the $x^2$ term comes from choosing the $x$-term in two of the factors and $1$ in the third.<br>That gives $${a}\cdot${b}+${b}\cdot${c}+${c}\cdot${a}=${a*b}+${b*c}+${c*a}=${v}$ (the sum of the pairwise products).`}},
 r=>{const m=ri(r,2,5),n=ri(r,2,6);
  return{lvl:1,q:T`If $\deg p=${m}$ and $\deg q=${n}$, what is the degree of $p(q(x))\cdot q(x)$?`,a:m*n+n,w:[m+n,m*n,m*n+m,n**m],
- s:T`$\deg p(q(x))=${m}\cdot${n}=${m*n}$; multiplying by $q$ adds ${n}: $${m*n+n}$.`}},
+ s:T`Degrees multiply under composition: if $q$ has leading term $bx^{${n}}$, then $p(q(x))$ has leading term $a(bx^{${n}})^{${m}}$, degree $${m}\cdot${n}=${m*n}$.<br>Multiplying by $q(x)$ adds its degree: $${m*n}+${n}=${m*n+n}$.`}},
 r=>{const a=ri(r,1,3),b=ri(r,-5,5),c=ri(r,-5,9);const f=x=>a*x*x+b*x+c;
  return{lvl:1,q:T`A quadratic polynomial satisfies $p(0)=${f(0)}$, $p(1)=${f(1)}$, and $p(2)=${f(2)}$. What is $p(4)$?`,a:f(4),w:[f(3),f(4)+2*a,2*f(2)-f(0),f(4)-1,f(2)+2*(f(2)-f(1))],
- s:T`The second difference is $2a=${2*a}$. Differences: $${f(1)-f(0)}, ${f(2)-f(1)}, ${f(3)-f(2)}, ${f(4)-f(3)}$, so $p(3)=${f(3)}$ and $p(4)=${f(4)}$.`}},
+ s:T`For a quadratic, the second differences are constant. First differences: $${f(1)}-${P(f(0))}=${f(1)-f(0)}$ and $${f(2)}-${P(f(1))}=${f(2)-f(1)}$, so the second difference is $${2*a}$.<br>Continue: the next first differences are $${f(3)-f(2)}$ and $${f(4)-f(3)}$, giving $p(3)=${f(3)}$ and $p(4)=${f(4)}$.<br>(The polynomial is $${pl([a,b,c])}$.)`}},
 r=>{const n=ri(r,4,12);const even=r()<.5;const v=2**(n-1);
  return{lvl:2,q:T`What is the sum of the coefficients of the ${even?'even':'odd'} powers of $x$ in $(x+1)^{${n}}$?`,a:v,w:[2**n,2**(n-2),v-1,v+1],
- s:T`$\frac{p(1)${even?'+':'-'}p(-1)}{2}=\frac{2^{${n}}${even?'+':'-'}0}{2}=${v}$.`}},
+ s:T`Let $p(x)=(x+1)^{${n}}$. $p(1)=2^{${n}}$ adds all coefficients; $p(-1)=0$ adds the even-power ones and subtracts the odd-power ones.<br>${even?'Even':'Odd'}-power coefficients: $\frac{p(1)${even?'+':'-'}p(-1)}{2}=\frac{2^{${n}}${even?'+':'-'}0}{2}=2^{${n-1}}=${v}$.<br>(Exactly half the total, since the two groups balance.)`}},
 ];
 /* ---- ineq.txt ---- */
 GENS['ineq-solve']=[
 r=>{const a=ri(r,-10,5),b=a+ri(r,2,12);const n=b-a-1;const lt=r()<.6;
  return{lvl:1,q:T`How many integers $x$ satisfy $${poly([[1,2],[-(a+b),1],[a*b,0]],'x')}${lt?'\\lt':'\\le'} 0$?`,a:lt?n:n+2,w:lt?[n+1,n+2,n-1,b-a]:[n,n+1,n+3,b-a],
- s:T`$(x${a<0?'+':'-'}${Math.abs(a)})(x${b<0?'+':'-'}${Math.abs(b)})${lt?'\\lt':'\\le'}0$ means $${a}${lt?'\\lt ':'\\le '}x${lt?'\\lt':'\\le'}${b}$, which contains $${lt?n:n+2}$ integers.`}},
+ s:T`Factor: $${poly([[1,2],[-(a+b),1],[a*b,0]],'x')}=(x${a<0?'+':'-'}${Math.abs(a)})(x${b<0?'+':'-'}${Math.abs(b)})$, with roots $${a}$ and $${b}$.<br>The product is negative between the roots and positive outside them (the parabola opens up).<br>So we need $${a}${lt?'\\lt ':'\\le '}x${lt?'\\lt ':'\\le '}${b}$.<br>Integers: ${lt?T`from $${a+1}$ to $${b-1}$, that's $${b-1}-${P(a+1)}+1=${n}$`:T`from $${a}$ to $${b}$, that's $${b}-${P(a)}+1=${n+2}$`}.`}},
 r=>{const a=ri(r,1,6),b=ri(r,-10,10),c=ri(r,1,20);const lo=(b-c)/a,hi=(b+c)/a;let n=0;for(let x=Math.ceil(lo-1);x<=Math.floor(hi+1);x++)if(Math.abs(a*x-b)<c)n++;
  return{lvl:1,q:T`How many integers $x$ satisfy $|${poly([[a,1],[-b,0]],'x')}|\lt ${c}$?`,a:n,w:[n+1,n-1,n+2,2*c],
- s:T`$-${c}\lt ${poly([[a,1],[-b,0]],'x')}\lt ${c}$ gives $${F(b-c,a).tex()}\lt x\lt ${F(b+c,a).tex()}$, which contains $${n}$ integers.`}},
+ s:T`$|u|\lt${c}$ means $-${c}\lt u\lt${c}$: $-${c}\lt ${poly([[a,1],[-b,0]],'x')}\lt ${c}$.<br>${b?T`${b>0?'Add $'+b+'$':'Subtract $'+(-b)+'$'}: $${b-c}\lt ${a===1?'':a}x\lt ${b+c}$. `:''}${a>1?T`Divide by $${a}$: $${F(b-c,a).tex()}\lt x\lt ${F(b+c,a).tex()}$.`:''}<br>The integers strictly inside are $${Math.floor((b-c)/a)+1}$ through $${Math.ceil((b+c)/a)-1}$: that's $${n}$.`}},
 r=>{const p=ri(r,-8,5),q=p+ri(r,2,10);const which=r()<.5;
  const n=which?q-p:q-p; // (x-q)/(x-p)<=0 -> p<x<=q ; (x-p)/(x-q)<=0 -> p<=x<q
  return{lvl:2,q:which?T`How many integers satisfy $\dfrac{x${q<0?'+':'-'}${Math.abs(q)}}{x${p<0?'+':'-'}${Math.abs(p)}}\le0$?`:T`How many integers satisfy $\dfrac{x${p<0?'+':'-'}${Math.abs(p)}}{x${q<0?'+':'-'}${Math.abs(q)}}\le0$?`,
  a:n,w:[n+1,n-1,n+2,q-p+1===n?n+3:q-p+1],
- s:which?T`Zeros at $${q}$ (included) and $${p}$ (excluded, denominator): $${p}\lt x\le${q}$, which gives $${n}$ integers.`:T`Zeros at $${p}$ (included) and $${q}$ (excluded): $${p}\le x\lt ${q}$, which gives $${n}$ integers.`}},
+ s:T`The fraction can change sign only at its zero ($x=${which?q:p}$) and where its denominator is zero ($x=${which?p:q}$).<br>It is negative between these two numbers and positive outside them.<br>${which?T`We want $\le0$: include $x=${q}$ (fraction $=0$), exclude $x=${p}$ (zero denominator). So $${p}\lt x\le${q}$.`:T`We want $\le0$: include $x=${p}$ (fraction $=0$), exclude $x=${q}$ (zero denominator). So $${p}\le x\lt ${q}$.`}<br>That's $${q}-${P(p)}=${n}$ integers.`}},
 r=>{const a=ri(r,2,7)*pick(r,[1,-1]),b=ri(r,-15,15),c=ri(r,-30,30);const bound=F(c-b,a);const neg=a<0;
  const big=neg; // a<0: x < bound; ask largest integer.  a>0: x > bound; ask smallest
  const ans=neg?(bound.isInt()?bound.n-1:Math.floor(bound.v)):(bound.isInt()?bound.n+1:Math.ceil(bound.v));
  return{lvl:1,q:T`What is the ${neg?'largest':'smallest'} integer $x$ satisfying $${poly([[a,1],[b,0]],'x')}>${c}$?`,a:ans,w:[ans+1,ans-1,-ans,neg?ans+2:ans-2],
- s:T`$${a}x>${c-b}$. ${neg?'Dividing by a negative flips the sign: $x\\lt '+bound.tex()+'$':'So $x>'+bound.tex()+'$'}. The ${neg?'largest':'smallest'} integer is $${ans}$.`}},
+ s:T`Subtract $${b}$: $${a}x\gt${c-b}$.<br>${neg?T`Divide by $${a}$, a negative number, so the inequality <b>flips</b>: $x\lt${bound.tex()}$.`:T`Divide by $${a}$ (positive, no flip): $x\gt${bound.tex()}$.`}<br>${bound.isInt()?T`The inequality is strict, so $x=${bound.n}$ itself doesn't work.`:T`$${bound.tex()}\approx${bound.v.toFixed(2)}$.`} The ${neg?'largest':'smallest'} integer is $${ans}$.`}},
 ];
 GENS['ineq-amgm']=[
 r=>{const g=ri(r,1,5),s_=ri(r,1,5),t=ri(r,1,6);const a=g*s_*s_,b=g*t*t;
  return{lvl:1,q:T`What is the minimum value of $${a===1?'':a}x+\dfrac{${b}}{x}$ for $x>0$?`,a:2*g*s_*t,w:[g*s_*t,a+b,4*g*s_*t,2*g*s_*t+1,b],
- s:T`AM–GM: $${a===1?'':a}x+\frac{${b}}{x}\ge2\sqrt{${a*b}}=${2*g*s_*t}$, with equality at $x=${F(t,s_).tex()}$.`}},
+ s:T`AM–GM: for positive $u,v$, $u+v\ge2\sqrt{uv}$, with equality when $u=v$.<br>Here $u=${a===1?'':a}x$ and $v=\frac{${b}}{x}$ have constant product $${a*b}$, so the sum is at least $2\sqrt{${a*b}}=2\cdot${g*s_*t}=${2*g*s_*t}$.<br>Equality: $${a===1?'':a}x=\frac{${b}}{x}$, i.e. $x^2=\frac{${b}}{${a}}$, $x=${F(t,s_).tex()}$. The minimum is $${2*g*s_*t}$.`}},
 r=>{const a=ri(r,1,4),b=ri(r,1,4),c=ri(r,4,30);const v=F(c*c,4*a*b);
  return{lvl:2,q:T`Positive reals satisfy $${a===1?'':a}x+${b===1?'':b}y=${c}$. What is the largest possible value of $xy$?`,a:v,w:[F(c*c,4),F(c*c,a*b),v.mul(2),F(c*c,(a+b)**2),v.add(1)],
- s:T`AM–GM on $${a}x$ and $${b}y$: $${a}x\cdot${b}y\le\left(\frac{${c}}2\right)^2$, so $xy\le\frac{${c*c}}{${4*a*b}}=${v.tex()}$, with equality at $${a}x=${b}y=${F(c,2).tex()}$.`}},
+ s:T`The terms $${a}x$ and $${b}y$ have a fixed sum $${c}$, so their product is largest when they're equal (AM–GM): $${a}x\cdot${b}y\le\left(\frac{${c}}{2}\right)^2=${F(c*c,4).tex()}$.<br>So $xy\le\frac{${F(c*c,4).tex()}}{${a*b}}=${v.tex()}$.<br>Equality at $${a}x=${b}y=${F(c,2).tex()}$, i.e. $x=${F(c,2*a).tex()}$, $y=${F(c,2*b).tex()}$.`}},
 r=>{const k=ri(r,1,9);
  return{lvl:1,q:T`Positive reals $a,b,c$ satisfy $abc=${k**3}$. What is the minimum value of $a+b+c$?`,a:3*k,w:[k**3,3*k*k,k,k**3/3|0||9*k,2*k],
- s:T`AM–GM: $a+b+c\ge3\sqrt[3]{${k**3}}=${3*k}$, with equality at $a=b=c=${k}$.`}},
+ s:T`Three-term AM–GM: $\frac{a+b+c}{3}\ge\sqrt[3]{abc}=\sqrt[3]{${k**3}}=${k}$.<br>So $a+b+c\ge${3*k}$, with equality when $a=b=c=${k}$.`}},
 r=>{const p=ri(r,1,5),q=ri(r,1,5);
  return{lvl:2,q:T`For positive $x,y$, what is the minimum of $\left(x+\dfrac{${p*p}}{x}\right)\left(y+\dfrac{${q*q}}{y}\right)$?`,a:4*p*q,w:[2*p*q,p*p*q*q,4*p*q+1,(p+q)**2,2*(p+q)],
- s:T`$x+\frac{${p*p}}x\ge${2*p}$ and $y+\frac{${q*q}}y\ge${2*q}$, with both equalities possible at once ($x=${p},y=${q}$). The minimum is $${4*p*q}$.`}},
+ s:T`Minimize each factor separately with AM–GM:<br>$x+\frac{${p*p}}{x}\ge2\sqrt{${p*p}}=${2*p}$ (equality at $x=${p}$), and $y+\frac{${q*q}}{y}\ge2\sqrt{${q*q}}=${2*q}$ (equality at $y=${q}$).<br>Both factors are positive and their minima happen at the same time, so the minimum product is $${2*p}\cdot${2*q}=${4*p*q}$.`}},
 ];
 GENS['ineq-cs']=[
 r=>{const [a,b,c]=pick(r,[[3,4,5],[5,12,13],[8,15,17],[6,8,10],[7,24,25]]);const k=ri(r,1,4);
  return{lvl:1,q:T`Real numbers satisfy $x^2+y^2=${k*k}$. What is the maximum value of $${a}x+${b}y$?`,a:c*k,w:[(a+b)*k,c*k*k,c,a*k+b,(a+b)*k*k],
- s:T`Cauchy–Schwarz: $(${a}x+${b}y)^2\le(${a*a}+${b*b})(x^2+y^2)=${c*c}\cdot${k*k}$, so the maximum is $${c*k}$.`}},
+ s:T`Cauchy–Schwarz: $(${a}x+${b}y)^2\le(${a}^2+${b}^2)(x^2+y^2)=${a*a+b*b}\cdot${k*k}$.<br>So $${a}x+${b}y\le\sqrt{${(a*a+b*b)*k*k}}=${c}\cdot${k}=${c*k}$.<br>Equality when $(x,y)$ points the same way as $(${a},${b})$: $(x,y)=\left(${F(a*k,c).tex()},${F(b*k,c).tex()}\right)$.`}},
 r=>{const a=ri(r,1,5),b=ri(r,1,5),c=ri(r,1,15);const v=F(c*c,a*a+b*b);
  return{lvl:2,q:T`Real numbers satisfy $${a===1?'':a}x+${b===1?'':b}y=${c}$. What is the minimum value of $x^2+y^2$?`,a:v,w:[F(c*c,(a+b)**2),F(c,a*a+b*b),F(c*c,a*a+b*b).mul(2),F(c*c),F(c*c,a*b)],
- s:T`$(${a}x+${b}y)^2\le(${a*a}+${b*b})(x^2+y^2)$, so $x^2+y^2\ge\frac{${c*c}}{${a*a+b*b}}=${v.tex()}$.`}},
+ s:T`Cauchy–Schwarz: $(${a}x+${b}y)^2\le(${a}^2+${b}^2)(x^2+y^2)$, so $${c*c}\le${a*a+b*b}(x^2+y^2)$.<br>Therefore $x^2+y^2\ge\frac{${c*c}}{${a*a+b*b}}=${v.tex()}$, with equality when $(x,y)\propto(${a},${b})$.<br>(Geometrically, it's the squared distance from the origin to the line: $\left(\frac{${c}}{\sqrt{${a*a+b*b}}}\right)^2$.)`}},
 r=>{const n=pick(r,[2,3,4]),S=ri(r,2,12)*n;const v=F(S*S,n);
  return{lvl:1,q:T`Real numbers ${n===2?'$x,y$':n===3?'$x,y,z$':'$a,b,c,d$'} have sum $${S}$. What is the minimum of the sum of their squares?`,a:v,w:[F(S*S),F(S),F(S*S,n*n),v.mul(2),F(S*S,n+1)],
- s:T`The minimum $\frac{S^2}{n}=\frac{${S*S}}{${n}}=${v.tex()}$ occurs when all are equal to $${S/n}$.`}},
+ s:T`By Cauchy–Schwarz (or QM–AM), the sum of squares of $n$ numbers with sum $S$ is at least $\frac{S^2}{n}$, with equality when all the numbers are equal.<br>Here $\frac{${S}^2}{${n}}=\frac{${S*S}}{${n}}=${v.tex()}$, attained when each number is $\frac{${S}}{${n}}=${S/n}$.`}},
 r=>{const m=ri(r,1,5),n=ri(r,1,5),s_=ri(r,1,4);const v=F((m+n)**2,s_);
  return{lvl:2,q:T`Positive reals satisfy $a+b=${s_}$. What is the minimum of $\dfrac{${m*m}}{a}+\dfrac{${n*n}}{b}$?`,a:v,w:[F(m*m+n*n,s_),F(m+n,s_),v.mul(2),F((m+n)**2),F(m*n*4,s_)],
- s:T`Titu's lemma: $\frac{${m}^2}a+\frac{${n}^2}b\ge\frac{(${m}+${n})^2}{a+b}=${v.tex()}$, with equality when $\frac{${m}}{a}=\frac{${n}}{b}$.`}},
+ s:T`Titu's lemma (Cauchy–Schwarz): $\dfrac{u^2}{a}+\dfrac{v^2}{b}\ge\dfrac{(u+v)^2}{a+b}$.<br>With $u=${m}$, $v=${n}$: $\dfrac{${m*m}}{a}+\dfrac{${n*n}}{b}\ge\dfrac{(${m}+${n})^2}{${s_}}=\dfrac{${(m+n)**2}}{${s_}}=${v.tex()}$.<br>Equality when $\frac{${m}}{a}=\frac{${n}}{b}$: $a=${F(m*s_,m+n).tex()}$, $b=${F(n*s_,m+n).tex()}$.`}},
 ];
 GENS['ineq-abs']=[
 r=>{const k=pick(r,[3,5,7]);const pts=Array.from({length:k},()=>ri(r,-10,15)).sort((a,b)=>a-b);const med=pts[(k-1)/2];const v=pts.reduce((s,p)=>s+Math.abs(med-p),0);
  return{lvl:2,q:T`What is the minimum value of $${pts.map(p=>'|x'+(p<0?'+':'-')+Math.abs(p)+'|').join('+')}$?`,a:v,w:[v+2,pts[k-1]-pts[0],v+Math.abs(pts[0]),v-1>0?v-1:v+3,pts.reduce((s,p)=>s+Math.abs(p),0)],
- s:T`The sum of distances is smallest at the median $x=${med}$, where it equals $${v}$.`}},
+ s:T`$|x-p|$ is the distance from $x$ to $p$, so we're minimizing the total distance to the points $${pts.join(',\\ ')}$.<br>The total is smallest at the median, $x=${med}$: moving away from it brings you closer to fewer points than it takes you away from.<br>At $x=${med}$: $${pts.map(p=>Math.abs(med-p)).join('+')}=${v}$.`}},
 r=>{const a=ri(r,2,15),b=ri(r,a,25);const n=2*a-1;
  return{lvl:1,q:T`A triangle has sides $${a}$, $${b}$, and $x$, where $x$ is an integer. How many values of $x$ are possible?`,a:n,w:[n+1,n-1,2*a,a+b-1],
- s:T`$${b}-${a}\lt x\lt ${a+b}$, so $${b-a+1}\le x\le${a+b-1}$: that is $${n}$ values.`}},
+ s:T`Triangle inequality: the third side is less than the sum and more than the difference of the other two.<br>$${b}-${a}\lt x\lt${b}+${a}$, i.e. $${b-a}\lt x\lt${a+b}$.<br>Integers from $${b-a+1}$ to $${a+b-1}$: that's $${a+b-1}-${b-a+1}+1=${n}$.`}},
 r=>{const k=ri(r,1,12);
  return{lvl:1,q:T`What is the area of the region $|x|+|y|\le${k}$?`,a:2*k*k,w:[k*k,4*k*k,2*k,k*k/2+.5|0||1],
- s:T`A square with diagonals $${2*k}$: area $\frac{(${2*k})^2}{2}=${2*k*k}$.`}},
+ s:T`In the first quadrant the region is $x+y\le${k}$, a right triangle with legs ${k} and area $\frac{${k*k}}{2}$. By symmetry the whole region has four such triangles: a square with vertices $(\pm${k},0)$, $(0,\pm${k})$.<br>Area $=4\cdot\frac{${k*k}}{2}=${2*k*k}$. (Or: diagonals ${2*k} and ${2*k}, area $\frac{${2*k}\cdot${2*k}}{2}$.)`}},
 r=>{const P_=ri(r,6,24);let c=0;for(let a=1;a<=P_;a++)for(let b=a;b<=P_;b++){const cc=P_-a-b;if(cc<b)continue;if(a+b>cc)c++}
  return{lvl:2,q:T`How many non-congruent triangles have integer side lengths and perimeter $${P_}$?`,a:c,w:[c+1,c+2,c>1?c-1:c+3,Math.floor(P_/2)],
- s:T`List $a\le b\le c$ with $a+b+c=${P_}$ and $c\lt ${F(P_,2).tex()}$ (the triangle inequality). Counting systematically by the largest side gives $${c}$.`}},
+ s:T`List $a\le b\le c$ with $a+b+c=${P_}$. The triangle inequality $a+b\gt c$ means $c\lt\frac{${P_}}{2}$, and $c\ge\frac{${P_}}{3}$ since it's the largest side.<br>${(()=>{const rows=[];for(let cc=Math.ceil(P_/3);2*cc<P_;cc++){const tr=[];for(let b=Math.ceil((P_-cc)/2);b<=cc;b++){const a=P_-cc-b;if(a>=1&&a<=b)tr.push('('+a+','+b+','+cc+')')}if(tr.length)rows.push('$c='+cc+'$: $'+tr.join(',\\ ')+'$')}return rows.join('<br>')})()}<br>Total: $${c}$.`}},
 ];
 GENS['ineq-opt']=[
 r=>{const n=ri(r,5,25);const best=n%3===0?3**(n/3):n%3===1?4*3**((n-4)/3):2*3**((n-2)/3);
  return{lvl:2,q:T`Positive integers have sum $${n}$. What is the largest possible value of their product?`,a:best,w:[2**Math.floor(n/2),best/3*2|0,Math.floor(n/2)*Math.ceil(n/2),best+1,3**Math.floor(n/3)===best?best*2:3**Math.floor(n/3)],
- s:T`Use as many 3s as possible (a 4 or a 2 handles the remainder; never a 1): $${n}=${n%3===0?'3\\cdot'+n/3:n%3===1?'3\\cdot'+(n-4)/3+'+4':'3\\cdot'+(n-2)/3+'+2'}$, giving $${best}$.`}},
+ s:T`For a fixed sum, the product is largest using parts of size 3: any part $\ge5$ can be split to increase the product ($2(m-2)\gt m$), a $4$ equals $2\cdot2$, three 2s are worse than two 3s ($8\lt9$), and a 1 never helps.<br>$${n}=${n%3===0?'3\\cdot'+n/3:n%3===1?'3\\cdot'+(n-4)/3+'+4':'3\\cdot'+(n-2)/3+'+2'}$, giving $${n%3===0?'3^{'+n/3+'}':n%3===1?'4\\cdot3^{'+(n-4)/3+'}':'2\\cdot3^{'+(n-2)/3+'}'}=${best}$.`}},
 r=>{const a=ri(r,-6,6),b=ri(r,-6,6),k=ri(r,-5,15);const A=1,B=4;const c=a*a+B*b*b+k;
  return{lvl:2,q:T`What is the minimum value of $x^2+4y^2${-2*a<0?'-':'+'}${Math.abs(2*a)}x${-8*b<0?'-':'+'}${Math.abs(8*b)}y${c<0?'-':'+'}${Math.abs(c)}$?`,a:k,w:[c,k+a*a,k-1,0,k+4*b*b],
- s:T`Complete the squares: $(x${-a<0?'-':'+'}${Math.abs(a)})^2+4(y${-b<0?'-':'+'}${Math.abs(b)})^2+${P(k)}\ge${k}$.`}},
+ s:T`Complete the square in each variable:<br>$x^2${-2*a<0?'-':'+'}${Math.abs(2*a)}x=(x${-a<0?'-':'+'}${Math.abs(a)})^2-${a*a}$ and $4y^2${-8*b<0?'-':'+'}${Math.abs(8*b)}y=4(y${-b<0?'-':'+'}${Math.abs(b)})^2-${4*b*b}$.<br>Expression $=(x${-a<0?'-':'+'}${Math.abs(a)})^2+4(y${-b<0?'-':'+'}${Math.abs(b)})^2-${a*a}-${4*b*b}+${P(c)}=(\dots)^2+4(\dots)^2+${P(k)}$.<br>The squares are $\ge0$, so the minimum is $${k}$, at $x=${a}$, $y=${b}$.`}},
 r=>{const n=ri(r,5,60);const v=Math.floor(n/2)*Math.ceil(n/2);
  return{lvl:1,q:T`Integers $x$ and $y$ satisfy $x+y=${n}$. What is the largest possible value of $xy$?`,a:v,w:[n*n/4|0===v?v+1:n*n,v-1,v+1,n*n],
- s:T`The product is largest when $x$ and $y$ are as close as possible: $${Math.floor(n/2)}\cdot${Math.ceil(n/2)}=${v}$.`}},
+ s:T`$xy=x(${n}-x)$ is a downward parabola, largest at $x=\frac{${n}}{2}${n%2?T`=${n/2}`:''}$.<br>${n%2?T`Since $x$ must be an integer, take the nearest values: $x=${Math.floor(n/2)}$ and $y=${Math.ceil(n/2)}$.`:T`Here $x=y=${n/2}$ works.`}<br>Maximum: $${Math.floor(n/2)}\cdot${Math.ceil(n/2)}=${v}$.`}},
 r=>{const a=ri(r,-8,5),b=a+2*ri(r,1,6);const m=(a+b)/2;const v=2*(m-a)**2;
  return{lvl:1,q:T`What is the smallest value of $(x${-a<0?'-':'+'}${Math.abs(a)})^2+(x${-b<0?'-':'+'}${Math.abs(b)})^2$?`,a:v,w:[(b-a)**2,v/2,0,v+2],
- s:T`The minimum is at the midpoint $x=${m}$: $${(m-a)**2}+${(m-b)**2}=${v}$.`}},
+ s:T`Expand: the sum is $2x^2-2(${a}+${b})x+(${a*a}+${b*b})$, a parabola minimized at $x=\frac{${a}+${b}}{2}=${m}$, the midpoint of $${a}$ and $${b}$.<br>At $x=${m}$ each term is $\left(\frac{${b}-${P(a)}}{2}\right)^2=${(m-a)**2}$.<br>Minimum: $${(m-a)**2}+${(m-b)**2}=${v}$.`}},
 ];
 /* ---- seq.txt ---- */
 /* ====================== generators ======================
@@ -16278,54 +16445,54 @@ r=>{const x=ri(r,-8,8),y=ri(r,-8,8),c=ri(r,-6,6);const ny=2*c-y;
 const QUADS=[[1,2,2,3],[2,3,6,7],[1,4,8,9],[2,6,9,11],[3,4,12,13],[2,10,11,15],[4,4,7,9],[6,6,7,11],[2,5,14,15],[1,12,12,17],[8,9,12,17],[4,8,19,21]];
 GENS['solid-prism']=[
 r=>{const a=ri(r,1,9),b=ri(r,1,9),c=ri(r,1,9);
- return{lvl:2,q:T`A rectangular box has faces with areas $${a*b}$, $${b*c}$, and $${c*a}$. What is its volume?`,a:a*b*c,w:[a*b+b*c+c*a,a*b*b*c,2*a*b*c,a*b*c+a],s:T`$(abc)^2=${a*b}\cdot${b*c}\cdot${c*a}=${(a*b*c)**2}$, so $V=${a*b*c}$.`}},
+ return{lvl:2,q:T`A rectangular box has faces with areas $${a*b}$, $${b*c}$, and $${c*a}$. What is its volume?`,a:a*b*c,w:[a*b+b*c+c*a,a*b*b*c,2*a*b*c,a*b*c+a],s:T`Let the edges be $a,b,c$, so the three face areas are $ab$, $bc$, $ca$.<br>Their product is $(ab)(bc)(ca)=(abc)^2$: $${a*b}\cdot${b*c}\cdot${c*a}=${(a*b*c)**2}$.<br>So the volume is $abc=\sqrt{${(a*b*c)**2}}=${a*b*c}$. (The edges are $${a},${b},${c}$.)`}},
 r=>{const s_=ri(r,1,12);const ask=r()<.5;
- return ask?{lvl:1,q:T`A cube has surface area $${6*s_*s_}$. What is its volume?`,a:s_**3,w:[s_*s_,6*s_*s_,(s_+1)**3,s_**3/2|0||2],s:T`$6s^2=${6*s_*s_}$, so $s=${s_}$ and $V=${s_**3}$.`}
- :{lvl:1,q:T`A cube has volume $${s_**3}$. What is its surface area?`,a:6*s_*s_,w:[s_*s_,4*s_*s_,s_**3,12*s_],s:T`$s=${s_}$, so the surface area is $6\cdot${s_*s_}=${6*s_*s_}$.`}},
+ return ask?{lvl:1,q:T`A cube has surface area $${6*s_*s_}$. What is its volume?`,a:s_**3,w:[s_*s_,6*s_*s_,(s_+1)**3,s_**3/2|0||2],s:T`A cube has 6 congruent square faces, so $6s^2=${6*s_*s_}$, giving $s^2=${s_*s_}$ and $s=${s_}$.<br>Volume $=s^3=${s_}^3=${s_**3}$.`}
+ :{lvl:1,q:T`A cube has volume $${s_**3}$. What is its surface area?`,a:6*s_*s_,w:[s_*s_,4*s_*s_,s_**3,12*s_],s:T`Volume $s^3=${s_**3}$ gives $s=${s_}$.<br>Surface area $=6s^2=6\cdot${s_*s_}=${6*s_*s_}$.`}},
 r=>{const [a,b,c,d]=pick(r,QUADS);const k=ri(r,1,3);
- return{lvl:1,q:T`What is the length of the space diagonal of an $${a*k}\times${b*k}\times${c*k}$ box?`,a:d*k,w:[(a+b+c)*k,d*k+1,R(1,(a*a+b*b)*k*k),c*k+1],s:T`$\sqrt{${a*a*k*k}+${b*b*k*k}+${c*c*k*k}}=${d*k}$.`}},
+ return{lvl:1,q:T`What is the length of the space diagonal of an $${a*k}\times${b*k}\times${c*k}$ box?`,a:d*k,w:[(a+b+c)*k,d*k+1,R(1,(a*a+b*b)*k*k),c*k+1],s:T`The space diagonal of an $a\times b\times c$ box is $\sqrt{a^2+b^2+c^2}$ (the floor diagonal $\sqrt{a^2+b^2}$ and the height form a right triangle).<br>$\sqrt{${a*k}^2+${b*k}^2+${c*k}^2}=\sqrt{${a*a*k*k}+${b*b*k*k}+${c*c*k*k}}=\sqrt{${d*d*k*k}}=${d*k}$.`}},
 r=>{const rr=ri(r,1,9),h=ri(r,1,12);const ask=r()<.5;
- return ask?{lvl:1,q:T`What is the volume of a cylinder with radius $${rr}$ and height $${h}$?`,a:PI(rr*rr*h),w:[PI(2*rr*h),PI(rr*h),PI(F(rr*rr*h,3)),PI(2*rr*rr*h)],s:T`$\pi r^2h=${PI(rr*rr*h).tex}$.`}
- :{lvl:1,q:T`What is the total surface area of a cylinder with radius $${rr}$ and height $${h}$?`,a:PI(2*rr*rr+2*rr*h),w:[PI(2*rr*h),PI(rr*rr+2*rr*h),PI(rr*rr*h),PI(2*rr*rr+rr*h)],s:T`$2\pi r^2+2\pi rh=${PI(2*rr*rr).tex}+${PI(2*rr*h).tex}=${PI(2*rr*rr+2*rr*h).tex}$.`}},
+ return ask?{lvl:1,q:T`What is the volume of a cylinder with radius $${rr}$ and height $${h}$?`,a:PI(rr*rr*h),w:[PI(2*rr*h),PI(rr*h),PI(F(rr*rr*h,3)),PI(2*rr*rr*h)],s:T`Cylinder volume $=$ base area $\times$ height $=\pi r^2h$.<br>$\pi\cdot${rr}^2\cdot${h}=\pi\cdot${rr*rr}\cdot${h}=${PI(rr*rr*h).tex}$.`}
+ :{lvl:1,q:T`What is the total surface area of a cylinder with radius $${rr}$ and height $${h}$?`,a:PI(2*rr*rr+2*rr*h),w:[PI(2*rr*h),PI(rr*rr+2*rr*h),PI(rr*rr*h),PI(2*rr*rr+rr*h)],s:T`Total surface area $=$ two circular ends $+$ the side. The side unrolls into a rectangle $2\pi r$ by $h$.<br>$2\pi r^2+2\pi rh=2\pi\cdot${rr*rr}+2\pi\cdot${rr}\cdot${h}=${PI(2*rr*rr).tex}+${PI(2*rr*h).tex}=${PI(2*rr*rr+2*rr*h).tex}$.`}},
 r=>{const n=ri(r,3,10);const k=pick(r,[0,1,2,3]);const v=[(n-2)**3,6*(n-2)**2,12*(n-2),8][k];
  return{lvl:2,q:T`An $${n}\times${n}\times${n}$ cube is painted on the outside and cut into unit cubes. How many unit cubes have exactly ${k} painted face${k===1?'':'s'}?`,a:v,w:[(n-2)**3,6*(n-2)**2,12*(n-2),8,n*n,6*n*n].filter(x=>x!==v),
- s:T`3 faces: corners (8). 2 faces: edge cubes, $12(n-2)=${12*(n-2)}$. 1 face: face interiors, $6(n-2)^2=${6*(n-2)**2}$. 0 faces: the inside, $(n-2)^3=${(n-2)**3}$.`}},
+ s:T`Classify the unit cubes by position in the $${n}\times${n}\times${n}$ cube:<br>• 3 painted faces: the 8 corners.<br>• 2 painted faces: on an edge but not a corner, $${n}-2=${n-2}$ per edge, $12\cdot${n-2}=${12*(n-2)}$.<br>• 1 painted face: inside a face, $(${n}-2)^2=${(n-2)**2}$ per face, $6\cdot${(n-2)**2}=${6*(n-2)**2}$.<br>• 0 painted faces: the interior cube, $(${n}-2)^3=${(n-2)**3}$.<br>(Check: $8+${12*(n-2)}+${6*(n-2)**2}+${(n-2)**3}=${n**3}$.) Answer for ${k}: $${v}$.`}},
 ];
 GENS['solid-pyr']=[
 r=>{const [a,b,c]=pick(r,TRIPLES.filter(t=>t[2]<=26));const k=ri(r,1,2);const rr=a*k,h=b*k,l=c*k;const ask=pick(r,['V','L','T']);
- if(ask==='V')return{lvl:1,q:T`What is the volume of a cone with radius $${rr}$ and height $${h}$?`,a:PI(F(rr*rr*h,3)),w:[PI(rr*rr*h),PI(rr*l),PI(F(rr*h*h,3)),PI(F(rr*rr*l,3))],s:T`$\frac13\pi r^2h=${PI(F(rr*rr*h,3)).tex}$.`};
- if(ask==='L')return{lvl:1,q:T`What is the lateral surface area of a cone with radius $${rr}$ and height $${h}$?`,a:PI(rr*l),w:[PI(rr*h),PI(rr*rr+rr*l),PI(2*rr*l),PI(F(rr*rr*h,3))],s:T`Slant height $\ell=${l}$, so the lateral area is $\pi r\ell=${PI(rr*l).tex}$.`};
- return{lvl:1,q:T`What is the total surface area of a cone with radius $${rr}$ and height $${h}$?`,a:PI(rr*rr+rr*l),w:[PI(rr*l),PI(rr*rr+rr*h),PI(2*rr*rr+rr*l),PI(rr*rr*h)],s:T`$\ell=${l}$: $\pi r^2+\pi r\ell=${PI(rr*rr+rr*l).tex}$.`}},
+ if(ask==='V')return{lvl:1,q:T`What is the volume of a cone with radius $${rr}$ and height $${h}$?`,a:PI(F(rr*rr*h,3)),w:[PI(rr*rr*h),PI(rr*l),PI(F(rr*h*h,3)),PI(F(rr*rr*l,3))],s:T`A cone has $\frac13$ the volume of the cylinder with the same base and height: $V=\frac13\pi r^2h$.<br>$\frac13\pi\cdot${rr}^2\cdot${h}=\frac{${rr*rr*h}}{3}\pi=${PI(F(rr*rr*h,3)).tex}$.`};
+ if(ask==='L')return{lvl:1,q:T`What is the lateral surface area of a cone with radius $${rr}$ and height $${h}$?`,a:PI(rr*l),w:[PI(rr*h),PI(rr*rr+rr*l),PI(2*rr*l),PI(F(rr*rr*h,3))],s:T`The slant height is the hypotenuse of the right triangle formed by the radius and the height: $\ell=\sqrt{${rr}^2+${h}^2}=${l}$.<br>The lateral surface unrolls into a sector with radius $\ell$ and arc $2\pi r$, area $\pi r\ell$.<br>$\pi\cdot${rr}\cdot${l}=${PI(rr*l).tex}$.`};
+ return{lvl:1,q:T`What is the total surface area of a cone with radius $${rr}$ and height $${h}$?`,a:PI(rr*rr+rr*l),w:[PI(rr*l),PI(rr*rr+rr*h),PI(2*rr*rr+rr*l),PI(rr*rr*h)],s:T`Slant height: $\ell=\sqrt{${rr}^2+${h}^2}=${l}$.<br>Total surface area $=$ base $+$ lateral $=\pi r^2+\pi r\ell=${PI(rr*rr).tex}+${PI(rr*l).tex}=${PI(rr*rr+rr*l).tex}$.`}},
 r=>{const [a,b,c]=pick(r,TRIPLES.filter(t=>t[2]<=29));const base=2*a,h=b;
  return{lvl:2,q:T`A square pyramid has base side $${base}$ and slant height (apex to the midpoint of a base edge) $${c}$. What is its volume?`,a:F(base*base*h,3),w:[F(base*base*c,3),F(base*base*h),F(base*base*h,2),F(base*c*h,3)],
- s:T`$h=\sqrt{${c}^2-${a}^2}=${b}$, so $V=\frac13\cdot${base*base}\cdot${h}=${F(base*base*h,3).tex()}$.`}},
+ s:T`The apex, the center of the base, and the midpoint of a base edge form a right triangle: legs $h$ and half the base side, $${a}$; hypotenuse the slant height $${c}$.<br>$h=\sqrt{${c}^2-${a}^2}=\sqrt{${c*c-a*a}}=${b}$.<br>$V=\frac13\cdot(\text{base area})\cdot h=\frac13\cdot${base*base}\cdot${h}=${F(base*base*h,3).tex()}$.`}},
 r=>{const k=pick(r,[F(1,2),F(1,3),F(2,3),F(1,4),F(3,4)]);const V=k.d**3*ri(r,1,3);const small=k.pow(3).mul(V);
  return{lvl:2,q:T`A cone of volume $${PI(V).tex}$ is cut by a plane parallel to its base at $${k.tex()}$ of the way from the apex to the base. What is the volume of the bottom piece (the frustum)?`,a:PI(F(V).sub(small)),w:[PI(small),PI(F(V).mul(F(1).sub(k))),PI(F(V).mul(F(1).sub(k.mul(k)))),PI(F(V,2))],
- s:T`The top cone is similar with ratio $${k.tex()}$, so its volume is $${k.pow(3).tex()}\cdot${PI(V).tex}=${PI(small).tex}$. The frustum has the rest: $${PI(F(V).sub(small)).tex}$.`}},
+ s:T`The cut leaves a small cone on top, similar to the whole cone with ratio $${k.tex()}$ (it reaches $${k.tex()}$ of the height).<br>Volumes scale by the cube of the ratio: the top cone is $\left(${k.tex()}\right)^3=${k.pow(3).tex()}$ of the whole, $${k.pow(3).tex()}\cdot${PI(V).tex}=${PI(small).tex}$.<br>The frustum is what's left: $${PI(V).tex}-${PI(small).tex}=${PI(F(V).sub(small)).tex}$.`}},
 r=>{const s_=ri(r,1,6)*pick(r,[1,2,3]);const v=F(s_**3,12);
- return{lvl:2,q:T`What is the volume of a regular tetrahedron with edge length $${s_}$?`,a:FR(v,2),w:[FR(v.mul(2),2),FR(v,3),FR(F(s_**3,6),1),FR(F(s_**3,6),2)],s:T`$\frac{s^3\sqrt2}{12}=\frac{${s_**3}\sqrt2}{12}=${FR(v,2).tex}$.`}},
+ return{lvl:2,q:T`What is the volume of a regular tetrahedron with edge length $${s_}$?`,a:FR(v,2),w:[FR(v.mul(2),2),FR(v,3),FR(F(s_**3,6),1),FR(F(s_**3,6),2)],s:T`Regular tetrahedron volume: $V=\frac{s^3\sqrt2}{12}$ (base area $\frac{\sqrt3}{4}s^2$ times height $s\sqrt{\frac23}$, divided by 3).<br>$V=\frac{${s_}^3\sqrt2}{12}=\frac{${s_**3}\sqrt2}{12}=${FR(v,2).tex}$.`}},
 ];
 GENS['solid-sphere']=[
 r=>{const rr=ri(r,1,9);const ask=r()<.5;
- return ask?{lvl:1,q:T`A sphere has surface area $${PI(4*rr*rr).tex}$. What is its volume?`,a:PI(F(4*rr**3,3)),w:[PI(4*rr**3),PI(F(rr**3,3)),PI(4*rr*rr),PI(F(8*rr**3,3))],s:T`$r=${rr}$, so $V=\frac43\pi\cdot${rr**3}=${PI(F(4*rr**3,3)).tex}$.`}
- :{lvl:1,q:T`A sphere has volume $${PI(F(4*rr**3,3)).tex}$. What is its surface area?`,a:PI(4*rr*rr),w:[PI(2*rr*rr),PI(rr*rr),PI(8*rr*rr),PI(4*rr)],s:T`$r=${rr}$, so the surface area is $4\pi r^2=${PI(4*rr*rr).tex}$.`}},
+ return ask?{lvl:1,q:T`A sphere has surface area $${PI(4*rr*rr).tex}$. What is its volume?`,a:PI(F(4*rr**3,3)),w:[PI(4*rr**3),PI(F(rr**3,3)),PI(4*rr*rr),PI(F(8*rr**3,3))],s:T`Surface area $4\pi r^2=${PI(4*rr*rr).tex}$ gives $r^2=${rr*rr}$, so $r=${rr}$.<br>Volume $=\frac43\pi r^3=\frac43\pi\cdot${rr**3}=${PI(F(4*rr**3,3)).tex}$.`}
+ :{lvl:1,q:T`A sphere has volume $${PI(F(4*rr**3,3)).tex}$. What is its surface area?`,a:PI(4*rr*rr),w:[PI(2*rr*rr),PI(rr*rr),PI(8*rr*rr),PI(4*rr)],s:T`Volume $\frac43\pi r^3=${PI(F(4*rr**3,3)).tex}$ gives $r^3=${rr**3}$, so $r=${rr}$.<br>Surface area $=4\pi r^2=4\pi\cdot${rr*rr}=${PI(4*rr*rr).tex}$.`}},
 r=>{const s_=2*ri(r,1,8);
- return{lvl:1,q:T`What is the volume of the sphere inscribed in a cube of side $${s_}$?`,a:PI(F(4*(s_/2)**3,3)),w:[PI(F(4*s_**3,3)),PI(F((s_/2)**3,1)),PI(F(s_**3,6)).v===PI(F(4*(s_/2)**3,3)).v?PI(F(s_**3,3)):PI(F(s_**3,6)),PI(4*(s_/2)**2)],s:T`$r=${s_/2}$: $\frac43\pi\cdot${(s_/2)**3}=${PI(F(4*(s_/2)**3,3)).tex}$.`}},
+ return{lvl:1,q:T`What is the volume of the sphere inscribed in a cube of side $${s_}$?`,a:PI(F(4*(s_/2)**3,3)),w:[PI(F(4*s_**3,3)),PI(F((s_/2)**3,1)),PI(F(s_**3,6)).v===PI(F(4*(s_/2)**3,3)).v?PI(F(s_**3,3)):PI(F(s_**3,6)),PI(4*(s_/2)**2)],s:T`An inscribed sphere touches all six faces of the cube, so its diameter equals the side: $r=\frac{${s_}}{2}=${s_/2}$.<br>$V=\frac43\pi r^3=\frac43\pi\cdot${(s_/2)**3}=${PI(F(4*(s_/2)**3,3)).tex}$.`}},
 r=>{const R_=ri(r,2,12),rr=pick(r,[1,2,3].filter(x=>R_%x===0&&x<R_));if(!rr)return GENS['solid-sphere'][2](r);
- return{lvl:1,q:T`A metal sphere of radius $${R_}$ is melted and recast into spheres of radius $${rr}$. How many are made?`,a:(R_/rr)**3,w:[(R_/rr)**2,R_/rr,(R_/rr)**3*2,(R_/rr)**3-1],s:T`The volume ratio is $\left(\frac{${R_}}{${rr}}\right)^3=${(R_/rr)**3}$.`}},
+ return{lvl:1,q:T`A metal sphere of radius $${R_}$ is melted and recast into spheres of radius $${rr}$. How many are made?`,a:(R_/rr)**3,w:[(R_/rr)**2,R_/rr,(R_/rr)**3*2,(R_/rr)**3-1],s:T`Melting and recasting keeps the total volume. Since volume is proportional to $r^3$, one sphere of radius ${R_} has the volume of $\left(\frac{${R_}}{${rr}}\right)^3=${R_/rr}^3=${(R_/rr)**3}$ spheres of radius ${rr}.<br>Answer: $${(R_/rr)**3}$.`}},
 r=>{const p=ri(r,1,4),q=ri(r,p+1,6);const k=F(q,p);
- return{lvl:1,q:T`The radius of a sphere is multiplied by $${k.tex()}$. By what factor is its volume multiplied?`,a:k.pow(3),w:[k,k.pow(2),k.mul(3),k.pow(3).add(1)],s:T`Volume scales with the cube: $\left(${k.tex()}\right)^3=${k.pow(3).tex()}$.`}},
+ return{lvl:1,q:T`The radius of a sphere is multiplied by $${k.tex()}$. By what factor is its volume multiplied?`,a:k.pow(3),w:[k,k.pow(2),k.mul(3),k.pow(3).add(1)],s:T`Volume is proportional to the cube of the radius ($V=\frac43\pi r^3$), so multiplying $r$ by $${k.tex()}$ multiplies $V$ by $\left(${k.tex()}\right)^3=${k.pow(3).tex()}$.<br>(Surface area would scale by the square, $${k.pow(2).tex()}$.)`}},
 ];
 GENS['solid-dist']=[
 r=>{const [a,b,c,d]=pick(r,QUADS);const x=ri(r,-5,5),y=ri(r,-5,5),z=ri(r,-5,5);
- return{lvl:1,q:T`What is the distance between $(${x},${y},${z})$ and $(${x+a},${y-b},${z+c})$?`,a:d,w:[a+b+c,d+1,R(1,a*a+b*b),d-1],s:T`$\sqrt{${a}^2+${b}^2+${c}^2}=${d}$.`}},
+ return{lvl:1,q:T`What is the distance between $(${x},${y},${z})$ and $(${x+a},${y-b},${z+c})$?`,a:d,w:[a+b+c,d+1,R(1,a*a+b*b),d-1],s:T`3D distance: $\sqrt{(\Delta x)^2+(\Delta y)^2+(\Delta z)^2}$.<br>The differences are $${a}$, $${-b}$, $${c}$: $\sqrt{${a*a}+${b*b}+${c*c}}=\sqrt{${d*d}}=${d}$.`}},
 r=>{const s_=2*ri(r,1,8);
- return{lvl:1,q:T`How far is the center of a cube of side $${s_}$ from one of its vertices?`,a:R(s_/2,3),w:[R(s_,3),R(s_/2,2),R(s_,1),R(s_/2,1)],s:T`Half the space diagonal: $\frac{${s_}\sqrt3}2=${R(s_/2,3).tex}$.`}},
+ return{lvl:1,q:T`How far is the center of a cube of side $${s_}$ from one of its vertices?`,a:R(s_/2,3),w:[R(s_,3),R(s_/2,2),R(s_,1),R(s_/2,1)],s:T`The center is the midpoint of the space diagonal from that vertex to the opposite one.<br>Space diagonal: $${s_}\sqrt3$ (since $\sqrt{${s_}^2+${s_}^2+${s_}^2}=${s_}\sqrt3$).<br>Half of it: $${R(s_/2,3).tex}$.`}},
 r=>{const k=pick(r,[2,3,4,5,10,12,20,25,50]),v=ri(r,1,40);
- return{lvl:1,q:T`A model is built at a $1:${k}$ scale and has volume $${v}$ cubic units. What is the real object's volume?`,a:v*k**3,w:[v*k,v*k*k,v*k**3/k|0||v+k,v*k**3*2],s:T`Volumes scale by $${k}^3=${k**3}$: $${v*k**3}$.`}},
+ return{lvl:1,q:T`A model is built at a $1:${k}$ scale and has volume $${v}$ cubic units. What is the real object's volume?`,a:v*k**3,w:[v*k,v*k*k,v*k**3/k|0||v+k,v*k**3*2],s:T`A $1:${k}$ scale multiplies every length by ${k}, every area by $${k}^2$, and every volume by $${k}^3=${k**3}$.<br>Real volume: $${v}\cdot${k**3}=${v*k**3}$.`}},
 r=>{let [a,b,c]=[ri(r,1,8),ri(r,1,8),ri(r,1,8)].sort((x,y)=>x-y);const opts=[(a+b)**2+c*c,(a+c)**2+b*b,(b+c)**2+a*a];const best=Math.min(...opts);
  return{lvl:3,q:T`An ant travels on the surface of an $${a}\times${b}\times${c}$ box from one corner to the opposite corner. What is the shortest possible path length?`,a:R(1,best),w:[R(1,a*a+b*b+c*c),R(1,Math.max(...opts)),O(String(a+b+c),a+b+c),R(1,opts.find(o=>o!==best&&o!==Math.max(...opts))||best+1),R(1,best+4),R(1,best+9)],
- s:T`Unfoldings give $\sqrt{${opts[0]}}$, $\sqrt{${opts[1]}}$, $\sqrt{${opts[2]}}$. The smallest is $${R(1,best).tex}$ (pair the two shorter edges).`}},
+ s:T`Unfold the two faces the ant crosses into one flat rectangle; the shortest path is its diagonal. For an $a\times b\times c$ box there are three ways to do it:<br>$\sqrt{(${a}+${b})^2+${c}^2}=\sqrt{${opts[0]}}$, $\ \sqrt{(${a}+${c})^2+${b}^2}=\sqrt{${opts[1]}}$, $\ \sqrt{(${b}+${c})^2+${a}^2}=\sqrt{${opts[2]}}$.<br>The smallest comes from adding the two shortest edges and pairing them with the longest: $${R(1,best).tex}$.<br>(The straight line through the inside, $\sqrt{${a*a+b*b+c*c}}$, isn't allowed.)`}},
 ];
 /* ---- div.txt ---- */
 const vp=(n,p)=>{let s=0;for(let q=p;q<=n;q*=p)s+=Math.floor(n/q);return s};

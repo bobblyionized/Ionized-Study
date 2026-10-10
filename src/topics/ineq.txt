@@ -78,7 +78,9 @@ W: 9
 W: 7
 W: 10
 W: 6
-S: $(x-7)(x+2)\lt 0$ means $-2\lt x\lt 7$, so $x=-1,0,\dots,6$: $8$ integers.
+S: Factor: $x^2-5x-14=(x-7)(x+2)$.
+A product is negative when the factors have opposite signs, which happens strictly between the roots: $-2\lt x\lt7$.
+The integers there are $-1,0,1,2,3,4,5,6$: that's $8$.
 ---
 Q: What is the largest integer $x$ satisfying $3-2x>11$?
 L: 1
@@ -87,7 +89,9 @@ W: -4
 W: 4
 W: -3
 W: 5
-S: $-2x>8$, so $x\lt -4$ (dividing by a negative flips the sign). The largest integer is $-5$.
+S: Subtract $3$: $-2x\gt8$.
+Divide by $-2$; dividing by a negative <b>reverses</b> the inequality: $x\lt-4$.
+The largest integer strictly less than $-4$ is $-5$.
 ---
 Q: How many integers satisfy $\dfrac{x-1}{x+3}\le0$?
 L: 2
@@ -96,8 +100,10 @@ W: 5
 W: 3
 W: 6
 W: 2
-S: Sign chart with zeros at $-3$ (excluded) and $1$ (included): $-3\lt x\le1$.
-The integers are $-2,-1,0,1$: four.
+S: The fraction can change sign only at $x=1$ (numerator zero) and $x=-3$ (denominator zero).
+Test each region: $x\lt-3$: $\frac{-}{-}\gt0$. $-3\lt x\lt1$: $\frac{-}{+}\lt0$ ✓. $x\gt1$: $\frac{+}{+}\gt0$.
+Include $x=1$ (the fraction equals $0$, and we want $\le0$); exclude $x=-3$ (undefined).
+Solution: $-3\lt x\le1$. Integers: $-2,-1,0,1$, which is $4$.
 ---
 Q: How many integers $x$ satisfy $|2x-3|\lt 7$?
 L: 1
@@ -106,7 +112,9 @@ W: 7
 W: 5
 W: 8
 W: 14
-S: $-7\lt 2x-3\lt 7$, so $-2\lt x\lt 5$: the integers $-1,0,1,2,3,4$.
+S: $|u|\lt7$ means $-7\lt u\lt7$: $-7\lt2x-3\lt7$.
+Add $3$: $-4\lt2x\lt10$. Divide by $2$: $-2\lt x\lt5$.
+Integers: $-1,0,1,2,3,4$, which is $6$.
 ---
 Q: Which describes all real $x$ with $\dfrac1x>2$?
 L: 2
@@ -115,8 +123,10 @@ W: x\lt\frac{1}{2}
 W: x>\frac{1}{2}
 W: x>0
 W: x\lt 0
-S: If $x\lt 0$ the left side is negative, so $x>0$. Then $1>2x$ gives $x\lt \frac12$. So $0\lt x\lt \frac12$.
-(Multiplying by $x$ without knowing its sign is the trap.)
+S: If $x\lt0$, then $\frac1x$ is negative and can't exceed $2$. So $x\gt0$.
+For $x\gt0$ we may multiply by $x$ without flipping: $1\gt2x$, so $x\lt\frac12$.
+Answer: $0\lt x\lt\frac12$.
+(Multiplying by $x$ right away, without knowing its sign, is the classic trap.)
 ---
 Q: How many integers $x$ with $-10\le x\le10$ satisfy $(x-1)(x-2)(x-3)>0$?
 L: 2
@@ -125,7 +135,9 @@ W: 8
 W: 9
 W: 6
 W: 10
-S: The product is positive on $(1,2)$ and on $(3,\infty)$. There are no integers in $(1,2)$; the integers $4,\dots,10$ give $7$.
+S: The roots $1,2,3$ split the line into intervals. For $x\gt3$ all three factors are positive; the sign flips at each root going left.
+So the product is positive on $(1,2)$ and on $(3,\infty)$, negative on $(-\infty,1)$ and $(2,3)$.
+There are no integers in $(1,2)$, and in $(3,10]$ the integers are $4,5,\dots,10$: $7$ of them.
 ---
 Q: How many integers $n$ satisfy $(n^2-9)(n^2-49)\lt 0$?
 L: 2
@@ -134,7 +146,9 @@ W: 3
 W: 8
 W: 7
 W: 12
-S: The factors must have opposite signs: $9\lt n^2\lt 49$, so $n=\pm4,\pm5,\pm6$.
+S: The product of two numbers is negative when they have opposite signs.
+$n^2-9\lt n^2-49$ is impossible, so we need $n^2-9\gt0$ and $n^2-49\lt0$: $9\lt n^2\lt49$.
+That's $3\lt|n|\lt7$: $n=\pm4,\pm5,\pm6$, which is $6$ integers.
 ---
 Q: What is the sum of all integers $x$ satisfying $x^2\le2x+15$?
 L: 2
@@ -143,7 +157,9 @@ W: 15
 W: 8
 W: 2
 W: 12
-S: $x^2-2x-15=(x-5)(x+3)\le0$, so $-3\le x\le5$. The integers sum to $-3-2-1+0+1+\dots+5=9$.
+S: Move everything to one side: $x^2-2x-15\le0$, i.e. $(x-5)(x+3)\le0$.
+This holds between the roots, inclusive: $-3\le x\le5$.
+The integers $-3,\dots,5$ sum to $(-3-2-1)+(0+1+2+3)+(4+5)=-6+6+9=9$. (Pairs $\pm1,\pm2,\pm3$ cancel, leaving $0+4+5$.)
 ---
 @@ ineq-amgm
 Q: What is the minimum value of $x+\dfrac{16}{x}$ for $x>0$?
@@ -153,7 +169,9 @@ W: 4
 W: 16
 W: 17
 W: 10
-S: AM–GM: $x+\frac{16}x\ge2\sqrt{16}=8$, with equality at $x=4$.
+S: AM–GM: for positive $a,b$, $\frac{a+b}{2}\ge\sqrt{ab}$, i.e. $a+b\ge2\sqrt{ab}$.
+With $a=x$ and $b=\frac{16}{x}$, the product is the constant $16$, so $x+\frac{16}x\ge2\sqrt{16}=8$.
+Equality holds when $x=\frac{16}{x}$, i.e. $x=4$. The minimum is $8$.
 ---
 Q: Positive numbers satisfy $x+2y=12$. What is the largest possible value of $xy$?
 L: 2
@@ -162,7 +180,9 @@ W: 36
 W: 24
 W: 12
 W: 16
-S: AM–GM on $x$ and $2y$: $x\cdot2y\le\left(\frac{x+2y}{2}\right)^2=36$, so $xy\le18$, with equality at $x=6$, $y=3$.
+S: Apply AM–GM to the two terms $x$ and $2y$, whose sum is fixed at $12$: $x\cdot2y\le\left(\frac{x+2y}{2}\right)^2=36$.
+So $2xy\le36$, i.e. $xy\le18$.
+Equality when $x=2y$: then $4y=12$, $y=3$, $x=6$, and $xy=18$.
 ---
 Q: For positive $x,y$, what is the minimum value of $\left(x+\dfrac1x\right)\left(y+\dfrac4y\right)$?
 L: 2
@@ -171,7 +191,10 @@ W: 4
 W: 6
 W: 9
 W: 16
-S: $x+\frac1x\ge2$ (at $x=1$) and $y+\frac4y\ge4$ (at $y=2$). Both minima occur at once, so the minimum is $8$.
+S: Minimize each factor separately with AM–GM.
+$x+\frac1x\ge2\sqrt{1}=2$, with equality at $x=1$.
+$y+\frac4y\ge2\sqrt4=4$, with equality at $y=2$.
+Both factors are positive and can be minimized simultaneously ($x=1$, $y=2$), so the minimum product is $2\cdot4=8$.
 ---
 Q: What is the minimum value of $9x+\dfrac1x$ for $x>0$?
 L: 1
@@ -180,7 +203,8 @@ W: 10
 W: 3
 W: 9
 W: 18
-S: $9x+\frac1x\ge2\sqrt9=6$, with equality at $x=\frac13$.
+S: AM–GM on $9x$ and $\frac1x$: their product is $9$, so $9x+\frac1x\ge2\sqrt9=6$.
+Equality when $9x=\frac1x$, i.e. $x^2=\frac19$, $x=\frac13$. The minimum is $6$.
 ---
 Q: What is the minimum value of $x^2+\dfrac2x$ for $x>0$?
 L: 3
@@ -189,7 +213,10 @@ W: 2\sqrt{2}
 W: 2
 W: 4
 W: \frac{5}{2}
-S: Split so the product is constant: $x^2+\frac1x+\frac1x\ge3\sqrt[3]{x^2\cdot\frac1x\cdot\frac1x}=3$, with equality at $x=1$.
+S: Plain AM–GM on $x^2$ and $\frac2x$ doesn't help, because their product $2x$ isn't constant.
+Split $\frac2x$ into $\frac1x+\frac1x$ so the three terms have a constant product: $x^2\cdot\frac1x\cdot\frac1x=1$.
+Three-term AM–GM: $x^2+\frac1x+\frac1x\ge3\sqrt[3]{1}=3$, with equality when $x^2=\frac1x$, i.e. $x=1$.
+Check: $1+2=3$. The minimum is $3$.
 ---
 Q: Positive reals $a,b,c$ satisfy $abc=8$. What is the minimum value of $a+b+c$?
 L: 1
@@ -198,7 +225,8 @@ W: 8
 W: 4
 W: 24
 W: 12
-S: $a+b+c\ge3\sqrt[3]{8}=6$, with equality at $a=b=c=2$.
+S: Three-term AM–GM: $\frac{a+b+c}{3}\ge\sqrt[3]{abc}=\sqrt[3]8=2$.
+So $a+b+c\ge6$, with equality at $a=b=c=2$.
 ---
 Q: For positive $a,b$, what is the minimum of $(a+b)\left(\dfrac1a+\dfrac1b\right)$?
 L: 1
@@ -207,7 +235,9 @@ W: 2
 W: 1
 W: 8
 W: 0
-S: Expand: $2+\frac ab+\frac ba\ge2+2=4$, with equality at $a=b$.
+S: Expand: $(a+b)\left(\frac1a+\frac1b\right)=1+\frac ab+\frac ba+1=2+\frac ab+\frac ba$.
+AM–GM: $\frac ab+\frac ba\ge2\sqrt{\frac ab\cdot\frac ba}=2$.
+So the expression is at least $4$, with equality at $a=b$.
 ---
 Q: Positive reals satisfy $xy=4$. What is the minimum of $x+4y$?
 L: 2
@@ -216,7 +246,8 @@ W: 4
 W: 5
 W: 10
 W: 16
-S: $x+4y\ge2\sqrt{4xy}=2\sqrt{16}=8$, with equality at $x=4$, $y=1$.
+S: AM–GM on $x$ and $4y$: $x+4y\ge2\sqrt{4xy}=2\sqrt{16}=8$ (using $xy=4$).
+Equality when $x=4y$; with $xy=4$ this gives $4y^2=4$, $y=1$, $x=4$. The minimum is $8$.
 ---
 @@ ineq-cs
 Q: Real numbers satisfy $x^2+y^2=25$. What is the maximum of $3x+4y$?
@@ -226,7 +257,9 @@ W: 35
 W: 5
 W: 7
 W: 20
-S: Cauchy–Schwarz: $(3x+4y)^2\le(9+16)(x^2+y^2)=625$, so the maximum is $25$, at $(x,y)=(3,4)$.
+S: Cauchy–Schwarz: $(3x+4y)^2\le(3^2+4^2)(x^2+y^2)=25\cdot25=625$, so $3x+4y\le25$.
+Equality when $(x,y)$ is proportional to $(3,4)$: $(x,y)=(3,4)$, giving $9+16=25$. ✓
+(Geometrically: the line $3x+4y=c$ is tangent to the circle of radius $5$ when $c=25$.)
 ---
 Q: Real numbers satisfy $x+2y=5$. What is the minimum value of $x^2+y^2$?
 L: 2
@@ -235,7 +268,9 @@ W: \sqrt{5}
 W: 25
 W: \frac{5}{2}
 W: 10
-S: $(x+2y)^2\le(1+4)(x^2+y^2)$, so $x^2+y^2\ge\frac{25}{5}=5$, at $(1,2)$.
+S: Cauchy–Schwarz: $(1\cdot x+2\cdot y)^2\le(1^2+2^2)(x^2+y^2)$, so $25\le5(x^2+y^2)$ and $x^2+y^2\ge5$.
+Equality when $(x,y)\propto(1,2)$: $x=1$, $y=2$ (check $1+4=5$ ✓).
+(Geometrically: $x^2+y^2$ is the squared distance from the origin to the line, $\left(\frac{5}{\sqrt5}\right)^2=5$.)
 ---
 Q: Real numbers satisfy $x+y+z=6$. What is the minimum value of $x^2+y^2+z^2$?
 L: 1
@@ -244,7 +279,8 @@ W: 36
 W: 6
 W: 18
 W: 2
-S: The minimum is $\frac{S^2}{n}=\frac{36}3=12$, at $x=y=z=2$.
+S: QM–AM (or Cauchy–Schwarz with $(1,1,1)$): $x^2+y^2+z^2\ge\frac{(x+y+z)^2}{3}$.
+$\frac{36}{3}=12$, with equality at $x=y=z=2$.
 ---
 Q: Real numbers satisfy $x^2+y^2+z^2=27$. What is the maximum of $x+y+z$?
 L: 2
@@ -253,7 +289,8 @@ W: 27
 W: 3\sqrt{3}
 W: 81
 W: 3
-S: $(x+y+z)^2\le3(x^2+y^2+z^2)=81$, so the maximum is $9$, at $x=y=z=3$.
+S: Cauchy–Schwarz: $(x+y+z)^2\le(1^2+1^2+1^2)(x^2+y^2+z^2)=3\cdot27=81$.
+So $x+y+z\le9$, with equality at $x=y=z=3$ (check $27$ ✓).
 ---
 Q: Positive reals satisfy $a+b=1$. What is the minimum of $\dfrac1a+\dfrac4b$?
 L: 2
@@ -262,7 +299,9 @@ W: 5
 W: 4
 W: 8
 W: 6
-S: Titu: $\frac{1^2}a+\frac{2^2}b\ge\frac{(1+2)^2}{a+b}=9$, with equality at $a=\frac13$, $b=\frac23$.
+S: Titu's lemma (Cauchy–Schwarz in Engel form): $\frac{u^2}{a}+\frac{v^2}{b}\ge\frac{(u+v)^2}{a+b}$.
+Write $\frac1a+\frac4b=\frac{1^2}{a}+\frac{2^2}{b}\ge\frac{(1+2)^2}{a+b}=\frac{9}{1}=9$.
+Equality when $\frac1a=\frac2b$, i.e. $b=2a$: $a=\frac13$, $b=\frac23$. Check: $3+6=9$. ✓
 ---
 Q: What is the maximum value of $2\sin\theta+3\cos\theta$?
 L: 2
@@ -271,7 +310,9 @@ W: 5
 W: 13
 W: \sqrt{5}
 W: 6
-S: $(2\sin\theta+3\cos\theta)^2\le(4+9)(\sin^2\theta+\cos^2\theta)=13$, and equality is attainable. The maximum is $\sqrt{13}$.
+S: Cauchy–Schwarz with $(2,3)$ and $(\sin\theta,\cos\theta)$: $(2\sin\theta+3\cos\theta)^2\le(4+9)(\sin^2\theta+\cos^2\theta)=13$.
+So the expression is at most $\sqrt{13}$, and equality is reached when $(\sin\theta,\cos\theta)\propto(2,3)$.
+(Same as $a\sin\theta+b\cos\theta\le\sqrt{a^2+b^2}$.)
 ---
 Q: Positive reals satisfy $a+b+c=3$. What is the minimum value of $a^2+b^2+c^2$?
 L: 1
@@ -280,7 +321,8 @@ W: 9
 W: 1
 W: \sqrt{3}
 W: 6
-S: The minimum is $\frac{3^2}{3}=3$, at $a=b=c=1$.
+S: $a^2+b^2+c^2\ge\frac{(a+b+c)^2}{3}=\frac93=3$ (Cauchy–Schwarz or QM–AM).
+Equality at $a=b=c=1$.
 ---
 Q: Real numbers satisfy $3x+4y=36$. What is the minimum of $(x-1)^2+(y-2)^2$?
 L: 3
@@ -289,7 +331,8 @@ W: 5
 W: 36
 W: 16
 W: 49
-S: This is the squared distance from $(1,2)$ to the line: $\frac{(3+8-36)^2}{9+16}=\frac{625}{25}=25$.
+S: $(x-1)^2+(y-2)^2$ is the squared distance from $(x,y)$ to the point $(1,2)$, and $(x,y)$ ranges over the line $3x+4y-36=0$.
+The minimum is the squared perpendicular distance: $\left(\frac{|3\cdot1+4\cdot2-36|}{\sqrt{9+16}}\right)^2=\left(\frac{25}{5}\right)^2=25$.
 ---
 @@ ineq-abs
 Q: What is the minimum value of $|x-1|+|x-4|+|x-10|$?
@@ -299,7 +342,9 @@ W: 13
 W: 6
 W: 8
 W: 10
-S: The minimum is at the median $x=4$: $3+0+6=9$.
+S: $|x-a|$ is the distance from $x$ to $a$, so we want the point minimizing the total distance to $1$, $4$, $10$.
+That's the median, $x=4$: moving left increases the distance to $4$ and $10$ more than it saves on $1$, and moving right is similar.
+Value: $|4-1|+|4-4|+|4-10|=3+0+6=9$.
 ---
 Q: A triangle has sides $5$, $9$, and $x$, where $x$ is an integer. How many values of $x$ are possible?
 L: 1
@@ -308,7 +353,8 @@ W: 8
 W: 10
 W: 13
 W: 14
-S: $9-5\lt x\lt 9+5$, so $5\le x\le13$, which is $9$ values.
+S: Triangle inequality: each side is less than the sum of the other two, so $9-5\lt x\lt9+5$, i.e. $4\lt x\lt14$.
+Integers $5$ through $13$: that's $9$ values.
 ---
 Q: What is the minimum value of $|x-2|+|x-6|$?
 L: 1
@@ -317,7 +363,9 @@ W: 0
 W: 2
 W: 8
 W: 6
-S: For any $x$ between $2$ and $6$ the sum of the two distances is $4$, and it is larger outside that interval.
+S: $|x-2|+|x-6|$ is the total distance from $x$ to $2$ and to $6$.
+For any $x$ between $2$ and $6$, the two distances add up to exactly $6-2=4$; outside, the sum is larger.
+Minimum: $4$.
 ---
 Q: How many non-congruent triangles have integer side lengths and perimeter $12$?
 L: 2
@@ -326,7 +374,10 @@ W: 4
 W: 2
 W: 5
 W: 6
-S: Take $a\le b\le c$ with $c\lt 6$. $c=5$: $(2,5,5),(3,4,5)$. $c=4$: $(4,4,4)$. So there are $3$.
+S: List $a\le b\le c$ with $a+b+c=12$. The triangle inequality $a+b\gt c$ means $c\lt6$, and $c\ge4$ (it's the largest of three numbers summing to $12$).
+• $c=5$: $a+b=7$ with $a\le b\le5$: $(2,5,5)$ and $(3,4,5)$.
+• $c=4$: $a+b=8$ with $a\le b\le4$: $(4,4,4)$.
+Total: $3$ triangles.
 ---
 Q: Real numbers satisfy $|a|=3$ and $|b|=5$. What is the minimum possible value of $|a+b|$?
 L: 1
@@ -335,7 +386,8 @@ W: 8
 W: 0
 W: 3
 W: 15
-S: $|a+b|\ge|b|-|a|=2$, with equality when $a$ and $b$ have opposite signs (e.g. $a=3, b=-5$).
+S: Triangle inequality for absolute values: $|a+b|\ge|b|-|a|=5-3=2$.
+Equality happens when $a$ and $b$ point in opposite directions, e.g. $a=3$, $b=-5$: $|a+b|=2$.
 ---
 Q: What is the minimum value of $|x-1|+|x-2|+\cdots+|x-9|$?
 L: 2
@@ -344,7 +396,8 @@ W: 25
 W: 45
 W: 16
 W: 18
-S: At the median $x=5$: $4+3+2+1+0+1+2+3+4=20$.
+S: The sum of distances from $x$ to $1,2,\dots,9$ is minimized at the median, $x=5$.
+At $x=5$: $4+3+2+1+0+1+2+3+4=20$.
 ---
 Q: A triangle has sides $7$, $12$, and $c$, where $c$ is an integer. What is the largest possible value of $c$?
 L: 1
@@ -353,7 +406,8 @@ W: 19
 W: 17
 W: 5
 W: 6
-S: $c\lt 7+12=19$, so the largest integer is $18$.
+S: Triangle inequality: $c\lt7+12=19$ (and $c\gt12-7=5$).
+The largest integer less than $19$ is $18$.
 ---
 Q: What is the area of the region $|x|+|y|\le3$?
 L: 2
@@ -362,7 +416,8 @@ W: 9
 W: 36
 W: 12
 W: 6
-S: It is a square with vertices $(\pm3,0),(0,\pm3)$ and diagonals $6$. Area $=\frac{6\cdot6}2=18$.
+S: In quadrant I the region is $x+y\le3$, a right triangle with legs $3$ and area $\frac92$. By symmetry the full region (a square rotated $45^\circ$, vertices $(\pm3,0),(0,\pm3)$) has four such pieces.
+Area $=4\cdot\frac92=18$. (Or: a rhombus with diagonals $6$ and $6$, area $\frac{6\cdot6}{2}=18$.)
 ---
 @@ ineq-opt
 Q: Positive integers have sum $10$. What is the largest possible value of their product?
@@ -372,7 +427,8 @@ W: 32
 W: 30
 W: 25
 W: 27
-S: Use as many 3s as possible: $10=3+3+4$ (or $3+3+2+2$). The product is $36$.
+S: To maximize a product with a fixed sum, use parts of size $3$ when possible: a part $\ge5$ can be split into $2+(n-2)$ with product $2(n-2)\gt n$; a $4$ is the same as $2\cdot2$; and $2\cdot2\cdot2\lt3\cdot3$; and a $1$ never helps.
+$10=3+3+4$ (or $3+3+2+2$), giving $3\cdot3\cdot4=36$.
 ---
 Q: Real numbers satisfy $x+y=8$. What is the minimum of $x^2+y^2$?
 L: 1
@@ -381,7 +437,8 @@ W: 64
 W: 16
 W: 8
 W: 0
-S: At $x=y=4$: $32$. (In general $x^2+y^2\ge\frac{(x+y)^2}2$.)
+S: Write $x=4+t$, $y=4-t$. Then $x^2+y^2=(16+8t+t^2)+(16-8t+t^2)=32+2t^2\ge32$.
+Minimum $32$ at $t=0$, i.e. $x=y=4$. (In general $x^2+y^2\ge\frac{(x+y)^2}{2}$.)
 ---
 Q: A rectangle is inscribed in a semicircle of radius $1$, with one side on the diameter. What is its maximum possible area?
 L: 3
@@ -390,7 +447,9 @@ W: 2
 W: \frac{1}{2}
 W: \sqrt{2}
 W: \frac{\pi}{2}
-S: With top corners at $(\pm\cos\theta,\sin\theta)$, the area is $2\cos\theta\sin\theta=\sin2\theta\le1$, attained at $\theta=45^\circ$.
+S: Put the semicircle's center at the origin. The top corners of the rectangle are on the circle: $(\pm\cos\theta,\sin\theta)$.
+Width $2\cos\theta$, height $\sin\theta$, area $2\sin\theta\cos\theta=\sin2\theta$.
+$\sin2\theta\le1$, with equality at $\theta=45^\circ$ (width $\sqrt2$, height $\frac{\sqrt2}2$). Maximum area: $1$.
 ---
 Q: What is the minimum value of $x^2+4y^2-4x+8y+11$?
 L: 2
@@ -399,7 +458,10 @@ W: 11
 W: 7
 W: 0
 W: -1
-S: $(x-2)^2+4(y+1)^2+11-4-4=(x-2)^2+4(y+1)^2+3\ge3$.
+S: Complete the square in $x$ and $y$ separately:
+$x^2-4x=(x-2)^2-4$ and $4y^2+8y=4(y^2+2y)=4(y+1)^2-4$.
+Expression $=(x-2)^2+4(y+1)^2-4-4+11=(x-2)^2+4(y+1)^2+3\ge3$.
+Minimum $3$ at $x=2$, $y=-1$.
 ---
 Q: Integers $x$ and $y$ satisfy $x+y=15$. What is the largest possible value of $xy$?
 L: 1
@@ -408,7 +470,8 @@ W: 225
 W: 54
 W: 50
 W: 57
-S: The real optimum is $7.5$; the nearest integers give $7\cdot8=56$.
+S: With $y=15-x$, $xy=x(15-x)$, a downward parabola peaking at $x=7.5$.
+$x$ must be an integer, so take the closest: $x=7$ or $8$. Either way $xy=7\cdot8=56$.
 ---
 Q: What is the smallest value of $(x+1)^2+(x-3)^2$?
 L: 1
@@ -417,7 +480,8 @@ W: 16
 W: 4
 W: 10
 W: 0
-S: The sum is smallest at the midpoint $x=1$: $4+4=8$.
+S: Expand: $(x+1)^2+(x-3)^2=2x^2-4x+10=2(x-1)^2+8$.
+Minimum $8$ at $x=1$, the midpoint of $-1$ and $3$ (each term is then $4$).
 ---
 Q: Real numbers satisfy $x^2+y^2=18$. What is the largest possible value of $xy$?
 L: 1
@@ -426,7 +490,8 @@ W: 18
 W: 6
 W: 3\sqrt{2}
 W: 36
-S: $2xy\le x^2+y^2=18$, so $xy\le9$, at $x=y=3$.
+S: $(x-y)^2\ge0$ gives $x^2+y^2\ge2xy$, so $2xy\le18$ and $xy\le9$.
+Equality when $x=y$: $2x^2=18$, $x=y=3$.
 ---
 Q: What is the maximum value of $4x-x^2-y^2+6y$?
 L: 2
@@ -435,80 +500,80 @@ W: 4
 W: 9
 W: 6
 W: 25
-S: $-(x-2)^2-(y-3)^2+4+9\le13$, at $(2,3)$.
-
+S: Complete the squares: $4x-x^2=-(x-2)^2+4$ and $6y-y^2=-(y-3)^2+9$.
+Expression $=13-(x-2)^2-(y-3)^2\le13$, with equality at $(2,3)$.
 === GENS ===
 GENS['ineq-solve']=[
 r=>{const a=ri(r,-10,5),b=a+ri(r,2,12);const n=b-a-1;const lt=r()<.6;
  return{lvl:1,q:T`How many integers $x$ satisfy $${poly([[1,2],[-(a+b),1],[a*b,0]],'x')}${lt?'\\lt':'\\le'} 0$?`,a:lt?n:n+2,w:lt?[n+1,n+2,n-1,b-a]:[n,n+1,n+3,b-a],
- s:T`$(x${a<0?'+':'-'}${Math.abs(a)})(x${b<0?'+':'-'}${Math.abs(b)})${lt?'\\lt':'\\le'}0$ means $${a}${lt?'\\lt ':'\\le '}x${lt?'\\lt':'\\le'}${b}$, which contains $${lt?n:n+2}$ integers.`}},
+ s:T`Factor: $${poly([[1,2],[-(a+b),1],[a*b,0]],'x')}=(x${a<0?'+':'-'}${Math.abs(a)})(x${b<0?'+':'-'}${Math.abs(b)})$, with roots $${a}$ and $${b}$.<br>The product is negative between the roots and positive outside them (the parabola opens up).<br>So we need $${a}${lt?'\\lt ':'\\le '}x${lt?'\\lt ':'\\le '}${b}$.<br>Integers: ${lt?T`from $${a+1}$ to $${b-1}$, that's $${b-1}-${P(a+1)}+1=${n}$`:T`from $${a}$ to $${b}$, that's $${b}-${P(a)}+1=${n+2}$`}.`}},
 r=>{const a=ri(r,1,6),b=ri(r,-10,10),c=ri(r,1,20);const lo=(b-c)/a,hi=(b+c)/a;let n=0;for(let x=Math.ceil(lo-1);x<=Math.floor(hi+1);x++)if(Math.abs(a*x-b)<c)n++;
  return{lvl:1,q:T`How many integers $x$ satisfy $|${poly([[a,1],[-b,0]],'x')}|\lt ${c}$?`,a:n,w:[n+1,n-1,n+2,2*c],
- s:T`$-${c}\lt ${poly([[a,1],[-b,0]],'x')}\lt ${c}$ gives $${F(b-c,a).tex()}\lt x\lt ${F(b+c,a).tex()}$, which contains $${n}$ integers.`}},
+ s:T`$|u|\lt${c}$ means $-${c}\lt u\lt${c}$: $-${c}\lt ${poly([[a,1],[-b,0]],'x')}\lt ${c}$.<br>${b?T`${b>0?'Add $'+b+'$':'Subtract $'+(-b)+'$'}: $${b-c}\lt ${a===1?'':a}x\lt ${b+c}$. `:''}${a>1?T`Divide by $${a}$: $${F(b-c,a).tex()}\lt x\lt ${F(b+c,a).tex()}$.`:''}<br>The integers strictly inside are $${Math.floor((b-c)/a)+1}$ through $${Math.ceil((b+c)/a)-1}$: that's $${n}$.`}},
 r=>{const p=ri(r,-8,5),q=p+ri(r,2,10);const which=r()<.5;
  const n=which?q-p:q-p; // (x-q)/(x-p)<=0 -> p<x<=q ; (x-p)/(x-q)<=0 -> p<=x<q
  return{lvl:2,q:which?T`How many integers satisfy $\dfrac{x${q<0?'+':'-'}${Math.abs(q)}}{x${p<0?'+':'-'}${Math.abs(p)}}\le0$?`:T`How many integers satisfy $\dfrac{x${p<0?'+':'-'}${Math.abs(p)}}{x${q<0?'+':'-'}${Math.abs(q)}}\le0$?`,
  a:n,w:[n+1,n-1,n+2,q-p+1===n?n+3:q-p+1],
- s:which?T`Zeros at $${q}$ (included) and $${p}$ (excluded, denominator): $${p}\lt x\le${q}$, which gives $${n}$ integers.`:T`Zeros at $${p}$ (included) and $${q}$ (excluded): $${p}\le x\lt ${q}$, which gives $${n}$ integers.`}},
+ s:T`The fraction can change sign only at its zero ($x=${which?q:p}$) and where its denominator is zero ($x=${which?p:q}$).<br>It is negative between these two numbers and positive outside them.<br>${which?T`We want $\le0$: include $x=${q}$ (fraction $=0$), exclude $x=${p}$ (zero denominator). So $${p}\lt x\le${q}$.`:T`We want $\le0$: include $x=${p}$ (fraction $=0$), exclude $x=${q}$ (zero denominator). So $${p}\le x\lt ${q}$.`}<br>That's $${q}-${P(p)}=${n}$ integers.`}},
 r=>{const a=ri(r,2,7)*pick(r,[1,-1]),b=ri(r,-15,15),c=ri(r,-30,30);const bound=F(c-b,a);const neg=a<0;
  const big=neg; // a<0: x < bound; ask largest integer.  a>0: x > bound; ask smallest
  const ans=neg?(bound.isInt()?bound.n-1:Math.floor(bound.v)):(bound.isInt()?bound.n+1:Math.ceil(bound.v));
  return{lvl:1,q:T`What is the ${neg?'largest':'smallest'} integer $x$ satisfying $${poly([[a,1],[b,0]],'x')}>${c}$?`,a:ans,w:[ans+1,ans-1,-ans,neg?ans+2:ans-2],
- s:T`$${a}x>${c-b}$. ${neg?'Dividing by a negative flips the sign: $x\\lt '+bound.tex()+'$':'So $x>'+bound.tex()+'$'}. The ${neg?'largest':'smallest'} integer is $${ans}$.`}},
+ s:T`Subtract $${b}$: $${a}x\gt${c-b}$.<br>${neg?T`Divide by $${a}$, a negative number, so the inequality <b>flips</b>: $x\lt${bound.tex()}$.`:T`Divide by $${a}$ (positive, no flip): $x\gt${bound.tex()}$.`}<br>${bound.isInt()?T`The inequality is strict, so $x=${bound.n}$ itself doesn't work.`:T`$${bound.tex()}\approx${bound.v.toFixed(2)}$.`} The ${neg?'largest':'smallest'} integer is $${ans}$.`}},
 ];
 GENS['ineq-amgm']=[
 r=>{const g=ri(r,1,5),s_=ri(r,1,5),t=ri(r,1,6);const a=g*s_*s_,b=g*t*t;
  return{lvl:1,q:T`What is the minimum value of $${a===1?'':a}x+\dfrac{${b}}{x}$ for $x>0$?`,a:2*g*s_*t,w:[g*s_*t,a+b,4*g*s_*t,2*g*s_*t+1,b],
- s:T`AM–GM: $${a===1?'':a}x+\frac{${b}}{x}\ge2\sqrt{${a*b}}=${2*g*s_*t}$, with equality at $x=${F(t,s_).tex()}$.`}},
+ s:T`AM–GM: for positive $u,v$, $u+v\ge2\sqrt{uv}$, with equality when $u=v$.<br>Here $u=${a===1?'':a}x$ and $v=\frac{${b}}{x}$ have constant product $${a*b}$, so the sum is at least $2\sqrt{${a*b}}=2\cdot${g*s_*t}=${2*g*s_*t}$.<br>Equality: $${a===1?'':a}x=\frac{${b}}{x}$, i.e. $x^2=\frac{${b}}{${a}}$, $x=${F(t,s_).tex()}$. The minimum is $${2*g*s_*t}$.`}},
 r=>{const a=ri(r,1,4),b=ri(r,1,4),c=ri(r,4,30);const v=F(c*c,4*a*b);
  return{lvl:2,q:T`Positive reals satisfy $${a===1?'':a}x+${b===1?'':b}y=${c}$. What is the largest possible value of $xy$?`,a:v,w:[F(c*c,4),F(c*c,a*b),v.mul(2),F(c*c,(a+b)**2),v.add(1)],
- s:T`AM–GM on $${a}x$ and $${b}y$: $${a}x\cdot${b}y\le\left(\frac{${c}}2\right)^2$, so $xy\le\frac{${c*c}}{${4*a*b}}=${v.tex()}$, with equality at $${a}x=${b}y=${F(c,2).tex()}$.`}},
+ s:T`The terms $${a}x$ and $${b}y$ have a fixed sum $${c}$, so their product is largest when they're equal (AM–GM): $${a}x\cdot${b}y\le\left(\frac{${c}}{2}\right)^2=${F(c*c,4).tex()}$.<br>So $xy\le\frac{${F(c*c,4).tex()}}{${a*b}}=${v.tex()}$.<br>Equality at $${a}x=${b}y=${F(c,2).tex()}$, i.e. $x=${F(c,2*a).tex()}$, $y=${F(c,2*b).tex()}$.`}},
 r=>{const k=ri(r,1,9);
  return{lvl:1,q:T`Positive reals $a,b,c$ satisfy $abc=${k**3}$. What is the minimum value of $a+b+c$?`,a:3*k,w:[k**3,3*k*k,k,k**3/3|0||9*k,2*k],
- s:T`AM–GM: $a+b+c\ge3\sqrt[3]{${k**3}}=${3*k}$, with equality at $a=b=c=${k}$.`}},
+ s:T`Three-term AM–GM: $\frac{a+b+c}{3}\ge\sqrt[3]{abc}=\sqrt[3]{${k**3}}=${k}$.<br>So $a+b+c\ge${3*k}$, with equality when $a=b=c=${k}$.`}},
 r=>{const p=ri(r,1,5),q=ri(r,1,5);
  return{lvl:2,q:T`For positive $x,y$, what is the minimum of $\left(x+\dfrac{${p*p}}{x}\right)\left(y+\dfrac{${q*q}}{y}\right)$?`,a:4*p*q,w:[2*p*q,p*p*q*q,4*p*q+1,(p+q)**2,2*(p+q)],
- s:T`$x+\frac{${p*p}}x\ge${2*p}$ and $y+\frac{${q*q}}y\ge${2*q}$, with both equalities possible at once ($x=${p},y=${q}$). The minimum is $${4*p*q}$.`}},
+ s:T`Minimize each factor separately with AM–GM:<br>$x+\frac{${p*p}}{x}\ge2\sqrt{${p*p}}=${2*p}$ (equality at $x=${p}$), and $y+\frac{${q*q}}{y}\ge2\sqrt{${q*q}}=${2*q}$ (equality at $y=${q}$).<br>Both factors are positive and their minima happen at the same time, so the minimum product is $${2*p}\cdot${2*q}=${4*p*q}$.`}},
 ];
 GENS['ineq-cs']=[
 r=>{const [a,b,c]=pick(r,[[3,4,5],[5,12,13],[8,15,17],[6,8,10],[7,24,25]]);const k=ri(r,1,4);
  return{lvl:1,q:T`Real numbers satisfy $x^2+y^2=${k*k}$. What is the maximum value of $${a}x+${b}y$?`,a:c*k,w:[(a+b)*k,c*k*k,c,a*k+b,(a+b)*k*k],
- s:T`Cauchy–Schwarz: $(${a}x+${b}y)^2\le(${a*a}+${b*b})(x^2+y^2)=${c*c}\cdot${k*k}$, so the maximum is $${c*k}$.`}},
+ s:T`Cauchy–Schwarz: $(${a}x+${b}y)^2\le(${a}^2+${b}^2)(x^2+y^2)=${a*a+b*b}\cdot${k*k}$.<br>So $${a}x+${b}y\le\sqrt{${(a*a+b*b)*k*k}}=${c}\cdot${k}=${c*k}$.<br>Equality when $(x,y)$ points the same way as $(${a},${b})$: $(x,y)=\left(${F(a*k,c).tex()},${F(b*k,c).tex()}\right)$.`}},
 r=>{const a=ri(r,1,5),b=ri(r,1,5),c=ri(r,1,15);const v=F(c*c,a*a+b*b);
  return{lvl:2,q:T`Real numbers satisfy $${a===1?'':a}x+${b===1?'':b}y=${c}$. What is the minimum value of $x^2+y^2$?`,a:v,w:[F(c*c,(a+b)**2),F(c,a*a+b*b),F(c*c,a*a+b*b).mul(2),F(c*c),F(c*c,a*b)],
- s:T`$(${a}x+${b}y)^2\le(${a*a}+${b*b})(x^2+y^2)$, so $x^2+y^2\ge\frac{${c*c}}{${a*a+b*b}}=${v.tex()}$.`}},
+ s:T`Cauchy–Schwarz: $(${a}x+${b}y)^2\le(${a}^2+${b}^2)(x^2+y^2)$, so $${c*c}\le${a*a+b*b}(x^2+y^2)$.<br>Therefore $x^2+y^2\ge\frac{${c*c}}{${a*a+b*b}}=${v.tex()}$, with equality when $(x,y)\propto(${a},${b})$.<br>(Geometrically, it's the squared distance from the origin to the line: $\left(\frac{${c}}{\sqrt{${a*a+b*b}}}\right)^2$.)`}},
 r=>{const n=pick(r,[2,3,4]),S=ri(r,2,12)*n;const v=F(S*S,n);
  return{lvl:1,q:T`Real numbers ${n===2?'$x,y$':n===3?'$x,y,z$':'$a,b,c,d$'} have sum $${S}$. What is the minimum of the sum of their squares?`,a:v,w:[F(S*S),F(S),F(S*S,n*n),v.mul(2),F(S*S,n+1)],
- s:T`The minimum $\frac{S^2}{n}=\frac{${S*S}}{${n}}=${v.tex()}$ occurs when all are equal to $${S/n}$.`}},
+ s:T`By Cauchy–Schwarz (or QM–AM), the sum of squares of $n$ numbers with sum $S$ is at least $\frac{S^2}{n}$, with equality when all the numbers are equal.<br>Here $\frac{${S}^2}{${n}}=\frac{${S*S}}{${n}}=${v.tex()}$, attained when each number is $\frac{${S}}{${n}}=${S/n}$.`}},
 r=>{const m=ri(r,1,5),n=ri(r,1,5),s_=ri(r,1,4);const v=F((m+n)**2,s_);
  return{lvl:2,q:T`Positive reals satisfy $a+b=${s_}$. What is the minimum of $\dfrac{${m*m}}{a}+\dfrac{${n*n}}{b}$?`,a:v,w:[F(m*m+n*n,s_),F(m+n,s_),v.mul(2),F((m+n)**2),F(m*n*4,s_)],
- s:T`Titu's lemma: $\frac{${m}^2}a+\frac{${n}^2}b\ge\frac{(${m}+${n})^2}{a+b}=${v.tex()}$, with equality when $\frac{${m}}{a}=\frac{${n}}{b}$.`}},
+ s:T`Titu's lemma (Cauchy–Schwarz): $\dfrac{u^2}{a}+\dfrac{v^2}{b}\ge\dfrac{(u+v)^2}{a+b}$.<br>With $u=${m}$, $v=${n}$: $\dfrac{${m*m}}{a}+\dfrac{${n*n}}{b}\ge\dfrac{(${m}+${n})^2}{${s_}}=\dfrac{${(m+n)**2}}{${s_}}=${v.tex()}$.<br>Equality when $\frac{${m}}{a}=\frac{${n}}{b}$: $a=${F(m*s_,m+n).tex()}$, $b=${F(n*s_,m+n).tex()}$.`}},
 ];
 GENS['ineq-abs']=[
 r=>{const k=pick(r,[3,5,7]);const pts=Array.from({length:k},()=>ri(r,-10,15)).sort((a,b)=>a-b);const med=pts[(k-1)/2];const v=pts.reduce((s,p)=>s+Math.abs(med-p),0);
  return{lvl:2,q:T`What is the minimum value of $${pts.map(p=>'|x'+(p<0?'+':'-')+Math.abs(p)+'|').join('+')}$?`,a:v,w:[v+2,pts[k-1]-pts[0],v+Math.abs(pts[0]),v-1>0?v-1:v+3,pts.reduce((s,p)=>s+Math.abs(p),0)],
- s:T`The sum of distances is smallest at the median $x=${med}$, where it equals $${v}$.`}},
+ s:T`$|x-p|$ is the distance from $x$ to $p$, so we're minimizing the total distance to the points $${pts.join(',\\ ')}$.<br>The total is smallest at the median, $x=${med}$: moving away from it brings you closer to fewer points than it takes you away from.<br>At $x=${med}$: $${pts.map(p=>Math.abs(med-p)).join('+')}=${v}$.`}},
 r=>{const a=ri(r,2,15),b=ri(r,a,25);const n=2*a-1;
  return{lvl:1,q:T`A triangle has sides $${a}$, $${b}$, and $x$, where $x$ is an integer. How many values of $x$ are possible?`,a:n,w:[n+1,n-1,2*a,a+b-1],
- s:T`$${b}-${a}\lt x\lt ${a+b}$, so $${b-a+1}\le x\le${a+b-1}$: that is $${n}$ values.`}},
+ s:T`Triangle inequality: the third side is less than the sum and more than the difference of the other two.<br>$${b}-${a}\lt x\lt${b}+${a}$, i.e. $${b-a}\lt x\lt${a+b}$.<br>Integers from $${b-a+1}$ to $${a+b-1}$: that's $${a+b-1}-${b-a+1}+1=${n}$.`}},
 r=>{const k=ri(r,1,12);
  return{lvl:1,q:T`What is the area of the region $|x|+|y|\le${k}$?`,a:2*k*k,w:[k*k,4*k*k,2*k,k*k/2+.5|0||1],
- s:T`A square with diagonals $${2*k}$: area $\frac{(${2*k})^2}{2}=${2*k*k}$.`}},
+ s:T`In the first quadrant the region is $x+y\le${k}$, a right triangle with legs ${k} and area $\frac{${k*k}}{2}$. By symmetry the whole region has four such triangles: a square with vertices $(\pm${k},0)$, $(0,\pm${k})$.<br>Area $=4\cdot\frac{${k*k}}{2}=${2*k*k}$. (Or: diagonals ${2*k} and ${2*k}, area $\frac{${2*k}\cdot${2*k}}{2}$.)`}},
 r=>{const P_=ri(r,6,24);let c=0;for(let a=1;a<=P_;a++)for(let b=a;b<=P_;b++){const cc=P_-a-b;if(cc<b)continue;if(a+b>cc)c++}
  return{lvl:2,q:T`How many non-congruent triangles have integer side lengths and perimeter $${P_}$?`,a:c,w:[c+1,c+2,c>1?c-1:c+3,Math.floor(P_/2)],
- s:T`List $a\le b\le c$ with $a+b+c=${P_}$ and $c\lt ${F(P_,2).tex()}$ (the triangle inequality). Counting systematically by the largest side gives $${c}$.`}},
+ s:T`List $a\le b\le c$ with $a+b+c=${P_}$. The triangle inequality $a+b\gt c$ means $c\lt\frac{${P_}}{2}$, and $c\ge\frac{${P_}}{3}$ since it's the largest side.<br>${(()=>{const rows=[];for(let cc=Math.ceil(P_/3);2*cc<P_;cc++){const tr=[];for(let b=Math.ceil((P_-cc)/2);b<=cc;b++){const a=P_-cc-b;if(a>=1&&a<=b)tr.push('('+a+','+b+','+cc+')')}if(tr.length)rows.push('$c='+cc+'$: $'+tr.join(',\\ ')+'$')}return rows.join('<br>')})()}<br>Total: $${c}$.`}},
 ];
 GENS['ineq-opt']=[
 r=>{const n=ri(r,5,25);const best=n%3===0?3**(n/3):n%3===1?4*3**((n-4)/3):2*3**((n-2)/3);
  return{lvl:2,q:T`Positive integers have sum $${n}$. What is the largest possible value of their product?`,a:best,w:[2**Math.floor(n/2),best/3*2|0,Math.floor(n/2)*Math.ceil(n/2),best+1,3**Math.floor(n/3)===best?best*2:3**Math.floor(n/3)],
- s:T`Use as many 3s as possible (a 4 or a 2 handles the remainder; never a 1): $${n}=${n%3===0?'3\\cdot'+n/3:n%3===1?'3\\cdot'+(n-4)/3+'+4':'3\\cdot'+(n-2)/3+'+2'}$, giving $${best}$.`}},
+ s:T`For a fixed sum, the product is largest using parts of size 3: any part $\ge5$ can be split to increase the product ($2(m-2)\gt m$), a $4$ equals $2\cdot2$, three 2s are worse than two 3s ($8\lt9$), and a 1 never helps.<br>$${n}=${n%3===0?'3\\cdot'+n/3:n%3===1?'3\\cdot'+(n-4)/3+'+4':'3\\cdot'+(n-2)/3+'+2'}$, giving $${n%3===0?'3^{'+n/3+'}':n%3===1?'4\\cdot3^{'+(n-4)/3+'}':'2\\cdot3^{'+(n-2)/3+'}'}=${best}$.`}},
 r=>{const a=ri(r,-6,6),b=ri(r,-6,6),k=ri(r,-5,15);const A=1,B=4;const c=a*a+B*b*b+k;
  return{lvl:2,q:T`What is the minimum value of $x^2+4y^2${-2*a<0?'-':'+'}${Math.abs(2*a)}x${-8*b<0?'-':'+'}${Math.abs(8*b)}y${c<0?'-':'+'}${Math.abs(c)}$?`,a:k,w:[c,k+a*a,k-1,0,k+4*b*b],
- s:T`Complete the squares: $(x${-a<0?'-':'+'}${Math.abs(a)})^2+4(y${-b<0?'-':'+'}${Math.abs(b)})^2+${P(k)}\ge${k}$.`}},
+ s:T`Complete the square in each variable:<br>$x^2${-2*a<0?'-':'+'}${Math.abs(2*a)}x=(x${-a<0?'-':'+'}${Math.abs(a)})^2-${a*a}$ and $4y^2${-8*b<0?'-':'+'}${Math.abs(8*b)}y=4(y${-b<0?'-':'+'}${Math.abs(b)})^2-${4*b*b}$.<br>Expression $=(x${-a<0?'-':'+'}${Math.abs(a)})^2+4(y${-b<0?'-':'+'}${Math.abs(b)})^2-${a*a}-${4*b*b}+${P(c)}=(\dots)^2+4(\dots)^2+${P(k)}$.<br>The squares are $\ge0$, so the minimum is $${k}$, at $x=${a}$, $y=${b}$.`}},
 r=>{const n=ri(r,5,60);const v=Math.floor(n/2)*Math.ceil(n/2);
  return{lvl:1,q:T`Integers $x$ and $y$ satisfy $x+y=${n}$. What is the largest possible value of $xy$?`,a:v,w:[n*n/4|0===v?v+1:n*n,v-1,v+1,n*n],
- s:T`The product is largest when $x$ and $y$ are as close as possible: $${Math.floor(n/2)}\cdot${Math.ceil(n/2)}=${v}$.`}},
+ s:T`$xy=x(${n}-x)$ is a downward parabola, largest at $x=\frac{${n}}{2}${n%2?T`=${n/2}`:''}$.<br>${n%2?T`Since $x$ must be an integer, take the nearest values: $x=${Math.floor(n/2)}$ and $y=${Math.ceil(n/2)}$.`:T`Here $x=y=${n/2}$ works.`}<br>Maximum: $${Math.floor(n/2)}\cdot${Math.ceil(n/2)}=${v}$.`}},
 r=>{const a=ri(r,-8,5),b=a+2*ri(r,1,6);const m=(a+b)/2;const v=2*(m-a)**2;
  return{lvl:1,q:T`What is the smallest value of $(x${-a<0?'-':'+'}${Math.abs(a)})^2+(x${-b<0?'-':'+'}${Math.abs(b)})^2$?`,a:v,w:[(b-a)**2,v/2,0,v+2],
- s:T`The minimum is at the midpoint $x=${m}$: $${(m-a)**2}+${(m-b)**2}=${v}$.`}},
+ s:T`Expand: the sum is $2x^2-2(${a}+${b})x+(${a*a}+${b*b})$, a parabola minimized at $x=\frac{${a}+${b}}{2}=${m}$, the midpoint of $${a}$ and $${b}$.<br>At $x=${m}$ each term is $\left(\frac{${b}-${P(a)}}{2}\right)^2=${(m-a)**2}$.<br>Minimum: $${(m-a)**2}+${(m-b)**2}=${v}$.`}},
 ];

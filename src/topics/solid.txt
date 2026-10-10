@@ -61,7 +61,9 @@ W: 47
 W: 120
 W: 240
 W: 30
-S: $(ab)(bc)(ca)=(abc)^2=12\cdot15\cdot20=3600$, so $V=60$ (the edges are $3,4,5$).
+S: Let the edges be $a,b,c$, so the face areas are $ab=12$, $bc=15$, $ca=20$.
+Multiply all three: $(ab)(bc)(ca)=a^2b^2c^2=(abc)^2=12\cdot15\cdot20=3600$.
+Volume $abc=\sqrt{3600}=60$. (The edges are $3,4,5$: e.g. $ab=12$, $bc=15$ give $\frac ac=\frac45$, and with $ca=20$, $a=4$, $c=5$, $b=3$.)
 ---
 Q: A cube has surface area $150$. What is its volume?
 L: 1
@@ -70,7 +72,8 @@ W: 25
 W: 150
 W: 216
 W: 64
-S: $6s^2=150$, so $s=5$ and $V=125$.
+S: A cube has $6$ square faces, so its surface area is $6s^2=150$, giving $s^2=25$ and $s=5$.
+Volume $=s^3=125$.
 ---
 Q: What is the length of the space diagonal of a $3\times4\times12$ box?
 L: 1
@@ -79,7 +82,8 @@ W: 19
 W: 12
 W: 5
 W: 15
-S: $\sqrt{9+16+144}=13$.
+S: The space diagonal of an $a\times b\times c$ box is $\sqrt{a^2+b^2+c^2}$ (Pythagoras twice: first the floor diagonal $\sqrt{a^2+b^2}$, then up).
+$\sqrt{9+16+144}=\sqrt{169}=13$.
 ---
 Q: What is the volume of a cylinder with radius $3$ and height $5$?
 L: 1
@@ -88,7 +92,8 @@ W: 15\pi
 W: 30\pi
 W: 90\pi
 W: 75\pi
-S: $\pi\cdot9\cdot5=45\pi$.
+S: Volume of a cylinder $=$ base area $\times$ height $=\pi r^2h$.
+$\pi\cdot3^2\cdot5=45\pi$.
 ---
 Q: A rectangular box has edges summing to $48$ (all $12$ edges) and a space diagonal of $9$. What is its surface area?
 L: 3
@@ -97,7 +102,10 @@ W: 72
 W: 81
 W: 144
 W: 54
-S: $4(a+b+c)=48$, so $a+b+c=12$. Then $2(ab+bc+ca)=(a+b+c)^2-(a^2+b^2+c^2)=144-81=63$.
+S: A box has $4$ edges of each length, so $4(a+b+c)=48$ and $a+b+c=12$.
+The space diagonal gives $a^2+b^2+c^2=81$.
+Surface area is $2(ab+bc+ca)$, and $(a+b+c)^2=a^2+b^2+c^2+2(ab+bc+ca)$.
+So $2(ab+bc+ca)=144-81=63$.
 ---
 Q: A cube has a space diagonal of length $6$. What is its volume?
 L: 2
@@ -106,7 +114,9 @@ W: 216
 W: 8\sqrt{3}
 W: 72
 W: 36\sqrt{2}
-S: $s\sqrt3=6$, so $s=2\sqrt3$ and $V=(2\sqrt3)^3=24\sqrt3$.
+S: A cube of side $s$ has space diagonal $\sqrt{s^2+s^2+s^2}=s\sqrt3$.
+$s\sqrt3=6$ gives $s=\frac{6}{\sqrt3}=2\sqrt3$.
+$V=(2\sqrt3)^3=8\cdot3\sqrt3=24\sqrt3$.
 ---
 Q: A cylinder of height $4$ has lateral surface area $24\pi$. What is its volume?
 L: 2
@@ -115,7 +125,9 @@ W: 24\pi
 W: 48\pi
 W: 12\pi
 W: 72\pi
-S: $2\pi r\cdot4=24\pi$, so $r=3$ and $V=\pi\cdot9\cdot4=36\pi$.
+S: Unrolled, the lateral surface is a rectangle with sides $2\pi r$ (the circumference) and $h$: area $2\pi rh$.
+$2\pi r\cdot4=24\pi$ gives $r=3$.
+$V=\pi r^2h=\pi\cdot9\cdot4=36\pi$.
 ---
 Q: A $4\times4\times4$ cube is painted on the outside and cut into $64$ unit cubes. How many unit cubes have exactly two painted faces?
 L: 2
@@ -124,7 +136,9 @@ W: 8
 W: 12
 W: 36
 W: 16
-S: These are the non-corner cubes on the edges: $12$ edges × $(4-2)=24$.
+S: A unit cube has exactly two painted faces when it sits on an edge of the big cube but not at a corner.
+Each of the $12$ edges has $4$ cubes, of which $2$ are corners, leaving $4-2=2$ per edge.
+$12\cdot2=24$.
 ---
 @@ solid-pyr
 Q: What is the volume of a cone with radius $3$ and height $4$?
@@ -134,7 +148,8 @@ W: 36\pi
 W: 15\pi
 W: 24\pi
 W: 4\pi
-S: $\frac13\pi\cdot9\cdot4=12\pi$.
+S: A cone is $\frac13$ of the cylinder with the same base and height: $V=\frac13\pi r^2h$.
+$\frac13\pi\cdot9\cdot4=12\pi$.
 ---
 Q: What is the lateral surface area of a cone with radius $3$ and height $4$?
 L: 1
@@ -143,7 +158,8 @@ W: 12\pi
 W: 24\pi
 W: 9\pi
 W: 20\pi
-S: Slant height $5$; lateral area $\pi r\ell=15\pi$.
+S: The slant height is the hypotenuse of the right triangle with legs $r=3$ and $h=4$: $\ell=5$.
+Lateral area $=\pi r\ell=\pi\cdot3\cdot5=15\pi$. (Unrolled, the side is a sector of radius $\ell$ and arc length $2\pi r$, area $\frac12\cdot2\pi r\cdot\ell$.)
 ---
 Q: A square pyramid has base side $6$ and height $4$. What is its volume?
 L: 1
@@ -152,7 +168,8 @@ W: 144
 W: 60
 W: 24
 W: 96
-S: $\frac13\cdot36\cdot4=48$.
+S: Pyramid volume $=\frac13\cdot$ base area $\cdot$ height.
+Base area $6^2=36$, so $V=\frac13\cdot36\cdot4=48$.
 ---
 Q: What is the volume of a regular tetrahedron with edge length $6$?
 L: 2
@@ -161,7 +178,9 @@ W: 36\sqrt{2}
 W: 54
 W: 9\sqrt{2}
 W: 18\sqrt{3}
-S: $\frac{s^3\sqrt2}{12}=\frac{216\sqrt2}{12}=18\sqrt2$.
+S: A regular tetrahedron with edge $s$ has volume $\frac{s^3\sqrt2}{12}$.
+(Derivation: base area $\frac{\sqrt3}4s^2$, height $s\sqrt{\frac23}$, and $\frac13\cdot\frac{\sqrt3}{4}s^2\cdot s\sqrt{\frac23}=\frac{s^3\sqrt2}{12}$.)
+$\frac{216\sqrt2}{12}=18\sqrt2$.
 ---
 Q: A $240^\circ$ sector of a circle with radius $6$ is rolled into a cone. What is the cone's volume?
 L: 3
@@ -170,8 +189,10 @@ W: 16\sqrt{5}\pi
 W: \frac{64\pi}{3}
 W: 32\pi
 W: \frac{16\sqrt{5}\pi}{3}
-S: The arc $\frac23\cdot12\pi=8\pi$ becomes the base circumference, so $r=4$. The slant height is $6$, so $h=\sqrt{36-16}=2\sqrt5$.
-$V=\frac13\pi\cdot16\cdot2\sqrt5=\frac{32\sqrt5\pi}3$.
+S: When the sector rolls up, its radius becomes the slant height ($\ell=6$) and its arc becomes the base circumference.
+Arc length: $\frac{240}{360}\cdot2\pi\cdot6=8\pi=2\pi r$, so $r=4$.
+Height: $h=\sqrt{\ell^2-r^2}=\sqrt{36-16}=2\sqrt5$.
+$V=\frac13\pi r^2h=\frac13\pi\cdot16\cdot2\sqrt5=\frac{32\sqrt5\pi}{3}$.
 ---
 Q: A cone of volume $64\pi$ is cut by a plane parallel to its base, halfway up its height. What is the volume of the bottom piece (the frustum)?
 L: 2
@@ -180,7 +201,9 @@ W: 32\pi
 W: 48\pi
 W: 8\pi
 W: 60\pi
-S: The top cone is similar with ratio $\frac12$, so it has $\frac18$ of the volume, $8\pi$. The frustum is $56\pi$.
+S: The piece above the cut is a smaller cone, similar to the original with ratio $\frac12$ (half the height, half the radius).
+Volumes scale by the cube of the ratio: $\left(\frac12\right)^3=\frac18$, so the top cone is $\frac18\cdot64\pi=8\pi$.
+The frustum is the rest: $64\pi-8\pi=56\pi$.
 ---
 Q: A square pyramid has base side $10$, and its slant height (from apex to the midpoint of a base edge) is $13$. What is its volume?
 L: 2
@@ -189,7 +212,9 @@ W: 1300
 W: 1200
 W: 500
 W: 520
-S: $h=\sqrt{13^2-5^2}=12$; $V=\frac13\cdot100\cdot12=400$.
+S: The slant height, the height, and half the base side form a right triangle (apex, center of the base, midpoint of an edge).
+$h=\sqrt{13^2-5^2}=\sqrt{144}=12$.
+$V=\frac13\cdot10^2\cdot12=400$.
 ---
 Q: What is the total surface area of a cone with radius $5$ and height $12$?
 L: 1
@@ -198,7 +223,8 @@ W: 65\pi
 W: 25\pi
 W: 100\pi
 W: 115\pi
-S: $\ell=13$: $\pi\cdot25+\pi\cdot5\cdot13=90\pi$.
+S: Slant height: $\ell=\sqrt{5^2+12^2}=13$.
+Total surface area $=$ base $+$ lateral $=\pi r^2+\pi r\ell=25\pi+65\pi=90\pi$.
 ---
 @@ solid-sphere
 Q: A sphere has surface area $36\pi$. What is its volume?
@@ -208,7 +234,8 @@ W: 108\pi
 W: 27\pi
 W: 12\pi
 W: 288\pi
-S: $4\pi r^2=36\pi$, so $r=3$ and $V=\frac43\pi\cdot27=36\pi$.
+S: Surface area $4\pi r^2=36\pi$ gives $r^2=9$, $r=3$.
+Volume $\frac43\pi r^3=\frac43\pi\cdot27=36\pi$.
 ---
 Q: What is the volume of the sphere inscribed in a cube of side $6$?
 L: 1
@@ -217,7 +244,8 @@ W: 288\pi
 W: 216
 W: 72\pi
 W: 27\pi
-S: $r=3$: $\frac43\pi\cdot27=36\pi$.
+S: A sphere inscribed in a cube touches all six faces, so its diameter equals the side: $r=3$.
+$V=\frac43\pi\cdot3^3=36\pi$.
 ---
 Q: A cube is inscribed in a sphere of radius $\sqrt3$. What is the cube's volume?
 L: 2
@@ -226,7 +254,8 @@ W: 3\sqrt{3}
 W: 27
 W: 8\sqrt{3}
 W: 6
-S: The space diagonal is the diameter: $s\sqrt3=2\sqrt3$, so $s=2$ and $V=8$.
+S: A cube inscribed in a sphere has its vertices on the sphere, so the space diagonal is a diameter: $s\sqrt3=2\sqrt3$.
+So $s=2$ and the volume is $2^3=8$.
 ---
 Q: What is the ratio of a sphere's volume to the volume of the smallest cylinder containing it?
 L: 1
@@ -235,7 +264,9 @@ W: \frac{1}{2}
 W: \frac{3}{4}
 W: \frac{4}{3}
 W: \frac{3}{2}
-S: $\frac{\frac43\pi r^3}{\pi r^2\cdot2r}=\frac23$ (Archimedes).
+S: The smallest cylinder containing a sphere of radius $r$ has radius $r$ and height $2r$, volume $\pi r^2\cdot2r=2\pi r^3$.
+Ratio: $\dfrac{\frac43\pi r^3}{2\pi r^3}=\dfrac{4}{6}=\dfrac23$.
+(Archimedes was so proud of this he asked for it on his tombstone.)
 ---
 Q: A metal sphere of radius $6$ is melted and recast into spheres of radius $2$. How many small spheres are made?
 L: 1
@@ -244,7 +275,8 @@ W: 9
 W: 3
 W: 54
 W: 81
-S: The volume ratio is $\left(\frac62\right)^3=27$.
+S: Melting preserves volume. Volume scales with the cube of the radius, so one big sphere holds $\left(\frac62\right)^3=27$ small spheres' worth of metal.
+Answer: $27$.
 ---
 Q: What is the total surface area of a solid hemisphere of radius $3$, including its flat base?
 L: 2
@@ -253,7 +285,9 @@ W: 18\pi
 W: 36\pi
 W: 9\pi
 W: 45\pi
-S: Curved part $2\pi r^2=18\pi$ plus base $\pi r^2=9\pi$: $27\pi$.
+S: A hemisphere's curved surface is half a sphere's: $\frac12\cdot4\pi r^2=2\pi r^2=18\pi$.
+The flat base is a disk: $\pi r^2=9\pi$.
+Total: $18\pi+9\pi=27\pi$.
 ---
 Q: The radius of a sphere increases by $50\%$. By what factor does its volume increase?
 L: 1
@@ -262,7 +296,8 @@ W: \frac{3}{2}
 W: \frac{9}{4}
 W: 3
 W: 2
-S: The volume scales by the cube of the factor: $\left(\frac32\right)^3=\frac{27}8$.
+S: Increasing by $50\%$ multiplies the radius by $\frac32$.
+Volume is proportional to $r^3$, so it's multiplied by $\left(\frac32\right)^3=\frac{27}{8}$ (an increase of $237.5\%$).
 ---
 Q: A sphere is tangent to all twelve edges of a cube of side $2$. What is the sphere's volume?
 L: 3
@@ -271,8 +306,9 @@ W: \frac{4\pi}{3}
 W: 4\sqrt{3}\pi
 W: \frac{32\pi}{3}
 W: \frac{16\sqrt{2}\pi}{3}
-S: The distance from the center to an edge midpoint is half a face diagonal: $r=\sqrt2$.
-$V=\frac43\pi(\sqrt2)^3=\frac{8\sqrt2\pi}3$.
+S: The sphere is centered at the cube's center and touches each edge at its midpoint.
+From the center to an edge midpoint: offsets of $1$ in two directions and $0$ in the third, so $r=\sqrt{1^2+1^2}=\sqrt2$ (half a face diagonal).
+$V=\frac43\pi(\sqrt2)^3=\frac43\pi\cdot2\sqrt2=\frac{8\sqrt2\pi}{3}$.
 ---
 @@ solid-dist
 Q: What is the distance between $(1,2,3)$ and $(4,6,15)$?
@@ -282,7 +318,8 @@ W: 12
 W: 15
 W: 19
 W: \sqrt{185}
-S: $\sqrt{9+16+144}=13$.
+S: 3D distance formula: $\sqrt{(\Delta x)^2+(\Delta y)^2+(\Delta z)^2}$.
+$\Delta=(3,4,12)$: $\sqrt{9+16+144}=\sqrt{169}=13$.
 ---
 Q: An ant walks on the surface of a unit cube from one vertex to the opposite vertex. What is the shortest possible path length?
 L: 2
@@ -291,7 +328,9 @@ W: \sqrt{3}
 W: 2
 W: 1+\sqrt{2}
 W: 3
-S: Unfold two adjacent faces into a $1\times2$ rectangle; the path is its diagonal, $\sqrt{1+4}=\sqrt5$.
+S: Unfold the cube so the ant's path lies on two adjacent faces laid flat: they form a $1\times2$ rectangle, with the start and end at opposite corners.
+The shortest path is the straight diagonal: $\sqrt{1^2+2^2}=\sqrt5$.
+(The straight line through the cube, $\sqrt3$, isn't allowed: the ant stays on the surface.)
 ---
 Q: A plane through the midpoints of six edges of a unit cube cuts a regular hexagon. What is the hexagon's area?
 L: 3
@@ -300,8 +339,8 @@ W: \frac{\sqrt{3}}{2}
 W: 1
 W: \frac{3\sqrt{3}}{2}
 W: \sqrt{2}
-S: Adjacent edge midpoints are $\frac{\sqrt2}2$ apart, so the side is $\frac{\sqrt2}2$.
-Area $=\frac{3\sqrt3}{2}\cdot\frac12=\frac{3\sqrt3}4$.
+S: The six edge midpoints that this plane passes through form a regular hexagon. Two adjacent ones differ by $\frac12$ in two coordinates, so the side is $\sqrt{\frac14+\frac14}=\frac{\sqrt2}{2}$.
+A regular hexagon with side $s$ has area $\frac{3\sqrt3}{2}s^2=\frac{3\sqrt3}{2}\cdot\frac12=\frac{3\sqrt3}{4}$.
 ---
 Q: A plane passes through the three vertices of a unit cube that are adjacent to one vertex. What is the area of the cross-section?
 L: 2
@@ -310,7 +349,8 @@ W: \frac{\sqrt{3}}{4}
 W: 1
 W: \sqrt{2}
 W: \frac{\sqrt{2}}{2}
-S: An equilateral triangle with side $\sqrt2$ (face diagonals): $\frac{\sqrt3}4\cdot2=\frac{\sqrt3}2$.
+S: The three vertices adjacent to a corner are pairwise joined by face diagonals of length $\sqrt2$, so the cross-section is an equilateral triangle with side $\sqrt2$.
+Area $=\frac{\sqrt3}{4}(\sqrt2)^2=\frac{\sqrt3}{4}\cdot2=\frac{\sqrt3}{2}$.
 ---
 Q: How far is the center of a cube of side $6$ from one of its vertices?
 L: 1
@@ -319,7 +359,8 @@ W: 6\sqrt{3}
 W: 3\sqrt{2}
 W: 6
 W: 9
-S: Half the space diagonal: $\frac{6\sqrt3}{2}=3\sqrt3$.
+S: The center is the midpoint of every space diagonal. The space diagonal is $6\sqrt3$, so the distance is half: $3\sqrt3$.
+(Or: offsets of $3$ in each direction, $\sqrt{9+9+9}=3\sqrt3$.)
 ---
 Q: A scale model is built at a $1:20$ scale. The model has volume $30\text{ cm}^3$. What is the real object's volume, in $\text{cm}^3$?
 L: 1
@@ -328,7 +369,8 @@ W: 600
 W: 12000
 W: 24000
 W: 4800
-S: Volumes scale by $20^3=8000$: $30\cdot8000=240000$.
+S: Lengths scale by $20$, areas by $20^2$, and volumes by $20^3=8000$.
+Real volume: $30\cdot8000=240{,}000\text{ cm}^3$.
 ---
 Q: An ant travels on the surface of a $2\times3\times4$ box from one corner to the opposite corner. What is the shortest possible path length?
 L: 3
@@ -337,7 +379,9 @@ W: \sqrt{29}
 W: \sqrt{45}
 W: 9
 W: \sqrt{53}
-S: The three unfoldings give $\sqrt{(2+3)^2+4^2}=\sqrt{41}$, $\sqrt{(2+4)^2+3^2}=\sqrt{45}$, and $\sqrt{(3+4)^2+2^2}=\sqrt{53}$. The shortest is $\sqrt{41}$. ($\sqrt{29}$ is the straight line through the inside.)
+S: Unfold the two faces the ant crosses. For a box $a\times b\times c$, the three possible unfoldings give paths of length $\sqrt{(a+b)^2+c^2}$, $\sqrt{(a+c)^2+b^2}$, $\sqrt{(b+c)^2+a^2}$.
+With $2,3,4$: $\sqrt{25+16}=\sqrt{41}$, $\sqrt{36+9}=\sqrt{45}$, $\sqrt{49+4}=\sqrt{53}$.
+The shortest is $\sqrt{41}$, from adding the two <b>shorter</b> edges. ($\sqrt{29}$ is the interior diagonal, which the ant can't use.)
 ---
 Q: What is the distance between the centers of two adjacent faces of a cube of side $4$?
 L: 1
@@ -346,58 +390,58 @@ W: 4
 W: 2
 W: 4\sqrt{2}
 W: 2\sqrt{3}
-S: The centers are offset by $2$ in two directions: $\sqrt{4+4}=2\sqrt2$.
-
+S: Place the cube with a corner at the origin. The centers of two adjacent faces are, for example, $(2,2,0)$ (bottom) and $(2,0,2)$ (front).
+They differ by $2$ in two coordinates: distance $\sqrt{4+4}=2\sqrt2$.
 === GENS ===
 const QUADS=[[1,2,2,3],[2,3,6,7],[1,4,8,9],[2,6,9,11],[3,4,12,13],[2,10,11,15],[4,4,7,9],[6,6,7,11],[2,5,14,15],[1,12,12,17],[8,9,12,17],[4,8,19,21]];
 GENS['solid-prism']=[
 r=>{const a=ri(r,1,9),b=ri(r,1,9),c=ri(r,1,9);
- return{lvl:2,q:T`A rectangular box has faces with areas $${a*b}$, $${b*c}$, and $${c*a}$. What is its volume?`,a:a*b*c,w:[a*b+b*c+c*a,a*b*b*c,2*a*b*c,a*b*c+a],s:T`$(abc)^2=${a*b}\cdot${b*c}\cdot${c*a}=${(a*b*c)**2}$, so $V=${a*b*c}$.`}},
+ return{lvl:2,q:T`A rectangular box has faces with areas $${a*b}$, $${b*c}$, and $${c*a}$. What is its volume?`,a:a*b*c,w:[a*b+b*c+c*a,a*b*b*c,2*a*b*c,a*b*c+a],s:T`Let the edges be $a,b,c$, so the three face areas are $ab$, $bc$, $ca$.<br>Their product is $(ab)(bc)(ca)=(abc)^2$: $${a*b}\cdot${b*c}\cdot${c*a}=${(a*b*c)**2}$.<br>So the volume is $abc=\sqrt{${(a*b*c)**2}}=${a*b*c}$. (The edges are $${a},${b},${c}$.)`}},
 r=>{const s_=ri(r,1,12);const ask=r()<.5;
- return ask?{lvl:1,q:T`A cube has surface area $${6*s_*s_}$. What is its volume?`,a:s_**3,w:[s_*s_,6*s_*s_,(s_+1)**3,s_**3/2|0||2],s:T`$6s^2=${6*s_*s_}$, so $s=${s_}$ and $V=${s_**3}$.`}
- :{lvl:1,q:T`A cube has volume $${s_**3}$. What is its surface area?`,a:6*s_*s_,w:[s_*s_,4*s_*s_,s_**3,12*s_],s:T`$s=${s_}$, so the surface area is $6\cdot${s_*s_}=${6*s_*s_}$.`}},
+ return ask?{lvl:1,q:T`A cube has surface area $${6*s_*s_}$. What is its volume?`,a:s_**3,w:[s_*s_,6*s_*s_,(s_+1)**3,s_**3/2|0||2],s:T`A cube has 6 congruent square faces, so $6s^2=${6*s_*s_}$, giving $s^2=${s_*s_}$ and $s=${s_}$.<br>Volume $=s^3=${s_}^3=${s_**3}$.`}
+ :{lvl:1,q:T`A cube has volume $${s_**3}$. What is its surface area?`,a:6*s_*s_,w:[s_*s_,4*s_*s_,s_**3,12*s_],s:T`Volume $s^3=${s_**3}$ gives $s=${s_}$.<br>Surface area $=6s^2=6\cdot${s_*s_}=${6*s_*s_}$.`}},
 r=>{const [a,b,c,d]=pick(r,QUADS);const k=ri(r,1,3);
- return{lvl:1,q:T`What is the length of the space diagonal of an $${a*k}\times${b*k}\times${c*k}$ box?`,a:d*k,w:[(a+b+c)*k,d*k+1,R(1,(a*a+b*b)*k*k),c*k+1],s:T`$\sqrt{${a*a*k*k}+${b*b*k*k}+${c*c*k*k}}=${d*k}$.`}},
+ return{lvl:1,q:T`What is the length of the space diagonal of an $${a*k}\times${b*k}\times${c*k}$ box?`,a:d*k,w:[(a+b+c)*k,d*k+1,R(1,(a*a+b*b)*k*k),c*k+1],s:T`The space diagonal of an $a\times b\times c$ box is $\sqrt{a^2+b^2+c^2}$ (the floor diagonal $\sqrt{a^2+b^2}$ and the height form a right triangle).<br>$\sqrt{${a*k}^2+${b*k}^2+${c*k}^2}=\sqrt{${a*a*k*k}+${b*b*k*k}+${c*c*k*k}}=\sqrt{${d*d*k*k}}=${d*k}$.`}},
 r=>{const rr=ri(r,1,9),h=ri(r,1,12);const ask=r()<.5;
- return ask?{lvl:1,q:T`What is the volume of a cylinder with radius $${rr}$ and height $${h}$?`,a:PI(rr*rr*h),w:[PI(2*rr*h),PI(rr*h),PI(F(rr*rr*h,3)),PI(2*rr*rr*h)],s:T`$\pi r^2h=${PI(rr*rr*h).tex}$.`}
- :{lvl:1,q:T`What is the total surface area of a cylinder with radius $${rr}$ and height $${h}$?`,a:PI(2*rr*rr+2*rr*h),w:[PI(2*rr*h),PI(rr*rr+2*rr*h),PI(rr*rr*h),PI(2*rr*rr+rr*h)],s:T`$2\pi r^2+2\pi rh=${PI(2*rr*rr).tex}+${PI(2*rr*h).tex}=${PI(2*rr*rr+2*rr*h).tex}$.`}},
+ return ask?{lvl:1,q:T`What is the volume of a cylinder with radius $${rr}$ and height $${h}$?`,a:PI(rr*rr*h),w:[PI(2*rr*h),PI(rr*h),PI(F(rr*rr*h,3)),PI(2*rr*rr*h)],s:T`Cylinder volume $=$ base area $\times$ height $=\pi r^2h$.<br>$\pi\cdot${rr}^2\cdot${h}=\pi\cdot${rr*rr}\cdot${h}=${PI(rr*rr*h).tex}$.`}
+ :{lvl:1,q:T`What is the total surface area of a cylinder with radius $${rr}$ and height $${h}$?`,a:PI(2*rr*rr+2*rr*h),w:[PI(2*rr*h),PI(rr*rr+2*rr*h),PI(rr*rr*h),PI(2*rr*rr+rr*h)],s:T`Total surface area $=$ two circular ends $+$ the side. The side unrolls into a rectangle $2\pi r$ by $h$.<br>$2\pi r^2+2\pi rh=2\pi\cdot${rr*rr}+2\pi\cdot${rr}\cdot${h}=${PI(2*rr*rr).tex}+${PI(2*rr*h).tex}=${PI(2*rr*rr+2*rr*h).tex}$.`}},
 r=>{const n=ri(r,3,10);const k=pick(r,[0,1,2,3]);const v=[(n-2)**3,6*(n-2)**2,12*(n-2),8][k];
  return{lvl:2,q:T`An $${n}\times${n}\times${n}$ cube is painted on the outside and cut into unit cubes. How many unit cubes have exactly ${k} painted face${k===1?'':'s'}?`,a:v,w:[(n-2)**3,6*(n-2)**2,12*(n-2),8,n*n,6*n*n].filter(x=>x!==v),
- s:T`3 faces: corners (8). 2 faces: edge cubes, $12(n-2)=${12*(n-2)}$. 1 face: face interiors, $6(n-2)^2=${6*(n-2)**2}$. 0 faces: the inside, $(n-2)^3=${(n-2)**3}$.`}},
+ s:T`Classify the unit cubes by position in the $${n}\times${n}\times${n}$ cube:<br>• 3 painted faces: the 8 corners.<br>• 2 painted faces: on an edge but not a corner, $${n}-2=${n-2}$ per edge, $12\cdot${n-2}=${12*(n-2)}$.<br>• 1 painted face: inside a face, $(${n}-2)^2=${(n-2)**2}$ per face, $6\cdot${(n-2)**2}=${6*(n-2)**2}$.<br>• 0 painted faces: the interior cube, $(${n}-2)^3=${(n-2)**3}$.<br>(Check: $8+${12*(n-2)}+${6*(n-2)**2}+${(n-2)**3}=${n**3}$.) Answer for ${k}: $${v}$.`}},
 ];
 GENS['solid-pyr']=[
 r=>{const [a,b,c]=pick(r,TRIPLES.filter(t=>t[2]<=26));const k=ri(r,1,2);const rr=a*k,h=b*k,l=c*k;const ask=pick(r,['V','L','T']);
- if(ask==='V')return{lvl:1,q:T`What is the volume of a cone with radius $${rr}$ and height $${h}$?`,a:PI(F(rr*rr*h,3)),w:[PI(rr*rr*h),PI(rr*l),PI(F(rr*h*h,3)),PI(F(rr*rr*l,3))],s:T`$\frac13\pi r^2h=${PI(F(rr*rr*h,3)).tex}$.`};
- if(ask==='L')return{lvl:1,q:T`What is the lateral surface area of a cone with radius $${rr}$ and height $${h}$?`,a:PI(rr*l),w:[PI(rr*h),PI(rr*rr+rr*l),PI(2*rr*l),PI(F(rr*rr*h,3))],s:T`Slant height $\ell=${l}$, so the lateral area is $\pi r\ell=${PI(rr*l).tex}$.`};
- return{lvl:1,q:T`What is the total surface area of a cone with radius $${rr}$ and height $${h}$?`,a:PI(rr*rr+rr*l),w:[PI(rr*l),PI(rr*rr+rr*h),PI(2*rr*rr+rr*l),PI(rr*rr*h)],s:T`$\ell=${l}$: $\pi r^2+\pi r\ell=${PI(rr*rr+rr*l).tex}$.`}},
+ if(ask==='V')return{lvl:1,q:T`What is the volume of a cone with radius $${rr}$ and height $${h}$?`,a:PI(F(rr*rr*h,3)),w:[PI(rr*rr*h),PI(rr*l),PI(F(rr*h*h,3)),PI(F(rr*rr*l,3))],s:T`A cone has $\frac13$ the volume of the cylinder with the same base and height: $V=\frac13\pi r^2h$.<br>$\frac13\pi\cdot${rr}^2\cdot${h}=\frac{${rr*rr*h}}{3}\pi=${PI(F(rr*rr*h,3)).tex}$.`};
+ if(ask==='L')return{lvl:1,q:T`What is the lateral surface area of a cone with radius $${rr}$ and height $${h}$?`,a:PI(rr*l),w:[PI(rr*h),PI(rr*rr+rr*l),PI(2*rr*l),PI(F(rr*rr*h,3))],s:T`The slant height is the hypotenuse of the right triangle formed by the radius and the height: $\ell=\sqrt{${rr}^2+${h}^2}=${l}$.<br>The lateral surface unrolls into a sector with radius $\ell$ and arc $2\pi r$, area $\pi r\ell$.<br>$\pi\cdot${rr}\cdot${l}=${PI(rr*l).tex}$.`};
+ return{lvl:1,q:T`What is the total surface area of a cone with radius $${rr}$ and height $${h}$?`,a:PI(rr*rr+rr*l),w:[PI(rr*l),PI(rr*rr+rr*h),PI(2*rr*rr+rr*l),PI(rr*rr*h)],s:T`Slant height: $\ell=\sqrt{${rr}^2+${h}^2}=${l}$.<br>Total surface area $=$ base $+$ lateral $=\pi r^2+\pi r\ell=${PI(rr*rr).tex}+${PI(rr*l).tex}=${PI(rr*rr+rr*l).tex}$.`}},
 r=>{const [a,b,c]=pick(r,TRIPLES.filter(t=>t[2]<=29));const base=2*a,h=b;
  return{lvl:2,q:T`A square pyramid has base side $${base}$ and slant height (apex to the midpoint of a base edge) $${c}$. What is its volume?`,a:F(base*base*h,3),w:[F(base*base*c,3),F(base*base*h),F(base*base*h,2),F(base*c*h,3)],
- s:T`$h=\sqrt{${c}^2-${a}^2}=${b}$, so $V=\frac13\cdot${base*base}\cdot${h}=${F(base*base*h,3).tex()}$.`}},
+ s:T`The apex, the center of the base, and the midpoint of a base edge form a right triangle: legs $h$ and half the base side, $${a}$; hypotenuse the slant height $${c}$.<br>$h=\sqrt{${c}^2-${a}^2}=\sqrt{${c*c-a*a}}=${b}$.<br>$V=\frac13\cdot(\text{base area})\cdot h=\frac13\cdot${base*base}\cdot${h}=${F(base*base*h,3).tex()}$.`}},
 r=>{const k=pick(r,[F(1,2),F(1,3),F(2,3),F(1,4),F(3,4)]);const V=k.d**3*ri(r,1,3);const small=k.pow(3).mul(V);
  return{lvl:2,q:T`A cone of volume $${PI(V).tex}$ is cut by a plane parallel to its base at $${k.tex()}$ of the way from the apex to the base. What is the volume of the bottom piece (the frustum)?`,a:PI(F(V).sub(small)),w:[PI(small),PI(F(V).mul(F(1).sub(k))),PI(F(V).mul(F(1).sub(k.mul(k)))),PI(F(V,2))],
- s:T`The top cone is similar with ratio $${k.tex()}$, so its volume is $${k.pow(3).tex()}\cdot${PI(V).tex}=${PI(small).tex}$. The frustum has the rest: $${PI(F(V).sub(small)).tex}$.`}},
+ s:T`The cut leaves a small cone on top, similar to the whole cone with ratio $${k.tex()}$ (it reaches $${k.tex()}$ of the height).<br>Volumes scale by the cube of the ratio: the top cone is $\left(${k.tex()}\right)^3=${k.pow(3).tex()}$ of the whole, $${k.pow(3).tex()}\cdot${PI(V).tex}=${PI(small).tex}$.<br>The frustum is what's left: $${PI(V).tex}-${PI(small).tex}=${PI(F(V).sub(small)).tex}$.`}},
 r=>{const s_=ri(r,1,6)*pick(r,[1,2,3]);const v=F(s_**3,12);
- return{lvl:2,q:T`What is the volume of a regular tetrahedron with edge length $${s_}$?`,a:FR(v,2),w:[FR(v.mul(2),2),FR(v,3),FR(F(s_**3,6),1),FR(F(s_**3,6),2)],s:T`$\frac{s^3\sqrt2}{12}=\frac{${s_**3}\sqrt2}{12}=${FR(v,2).tex}$.`}},
+ return{lvl:2,q:T`What is the volume of a regular tetrahedron with edge length $${s_}$?`,a:FR(v,2),w:[FR(v.mul(2),2),FR(v,3),FR(F(s_**3,6),1),FR(F(s_**3,6),2)],s:T`Regular tetrahedron volume: $V=\frac{s^3\sqrt2}{12}$ (base area $\frac{\sqrt3}{4}s^2$ times height $s\sqrt{\frac23}$, divided by 3).<br>$V=\frac{${s_}^3\sqrt2}{12}=\frac{${s_**3}\sqrt2}{12}=${FR(v,2).tex}$.`}},
 ];
 GENS['solid-sphere']=[
 r=>{const rr=ri(r,1,9);const ask=r()<.5;
- return ask?{lvl:1,q:T`A sphere has surface area $${PI(4*rr*rr).tex}$. What is its volume?`,a:PI(F(4*rr**3,3)),w:[PI(4*rr**3),PI(F(rr**3,3)),PI(4*rr*rr),PI(F(8*rr**3,3))],s:T`$r=${rr}$, so $V=\frac43\pi\cdot${rr**3}=${PI(F(4*rr**3,3)).tex}$.`}
- :{lvl:1,q:T`A sphere has volume $${PI(F(4*rr**3,3)).tex}$. What is its surface area?`,a:PI(4*rr*rr),w:[PI(2*rr*rr),PI(rr*rr),PI(8*rr*rr),PI(4*rr)],s:T`$r=${rr}$, so the surface area is $4\pi r^2=${PI(4*rr*rr).tex}$.`}},
+ return ask?{lvl:1,q:T`A sphere has surface area $${PI(4*rr*rr).tex}$. What is its volume?`,a:PI(F(4*rr**3,3)),w:[PI(4*rr**3),PI(F(rr**3,3)),PI(4*rr*rr),PI(F(8*rr**3,3))],s:T`Surface area $4\pi r^2=${PI(4*rr*rr).tex}$ gives $r^2=${rr*rr}$, so $r=${rr}$.<br>Volume $=\frac43\pi r^3=\frac43\pi\cdot${rr**3}=${PI(F(4*rr**3,3)).tex}$.`}
+ :{lvl:1,q:T`A sphere has volume $${PI(F(4*rr**3,3)).tex}$. What is its surface area?`,a:PI(4*rr*rr),w:[PI(2*rr*rr),PI(rr*rr),PI(8*rr*rr),PI(4*rr)],s:T`Volume $\frac43\pi r^3=${PI(F(4*rr**3,3)).tex}$ gives $r^3=${rr**3}$, so $r=${rr}$.<br>Surface area $=4\pi r^2=4\pi\cdot${rr*rr}=${PI(4*rr*rr).tex}$.`}},
 r=>{const s_=2*ri(r,1,8);
- return{lvl:1,q:T`What is the volume of the sphere inscribed in a cube of side $${s_}$?`,a:PI(F(4*(s_/2)**3,3)),w:[PI(F(4*s_**3,3)),PI(F((s_/2)**3,1)),PI(F(s_**3,6)).v===PI(F(4*(s_/2)**3,3)).v?PI(F(s_**3,3)):PI(F(s_**3,6)),PI(4*(s_/2)**2)],s:T`$r=${s_/2}$: $\frac43\pi\cdot${(s_/2)**3}=${PI(F(4*(s_/2)**3,3)).tex}$.`}},
+ return{lvl:1,q:T`What is the volume of the sphere inscribed in a cube of side $${s_}$?`,a:PI(F(4*(s_/2)**3,3)),w:[PI(F(4*s_**3,3)),PI(F((s_/2)**3,1)),PI(F(s_**3,6)).v===PI(F(4*(s_/2)**3,3)).v?PI(F(s_**3,3)):PI(F(s_**3,6)),PI(4*(s_/2)**2)],s:T`An inscribed sphere touches all six faces of the cube, so its diameter equals the side: $r=\frac{${s_}}{2}=${s_/2}$.<br>$V=\frac43\pi r^3=\frac43\pi\cdot${(s_/2)**3}=${PI(F(4*(s_/2)**3,3)).tex}$.`}},
 r=>{const R_=ri(r,2,12),rr=pick(r,[1,2,3].filter(x=>R_%x===0&&x<R_));if(!rr)return GENS['solid-sphere'][2](r);
- return{lvl:1,q:T`A metal sphere of radius $${R_}$ is melted and recast into spheres of radius $${rr}$. How many are made?`,a:(R_/rr)**3,w:[(R_/rr)**2,R_/rr,(R_/rr)**3*2,(R_/rr)**3-1],s:T`The volume ratio is $\left(\frac{${R_}}{${rr}}\right)^3=${(R_/rr)**3}$.`}},
+ return{lvl:1,q:T`A metal sphere of radius $${R_}$ is melted and recast into spheres of radius $${rr}$. How many are made?`,a:(R_/rr)**3,w:[(R_/rr)**2,R_/rr,(R_/rr)**3*2,(R_/rr)**3-1],s:T`Melting and recasting keeps the total volume. Since volume is proportional to $r^3$, one sphere of radius ${R_} has the volume of $\left(\frac{${R_}}{${rr}}\right)^3=${R_/rr}^3=${(R_/rr)**3}$ spheres of radius ${rr}.<br>Answer: $${(R_/rr)**3}$.`}},
 r=>{const p=ri(r,1,4),q=ri(r,p+1,6);const k=F(q,p);
- return{lvl:1,q:T`The radius of a sphere is multiplied by $${k.tex()}$. By what factor is its volume multiplied?`,a:k.pow(3),w:[k,k.pow(2),k.mul(3),k.pow(3).add(1)],s:T`Volume scales with the cube: $\left(${k.tex()}\right)^3=${k.pow(3).tex()}$.`}},
+ return{lvl:1,q:T`The radius of a sphere is multiplied by $${k.tex()}$. By what factor is its volume multiplied?`,a:k.pow(3),w:[k,k.pow(2),k.mul(3),k.pow(3).add(1)],s:T`Volume is proportional to the cube of the radius ($V=\frac43\pi r^3$), so multiplying $r$ by $${k.tex()}$ multiplies $V$ by $\left(${k.tex()}\right)^3=${k.pow(3).tex()}$.<br>(Surface area would scale by the square, $${k.pow(2).tex()}$.)`}},
 ];
 GENS['solid-dist']=[
 r=>{const [a,b,c,d]=pick(r,QUADS);const x=ri(r,-5,5),y=ri(r,-5,5),z=ri(r,-5,5);
- return{lvl:1,q:T`What is the distance between $(${x},${y},${z})$ and $(${x+a},${y-b},${z+c})$?`,a:d,w:[a+b+c,d+1,R(1,a*a+b*b),d-1],s:T`$\sqrt{${a}^2+${b}^2+${c}^2}=${d}$.`}},
+ return{lvl:1,q:T`What is the distance between $(${x},${y},${z})$ and $(${x+a},${y-b},${z+c})$?`,a:d,w:[a+b+c,d+1,R(1,a*a+b*b),d-1],s:T`3D distance: $\sqrt{(\Delta x)^2+(\Delta y)^2+(\Delta z)^2}$.<br>The differences are $${a}$, $${-b}$, $${c}$: $\sqrt{${a*a}+${b*b}+${c*c}}=\sqrt{${d*d}}=${d}$.`}},
 r=>{const s_=2*ri(r,1,8);
- return{lvl:1,q:T`How far is the center of a cube of side $${s_}$ from one of its vertices?`,a:R(s_/2,3),w:[R(s_,3),R(s_/2,2),R(s_,1),R(s_/2,1)],s:T`Half the space diagonal: $\frac{${s_}\sqrt3}2=${R(s_/2,3).tex}$.`}},
+ return{lvl:1,q:T`How far is the center of a cube of side $${s_}$ from one of its vertices?`,a:R(s_/2,3),w:[R(s_,3),R(s_/2,2),R(s_,1),R(s_/2,1)],s:T`The center is the midpoint of the space diagonal from that vertex to the opposite one.<br>Space diagonal: $${s_}\sqrt3$ (since $\sqrt{${s_}^2+${s_}^2+${s_}^2}=${s_}\sqrt3$).<br>Half of it: $${R(s_/2,3).tex}$.`}},
 r=>{const k=pick(r,[2,3,4,5,10,12,20,25,50]),v=ri(r,1,40);
- return{lvl:1,q:T`A model is built at a $1:${k}$ scale and has volume $${v}$ cubic units. What is the real object's volume?`,a:v*k**3,w:[v*k,v*k*k,v*k**3/k|0||v+k,v*k**3*2],s:T`Volumes scale by $${k}^3=${k**3}$: $${v*k**3}$.`}},
+ return{lvl:1,q:T`A model is built at a $1:${k}$ scale and has volume $${v}$ cubic units. What is the real object's volume?`,a:v*k**3,w:[v*k,v*k*k,v*k**3/k|0||v+k,v*k**3*2],s:T`A $1:${k}$ scale multiplies every length by ${k}, every area by $${k}^2$, and every volume by $${k}^3=${k**3}$.<br>Real volume: $${v}\cdot${k**3}=${v*k**3}$.`}},
 r=>{let [a,b,c]=[ri(r,1,8),ri(r,1,8),ri(r,1,8)].sort((x,y)=>x-y);const opts=[(a+b)**2+c*c,(a+c)**2+b*b,(b+c)**2+a*a];const best=Math.min(...opts);
  return{lvl:3,q:T`An ant travels on the surface of an $${a}\times${b}\times${c}$ box from one corner to the opposite corner. What is the shortest possible path length?`,a:R(1,best),w:[R(1,a*a+b*b+c*c),R(1,Math.max(...opts)),O(String(a+b+c),a+b+c),R(1,opts.find(o=>o!==best&&o!==Math.max(...opts))||best+1),R(1,best+4),R(1,best+9)],
- s:T`Unfoldings give $\sqrt{${opts[0]}}$, $\sqrt{${opts[1]}}$, $\sqrt{${opts[2]}}$. The smallest is $${R(1,best).tex}$ (pair the two shorter edges).`}},
+ s:T`Unfold the two faces the ant crosses into one flat rectangle; the shortest path is its diagonal. For an $a\times b\times c$ box there are three ways to do it:<br>$\sqrt{(${a}+${b})^2+${c}^2}=\sqrt{${opts[0]}}$, $\ \sqrt{(${a}+${c})^2+${b}^2}=\sqrt{${opts[1]}}$, $\ \sqrt{(${b}+${c})^2+${a}^2}=\sqrt{${opts[2]}}$.<br>The smallest comes from adding the two shortest edges and pairing them with the longest: $${R(1,best).tex}$.<br>(The straight line through the inside, $\sqrt{${a*a+b*b+c*c}}$, isn't allowed.)`}},
 ];
