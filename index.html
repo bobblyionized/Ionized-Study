@@ -3553,7 +3553,9 @@ W: 2
 W: -7
 W: 14
 W: 5
-S: $x^2-5x-14=(x-7)(x+2)$, so the roots are $7$ and $-2$.
+S: Factor: find two numbers with product $-14$ and sum $-5$: $-7$ and $2$.
+$x^2-5x-14=(x-7)(x+2)=0$, so $x=7$ or $x=-2$.
+The larger root is $7$.
 ---
 Q: What is the positive solution of $x^2+6x=16$?
 L: 1
@@ -3562,7 +3564,9 @@ W: 8
 W: 4
 W: 16
 W: -2
-S: Complete the square: $x^2+6x+9=25$, so $(x+3)^2=25$ and $x=2$ or $-8$. The positive solution is $2$.
+S: Complete the square: add $\left(\frac62\right)^2=9$ to both sides: $x^2+6x+9=25$, so $(x+3)^2=25$.
+$x+3=\pm5$, giving $x=2$ or $x=-8$.
+The positive solution is $2$.
 ---
 Q: What is the negative root of $2x^2-3x-2=0$?
 L: 1
@@ -3571,7 +3575,9 @@ W: -2
 W: \frac{1}{2}
 W: -1
 W: -\frac{3}{2}
-S: $2x^2-3x-2=(2x+1)(x-2)$, so the roots are $2$ and $-\frac12$.
+S: Factor using the $ac$ method: $ac=-4$, and $-4$ and $1$ multiply to $-4$ and add to $-3$.
+$2x^2-4x+x-2=2x(x-2)+1(x-2)=(2x+1)(x-2)$.
+Roots: $x=2$ and $x=-\frac12$. The negative one is $-\frac12$.
 ---
 Q: What is the sum of the positive solutions of $x^4-13x^2+36=0$?
 L: 2
@@ -3580,7 +3586,9 @@ W: 13
 W: 6
 W: 0
 W: 10
-S: Let $u=x^2$: $u^2-13u+36=(u-4)(u-9)=0$, so $x^2=4$ or $9$ and $x=\pm2,\pm3$. The positive ones sum to $5$.
+S: Substitute $u=x^2$ (a quadratic in disguise): $u^2-13u+36=0$, which factors as $(u-4)(u-9)=0$.
+$x^2=4$ gives $x=\pm2$; $x^2=9$ gives $x=\pm3$.
+Positive solutions: $2$ and $3$, sum $5$.
 ---
 Q: What is the sum of the squares of all solutions of $x+\dfrac1x=\dfrac52$?
 L: 2
@@ -3589,7 +3597,10 @@ W: \frac{25}{4}
 W: 4
 W: \frac{17}{2}
 W: \frac{21}{4}
-S: Multiply by $2x$: $2x^2-5x+2=0$, so $(2x-1)(x-2)=0$ and $x=2$ or $\frac12$. Then $4+\frac14=\frac{17}4$.
+S: Multiply both sides by $2x$ to clear fractions: $2x^2+2=5x$, so $2x^2-5x+2=0$.
+Factor: $(2x-1)(x-2)=0$, giving $x=2$ or $x=\frac12$.
+Squares: $4+\frac14=\frac{17}{4}$.
+(Shortcut: $x^2+\frac1{x^2}=\left(x+\frac1x\right)^2-2=\frac{25}4-2=\frac{17}4$, since the two solutions are $x$ and $\frac1x$.)
 ---
 Q: What is the solution of $\sqrt{x+7}=x-5$?
 L: 2
@@ -3598,8 +3609,11 @@ W: 2
 W: 11
 W: 7
 W: 18
-S: Squaring: $x+7=x^2-10x+25$, so $x^2-11x+18=0$ and $x=9$ or $2$.
-Check: $x=9$ gives $\sqrt{16}=4=9-5$ ✓. $x=2$ gives $\sqrt9=3\ne-3$, which is extraneous. So $x=9$.
+S: Square both sides: $x+7=(x-5)^2=x^2-10x+25$, so $x^2-11x+18=0$ and $(x-9)(x-2)=0$.
+Squaring can create extraneous solutions, so check both in the original:
+$x=9$: $\sqrt{16}=4$ and $9-5=4$. ✓
+$x=2$: $\sqrt9=3$ but $2-5=-3$. ✗ (A square root is never negative.)
+So $x=9$.
 ---
 Q: What is the sum of all solutions of $(x-3)^2=2(x-3)$?
 L: 1
@@ -3608,7 +3622,9 @@ W: 5
 W: 3
 W: 2
 W: 10
-S: Do not divide by $x-3$. Instead: $(x-3)(x-3-2)=0$, so $x=3$ or $x=5$. Sum: $8$.
+S: Dividing by $x-3$ would lose the solution $x=3$. Instead move everything to one side and factor:
+$(x-3)^2-2(x-3)=(x-3)(x-3-2)=(x-3)(x-5)=0$.
+Solutions $3$ and $5$, sum $8$.
 ---
 Q: For how many integers $b$ does $x^2+bx+36=0$ have two integer roots (possibly equal)?
 L: 2
@@ -3617,8 +3633,10 @@ W: 5
 W: 9
 W: 18
 W: 8
-S: The roots $r,s$ satisfy $rs=36$ and $b=-(r+s)$. The positive pairs are $\{1,36\},\{2,18\},\{3,12\},\{4,9\},\{6,6\}$, with sums $37,20,15,13,12$.
-Negative pairs give the negatives of these, so there are $10$ values of $b$.
+S: If the roots are integers $r,s$, then $x^2+bx+36=(x-r)(x-s)$, so $rs=36$ and $b=-(r+s)$.
+Positive factor pairs: $\{1,36\},\{2,18\},\{3,12\},\{4,9\},\{6,6\}$, with sums $37,20,15,13,12$.
+Both roots negative gives the negatives of these sums. (Mixed signs would make $rs\lt0$.)
+That's $5+5=10$ values of $b$.
 ---
 Q: What is the sum of all real numbers $x$ satisfying $(x^2-5x+5)^{x^2-9x+20}=1$?
 L: 3
@@ -3627,10 +3645,11 @@ W: 13
 W: 10
 W: 9
 W: 14
-S: Base $=1$: $x^2-5x+4=0$ gives $x=1,4$.
-Exponent $=0$ (base nonzero): $x^2-9x+20=0$ gives $x=4,5$.
-Base $=-1$ with an even exponent: $x^2-5x+6=0$ gives $x=2,3$, with exponents $6$ and $2$ (even) ✓.
-The solutions are $\{1,2,3,4,5\}$, with sum $15$.
+S: A power $a^b$ equals $1$ in three ways: the base is $1$; the exponent is $0$ (with nonzero base); or the base is $-1$ and the exponent is even.
+• Base $=1$: $x^2-5x+5=1\Rightarrow x^2-5x+4=0\Rightarrow x=1,4$.
+• Exponent $=0$: $x^2-9x+20=0\Rightarrow x=4,5$ (the base is nonzero there: $1$ and $5$).
+• Base $=-1$: $x^2-5x+6=0\Rightarrow x=2,3$; the exponents are $2^2-18+20=6$ and $9-27+20=2$, both even. ✓
+Distinct solutions $\{1,2,3,4,5\}$, sum $15$.
 ---
 @@ quad-disc
 Q: For what positive value of $k$ does $x^2+kx+9=0$ have exactly one (repeated) real root?
@@ -3640,7 +3659,9 @@ W: 3
 W: 9
 W: 12
 W: 18
-S: $\Delta=k^2-36=0$, so $k=6$ (the root is $x=-3$).
+S: A quadratic has a repeated root exactly when its discriminant is $0$.
+$\Delta=k^2-4\cdot1\cdot9=k^2-36=0$, so $k=\pm6$. The positive value is $6$.
+Then $x^2+6x+9=(x+3)^2$, with the double root $-3$.
 ---
 Q: How many real roots does $2x^2+3x+5=0$ have?
 L: 1
@@ -3649,7 +3670,8 @@ W: 1
 W: 2
 W: 3
 W: 4
-S: $\Delta=9-40=-31\lt 0$, so there are no real roots.
+S: Discriminant: $\Delta=b^2-4ac=3^2-4\cdot2\cdot5=9-40=-31$.
+$\Delta\lt0$, so there are no real roots (the parabola stays above the $x$-axis).
 ---
 Q: What is the largest integer $c$ for which $x^2-6x+c=0$ has two distinct real roots?
 L: 1
@@ -3658,7 +3680,8 @@ W: 9
 W: 36
 W: 7
 W: 10
-S: $\Delta=36-4c>0$ means $c\lt 9$, so the largest integer is $8$.
+S: Two distinct real roots means $\Delta\gt0$: $(-6)^2-4c\gt0$, i.e. $36\gt4c$, $c\lt9$.
+The largest integer below $9$ is $8$. (At $c=9$ the roots coincide.)
 ---
 Q: The line $y=mx$, with $m>0$, is tangent to the parabola $y=x^2+4$. What is $m$?
 L: 2
@@ -3667,7 +3690,9 @@ W: 2
 W: 8
 W: 16
 W: 1
-S: $x^2-mx+4=0$ must have a double root: $m^2-16=0$, so $m=4$.
+S: Tangent means the line and parabola meet at exactly one point, so $mx=x^2+4$ has a double root.
+$x^2-mx+4=0$: $\Delta=m^2-16=0$, so $m=4$ (positive).
+The point of tangency is $x=\frac m2=2$, $y=8$.
 ---
 Q: For how many integers $k$ does $x^2+kx+16=0$ have no real roots?
 L: 2
@@ -3676,7 +3701,8 @@ W: 16
 W: 14
 W: 17
 W: 7
-S: We need $k^2-64\lt 0$, i.e. $-8\lt k\lt 8$. That is $k=-7,\dots,7$, which is $15$ integers.
+S: No real roots means $\Delta\lt0$: $k^2-64\lt0$, so $-8\lt k\lt8$.
+Integers: $-7,-6,\dots,7$, which is $15$.
 ---
 Q: What is the sum of all real numbers $k$ for which $kx^2+4x+1=0$ has exactly one real solution?
 L: 3
@@ -3685,8 +3711,9 @@ W: 0
 W: 8
 W: -4
 W: 2
-S: If $k=0$ the equation is $4x+1=0$, which has one solution. If $k\ne0$ we need $\Delta=16-4k=0$, so $k=4$.
-The sum is $0+4=4$.
+S: Careful: if $k=0$ the equation isn't quadratic. It becomes $4x+1=0$, which has exactly one solution. So $k=0$ counts.
+If $k\ne0$, exactly one solution means $\Delta=16-4k=0$, so $k=4$.
+Sum of all such $k$: $0+4=4$.
 ---
 Q: The quadratic $(m-1)x^2-2mx+m+3=0$ has real roots. What is the largest possible value of $m$?
 L: 2
@@ -3695,7 +3722,9 @@ W: 1
 W: 3
 W: 2
 W: \frac{2}{3}
-S: $\Delta=4m^2-4(m-1)(m+3)=4(3-2m)\ge0$, so $m\le\frac32$. At $m=\frac32$ the leading coefficient is $\frac12\ne0$, so it is still a quadratic.
+S: Real roots need $\Delta\ge0$: $\Delta=(2m)^2-4(m-1)(m+3)=4m^2-4(m^2+2m-3)=4(3-2m)$.
+$3-2m\ge0$ gives $m\le\frac32$.
+At $m=\frac32$ the leading coefficient $m-1=\frac12\ne0$, so it's still a quadratic. Largest $m$: $\frac32$.
 ---
 Q: For how many positive integers $n\le50$ does $x^2+x-n=0$ have integer roots?
 L: 2
@@ -3704,8 +3733,9 @@ W: 7
 W: 5
 W: 4
 W: 8
-S: We need $1+4n$ to be a perfect square, necessarily odd: $(2k+1)^2=4k^2+4k+1$, so $n=k(k+1)$.
-The values $2,6,12,20,30,42$ give $6$.
+S: Integer roots require the discriminant $1+4n$ to be a perfect square, and it's odd, so $1+4n=(2k+1)^2=4k^2+4k+1$.
+That gives $n=k^2+k=k(k+1)$: $2,6,12,20,30,42$ (and $56\gt50$).
+So $6$ values. (Then the roots are $k$ and $-(k+1)$.)
 ---
 @@ quad-vertex
 Q: What is the minimum value of $x^2-8x+21$?
@@ -3715,7 +3745,8 @@ W: 4
 W: 21
 W: 13
 W: -11
-S: $x^2-8x+21=(x-4)^2+5$, so the minimum is $5$, at $x=4$.
+S: Complete the square: $x^2-8x+21=(x^2-8x+16)+5=(x-4)^2+5$.
+$(x-4)^2\ge0$, so the minimum is $5$, at $x=4$.
 ---
 Q: What is the maximum value of $-2x^2+12x-7$?
 L: 1
@@ -3724,7 +3755,8 @@ W: 3
 W: 25
 W: -7
 W: 18
-S: The vertex is at $x=-\frac{12}{2(-2)}=3$, where the value is $-18+36-7=11$.
+S: The parabola opens down ($a=-2$), so the maximum is at the vertex $x=-\frac{b}{2a}=-\frac{12}{2(-2)}=3$.
+Value: $-2(9)+12(3)-7=-18+36-7=11$.
 ---
 Q: What is the largest possible area of a rectangle with perimeter $40$?
 L: 1
@@ -3733,7 +3765,9 @@ W: 400
 W: 96
 W: 80
 W: 200
-S: Sides $x$ and $20-x$: the area $x(20-x)$ is largest at $x=10$ (a square), giving $100$.
+S: Perimeter $40$ means the sides add to $20$: $x$ and $20-x$.
+Area $A=x(20-x)=-x^2+20x$, a downward parabola with vertex at $x=10$.
+Maximum area $10\cdot10=100$: a square.
 ---
 Q: A farmer has $120$ meters of fence to enclose a rectangle along a straight river; no fence is needed along the river. What is the largest area he can enclose, in square meters?
 L: 2
@@ -3742,7 +3776,9 @@ W: 3600
 W: 900
 W: 1600
 W: 2400
-S: With two sides $x$ perpendicular to the river, the area is $x(120-2x)$, maximized at $x=30$: $30\cdot60=1800$.
+S: Let $x$ be each side perpendicular to the river; the parallel side uses the rest of the fence, $120-2x$.
+Area $A=x(120-2x)=-2x^2+120x$, maximized at $x=-\frac{120}{2(-2)}=30$.
+$A=30\cdot60=1800$.
 ---
 Q: Two real numbers have sum $14$. What is the largest possible value of their product?
 L: 1
@@ -3751,7 +3787,8 @@ W: 48
 W: 196
 W: 40
 W: 98
-S: $x(14-x)$ is largest at $x=7$: $49$.
+S: Let the numbers be $x$ and $14-x$. Product $x(14-x)=-(x-7)^2+49$.
+Maximum $49$ when $x=7$ (both numbers equal).
 ---
 Q: The parabola $y=x^2+bx+c$ has vertex $(3,-2)$. What is $b+c$?
 L: 2
@@ -3760,7 +3797,8 @@ W: 13
 W: -1
 W: -8
 W: 5
-S: $y=(x-3)^2-2=x^2-6x+7$, so $b=-6$, $c=7$, and $b+c=1$.
+S: Vertex form with vertex $(3,-2)$ and leading coefficient $1$: $y=(x-3)^2-2=x^2-6x+9-2=x^2-6x+7$.
+So $b=-6$, $c=7$, and $b+c=1$.
 ---
 Q: What is the minimum value of $(x-1)(x-3)(x-5)(x-7)$ over all real $x$?
 L: 3
@@ -3769,8 +3807,9 @@ W: -15
 W: -9
 W: 0
 W: -25
-S: Pair the outer and inner factors: $(x^2-8x+7)(x^2-8x+15)$. Let $u=x^2-8x+11$; the product is $(u-4)(u+4)=u^2-16$.
-Since $u=(x-4)^2-5$ can equal $0$, the minimum is $-16$.
+S: Pair the factors symmetrically about $x=4$: $(x-1)(x-7)=x^2-8x+7$ and $(x-3)(x-5)=x^2-8x+15$.
+Let $u=x^2-8x+11$ (the average of the two). The product is $(u-4)(u+4)=u^2-16$.
+$u=(x-4)^2-5$ takes all values $\ge-5$, including $0$. So the minimum of $u^2-16$ is $-16$ (when $u=0$, i.e. $x=4\pm\sqrt5$).
 ---
 Q: A ball's height in feet after $t$ seconds is $h=-16t^2+64t+5$. What is its maximum height?
 L: 1
@@ -3779,7 +3818,8 @@ W: 64
 W: 133
 W: 37
 W: 85
-S: The peak is at $t=\frac{64}{32}=2$: $h=-64+128+5=69$.
+S: The height is a downward parabola, highest at $t=-\frac{64}{2(-16)}=2$ seconds.
+$h(2)=-16(4)+64(2)+5=-64+128+5=69$ feet.
 ---
 @@ quad-vieta
 Q: Let $r$ and $s$ be the roots of $x^2-7x+3=0$. What is $r^2+s^2$?
@@ -3789,7 +3829,8 @@ W: 49
 W: 40
 W: 46
 W: 55
-S: $r+s=7$, $rs=3$, so $r^2+s^2=49-6=43$.
+S: Vieta for $x^2-7x+3$: $r+s=7$, $rs=3$.
+$r^2+s^2=(r+s)^2-2rs=49-6=43$.
 ---
 Q: Let $r$ and $s$ be the roots of $2x^2+5x-3=0$. What is $\dfrac1r+\dfrac1s$?
 L: 1
@@ -3798,7 +3839,9 @@ W: -\frac{5}{3}
 W: \frac{3}{5}
 W: -\frac{3}{5}
 W: \frac{5}{2}
-S: $r+s=-\frac52$, $rs=-\frac32$, so $\frac1r+\frac1s=\frac{r+s}{rs}=\frac{-5/2}{-3/2}=\frac53$.
+S: Vieta for $2x^2+5x-3$: $r+s=-\frac52$, $rs=-\frac32$.
+$\frac1r+\frac1s=\frac{r+s}{rs}=\frac{-5/2}{-3/2}=\frac53$.
+(Check: the roots are $\frac12$ and $-3$, and $2-\frac13=\frac53$.)
 ---
 Q: What is the positive difference between the roots of $x^2-6x+4=0$?
 L: 2
@@ -3807,7 +3850,9 @@ W: 4
 W: 2\sqrt{3}
 W: \sqrt{5}
 W: 10
-S: $(r-s)^2=(r+s)^2-4rs=36-16=20$, so $|r-s|=2\sqrt5$.
+S: Vieta: $r+s=6$, $rs=4$.
+$(r-s)^2=(r+s)^2-4rs=36-16=20$, so $|r-s|=\sqrt{20}=2\sqrt5$.
+(The roots are $3\pm\sqrt5$.)
 ---
 Q: One root of $x^2+bx+12=0$ is three times the other, and both roots are positive. What is $b$?
 L: 2
@@ -3816,7 +3861,8 @@ W: 8
 W: -6
 W: -7
 W: 12
-S: Roots $r$ and $3r$: $3r^2=12$, so $r=2$ and the roots are $2,6$. Then $b=-(2+6)=-8$.
+S: Call the roots $t$ and $3t$. Their product is $3t^2=12$ (Vieta), so $t^2=4$ and $t=2$ (positive).
+Roots $2$ and $6$; their sum is $8$, and Vieta says the sum is $-b$, so $b=-8$.
 ---
 Q: Let $r$ and $s$ be the roots of $x^2-3x-5=0$. The monic quadratic with roots $r+2$ and $s+2$ is $x^2+px+q$. What is $q$?
 L: 2
@@ -3825,7 +3871,9 @@ W: 1
 W: -1
 W: 9
 W: 7
-S: $q=(r+2)(s+2)=rs+2(r+s)+4=-5+6+4=5$.
+S: For a monic quadratic, $q$ is the product of the roots: $q=(r+2)(s+2)=rs+2(r+s)+4$.
+Vieta for $x^2-3x-5$: $r+s=3$, $rs=-5$.
+$q=-5+6+4=5$.
 ---
 Q: Let $r$ and $s$ be the roots of $x^2-4x+1=0$. What is $r^3+s^3$?
 L: 2
@@ -3834,7 +3882,8 @@ W: 64
 W: 60
 W: 48
 W: 56
-S: $r^3+s^3=(r+s)^3-3rs(r+s)=64-12=52$.
+S: Vieta: $r+s=4$, $rs=1$.
+Use $r^3+s^3=(r+s)^3-3rs(r+s)=64-3\cdot1\cdot4=52$.
 ---
 Q: Let $r$ and $s$ be the roots of $x^2-x-1=0$. What is $r^5+s^5$?
 L: 3
@@ -3843,8 +3892,9 @@ W: 5
 W: 7
 W: 18
 W: 10
-S: The power sums $p_n=r^n+s^n$ satisfy $p_n=p_{n-1}+p_{n-2}$ (from $x^2=x+1$), with $p_0=2$ and $p_1=1$.
-$p_2=3, p_3=4, p_4=7, p_5=11$.
+S: Each root satisfies $x^2=x+1$; multiplying by $x^{n-2}$: $x^n=x^{n-1}+x^{n-2}$. Adding over both roots, $p_n=r^n+s^n$ satisfies $p_n=p_{n-1}+p_{n-2}$.
+Start: $p_0=2$, $p_1=r+s=1$.
+$p_2=3$, $p_3=4$, $p_4=7$, $p_5=11$ (the Lucas numbers).
 ---
 Q: The roots of $x^2+px+q=0$ are $p$ and $q$, where $p$ and $q$ are nonzero. What is $p+q$?
 L: 2
@@ -3853,7 +3903,9 @@ W: 1
 W: -2
 W: 0
 W: -3
-S: Vieta: $p+q=-p$ and $pq=q$. Since $q\ne0$, $p=1$, and then $q=-2p=-2$. So $p+q=-1$.
+S: Vieta with roots $p$ and $q$: sum $p+q=-p$ and product $pq=q$.
+From $pq=q$ with $q\ne0$: $p=1$. Then $1+q=-1$, so $q=-2$.
+$p+q=-1$. Check: $x^2+x-2=(x+2)(x-1)$ has roots $1=p$ and $-2=q$. ✓
 ---
 @@ quad-sys
 Q: The graphs of $y=x^2$ and $y=x+6$ intersect at two points. What is the distance between them?
@@ -3863,8 +3915,9 @@ W: 5
 W: 10
 W: 2\sqrt{5}
 W: 5\sqrt{3}
-S: $x^2=x+6$ gives $x=3$ or $-2$, so the points are $(3,9)$ and $(-2,4)$.
-The distance is $\sqrt{5^2+5^2}=5\sqrt2$.
+S: Set equal: $x^2=x+6$, so $x^2-x-6=(x-3)(x+2)=0$, giving $x=3$ and $x=-2$.
+The points are $(3,9)$ and $(-2,4)$.
+Distance: $\sqrt{(3-(-2))^2+(9-4)^2}=\sqrt{25+25}=5\sqrt2$.
 ---
 Q: If $x+y=5$ and $x^2+y^2=13$, what is $xy$?
 L: 1
@@ -3873,7 +3926,8 @@ W: 12
 W: 13
 W: 25
 W: 4
-S: $2xy=(x+y)^2-(x^2+y^2)=25-13=12$, so $xy=6$.
+S: $(x+y)^2=x^2+2xy+y^2$, so $2xy=(x+y)^2-(x^2+y^2)=25-13=12$.
+$xy=6$. (The numbers are $2$ and $3$.)
 ---
 Q: If $x+y=10$ and $xy=21$, what is $|x-y|$?
 L: 1
@@ -3882,7 +3936,8 @@ W: 2
 W: 8
 W: 6
 W: \sqrt{58}
-S: $(x-y)^2=(x+y)^2-4xy=100-84=16$, so $|x-y|=4$. (The numbers are $7$ and $3$.)
+S: $(x-y)^2=(x+y)^2-4xy=100-84=16$, so $|x-y|=4$.
+(The numbers are the roots of $t^2-10t+21=0$: $7$ and $3$.)
 ---
 Q: How many points of intersection do the graphs of $y=x^2-4$ and $x^2+y^2=16$ have?
 L: 2
@@ -3891,8 +3946,10 @@ W: 2
 W: 4
 W: 1
 W: 0
-S: $x^2=y+4$, so $y+4+y^2=16$, i.e. $y^2+y-12=0$ and $y=3$ or $-4$.
-$y=3$ gives $x=\pm\sqrt7$ (2 points); $y=-4$ gives $x=0$ (1 point). Total $3$.
+S: Substitute $x^2=y+4$ into the circle: $(y+4)+y^2=16$, so $y^2+y-12=0$ and $(y+4)(y-3)=0$.
+$y=3$: $x^2=7$, $x=\pm\sqrt7$, two points.
+$y=-4$: $x^2=0$, $x=0$, one point (where the parabola's vertex touches the circle).
+Total: $3$.
 ---
 Q: If $x^2-y^2=24$ and $x-y=4$, what is $xy$?
 L: 1
@@ -3901,7 +3958,9 @@ W: 6
 W: 10
 W: 24
 W: 4
-S: $x+y=\frac{24}{4}=6$. With $x-y=4$: $x=5$, $y=1$, so $xy=5$.
+S: Factor: $x^2-y^2=(x-y)(x+y)=24$, and $x-y=4$, so $x+y=6$.
+Adding the equations: $2x=10$, $x=5$; then $y=1$.
+$xy=5$.
 ---
 Q: For what value of $k$ does the line $y=2x+k$ meet the parabola $y=x^2$ at exactly one point?
 L: 1
@@ -3910,7 +3969,8 @@ W: 1
 W: -2
 W: 0
 W: 2
-S: $x^2-2x-k=0$ needs $\Delta=4+4k=0$, so $k=-1$.
+S: Set equal: $x^2=2x+k$, i.e. $x^2-2x-k=0$. Exactly one intersection means a double root: $\Delta=4+4k=0$.
+$k=-1$. (The line $y=2x-1$ is tangent at $(1,1)$.)
 ---
 Q: Real numbers satisfy $x+y+xy=11$ and $x^2y+xy^2=30$. What is the greatest possible value of $x^2+y^2$?
 L: 3
@@ -3919,8 +3979,11 @@ W: 13
 W: 25
 W: 36
 W: 39
-S: Let $s=x+y$ and $p=xy$. Then $s+p=11$ and $sp=30$, so $\{s,p\}=\{5,6\}$.
-$(s,p)=(5,6)$: $x^2+y^2=25-12=13$. $(s,p)=(6,5)$: $36-10=26$ (with $x,y=1,5$). The greatest value is $26$.
+S: Use $s=x+y$ and $p=xy$. The equations become $s+p=11$ and $x^2y+xy^2=xy(x+y)=sp=30$.
+So $s$ and $p$ are the roots of $t^2-11t+30=0$: $\{s,p\}=\{5,6\}$.
+• $s=5$, $p=6$: $x^2+y^2=s^2-2p=25-12=13$ (real: $x,y=2,3$).
+• $s=6$, $p=5$: $x^2+y^2=36-10=26$ (real: $x,y=1,5$).
+The greatest value is $26$.
 ---
 Q: Positive reals satisfy $x^2+xy=15$ and $y^2+xy=10$. What is $x-y$?
 L: 2
@@ -3929,7 +3992,9 @@ W: 5
 W: 3
 W: 2
 W: -1
-S: Adding gives $(x+y)^2=25$, so $x+y=5$. Then $x(x+y)=15$ gives $x=3$ and $y(x+y)=10$ gives $y=2$. So $x-y=1$.
+S: Factor each: $x(x+y)=15$ and $y(x+y)=10$.
+Adding: $(x+y)^2=25$, so $x+y=5$ (positive reals).
+Then $x=\frac{15}{5}=3$ and $y=\frac{10}{5}=2$, so $x-y=1$.
 @@ func-eval
 Q: If $f(x)=2x^2-3x+1$, what is $f(-2)$?
 L: 1
@@ -7352,7 +7417,8 @@ W: 110
 W: 220
 W: 70
 W: 125
-S: An inscribed angle is half its arc: $\frac{110}{2}=55^\circ$.
+S: Inscribed Angle Theorem: an inscribed angle is half the central angle (and half the arc) that it intercepts.
+$\frac{110^\circ}{2}=55^\circ$.
 ---
 Q: An inscribed angle intercepts a semicircle. What is its measure, in degrees?
 L: 1
@@ -7361,7 +7427,8 @@ W: 180
 W: 45
 W: 60
 W: 120
-S: Half of $180^\circ$ is $90^\circ$ (Thales).
+S: A semicircle is a $180^\circ$ arc, and an inscribed angle is half its arc: $\frac{180^\circ}{2}=90^\circ$.
+This is Thales' Theorem: an angle inscribed in a semicircle is a right angle.
 ---
 Q: Two chords intersect inside a circle. The arcs intercepted by one vertical angle pair measure $80^\circ$ and $40^\circ$. What is the angle between the chords (the angle facing those arcs)?
 L: 1
@@ -7370,7 +7437,8 @@ W: 40
 W: 120
 W: 20
 W: 80
-S: $\frac12(80+40)=60^\circ$.
+S: When two chords cross inside a circle, each angle equals half the <b>sum</b> of the arc it faces and the arc its vertical angle faces.
+$\frac12(80^\circ+40^\circ)=60^\circ$.
 ---
 Q: Two secants from an outside point intercept arcs of $100^\circ$ (far) and $30^\circ$ (near). What is the angle between the secants?
 L: 1
@@ -7379,7 +7447,8 @@ W: 65
 W: 70
 W: 130
 W: 50
-S: $\frac12(100-30)=35^\circ$.
+S: An angle formed by two secants from an outside point equals half the <b>difference</b> of the far and near intercepted arcs.
+$\frac12(100^\circ-30^\circ)=35^\circ$.
 ---
 Q: A tangent and a chord meet at the point of tangency, forming a $70^\circ$ angle. What is the intercepted arc, in degrees?
 L: 1
@@ -7388,7 +7457,8 @@ W: 70
 W: 35
 W: 110
 W: 220
-S: The tangent–chord angle is half the arc, so the arc is $140^\circ$.
+S: A tangent–chord angle equals half its intercepted arc (it's a limiting case of an inscribed angle).
+So the arc is twice the angle: $2\cdot70^\circ=140^\circ$.
 ---
 Q: Triangle $ABC$ is inscribed in a circle, and the arcs $AB$, $BC$, $CA$ (not containing the third vertex) are in ratio $3:4:5$. What is the largest angle of the triangle?
 L: 2
@@ -7397,7 +7467,9 @@ W: 150
 W: 60
 W: 90
 W: 45
-S: The arcs are $90^\circ,120^\circ,150^\circ$. The largest angle is opposite the $150^\circ$ arc: $75^\circ$.
+S: The three arcs make up the whole circle: $3+4+5=12$ parts of $360^\circ$, so each part is $30^\circ$. The arcs are $90^\circ$, $120^\circ$, $150^\circ$.
+Each angle of the triangle is inscribed and intercepts the arc opposite it, so it's half that arc: $45^\circ$, $60^\circ$, $75^\circ$.
+The largest angle is $75^\circ$.
 ---
 Q: A regular hexagon is inscribed in a circle. From a point on the major arc, one side of the hexagon subtends what angle, in degrees?
 L: 2
@@ -7406,7 +7478,8 @@ W: 60
 W: 15
 W: 45
 W: 120
-S: Each side cuts off a $60^\circ$ arc, so the inscribed angle is $30^\circ$.
+S: A regular hexagon's $6$ sides cut the circle into six $60^\circ$ arcs.
+From a point on the major arc, a side is seen at an inscribed angle of half its arc: $\frac{60^\circ}{2}=30^\circ$.
 ---
 Q: Tangents from $P$ touch a circle at $A$ and $B$, and $\angle APB=50^\circ$. Point $C$ is on the major arc $AB$. What is $\angle ACB$?
 L: 3
@@ -7415,7 +7488,9 @@ W: 50
 W: 130
 W: 115
 W: 25
-S: In quadrilateral $PAOB$ the angles at $A$ and $B$ are $90^\circ$, so $\angle AOB=130^\circ$ (the minor arc). Then $\angle ACB=\frac{130}{2}=65^\circ$.
+S: Radii to the points of tangency are perpendicular to the tangents, so in quadrilateral $PAOB$ the angles at $A$ and $B$ are $90^\circ$.
+The angles of a quadrilateral sum to $360^\circ$: $\angle AOB=360-90-90-50=130^\circ$. That's the minor arc $AB$.
+$C$ on the major arc sees the minor arc, so $\angle ACB=\frac{130^\circ}{2}=65^\circ$.
 ---
 @@ circ-tan
 Q: Point $P$ is $13$ units from the center of a circle of radius $5$. How long is a tangent segment from $P$ to the circle?
@@ -7425,7 +7500,8 @@ W: 8
 W: 18
 W: 13
 W: 10
-S: The tangent is perpendicular to the radius: $\sqrt{13^2-5^2}=12$.
+S: A tangent is perpendicular to the radius at the point of tangency, so the radius, the tangent segment, and $OP$ form a right triangle with hypotenuse $OP$.
+Tangent length $=\sqrt{13^2-5^2}=\sqrt{144}=12$.
 ---
 Q: Circles of radii $4$ and $9$ are externally tangent. How long is their common external tangent segment (between the points of tangency)?
 L: 2
@@ -7434,7 +7510,9 @@ W: 13
 W: 6
 W: 5
 W: 9
-S: The centers are $13$ apart: $\sqrt{13^2-(9-4)^2}=\sqrt{144}=12$. (In general $2\sqrt{r_1r_2}$.)
+S: Draw the two radii to the tangent points (both perpendicular to the tangent) and the segment joining the centers ($4+9=13$, since the circles touch).
+Slide the tangent segment down onto the smaller radius: it forms a right triangle with hypotenuse $13$ and one leg $9-4=5$.
+Tangent length $=\sqrt{13^2-5^2}=12$. (In general, for tangent circles it's $2\sqrt{r_1r_2}=2\sqrt{36}=12$.)
 ---
 Q: A circle is inscribed in quadrilateral $ABCD$. If $AB=7$, $BC=9$, and $CD=12$, what is $DA$?
 L: 1
@@ -7443,7 +7521,9 @@ W: 14
 W: 8
 W: 6
 W: 12
-S: Equal tangent lengths give $AB+CD=BC+DA$: $19=9+DA$, so $DA=10$.
+S: Tangent segments from the same external point are equal. Label the four tangent lengths from $A,B,C,D$ as $a,b,c,d$.
+Then $AB=a+b$, $BC=b+c$, $CD=c+d$, $DA=d+a$, so $AB+CD=BC+DA$ (Pitot's Theorem).
+$7+12=9+DA$, so $DA=10$.
 ---
 Q: A circle is tangent to both coordinate axes and passes through $(2,1)$. What is the sum of all possible radii?
 L: 3
@@ -7452,7 +7532,9 @@ W: 5
 W: 4
 W: 3
 W: 8
-S: The center is $(r,r)$: $(2-r)^2+(1-r)^2=r^2$, so $r^2-6r+5=0$. The radii $1$ and $5$ sum to $6$.
+S: Tangent to both axes in quadrant I means the center is $(r,r)$.
+The point $(2,1)$ is on the circle: $(2-r)^2+(1-r)^2=r^2$, so $r^2-6r+5=0$, i.e. $(r-1)(r-5)=0$.
+Both radii work, and they sum to $6$ (Vieta).
 ---
 Q: Circles of radii $3$ and $5$ have centers $10$ apart. How long is a common internal tangent segment?
 L: 2
@@ -7461,7 +7543,8 @@ W: 8
 W: 4\sqrt{6}
 W: 2\sqrt{21}
 W: 10
-S: $\sqrt{d^2-(r_1+r_2)^2}=\sqrt{100-64}=6$.
+S: For an internal tangent (crossing between the circles), slide the tangent segment along one radius: it forms a right triangle with hypotenuse $d=10$ and leg $r_1+r_2=8$.
+Length $=\sqrt{10^2-8^2}=6$.
 ---
 Q: Three circles of radius $1$ are mutually externally tangent. What is the perimeter of the triangle formed by their centers?
 L: 1
@@ -7470,7 +7553,8 @@ W: 3
 W: 9
 W: 12
 W: 4
-S: Each pair of centers is $1+1=2$ apart, so the perimeter is $6$.
+S: When two circles touch externally, the distance between centers is the sum of the radii: $1+1=2$.
+All three pairs are tangent, so the centers form an equilateral triangle of side $2$, perimeter $6$.
 ---
 Q: Tangent segments $PA$ and $PB$ to a circle of radius $6$ each have length $8$. How far is $P$ from the center?
 L: 1
@@ -7479,7 +7563,8 @@ W: 14
 W: 2\sqrt{7}
 W: 12
 W: 8
-S: $\sqrt{6^2+8^2}=10$.
+S: The radius to the tangent point is perpendicular to the tangent, so $O$, the tangent point, and $P$ form a right triangle with legs $6$ and $8$.
+$OP=\sqrt{36+64}=10$.
 ---
 Q: A circle is inscribed in a quarter circle of radius $1$, tangent to both radii and to the arc. What is its radius?
 L: 3
@@ -7488,7 +7573,9 @@ W: \frac{1}{2}
 W: \frac{\sqrt{2}}{2}
 W: 2-\sqrt{2}
 W: \frac{1}{3}
-S: The center is at $(r,r)$, distance $r\sqrt2$ from the corner, and $r\sqrt2+r=1$. So $r=\frac1{\sqrt2+1}=\sqrt2-1$.
+S: Put the quarter circle's corner at the origin. A circle tangent to both radii (the axes) has center $(r,r)$, at distance $r\sqrt2$ from the corner.
+Tangent internally to the arc of radius $1$: the distance from the corner to the center plus $r$ equals $1$: $r\sqrt2+r=1$.
+$r=\frac{1}{\sqrt2+1}=\sqrt2-1$ (rationalize).
 ---
 @@ circ-pop
 Q: Chords $AB$ and $CD$ intersect at $E$. If $AE=4$, $EB=6$, and $CE=3$, what is $ED$?
@@ -7498,7 +7585,8 @@ W: \frac{9}{2}
 W: 2
 W: 5
 W: 7
-S: $AE\cdot EB=CE\cdot ED$: $24=3\cdot ED$, so $ED=8$.
+S: Power of a Point for intersecting chords: the products of the pieces are equal, $AE\cdot EB=CE\cdot ED$.
+$4\cdot6=3\cdot ED$, so $ED=8$.
 ---
 Q: From point $P$, a tangent of length $6$ is drawn to a circle, and a secant meets the circle first at $A$ and then at $B$, with $PA=4$. What is $AB$?
 L: 2
@@ -7507,7 +7595,9 @@ W: 9
 W: 3
 W: 2
 W: 12
-S: $PT^2=PA\cdot PB$: $36=4\cdot PB$, so $PB=9$ and $AB=5$.
+S: Power of a Point from an outside point: (tangent)$^2$ $=$ (near secant piece) $\times$ (whole secant).
+$6^2=PA\cdot PB=4\cdot PB$, so $PB=9$.
+$AB=PB-PA=9-4=5$.
 ---
 Q: A chord of length $24$ lies in a circle of radius $13$. How far is the chord from the center?
 L: 1
@@ -7516,7 +7606,8 @@ W: 12
 W: 11
 W: 7
 W: 10
-S: $\sqrt{13^2-12^2}=5$.
+S: The perpendicular from the center to a chord bisects it. Half the chord ($12$), the distance $d$, and the radius ($13$) form a right triangle.
+$d=\sqrt{13^2-12^2}=5$.
 ---
 Q: Two parallel chords of lengths $10$ and $24$ lie on opposite sides of the center of a circle of radius $13$. How far apart are they?
 L: 2
@@ -7525,7 +7616,9 @@ W: 7
 W: 13
 W: 12
 W: 26
-S: Their distances from the center are $\sqrt{169-25}=12$ and $\sqrt{169-144}=5$. On opposite sides, they are $17$ apart.
+S: Each chord's distance from the center: $\sqrt{r^2-(\text{half-chord})^2}$.
+Chord $10$: $\sqrt{169-25}=12$. Chord $24$: $\sqrt{169-144}=5$.
+On opposite sides of the center, the distances add: $12+5=17$.
 ---
 Q: Two secants are drawn from $P$. One meets the circle at $A$ and $B$ with $PA=3$ and $PB=12$. The other meets it at $C$ and $D$ with $PC=4$. What is $PD$?
 L: 1
@@ -7534,7 +7627,8 @@ W: 16
 W: 8
 W: 6
 W: 5
-S: $PA\cdot PB=PC\cdot PD$: $36=4\cdot PD$, so $PD=9$.
+S: Power of a Point for two secants from $P$: $PA\cdot PB=PC\cdot PD$.
+$3\cdot12=4\cdot PD$, so $PD=9$.
 ---
 Q: Point $P$ is $6$ units from the center of a circle of radius $10$. What is the length of the shortest chord through $P$?
 L: 2
@@ -7543,7 +7637,9 @@ W: 8
 W: 12
 W: 20
 W: 4\sqrt{34}
-S: The shortest chord is perpendicular to $OP$: $2\sqrt{100-36}=16$.
+S: For a chord through $P$ at distance $d$ from the center, its length is $2\sqrt{r^2-d^2}$, which is smallest when $d$ is as large as possible.
+The farthest a chord through $P$ can be from the center is $OP=6$ (when the chord is perpendicular to $OP$).
+Shortest chord: $2\sqrt{100-36}=2\cdot8=16$.
 ---
 Q: A chord of length $8$ is spanned by an arc whose highest point is $2$ units above the chord's midpoint. What is the radius of the circle?
 L: 2
@@ -7552,7 +7648,8 @@ W: 4
 W: 6
 W: 8
 W: \frac{17}{4}
-S: $r^2=4^2+(r-2)^2$, so $4r=20$ and $r=5$.
+S: The center lies on the perpendicular bisector of the chord, at distance $r-2$ below the arc's top. Half the chord is $4$.
+Right triangle: $r^2=4^2+(r-2)^2=16+r^2-4r+4$, so $4r=20$ and $r=5$.
 ---
 Q: A tangent from $P$ has length $12$. A secant from $P$ meets the circle at $A$ and then $B$ with $AB=18$. What is $PA$?
 L: 3
@@ -7561,7 +7658,9 @@ W: 8
 W: 4
 W: 12
 W: 9
-S: $PA(PA+18)=144$, so $PA^2+18PA-144=0$, i.e. $(PA-6)(PA+24)=0$, and $PA=6$.
+S: Power of a Point: $PT^2=PA\cdot PB$ with $PB=PA+18$.
+$144=PA(PA+18)$, so $PA^2+18PA-144=0$, i.e. $(PA-6)(PA+24)=0$.
+Lengths are positive, so $PA=6$ (and $PB=24$; check $6\cdot24=144$ ✓).
 ---
 @@ circ-cyc
 Q: In cyclic quadrilateral $ABCD$, $\angle A=75^\circ$. What is $\angle C$?
@@ -7571,7 +7670,8 @@ W: 75
 W: 285
 W: 15
 W: 95
-S: Opposite angles of a cyclic quadrilateral are supplementary: $180-75=105^\circ$.
+S: Opposite angles of a cyclic quadrilateral are supplementary (they intercept arcs that together make the whole circle, so the angles add to $\frac{360}{2}=180$).
+$\angle C=180^\circ-75^\circ=105^\circ$.
 ---
 Q: A cyclic quadrilateral has sides $3$, $4$, $5$, and $6$. What is its area?
 L: 2
@@ -7580,7 +7680,8 @@ W: 18
 W: 3\sqrt{10}
 W: 6\sqrt{15}
 W: 9\sqrt{2}
-S: Brahmagupta: $s=9$, area $=\sqrt{6\cdot5\cdot4\cdot3}=\sqrt{360}=6\sqrt{10}$.
+S: Brahmagupta's formula for a cyclic quadrilateral: Area $=\sqrt{(s-a)(s-b)(s-c)(s-d)}$, with $s$ the semiperimeter.
+$s=\frac{3+4+5+6}{2}=9$. Area $=\sqrt{6\cdot5\cdot4\cdot3}=\sqrt{360}=6\sqrt{10}$.
 ---
 Q: A regular pentagon has side length $1$. What is the length of a diagonal?
 L: 3
@@ -7589,7 +7690,9 @@ W: \sqrt{2}
 W: \sqrt{3}
 W: 2
 W: \frac{\sqrt{5}}{2}
-S: Ptolemy on four consecutive vertices: $d\cdot d=d\cdot1+1\cdot1$, so $d^2-d-1=0$ and $d=\frac{1+\sqrt5}2$.
+S: Take four consecutive vertices $A,B,C,D$ of the regular pentagon. $ABCD$ is cyclic with sides $AB=BC=CD=1$, $AD=d$, and diagonals $AC=BD=d$.
+Ptolemy's Theorem: $AC\cdot BD=AB\cdot CD+BC\cdot AD$, so $d^2=1+d$.
+$d^2-d-1=0$ gives $d=\frac{1+\sqrt5}{2}$ (the golden ratio).
 ---
 Q: A rectangle is inscribed in a circle of radius $5$, and one side has length $6$. What is the rectangle's area?
 L: 1
@@ -7598,7 +7701,8 @@ W: 30
 W: 24
 W: 60
 W: 40
-S: The diagonal is a diameter, $10$, so the other side is $\sqrt{100-36}=8$ and the area is $48$.
+S: A rectangle inscribed in a circle has right angles, so each diagonal subtends a semicircle: the diagonal is a diameter, $10$.
+Other side: $\sqrt{10^2-6^2}=8$. Area: $6\cdot8=48$.
 ---
 Q: In cyclic quadrilateral $ABCD$, $\angle A=2x^\circ$ and $\angle C=3x^\circ$. What is $\angle A$?
 L: 1
@@ -7607,7 +7711,8 @@ W: 108
 W: 36
 W: 54
 W: 90
-S: $5x=180$, so $x=36$ and $\angle A=72^\circ$.
+S: $A$ and $C$ are opposite, so they're supplementary: $2x+3x=180$, $x=36$.
+$\angle A=2\cdot36=72^\circ$.
 ---
 Q: A cyclic quadrilateral has sides $25$, $39$, $52$, and $60$. What is its area?
 L: 3
@@ -7616,8 +7721,9 @@ W: 1560
 W: 2028
 W: 1680
 W: 1820
-S: Brahmagupta: $s=88$, area $=\sqrt{63\cdot49\cdot36\cdot28}=\sqrt{3111696}=1764$.
-(It is two right triangles, $25$-$60$-$65$ and $39$-$52$-$65$, sharing a diameter: $750+1014=1764$.)
+S: Brahmagupta: $s=\frac{25+39+52+60}{2}=88$, so the area is $\sqrt{(88-25)(88-39)(88-52)(88-60)}=\sqrt{63\cdot49\cdot36\cdot28}$.
+$63\cdot28=1764$ and $49\cdot36=1764$, so the area is $\sqrt{1764^2}=1764$.
+(Nice check: $25^2+60^2=65^2=39^2+52^2$, so a diagonal of length $65$ is a diameter splitting it into two right triangles: $750+1014=1764$.)
 ---
 Q: Points $A,B,C,D$ lie on a circle in that order, and $\angle BAC=35^\circ$. What is $\angle BDC$?
 L: 1
@@ -7626,7 +7732,8 @@ W: 55
 W: 70
 W: 145
 W: 110
-S: Both angles subtend arc $BC$ from the same side, so they are equal: $35^\circ$.
+S: Inscribed angles that intercept the same arc (from the same side) are equal.
+$\angle BAC$ and $\angle BDC$ both intercept arc $BC$, so $\angle BDC=35^\circ$.
 ---
 @@ circ-arc
 Q: What is the length of a $60^\circ$ arc of a circle with radius $9$?
@@ -7636,7 +7743,8 @@ W: 6\pi
 W: 9\pi
 W: \frac{3\pi}{2}
 W: 27\pi
-S: $\frac{60}{360}\cdot2\pi\cdot9=3\pi$.
+S: An arc is a fraction of the circumference: $\frac{\theta}{360}\cdot2\pi r$.
+$\frac{60}{360}\cdot2\pi\cdot9=\frac16\cdot18\pi=3\pi$.
 ---
 Q: What is the area of a $120^\circ$ sector of a circle with radius $6$?
 L: 1
@@ -7645,7 +7753,8 @@ W: 4\pi
 W: 36\pi
 W: 24\pi
 W: 6\pi
-S: $\frac13\cdot36\pi=12\pi$.
+S: A sector is a fraction of the disk: $\frac{\theta}{360}\cdot\pi r^2$.
+$\frac{120}{360}\cdot36\pi=\frac13\cdot36\pi=12\pi$.
 ---
 Q: In a circle of radius $2$, a chord subtends a $90^\circ$ central angle. What is the area of the smaller region between the chord and the arc?
 L: 2
@@ -7654,7 +7763,9 @@ W: \pi
 W: 2\pi-2
 W: \pi-1
 W: 4-\pi
-S: Sector $\frac14\cdot4\pi=\pi$ minus right triangle $\frac12\cdot2\cdot2=2$: $\pi-2$.
+S: The region (a circular segment) is the sector minus the triangle formed by the two radii and the chord.
+Sector: $\frac{90}{360}\cdot\pi\cdot4=\pi$. Triangle: right triangle with legs $2$, area $\frac12\cdot2\cdot2=2$.
+Segment: $\pi-2$.
 ---
 Q: A chord of the larger of two concentric circles is tangent to the smaller circle and has length $10$. What is the area of the ring between the circles?
 L: 2
@@ -7663,7 +7774,8 @@ W: 100\pi
 W: 10\pi
 W: 50\pi
 W: 5\pi
-S: $R^2-r^2=5^2$ (half-chord, Pythagoras), so the area is $\pi(R^2-r^2)=25\pi$.
+S: The tangent point is the midpoint of the chord, and the small radius $r$ is perpendicular to it there. So $r$, half the chord ($5$), and the big radius $R$ form a right triangle: $R^2=r^2+5^2$.
+Ring area: $\pi R^2-\pi r^2=\pi(R^2-r^2)=25\pi$. (We never need $R$ or $r$ individually.)
 ---
 Q: A square is inscribed in a circle of radius $1$. What is the area inside the circle but outside the square?
 L: 1
@@ -7672,7 +7784,8 @@ W: \pi-1
 W: 4-\pi
 W: \frac{\pi}{2}
 W: 2\pi-2
-S: The square's diagonal is $2$, so its area is $2$. The leftover area is $\pi-2$.
+S: The square's diagonal is a diameter, $2$, so its side is $\sqrt2$ and its area is $2$.
+Circle area: $\pi\cdot1^2=\pi$. Leftover: $\pi-2$.
 ---
 Q: A circle is inscribed in a square of side $4$. What is the area inside the square but outside the circle?
 L: 1
@@ -7681,7 +7794,8 @@ W: 4-\pi
 W: 16-2\pi
 W: 4\pi
 W: 16-8\pi
-S: The radius is $2$: $16-4\pi$.
+S: The inscribed circle has diameter equal to the side, $4$, so radius $2$ and area $4\pi$.
+Square area $16$. Inside the square but outside the circle: $16-4\pi$.
 ---
 Q: Two circles of radius $1$ each pass through the other's center. What is the area of their overlap?
 L: 3
@@ -7690,8 +7804,9 @@ W: \frac{\pi}{3}-\frac{\sqrt{3}}{4}
 W: \frac{2\pi}{3}
 W: \pi-\sqrt{3}
 W: \frac{\pi}{2}-\frac{\sqrt{3}}{2}
-S: The common chord subtends $120^\circ$ at each center. Each half of the lens is a segment: $\frac{\pi}3-\frac{\sqrt3}4$.
-Doubling gives $\frac{2\pi}3-\frac{\sqrt3}2$.
+S: The centers $O_1$, $O_2$ and either intersection point form an equilateral triangle (all sides $1$), so each center sees the common chord at $2\cdot60^\circ=120^\circ$.
+Each half of the lens is a circular segment: sector $\frac{120}{360}\pi=\frac\pi3$ minus triangle $\frac12\cdot1\cdot1\cdot\sin120^\circ=\frac{\sqrt3}{4}$.
+Lens area: $2\left(\frac\pi3-\frac{\sqrt3}4\right)=\frac{2\pi}{3}-\frac{\sqrt3}{2}$.
 ---
 Q: An arc of length $4\pi$ lies on a circle of radius $6$. What central angle does it subtend, in degrees?
 L: 1
@@ -7700,7 +7815,8 @@ W: 60
 W: 240
 W: 90
 W: 150
-S: $\frac{\theta}{360}\cdot12\pi=4\pi$, so $\theta=120^\circ$.
+S: Arc length $=\frac{\theta}{360}\cdot2\pi r$: $\frac{\theta}{360}\cdot12\pi=4\pi$.
+$\frac{\theta}{360}=\frac13$, so $\theta=120^\circ$.
 @@ polyg-quad
 Q: A rhombus has diagonals $10$ and $24$. What is its side length?
 L: 1
@@ -15715,46 +15831,46 @@ GENS['quad-solve']=[
 r=>{let a=ri(r,-12,12),b=ri(r,-12,12);if(a===b)b++;const s_=a+b,p=a*b;const ask=r()<.5;
  return{lvl:1,q:ask?T`What is the larger root of $${poly([[1,2],[-s_,1],[p,0]],'x')}=0$?`:T`What is the sum of the squares of the roots of $${poly([[1,2],[-s_,1],[p,0]],'x')}=0$?`,
  a:ask?Math.max(a,b):a*a+b*b,w:ask?[Math.min(a,b),-Math.max(a,b),s_,p,-Math.min(a,b)]:[s_*s_,s_*s_+2*p,p*p,a*a+b*b+1,2*p],
- s:T`Factor: $(x${a<0?'+':'-'}${Math.abs(a)})(x${b<0?'+':'-'}${Math.abs(b)})=0$, so the roots are $${a}$ and $${b}$.${ask?'':' Then $'+a*a+'+'+b*b+'='+(a*a+b*b)+'$.'}`}},
+ s:T`Factor: find two numbers with product $${p}$ and sum $${s_}$: they are $${a}$ and $${b}$.<br>$${poly([[1,2],[-s_,1],[p,0]],'x')}=(x${a<0?'+':'-'}${Math.abs(a)})(x${b<0?'+':'-'}${Math.abs(b)})=0$, so the roots are $${a}$ and $${b}$.<br>${ask?T`The larger root is $${Math.max(a,b)}$.`:T`Sum of squares: $${a}^2+${P(b)}^2=${a*a}+${b*b}=${a*a+b*b}$. (Or by Vieta: $(r+s)^2-2rs=${s_*s_}-${P(2*p)}$.)`}`}},
 r=>{const a=ri(r,2,5),b=ri(r,-7,7)||1,c=ri(r,1,4),d=ri(r,-7,7)||-1;const r1=F(b,a),r2=F(d,c);const A=a*c,B=-(a*d+b*c),C=b*d;
  const g=gcd(gcd(A,B),C);const ask=r()<.5;
  return{lvl:1,q:ask?T`What is the product of the roots of $${poly([[A/g,2],[B/g,1],[C/g,0]],'x')}=0$?`:T`What is the sum of the roots of $${poly([[A/g,2],[B/g,1],[C/g,0]],'x')}=0$?`,
  a:ask?r1.mul(r2):r1.add(r2),w:ask?[r1.mul(r2).neg(),r1.add(r2),F(C/g),F(A/g,C/g||1)]:[r1.add(r2).neg(),r1.mul(r2),F(B/g),F(-B/g)],
- s:T`It factors as $(${a}x-${P(b)})(${c}x-${P(d)})$, with roots $${r1.tex()}$ and $${r2.tex()}$. By Vieta, the ${ask?'product is $\\frac{c}{a}':'sum is $-\\frac{b}{a}'}=${(ask?r1.mul(r2):r1.add(r2)).tex()}$.`}},
+ s:T`It factors as $(${a}x${b<0?'+':'-'}${Math.abs(b)})(${c===1?'':c}x${d<0?'+':'-'}${Math.abs(d)})$ (up to a constant factor), so the roots are $${r1.tex()}$ and $${r2.tex()}$.<br>Vieta's formulas for $ax^2+bx+c$: the sum is $-\frac ba$ and the product is $\frac ca$.<br>${ask?T`Product: $\frac{${C/g}}{${A/g}}=${r1.mul(r2).tex()}$ (check: $${r1.tex()}\cdot${P(r2)}$).`:T`Sum: $-\frac{${B/g}}{${A/g}}=${r1.add(r2).tex()}$ (check: $${r1.tex()}+${P(r2)}$).`}`}},
 r=>{let p=ri(r,1,9),q=ri(r,1,12);if(p===q)q++;const A=p*p+q*q,B=p*p*q*q;
  return{lvl:2,q:T`What is the sum of the positive real solutions of $x^4-${A}x^2+${B}=0$?`,a:p+q,w:[A,p*q,0,p+q+1,Math.abs(p-q)],
- s:T`Let $u=x^2$: $u^2-${A}u+${B}=(u-${p*p})(u-${q*q})=0$. So $x=\pm${p},\pm${q}$, and the positive ones sum to $${p+q}$.`}},
+ s:T`Treat it as a quadratic in $u=x^2$: $u^2-${A}u+${B}=0$. Two numbers with sum ${A} and product ${B}: $${p*p}$ and $${q*q}$.<br>So $x^2=${p*p}$ or $x^2=${q*q}$, giving $x=\pm${p}$ and $x=\pm${q}$.<br>The positive solutions sum to $${p}+${q}=${p+q}$.`}},
 r=>{const k=ri(r,1,8),rr=k+ri(r,2,9);const c=(rr-k)**2-rr;const r2=2*k+1-rr;
  return{lvl:2,q:T`What is the sum of all real solutions of $\sqrt{x${c<0?'-':'+'}${Math.abs(c)}}=x-${k}$?`,a:rr,w:[rr+r2,r2,rr+1,2*k+1,k],
- s:T`Squaring: $x${c<0?'-':'+'}${Math.abs(c)}=x^2-${2*k}x+${k*k}$, i.e. $x^2-${2*k+1}x+${k*k-c}=0$, with roots $${rr}$ and $${r2}$.<br>Check: $x=${r2}$ makes the right side $${r2-k}\lt 0$, which is extraneous. Only $x=${rr}$ works.`}},
+ s:T`Square both sides: $x${c<0?'-':'+'}${Math.abs(c)}=(x-${k})^2=x^2-${2*k}x+${k*k}$, so $x^2-${2*k+1}x+${k*k-c}=0$, with roots $${rr}$ and $${r2}$.<br>Squaring can introduce extraneous roots, so check each: the right side $x-${k}$ must be $\ge0$ because a square root is never negative.<br>$x=${rr}$: right side $${rr-k}\ge0$. ✓ $\ x=${r2}$: right side $${r2-k}\lt0$. ✗<br>The only solution is $${rr}$, so the sum is $${rr}$.`}},
 ];
 GENS['quad-disc']=[
 r=>{const a=ri(r,2,15);const c=a*a;const lead=pick(r,[1,1,4,9]);
  return{lvl:1,q:T`For what positive value of $k$ does $${lead===1?'':lead}x^2+kx+${c}=0$ have a repeated root?`,a:2*a*Math.sqrt(lead),w:[a,c,4*a,a*Math.sqrt(lead),2*c],
- s:T`Need $\Delta=k^2-4\cdot${lead}\cdot${c}=0$, so $k^2=${4*lead*c}$ and $k=${2*a*Math.sqrt(lead)}$.`}},
+ s:T`A repeated root happens exactly when the discriminant is zero: $k^2-4\cdot${lead}\cdot${c}=0$.<br>$k^2=${4*lead*c}$, so the positive value is $k=${2*a*Math.sqrt(lead)}$.<br>Then the quadratic is a perfect square: $(${Math.sqrt(lead)===1?'':Math.sqrt(lead)}x+${a})^2$.`}},
 r=>{const c=ri(r,2,60);const m=Math.floor(Math.sqrt(4*c-1));const n=2*m+1;
  return{lvl:2,q:T`For how many integers $k$ does $x^2+kx+${c}=0$ have no real roots?`,a:n,w:[n+1,n-1,n+2,m],
- s:T`Need $k^2\lt ${4*c}$. The integers with $|k|\le${m}$ work (since $${m}^2=${m*m}\lt ${4*c}\le${(m+1)**2}$), giving $2\cdot${m}+1=${n}$.`}},
+ s:T`No real roots means the discriminant is negative: $k^2-4\cdot${c}\lt0$, i.e. $k^2\lt${4*c}$.<br>$${m}^2=${m*m}\lt${4*c}$ but $${m+1}^2=${(m+1)**2}\ge${4*c}$, so the integers that work are $-${m}\le k\le${m}$.<br>Count: $2\cdot${m}+1=${n}$.`}},
 r=>{const a=ri(r,1,5)*pick(r,[1,-1]),b=ri(r,-10,10),c=ri(r,-10,10);const D=b*b-4*a*c;const n=D>0?2:D===0?1:0;
  return{lvl:1,q:T`How many distinct real roots does $${poly([[a,2],[b,1],[c,0]],'x')}=0$ have?`,a:n,w:[0,1,2,3,4].filter(x=>x!==n),
- s:T`$\Delta=b^2-4ac=${b*b}-4\cdot${P(a)}\cdot${P(c)}=${D}$, which is ${D>0?'positive: two real roots':D===0?'zero: one repeated root':'negative: no real roots'}.`}},
+ s:T`The number of real roots depends on the sign of the discriminant $\Delta=b^2-4ac$.<br>$\Delta=${P(b)}^2-4\cdot${P(a)}\cdot${P(c)}=${b*b}-${P(4*a*c)}=${D}$.<br>${D>0?'Positive, so there are two distinct real roots.':D===0?'Zero, so there is exactly one (repeated) real root.':'Negative, so there are no real roots.'}`}},
 r=>{const m=ri(r,1,8)*2,b=ri(r,-6,6);const c=b+m*m/4;
  return{lvl:2,q:T`The line $y=mx${b<0?'-':'+'}${Math.abs(b)}$ with $m>0$ is tangent to the parabola $y=x^2${c<0?'-':'+'}${Math.abs(c)}$. What is $m$?`,a:m,w:[m/2,m*m,2*m,m+1,Math.abs(c-b)],
- s:T`Setting them equal: $x^2-mx+${c-b}=0$ must have $\Delta=m^2-${4*(c-b)}=0$, so $m=${m}$.`}},
+ s:T`At a point of tangency the line and parabola meet exactly once, so $x^2${c<0?'-':'+'}${Math.abs(c)}=mx${b<0?'-':'+'}${Math.abs(b)}$ has a double root.<br>Rearrange: $x^2-mx+${c-b}=0$. Double root: $\Delta=m^2-4\cdot${c-b}=0$, so $m^2=${4*(c-b)}$ and $m=${m}$ (positive).`}},
 ];
 GENS['quad-vertex']=[
 r=>{const a=ri(r,1,5)*pick(r,[1,-1]),h=ri(r,-8,8),k=ri(r,-20,20);const b=-2*a*h,c=a*h*h+k;
  return{lvl:1,q:T`What is the ${a>0?'minimum':'maximum'} value of $${poly([[a,2],[b,1],[c,0]],'x')}$?`,a:k,w:[c,h,k+a,-k,a*h*h-k],
- s:T`The vertex is at $x=-\frac{${b}}{2\cdot${P(a)}}=${h}$, and the value there is $${k}$. Equivalently, $${a===1?'':a===-1?'-':a}(x${h<0?'+':'-'}${Math.abs(h)})^2${k<0?'-':'+'}${Math.abs(k)}$.`}},
+ s:T`The parabola opens ${a>0?'up, so its lowest point (the minimum)':'down, so its highest point (the maximum)'} is at the vertex.<br>$x$-coordinate: $-\frac{b}{2a}=-\frac{${b}}{2\cdot${P(a)}}=${h}$.<br>Value: $f(${h})=${a}\cdot${P(h)}^2+${P(b)}\cdot${P(h)}+${P(c)}=${k}$. (Vertex form: $${a===1?'':a===-1?'-':a}(x${h<0?'+':'-'}${Math.abs(h)})^2${k<0?'-':'+'}${Math.abs(k)}$.)`}},
 r=>{const L=ri(r,5,40)*4;const x=L/4;
  return{lvl:2,q:T`A rectangle is fenced on three sides with ${L} meters of fence; the fourth side is a wall. What is the largest possible area, in square meters?`,a:x*(L-2*x),w:[(L/4)**2,(L/3)**2|0,x*(L-2*x)/2,(L/2)**2,x*(L-x)],
- s:T`With two sides $x$ perpendicular to the wall, the area is $x(${L}-2x)$, maximized at $x=${x}$: $${x}\cdot${L-2*x}=${x*(L-2*x)}$.`}},
+ s:T`Let $x$ be each side perpendicular to the wall; the side parallel to the wall uses the rest: $${L}-2x$.<br>Area $A(x)=x(${L}-2x)=-2x^2+${L}x$, a downward parabola with vertex at $x=\frac{${L}}{4}=${x}$.<br>Maximum area: $${x}\cdot${L-2*x}=${x*(L-2*x)}$ square meters.`}},
 r=>{const S=ri(r,4,60);const v=F(S*S,4);
  return{lvl:1,q:T`Two real numbers have sum ${S}. What is the largest possible value of their product?`,a:v,w:[F(S*S,2),F(S*S),v.sub(1),F(Math.floor(S/2)*Math.floor(S/2-1)),v.add(1)],
- s:T`$x(${S}-x)$ is maximized at $x=${F(S,2).tex()}$, giving $${v.tex()}$.`}},
+ s:T`Let the numbers be $x$ and $${S}-x$. Their product $x(${S}-x)=-\left(x-${F(S,2).tex()}\right)^2+${v.tex()}$ (complete the square).<br>The maximum is $${v.tex()}$, when both numbers equal $${F(S,2).tex()}$.`}},
 r=>{const h=ri(r,-8,8),k=ri(r,-15,15);const b=-2*h,c=h*h+k;
  return{lvl:2,q:T`The parabola $y=x^2+bx+c$ has vertex $(${h},${k})$. What is $b+c$?`,a:b+c,w:[b-c,c-b,h+k,b*c,-(b+c)],
- s:T`$y=(x-${P(h)})^2+${P(k)}=x^2${b<0?'-':'+'}${Math.abs(b)}x+${c}$, so $b=${b}$, $c=${c}$, and $b+c=${b+c}$.`}},
+ s:T`A monic parabola with vertex $(${h},${k})$ is $y=(x-${P(h)})^2+${P(k)}$.<br>Expand: $x^2${b<0?'-':'+'}${Math.abs(b)}x+${h*h}${k<0?'-':'+'}${Math.abs(k)}=x^2${b<0?'-':'+'}${Math.abs(b)}x+${c}$.<br>So $b=${b}$, $c=${c}$, and $b+c=${b+c}$.`}},
 ];
 GENS['quad-vieta']=[
 r=>{const s_=ri(r,-12,12),p=ri(r,-15,15)||2;const kind=pick(r,['sq','rec','cube','diff']);
@@ -15762,26 +15878,26 @@ r=>{const s_=ri(r,-12,12),p=ri(r,-15,15)||2;const kind=pick(r,['sq','rec','cube'
  const ex={sq:'r^2+s^2',rec:'\\frac1r+\\frac1s',cube:'r^3+s^3',diff:'(r-s)^2'}[kind];
  return{lvl:kind==='cube'?2:1,q:T`Let $r$ and $s$ be the roots of $${poly([[1,2],[-s_,1],[p,0]],'x')}=0$. What is $${ex}$?`,
  a:val,w:[F(s_*s_),F(s_*s_+2*p),F(p,s_||1),F(s_**3),val.neg(),val.add(1),F(s_*s_-p)],
- s:T`Vieta: $r+s=${s_}$, $rs=${p}$. ${{sq:'$r^2+s^2=(r+s)^2-2rs$',rec:'$\\frac1r+\\frac1s=\\frac{r+s}{rs}$',cube:'$r^3+s^3=(r+s)^3-3rs(r+s)$',diff:'$(r-s)^2=(r+s)^2-4rs$'}[kind]}$=${val.tex()}$.`}},
+ s:T`Vieta for $x^2${-s_<0?'-':'+'}${Math.abs(s_)}x${p<0?'-':'+'}${Math.abs(p)}$: $r+s=${s_}$ and $rs=${p}$.<br>Rewrite the target using only $r+s$ and $rs$: ${{sq:'$r^2+s^2=(r+s)^2-2rs$',rec:'$\\frac1r+\\frac1s=\\frac{r+s}{rs}$',cube:'$r^3+s^3=(r+s)^3-3rs(r+s)$',diff:'$(r-s)^2=(r+s)^2-4rs$'}[kind]}.<br>Substitute: ${{sq:T`$${s_*s_}-2(${p})=${val.tex()}$`,rec:T`$\frac{${s_}}{${p}}=${val.tex()}$`,cube:T`$${s_**3}-3(${p})(${s_})=${val.tex()}$`,diff:T`$${s_*s_}-4(${p})=${val.tex()}$`}[kind]}.`}},
 r=>{const s_=ri(r,-8,8),p=ri(r,-10,10)||1,k=ri(r,-4,4)||1;const q=p+k*s_+k*k,np=s_+2*k;
  return{lvl:2,q:T`Let $r,s$ be the roots of $${poly([[1,2],[-s_,1],[p,0]],'x')}=0$. The monic quadratic with roots $r${k<0?'-':'+'}${Math.abs(k)}$ and $s${k<0?'-':'+'}${Math.abs(k)}$ is $x^2+bx+c$. What is $c$?`,
  a:q,w:[p,p+k,q+k*k,p-k*s_+k*k,-np],
- s:T`$c=(r+${P(k)})(s+${P(k)})=rs+${P(k)}(r+s)+${k*k}=${p}+${P(k)}\cdot${P(s_)}+${k*k}=${q}$.`}},
+ s:T`For a monic quadratic, the constant term is the product of the roots: $c=(r${k<0?'-':'+'}${Math.abs(k)})(s${k<0?'-':'+'}${Math.abs(k)})$.<br>Expand: $rs+${P(k)}(r+s)+${k*k}$.<br>Vieta for the original: $r+s=${s_}$, $rs=${p}$. So $c=${p}+${P(k)}\cdot${P(s_)}+${k*k}=${q}$.`}},
 r=>{const m=ri(r,2,5),a=ri(r,1,5);const r1=a,r2=m*a;const pr=r1*r2;
  return{lvl:2,q:T`One root of $x^2+bx+${pr}=0$ is ${m} times the other, and both roots are positive. What is $b$?`,a:-(r1+r2),w:[r1+r2,-(r1*m),-pr,-(r2),-(r1+r2)+1],
- s:T`Roots $t$ and $${m}t$: $${m}t^2=${pr}$, so $t=${a}$ and the roots are $${r1},${r2}$. Then $b=-(${r1}+${r2})=${-(r1+r2)}$.`}},
+ s:T`Call the roots $t$ and $${m}t$. Vieta: their product is $${m}t^2=${pr}$, so $t^2=${a*a}$ and $t=${a}$ (both roots positive).<br>The roots are $${r1}$ and $${r2}$. Their sum is $-b$, so $b=-(${r1}+${r2})=${-(r1+r2)}$.`}},
 ];
 GENS['quad-sys']=[
 r=>{const x=ri(r,-9,12),y=ri(r,-9,12);const s_=x+y,p=x*y;const ask=pick(r,['sq','diff','xy']);
- if(ask==='xy')return{lvl:1,q:T`If $x+y=${s_}$ and $x^2+y^2=${x*x+y*y}$, what is $xy$?`,a:p,w:[2*p,s_*s_,x*x+y*y-s_,-p,p+1],s:T`$2xy=(x+y)^2-(x^2+y^2)=${s_*s_}-${x*x+y*y}=${2*p}$, so $xy=${p}$.`};
- if(ask==='sq')return{lvl:1,q:T`If $x+y=${s_}$ and $xy=${p}$, what is $x^2+y^2$?`,a:x*x+y*y,w:[s_*s_,s_*s_+2*p,s_*s_-p,2*p,x*x+y*y+2],s:T`$x^2+y^2=(x+y)^2-2xy=${s_*s_}-${P(2*p)}=${x*x+y*y}$.`};
- return{lvl:1,q:T`If $x+y=${s_}$ and $xy=${p}$, what is $|x-y|$?`,a:Math.abs(x-y),w:[Math.abs(x-y)+2,Math.abs(s_),R(1,Math.abs(s_*s_-2*p)||3),Math.abs(x-y)*2||5,Math.abs(x-y)+1],s:T`$(x-y)^2=(x+y)^2-4xy=${s_*s_}-${4*p}=${(x-y)**2}$, so $|x-y|=${Math.abs(x-y)}$.`}},
+ if(ask==='xy')return{lvl:1,q:T`If $x+y=${s_}$ and $x^2+y^2=${x*x+y*y}$, what is $xy$?`,a:p,w:[2*p,s_*s_,x*x+y*y-s_,-p,p+1],s:T`Expand $(x+y)^2=x^2+2xy+y^2$ and solve for $xy$:<br>$2xy=(x+y)^2-(x^2+y^2)=${s_*s_}-${x*x+y*y}=${2*p}$.<br>$xy=${p}$.`};
+ if(ask==='sq')return{lvl:1,q:T`If $x+y=${s_}$ and $xy=${p}$, what is $x^2+y^2$?`,a:x*x+y*y,w:[s_*s_,s_*s_+2*p,s_*s_-p,2*p,x*x+y*y+2],s:T`$(x+y)^2=x^2+y^2+2xy$, so $x^2+y^2=(x+y)^2-2xy$.<br>$=${s_*s_}-2(${p})=${x*x+y*y}$.`};
+ return{lvl:1,q:T`If $x+y=${s_}$ and $xy=${p}$, what is $|x-y|$?`,a:Math.abs(x-y),w:[Math.abs(x-y)+2,Math.abs(s_),R(1,Math.abs(s_*s_-2*p)||3),Math.abs(x-y)*2||5,Math.abs(x-y)+1],s:T`$(x-y)^2=x^2-2xy+y^2=(x+y)^2-4xy$.<br>$=${s_*s_}-4(${p})=${(x-y)**2}$, so $|x-y|=\sqrt{${(x-y)**2}}=${Math.abs(x-y)}$.<br>(The numbers are $${x}$ and $${y}$, the roots of $t^2-${s_}t+${P(p)}=0$.)`}},
 r=>{const d=ri(r,1,8),s_=ri(r,d+2,20);if((s_+d)%2)return GENS['quad-sys'][1](r);const x=(s_+d)/2,y=(s_-d)/2;
  return{lvl:1,q:T`If $x^2-y^2=${s_*d}$ and $x-y=${d}$, what is $xy$?`,a:x*y,w:[s_,s_*d,x*y+d,x+y+d,x*x],
- s:T`$x+y=\frac{${s_*d}}{${d}}=${s_}$. With $x-y=${d}$: $x=${x}$, $y=${y}$, so $xy=${x*y}$.`}},
+ s:T`Factor the difference of squares: $x^2-y^2=(x-y)(x+y)=${s_*d}$. With $x-y=${d}$, $x+y=\frac{${s_*d}}{${d}}=${s_}$.<br>Add and subtract: $x=\frac{${s_}+${d}}{2}=${x}$ and $y=\frac{${s_}-${d}}{2}=${y}$.<br>$xy=${x*y}$.`}},
 r=>{const a=ri(r,-6,6),b=ri(r,-6,6);if(a===b)return GENS['quad-sys'][2](r);const m=a+b,k=-a*b;
  return{lvl:2,q:T`The line $y=${poly([[m,1],[k,0]],'x')}$ meets the parabola $y=x^2$ at two points. What is the sum of their $y$-coordinates?`,a:a*a+b*b,w:[m,a*a+b*b+1,m*m,k,2*k],
- s:T`$x^2=${poly([[m,1],[k,0]],'x')}$ gives $x=${a}$ and $x=${b}$, so the $y$-coordinates are $${a*a}$ and $${b*b}$, with sum $${a*a+b*b}$.`}},
+ s:T`Set the equations equal: $x^2=${poly([[m,1],[k,0]],'x')}$, i.e. $x^2${-m<0?'-':'+'}${Math.abs(m)}x${-k<0?'-':'+'}${Math.abs(k)}=0$, which factors as $${fx(a)}${fx(b)}=0$.<br>So the intersection points have $x=${a}$ and $x=${b}$, and (on the parabola) $y=x^2$: $${a*a}$ and $${b*b}$.<br>Sum: $${a*a+b*b}$. (Vieta shortcut: $x_1^2+x_2^2=(x_1+x_2)^2-2x_1x_2=${m*m}${2*k<0?'-':'+'}${Math.abs(2*k)}$.)`}},
 ];
 /* ---- func.txt ---- */
 GENS['func-eval']=[
@@ -16397,78 +16513,78 @@ r=>{const s_=ri(r,1,12)*pick(r,[1,3]);const ask=r()<.5;
 /* ---- circ.txt ---- */
 GENS['circ-angle']=[
 r=>{const c=2*ri(r,10,89);const ask=r()<.5;
- return ask?{lvl:1,q:T`A central angle measures $${c}^\circ$. What is an inscribed angle intercepting the same arc, in degrees?`,a:c/2,w:[c,2*c>360?c+10:2*c,180-c/2,90-c/4|0||7],s:T`Half the arc: $${c/2}^\circ$.`}
- :{lvl:1,q:T`An inscribed angle measures $${c/2}^\circ$. What is its intercepted arc, in degrees?`,a:c,w:[c/2,c/4|0||3,360-c,180-c/2],s:T`The arc is twice the inscribed angle: $${c}^\circ$.`}},
+ return ask?{lvl:1,q:T`A central angle measures $${c}^\circ$. What is an inscribed angle intercepting the same arc, in degrees?`,a:c/2,w:[c,2*c>360?c+10:2*c,180-c/2,90-c/4|0||7],s:T`Inscribed Angle Theorem: an inscribed angle is half the central angle (equivalently, half the arc) it intercepts.<br>$\frac{${c}^\circ}{2}=${c/2}^\circ$.`}
+ :{lvl:1,q:T`An inscribed angle measures $${c/2}^\circ$. What is its intercepted arc, in degrees?`,a:c,w:[c/2,c/4|0||3,360-c,180-c/2],s:T`An inscribed angle is half its intercepted arc, so the arc is twice the angle.<br>$2\cdot${c/2}^\circ=${c}^\circ$.`}},
 r=>{const a=ri(r,10,170),b=ri(r,10,Math.min(170,350-a));if((a+b)%2)return GENS['circ-angle'][1](r);
  return{lvl:1,q:T`Two chords intersect inside a circle, and the arcs intercepted by one pair of vertical angles measure $${a}^\circ$ and $${b}^\circ$. What is the measure of each of those vertical angles?`,a:(a+b)/2,w:[Math.abs(a-b)/2||(a+b),a+b,180-(a+b)/2,Math.max(a,b)],
- s:T`$\frac12(${a}+${b})=${(a+b)/2}^\circ$.`}},
+ s:T`When two chords intersect inside a circle, each angle equals half the <b>sum</b> of the two arcs intercepted by it and its vertical angle.<br>$\frac12(${a}^\circ+${b}^\circ)=\frac{${a+b}^\circ}{2}=${(a+b)/2}^\circ$.`}},
 r=>{const near=ri(r,10,100),far=near+2*ri(r,5,60);if(far+near>=360)return GENS['circ-angle'][2](r);
  return{lvl:1,q:T`Two secants from an exterior point intercept arcs of $${far}^\circ$ and $${near}^\circ$. What is the angle between the secants, in degrees?`,a:(far-near)/2,w:[(far+near)/2,far-near,near,180-(far-near)/2],
- s:T`Outside the circle: $\frac12(${far}-${near})=${(far-near)/2}^\circ$.`}},
+ s:T`An angle with its vertex outside the circle (two secants) equals half the <b>difference</b> of the far arc and the near arc.<br>$\frac12(${far}^\circ-${near}^\circ)=\frac{${far-near}^\circ}{2}=${(far-near)/2}^\circ$.`}},
 r=>{const P_=2*ri(r,10,80);const arc=180-P_;
  return{lvl:2,q:T`Tangents from $P$ touch a circle at $A$ and $B$ with $\angle APB=${P_}^\circ$. What is the measure of the minor arc $AB$, in degrees?`,a:arc,w:[P_,2*P_>=360?arc/2:2*P_,180+P_,arc/2],
- s:T`In quadrilateral $PAOB$ the angles at $A$ and $B$ are right, so $\angle AOB=180-${P_}=${arc}^\circ$, which is the minor arc.`}},
+ s:T`Radii $OA$ and $OB$ are perpendicular to the tangents, so in quadrilateral $PAOB$ two angles are $90^\circ$.<br>The four angles sum to $360^\circ$: $\angle AOB=360-90-90-${P_}=${arc}^\circ$.<br>The central angle $\angle AOB$ equals the minor arc $AB$: $${arc}^\circ$. (Shortcut: arc $=180^\circ-\angle P$.)`}},
 ];
 GENS['circ-tan']=[
 r=>{const [a,b,c]=pick(r,TRIPLES);const ask=r()<.5;
- return ask?{lvl:1,q:T`Point $P$ is $${c}$ units from the center of a circle of radius $${a}$. How long is a tangent segment from $P$?`,a:b,w:[c-a,c+a,c,b+1],s:T`$\sqrt{${c}^2-${a}^2}=${b}$.`}
- :{lvl:1,q:T`A tangent segment from $P$ to a circle of radius $${a}$ has length $${b}$. How far is $P$ from the center?`,a:c,w:[a+b,b-a>0?b-a:a-b+1,c+1,Math.max(a,b)],s:T`$\sqrt{${a}^2+${b}^2}=${c}$.`}},
+ return ask?{lvl:1,q:T`Point $P$ is $${c}$ units from the center of a circle of radius $${a}$. How long is a tangent segment from $P$?`,a:b,w:[c-a,c+a,c,b+1],s:T`The tangent is perpendicular to the radius at the point of tangency, so the radius ($${a}$), the tangent segment, and $OP$ ($${c}$, the hypotenuse) form a right triangle.<br>Tangent length $=\sqrt{${c}^2-${a}^2}=\sqrt{${c*c-a*a}}=${b}$.`}
+ :{lvl:1,q:T`A tangent segment from $P$ to a circle of radius $${a}$ has length $${b}$. How far is $P$ from the center?`,a:c,w:[a+b,b-a>0?b-a:a-b+1,c+1,Math.max(a,b)],s:T`The radius meets the tangent at a right angle, so the radius ($${a}$) and the tangent segment ($${b}$) are the legs of a right triangle with hypotenuse $OP$.<br>$OP=\sqrt{${a}^2+${b}^2}=\sqrt{${c*c}}=${c}$.`}},
 r=>{const p=ri(r,1,6),q=ri(r,p+1,9);const r1=p*p,r2=q*q;
  return{lvl:2,q:T`Circles of radii $${r1}$ and $${r2}$ are externally tangent. How long is their common external tangent segment?`,a:2*p*q,w:[r1+r2,r2-r1,p*q,2*(r1+r2)],
- s:T`$\sqrt{(r_1+r_2)^2-(r_2-r_1)^2}=2\sqrt{r_1r_2}=2\cdot${p*q}=${2*p*q}$.`}},
+ s:T`The centers are $${r1}+${r2}=${r1+r2}$ apart (externally tangent). Both radii to the tangent points are perpendicular to the tangent.<br>Shift the tangent segment onto the smaller radius: it becomes a leg of a right triangle with hypotenuse $${r1+r2}$ and other leg $${r2}-${r1}=${r2-r1}$.<br>Length $=\sqrt{${r1+r2}^2-${r2-r1}^2}=\sqrt{4\cdot${r1}\cdot${r2}}=2\sqrt{${r1*r2}}=${2*p*q}$.`}},
 r=>{const a=ri(r,3,15),b=ri(r,3,15),c=ri(r,3,15);const d=a+c-b;if(d<=0)return GENS['circ-tan'][2](r);
  return{lvl:1,q:T`A circle is inscribed in quadrilateral $ABCD$ with $AB=${a}$, $BC=${b}$, $CD=${c}$. What is $DA$?`,a:d,w:[a+b-c>0?a+b-c:d+2,b+c-a>0?b+c-a:d+3,d+1,Math.round((a+b+c)/3)],
- s:T`$AB+CD=BC+DA$: $DA=${a}+${c}-${b}=${d}$.`}},
+ s:T`Tangent segments from a vertex to the incircle are equal. If they have lengths $a,b,c,d$ at $A,B,C,D$, then $AB=a+b$, $BC=b+c$, $CD=c+d$, $DA=d+a$.<br>So $AB+CD=BC+DA$ (Pitot's Theorem): $${a}+${c}=${b}+DA$.<br>$DA=${d}$.`}},
 r=>{const [a,b,c]=pick(r,TRIPLES);const r1=ri(r,1,a-1),r2=a-r1;
  return{lvl:2,q:T`Circles of radii $${r1}$ and $${r2}$ have centers $${c}$ apart. How long is a common internal tangent segment?`,a:b,w:[c,R(1,c*c-(r1-r2)**2),c-a,b+1],
- s:T`$\sqrt{d^2-(r_1+r_2)^2}=\sqrt{${c*c}-${a*a}}=${b}$.`}},
+ s:T`For a common internal tangent (crossing between the circles), shift the tangent segment along one radius: it becomes a leg of a right triangle whose hypotenuse is the center distance $${c}$ and other leg is $r_1+r_2=${a}$.<br>Length $=\sqrt{${c}^2-${a}^2}=\sqrt{${c*c-a*a}}=${b}$.`}},
 ];
 GENS['circ-pop']=[
 r=>{const a=ri(r,1,12),b=ri(r,1,12),c=pick(r,[1,2,3,4,6,8,12].filter(x=>x<=a*b));const d=F(a*b,c);
  return{lvl:1,q:T`Chords $AB$ and $CD$ intersect at $E$. If $AE=${a}$, $EB=${b}$, and $CE=${c}$, what is $ED$?`,a:d,w:[F(a*c,b),F(b*c,a),F(a+b-c>0?a+b-c:1),d.add(1)],
- s:T`$AE\cdot EB=CE\cdot ED$: $${a*b}=${c}\cdot ED$, so $ED=${d.tex()}$.`}},
+ s:T`Power of a Point (intersecting chords): $AE\cdot EB=CE\cdot ED$.<br>$${a}\cdot${b}=${c}\cdot ED$, so $ED=\frac{${a*b}}{${c}}=${d.tex()}$.<br>(Why: triangles $AEC$ and $DEB$ are similar, since inscribed angles on the same arcs are equal.)`}},
 r=>{const PA=ri(r,1,10),k=ri(r,2,6);const PB=PA*k*k;const t=PA*k;
  return{lvl:2,q:T`A tangent from $P$ has length $${t}$. A secant from $P$ meets the circle at $A$ and then $B$ with $PA=${PA}$. What is $AB$?`,a:PB-PA,w:[PB,t-PA,PB+PA,t],
- s:T`$PT^2=PA\cdot PB$: $${t*t}=${PA}\cdot PB$, so $PB=${PB}$ and $AB=${PB-PA}$.`}},
+ s:T`Power of a Point from $P$: (tangent)$^2$ equals (near intersection) $\times$ (far intersection): $PT^2=PA\cdot PB$.<br>$${t}^2=${t*t}=${PA}\cdot PB$, so $PB=${PB}$.<br>$AB=PB-PA=${PB}-${PA}=${PB-PA}$.`}},
 r=>{const [a,b,c]=pick(r,TRIPLES);
  return{lvl:1,q:T`A chord of length $${2*b}$ lies in a circle of radius $${c}$. How far is the chord from the center?`,a:a,w:[b,c-b,c-a,2*a],
- s:T`$\sqrt{${c}^2-${b}^2}=${a}$.`}},
+ s:T`The perpendicular from the center bisects the chord. Half the chord ($${b}$), the distance $d$ to the chord, and the radius ($${c}$) form a right triangle.<br>$d=\sqrt{${c}^2-${b}^2}=\sqrt{${c*c-b*b}}=${a}$.`}},
 r=>{const c=ri(r,2,16),h=ri(r,1,8);const rad=F(c*c+4*h*h,8*h);
  return{lvl:2,q:T`A chord of length $${c}$ has an arc rising $${h}$ above its midpoint. What is the radius of the circle?`,a:rad,w:[F(c,2),F(c*c,8*h),rad.add(1),F(c*c+h*h,2*h)],
- s:T`$r^2=\left(\frac{${c}}2\right)^2+(r-${h})^2$, so $${2*h}r=${F(c*c,4).tex()}+${h*h}$ and $r=${rad.tex()}$.`}},
+ s:T`The center lies on the perpendicular bisector of the chord. Its distance from the arc's top is $r$, so its distance from the chord is $r-${h}$.<br>Right triangle with half-chord $\frac{${c}}{2}$: $r^2=\left(\frac{${c}}{2}\right)^2+(r-${h})^2=${F(c*c,4).tex()}+r^2-${2*h}r+${h*h}$.<br>The $r^2$ terms cancel: $${2*h}r=${F(c*c,4).tex()}+${h*h}$, so $r=${rad.tex()}$.`}},
 r=>{const PA=ri(r,1,9),PB=PA+ri(r,1,15),PC=pick(r,[1,2,3,4,5,6].filter(x=>x!==PA));const PD=F(PA*PB,PC);
  return{lvl:1,q:T`Two secants from $P$: one meets the circle at $A$ and $B$ with $PA=${PA}$, $PB=${PB}$; the other meets it at $C$ and $D$ with $PC=${PC}$. What is $PD$?`,a:PD,w:[F(PC*PB,PA),F(PB-PA+PC),PD.add(1),F(PA*PC,PB)],
- s:T`$PA\cdot PB=PC\cdot PD$: $${PA*PB}=${PC}\cdot PD$, so $PD=${PD.tex()}$.`}},
+ s:T`Power of a Point for two secants from $P$: $PA\cdot PB=PC\cdot PD$ (each product is the power of $P$).<br>$${PA}\cdot${PB}=${PA*PB}=${PC}\cdot PD$, so $PD=\frac{${PA*PB}}{${PC}}=${PD.tex()}$.`}},
 ];
 GENS['circ-cyc']=[
 r=>{const A=ri(r,20,160);
- return{lvl:1,q:T`In cyclic quadrilateral $ABCD$, $\angle B=${A}^\circ$. What is $\angle D$, in degrees?`,a:180-A,w:[A,360-A,90-A/2|0||45,180-A/2|0],s:T`Opposite angles are supplementary: $180-${A}=${180-A}^\circ$.`}},
+ return{lvl:1,q:T`In cyclic quadrilateral $ABCD$, $\angle B=${A}^\circ$. What is $\angle D$, in degrees?`,a:180-A,w:[A,360-A,90-A/2|0||45,180-A/2|0],s:T`Opposite angles of a cyclic quadrilateral are supplementary: they intercept arcs that together make the whole circle, so the angles add to half of $360^\circ$.<br>$\angle D=180^\circ-${A}^\circ=${180-A}^\circ$.`}},
 r=>{const quads=[[3,4,3,4,12],[7,15,20,24,234],[5,5,5,5,25],[6,8,6,8,48],[25,39,52,60,1764],[2,2,2,2,4],[3,5,3,5,15]];const [a,b,c,d,A]=pick(r,quads);const k=ri(r,1,3);
  return{lvl:2,q:T`A cyclic quadrilateral has sides $${a*k}$, $${b*k}$, $${c*k}$, and $${d*k}$. What is its area?`,a:A*k*k,w:[A*k,2*A*k*k,A*k*k+k*k,(a*b+c*d)*k*k/2+1],
- s:T`Brahmagupta: $s=${(a+b+c+d)*k/2}$, and $\sqrt{(s-a)(s-b)(s-c)(s-d)}=${A*k*k}$.`}},
+ s:T`Brahmagupta's formula for a cyclic quadrilateral: Area $=\sqrt{(s-a)(s-b)(s-c)(s-d)}$, where $s$ is the semiperimeter.<br>$s=\frac{${a*k}+${b*k}+${c*k}+${d*k}}{2}=${(a+b+c+d)*k/2}$.<br>Area $=\sqrt{${(a+b+c+d)*k/2-a*k}\cdot${(a+b+c+d)*k/2-b*k}\cdot${(a+b+c+d)*k/2-c*k}\cdot${(a+b+c+d)*k/2-d*k}}=\sqrt{${(A*k*k)**2}}=${A*k*k}$.`}},
 r=>{const [a,b,c]=pick(r,TRIPLES);const k=ri(r,1,2);
  return{lvl:1,q:T`A rectangle is inscribed in a circle of radius $${F(c*k,2).tex()}$, and one side has length $${a*k}$. What is its area?`,a:a*b*k*k,w:[a*c*k*k,F(a*b*k*k,2),a*b*k*k+k,c*c*k*k],
- s:T`The diagonal is the diameter, $${c*k}$, so the other side is $${b*k}$ and the area is $${a*b*k*k}$.`}},
+ s:T`A rectangle's angles are right angles, so each diagonal subtends a semicircle: the diagonal is a diameter, $2\cdot${F(c*k,2).tex()}=${c*k}$.<br>Other side: $\sqrt{${c*k}^2-${a*k}^2}=${b*k}$.<br>Area: $${a*k}\cdot${b*k}=${a*b*k*k}$.`}},
 r=>{const p=ri(r,1,7),q=ri(r,1,7);if(180*p%(p+q))return GENS['circ-cyc'][3](r);const A=180*p/(p+q);
  return{lvl:1,q:T`In cyclic quadrilateral $ABCD$, $\angle A:\angle C=${p}:${q}$. What is $\angle A$, in degrees?`,a:A,w:[180-A,360*p/(p+q),A/2,90],
- s:T`$\angle A+\angle C=180$, so $\angle A=180\cdot\frac{${p}}{${p+q}}=${A}^\circ$.`}},
+ s:T`$A$ and $C$ are opposite angles of a cyclic quadrilateral, so $\angle A+\angle C=180^\circ$.<br>Split $180^\circ$ in the ratio ${p}:${q}: $\angle A=180^\circ\cdot\frac{${p}}{${p+q}}=${A}^\circ$ (and $\angle C=${180-A}^\circ$).`}},
 ];
 GENS['circ-arc']=[
 r=>{const th=pick(r,[30,36,40,45,60,72,90,120,135,150,180,240,270]),rad=ri(r,1,12);const v=F(th*rad,180);
  return{lvl:1,q:T`What is the length of a $${th}^\circ$ arc of a circle with radius $${rad}$?`,a:PI(v),w:[PI(v.mul(2)),PI(v.div(2)),PI(F(th*rad*rad,360)),PI(v.add(1))],
- s:T`$\frac{${th}}{360}\cdot2\pi\cdot${rad}=${PI(v).tex}$.`}},
+ s:T`Arc length is the matching fraction of the circumference: $\frac{\theta}{360}\cdot2\pi r$.<br>$\frac{${th}}{360}\cdot2\pi\cdot${rad}=${F(th,360).tex()}\cdot${2*rad}\pi=${PI(v).tex}$.`}},
 r=>{const th=pick(r,[30,45,60,72,90,120,135,150,180,240]),rad=ri(r,1,12);const v=F(th*rad*rad,360);
  return{lvl:1,q:T`What is the area of a $${th}^\circ$ sector of a circle with radius $${rad}$?`,a:PI(v),w:[PI(v.mul(2)),PI(F(th*rad,180)),PI(v.div(2)),PI(F(rad*rad))],
- s:T`$\frac{${th}}{360}\cdot\pi\cdot${rad*rad}=${PI(v).tex}$.`}},
+ s:T`Sector area is the matching fraction of the disk: $\frac{\theta}{360}\cdot\pi r^2$.<br>$\frac{${th}}{360}\cdot\pi\cdot${rad*rad}=${F(th,360).tex()}\cdot${rad*rad}\pi=${PI(v).tex}$.`}},
 r=>{const l=ri(r,1,15);
  return{lvl:2,q:T`A chord of the larger of two concentric circles is tangent to the smaller circle and has length $${2*l}$. What is the area of the region between the circles?`,a:PI(l*l),w:[PI(4*l*l),PI(2*l),PI(2*l*l),PI(l)],
- s:T`$R^2-r^2=${l}^2$ by the right triangle formed with the half-chord, so the area is $${PI(l*l).tex}$.`}},
+ s:T`The tangent point is the midpoint of the chord, and the small radius $r$ is perpendicular to the chord there. So $r$, the half-chord $${l}$, and the big radius $R$ form a right triangle: $R^2=r^2+${l}^2$.<br>Ring area $=\pi R^2-\pi r^2=\pi(R^2-r^2)=\pi\cdot${l*l}=${PI(l*l).tex}$. (The individual radii don't matter.)`}},
 r=>{const s_=2*ri(r,1,10);const ask=r()<.5;const rad=s_/2;
- return ask?{lvl:1,q:T`A circle is inscribed in a square of side $${s_}$. What is the area inside the square but outside the circle?`,a:O(s_*s_+'-'+PI(rad*rad).tex,s_*s_-Math.PI*rad*rad),w:[O(s_*s_+'-'+PI(s_*s_).tex,s_*s_-Math.PI*s_*s_),O(rad*rad+'-'+PI(rad*rad).tex,rad*rad-Math.PI*rad*rad),O(s_*s_+'-'+PI(2*rad).tex,s_*s_-2*Math.PI*rad),O(PI(rad*rad).tex,Math.PI*rad*rad)],s:T`Radius $${rad}$: $${s_*s_}-${PI(rad*rad).tex}$.`}
- :{lvl:1,q:T`A square is inscribed in a circle of radius $${rad}$. What is the area inside the circle but outside the square?`,a:O(PI(rad*rad).tex+'-'+2*rad*rad,Math.PI*rad*rad-2*rad*rad),w:[O(PI(rad*rad).tex+'-'+rad*rad,Math.PI*rad*rad-rad*rad),O(PI(rad*rad).tex+'-'+4*rad*rad,Math.PI*rad*rad-4*rad*rad),O(PI(2*rad*rad).tex+'-'+2*rad*rad,2*Math.PI*rad*rad-2*rad*rad),O(PI(rad).tex+'-'+2*rad,Math.PI*rad-2*rad)],s:T`The square's diagonal is $${2*rad}$, so its area is $${2*rad*rad}$. Answer: $${PI(rad*rad).tex}-${2*rad*rad}$.`}},
+ return ask?{lvl:1,q:T`A circle is inscribed in a square of side $${s_}$. What is the area inside the square but outside the circle?`,a:O(s_*s_+'-'+PI(rad*rad).tex,s_*s_-Math.PI*rad*rad),w:[O(s_*s_+'-'+PI(s_*s_).tex,s_*s_-Math.PI*s_*s_),O(rad*rad+'-'+PI(rad*rad).tex,rad*rad-Math.PI*rad*rad),O(s_*s_+'-'+PI(2*rad).tex,s_*s_-2*Math.PI*rad),O(PI(rad*rad).tex,Math.PI*rad*rad)],s:T`The inscribed circle's diameter equals the side, so its radius is $${rad}$ and its area is $\pi\cdot${rad*rad}=${PI(rad*rad).tex}$.<br>Square area: $${s_}^2=${s_*s_}$.<br>Inside the square but outside the circle: $${s_*s_}-${PI(rad*rad).tex}$.`}
+ :{lvl:1,q:T`A square is inscribed in a circle of radius $${rad}$. What is the area inside the circle but outside the square?`,a:O(PI(rad*rad).tex+'-'+2*rad*rad,Math.PI*rad*rad-2*rad*rad),w:[O(PI(rad*rad).tex+'-'+rad*rad,Math.PI*rad*rad-rad*rad),O(PI(rad*rad).tex+'-'+4*rad*rad,Math.PI*rad*rad-4*rad*rad),O(PI(2*rad*rad).tex+'-'+2*rad*rad,2*Math.PI*rad*rad-2*rad*rad),O(PI(rad).tex+'-'+2*rad,Math.PI*rad-2*rad)],s:T`The inscribed square's diagonal is a diameter, $${2*rad}$, so its area is $\frac{d^2}{2}=\frac{${4*rad*rad}}{2}=${2*rad*rad}$.<br>Circle area: $\pi\cdot${rad*rad}=${PI(rad*rad).tex}$.<br>Inside the circle but outside the square: $${PI(rad*rad).tex}-${2*rad*rad}$.`}},
 r=>{const rad=ri(r,2,12),th=pick(r,[30,45,60,90,120,150,180,240]);const L=F(th*rad,180);
  return{lvl:1,q:T`An arc of length $${PI(L).tex}$ lies on a circle of radius $${rad}$. What central angle does it subtend, in degrees?`,a:th,w:[th/2,th*2>360?th-15:th*2,360-th===th?th+30:360-th,th+15],
- s:T`$\frac{\theta}{360}\cdot2\pi\cdot${rad}=${PI(L).tex}$ gives $\theta=${th}^\circ$.`}},
+ s:T`Arc length $=\frac{\theta}{360}\cdot2\pi r$. Here $2\pi r=${PI(2*rad).tex}$.<br>$\frac{\theta}{360}=\frac{${PI(L).tex}}{${PI(2*rad).tex}}=${F(th,360).tex()}$, so $\theta=360\cdot${F(th,360).tex()}=${th}^\circ$.`}},
 ];
 /* ---- polyg.txt ---- */
 GENS['polyg-quad']=[

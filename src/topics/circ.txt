@@ -72,7 +72,8 @@ W: 110
 W: 220
 W: 70
 W: 125
-S: An inscribed angle is half its arc: $\frac{110}{2}=55^\circ$.
+S: Inscribed Angle Theorem: an inscribed angle is half the central angle (and half the arc) that it intercepts.
+$\frac{110^\circ}{2}=55^\circ$.
 ---
 Q: An inscribed angle intercepts a semicircle. What is its measure, in degrees?
 L: 1
@@ -81,7 +82,8 @@ W: 180
 W: 45
 W: 60
 W: 120
-S: Half of $180^\circ$ is $90^\circ$ (Thales).
+S: A semicircle is a $180^\circ$ arc, and an inscribed angle is half its arc: $\frac{180^\circ}{2}=90^\circ$.
+This is Thales' Theorem: an angle inscribed in a semicircle is a right angle.
 ---
 Q: Two chords intersect inside a circle. The arcs intercepted by one vertical angle pair measure $80^\circ$ and $40^\circ$. What is the angle between the chords (the angle facing those arcs)?
 L: 1
@@ -90,7 +92,8 @@ W: 40
 W: 120
 W: 20
 W: 80
-S: $\frac12(80+40)=60^\circ$.
+S: When two chords cross inside a circle, each angle equals half the <b>sum</b> of the arc it faces and the arc its vertical angle faces.
+$\frac12(80^\circ+40^\circ)=60^\circ$.
 ---
 Q: Two secants from an outside point intercept arcs of $100^\circ$ (far) and $30^\circ$ (near). What is the angle between the secants?
 L: 1
@@ -99,7 +102,8 @@ W: 65
 W: 70
 W: 130
 W: 50
-S: $\frac12(100-30)=35^\circ$.
+S: An angle formed by two secants from an outside point equals half the <b>difference</b> of the far and near intercepted arcs.
+$\frac12(100^\circ-30^\circ)=35^\circ$.
 ---
 Q: A tangent and a chord meet at the point of tangency, forming a $70^\circ$ angle. What is the intercepted arc, in degrees?
 L: 1
@@ -108,7 +112,8 @@ W: 70
 W: 35
 W: 110
 W: 220
-S: The tangent–chord angle is half the arc, so the arc is $140^\circ$.
+S: A tangent–chord angle equals half its intercepted arc (it's a limiting case of an inscribed angle).
+So the arc is twice the angle: $2\cdot70^\circ=140^\circ$.
 ---
 Q: Triangle $ABC$ is inscribed in a circle, and the arcs $AB$, $BC$, $CA$ (not containing the third vertex) are in ratio $3:4:5$. What is the largest angle of the triangle?
 L: 2
@@ -117,7 +122,9 @@ W: 150
 W: 60
 W: 90
 W: 45
-S: The arcs are $90^\circ,120^\circ,150^\circ$. The largest angle is opposite the $150^\circ$ arc: $75^\circ$.
+S: The three arcs make up the whole circle: $3+4+5=12$ parts of $360^\circ$, so each part is $30^\circ$. The arcs are $90^\circ$, $120^\circ$, $150^\circ$.
+Each angle of the triangle is inscribed and intercepts the arc opposite it, so it's half that arc: $45^\circ$, $60^\circ$, $75^\circ$.
+The largest angle is $75^\circ$.
 ---
 Q: A regular hexagon is inscribed in a circle. From a point on the major arc, one side of the hexagon subtends what angle, in degrees?
 L: 2
@@ -126,7 +133,8 @@ W: 60
 W: 15
 W: 45
 W: 120
-S: Each side cuts off a $60^\circ$ arc, so the inscribed angle is $30^\circ$.
+S: A regular hexagon's $6$ sides cut the circle into six $60^\circ$ arcs.
+From a point on the major arc, a side is seen at an inscribed angle of half its arc: $\frac{60^\circ}{2}=30^\circ$.
 ---
 Q: Tangents from $P$ touch a circle at $A$ and $B$, and $\angle APB=50^\circ$. Point $C$ is on the major arc $AB$. What is $\angle ACB$?
 L: 3
@@ -135,7 +143,9 @@ W: 50
 W: 130
 W: 115
 W: 25
-S: In quadrilateral $PAOB$ the angles at $A$ and $B$ are $90^\circ$, so $\angle AOB=130^\circ$ (the minor arc). Then $\angle ACB=\frac{130}{2}=65^\circ$.
+S: Radii to the points of tangency are perpendicular to the tangents, so in quadrilateral $PAOB$ the angles at $A$ and $B$ are $90^\circ$.
+The angles of a quadrilateral sum to $360^\circ$: $\angle AOB=360-90-90-50=130^\circ$. That's the minor arc $AB$.
+$C$ on the major arc sees the minor arc, so $\angle ACB=\frac{130^\circ}{2}=65^\circ$.
 ---
 @@ circ-tan
 Q: Point $P$ is $13$ units from the center of a circle of radius $5$. How long is a tangent segment from $P$ to the circle?
@@ -145,7 +155,8 @@ W: 8
 W: 18
 W: 13
 W: 10
-S: The tangent is perpendicular to the radius: $\sqrt{13^2-5^2}=12$.
+S: A tangent is perpendicular to the radius at the point of tangency, so the radius, the tangent segment, and $OP$ form a right triangle with hypotenuse $OP$.
+Tangent length $=\sqrt{13^2-5^2}=\sqrt{144}=12$.
 ---
 Q: Circles of radii $4$ and $9$ are externally tangent. How long is their common external tangent segment (between the points of tangency)?
 L: 2
@@ -154,7 +165,9 @@ W: 13
 W: 6
 W: 5
 W: 9
-S: The centers are $13$ apart: $\sqrt{13^2-(9-4)^2}=\sqrt{144}=12$. (In general $2\sqrt{r_1r_2}$.)
+S: Draw the two radii to the tangent points (both perpendicular to the tangent) and the segment joining the centers ($4+9=13$, since the circles touch).
+Slide the tangent segment down onto the smaller radius: it forms a right triangle with hypotenuse $13$ and one leg $9-4=5$.
+Tangent length $=\sqrt{13^2-5^2}=12$. (In general, for tangent circles it's $2\sqrt{r_1r_2}=2\sqrt{36}=12$.)
 ---
 Q: A circle is inscribed in quadrilateral $ABCD$. If $AB=7$, $BC=9$, and $CD=12$, what is $DA$?
 L: 1
@@ -163,7 +176,9 @@ W: 14
 W: 8
 W: 6
 W: 12
-S: Equal tangent lengths give $AB+CD=BC+DA$: $19=9+DA$, so $DA=10$.
+S: Tangent segments from the same external point are equal. Label the four tangent lengths from $A,B,C,D$ as $a,b,c,d$.
+Then $AB=a+b$, $BC=b+c$, $CD=c+d$, $DA=d+a$, so $AB+CD=BC+DA$ (Pitot's Theorem).
+$7+12=9+DA$, so $DA=10$.
 ---
 Q: A circle is tangent to both coordinate axes and passes through $(2,1)$. What is the sum of all possible radii?
 L: 3
@@ -172,7 +187,9 @@ W: 5
 W: 4
 W: 3
 W: 8
-S: The center is $(r,r)$: $(2-r)^2+(1-r)^2=r^2$, so $r^2-6r+5=0$. The radii $1$ and $5$ sum to $6$.
+S: Tangent to both axes in quadrant I means the center is $(r,r)$.
+The point $(2,1)$ is on the circle: $(2-r)^2+(1-r)^2=r^2$, so $r^2-6r+5=0$, i.e. $(r-1)(r-5)=0$.
+Both radii work, and they sum to $6$ (Vieta).
 ---
 Q: Circles of radii $3$ and $5$ have centers $10$ apart. How long is a common internal tangent segment?
 L: 2
@@ -181,7 +198,8 @@ W: 8
 W: 4\sqrt{6}
 W: 2\sqrt{21}
 W: 10
-S: $\sqrt{d^2-(r_1+r_2)^2}=\sqrt{100-64}=6$.
+S: For an internal tangent (crossing between the circles), slide the tangent segment along one radius: it forms a right triangle with hypotenuse $d=10$ and leg $r_1+r_2=8$.
+Length $=\sqrt{10^2-8^2}=6$.
 ---
 Q: Three circles of radius $1$ are mutually externally tangent. What is the perimeter of the triangle formed by their centers?
 L: 1
@@ -190,7 +208,8 @@ W: 3
 W: 9
 W: 12
 W: 4
-S: Each pair of centers is $1+1=2$ apart, so the perimeter is $6$.
+S: When two circles touch externally, the distance between centers is the sum of the radii: $1+1=2$.
+All three pairs are tangent, so the centers form an equilateral triangle of side $2$, perimeter $6$.
 ---
 Q: Tangent segments $PA$ and $PB$ to a circle of radius $6$ each have length $8$. How far is $P$ from the center?
 L: 1
@@ -199,7 +218,8 @@ W: 14
 W: 2\sqrt{7}
 W: 12
 W: 8
-S: $\sqrt{6^2+8^2}=10$.
+S: The radius to the tangent point is perpendicular to the tangent, so $O$, the tangent point, and $P$ form a right triangle with legs $6$ and $8$.
+$OP=\sqrt{36+64}=10$.
 ---
 Q: A circle is inscribed in a quarter circle of radius $1$, tangent to both radii and to the arc. What is its radius?
 L: 3
@@ -208,7 +228,9 @@ W: \frac{1}{2}
 W: \frac{\sqrt{2}}{2}
 W: 2-\sqrt{2}
 W: \frac{1}{3}
-S: The center is at $(r,r)$, distance $r\sqrt2$ from the corner, and $r\sqrt2+r=1$. So $r=\frac1{\sqrt2+1}=\sqrt2-1$.
+S: Put the quarter circle's corner at the origin. A circle tangent to both radii (the axes) has center $(r,r)$, at distance $r\sqrt2$ from the corner.
+Tangent internally to the arc of radius $1$: the distance from the corner to the center plus $r$ equals $1$: $r\sqrt2+r=1$.
+$r=\frac{1}{\sqrt2+1}=\sqrt2-1$ (rationalize).
 ---
 @@ circ-pop
 Q: Chords $AB$ and $CD$ intersect at $E$. If $AE=4$, $EB=6$, and $CE=3$, what is $ED$?
@@ -218,7 +240,8 @@ W: \frac{9}{2}
 W: 2
 W: 5
 W: 7
-S: $AE\cdot EB=CE\cdot ED$: $24=3\cdot ED$, so $ED=8$.
+S: Power of a Point for intersecting chords: the products of the pieces are equal, $AE\cdot EB=CE\cdot ED$.
+$4\cdot6=3\cdot ED$, so $ED=8$.
 ---
 Q: From point $P$, a tangent of length $6$ is drawn to a circle, and a secant meets the circle first at $A$ and then at $B$, with $PA=4$. What is $AB$?
 L: 2
@@ -227,7 +250,9 @@ W: 9
 W: 3
 W: 2
 W: 12
-S: $PT^2=PA\cdot PB$: $36=4\cdot PB$, so $PB=9$ and $AB=5$.
+S: Power of a Point from an outside point: (tangent)$^2$ $=$ (near secant piece) $\times$ (whole secant).
+$6^2=PA\cdot PB=4\cdot PB$, so $PB=9$.
+$AB=PB-PA=9-4=5$.
 ---
 Q: A chord of length $24$ lies in a circle of radius $13$. How far is the chord from the center?
 L: 1
@@ -236,7 +261,8 @@ W: 12
 W: 11
 W: 7
 W: 10
-S: $\sqrt{13^2-12^2}=5$.
+S: The perpendicular from the center to a chord bisects it. Half the chord ($12$), the distance $d$, and the radius ($13$) form a right triangle.
+$d=\sqrt{13^2-12^2}=5$.
 ---
 Q: Two parallel chords of lengths $10$ and $24$ lie on opposite sides of the center of a circle of radius $13$. How far apart are they?
 L: 2
@@ -245,7 +271,9 @@ W: 7
 W: 13
 W: 12
 W: 26
-S: Their distances from the center are $\sqrt{169-25}=12$ and $\sqrt{169-144}=5$. On opposite sides, they are $17$ apart.
+S: Each chord's distance from the center: $\sqrt{r^2-(\text{half-chord})^2}$.
+Chord $10$: $\sqrt{169-25}=12$. Chord $24$: $\sqrt{169-144}=5$.
+On opposite sides of the center, the distances add: $12+5=17$.
 ---
 Q: Two secants are drawn from $P$. One meets the circle at $A$ and $B$ with $PA=3$ and $PB=12$. The other meets it at $C$ and $D$ with $PC=4$. What is $PD$?
 L: 1
@@ -254,7 +282,8 @@ W: 16
 W: 8
 W: 6
 W: 5
-S: $PA\cdot PB=PC\cdot PD$: $36=4\cdot PD$, so $PD=9$.
+S: Power of a Point for two secants from $P$: $PA\cdot PB=PC\cdot PD$.
+$3\cdot12=4\cdot PD$, so $PD=9$.
 ---
 Q: Point $P$ is $6$ units from the center of a circle of radius $10$. What is the length of the shortest chord through $P$?
 L: 2
@@ -263,7 +292,9 @@ W: 8
 W: 12
 W: 20
 W: 4\sqrt{34}
-S: The shortest chord is perpendicular to $OP$: $2\sqrt{100-36}=16$.
+S: For a chord through $P$ at distance $d$ from the center, its length is $2\sqrt{r^2-d^2}$, which is smallest when $d$ is as large as possible.
+The farthest a chord through $P$ can be from the center is $OP=6$ (when the chord is perpendicular to $OP$).
+Shortest chord: $2\sqrt{100-36}=2\cdot8=16$.
 ---
 Q: A chord of length $8$ is spanned by an arc whose highest point is $2$ units above the chord's midpoint. What is the radius of the circle?
 L: 2
@@ -272,7 +303,8 @@ W: 4
 W: 6
 W: 8
 W: \frac{17}{4}
-S: $r^2=4^2+(r-2)^2$, so $4r=20$ and $r=5$.
+S: The center lies on the perpendicular bisector of the chord, at distance $r-2$ below the arc's top. Half the chord is $4$.
+Right triangle: $r^2=4^2+(r-2)^2=16+r^2-4r+4$, so $4r=20$ and $r=5$.
 ---
 Q: A tangent from $P$ has length $12$. A secant from $P$ meets the circle at $A$ and then $B$ with $AB=18$. What is $PA$?
 L: 3
@@ -281,7 +313,9 @@ W: 8
 W: 4
 W: 12
 W: 9
-S: $PA(PA+18)=144$, so $PA^2+18PA-144=0$, i.e. $(PA-6)(PA+24)=0$, and $PA=6$.
+S: Power of a Point: $PT^2=PA\cdot PB$ with $PB=PA+18$.
+$144=PA(PA+18)$, so $PA^2+18PA-144=0$, i.e. $(PA-6)(PA+24)=0$.
+Lengths are positive, so $PA=6$ (and $PB=24$; check $6\cdot24=144$ ✓).
 ---
 @@ circ-cyc
 Q: In cyclic quadrilateral $ABCD$, $\angle A=75^\circ$. What is $\angle C$?
@@ -291,7 +325,8 @@ W: 75
 W: 285
 W: 15
 W: 95
-S: Opposite angles of a cyclic quadrilateral are supplementary: $180-75=105^\circ$.
+S: Opposite angles of a cyclic quadrilateral are supplementary (they intercept arcs that together make the whole circle, so the angles add to $\frac{360}{2}=180$).
+$\angle C=180^\circ-75^\circ=105^\circ$.
 ---
 Q: A cyclic quadrilateral has sides $3$, $4$, $5$, and $6$. What is its area?
 L: 2
@@ -300,7 +335,8 @@ W: 18
 W: 3\sqrt{10}
 W: 6\sqrt{15}
 W: 9\sqrt{2}
-S: Brahmagupta: $s=9$, area $=\sqrt{6\cdot5\cdot4\cdot3}=\sqrt{360}=6\sqrt{10}$.
+S: Brahmagupta's formula for a cyclic quadrilateral: Area $=\sqrt{(s-a)(s-b)(s-c)(s-d)}$, with $s$ the semiperimeter.
+$s=\frac{3+4+5+6}{2}=9$. Area $=\sqrt{6\cdot5\cdot4\cdot3}=\sqrt{360}=6\sqrt{10}$.
 ---
 Q: A regular pentagon has side length $1$. What is the length of a diagonal?
 L: 3
@@ -309,7 +345,9 @@ W: \sqrt{2}
 W: \sqrt{3}
 W: 2
 W: \frac{\sqrt{5}}{2}
-S: Ptolemy on four consecutive vertices: $d\cdot d=d\cdot1+1\cdot1$, so $d^2-d-1=0$ and $d=\frac{1+\sqrt5}2$.
+S: Take four consecutive vertices $A,B,C,D$ of the regular pentagon. $ABCD$ is cyclic with sides $AB=BC=CD=1$, $AD=d$, and diagonals $AC=BD=d$.
+Ptolemy's Theorem: $AC\cdot BD=AB\cdot CD+BC\cdot AD$, so $d^2=1+d$.
+$d^2-d-1=0$ gives $d=\frac{1+\sqrt5}{2}$ (the golden ratio).
 ---
 Q: A rectangle is inscribed in a circle of radius $5$, and one side has length $6$. What is the rectangle's area?
 L: 1
@@ -318,7 +356,8 @@ W: 30
 W: 24
 W: 60
 W: 40
-S: The diagonal is a diameter, $10$, so the other side is $\sqrt{100-36}=8$ and the area is $48$.
+S: A rectangle inscribed in a circle has right angles, so each diagonal subtends a semicircle: the diagonal is a diameter, $10$.
+Other side: $\sqrt{10^2-6^2}=8$. Area: $6\cdot8=48$.
 ---
 Q: In cyclic quadrilateral $ABCD$, $\angle A=2x^\circ$ and $\angle C=3x^\circ$. What is $\angle A$?
 L: 1
@@ -327,7 +366,8 @@ W: 108
 W: 36
 W: 54
 W: 90
-S: $5x=180$, so $x=36$ and $\angle A=72^\circ$.
+S: $A$ and $C$ are opposite, so they're supplementary: $2x+3x=180$, $x=36$.
+$\angle A=2\cdot36=72^\circ$.
 ---
 Q: A cyclic quadrilateral has sides $25$, $39$, $52$, and $60$. What is its area?
 L: 3
@@ -336,8 +376,9 @@ W: 1560
 W: 2028
 W: 1680
 W: 1820
-S: Brahmagupta: $s=88$, area $=\sqrt{63\cdot49\cdot36\cdot28}=\sqrt{3111696}=1764$.
-(It is two right triangles, $25$-$60$-$65$ and $39$-$52$-$65$, sharing a diameter: $750+1014=1764$.)
+S: Brahmagupta: $s=\frac{25+39+52+60}{2}=88$, so the area is $\sqrt{(88-25)(88-39)(88-52)(88-60)}=\sqrt{63\cdot49\cdot36\cdot28}$.
+$63\cdot28=1764$ and $49\cdot36=1764$, so the area is $\sqrt{1764^2}=1764$.
+(Nice check: $25^2+60^2=65^2=39^2+52^2$, so a diagonal of length $65$ is a diameter splitting it into two right triangles: $750+1014=1764$.)
 ---
 Q: Points $A,B,C,D$ lie on a circle in that order, and $\angle BAC=35^\circ$. What is $\angle BDC$?
 L: 1
@@ -346,7 +387,8 @@ W: 55
 W: 70
 W: 145
 W: 110
-S: Both angles subtend arc $BC$ from the same side, so they are equal: $35^\circ$.
+S: Inscribed angles that intercept the same arc (from the same side) are equal.
+$\angle BAC$ and $\angle BDC$ both intercept arc $BC$, so $\angle BDC=35^\circ$.
 ---
 @@ circ-arc
 Q: What is the length of a $60^\circ$ arc of a circle with radius $9$?
@@ -356,7 +398,8 @@ W: 6\pi
 W: 9\pi
 W: \frac{3\pi}{2}
 W: 27\pi
-S: $\frac{60}{360}\cdot2\pi\cdot9=3\pi$.
+S: An arc is a fraction of the circumference: $\frac{\theta}{360}\cdot2\pi r$.
+$\frac{60}{360}\cdot2\pi\cdot9=\frac16\cdot18\pi=3\pi$.
 ---
 Q: What is the area of a $120^\circ$ sector of a circle with radius $6$?
 L: 1
@@ -365,7 +408,8 @@ W: 4\pi
 W: 36\pi
 W: 24\pi
 W: 6\pi
-S: $\frac13\cdot36\pi=12\pi$.
+S: A sector is a fraction of the disk: $\frac{\theta}{360}\cdot\pi r^2$.
+$\frac{120}{360}\cdot36\pi=\frac13\cdot36\pi=12\pi$.
 ---
 Q: In a circle of radius $2$, a chord subtends a $90^\circ$ central angle. What is the area of the smaller region between the chord and the arc?
 L: 2
@@ -374,7 +418,9 @@ W: \pi
 W: 2\pi-2
 W: \pi-1
 W: 4-\pi
-S: Sector $\frac14\cdot4\pi=\pi$ minus right triangle $\frac12\cdot2\cdot2=2$: $\pi-2$.
+S: The region (a circular segment) is the sector minus the triangle formed by the two radii and the chord.
+Sector: $\frac{90}{360}\cdot\pi\cdot4=\pi$. Triangle: right triangle with legs $2$, area $\frac12\cdot2\cdot2=2$.
+Segment: $\pi-2$.
 ---
 Q: A chord of the larger of two concentric circles is tangent to the smaller circle and has length $10$. What is the area of the ring between the circles?
 L: 2
@@ -383,7 +429,8 @@ W: 100\pi
 W: 10\pi
 W: 50\pi
 W: 5\pi
-S: $R^2-r^2=5^2$ (half-chord, Pythagoras), so the area is $\pi(R^2-r^2)=25\pi$.
+S: The tangent point is the midpoint of the chord, and the small radius $r$ is perpendicular to it there. So $r$, half the chord ($5$), and the big radius $R$ form a right triangle: $R^2=r^2+5^2$.
+Ring area: $\pi R^2-\pi r^2=\pi(R^2-r^2)=25\pi$. (We never need $R$ or $r$ individually.)
 ---
 Q: A square is inscribed in a circle of radius $1$. What is the area inside the circle but outside the square?
 L: 1
@@ -392,7 +439,8 @@ W: \pi-1
 W: 4-\pi
 W: \frac{\pi}{2}
 W: 2\pi-2
-S: The square's diagonal is $2$, so its area is $2$. The leftover area is $\pi-2$.
+S: The square's diagonal is a diameter, $2$, so its side is $\sqrt2$ and its area is $2$.
+Circle area: $\pi\cdot1^2=\pi$. Leftover: $\pi-2$.
 ---
 Q: A circle is inscribed in a square of side $4$. What is the area inside the square but outside the circle?
 L: 1
@@ -401,7 +449,8 @@ W: 4-\pi
 W: 16-2\pi
 W: 4\pi
 W: 16-8\pi
-S: The radius is $2$: $16-4\pi$.
+S: The inscribed circle has diameter equal to the side, $4$, so radius $2$ and area $4\pi$.
+Square area $16$. Inside the square but outside the circle: $16-4\pi$.
 ---
 Q: Two circles of radius $1$ each pass through the other's center. What is the area of their overlap?
 L: 3
@@ -410,8 +459,9 @@ W: \frac{\pi}{3}-\frac{\sqrt{3}}{4}
 W: \frac{2\pi}{3}
 W: \pi-\sqrt{3}
 W: \frac{\pi}{2}-\frac{\sqrt{3}}{2}
-S: The common chord subtends $120^\circ$ at each center. Each half of the lens is a segment: $\frac{\pi}3-\frac{\sqrt3}4$.
-Doubling gives $\frac{2\pi}3-\frac{\sqrt3}2$.
+S: The centers $O_1$, $O_2$ and either intersection point form an equilateral triangle (all sides $1$), so each center sees the common chord at $2\cdot60^\circ=120^\circ$.
+Each half of the lens is a circular segment: sector $\frac{120}{360}\pi=\frac\pi3$ minus triangle $\frac12\cdot1\cdot1\cdot\sin120^\circ=\frac{\sqrt3}{4}$.
+Lens area: $2\left(\frac\pi3-\frac{\sqrt3}4\right)=\frac{2\pi}{3}-\frac{\sqrt3}{2}$.
 ---
 Q: An arc of length $4\pi$ lies on a circle of radius $6$. What central angle does it subtend, in degrees?
 L: 1
@@ -420,81 +470,81 @@ W: 60
 W: 240
 W: 90
 W: 150
-S: $\frac{\theta}{360}\cdot12\pi=4\pi$, so $\theta=120^\circ$.
-
+S: Arc length $=\frac{\theta}{360}\cdot2\pi r$: $\frac{\theta}{360}\cdot12\pi=4\pi$.
+$\frac{\theta}{360}=\frac13$, so $\theta=120^\circ$.
 === GENS ===
 GENS['circ-angle']=[
 r=>{const c=2*ri(r,10,89);const ask=r()<.5;
- return ask?{lvl:1,q:T`A central angle measures $${c}^\circ$. What is an inscribed angle intercepting the same arc, in degrees?`,a:c/2,w:[c,2*c>360?c+10:2*c,180-c/2,90-c/4|0||7],s:T`Half the arc: $${c/2}^\circ$.`}
- :{lvl:1,q:T`An inscribed angle measures $${c/2}^\circ$. What is its intercepted arc, in degrees?`,a:c,w:[c/2,c/4|0||3,360-c,180-c/2],s:T`The arc is twice the inscribed angle: $${c}^\circ$.`}},
+ return ask?{lvl:1,q:T`A central angle measures $${c}^\circ$. What is an inscribed angle intercepting the same arc, in degrees?`,a:c/2,w:[c,2*c>360?c+10:2*c,180-c/2,90-c/4|0||7],s:T`Inscribed Angle Theorem: an inscribed angle is half the central angle (equivalently, half the arc) it intercepts.<br>$\frac{${c}^\circ}{2}=${c/2}^\circ$.`}
+ :{lvl:1,q:T`An inscribed angle measures $${c/2}^\circ$. What is its intercepted arc, in degrees?`,a:c,w:[c/2,c/4|0||3,360-c,180-c/2],s:T`An inscribed angle is half its intercepted arc, so the arc is twice the angle.<br>$2\cdot${c/2}^\circ=${c}^\circ$.`}},
 r=>{const a=ri(r,10,170),b=ri(r,10,Math.min(170,350-a));if((a+b)%2)return GENS['circ-angle'][1](r);
  return{lvl:1,q:T`Two chords intersect inside a circle, and the arcs intercepted by one pair of vertical angles measure $${a}^\circ$ and $${b}^\circ$. What is the measure of each of those vertical angles?`,a:(a+b)/2,w:[Math.abs(a-b)/2||(a+b),a+b,180-(a+b)/2,Math.max(a,b)],
- s:T`$\frac12(${a}+${b})=${(a+b)/2}^\circ$.`}},
+ s:T`When two chords intersect inside a circle, each angle equals half the <b>sum</b> of the two arcs intercepted by it and its vertical angle.<br>$\frac12(${a}^\circ+${b}^\circ)=\frac{${a+b}^\circ}{2}=${(a+b)/2}^\circ$.`}},
 r=>{const near=ri(r,10,100),far=near+2*ri(r,5,60);if(far+near>=360)return GENS['circ-angle'][2](r);
  return{lvl:1,q:T`Two secants from an exterior point intercept arcs of $${far}^\circ$ and $${near}^\circ$. What is the angle between the secants, in degrees?`,a:(far-near)/2,w:[(far+near)/2,far-near,near,180-(far-near)/2],
- s:T`Outside the circle: $\frac12(${far}-${near})=${(far-near)/2}^\circ$.`}},
+ s:T`An angle with its vertex outside the circle (two secants) equals half the <b>difference</b> of the far arc and the near arc.<br>$\frac12(${far}^\circ-${near}^\circ)=\frac{${far-near}^\circ}{2}=${(far-near)/2}^\circ$.`}},
 r=>{const P_=2*ri(r,10,80);const arc=180-P_;
  return{lvl:2,q:T`Tangents from $P$ touch a circle at $A$ and $B$ with $\angle APB=${P_}^\circ$. What is the measure of the minor arc $AB$, in degrees?`,a:arc,w:[P_,2*P_>=360?arc/2:2*P_,180+P_,arc/2],
- s:T`In quadrilateral $PAOB$ the angles at $A$ and $B$ are right, so $\angle AOB=180-${P_}=${arc}^\circ$, which is the minor arc.`}},
+ s:T`Radii $OA$ and $OB$ are perpendicular to the tangents, so in quadrilateral $PAOB$ two angles are $90^\circ$.<br>The four angles sum to $360^\circ$: $\angle AOB=360-90-90-${P_}=${arc}^\circ$.<br>The central angle $\angle AOB$ equals the minor arc $AB$: $${arc}^\circ$. (Shortcut: arc $=180^\circ-\angle P$.)`}},
 ];
 GENS['circ-tan']=[
 r=>{const [a,b,c]=pick(r,TRIPLES);const ask=r()<.5;
- return ask?{lvl:1,q:T`Point $P$ is $${c}$ units from the center of a circle of radius $${a}$. How long is a tangent segment from $P$?`,a:b,w:[c-a,c+a,c,b+1],s:T`$\sqrt{${c}^2-${a}^2}=${b}$.`}
- :{lvl:1,q:T`A tangent segment from $P$ to a circle of radius $${a}$ has length $${b}$. How far is $P$ from the center?`,a:c,w:[a+b,b-a>0?b-a:a-b+1,c+1,Math.max(a,b)],s:T`$\sqrt{${a}^2+${b}^2}=${c}$.`}},
+ return ask?{lvl:1,q:T`Point $P$ is $${c}$ units from the center of a circle of radius $${a}$. How long is a tangent segment from $P$?`,a:b,w:[c-a,c+a,c,b+1],s:T`The tangent is perpendicular to the radius at the point of tangency, so the radius ($${a}$), the tangent segment, and $OP$ ($${c}$, the hypotenuse) form a right triangle.<br>Tangent length $=\sqrt{${c}^2-${a}^2}=\sqrt{${c*c-a*a}}=${b}$.`}
+ :{lvl:1,q:T`A tangent segment from $P$ to a circle of radius $${a}$ has length $${b}$. How far is $P$ from the center?`,a:c,w:[a+b,b-a>0?b-a:a-b+1,c+1,Math.max(a,b)],s:T`The radius meets the tangent at a right angle, so the radius ($${a}$) and the tangent segment ($${b}$) are the legs of a right triangle with hypotenuse $OP$.<br>$OP=\sqrt{${a}^2+${b}^2}=\sqrt{${c*c}}=${c}$.`}},
 r=>{const p=ri(r,1,6),q=ri(r,p+1,9);const r1=p*p,r2=q*q;
  return{lvl:2,q:T`Circles of radii $${r1}$ and $${r2}$ are externally tangent. How long is their common external tangent segment?`,a:2*p*q,w:[r1+r2,r2-r1,p*q,2*(r1+r2)],
- s:T`$\sqrt{(r_1+r_2)^2-(r_2-r_1)^2}=2\sqrt{r_1r_2}=2\cdot${p*q}=${2*p*q}$.`}},
+ s:T`The centers are $${r1}+${r2}=${r1+r2}$ apart (externally tangent). Both radii to the tangent points are perpendicular to the tangent.<br>Shift the tangent segment onto the smaller radius: it becomes a leg of a right triangle with hypotenuse $${r1+r2}$ and other leg $${r2}-${r1}=${r2-r1}$.<br>Length $=\sqrt{${r1+r2}^2-${r2-r1}^2}=\sqrt{4\cdot${r1}\cdot${r2}}=2\sqrt{${r1*r2}}=${2*p*q}$.`}},
 r=>{const a=ri(r,3,15),b=ri(r,3,15),c=ri(r,3,15);const d=a+c-b;if(d<=0)return GENS['circ-tan'][2](r);
  return{lvl:1,q:T`A circle is inscribed in quadrilateral $ABCD$ with $AB=${a}$, $BC=${b}$, $CD=${c}$. What is $DA$?`,a:d,w:[a+b-c>0?a+b-c:d+2,b+c-a>0?b+c-a:d+3,d+1,Math.round((a+b+c)/3)],
- s:T`$AB+CD=BC+DA$: $DA=${a}+${c}-${b}=${d}$.`}},
+ s:T`Tangent segments from a vertex to the incircle are equal. If they have lengths $a,b,c,d$ at $A,B,C,D$, then $AB=a+b$, $BC=b+c$, $CD=c+d$, $DA=d+a$.<br>So $AB+CD=BC+DA$ (Pitot's Theorem): $${a}+${c}=${b}+DA$.<br>$DA=${d}$.`}},
 r=>{const [a,b,c]=pick(r,TRIPLES);const r1=ri(r,1,a-1),r2=a-r1;
  return{lvl:2,q:T`Circles of radii $${r1}$ and $${r2}$ have centers $${c}$ apart. How long is a common internal tangent segment?`,a:b,w:[c,R(1,c*c-(r1-r2)**2),c-a,b+1],
- s:T`$\sqrt{d^2-(r_1+r_2)^2}=\sqrt{${c*c}-${a*a}}=${b}$.`}},
+ s:T`For a common internal tangent (crossing between the circles), shift the tangent segment along one radius: it becomes a leg of a right triangle whose hypotenuse is the center distance $${c}$ and other leg is $r_1+r_2=${a}$.<br>Length $=\sqrt{${c}^2-${a}^2}=\sqrt{${c*c-a*a}}=${b}$.`}},
 ];
 GENS['circ-pop']=[
 r=>{const a=ri(r,1,12),b=ri(r,1,12),c=pick(r,[1,2,3,4,6,8,12].filter(x=>x<=a*b));const d=F(a*b,c);
  return{lvl:1,q:T`Chords $AB$ and $CD$ intersect at $E$. If $AE=${a}$, $EB=${b}$, and $CE=${c}$, what is $ED$?`,a:d,w:[F(a*c,b),F(b*c,a),F(a+b-c>0?a+b-c:1),d.add(1)],
- s:T`$AE\cdot EB=CE\cdot ED$: $${a*b}=${c}\cdot ED$, so $ED=${d.tex()}$.`}},
+ s:T`Power of a Point (intersecting chords): $AE\cdot EB=CE\cdot ED$.<br>$${a}\cdot${b}=${c}\cdot ED$, so $ED=\frac{${a*b}}{${c}}=${d.tex()}$.<br>(Why: triangles $AEC$ and $DEB$ are similar, since inscribed angles on the same arcs are equal.)`}},
 r=>{const PA=ri(r,1,10),k=ri(r,2,6);const PB=PA*k*k;const t=PA*k;
  return{lvl:2,q:T`A tangent from $P$ has length $${t}$. A secant from $P$ meets the circle at $A$ and then $B$ with $PA=${PA}$. What is $AB$?`,a:PB-PA,w:[PB,t-PA,PB+PA,t],
- s:T`$PT^2=PA\cdot PB$: $${t*t}=${PA}\cdot PB$, so $PB=${PB}$ and $AB=${PB-PA}$.`}},
+ s:T`Power of a Point from $P$: (tangent)$^2$ equals (near intersection) $\times$ (far intersection): $PT^2=PA\cdot PB$.<br>$${t}^2=${t*t}=${PA}\cdot PB$, so $PB=${PB}$.<br>$AB=PB-PA=${PB}-${PA}=${PB-PA}$.`}},
 r=>{const [a,b,c]=pick(r,TRIPLES);
  return{lvl:1,q:T`A chord of length $${2*b}$ lies in a circle of radius $${c}$. How far is the chord from the center?`,a:a,w:[b,c-b,c-a,2*a],
- s:T`$\sqrt{${c}^2-${b}^2}=${a}$.`}},
+ s:T`The perpendicular from the center bisects the chord. Half the chord ($${b}$), the distance $d$ to the chord, and the radius ($${c}$) form a right triangle.<br>$d=\sqrt{${c}^2-${b}^2}=\sqrt{${c*c-b*b}}=${a}$.`}},
 r=>{const c=ri(r,2,16),h=ri(r,1,8);const rad=F(c*c+4*h*h,8*h);
  return{lvl:2,q:T`A chord of length $${c}$ has an arc rising $${h}$ above its midpoint. What is the radius of the circle?`,a:rad,w:[F(c,2),F(c*c,8*h),rad.add(1),F(c*c+h*h,2*h)],
- s:T`$r^2=\left(\frac{${c}}2\right)^2+(r-${h})^2$, so $${2*h}r=${F(c*c,4).tex()}+${h*h}$ and $r=${rad.tex()}$.`}},
+ s:T`The center lies on the perpendicular bisector of the chord. Its distance from the arc's top is $r$, so its distance from the chord is $r-${h}$.<br>Right triangle with half-chord $\frac{${c}}{2}$: $r^2=\left(\frac{${c}}{2}\right)^2+(r-${h})^2=${F(c*c,4).tex()}+r^2-${2*h}r+${h*h}$.<br>The $r^2$ terms cancel: $${2*h}r=${F(c*c,4).tex()}+${h*h}$, so $r=${rad.tex()}$.`}},
 r=>{const PA=ri(r,1,9),PB=PA+ri(r,1,15),PC=pick(r,[1,2,3,4,5,6].filter(x=>x!==PA));const PD=F(PA*PB,PC);
  return{lvl:1,q:T`Two secants from $P$: one meets the circle at $A$ and $B$ with $PA=${PA}$, $PB=${PB}$; the other meets it at $C$ and $D$ with $PC=${PC}$. What is $PD$?`,a:PD,w:[F(PC*PB,PA),F(PB-PA+PC),PD.add(1),F(PA*PC,PB)],
- s:T`$PA\cdot PB=PC\cdot PD$: $${PA*PB}=${PC}\cdot PD$, so $PD=${PD.tex()}$.`}},
+ s:T`Power of a Point for two secants from $P$: $PA\cdot PB=PC\cdot PD$ (each product is the power of $P$).<br>$${PA}\cdot${PB}=${PA*PB}=${PC}\cdot PD$, so $PD=\frac{${PA*PB}}{${PC}}=${PD.tex()}$.`}},
 ];
 GENS['circ-cyc']=[
 r=>{const A=ri(r,20,160);
- return{lvl:1,q:T`In cyclic quadrilateral $ABCD$, $\angle B=${A}^\circ$. What is $\angle D$, in degrees?`,a:180-A,w:[A,360-A,90-A/2|0||45,180-A/2|0],s:T`Opposite angles are supplementary: $180-${A}=${180-A}^\circ$.`}},
+ return{lvl:1,q:T`In cyclic quadrilateral $ABCD$, $\angle B=${A}^\circ$. What is $\angle D$, in degrees?`,a:180-A,w:[A,360-A,90-A/2|0||45,180-A/2|0],s:T`Opposite angles of a cyclic quadrilateral are supplementary: they intercept arcs that together make the whole circle, so the angles add to half of $360^\circ$.<br>$\angle D=180^\circ-${A}^\circ=${180-A}^\circ$.`}},
 r=>{const quads=[[3,4,3,4,12],[7,15,20,24,234],[5,5,5,5,25],[6,8,6,8,48],[25,39,52,60,1764],[2,2,2,2,4],[3,5,3,5,15]];const [a,b,c,d,A]=pick(r,quads);const k=ri(r,1,3);
  return{lvl:2,q:T`A cyclic quadrilateral has sides $${a*k}$, $${b*k}$, $${c*k}$, and $${d*k}$. What is its area?`,a:A*k*k,w:[A*k,2*A*k*k,A*k*k+k*k,(a*b+c*d)*k*k/2+1],
- s:T`Brahmagupta: $s=${(a+b+c+d)*k/2}$, and $\sqrt{(s-a)(s-b)(s-c)(s-d)}=${A*k*k}$.`}},
+ s:T`Brahmagupta's formula for a cyclic quadrilateral: Area $=\sqrt{(s-a)(s-b)(s-c)(s-d)}$, where $s$ is the semiperimeter.<br>$s=\frac{${a*k}+${b*k}+${c*k}+${d*k}}{2}=${(a+b+c+d)*k/2}$.<br>Area $=\sqrt{${(a+b+c+d)*k/2-a*k}\cdot${(a+b+c+d)*k/2-b*k}\cdot${(a+b+c+d)*k/2-c*k}\cdot${(a+b+c+d)*k/2-d*k}}=\sqrt{${(A*k*k)**2}}=${A*k*k}$.`}},
 r=>{const [a,b,c]=pick(r,TRIPLES);const k=ri(r,1,2);
  return{lvl:1,q:T`A rectangle is inscribed in a circle of radius $${F(c*k,2).tex()}$, and one side has length $${a*k}$. What is its area?`,a:a*b*k*k,w:[a*c*k*k,F(a*b*k*k,2),a*b*k*k+k,c*c*k*k],
- s:T`The diagonal is the diameter, $${c*k}$, so the other side is $${b*k}$ and the area is $${a*b*k*k}$.`}},
+ s:T`A rectangle's angles are right angles, so each diagonal subtends a semicircle: the diagonal is a diameter, $2\cdot${F(c*k,2).tex()}=${c*k}$.<br>Other side: $\sqrt{${c*k}^2-${a*k}^2}=${b*k}$.<br>Area: $${a*k}\cdot${b*k}=${a*b*k*k}$.`}},
 r=>{const p=ri(r,1,7),q=ri(r,1,7);if(180*p%(p+q))return GENS['circ-cyc'][3](r);const A=180*p/(p+q);
  return{lvl:1,q:T`In cyclic quadrilateral $ABCD$, $\angle A:\angle C=${p}:${q}$. What is $\angle A$, in degrees?`,a:A,w:[180-A,360*p/(p+q),A/2,90],
- s:T`$\angle A+\angle C=180$, so $\angle A=180\cdot\frac{${p}}{${p+q}}=${A}^\circ$.`}},
+ s:T`$A$ and $C$ are opposite angles of a cyclic quadrilateral, so $\angle A+\angle C=180^\circ$.<br>Split $180^\circ$ in the ratio ${p}:${q}: $\angle A=180^\circ\cdot\frac{${p}}{${p+q}}=${A}^\circ$ (and $\angle C=${180-A}^\circ$).`}},
 ];
 GENS['circ-arc']=[
 r=>{const th=pick(r,[30,36,40,45,60,72,90,120,135,150,180,240,270]),rad=ri(r,1,12);const v=F(th*rad,180);
  return{lvl:1,q:T`What is the length of a $${th}^\circ$ arc of a circle with radius $${rad}$?`,a:PI(v),w:[PI(v.mul(2)),PI(v.div(2)),PI(F(th*rad*rad,360)),PI(v.add(1))],
- s:T`$\frac{${th}}{360}\cdot2\pi\cdot${rad}=${PI(v).tex}$.`}},
+ s:T`Arc length is the matching fraction of the circumference: $\frac{\theta}{360}\cdot2\pi r$.<br>$\frac{${th}}{360}\cdot2\pi\cdot${rad}=${F(th,360).tex()}\cdot${2*rad}\pi=${PI(v).tex}$.`}},
 r=>{const th=pick(r,[30,45,60,72,90,120,135,150,180,240]),rad=ri(r,1,12);const v=F(th*rad*rad,360);
  return{lvl:1,q:T`What is the area of a $${th}^\circ$ sector of a circle with radius $${rad}$?`,a:PI(v),w:[PI(v.mul(2)),PI(F(th*rad,180)),PI(v.div(2)),PI(F(rad*rad))],
- s:T`$\frac{${th}}{360}\cdot\pi\cdot${rad*rad}=${PI(v).tex}$.`}},
+ s:T`Sector area is the matching fraction of the disk: $\frac{\theta}{360}\cdot\pi r^2$.<br>$\frac{${th}}{360}\cdot\pi\cdot${rad*rad}=${F(th,360).tex()}\cdot${rad*rad}\pi=${PI(v).tex}$.`}},
 r=>{const l=ri(r,1,15);
  return{lvl:2,q:T`A chord of the larger of two concentric circles is tangent to the smaller circle and has length $${2*l}$. What is the area of the region between the circles?`,a:PI(l*l),w:[PI(4*l*l),PI(2*l),PI(2*l*l),PI(l)],
- s:T`$R^2-r^2=${l}^2$ by the right triangle formed with the half-chord, so the area is $${PI(l*l).tex}$.`}},
+ s:T`The tangent point is the midpoint of the chord, and the small radius $r$ is perpendicular to the chord there. So $r$, the half-chord $${l}$, and the big radius $R$ form a right triangle: $R^2=r^2+${l}^2$.<br>Ring area $=\pi R^2-\pi r^2=\pi(R^2-r^2)=\pi\cdot${l*l}=${PI(l*l).tex}$. (The individual radii don't matter.)`}},
 r=>{const s_=2*ri(r,1,10);const ask=r()<.5;const rad=s_/2;
- return ask?{lvl:1,q:T`A circle is inscribed in a square of side $${s_}$. What is the area inside the square but outside the circle?`,a:O(s_*s_+'-'+PI(rad*rad).tex,s_*s_-Math.PI*rad*rad),w:[O(s_*s_+'-'+PI(s_*s_).tex,s_*s_-Math.PI*s_*s_),O(rad*rad+'-'+PI(rad*rad).tex,rad*rad-Math.PI*rad*rad),O(s_*s_+'-'+PI(2*rad).tex,s_*s_-2*Math.PI*rad),O(PI(rad*rad).tex,Math.PI*rad*rad)],s:T`Radius $${rad}$: $${s_*s_}-${PI(rad*rad).tex}$.`}
- :{lvl:1,q:T`A square is inscribed in a circle of radius $${rad}$. What is the area inside the circle but outside the square?`,a:O(PI(rad*rad).tex+'-'+2*rad*rad,Math.PI*rad*rad-2*rad*rad),w:[O(PI(rad*rad).tex+'-'+rad*rad,Math.PI*rad*rad-rad*rad),O(PI(rad*rad).tex+'-'+4*rad*rad,Math.PI*rad*rad-4*rad*rad),O(PI(2*rad*rad).tex+'-'+2*rad*rad,2*Math.PI*rad*rad-2*rad*rad),O(PI(rad).tex+'-'+2*rad,Math.PI*rad-2*rad)],s:T`The square's diagonal is $${2*rad}$, so its area is $${2*rad*rad}$. Answer: $${PI(rad*rad).tex}-${2*rad*rad}$.`}},
+ return ask?{lvl:1,q:T`A circle is inscribed in a square of side $${s_}$. What is the area inside the square but outside the circle?`,a:O(s_*s_+'-'+PI(rad*rad).tex,s_*s_-Math.PI*rad*rad),w:[O(s_*s_+'-'+PI(s_*s_).tex,s_*s_-Math.PI*s_*s_),O(rad*rad+'-'+PI(rad*rad).tex,rad*rad-Math.PI*rad*rad),O(s_*s_+'-'+PI(2*rad).tex,s_*s_-2*Math.PI*rad),O(PI(rad*rad).tex,Math.PI*rad*rad)],s:T`The inscribed circle's diameter equals the side, so its radius is $${rad}$ and its area is $\pi\cdot${rad*rad}=${PI(rad*rad).tex}$.<br>Square area: $${s_}^2=${s_*s_}$.<br>Inside the square but outside the circle: $${s_*s_}-${PI(rad*rad).tex}$.`}
+ :{lvl:1,q:T`A square is inscribed in a circle of radius $${rad}$. What is the area inside the circle but outside the square?`,a:O(PI(rad*rad).tex+'-'+2*rad*rad,Math.PI*rad*rad-2*rad*rad),w:[O(PI(rad*rad).tex+'-'+rad*rad,Math.PI*rad*rad-rad*rad),O(PI(rad*rad).tex+'-'+4*rad*rad,Math.PI*rad*rad-4*rad*rad),O(PI(2*rad*rad).tex+'-'+2*rad*rad,2*Math.PI*rad*rad-2*rad*rad),O(PI(rad).tex+'-'+2*rad,Math.PI*rad-2*rad)],s:T`The inscribed square's diagonal is a diameter, $${2*rad}$, so its area is $\frac{d^2}{2}=\frac{${4*rad*rad}}{2}=${2*rad*rad}$.<br>Circle area: $\pi\cdot${rad*rad}=${PI(rad*rad).tex}$.<br>Inside the circle but outside the square: $${PI(rad*rad).tex}-${2*rad*rad}$.`}},
 r=>{const rad=ri(r,2,12),th=pick(r,[30,45,60,90,120,150,180,240]);const L=F(th*rad,180);
  return{lvl:1,q:T`An arc of length $${PI(L).tex}$ lies on a circle of radius $${rad}$. What central angle does it subtend, in degrees?`,a:th,w:[th/2,th*2>360?th-15:th*2,360-th===th?th+30:360-th,th+15],
- s:T`$\frac{\theta}{360}\cdot2\pi\cdot${rad}=${PI(L).tex}$ gives $\theta=${th}^\circ$.`}},
+ s:T`Arc length $=\frac{\theta}{360}\cdot2\pi r$. Here $2\pi r=${PI(2*rad).tex}$.<br>$\frac{\theta}{360}=\frac{${PI(L).tex}}{${PI(2*rad).tex}}=${F(th,360).tex()}$, so $\theta=360\cdot${F(th,360).tex()}=${th}^\circ$.`}},
 ];
