@@ -19,7 +19,7 @@ const AI=(()=>{
     if(r.status===404)return'This key cannot use the selected model. Try another model.';
     if(r.status===429)return'Rate limit reached. Wait a moment and try again.';
     if(r.status===529||r.status===503)return'Claude is overloaded right now. Try again in a minute.';
-    if(r.status===400&&/credit/i.test(m))return'Your account has no API credits left.';
+    if(r.status===400&&/credit/i.test(m))return'Your API account has no credits left. Add credits at console.anthropic.com (Settings, then Billing), then try again.';
     return'Error '+r.status+(m?': '+m:'');
   }
 
