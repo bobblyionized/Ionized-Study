@@ -92,8 +92,8 @@ function subPage(sid,tab){
   const st=subStats(sid);
   app.innerHTML=`<h1>${s.sec?'<span class="secno">'+s.sec+'</span> ':''}${esc(s.name)}</h1><p class="sub">${esc(s.d)}</p>
   <div class="tabs">${[['lesson','Lesson'],['set','Problem Set ('+st.total+')'],['practice','Practice Mode']].map(([k,n])=>`<button class="tab ${k===tab?'on':''}" onclick="location.hash='#/s/${sid}/${k}'">${n}</button>`).join('')}</div>
-  <div id="tabbody"></div>`;
-  const body=document.getElementById('tabbody');
+  <div id="tabbody"></div>${tabArrows(sid,tab)}`;
+  const body=document.getElementById('tabbody');enterTab(body);
   if(tab==='set')return setView(sid,body);
   if(tab==='practice')return practiceSetup(sid,body);
   const les=document.getElementById('L-'+sid);
@@ -102,6 +102,55 @@ function subPage(sid,tab){
   <div class="row" style="margin-top:16px">${next?`<button class="btn" onclick="location.hash='#/s/${next.id}/lesson'">Next lesson: ${esc(next.name)} →</button>`:''}<span class="spacer"></span><button class="btn pri" onclick="location.hash='#/s/${sid}/set'">Go to problem set →</button></div>`;
   drawLessonPlots(body);renderMath(body);
 }
+/* ---------- moving between Lesson / Problem Set / Practice: side arrows + sideways swipe ---------- */
+const SUB_TABS=[['lesson','Lesson'],['set','Problem Set'],['practice','Practice Mode']];
+let tabSlide=null;                                              // 'next' | 'prev': direction the new tab slides in from
+function tabArrows(sid,tab){
+  const i=SUB_TABS.findIndex(x=>x[0]===tab),pv=SUB_TABS[i-1],nx=SUB_TABS[i+1];
+  const a=(t,dir,ch)=>t?`<button class="tab-arrow ${dir}" type="button" data-go="${dir}" aria-label="${esc(t[1])}"><span class="ta-ch">${ch}</span><span class="ta-lbl">${esc(t[1])}</span></button>`:'';
+  return a(pv,'prev','‹')+a(nx,'next','›');
+}
+function curSubTab(){const m=location.hash.match(/^#\/s\/([^/]+)(?:\/(\w+))?/);if(!m||!subById(m[1]))return null;
+  const i=Math.max(0,SUB_TABS.findIndex(x=>x[0]===(m[2]||'lesson')));return{sid:m[1],i}}
+function practiceBusy(){return!!document.querySelector('#tabbody #pq')}
+function goTab(dir){
+  const c=curSubTab();if(!c)return false;const j=c.i+(dir==='next'?1:-1);if(j<0||j>=SUB_TABS.length)return false;
+  if(practiceBusy()&&!confirm('Leave this practice session? Your progress in it will be lost.'))return false;
+  tabSlide=dir;location.hash='#/s/'+c.sid+'/'+SUB_TABS[j][0];return true;
+}
+function enterTab(body){
+  if(!tabSlide)return;const dir=tabSlide;tabSlide=null;
+  body.classList.add('tab-in-'+dir);body.addEventListener('animationend',()=>body.classList.remove('tab-in-'+dir),{once:true});
+}
+if(typeof document!=='undefined')(()=>{                          // arrow clicks + touch: drag the page sideways
+  document.addEventListener('click',e=>{const b=e.target.closest('.tab-arrow');if(b)goTab(b.dataset.go)});
+  let x0,y0,t0,body,lock=null,dx=0;
+  const scrollsX=el=>{for(;el&&el!==document.body;el=el.parentElement){const cs=getComputedStyle(el);
+    if(/(auto|scroll)/.test(cs.overflowX)&&el.scrollWidth>el.clientWidth+2)return true}return false};
+  document.addEventListener('touchstart',e=>{
+    body=null;lock=null;dx=0;if(e.touches.length!==1||!curSubTab())return;
+    const tg=e.target;if(tg.closest('input,textarea,select,.katex-display,.plot,.lfig,table')||scrollsX(tg))return;
+    body=document.getElementById('tabbody');x0=e.touches[0].clientX;y0=e.touches[0].clientY;t0=Date.now();
+  },{passive:true});
+  document.addEventListener('touchmove',e=>{
+    if(!body)return;const x=e.touches[0].clientX-x0,y=e.touches[0].clientY-y0;
+    if(!lock){if(Math.abs(x)<10&&Math.abs(y)<10)return;lock=Math.abs(x)>Math.abs(y)*1.2?'x':'y'}
+    if(lock!=='x')return;
+    const c=curSubTab();const edge=(x>0&&c.i===0)||(x<0&&c.i===SUB_TABS.length-1);
+    dx=edge?x/4:x;body.style.transition='none';body.style.transform=`translateX(${dx}px)`;body.style.opacity=String(1-Math.min(.5,Math.abs(dx)/innerWidth));
+  },{passive:true});
+  document.addEventListener('touchend',()=>{
+    if(!body||lock!=='x'){body=null;return}const b=body;body=null;
+    const fast=Math.abs(dx)>40&&Date.now()-t0<300,far=Math.abs(dx)>innerWidth*.28;
+    const reset=()=>{b.style.transition='transform .25s ease,opacity .25s ease';b.style.transform='';b.style.opacity=''};
+    if(fast||far){const dir=dx<0?'next':'prev';
+      b.style.transition='transform .18s ease-in,opacity .18s ease-in';b.style.transform=`translateX(${dx<0?-innerWidth:innerWidth}px)`;b.style.opacity='0';
+      setTimeout(()=>{if(!goTab(dir))reset()},170);
+    }else reset();
+  });
+  document.addEventListener('touchcancel',()=>{if(body){body.style.transform='';body.style.opacity='';body=null}});
+})();
+
 /* <div class="lplot" data-f="expr|a|b|ends; expr2..." data-x="-5,5" data-y="-5,5" data-pts="x,y,o; ..." data-cap="..."> */
 function drawLessonPlots(root){
   root.querySelectorAll('.lplot').forEach(el=>{

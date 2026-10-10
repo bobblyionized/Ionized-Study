@@ -61,6 +61,23 @@ h4{margin:0 0 6px;font-size:15px;text-transform:uppercase;letter-spacing:.6px;co
 .tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin:14px 0 18px;flex-wrap:wrap}
 .tab{border:none;background:none;padding:10px 14px;font:inherit;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px}
 .tab.on{color:var(--accent);border-bottom-color:var(--accent)}
+.tab-arrow{position:fixed;top:50%;z-index:5;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;
+  width:56px;padding:14px 0;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--muted);cursor:pointer;font:inherit;
+  box-shadow:var(--shadow);opacity:.75;transition:opacity .2s,color .2s,border-color .2s,transform .2s}
+.tab-arrow.prev{left:max(10px,calc(50% - 480px - 70px))}
+.tab-arrow.next{right:max(10px,calc(50% - 480px - 70px))}
+.tab-arrow:hover{opacity:1;color:var(--accent);border-color:var(--accent)}
+.tab-arrow.prev:hover{transform:translateY(-50%) translateX(-3px)}
+.tab-arrow.next:hover{transform:translateY(-50%) translateX(3px)}
+.ta-ch{font-size:34px;line-height:.8;font-weight:300}
+.ta-lbl{font-size:10.5px;font-weight:700;line-height:1.15;text-align:center;padding:0 4px}
+@media (max-width:1140px){.tab-arrow{width:40px;padding:12px 0}.ta-lbl{display:none}}
+@media (max-width:760px),(pointer:coarse){.tab-arrow{display:none}}
+#tabbody{touch-action:pan-y}
+.tab-in-next{animation:tabInNext .26s ease-out}
+.tab-in-prev{animation:tabInPrev .26s ease-out}
+@keyframes tabInNext{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+@keyframes tabInPrev{from{transform:translateX(-40px);opacity:0}to{transform:none;opacity:1}}
 .btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:9px;font:inherit;font-weight:600;cursor:pointer}
 .btn:hover{border-color:var(--accent)}
 .btn.pri{background:var(--accent);border-color:var(--accent);color:#fff}
@@ -91,6 +108,8 @@ table.t th{background:var(--accent-weak)}
 .lv{letter-spacing:1px;color:var(--warn)}
 .ptext{font-size:16.5px;margin-bottom:12px;line-height:1.9}
 .choices{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.choices.wide{grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr))}
+.ch>span{min-width:0;max-width:100%;overflow-x:auto;overflow-y:hidden}
 .ch{display:flex;gap:8px;align-items:center;text-align:left;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:9px;padding:9px 12px;font:inherit;cursor:pointer;min-height:46px}
 .ch:hover:not(:disabled){border-color:var(--accent)}
 .ch b{color:var(--muted);font-weight:700;min-width:26px}
@@ -145,11 +164,13 @@ table.t th{background:var(--accent-weak)}
 .kbd{font-size:12px;color:var(--muted)}
 .empty{color:var(--muted);text-align:center;padding:30px}
 .katex-display{overflow-x:auto;overflow-y:hidden;padding:2px 0}
+.katex-display,.ch>span{scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.ch .katex-display{margin:0;overflow:visible}
 @media (max-width:560px){
   h1{font-size:23px}
   .lesson{padding:4px 14px 16px}
   .prob{padding:14px}
-  .choices{grid-template-columns:1fr 1fr}
+  .choices{grid-template-columns:1fr 1fr}.choices.wide{grid-template-columns:1fr}
 }
 /* ================= FOCUS TIMER (paper look) ================= */
 :root{--tp-bg:#f4f3f0;--tp-fg:#1d1d1f;--tp-muted:#8a8a8e;--tp-line:#d9d8d4;--tp-face:#fbfaf8;--tp-warn:#a0522d;

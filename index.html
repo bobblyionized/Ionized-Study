@@ -61,6 +61,23 @@ h4{margin:0 0 6px;font-size:15px;text-transform:uppercase;letter-spacing:.6px;co
 .tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin:14px 0 18px;flex-wrap:wrap}
 .tab{border:none;background:none;padding:10px 14px;font:inherit;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px}
 .tab.on{color:var(--accent);border-bottom-color:var(--accent)}
+.tab-arrow{position:fixed;top:50%;z-index:5;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;
+  width:56px;padding:14px 0;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--muted);cursor:pointer;font:inherit;
+  box-shadow:var(--shadow);opacity:.75;transition:opacity .2s,color .2s,border-color .2s,transform .2s}
+.tab-arrow.prev{left:max(10px,calc(50% - 480px - 70px))}
+.tab-arrow.next{right:max(10px,calc(50% - 480px - 70px))}
+.tab-arrow:hover{opacity:1;color:var(--accent);border-color:var(--accent)}
+.tab-arrow.prev:hover{transform:translateY(-50%) translateX(-3px)}
+.tab-arrow.next:hover{transform:translateY(-50%) translateX(3px)}
+.ta-ch{font-size:34px;line-height:.8;font-weight:300}
+.ta-lbl{font-size:10.5px;font-weight:700;line-height:1.15;text-align:center;padding:0 4px}
+@media (max-width:1140px){.tab-arrow{width:40px;padding:12px 0}.ta-lbl{display:none}}
+@media (max-width:760px),(pointer:coarse){.tab-arrow{display:none}}
+#tabbody{touch-action:pan-y}
+.tab-in-next{animation:tabInNext .26s ease-out}
+.tab-in-prev{animation:tabInPrev .26s ease-out}
+@keyframes tabInNext{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+@keyframes tabInPrev{from{transform:translateX(-40px);opacity:0}to{transform:none;opacity:1}}
 .btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:9px;font:inherit;font-weight:600;cursor:pointer}
 .btn:hover{border-color:var(--accent)}
 .btn.pri{background:var(--accent);border-color:var(--accent);color:#fff}
@@ -91,6 +108,8 @@ table.t th{background:var(--accent-weak)}
 .lv{letter-spacing:1px;color:var(--warn)}
 .ptext{font-size:16.5px;margin-bottom:12px;line-height:1.9}
 .choices{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.choices.wide{grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr))}
+.ch>span{min-width:0;max-width:100%;overflow-x:auto;overflow-y:hidden}
 .ch{display:flex;gap:8px;align-items:center;text-align:left;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:9px;padding:9px 12px;font:inherit;cursor:pointer;min-height:46px}
 .ch:hover:not(:disabled){border-color:var(--accent)}
 .ch b{color:var(--muted);font-weight:700;min-width:26px}
@@ -145,11 +164,13 @@ table.t th{background:var(--accent-weak)}
 .kbd{font-size:12px;color:var(--muted)}
 .empty{color:var(--muted);text-align:center;padding:30px}
 .katex-display{overflow-x:auto;overflow-y:hidden;padding:2px 0}
+.katex-display,.ch>span{scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.ch .katex-display{margin:0;overflow:visible}
 @media (max-width:560px){
   h1{font-size:23px}
   .lesson{padding:4px 14px 16px}
   .prob{padding:14px}
-  .choices{grid-template-columns:1fr 1fr}
+  .choices{grid-template-columns:1fr 1fr}.choices.wide{grid-template-columns:1fr}
 }
 /* ================= FOCUS TIMER (paper look) ================= */
 :root{--tp-bg:#f4f3f0;--tp-fg:#1d1d1f;--tp-muted:#8a8a8e;--tp-line:#d9d8d4;--tp-face:#fbfaf8;--tp-warn:#a0522d;
@@ -18566,8 +18587,8 @@ function subPage(sid,tab){
   const st=subStats(sid);
   app.innerHTML=`<h1>${s.sec?'<span class="secno">'+s.sec+'</span> ':''}${esc(s.name)}</h1><p class="sub">${esc(s.d)}</p>
   <div class="tabs">${[['lesson','Lesson'],['set','Problem Set ('+st.total+')'],['practice','Practice Mode']].map(([k,n])=>`<button class="tab ${k===tab?'on':''}" onclick="location.hash='#/s/${sid}/${k}'">${n}</button>`).join('')}</div>
-  <div id="tabbody"></div>`;
-  const body=document.getElementById('tabbody');
+  <div id="tabbody"></div>${tabArrows(sid,tab)}`;
+  const body=document.getElementById('tabbody');enterTab(body);
   if(tab==='set')return setView(sid,body);
   if(tab==='practice')return practiceSetup(sid,body);
   const les=document.getElementById('L-'+sid);
@@ -18576,6 +18597,55 @@ function subPage(sid,tab){
   <div class="row" style="margin-top:16px">${next?`<button class="btn" onclick="location.hash='#/s/${next.id}/lesson'">Next lesson: ${esc(next.name)} →</button>`:''}<span class="spacer"></span><button class="btn pri" onclick="location.hash='#/s/${sid}/set'">Go to problem set →</button></div>`;
   drawLessonPlots(body);renderMath(body);
 }
+/* ---------- moving between Lesson / Problem Set / Practice: side arrows + sideways swipe ---------- */
+const SUB_TABS=[['lesson','Lesson'],['set','Problem Set'],['practice','Practice Mode']];
+let tabSlide=null;                                              // 'next' | 'prev': direction the new tab slides in from
+function tabArrows(sid,tab){
+  const i=SUB_TABS.findIndex(x=>x[0]===tab),pv=SUB_TABS[i-1],nx=SUB_TABS[i+1];
+  const a=(t,dir,ch)=>t?`<button class="tab-arrow ${dir}" type="button" data-go="${dir}" aria-label="${esc(t[1])}"><span class="ta-ch">${ch}</span><span class="ta-lbl">${esc(t[1])}</span></button>`:'';
+  return a(pv,'prev','‹')+a(nx,'next','›');
+}
+function curSubTab(){const m=location.hash.match(/^#\/s\/([^/]+)(?:\/(\w+))?/);if(!m||!subById(m[1]))return null;
+  const i=Math.max(0,SUB_TABS.findIndex(x=>x[0]===(m[2]||'lesson')));return{sid:m[1],i}}
+function practiceBusy(){return!!document.querySelector('#tabbody #pq')}
+function goTab(dir){
+  const c=curSubTab();if(!c)return false;const j=c.i+(dir==='next'?1:-1);if(j<0||j>=SUB_TABS.length)return false;
+  if(practiceBusy()&&!confirm('Leave this practice session? Your progress in it will be lost.'))return false;
+  tabSlide=dir;location.hash='#/s/'+c.sid+'/'+SUB_TABS[j][0];return true;
+}
+function enterTab(body){
+  if(!tabSlide)return;const dir=tabSlide;tabSlide=null;
+  body.classList.add('tab-in-'+dir);body.addEventListener('animationend',()=>body.classList.remove('tab-in-'+dir),{once:true});
+}
+if(typeof document!=='undefined')(()=>{                          // arrow clicks + touch: drag the page sideways
+  document.addEventListener('click',e=>{const b=e.target.closest('.tab-arrow');if(b)goTab(b.dataset.go)});
+  let x0,y0,t0,body,lock=null,dx=0;
+  const scrollsX=el=>{for(;el&&el!==document.body;el=el.parentElement){const cs=getComputedStyle(el);
+    if(/(auto|scroll)/.test(cs.overflowX)&&el.scrollWidth>el.clientWidth+2)return true}return false};
+  document.addEventListener('touchstart',e=>{
+    body=null;lock=null;dx=0;if(e.touches.length!==1||!curSubTab())return;
+    const tg=e.target;if(tg.closest('input,textarea,select,.katex-display,.plot,.lfig,table')||scrollsX(tg))return;
+    body=document.getElementById('tabbody');x0=e.touches[0].clientX;y0=e.touches[0].clientY;t0=Date.now();
+  },{passive:true});
+  document.addEventListener('touchmove',e=>{
+    if(!body)return;const x=e.touches[0].clientX-x0,y=e.touches[0].clientY-y0;
+    if(!lock){if(Math.abs(x)<10&&Math.abs(y)<10)return;lock=Math.abs(x)>Math.abs(y)*1.2?'x':'y'}
+    if(lock!=='x')return;
+    const c=curSubTab();const edge=(x>0&&c.i===0)||(x<0&&c.i===SUB_TABS.length-1);
+    dx=edge?x/4:x;body.style.transition='none';body.style.transform=`translateX(${dx}px)`;body.style.opacity=String(1-Math.min(.5,Math.abs(dx)/innerWidth));
+  },{passive:true});
+  document.addEventListener('touchend',()=>{
+    if(!body||lock!=='x'){body=null;return}const b=body;body=null;
+    const fast=Math.abs(dx)>40&&Date.now()-t0<300,far=Math.abs(dx)>innerWidth*.28;
+    const reset=()=>{b.style.transition='transform .25s ease,opacity .25s ease';b.style.transform='';b.style.opacity=''};
+    if(fast||far){const dir=dx<0?'next':'prev';
+      b.style.transition='transform .18s ease-in,opacity .18s ease-in';b.style.transform=`translateX(${dx<0?-innerWidth:innerWidth}px)`;b.style.opacity='0';
+      setTimeout(()=>{if(!goTab(dir))reset()},170);
+    }else reset();
+  });
+  document.addEventListener('touchcancel',()=>{if(body){body.style.transform='';body.style.opacity='';body=null}});
+})();
+
 /* <div class="lplot" data-f="expr|a|b|ends; expr2..." data-x="-5,5" data-y="-5,5" data-pts="x,y,o; ..." data-cap="..."> */
 function drawLessonPlots(root){
   root.querySelectorAll('.lplot').forEach(el=>{
@@ -18606,7 +18676,7 @@ function cardHTML(it,num,opts={}){
   return`<div class="prob" data-id="${it.id}">
    <div class="phead"><b>#${num}</b>${tag}<span class="lv" title="Difficulty">${stars(it.lvl)}</span>${opts.extra||''}<span class="spacer"></span><span class="status"></span></div>
    <div class="ptext">${it.q}</div>
-   <div class="choices">${it.choices.map((c,i)=>`<button class="ch" data-i="${i}"><b>(${L[i]})</b><span>${c}</span></button>`).join('')}</div>
+   <div class="choices${it.choices.some(c=>/\\begin|<table|<svg/.test(c)||c.length>70)?' wide':''}">${it.choices.map((c,i)=>`<button class="ch" data-i="${i}"><b>(${L[i]})</b><span>${c}</span></button>`).join('')}</div>
    <div class="fb"></div>
    <div class="sol" hidden><div class="sol-acts"><button class="hist-btn" type="button" hidden title="Show the wrong answers you picked before">History</button><button class="ai-btn" type="button" title="Open Google AI Mode in a new tab to explain this problem">✦ Ask AI</button></div><details><summary>Show full solution</summary><div class="solbody">${it.sol}</div></details><div class="hist-box" hidden></div></div>
   </div>`;
