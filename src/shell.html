@@ -117,20 +117,10 @@ table.t th{background:var(--accent-weak)}
 .lfigs{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:flex-start;margin:10px 0}
 .lfig{margin:0;display:inline-block;text-align:center;vertical-align:top}
 .lfig figcaption{font-size:13px;color:var(--muted);margin-top:-2px;max-width:240px}
-.ai-btn{display:none;position:absolute;right:0;top:8px;align-items:center;gap:5px;border:1px solid var(--line);background:var(--card);color:var(--accent);
+.ai-btn{display:inline-flex;position:absolute;right:0;top:8px;align-items:center;gap:5px;border:1px solid var(--line);background:var(--card);color:var(--accent);
   border-radius:999px;padding:3px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
 .ai-btn:hover{border-color:var(--accent)}
-.ai-btn:disabled{opacity:.6;cursor:progress}
-body.ai-on .ai-btn{display:inline-flex}
-body.ai-on .sol details summary{padding-right:130px}
-.solbody.ai{border-left:3px solid var(--accent);padding-left:12px}
-.ai-tag{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.4px;text-transform:uppercase;margin-bottom:4px}
-.solbody.ai p{margin:0 0 10px}
-.solbody.ai ul,.solbody.ai ol{margin:0 0 10px;padding-left:22px}
-.solbody.ai h3,.solbody.ai h4{margin:12px 0 6px;font-size:16px;text-transform:none;letter-spacing:0;color:var(--ink)}
-.ai-err{color:var(--bad);font-weight:600}
-.ai-cursor::after{content:'▍';color:var(--accent);animation:aiblink 1s steps(2) infinite}
-@keyframes aiblink{50%{opacity:0}}
+.sol details summary{padding-right:96px}
 .filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
 .chip{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:20px;padding:4px 12px;font:inherit;font-size:13.5px;cursor:pointer}
 .chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
@@ -173,15 +163,7 @@ body.landing #land{display:flex}
 .tm-label{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--tp-muted);margin-bottom:6px}
 .tm-time{font-size:clamp(38px,7vw,52px);font-weight:200;font-variant-numeric:tabular-nums;letter-spacing:.02em;line-height:1}
 .tm-desc{font-size:14px;color:var(--tp-muted);margin-top:8px;max-width:min(90vw,460px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tm-clock{position:relative;width:min(72vw,42vh,330px);aspect-ratio:1;flex:none;cursor:pointer;border-radius:50%;
-  transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .35s}
-.tm-clock:hover,.tm-clock:focus-visible{transform:scale(1.045);filter:brightness(1.06) drop-shadow(0 0 22px rgba(255,255,255,.95)) drop-shadow(0 6px 18px rgba(0,0,0,.08));outline:none}
-.tm-clock:hover .tm-face,.tm-clock:focus-visible .tm-face{fill:#fff}
-.tm-clock .tm-face{transition:fill .35s}
-.tm-ai-dot{position:absolute;left:50%;bottom:24%;transform:translateX(-50%);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--tp-muted);
-  opacity:0;transition:opacity .35s;pointer-events:none;white-space:nowrap}
-.tm-clock:hover .tm-ai-dot{opacity:.9}
-.tm-clock.ai .tm-ai-dot{opacity:.75}
+.tm-clock{position:relative;width:min(72vw,42vh,330px);aspect-ratio:1;flex:none}
 .tm-clock svg{width:100%;height:100%;display:block;overflow:visible}
 .tm-face{fill:var(--tp-face);stroke:var(--tp-line);stroke-width:1}
 .tm-tick{stroke:var(--tp-muted);stroke-linecap:round}
@@ -223,9 +205,6 @@ body.tm-running .tm-ring,body.tm-running .tm-ring-bg{opacity:1}
 .tm-code-hide:hover{color:var(--tp-fg)}
 .tm-code.hid .tm-code-val{letter-spacing:.18em;color:var(--tp-muted);cursor:default}
 .tm-code.hid .tm-sync{display:none}
-.tm-sel{font:inherit;font-family:var(--tp-font);font-size:15px;width:100%;padding:11px 12px;border-radius:12px;border:1px solid var(--tp-sline);background:var(--tp-field);color:var(--tp-fg)}
-.tm-aistate{text-align:center;font-size:13.5px;min-height:20px}
-.tm-aistate.ok{color:#2f9e44}.tm-aistate.bad{color:var(--tp-warn)}
 @media (max-width:640px),(max-height:520px){.tm-code{position:static;align-items:center;text-align:center;margin-top:16px}}
 
 /* sheets */
@@ -331,7 +310,7 @@ textarea.tm-input{resize:vertical;min-height:84px;line-height:1.45}
       <div class="tm-time" id="tmTime">0:00</div>
       <div class="tm-desc" id="tmDescShow"></div>
     </div>
-    <div class="tm-clock" id="tmClock" role="button" tabindex="0" aria-label="Claude AI settings" title="Claude AI">
+    <div class="tm-clock" id="tmClock">
       <svg viewBox="0 0 200 200" aria-hidden="true">
         <circle class="tm-ring-bg" cx="100" cy="100" r="97"/>
         <circle class="tm-ring" id="tmRing" cx="100" cy="100" r="97"/>
@@ -342,7 +321,6 @@ textarea.tm-input{resize:vertical;min-height:84px;line-height:1.45}
         <line class="tm-hand sec" id="tmS" x1="100" y1="114" x2="100" y2="24" stroke-width="1"/>
         <circle class="tm-pin" cx="100" cy="100" r="3.2"/>
       </svg>
-      <div class="tm-ai-dot" id="tmAiDot">Claude AI</div>
     </div>
     <div class="tm-controls">
       <button class="tm-btn" id="tmSet">Set</button>
@@ -371,29 +349,6 @@ textarea.tm-input{resize:vertical;min-height:84px;line-height:1.45}
     <div class="tm-row">
       <button class="tm-btn" id="tmCodeCancel">Cancel</button>
       <button class="tm-btn solid" id="tmCodeGo">Set Code</button>
-    </div>
-  </div>
-</div>
-
-<!-- Claude AI key -->
-<div class="tm-sheet" id="tmAiSheet" role="dialog" aria-label="Claude AI">
-  <div class="tm-grab"><span></span></div>
-  <h2>Claude AI</h2>
-  <div class="tm-donemsg" style="margin:10px 0 14px">Add a Claude API key to get an <b>AI Explain</b> button beside every solution. Claude reads the question and its answer and writes a fresh step-by-step explanation.<br><small>The key is saved only in this browser on this device. It is never uploaded to your sync code. Explanations use your API credits.</small></div>
-  <div class="tm-sbody" style="margin-top:0">
-    <input class="tm-input" id="tmAiKey" type="password" autocomplete="off" spellcheck="false" placeholder="sk-ant-...">
-    <div>
-      <div class="tm-flabel"><span>Model</span><span></span></div>
-      <select class="tm-sel" id="tmAiModel">
-        <option value="claude-opus-5-5">Claude Opus 5.5 (best explanations)</option>
-        <option value="claude-sonnet-5-5">Claude Sonnet 5.5 (faster, cheaper)</option>
-        <option value="claude-haiku-5-5">Claude Haiku 5.5 (fastest, cheapest)</option>
-      </select>
-    </div>
-    <div class="tm-aistate" id="tmAiState">&nbsp;</div>
-    <div class="tm-row">
-      <button class="tm-btn" id="tmAiRemove">Remove key</button>
-      <button class="tm-btn solid" id="tmAiSave">Save &amp; verify</button>
     </div>
   </div>
 </div>

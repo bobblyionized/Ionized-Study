@@ -1,7 +1,7 @@
 /* ---------- problem card ---------- */
 /* hand-written problems are 'AMC-style' in the AMC track and 'Worked problem' in precalculus */
 const cLabel=sub=>{const s=subById(sub);return s&&findTopic(s.topic).track==='pc'?'Worked problem':'AMC-style'};
-const ITEMS=new Map();   // id -> problem, so AI Explain can find the problem behind a card
+const ITEMS=new Map();   // id -> problem, so Ask AI can find the problem behind a card
 function cardHTML(it,num,opts={}){
   ITEMS.set(it.id,it);
   const tag=it.src==='c'?`<span class="pill">${cLabel(it.sub)}</span>`:'<span class="pill g">Skill drill</span>';
@@ -10,7 +10,7 @@ function cardHTML(it,num,opts={}){
    <div class="ptext">${it.q}</div>
    <div class="choices">${it.choices.map((c,i)=>`<button class="ch" data-i="${i}"><b>(${L[i]})</b><span>${c}</span></button>`).join('')}</div>
    <div class="fb"></div>
-   <div class="sol" hidden><button class="ai-btn" type="button" title="Have Claude explain this problem">✦ AI Explain</button><details><summary>Show full solution</summary><div class="solbody">${it.sol}</div></details></div>
+   <div class="sol" hidden><button class="ai-btn" type="button" title="Open Google AI Mode in a new tab to explain this problem">✦ Ask AI</button><details><summary>Show full solution</summary><div class="solbody">${it.sol}</div></details></div>
   </div>`;
 }
 function revealCard(el,it,chosen,openSol){

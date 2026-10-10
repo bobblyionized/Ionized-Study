@@ -117,20 +117,10 @@ table.t th{background:var(--accent-weak)}
 .lfigs{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:flex-start;margin:10px 0}
 .lfig{margin:0;display:inline-block;text-align:center;vertical-align:top}
 .lfig figcaption{font-size:13px;color:var(--muted);margin-top:-2px;max-width:240px}
-.ai-btn{display:none;position:absolute;right:0;top:8px;align-items:center;gap:5px;border:1px solid var(--line);background:var(--card);color:var(--accent);
+.ai-btn{display:inline-flex;position:absolute;right:0;top:8px;align-items:center;gap:5px;border:1px solid var(--line);background:var(--card);color:var(--accent);
   border-radius:999px;padding:3px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
 .ai-btn:hover{border-color:var(--accent)}
-.ai-btn:disabled{opacity:.6;cursor:progress}
-body.ai-on .ai-btn{display:inline-flex}
-body.ai-on .sol details summary{padding-right:130px}
-.solbody.ai{border-left:3px solid var(--accent);padding-left:12px}
-.ai-tag{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.4px;text-transform:uppercase;margin-bottom:4px}
-.solbody.ai p{margin:0 0 10px}
-.solbody.ai ul,.solbody.ai ol{margin:0 0 10px;padding-left:22px}
-.solbody.ai h3,.solbody.ai h4{margin:12px 0 6px;font-size:16px;text-transform:none;letter-spacing:0;color:var(--ink)}
-.ai-err{color:var(--bad);font-weight:600}
-.ai-cursor::after{content:'▍';color:var(--accent);animation:aiblink 1s steps(2) infinite}
-@keyframes aiblink{50%{opacity:0}}
+.sol details summary{padding-right:96px}
 .filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
 .chip{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:20px;padding:4px 12px;font:inherit;font-size:13.5px;cursor:pointer}
 .chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
@@ -173,15 +163,7 @@ body.landing #land{display:flex}
 .tm-label{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--tp-muted);margin-bottom:6px}
 .tm-time{font-size:clamp(38px,7vw,52px);font-weight:200;font-variant-numeric:tabular-nums;letter-spacing:.02em;line-height:1}
 .tm-desc{font-size:14px;color:var(--tp-muted);margin-top:8px;max-width:min(90vw,460px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tm-clock{position:relative;width:min(72vw,42vh,330px);aspect-ratio:1;flex:none;cursor:pointer;border-radius:50%;
-  transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .35s}
-.tm-clock:hover,.tm-clock:focus-visible{transform:scale(1.045);filter:brightness(1.06) drop-shadow(0 0 22px rgba(255,255,255,.95)) drop-shadow(0 6px 18px rgba(0,0,0,.08));outline:none}
-.tm-clock:hover .tm-face,.tm-clock:focus-visible .tm-face{fill:#fff}
-.tm-clock .tm-face{transition:fill .35s}
-.tm-ai-dot{position:absolute;left:50%;bottom:24%;transform:translateX(-50%);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--tp-muted);
-  opacity:0;transition:opacity .35s;pointer-events:none;white-space:nowrap}
-.tm-clock:hover .tm-ai-dot{opacity:.9}
-.tm-clock.ai .tm-ai-dot{opacity:.75}
+.tm-clock{position:relative;width:min(72vw,42vh,330px);aspect-ratio:1;flex:none}
 .tm-clock svg{width:100%;height:100%;display:block;overflow:visible}
 .tm-face{fill:var(--tp-face);stroke:var(--tp-line);stroke-width:1}
 .tm-tick{stroke:var(--tp-muted);stroke-linecap:round}
@@ -223,9 +205,6 @@ body.tm-running .tm-ring,body.tm-running .tm-ring-bg{opacity:1}
 .tm-code-hide:hover{color:var(--tp-fg)}
 .tm-code.hid .tm-code-val{letter-spacing:.18em;color:var(--tp-muted);cursor:default}
 .tm-code.hid .tm-sync{display:none}
-.tm-sel{font:inherit;font-family:var(--tp-font);font-size:15px;width:100%;padding:11px 12px;border-radius:12px;border:1px solid var(--tp-sline);background:var(--tp-field);color:var(--tp-fg)}
-.tm-aistate{text-align:center;font-size:13.5px;min-height:20px}
-.tm-aistate.ok{color:#2f9e44}.tm-aistate.bad{color:var(--tp-warn)}
 @media (max-width:640px),(max-height:520px){.tm-code{position:static;align-items:center;text-align:center;margin-top:16px}}
 
 /* sheets */
@@ -331,7 +310,7 @@ textarea.tm-input{resize:vertical;min-height:84px;line-height:1.45}
       <div class="tm-time" id="tmTime">0:00</div>
       <div class="tm-desc" id="tmDescShow"></div>
     </div>
-    <div class="tm-clock" id="tmClock" role="button" tabindex="0" aria-label="Claude AI settings" title="Claude AI">
+    <div class="tm-clock" id="tmClock">
       <svg viewBox="0 0 200 200" aria-hidden="true">
         <circle class="tm-ring-bg" cx="100" cy="100" r="97"/>
         <circle class="tm-ring" id="tmRing" cx="100" cy="100" r="97"/>
@@ -342,7 +321,6 @@ textarea.tm-input{resize:vertical;min-height:84px;line-height:1.45}
         <line class="tm-hand sec" id="tmS" x1="100" y1="114" x2="100" y2="24" stroke-width="1"/>
         <circle class="tm-pin" cx="100" cy="100" r="3.2"/>
       </svg>
-      <div class="tm-ai-dot" id="tmAiDot">Claude AI</div>
     </div>
     <div class="tm-controls">
       <button class="tm-btn" id="tmSet">Set</button>
@@ -371,29 +349,6 @@ textarea.tm-input{resize:vertical;min-height:84px;line-height:1.45}
     <div class="tm-row">
       <button class="tm-btn" id="tmCodeCancel">Cancel</button>
       <button class="tm-btn solid" id="tmCodeGo">Set Code</button>
-    </div>
-  </div>
-</div>
-
-<!-- Claude AI key -->
-<div class="tm-sheet" id="tmAiSheet" role="dialog" aria-label="Claude AI">
-  <div class="tm-grab"><span></span></div>
-  <h2>Claude AI</h2>
-  <div class="tm-donemsg" style="margin:10px 0 14px">Add a Claude API key to get an <b>AI Explain</b> button beside every solution. Claude reads the question and its answer and writes a fresh step-by-step explanation.<br><small>The key is saved only in this browser on this device. It is never uploaded to your sync code. Explanations use your API credits.</small></div>
-  <div class="tm-sbody" style="margin-top:0">
-    <input class="tm-input" id="tmAiKey" type="password" autocomplete="off" spellcheck="false" placeholder="sk-ant-...">
-    <div>
-      <div class="tm-flabel"><span>Model</span><span></span></div>
-      <select class="tm-sel" id="tmAiModel">
-        <option value="claude-opus-5-5">Claude Opus 5.5 (best explanations)</option>
-        <option value="claude-sonnet-5-5">Claude Sonnet 5.5 (faster, cheaper)</option>
-        <option value="claude-haiku-5-5">Claude Haiku 5.5 (fastest, cheapest)</option>
-      </select>
-    </div>
-    <div class="tm-aistate" id="tmAiState">&nbsp;</div>
-    <div class="tm-row">
-      <button class="tm-btn" id="tmAiRemove">Remove key</button>
-      <button class="tm-btn solid" id="tmAiSave">Save &amp; verify</button>
     </div>
   </div>
 </div>
@@ -18634,7 +18589,7 @@ function drawLessonPlots(root){
 /* ---------- problem card ---------- */
 /* hand-written problems are 'AMC-style' in the AMC track and 'Worked problem' in precalculus */
 const cLabel=sub=>{const s=subById(sub);return s&&findTopic(s.topic).track==='pc'?'Worked problem':'AMC-style'};
-const ITEMS=new Map();   // id -> problem, so AI Explain can find the problem behind a card
+const ITEMS=new Map();   // id -> problem, so Ask AI can find the problem behind a card
 function cardHTML(it,num,opts={}){
   ITEMS.set(it.id,it);
   const tag=it.src==='c'?`<span class="pill">${cLabel(it.sub)}</span>`:'<span class="pill g">Skill drill</span>';
@@ -18643,7 +18598,7 @@ function cardHTML(it,num,opts={}){
    <div class="ptext">${it.q}</div>
    <div class="choices">${it.choices.map((c,i)=>`<button class="ch" data-i="${i}"><b>(${L[i]})</b><span>${c}</span></button>`).join('')}</div>
    <div class="fb"></div>
-   <div class="sol" hidden><button class="ai-btn" type="button" title="Have Claude explain this problem">✦ AI Explain</button><details><summary>Show full solution</summary><div class="solbody">${it.sol}</div></details></div>
+   <div class="sol" hidden><button class="ai-btn" type="button" title="Open Google AI Mode in a new tab to explain this problem">✦ Ask AI</button><details><summary>Show full solution</summary><div class="solbody">${it.sol}</div></details></div>
   </div>`;
 }
 function revealCard(el,it,chosen,openSol){
@@ -18975,148 +18930,68 @@ const SYNC=(()=>{
   return{changed,reconcile,get code(){return st.code}};
 })();
 
-/* ====================== Claude AI explanations ======================
-   Clicking the clock on the timer menu opens a sheet for a Claude API key. The key is stored only in
-   this browser's localStorage (never in the synced data). Once a test request succeeds, every revealed
-   solution gets an "AI Explain" button that streams a fresh explanation from the Messages API.       */
+/* ====================== Ask AI (Google AI Mode) ======================
+   Every revealed solution has an "Ask AI" button. It opens a new tab with Google's AI Mode
+   (google.com/search?udm=50) already asked to explain the problem, its choices, and the correct answer.
+   Math is converted from LaTeX to plain text so the query reads naturally.                            */
 const AI=(()=>{
-  if(typeof document==='undefined'||!document.getElementById('tmAiSheet'))return null;
-  const LK='amcprep.ai',API='https://api.anthropic.com/v1/messages';
-  const $=id=>document.getElementById(id);
-  let cfg=(()=>{try{return JSON.parse(localStorage.getItem(LK))||{}}catch(e){return{}}})();
-  const save=()=>{try{localStorage.setItem(LK,JSON.stringify(cfg))}catch(e){}};
-  const ready=()=>!!(cfg.key&&cfg.ok);
-  function apply(){document.body.classList.toggle('ai-on',ready());$('tmClock').classList.toggle('ai',ready());$('tmAiDot').textContent=ready()?'AI on':'Claude AI'}
+  if(typeof document==='undefined')return null;
+  try{localStorage.removeItem('amcprep.ai')}catch(e){}            // forget any key saved by the old Claude feature
 
-  function headers(key){return{'content-type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'}}
-  async function errText(r){
-    let m='';try{const j=await r.json();m=(j.error&&j.error.message)||''}catch(e){}
-    if(r.status===401)return'That key was rejected. Check that it was copied completely.';
-    if(r.status===403)return'This key is not allowed to use the API'+(m?': '+m:'.');
-    if(r.status===404)return'This key cannot use the selected model. Try another model.';
-    if(r.status===429)return'Rate limit reached. Wait a moment and try again.';
-    if(r.status===529||r.status===503)return'Claude is overloaded right now. Try again in a minute.';
-    if(r.status===400&&/credit/i.test(m))return'Your API account has no credits left. Add credits at console.anthropic.com (Settings, then Billing), then try again.';
-    return'Error '+r.status+(m?': '+m:'');
+  /* ---------- LaTeX -> readable plain text ---------- */
+  const SYM={cdot:'·',times:'×',div:'÷',le:'≤',leq:'≤',ge:'≥',geq:'≥',lt:'<',gt:'>',ne:'≠',neq:'≠',approx:'≈',pm:'±',mp:'∓',
+    pi:'π',theta:'θ',alpha:'α',beta:'β',gamma:'γ',delta:'δ',Delta:'Δ',lambda:'λ',mu:'μ',sigma:'σ',phi:'φ',omega:'ω',infty:'∞',
+    circ:'°',angle:'∠',triangle:'△',parallel:'∥',perp:'⊥',sim:'~',cong:'≅',in:'∈',cup:'∪',cap:'∩',to:'→',Rightarrow:'⇒',
+    implies:'⇒',iff:'⇔',ldots:'...',cdots:'...',dots:'...',mid:'|',equiv:'≡',sum:'Σ',prod:'Π',int:'∫',lfloor:'⌊',rfloor:'⌋',
+    lceil:'⌈',rceil:'⌉',emptyset:'∅',neg:'¬',quad:' ',qquad:' ',displaystyle:'',left:'',right:'',big:'',Big:'',bigg:'',
+    limits:'',nolimits:'',checkmark:'✓'};
+  const grp='\\{((?:[^{}]|\\{(?:[^{}]|\\{[^{}]*\\})*\\})*)\\}';     // a {...} group, up to 3 levels deep
+  const G=n=>new RegExp(n,'g');
+  function tex(t){
+    let s=t.replace(/\\([dt]?frac|binom)\s*([A-Za-z0-9])/g,'\\$1{$2}')        // \frac12 -> \frac{1}2
+           .replace(G('\\\\([dt]?frac|binom)\\s*'+grp+'\\s*([A-Za-z0-9])'),'\\$1{$2}{$3}');
+    for(let k=0;k<4;k++){
+      s=s.replace(G('\\\\[dt]?frac\\s*'+grp+'\\s*'+grp),(m,a,b)=>'('+a+')/('+b+')')
+         .replace(G('\\\\binom\\s*'+grp+'\\s*'+grp),(m,a,b)=>'C('+a+','+b+')')
+         .replace(G('\\\\sqrt\\s*\\[([^\\]]*)\\]\\s*'+grp),(m,n,a)=>n+'th root of ('+a+')')
+         .replace(G('\\\\sqrt\\s*'+grp),(m,a)=>'√('+a+')')
+         .replace(G('\\\\overline\\s*'+grp),(m,a)=>a+' (repeating)')
+         .replace(G('\\\\(?:text|textbf|mathrm|mathbf|operatorname|mbox|hbox)\\s*'+grp),(m,a)=>a);
+    }
+    s=s.replace(/\\sqrt\s*(\w)/g,'√$1').replace(/\^\s*\\circ/g,'°')
+       .replace(/\\[,;:! ]/g,' ').replace(/\\\\/g,'; ').replace(/\\([{}$%&#_])/g,'$1')
+       .replace(/\\([A-Za-z]+)/g,(m,w)=>w in SYM?SYM[w]:w)
+       .replace(/\^\{([^{}]*)\}/g,(m,a)=>a.length===1?'^'+a:'^('+a+')').replace(/_\{([^{}]*)\}/g,'_$1')
+       .replace(/[{}]/g,'').replace(/\(([A-Za-z0-9.]+)\)\/\(([A-Za-z0-9.]+)\)/g,'$1/$2')
+       .replace(/[ \t]{2,}/g,' ');
+    return s.trim();
   }
-
-  /* ---------- key sheet ---------- */
-  function state(cls,txt){const el=$('tmAiState');el.className='tm-aistate'+(cls?' '+cls:'');el.textContent=txt||' '}
-  function openSheet(){
-    $('tmAiKey').value=cfg.key||'';$('tmAiModel').value=cfg.model||'claude-opus-5-5';
-    $('tmAiRemove').disabled=!cfg.key;
-    state(ready()?'ok':'',ready()?'✓ Key verified. AI Explain is on.':'');
-    TM.openSheet($('tmAiSheet'));
-  }
-  async function verify(){
-    const key=$('tmAiKey').value.trim(),model=$('tmAiModel').value,btn=$('tmAiSave');
-    if(!key){state('bad','Paste your Claude API key first.');TM.sfx.invalid();return}
-    btn.disabled=true;state('','Checking the key…');
-    try{
-      const r=await fetch(API,{method:'POST',headers:headers(key),body:JSON.stringify({model,max_tokens:1,messages:[{role:'user',content:'Hi'}]})});
-      if(!r.ok){state('bad',await errText(r));TM.sfx.invalid();btn.disabled=false;return}
-      cfg={key,model,ok:true};save();apply();state('ok','✓ Key verified. AI Explain is on.');$('tmAiRemove').disabled=false;TM.sfx.complete();
-      setTimeout(()=>TM.closeSheet(true),900);
-    }catch(e){state('bad','Could not reach Claude. Check your connection and try again.');TM.sfx.invalid()}
-    btn.disabled=false;
-  }
-  const clock=$('tmClock');
-  clock.addEventListener('click',openSheet);
-  clock.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openSheet()}});
-  $('tmAiSave').addEventListener('click',verify);
-  $('tmAiKey').addEventListener('keydown',e=>{if(e.key==='Enter')verify()});
-  $('tmAiModel').addEventListener('change',()=>{if(cfg.key&&$('tmAiKey').value.trim()===cfg.key){cfg.model=$('tmAiModel').value;save()}});
-  $('tmAiRemove').addEventListener('click',()=>{cfg={};save();apply();$('tmAiKey').value='';$('tmAiRemove').disabled=true;state('','Key removed from this device.');TM.sfx.end()});
-
-  /* ---------- turning a problem into plain text ---------- */
   function plain(html){
     const d=document.createElement('div');
-    d.innerHTML=String(html).replace(/<svg[^>]*aria-label="([^"]*)"[\s\S]*?<\/svg>/gi,' [Graph: $1] ').replace(/<br\s*\/?>/gi,'\n').replace(/<\/(p|div|li|tr)>/gi,'\n');
-    return d.textContent.replace(/\n{3,}/g,'\n\n').trim();
-  }
-  function prompt(it,chosen){
-    const ch=it.choices.map((c,i)=>'('+L[i]+') '+plain(c)).join('\n');
-    let u='Problem:\n'+plain(it.q)+'\n\nAnswer choices:\n'+ch+'\n\nCorrect answer: ('+L[it.ans]+') '+plain(it.choices[it.ans]);
-    if(chosen!=null&&chosen!==it.ans)u+='\n\nThe student chose ('+L[chosen]+') '+plain(it.choices[chosen])+'. After the solution, add a short section explaining the most likely mistake that leads to that choice.';
-    u+='\n\nReference solution from the answer key (it may be brief):\n'+plain(it.sol);
-    return u;
-  }
-  const SYSTEM='You are an expert, encouraging math tutor for students preparing for the AMC 10/12 and for precalculus. '+
-    'Explain how to solve the given multiple-choice problem so that a strong high-school student can follow every single step. '+
-    'The correct answer is given to you; your explanation must arrive at exactly that answer. '+
-    'Start with a one or two sentence "Key idea". Then work through numbered steps, showing every computation and saying why each step is valid. '+
-    'Finish with a short "Check" that confirms the answer (for example by substituting back or estimating) and one "Takeaway" sentence the student can reuse on similar problems. '+
-    'Format in Markdown. Write ALL math in LaTeX using $...$ for inline math and $$...$$ for displayed equations; never use \\( \\) or \\[ \\]. '+
-    'Do not restate the problem and do not add a preamble.';
-
-  /* ---------- tiny Markdown renderer that leaves LaTeX alone ---------- */
-  function md(src){
-    const math=[];
-    let s=src.replace(/\\\[([\s\S]*?)\\\]/g,(m,x)=>'$$'+x+'$$').replace(/\\\(([\s\S]*?)\\\)/g,(m,x)=>'$'+x+'$');
-    s=s.replace(/\$\$[\s\S]*?\$\$|\$[^$\n]+?\$/g,m=>{math.push(m);return'\u0000'+(math.length-1)+'\u0000'});
-    s=s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
-    const inline=t=>t.replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/(^|[^*])\*(?!\s)([^*\n]+?)\*(?!\*)/g,'$1<i>$2</i>').replace(/`([^`]+)`/g,'<code>$1</code>');
-    const out=[];let list=null,para=[];
-    const flushP=()=>{if(para.length){out.push('<p>'+inline(para.join(' '))+'</p>');para=[]}};
-    const flushL=()=>{if(list){out.push('<'+list.t+'>'+list.items.map(x=>'<li>'+inline(x)+'</li>').join('')+'</'+list.t+'>');list=null}};
-    for(const raw of s.split('\n')){
-      const line=raw.trim();let m;
-      if(!line){flushP();flushL();continue}
-      if((m=line.match(/^#{1,6}\s+(.*)$/))){flushP();flushL();out.push('<h4>'+inline(m[1])+'</h4>');continue}
-      if((m=line.match(/^[-*•]\s+(.*)$/))){flushP();if(!list||list.t!=='ul'){flushL();list={t:'ul',items:[]}}list.items.push(m[1]);continue}
-      if((m=line.match(/^\d+[.)]\s+(.*)$/))){flushP();if(!list||list.t!=='ol'){flushL();list={t:'ol',items:[]}}list.items.push(m[1]);continue}
-      if(/^(-{3,}|\*{3,})$/.test(line)){flushP();flushL();continue}
-      if(list&&/^\s{2,}/.test(raw)){list.items[list.items.length-1]+=' '+line;continue}
-      flushL();para.push(line);
-    }
-    flushP();flushL();
-    return out.join('').replace(/\u0000(\d+)\u0000/g,(m,i)=>math[+i].replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])));
+    d.innerHTML=String(html).replace(/<svg[^>]*aria-label="([^"]*)"[\s\S]*?<\/svg>/gi,' [Graph: $1] ').replace(/<svg[\s\S]*?<\/svg>/gi,' [graph] ')
+      .replace(/<br\s*\/?>/gi,'\n').replace(/<\/(p|div|li|tr)>/gi,'\n');
+    const t=d.textContent.replace(/\\\$/g,'\u0001');             // keep literal dollar signs
+    return t.replace(/\$\$([\s\S]*?)\$\$|\$([^$]*)\$/g,(m,a,b)=>tex(a!=null?a:b)).replace(/\u0001/g,'$')
+      .replace(/[ \t]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim();
   }
 
-  /* ---------- streaming an explanation ---------- */
-  async function explain(btn){
-    const card=btn.closest('.prob'),it=ITEMS.get(card.dataset.id);if(!it)return;
-    const body=card.querySelector('.solbody'),det=card.querySelector('.sol details');det.open=true;
-    if(card._ai&&!card._aiBusy){                                   // toggle between AI and original
-      const showAI=!body.classList.contains('ai');
-      body.innerHTML=showAI?card._ai:card._orig;body.classList.toggle('ai',showAI);
-      btn.textContent=showAI?'Original solution':'✦ AI Explain';renderMath(body);return;
-    }
-    if(!ready()){alert('Add a Claude API key first: click the clock on the timer menu.');return}
-    card._orig=card._orig||body.innerHTML;card._aiBusy=true;btn.disabled=true;btn.textContent='Explaining…';
+  function query(it,chosen){
+    const ans='('+L[it.ans]+') '+plain(it.choices[it.ans]);
+    const ch=it.choices.map((c,i)=>'('+L[i]+') '+plain(c)).join('   ');
+    const tail='\n\nAnswer choices: '+ch+'\n\nThe correct answer is '+ans+'.'+
+      (chosen!=null&&chosen!==it.ans?' I chose ('+L[chosen]+') '+plain(it.choices[chosen])+'. What mistake leads to that answer?':'');
+    const head='Explain step by step how to solve this math problem and why the answer is '+ans+'.\n\nProblem: ';
+    let q=plain(it.q);const room=1700-head.length-tail.length;  // keep the URL a safe length
+    if(q.length>room)q=q.slice(0,Math.max(200,room-3))+'...';
+    return head+q+tail;
+  }
+  function ask(btn){
+    const card=btn.closest('.prob'),it=card&&ITEMS.get(card.dataset.id);if(!it)return;
     const wrong=card.querySelector('.ch.wrong');const chosen=wrong?+wrong.dataset.i:null;
-    body.classList.add('ai');body.innerHTML='<div class="ai-tag">✦ Claude explains</div><div class="ai-txt ai-cursor">Thinking…</div>';
-    const txtEl=body.querySelector('.ai-txt');let text='',raf=0;
-    const paint=()=>{raf=0;txtEl.innerHTML=md(text)||'Thinking…'};
-    try{
-      const r=await fetch(API,{method:'POST',headers:headers(cfg.key),body:JSON.stringify({model:cfg.model||'claude-opus-5-5',max_tokens:2500,stream:true,system:SYSTEM,messages:[{role:'user',content:prompt(it,chosen)}]})});
-      if(!r.ok)throw new Error(await errText(r));
-      const rd=r.body.getReader(),dec=new TextDecoder();let buf='';
-      for(;;){
-        const {done,value}=await rd.read();if(done)break;
-        buf+=dec.decode(value,{stream:true});let i;
-        while((i=buf.indexOf('\n'))>=0){
-          const line=buf.slice(0,i).trim();buf=buf.slice(i+1);
-          if(!line.startsWith('data:'))continue;
-          let ev;try{ev=JSON.parse(line.slice(5))}catch(e){continue}
-          if(ev.type==='content_block_delta'&&ev.delta&&ev.delta.type==='text_delta'){text+=ev.delta.text;if(!raf)raf=requestAnimationFrame(paint)}
-          else if(ev.type==='error')throw new Error((ev.error&&ev.error.message)||'The stream was interrupted.');
-        }
-      }
-      if(raf)cancelAnimationFrame(raf);paint();txtEl.classList.remove('ai-cursor');renderMath(body);
-      if(!text.trim())throw new Error('Claude returned an empty explanation.');
-      card._ai=body.innerHTML;btn.textContent='Original solution';
-    }catch(e){
-      body.classList.remove('ai');body.innerHTML=card._orig+'<p class="ai-err">AI Explain failed: '+esc(e.message||'Could not reach Claude.')+'</p>';renderMath(body);
-      btn.textContent='✦ AI Explain';
-      if(/rejected/.test(e.message||'')){cfg.ok=false;save();apply()}
-    }
-    card._aiBusy=false;btn.disabled=false;
+    window.open('https://www.google.com/search?udm=50&q='+encodeURIComponent(query(it,chosen)),'_blank','noopener');
   }
-  document.addEventListener('click',e=>{const b=e.target.closest('.ai-btn');if(b&&!b.disabled){e.preventDefault();explain(b)}});
-
-  apply();
-  return{get ready(){return ready()}};
+  document.addEventListener('click',e=>{const b=e.target.closest('.ai-btn');if(b){e.preventDefault();ask(b)}});
+  return{query,plain};
 })();
 
 </script>
