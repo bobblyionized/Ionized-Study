@@ -3096,7 +3096,9 @@ W: 4
 W: -8
 W: 1
 W: 16
-S: Subtract $3x$ from both sides: $7=2x-9$. Add 9: $2x=16$, so $x=8$.
+S: Goal: get all $x$ terms on one side and the constants on the other.
+Subtract $3x$ from both sides: $7=2x-9$. Add $9$ to both sides: $16=2x$, so $x=8$.
+Check: $3\cdot8+7=31$ and $5\cdot8-9=31$. ✓
 ---
 Q: Real numbers satisfy $x+y=10$, $y+z=14$, and $z+x=18$. What is $xyz$?
 L: 2
@@ -3105,8 +3107,10 @@ W: 210
 W: 252
 W: 189
 W: 243
-S: Adding all three: $2(x+y+z)=42$, so $x+y+z=21$.
-Then $x=21-14=7$, $y=21-18=3$, $z=21-10=11$, and $xyz=7\cdot3\cdot11=231$.
+S: Each variable appears in exactly two of the equations, so adding all three gives $2x+2y+2z=10+14+18=42$, i.e. $x+y+z=21$.
+Subtract each original equation from this total to isolate the missing variable:
+$x=21-(y+z)=21-14=7$, $y=21-(z+x)=21-18=3$, $z=21-(x+y)=21-10=11$.
+So $xyz=7\cdot3\cdot11=231$.
 ---
 Q: If $2a+3b=12$ and $3a+2b=13$, what is $a+b$?
 L: 1
@@ -3115,7 +3119,9 @@ W: 4
 W: 6
 W: 25
 W: 7
-S: Add the equations: $5a+5b=25$, so $a+b=5$. No need to find $a$ and $b$ separately.
+S: The coefficients are "swapped" ($2,3$ and $3,2$), so adding the equations makes them equal: $5a+5b=12+13=25$.
+Divide by $5$: $a+b=5$. No need to find $a$ and $b$ separately.
+(If you want them: subtracting gives $a-b=1$, so $a=3$, $b=2$.)
 ---
 Q: For what value of $k$ does the system $2x+3y=5$, $4x+ky=7$ have no solution?
 L: 1
@@ -3124,8 +3130,10 @@ W: 3
 W: -6
 W: 12
 W: 2
-S: No solution means parallel lines: the coefficients are proportional but the constants are not.
-$\frac42=\frac k3$ gives $k=6$. Then the second equation is $4x+6y=7$, while doubling the first gives $4x+6y=10$. These contradict, so there is no solution.
+S: Two linear equations have no solution exactly when their lines are parallel: same slope, different intercept. That means the $x$- and $y$-coefficients are proportional but the constants are not.
+$\frac42=\frac k3$ gives $k=6$.
+Check: doubling the first equation gives $4x+6y=10$, but the second says $4x+6y=7$. They contradict, so there is no solution.
+(If the constants were also proportional, the lines would coincide and there would be infinitely many solutions.)
 ---
 Q: Mary is three times as old as her son. In $12$ years she will be twice as old as her son. How old is Mary now?
 L: 1
@@ -3134,7 +3142,10 @@ W: 24
 W: 48
 W: 30
 W: 12
-S: Let the son be $s$, so Mary is $3s$. In 12 years: $3s+12=2(s+12)$, so $s=12$. Mary is $36$.
+S: Let the son's age be $s$, so Mary's is $3s$.
+In $12$ years they will be $3s+12$ and $s+12$, and Mary will be twice as old: $3s+12=2(s+12)=2s+24$.
+So $s=12$, and Mary is $3\cdot12=36$.
+Check: in $12$ years they are $48$ and $24$. ✓
 ---
 Q: A jar contains $30$ coins, all nickels and dimes, worth a total of $240$ cents. How many dimes are in the jar?
 L: 1
@@ -3143,7 +3154,10 @@ W: 12
 W: 15
 W: 20
 W: 16
-S: $n+d=30$ and $5n+10d=240$. Substituting $n=30-d$: $150+5d=240$, so $d=18$.
+S: Let $n$ be the number of nickels and $d$ the number of dimes.
+Count: $n+d=30$. Value in cents: $5n+10d=240$.
+Substitute $n=30-d$: $5(30-d)+10d=150+5d=240$, so $5d=90$ and $d=18$ (and $n=12$).
+Check: $12\cdot5+18\cdot10=60+180=240$. ✓
 ---
 Q: Real numbers satisfy $x+2y+3z=14$, $2x+3y+z=11$, and $3x+y+2z=11$. What is $x+y+z$?
 L: 2
@@ -3152,7 +3166,9 @@ W: 12
 W: 36
 W: 7
 W: 5
-S: Adding all three equations, every variable gets coefficient $1+2+3=6$: $6(x+y+z)=36$, so $x+y+z=6$.
+S: The coefficients are a rearrangement of $1,2,3$ in each equation, so adding all three gives each variable the coefficient $1+2+3=6$:
+$6x+6y+6z=14+11+11=36$.
+So $x+y+z=6$. (Asking for a symmetric expression is a hint to add the equations.)
 ---
 Q: If $\dfrac1x+\dfrac1y=5$ and $\dfrac1x-\dfrac1y=1$, what is $x+y$?
 L: 2
@@ -3161,8 +3177,10 @@ W: \frac{1}{6}
 W: \frac{6}{5}
 W: 5
 W: 1
-S: Treat $u=\frac1x$ and $v=\frac1y$ as unknowns: $u+v=5$, $u-v=1$, so $u=3$, $v=2$.
-Then $x=\frac13$, $y=\frac12$, and $x+y=\frac56$.
+S: The equations are linear in $\frac1x$ and $\frac1y$, so substitute $u=\frac1x$, $v=\frac1y$: $u+v=5$ and $u-v=1$.
+Adding: $2u=6$, so $u=3$; then $v=2$.
+Undo the substitution: $x=\frac13$, $y=\frac12$, so $x+y=\frac13+\frac12=\frac56$.
+(Trap: $\frac1{x+y}$ is not $\frac1x+\frac1y$, so the answer is not $\frac15$.)
 ---
 Q: Positive real numbers $x$, $y$, $z$ satisfy $xy=24$, $xz=48$, and $yz=72$. What is $x+y+z$?
 L: 2
@@ -3171,8 +3189,10 @@ W: 20
 W: 24
 W: 26
 W: 18
-S: Multiply all three: $(xyz)^2=24\cdot48\cdot72=82944$, so $xyz=288$.
-Then $x=\frac{288}{72}=4$, $y=\frac{288}{48}=6$, $z=\frac{288}{24}=12$. Sum: $22$.
+S: Multiplying all three equations gives $(xy)(xz)(yz)=x^2y^2z^2=(xyz)^2$.
+$(xyz)^2=24\cdot48\cdot72=82944$, and since all are positive, $xyz=\sqrt{82944}=288$.
+Divide by each product to get the missing variable: $x=\frac{xyz}{yz}=\frac{288}{72}=4$, $y=\frac{288}{48}=6$, $z=\frac{288}{24}=12$.
+Sum: $4+6+12=22$.
 ---
 Q: A two-digit number is $4$ times the sum of its digits. When the digits are reversed, the number increases by $27$. What is the original number?
 L: 3
@@ -3181,8 +3201,11 @@ W: 24
 W: 48
 W: 12
 W: 63
-S: Write the number as $10a+b$. Then $10a+b=4(a+b)$ gives $6a=3b$, so $b=2a$.
-Reversing: $(10b+a)-(10a+b)=9(b-a)=27$, so $b-a=3$. With $b=2a$: $a=3$, $b=6$. The number is $36$.
+S: Write the number as $10a+b$ with tens digit $a$ and units digit $b$.
+"$4$ times the digit sum": $10a+b=4(a+b)$, so $6a=3b$ and $b=2a$.
+Reversing the digits gives $10b+a$, and $(10b+a)-(10a+b)=9(b-a)=27$, so $b-a=3$.
+With $b=2a$: $a=3$, $b=6$. The number is $36$.
+Check: $4(3+6)=36$ and $63-36=27$. ✓
 ---
 @@ alg-rate
 Q: If $a:b=3:4$ and $b:c=6:7$, what is $a:c$?
@@ -3192,7 +3215,10 @@ W: 3:7
 W: 1:2
 W: 7:9
 W: 4:7
-S: Rescale so $b$ matches: $a:b=9:12$ and $b:c=12:14$. So $a:c=9:14$.
+S: To combine ratios, the shared term $b$ must have the same value in both. The LCM of $4$ and $6$ is $12$.
+$a:b=3:4=9:12$ and $b:c=6:7=12:14$.
+Now $a:b:c=9:12:14$, so $a:c=9:14$.
+(Multiplying shortcut: $\frac ac=\frac ab\cdot\frac bc=\frac34\cdot\frac67=\frac{18}{28}=\frac9{14}$.)
 ---
 Q: A price is increased by $20\%$ and then the new price is decreased by $20\%$. The final price is what percent of the original price?
 L: 1
@@ -3201,7 +3227,9 @@ W: 100\%
 W: 104\%
 W: 80\%
 W: 98\%
-S: Multipliers multiply: $1.2\times0.8=0.96$. The final price is $96\%$ of the original, a $4\%$ loss overall.
+S: A percent change is multiplication by a factor: $+20\%$ means $\times1.2$ and $-20\%$ means $\times0.8$.
+$1.2\times0.8=0.96$, so the final price is $96\%$ of the original.
+The decrease is $20\%$ of a larger amount than the increase was, so there's a $4\%$ net loss. The percents do not cancel.
 ---
 Q: After a $25\%$ discount, a shirt costs $36$ dollars. What was the original price, in dollars?
 L: 1
@@ -3210,7 +3238,9 @@ W: 45
 W: 27
 W: 50
 W: 46
-S: The sale price is $75\%$ of the original: $0.75p=36$, so $p=48$. (A common error is adding $25\%$ of 36 to get 45.)
+S: A $25\%$ discount means paying $75\%$ of the original price $p$: $0.75p=36$.
+$p=\frac{36}{0.75}=36\cdot\frac43=48$.
+(A common error is adding $25\%$ of $36$ to get $45$. The $25\%$ is of the original price, not the sale price.)
 ---
 Q: If $40\%$ of $x$ equals $30\%$ of $y$, then $x$ is what percent of $y$?
 L: 1
@@ -3219,7 +3249,9 @@ W: 70\%
 W: 120\%
 W: \frac{400}{3}\%
 W: 80\%
-S: $0.4x=0.3y\Rightarrow x=\frac34y$, so $x$ is $75\%$ of $y$.
+S: $0.4x=0.3y$. Divide by $0.4$: $x=\frac{0.3}{0.4}y=\frac34y$.
+So $x$ is $75\%$ of $y$.
+(Check with numbers: $y=40$ gives $0.3\cdot40=12=0.4x$, so $x=30$, and $\frac{30}{40}=75\%$.)
 ---
 Q: Six painters can paint a house in $10$ hours. Working at the same rate, how many hours would $15$ painters take?
 L: 1
@@ -3228,7 +3260,9 @@ W: 25
 W: 5
 W: 6
 W: 3
-S: The job takes $6\cdot10=60$ painter-hours. With 15 painters: $60/15=4$ hours.
+S: Measure the job in painter-hours: $6$ painters $\times$ $10$ hours $=60$ painter-hours.
+With $15$ painters: $\frac{60}{15}=4$ hours.
+(More workers means less time: time is inversely proportional to the number of workers.)
 ---
 Q: A bag holds red and blue marbles in the ratio $3:5$. After $10$ red marbles are added, the ratio becomes $1:1$. How many marbles were in the bag originally?
 L: 2
@@ -3237,7 +3271,9 @@ W: 30
 W: 50
 W: 45
 W: 25
-S: Red $=3k$, blue $=5k$. Then $3k+10=5k$, so $k=5$, and there were $8k=40$ marbles.
+S: Write red $=3k$ and blue $=5k$ for some $k$.
+After adding $10$ red, the ratio is $1:1$, so the counts are equal: $3k+10=5k$, giving $k=5$.
+Originally there were $15$ red and $25$ blue: $8k=40$ marbles.
 ---
 Q: A town's population grows by $10\%$ each year. By what percent does it grow over two years?
 L: 1
@@ -3246,7 +3282,8 @@ W: 20\%
 W: 22\%
 W: 11\%
 W: 10\%
-S: $1.1^2=1.21$, a $21\%$ increase. The second year's $10\%$ is applied to an already larger population.
+S: Each year multiplies the population by $1.1$, so two years multiply it by $1.1^2=1.21$, a $21\%$ increase.
+It's not $20\%$, because the second year's $10\%$ is taken of an already larger population (compounding). Example: $100\to110\to121$.
 ---
 Q: The ratio of boys to girls in a class is $4:5$. After $6$ boys leave and $6$ girls join, the ratio becomes $2:3$. How many students were in the class originally?
 L: 2
@@ -3255,8 +3292,10 @@ W: 90
 W: 120
 W: 150
 W: 108
-S: Boys $4k$, girls $5k$: $\frac{4k-6}{5k+6}=\frac23\Rightarrow12k-18=10k+12\Rightarrow k=15$.
-Originally $9k=135$ students (60 boys, 75 girls; afterwards 54 and 81, which is $2:3$).
+S: Write boys $=4k$ and girls $=5k$.
+After the change: $\frac{4k-6}{5k+6}=\frac23$. Cross-multiply: $3(4k-6)=2(5k+6)$, so $12k-18=10k+12$ and $k=15$.
+Originally there were $4k+5k=9k=135$ students ($60$ boys and $75$ girls).
+Check: afterward $54$ boys and $81$ girls, and $54:81=2:3$. ✓
 ---
 Q: A store marks up the cost of an item by $50\%$, then sells it at a $20\%$ discount off the marked price. What is the store's profit, as a percent of cost?
 L: 1
@@ -3265,7 +3304,9 @@ W: 30\%
 W: 25\%
 W: 10\%
 W: 35\%
-S: Selling price $=1.5\times0.8=1.2$ times cost, so the profit is $20\%$ of cost.
+S: Let the cost be $100$. The marked price is $150$; $20\%$ off gives $150\cdot0.8=120$.
+Profit $=120-100=20$, which is $20\%$ of cost.
+(As factors: $1.5\times0.8=1.2$.)
 ---
 Q: The price of an item is raised by $p\%$ and later lowered by $p\%$, ending at $84\%$ of the original price. What is $p$?
 L: 3
@@ -3274,7 +3315,10 @@ W: 16
 W: 20
 W: 30
 W: 42
-S: $(1+\frac p{100})(1-\frac p{100})=1-\frac{p^2}{10000}=0.84$, so $p^2=1600$ and $p=40$.
+S: Raising by $p\%$ multiplies by $1+\frac p{100}$; lowering multiplies by $1-\frac p{100}$.
+The product is a difference of squares: $\left(1+\frac p{100}\right)\left(1-\frac p{100}\right)=1-\frac{p^2}{10000}=0.84$.
+So $\frac{p^2}{10000}=0.16$, $p^2=1600$, and $p=40$.
+Check: $1.4\times0.6=0.84$. ✓
 ---
 @@ alg-word
 Q: A driver goes to a town at $40$ mph and returns along the same road at $60$ mph. What is the average speed for the round trip, in mph?
@@ -3284,8 +3328,11 @@ W: 50
 W: 45
 W: 52
 W: 24
-S: Use the harmonic mean for equal distances: $\frac{2\cdot40\cdot60}{40+60}=\frac{4800}{100}=48$.
-(Check with 120 miles each way: 3 h + 2 h = 5 h for 240 miles, which is 48 mph.)
+S: Average speed is total distance divided by total time, not the average of the speeds.
+Pick a convenient distance, $120$ miles each way: going takes $\frac{120}{40}=3$ h and returning takes $\frac{120}{60}=2$ h.
+Total: $240$ miles in $5$ hours, which is $48$ mph.
+General formula for equal distances (the harmonic mean): $\frac{2ab}{a+b}=\frac{2\cdot40\cdot60}{100}=48$.
+(Trap: $50$. More time is spent at the slower speed, so the average is pulled below $50$.)
 ---
 Q: Ann can paint a room in $6$ hours and Ben can paint it in $3$ hours. How many hours do they take working together?
 L: 1
@@ -3294,7 +3341,10 @@ W: \frac{9}{2}
 W: 9
 W: 3
 W: \frac{3}{2}
-S: Rates: $\frac16+\frac13=\frac12$ room per hour, so together they take $2$ hours.
+S: Work problems: add the rates, not the times.
+Ann does $\frac16$ of the room per hour and Ben does $\frac13$. Together: $\frac16+\frac26=\frac36=\frac12$ room per hour.
+So the whole room takes $\frac{1}{1/2}=2$ hours.
+(Sanity check: together must be faster than Ben's $3$ hours alone.)
 ---
 Q: Two trains $300$ miles apart travel toward each other on parallel tracks at $70$ mph and $80$ mph. After how many hours do they meet?
 L: 1
@@ -3303,7 +3353,8 @@ W: 3
 W: \frac{3}{2}
 W: 4
 W: \frac{5}{2}
-S: The gap closes at $70+80=150$ mph, so they meet after $300/150=2$ hours.
+S: Moving toward each other, the gap closes at the sum of the speeds: $70+80=150$ mph.
+Time to close $300$ miles: $\frac{300}{150}=2$ hours.
 ---
 Q: How many liters of pure acid must be added to $20$ liters of a $30\%$ acid solution to obtain a $50\%$ acid solution?
 L: 2
@@ -3312,7 +3363,10 @@ W: 10
 W: 4
 W: 6
 W: 12
-S: Track the pure acid: $0.3\cdot20+x=0.5(20+x)$, so $6+x=10+0.5x$ and $x=8$.
+S: Track the amount of pure acid, which only increases by what we add.
+Start: $0.3\cdot20=6$ L of acid. After adding $x$ L of pure acid: $6+x$ L of acid in $20+x$ L total.
+We want $\frac{6+x}{20+x}=0.5$: $6+x=10+0.5x$, so $0.5x=4$ and $x=8$.
+Check: $14$ L acid in $28$ L $=50\%$. ✓
 ---
 Q: Pipe A fills a tank in $4$ hours. Drain B empties the full tank in $6$ hours. If both are open, how many hours does it take to fill the empty tank?
 L: 1
@@ -3321,7 +3375,9 @@ W: 10
 W: \frac{12}{5}
 W: 5
 W: 24
-S: Net rate $\frac14-\frac16=\frac1{12}$ tank per hour, so it takes $12$ hours.
+S: The pipe adds $\frac14$ tank per hour and the drain removes $\frac16$ tank per hour.
+Net rate: $\frac14-\frac16=\frac3{12}-\frac2{12}=\frac1{12}$ tank per hour.
+So filling the tank takes $12$ hours.
 ---
 Q: Jack walks to school. At $4$ mph he arrives $5$ minutes late; at $5$ mph he arrives $5$ minutes early. How far is school, in miles?
 L: 2
@@ -3330,7 +3386,9 @@ W: 3
 W: 4
 W: \frac{5}{2}
 W: 5
-S: The two travel times differ by 10 minutes $=\frac16$ hour: $\frac d4-\frac d5=\frac16\Rightarrow\frac d{20}=\frac16\Rightarrow d=\frac{10}3$.
+S: Let $d$ be the distance in miles. The times are $\frac d4$ and $\frac d5$ hours, and they differ by $5+5=10$ minutes $=\frac16$ hour.
+$\frac d4-\frac d5=\frac{5d-4d}{20}=\frac d{20}=\frac16$, so $d=\frac{20}6=\frac{10}3$ miles.
+Check: $\frac{10/3}{4}=\frac56$ h $=50$ min and $\frac{10/3}{5}=\frac23$ h $=40$ min, which differ by $10$ min. ✓
 ---
 Q: Walking up a stopped escalator takes $90$ seconds. Standing still on the moving escalator takes $60$ seconds. How many seconds does it take to walk up the moving escalator?
 L: 2
@@ -3339,7 +3397,9 @@ W: 30
 W: 45
 W: 75
 W: 40
-S: Rates add: $\frac1{90}+\frac1{60}=\frac{2+3}{180}=\frac1{36}$ escalator per second, so 36 seconds.
+S: Think in "escalators per second." Walking alone covers $\frac1{90}$; the escalator alone covers $\frac1{60}$.
+Walking on the moving escalator, the rates add: $\frac1{90}+\frac1{60}=\frac2{180}+\frac3{180}=\frac5{180}=\frac1{36}$.
+So it takes $36$ seconds.
 ---
 Q: A boat travels $24$ miles downstream in $2$ hours and returns upstream in $3$ hours. What is the speed of the current, in mph?
 L: 2
@@ -3348,7 +3408,9 @@ W: 4
 W: 10
 W: 1
 W: 3
-S: Downstream $b+c=12$ and upstream $b-c=8$. Subtracting: $2c=4$, so $c=2$ (and $b=10$).
+S: Let $b$ be the boat's speed in still water and $c$ the current. Downstream the current helps; upstream it hurts.
+Downstream: $b+c=\frac{24}{2}=12$. Upstream: $b-c=\frac{24}{3}=8$.
+Subtracting: $2c=4$, so $c=2$ mph (and $b=10$).
 ---
 Q: Two candles of the same height are lit at the same time. The first burns down completely in $4$ hours and the second in $5$ hours, each at a constant rate. After how many hours is the second candle twice as tall as the first?
 L: 3
@@ -3357,8 +3419,10 @@ W: 2
 W: 3
 W: \frac{5}{2}
 W: \frac{20}{9}
-S: As fractions of the original height, the candles are $1-\frac t4$ and $1-\frac t5$.
-$1-\frac t5=2\left(1-\frac t4\right)\Rightarrow1-\frac t5=2-\frac t2\Rightarrow\frac{3t}{10}=1\Rightarrow t=\frac{10}3$.
+S: Measure height as a fraction of the original. After $t$ hours, the first candle has $1-\frac t4$ left and the second has $1-\frac t5$ left.
+Set the second equal to twice the first: $1-\frac t5=2\left(1-\frac t4\right)=2-\frac t2$.
+$\frac t2-\frac t5=1$, so $\frac{3t}{10}=1$ and $t=\frac{10}3$ hours.
+Check: the first candle has $1-\frac56=\frac16$ left and the second has $1-\frac23=\frac13$ left, twice as much. ✓
 ---
 @@ alg-fact
 Q: What is $2027^2-2026^2$?
@@ -3368,7 +3432,9 @@ W: 1
 W: 2027
 W: 4052
 W: 4054
-S: Difference of squares: $(2027-2026)(2027+2026)=1\cdot4053=4053$.
+S: Difference of squares: $a^2-b^2=(a-b)(a+b)$.
+$(2027-2026)(2027+2026)=1\cdot4053=4053$.
+(For consecutive integers, $a^2-b^2$ is just $a+b$.)
 ---
 Q: If $x+y=7$ and $xy=10$, what is $x^2+y^2$?
 L: 1
@@ -3377,7 +3443,9 @@ W: 39
 W: 49
 W: 69
 W: 19
-S: $x^2+y^2=(x+y)^2-2xy=49-20=29$.
+S: Expand $(x+y)^2=x^2+2xy+y^2$, so $x^2+y^2=(x+y)^2-2xy$.
+$=7^2-2\cdot10=49-20=29$.
+(Check: $x,y$ are $2$ and $5$, and $4+25=29$.)
 ---
 Q: If $x-\dfrac1x=3$, what is $x^2+\dfrac1{x^2}$?
 L: 1
@@ -3386,7 +3454,9 @@ W: 9
 W: 7
 W: 10
 W: 13
-S: Square: $x^2-2+\frac1{x^2}=9$, so $x^2+\frac1{x^2}=11$.
+S: Squaring brings in the term we want: $\left(x-\frac1x\right)^2=x^2-2\cdot x\cdot\frac1x+\frac1{x^2}=x^2-2+\frac1{x^2}$.
+So $x^2-2+\frac1{x^2}=9$ and $x^2+\frac1{x^2}=11$.
+(With a plus sign it would be $9-2=7$. Watch the sign of the cross term.)
 ---
 Q: If $x+\dfrac1x=3$, what is $x^3+\dfrac1{x^3}$?
 L: 2
@@ -3395,7 +3465,8 @@ W: 27
 W: 24
 W: 21
 W: 9
-S: $\left(x+\frac1x\right)^3=x^3+\frac1{x^3}+3\left(x+\frac1x\right)$, so $27=x^3+\frac1{x^3}+9$, giving $18$.
+S: Cube the given sum: $\left(x+\frac1x\right)^3=x^3+3x+\frac3x+\frac1{x^3}=x^3+\frac1{x^3}+3\left(x+\frac1x\right)$.
+So $27=x^3+\frac1{x^3}+3\cdot3$, and $x^3+\frac1{x^3}=27-9=18$.
 ---
 Q: If $a+b=5$ and $ab=4$, what is $a^3+b^3$?
 L: 2
@@ -3404,7 +3475,9 @@ W: 125
 W: 61
 W: 85
 W: 45
-S: $a^3+b^3=(a+b)^3-3ab(a+b)=125-60=65$. (Indeed $a,b$ are $1$ and $4$: $1+64=65$.)
+S: Express the cubes in terms of $a+b$ and $ab$: $(a+b)^3=a^3+b^3+3ab(a+b)$, so $a^3+b^3=(a+b)^3-3ab(a+b)$.
+$=125-3\cdot4\cdot5=125-60=65$.
+(Check: $a,b$ are the roots of $t^2-5t+4=0$, namely $1$ and $4$, and $1+64=65$.)
 ---
 Q: What is the largest prime factor of $2^{12}-1$?
 L: 2
@@ -3413,7 +3486,10 @@ W: 7
 W: 17
 W: 31
 W: 63
-S: $2^{12}-1=(2^6-1)(2^6+1)=63\cdot65=3^2\cdot7\cdot5\cdot13$. The largest prime factor is $13$.
+S: Factor with difference of squares:
+$2^{12}-1=(2^6-1)(2^6+1)=63\cdot65$.
+$63=3^2\cdot7$ and $65=5\cdot13$, so $2^{12}-1=3^2\cdot5\cdot7\cdot13$.
+The largest prime factor is $13$.
 ---
 Q: What is $\dfrac{2^{16}-1}{(2^8+1)(2^4+1)}$?
 L: 1
@@ -3422,7 +3498,9 @@ W: 255
 W: 17
 W: 31
 W: 16
-S: $2^{16}-1=(2^8-1)(2^8+1)=(2^4-1)(2^4+1)(2^8+1)$. After cancelling, $2^4-1=15$ remains.
+S: Apply difference of squares twice:
+$2^{16}-1=(2^8-1)(2^8+1)=(2^4-1)(2^4+1)(2^8+1)$.
+The factors $(2^8+1)(2^4+1)$ cancel with the denominator, leaving $2^4-1=15$.
 ---
 Q: How many ordered pairs of positive integers $(a,b)$ satisfy $a^2-b^2=33$?
 L: 2
@@ -3431,8 +3509,10 @@ W: 1
 W: 3
 W: 4
 W: 0
-S: $(a-b)(a+b)=33$ with $0\lt a-b\lt a+b$: the factor pairs are $1\cdot33$ and $3\cdot11$.
-They give $(a,b)=(17,16)$ and $(7,4)$, so there are $2$ pairs.
+S: Factor: $(a-b)(a+b)=33$. For positive integers, $0\lt a-b\lt a+b$, and both factors have the same parity (their sum is $2a$).
+Factor pairs of $33$: $1\cdot33$ and $3\cdot11$, both odd, so both work.
+$a-b=1,\ a+b=33$ gives $(17,16)$; $a-b=3,\ a+b=11$ gives $(7,4)$.
+That's $2$ pairs.
 ---
 Q: What is the largest prime factor of $5^4+4$?
 L: 3
@@ -3441,7 +3521,9 @@ W: 17
 W: 29
 W: 41
 W: 13
-S: Sophie Germain: $a^4+4b^4=(a^2+2ab+2b^2)(a^2-2ab+2b^2)$. With $a=5, b=1$: $5^4+4=37\cdot17=629$. The answer is $37$.
+S: Sophie Germain identity: $a^4+4b^4=(a^2+2ab+2b^2)(a^2-2ab+2b^2)$. It comes from completing the square: $a^4+4b^4=(a^2+2b^2)^2-(2ab)^2$.
+With $a=5$, $b=1$: $5^4+4=(25+10+2)(25-10+2)=37\cdot17=629$.
+Both factors are prime, so the largest prime factor is $37$.
 ---
 Q: If $x^2+y^2=13$ and $xy=6$, what is the largest possible value of $x+y$?
 L: 1
@@ -3450,7 +3532,8 @@ W: 25
 W: \sqrt{13}
 W: 7
 W: 6
-S: $(x+y)^2=x^2+y^2+2xy=13+12=25$, so $x+y=\pm5$. The largest value is $5$.
+S: $(x+y)^2=x^2+y^2+2xy=13+12=25$, so $x+y=5$ or $x+y=-5$.
+The largest value is $5$ (e.g. $x=2$, $y=3$).
 ---
 @@ alg-rad
 Q: What is $\sqrt{50}+\sqrt{18}$?
@@ -3460,7 +3543,9 @@ W: 2\sqrt{17}
 W: \sqrt{68}
 W: 4\sqrt{2}
 W: 8
-S: $\sqrt{50}=5\sqrt2$ and $\sqrt{18}=3\sqrt2$, so the sum is $8\sqrt2$.
+S: Pull out perfect-square factors: $\sqrt{50}=\sqrt{25\cdot2}=5\sqrt2$ and $\sqrt{18}=\sqrt{9\cdot2}=3\sqrt2$.
+They are like terms (both multiples of $\sqrt2$): $5\sqrt2+3\sqrt2=8\sqrt2$.
+(Trap: $\sqrt{50}+\sqrt{18}\ne\sqrt{68}$. Square roots do not add.)
 ---
 Q: Which expression equals $\dfrac{1}{\sqrt3-\sqrt2}$?
 L: 1
@@ -3469,7 +3554,8 @@ W: \sqrt{3}-\sqrt{2}
 W: 1
 W: \sqrt{6}
 W: \frac{\sqrt{3}+\sqrt{2}}{5}
-S: Multiply by the conjugate: $\frac{\sqrt3+\sqrt2}{(\sqrt3)^2-(\sqrt2)^2}=\frac{\sqrt3+\sqrt2}{1}$.
+S: Rationalize by multiplying top and bottom by the conjugate $\sqrt3+\sqrt2$, which turns the denominator into a difference of squares:
+$\frac{\sqrt3+\sqrt2}{(\sqrt3-\sqrt2)(\sqrt3+\sqrt2)}=\frac{\sqrt3+\sqrt2}{3-2}=\sqrt3+\sqrt2$.
 ---
 Q: What is $\sqrt{7+4\sqrt3}$?
 L: 2
@@ -3478,8 +3564,10 @@ W: 1+\sqrt{3}
 W: 2+2\sqrt{3}
 W: \sqrt{7}+2
 W: 3+\sqrt{3}
-S: Write $7+4\sqrt3=7+2\sqrt{12}$ and look for $x+y=7,\ xy=12$: $x=4, y=3$.
-So the value is $\sqrt4+\sqrt3=2+\sqrt3$. Check: $(2+\sqrt3)^2=7+4\sqrt3$.
+S: Try $\sqrt{a+2\sqrt b}=\sqrt x+\sqrt y$. Squaring the right side gives $x+y+2\sqrt{xy}$, so we need $x+y=a$ and $xy=b$.
+Write $7+4\sqrt3=7+2\sqrt{12}$, so $x+y=7$ and $xy=12$: $x=4$, $y=3$.
+So $\sqrt{7+4\sqrt3}=\sqrt4+\sqrt3=2+\sqrt3$.
+Check: $(2+\sqrt3)^2=4+4\sqrt3+3=7+4\sqrt3$. ✓
 ---
 Q: What is the value of $\sqrt{6+\sqrt{6+\sqrt{6+\cdots}}}$?
 L: 1
@@ -3488,7 +3576,9 @@ W: 2
 W: \sqrt{6}
 W: 6
 W: 4
-S: Call it $x$. Then $x=\sqrt{6+x}$, so $x^2-x-6=0$ and $(x-3)(x+2)=0$. Since $x>0$, $x=3$.
+S: The expression contains a copy of itself. Call it $x$; then $x=\sqrt{6+x}$.
+Square: $x^2=6+x$, so $x^2-x-6=0$ and $(x-3)(x+2)=0$.
+A square root is positive, so $x=3$.
 ---
 Q: What is the sum of all solutions of $|2x-5|=9$?
 L: 1
@@ -3497,7 +3587,9 @@ W: 7
 W: 9
 W: 14
 W: -2
-S: $2x-5=9$ gives $x=7$; $2x-5=-9$ gives $x=-2$. Sum: $5$.
+S: $|E|=9$ means $E=9$ or $E=-9$.
+$2x-5=9$ gives $x=7$, and $2x-5=-9$ gives $x=-2$.
+Sum: $7+(-2)=5$. (Shortcut: the solutions are symmetric about where $2x-5=0$, namely $x=\frac52$, so the sum is $2\cdot\frac52=5$.)
 ---
 Q: How many real numbers $x$ satisfy $|x-1|+|x-5|=4$?
 L: 2
@@ -3506,7 +3598,9 @@ W: 0
 W: 1
 W: 2
 W: 4
-S: $|x-1|+|x-5|$ is the sum of distances from $x$ to $1$ and to $5$. That sum is at least $4$, with equality for <b>every</b> $x$ in $[1,5]$. So there are infinitely many solutions.
+S: Read $|x-1|+|x-5|$ as the distance from $x$ to $1$ plus the distance from $x$ to $5$ on the number line.
+If $x$ is between $1$ and $5$, the two distances add to exactly $5-1=4$. Outside, the sum is more than $4$.
+So every $x$ in $[1,5]$ is a solution: infinitely many.
 ---
 Q: What is the sum of all real solutions of $|x-1|+|x-5|=10$?
 L: 2
@@ -3515,8 +3609,10 @@ W: 4
 W: 10
 W: -6
 W: 8
-S: Outside $[1,5]$: for $x>5$, $2x-6=10$ gives $x=8$; for $x\lt 1$, $6-2x=10$ gives $x=-2$. Sum: $6$.
-(The solutions are symmetric about the midpoint $3$, so the sum is $2\cdot3$.)
+S: From the distance picture, the sum is $4$ on $[1,5]$, so solutions lie outside that interval.
+For $x\gt5$: $(x-1)+(x-5)=2x-6=10$, so $x=8$.
+For $x\lt1$: $(1-x)+(5-x)=6-2x=10$, so $x=-2$.
+Sum: $8+(-2)=6$. (The solutions are symmetric about the midpoint $3$, so the sum is $2\cdot3$.)
 ---
 Q: What is $\dfrac{\sqrt5+\sqrt3}{\sqrt5-\sqrt3}$?
 L: 2
@@ -3525,7 +3621,9 @@ W: 8+\sqrt{15}
 W: 4+2\sqrt{15}
 W: \frac{4+\sqrt{15}}{2}
 W: 1
-S: Multiply top and bottom by $\sqrt5+\sqrt3$: $\frac{(\sqrt5+\sqrt3)^2}{5-3}=\frac{8+2\sqrt{15}}{2}=4+\sqrt{15}$.
+S: Multiply top and bottom by the conjugate $\sqrt5+\sqrt3$:
+Numerator: $(\sqrt5+\sqrt3)^2=5+2\sqrt{15}+3=8+2\sqrt{15}$. Denominator: $5-3=2$.
+$\frac{8+2\sqrt{15}}{2}=4+\sqrt{15}$.
 ---
 Q: How many real numbers $x$ satisfy $\sqrt{x+3-4\sqrt{x-1}}+\sqrt{x+8-6\sqrt{x-1}}=1$?
 L: 3
@@ -3534,8 +3632,10 @@ W: 0
 W: 1
 W: 2
 W: 5
-S: Let $t=\sqrt{x-1}\ge0$, so $x=t^2+1$. Then $x+3-4t=(t-2)^2$ and $x+8-6t=(t-3)^2$.
-The equation becomes $|t-2|+|t-3|=1$, which holds for all $2\le t\le3$, i.e. all $5\le x\le10$. Infinitely many.
+S: The repeated $\sqrt{x-1}$ suggests substituting $t=\sqrt{x-1}\ge0$, so $x=t^2+1$.
+Then $x+3-4t=t^2-4t+4=(t-2)^2$ and $x+8-6t=t^2-6t+9=(t-3)^2$.
+Since $\sqrt{u^2}=|u|$, the equation becomes $|t-2|+|t-3|=1$: the distance from $t$ to $2$ plus the distance to $3$ is $1$.
+That holds for every $t\in[2,3]$, i.e. every $x\in[5,10]$. So there are infinitely many solutions.
 ---
 Q: If $\sqrt{x}+\dfrac{1}{\sqrt{x}}=3$, what is $x+\dfrac1x$?
 L: 2
@@ -3544,7 +3644,8 @@ W: 9
 W: 8
 W: 11
 W: 6
-S: Square: $x+2+\frac1x=9$, so $x+\frac1x=7$.
+S: Square both sides: $\left(\sqrt x+\frac1{\sqrt x}\right)^2=x+2+\frac1x=9$.
+The cross term is $2\sqrt x\cdot\frac1{\sqrt x}=2$, so $x+\frac1x=9-2=7$.
 @@ quad-solve
 Q: What is the larger root of $x^2-5x-14=0$?
 L: 1
@@ -15852,103 +15953,103 @@ const subById=id=>SUBS.find(s=>s.id===id);
 GENS['alg-lin']=[
 r=>{const x=ri(r,-12,15);let a=ri(r,2,9),c=ri(r,1,9);while(c===a)c=ri(r,1,9);const b=ri(r,-20,20),d=(a-c)*x+b;
  return{lvl:1,q:T`If $${poly([[a,1],[b,0]],'x')}=${poly([[c,1],[d,0]],'x')}$, what is $x$?`,a:x,w:[x+1,x-1,-x,x+2,Math.round((d+b)/(a+c))],
- s:T`Collect $x$ terms: $${a}x-${c}x=${d}-${P(b)}$, so $${a-c}x=${d-b}$ and $x=${x}$.`}},
+ s:T`Move all $x$ terms to the left and all constants to the right: subtract $${c}x$ and ${b<0?T`add $${-b}$`:T`subtract $${b}$`} on both sides.<br>$${a}x-${c}x=${d}-${P(b)}$, i.e. $${a-c}x=${d-b}$.<br>Divide by $${a-c}$: $x=${x}$.<br>Check: both sides equal $${a*x+b}$ when $x=${x}$.`}},
 r=>{const x=ri(r,-8,10),y=ri(r,-8,10);let a1=ri(r,1,6),b1=ri(r,-5,6)||1,a2=ri(r,1,6),b2=ri(r,-5,6)||2;if(a1*b2===a2*b1){b2+=1;if(a1*b2===a2*b1)b2+=1}
  const c1=a1*x+b1*y,c2=a2*x+b2*y;const ask=pick(r,['x+y','x-y','xy']);const val=ask==='x+y'?x+y:ask==='x-y'?x-y:x*y;
  return{lvl:1,q:T`Real numbers $x,y$ satisfy $${poly([[a1,1]],'x')}${b1<0?'-':'+'}${Math.abs(b1)===1?'':Math.abs(b1)}y=${c1}$ and $${poly([[a2,1]],'x')}${b2<0?'-':'+'}${Math.abs(b2)===1?'':Math.abs(b2)}y=${c2}$. What is $${ask}$?`,
  a:val,w:[x+y,x-y,x*y,y-x,val+1,val-1],
- s:T`Eliminate one variable (e.g. multiply the first equation by ${a2} and the second by ${a1} and subtract) to get $y=${y}$; then $x=${x}$.<br>So $${ask}=${val}$.`}},
+ s:T`Eliminate $x$: multiply the first equation by ${a2} and the second by ${a1}, then subtract. The $x$ terms cancel, leaving $(${a2*b1}-${P(a1*b2)})y=${a2*c1}-${P(a1*c2)}$, so $${a2*b1-a1*b2}y=${a2*c1-a1*c2}$ and $y=${y}$.<br>Substitute back into the first equation: $${a1===1?'':a1}x=${c1}-${P(b1*y)}=${c1-b1*y}$, so $x=${x}$.<br>So $${ask}=${val}$.`}},
 r=>{const x=ri(r,1,15),y=ri(r,1,15),z=ri(r,1,15);const p=x+y,q=y+z,s_=z+x;const ask=pick(r,['x','y','z','xyz','x+y+z']);const val={x,y,z,xyz:x*y*z,'x+y+z':x+y+z}[ask];
  return{lvl:1,q:T`Numbers $x,y,z$ satisfy $x+y=${p}$, $y+z=${q}$, and $z+x=${s_}$. What is $${ask}$?`,a:val,w:[x+y+z,x*y*z,x,y,z,p+q+s_,val+1],
- s:T`Add all three: $2(x+y+z)=${p+q+s_}$, so $x+y+z=${x+y+z}$. Then $x=${x+y+z}-${q}=${x}$, $y=${x+y+z}-${s_}=${y}$, $z=${x+y+z}-${p}=${z}$.<br>So $${ask}=${val}$.`}},
+ s:T`Each variable appears in exactly two equations, so adding all three gives $2(x+y+z)=${p}+${q}+${s_}=${p+q+s_}$, i.e. $x+y+z=${x+y+z}$.<br>Subtract each equation from this total to isolate the missing variable:<br>$x=${x+y+z}-(y+z)=${x+y+z}-${q}=${x}$, $y=${x+y+z}-(z+x)=${x+y+z}-${s_}=${y}$, $z=${x+y+z}-(x+y)=${x+y+z}-${p}=${z}$.<br>So $${ask}=${val}$.`}},
 r=>{const c=ri(r,4,15),k=ri(r,3,5);const n=c*(k-2);const P_=k*c;
  return{lvl:1,q:T`A parent is ${k} times as old as their child. In ${n} years, the parent will be twice as old as the child. How old is the parent now?`,
  a:P_,w:[c,P_+n,2*c,P_-k,(k-1)*c],
- s:T`Child $c$, parent ${k}$c$: $${k}c+${n}=2(c+${n})\Rightarrow${k-2}c=${n}\Rightarrow c=${c}$. The parent is $${P_}$.`}},
+ s:T`Let the child's age be $c$, so the parent's is $${k}c$.<br>In ${n} years: parent $${k}c+${n}$, child $c+${n}$, and the parent is twice as old: $${k}c+${n}=2(c+${n})=2c+${2*n}$.<br>So $${k-2}c=${n}$ and $c=${c}$. The parent is $${k}\cdot${c}=${P_}$.<br>Check: in ${n} years they are $${P_+n}$ and $${c+n}$, and $${P_+n}=2\cdot${c+n}$. ✓`}},
 r=>{const [v1,v2,n1,n2]=pick(r,[[5,10],[5,25],[10,25],[1,5],[1,10]]).concat([ri(r,3,25),ri(r,3,25)]);const N=n1+n2,Tt=v1*n1+v2*n2;
  const nm={1:'pennies',5:'nickels',10:'dimes',25:'quarters'};
  return{lvl:1,q:T`A jar holds ${N} coins, all ${nm[v1]} and ${nm[v2]}, worth ${Tt} cents in total. How many ${nm[v2]} are there?`,
  a:n2,w:[n1,n2+1,n2-1,Math.floor(Tt/v2),N-n2+1],
- s:T`Let $d$ be the number of ${nm[v2]}. Then $${v1}(${N}-d)+${v2}d=${Tt}$, so $${v2-v1}d=${Tt-v1*N}$ and $d=${n2}$.`}},
+ s:T`Let $d$ be the number of ${nm[v2]}; then there are $${N}-d$ ${nm[v1]}.<br>Total value in cents: $${v1}(${N}-d)+${v2}d=${Tt}$, i.e. $${v1*N}+${v2-v1}d=${Tt}$.<br>So $${v2-v1}d=${Tt-v1*N}$ and $d=${n2}$ (with ${n1} ${nm[v1]}).<br>Check: $${n1}\cdot${v1}+${n2}\cdot${v2}=${v1*n1}+${v2*n2}=${Tt}$. ✓`}},
 ];
 GENS['alg-rate']=[
 r=>{let p=ri(r,1,9),q=ri(r,1,9),s_=ri(r,1,9),t=ri(r,1,9);const A_=F(p*s_,q*t);const rt=(f)=>O(f.n+':'+f.d,f.v);
  return{lvl:1,q:T`If $a:b=${p}:${q}$ and $b:c=${s_}:${t}$, what is $a:c$?`,a:rt(A_),w:[rt(F(p,t)),rt(F(p*t,q*s_)),rt(F(q*s_,p*t)),rt(F(p+s_,q+t)),rt(A_.mul(F(2,3)))],
- s:T`Rescale so $b$ matches: $a:b=${p*s_}:${q*s_}$ and $b:c=${q*s_}:${q*t}$. So $a:c=${p*s_}:${q*t}=${A_.n}:${A_.d}$.`}},
+ s:T`To combine ratios, the shared term $b$ must have the same value in both. Scale the first ratio by ${s_} and the second by ${q}:<br>$a:b=${p*s_}:${q*s_}$ and $b:c=${q*s_}:${q*t}$.<br>So $a:c=${p*s_}:${q*t}=${A_.n}:${A_.d}$ in lowest terms.<br>(Shortcut: $\frac ac=\frac ab\cdot\frac bc=\frac{${p}}{${q}}\cdot\frac{${s_}}{${t}}$.)`}},
 r=>{const a=ri(r,1,6)*10,b=ri(r,1,6)*10;const up=r()<.5;const fin=up?(100+a)*(100-b)/100:(100-b)*(100+a)/100;const pc=v=>O(v+'\\%',v);
  return{lvl:1,q:up?T`A price is increased by $${a}\%$, and then the new price is decreased by $${b}\%$. The final price is what percent of the original?`:T`A price is decreased by $${b}\%$, and then the new price is increased by $${a}\%$. The final price is what percent of the original?`,
  a:pc(fin),w:[pc(100+a-b),pc(100),pc(fin+5),pc(fin-5),pc(100+a-b+a*b/100)],
- s:T`Multiply the multipliers: $${(100+a)/100}\times${(100-b)/100}=${fin/100}$, so the final price is $${fin}\%$ of the original. Order does not matter, but the changes do not simply add.`}},
+ s:T`A percent change is multiplication by a factor: $+${a}\%$ means $\times${(100+a)/100}$ and $-${b}\%$ means $\times${(100-b)/100}$.<br>$${(100+a)/100}\times${(100-b)/100}=${fin/100}$, so the final price is $${fin}\%$ of the original.<br>The order doesn't matter (multiplication commutes), but the changes don't simply add: the second percent is taken of a different base. That's why the answer isn't $${100+a-b}\%$.`}},
 r=>{const p=pick(r,[10,20,25,40,50]),k=ri(r,2,15),orig=20*k;const up=r()<.5;const P_=up?orig*(100+p)/100:orig*(100-p)/100;
  return{lvl:1,q:up?T`After a $${p}\%$ increase, an item costs ${P_} dollars. What was the price before the increase?`:T`After a $${p}\%$ discount, an item costs ${P_} dollars. What was the original price?`,
  a:orig,w:[up?P_-P_*p/100:P_+P_*p/100,P_,orig+10,orig-10,up?Math.round(P_*(100-p)/100):Math.round(P_*(100+p)/100)],
- s:T`The new price is $${up?100+p:100-p}\%$ of the original: $${(up?100+p:100-p)/100}\,x=${P_}$, so $x=${orig}$.<br><b>Trap:</b> taking $${p}\%$ of the <i>new</i> price uses the wrong base.`}},
+ s:T`${up?T`A $${p}\%$ increase`:T`A $${p}\%$ discount`} means the new price is $${up?100+p:100-p}\%$ of the original $x$.<br>$${(up?100+p:100-p)/100}\,x=${P_}$, so $x=\frac{${P_}}{${(up?100+p:100-p)/100}}=${orig}$.<br>Check: $${p}\%$ of ${orig} is ${orig*p/100}, and $${orig}${up?'+':'-'}${orig*p/100}=${P_}$. ✓<br><b>Trap:</b> taking $${p}\%$ of the <i>new</i> price uses the wrong base.`}},
 r=>{const w1=ri(r,2,12),t1=ri(r,2,12);const tot=w1*t1;const divs=[];for(let d=1;d<=tot;d++)if(tot%d===0&&d!==w1&&d<=60)divs.push(d);const w2=pick(r,divs);const t2=tot/w2;
  return{lvl:1,q:T`${w1} workers can finish a job in ${t1} hours. Working at the same rate, how many hours would ${w2} workers need?`,a:t2,w:[t1*w2/w1|0||t1+1,t1,t2+1,w2,t2*2],
- s:T`The job is $${w1}\times${t1}=${tot}$ worker-hours. With ${w2} workers: $${tot}/${w2}=${t2}$ hours.`}},
+ s:T`Measure the job in worker-hours: $${w1}\times${t1}=${tot}$ worker-hours.<br>With ${w2} workers sharing it: $\frac{${tot}}{${w2}}=${t2}$ hours.<br>(Time is inversely proportional to the number of workers: more workers, less time.)`}},
 r=>{const a=ri(r,1,9),b=ri(r,1,9);if(a===b)return GENS['alg-rate'][4](r);const k=ri(r,2,20),N=(a+b)*k;
  return{lvl:1,q:T`${N} marbles are split between Al and Bo in the ratio $${a}:${b}$. How many marbles does ${a>b?'Al':'Bo'} get?`,a:Math.max(a,b)*k,w:[Math.min(a,b)*k,Math.max(a,b)*k+k,N/2,Math.max(a,b)*(k+1),N-k],
- s:T`There are $${a}+${b}=${a+b}$ equal parts of $${N}/${a+b}=${k}$ each. The larger share is $${Math.max(a,b)}\cdot${k}=${Math.max(a,b)*k}$.`}},
+ s:T`The ratio $${a}:${b}$ splits the marbles into $${a}+${b}=${a+b}$ equal parts.<br>Each part is $\frac{${N}}{${a+b}}=${k}$ marbles.<br>${a>b?'Al':'Bo'} gets the larger share, $${Math.max(a,b)}$ parts: $${Math.max(a,b)}\cdot${k}=${Math.max(a,b)*k}$ (and the other gets $${Math.min(a,b)*k}$).`}},
 ];
 GENS['alg-word']=[
 r=>{const [a,b]=pick(r,[[30,60],[40,60],[20,30],[30,50],[40,70],[45,90],[24,40],[36,60],[20,80],[50,75],[10,15],[12,18]]);const v=F(2*a*b,a+b);
  return{lvl:1,q:T`A cyclist rides to a lake at ${a} mph and returns along the same path at ${b} mph. What is the average speed for the whole trip, in mph?`,
  a:v,w:[F(a+b,2),F(a*b,a+b),v.add(2),F(Math.round((a+b)/2)+5),F(b-a)],
- s:T`Average speed $=\frac{\text{total distance}}{\text{total time}}=\dfrac{2ab}{a+b}=\dfrac{2\cdot${a}\cdot${b}}{${a+b}}=${v.tex()}$.<br><b>Trap:</b> the plain average $${F(a+b,2).tex()}$ is wrong, because more time is spent at the slower speed.`}},
+ s:T`Average speed $=\frac{\text{total distance}}{\text{total time}}$. Let each leg be $d$ miles.<br>Time: $\frac d{${a}}+\frac d{${b}}=d\cdot\frac{${a+b}}{${a*b}}$. Distance: $2d$.<br>Average: $\dfrac{2d}{d\cdot\frac{${a+b}}{${a*b}}}=\dfrac{2\cdot${a}\cdot${b}}{${a+b}}=${v.tex()}$ mph (the harmonic mean).<br><b>Trap:</b> the plain average $${F(a+b,2).tex()}$ is wrong, because more time is spent at the slower speed.`}},
 r=>{const a=ri(r,2,12);let b=ri(r,2,15);if(b===a)b++;const drain=r()<.3&&b>a;const v=drain?F(a*b,b-a):F(a*b,a+b);
  return{lvl:1,q:drain?T`An inlet pipe fills a tank in ${a} hours, and a drain empties the full tank in ${b} hours. With both open, how many hours does it take to fill the empty tank?`:T`Ann can do a job alone in ${a} hours and Ben can do it alone in ${b} hours. How many hours do they take working together?`,
  a:v,w:drain?[F(a*b,a+b),F(b-a),F(a+b,2),v.add(1),F(a*b)]:[F(a+b,2),F(Math.abs(a-b)||1),F(a*b,Math.abs(b-a)||1).add(1),v.add(1),F(Math.min(a,b),2)],
- s:drain?T`Net rate $=\frac1{${a}}-\frac1{${b}}=${F(1,a).sub(F(1,b)).tex()}$ tank per hour, so the time is $${v.tex()}$ hours.`:T`Rates add: $\frac1{${a}}+\frac1{${b}}=${F(1,a).add(F(1,b)).tex()}$ job per hour, so together they need $${v.tex()}$ hours.`}},
+ s:drain?T`Rates combine: the inlet adds $\frac1{${a}}$ tank per hour and the drain removes $\frac1{${b}}$.<br>Net rate: $\frac1{${a}}-\frac1{${b}}=\frac{${b}-${a}}{${a*b}}=${F(1,a).sub(F(1,b)).tex()}$ tank per hour.<br>Time to fill one tank $=\frac{1}{\text{rate}}=${v.tex()}$ hours.`:T`Work problems: add the rates, not the times. Ann does $\frac1{${a}}$ of the job per hour and Ben does $\frac1{${b}}$.<br>Together: $\frac1{${a}}+\frac1{${b}}=\frac{${a+b}}{${a*b}}=${F(1,a).add(F(1,b)).tex()}$ job per hour.<br>Time $=\frac{1}{\text{rate}}=${v.tex()}$ hours. (Sanity check: faster than either person alone.)`}},
 r=>{const v1=ri(r,3,12)*5,v2=ri(r,3,12)*5,t=pick(r,[F(1),F(2),F(3),F(3,2),F(5,2),F(1,2)]);const D=t.mul(v1+v2);if(!D.isInt())return GENS['alg-word'][2](r);
  return{lvl:1,q:T`Two cars start ${D.n} miles apart and drive toward each other at ${v1} mph and ${v2} mph. After how many hours do they meet?`,
  a:t,w:[t.add(1),F(D.n,Math.abs(v1-v2)||1),t.mul(2),t.add(F(1,2)),F(D.n,v1)],
- s:T`The distance closes at $${v1}+${v2}=${v1+v2}$ mph, so they meet after $${D.n}/${v1+v2}=${t.tex()}$ hours.`}},
+ s:T`Driving toward each other, the gap closes at the sum of the speeds: $${v1}+${v2}=${v1+v2}$ mph.<br>Time $=\frac{\text{distance}}{\text{closing speed}}=\frac{${D.n}}{${v1+v2}}=${t.tex()}$ hours.`}},
 r=>{const V=ri(r,2,10)*5,c1=pick(r,[10,20,25,30,40]),c2=c1+pick(r,[10,20,25,30]);const x=F(V*(c2-c1),100-c2);if(c2>=100||!x.isInt())return GENS['alg-word'][3](r);
  return{lvl:2,q:T`How many liters of pure alcohol must be added to ${V} liters of a $${c1}\%$ alcohol solution to make a $${c2}\%$ alcohol solution?`,
  a:x,w:[x.add(V/5),F(V*(c2-c1),100),x.mul(2),x.sub(1),F(V*(c2-c1),c2)],
- s:T`Track the pure alcohol: $${c1/100}\cdot${V}+x=${c2/100}(${V}+x)$, so $${(100-c2)/100}x=${(c2-c1)*V/100}$ and $x=${x.tex()}$.`}},
+ s:T`Track the amount of pure alcohol. Start: $${c1/100}\cdot${V}=${c1*V/100}$ L of alcohol. Adding $x$ L of pure alcohol gives $${c1*V/100}+x$ L of alcohol in $${V}+x$ L total.<br>We want this to be $${c2}\%$: $${c1*V/100}+x=${c2/100}(${V}+x)$.<br>So $${(100-c2)/100}x=${(c2-c1)*V/100}$ and $x=${x.tex()}$.`}},
 r=>{const b=ri(r,5,20),c=ri(r,1,b-1),t1=ri(r,1,4),t2=ri(r,t1+1,t1+4);const D1=(b+c)*t1,D2=(b-c)*t2;const ask=r()<.5;
  return{lvl:2,q:T`A boat travels ${D1} miles downstream in ${t1} hour${t1>1?'s':''} and ${D2} miles upstream in ${t2} hours, at constant speed relative to the water. What is the speed of the ${ask?'current':'boat in still water'}, in mph?`,
  a:ask?c:b,w:ask?[b,2*c,c+1,(b+c)/2|0,b-c]:[c,b+c,b-c,b+1,2*b],
- s:T`Downstream: $b+c=${D1}/${t1}=${b+c}$. Upstream: $b-c=${D2}/${t2}=${b-c}$.<br>Adding and subtracting: $b=${b}$, $c=${c}$.`}},
+ s:T`Let $b$ be the boat's speed in still water and $c$ the current. Downstream the current adds; upstream it subtracts.<br>Downstream: $b+c=\frac{${D1}}{${t1}}=${b+c}$. Upstream: $b-c=\frac{${D2}}{${t2}}=${b-c}$.<br>Adding: $2b=${2*b}$, so $b=${b}$. Subtracting: $2c=${2*c}$, so $c=${c}$.`}},
 ];
 GENS['alg-fact']=[
 r=>{const a=ri(r,100,3000),d=ri(r,1,9),b=a-d;
  return{lvl:1,q:T`What is $${a}^2-${b}^2$?`,a:d*(a+b),w:[d*d,a+b,d*(a+b)+d,(d)*(a+b)-1,2*a*d],
- s:T`Difference of squares: $(${a}-${b})(${a}+${b})=${d}\cdot${a+b}=${d*(a+b)}$.`}},
+ s:T`Difference of squares: $a^2-b^2=(a-b)(a+b)$, which avoids squaring big numbers.<br>$(${a}-${b})(${a}+${b})=${d}\cdot${a+b}=${d*(a+b)}$.`}},
 r=>{const x=ri(r,-6,9),y=ri(r,-6,9);const s_=x+y,p=x*y;const cube=r()<.4;const val=cube?x**3+y**3:x*x+y*y;
  return{lvl:cube?2:1,q:T`If $x+y=${s_}$ and $xy=${p}$, what is $${cube?'x^3+y^3':'x^2+y^2'}$?`,
  a:val,w:cube?[s_**3,s_**3-p*s_,s_**3+3*p*s_,s_*s_-2*p]:[s_*s_,s_*s_+2*p,s_*s_-p,2*p],
- s:cube?T`$x^3+y^3=(x+y)^3-3xy(x+y)=${s_**3}-3\cdot${P(p)}\cdot${P(s_)}=${val}$.`:T`$x^2+y^2=(x+y)^2-2xy=${s_*s_}-${P(2*p)}=${val}$.`}},
+ s:cube?T`Expand $(x+y)^3=x^3+y^3+3xy(x+y)$, so $x^3+y^3=(x+y)^3-3xy(x+y)$.<br>$=${P(s_)}^3-3\cdot${P(p)}\cdot${P(s_)}=${s_**3}-${P(3*p*s_)}=${val}$.`:T`Expand $(x+y)^2=x^2+2xy+y^2$, so $x^2+y^2=(x+y)^2-2xy$.<br>$=${P(s_)}^2-2\cdot${P(p)}=${s_*s_}-${P(2*p)}=${val}$.`}},
 r=>{const k=ri(r,2,9);const minus=r()<.4;const cube=!minus&&r()<.5;const val=minus?k*k+2:cube?k**3-3*k:k*k-2;
  return{lvl:cube?2:1,q:T`If $x${minus?'-':'+'}\dfrac1x=${k}$, what is $${cube?'x^3+\\dfrac1{x^3}':'x^2+\\dfrac1{x^2}'}$?`,
  a:val,w:cube?[k**3,k**3-k,k*k-2,k**3+3*k]:[k*k,minus?k*k-2:k*k+2,k*k+1,2*k],
- s:cube?T`$\left(x+\frac1x\right)^3=x^3+\frac1{x^3}+3\left(x+\frac1x\right)$, so $x^3+\frac1{x^3}=${k**3}-${3*k}=${val}$.`:T`Square both sides: $x^2${minus?'-':'+'}2+\frac1{x^2}=${k*k}$, so $x^2+\frac1{x^2}=${val}$.`}},
+ s:cube?T`Cube the given sum: $\left(x+\frac1x\right)^3=x^3+\frac1{x^3}+3\left(x+\frac1x\right)$ (the middle terms $3x^2\cdot\frac1x+3x\cdot\frac1{x^2}$ group as $3\left(x+\frac1x\right)$).<br>$${k**3}=x^3+\frac1{x^3}+3\cdot${k}$, so $x^3+\frac1{x^3}=${k**3}-${3*k}=${val}$.`:T`Square both sides. The cross term is $2\cdot x\cdot\frac1x=2$: $x^2${minus?'-':'+'}2+\frac1{x^2}=${k*k}$.<br>So $x^2+\frac1{x^2}=${k*k}${minus?'+':'-'}2=${val}$.`}},
 r=>{const N=pick(r,[15,21,24,32,33,35,39,40,45,48,51,55,57,60,63,64,65,72,75,77,80,85,91,96,99,105,120,135]);let c=0;const pairs=[];
  for(let d=1;d*d<N;d++)if(N%d===0&&(N/d-d)%2===0){c++;pairs.push([(d+N/d)/2,(N/d-d)/2])}
  return{lvl:2,q:T`How many ordered pairs of positive integers $(a,b)$ satisfy $a^2-b^2=${N}$?`,a:c,w:[c+1,c-1<0?c+2:c-1,c+2,ndiv(N)],
- s:T`Write $(a-b)(a+b)=${N}$ with $0\lt a-b\lt a+b$ and both factors the same parity (so $a,b$ are integers).<br>${c?'Valid pairs give '+pairs.map(p=>'$('+p[0]+','+p[1]+')$').join(', ')+', so the count is '+c+'.':'No factor pair works, so the count is 0.'}`}},
+ s:T`Factor: $(a-b)(a+b)=${N}$. For positive integers, $0\lt a-b\lt a+b$, and both factors must have the same parity (their sum is $2a$).<br>${c?'Factor pairs that work give '+pairs.map(p=>'$('+p[0]+','+p[1]+')$').join(', ')+' (from $a=\\frac{\\text{sum}}{2}$, $b=\\frac{\\text{difference}}{2}$), so the count is '+c+'.':'No factor pair has matching parity, so the count is 0.'}`}},
 r=>{const n=pick(r,[3,5,7,9,11]);const a=n*n+2*n+2,b=n*n-2*n+2;const v=n**4+4;
  return{lvl:3,q:T`What is the largest prime factor of $${n}^4+4$?`,a:Math.max(...Object.keys(factorize(v)).map(Number)),w:[a,b,a+2,v%10===0?7:Math.min(...Object.keys(factorize(v)).map(Number))+0,a-2,b+2],
- s:T`Sophie Germain: $n^4+4=(n^2+2n+2)(n^2-2n+2)=${a}\cdot${b}$. Factoring further: $${v}=${factTex(v)}$.`}},
+ s:T`Sophie Germain identity: $n^4+4=(n^2+2)^2-(2n)^2=(n^2+2n+2)(n^2-2n+2)$.<br>With $n=${n}$: $${v}=${a}\cdot${b}$.<br>Factoring completely: $${v}=${factTex(v)}$, so the largest prime factor is $${Math.max(...Object.keys(factorize(v)).map(Number))}$.`}},
 ];
 GENS['alg-rad']=[
 r=>{const m=pick(r,[2,3,5,6,7]);const a=ri(r,1,6),b=ri(r,1,6);const s_=a+b;
  return{lvl:1,q:T`What is $\sqrt{${a*a*m}}+\sqrt{${b*b*m}}$?`,a:R(s_,m),w:[R(1,(a*a+b*b)*m),R(s_+1,m),R(Math.abs(a-b)||s_+2,m),R(s_,m*2),R(s_*2,m)],
- s:T`$\sqrt{${a*a*m}}=${a===1?'':a}\sqrt{${m}}$ and $\sqrt{${b*b*m}}=${b===1?'':b}\sqrt{${m}}$, so the sum is $${s_}\sqrt{${m}}$.`}},
+ s:T`Pull out perfect-square factors: $\sqrt{${a*a*m}}=\sqrt{${a*a}\cdot${m}}=${a===1?'':a}\sqrt{${m}}$ and $\sqrt{${b*b*m}}=\sqrt{${b*b}\cdot${m}}=${b===1?'':b}\sqrt{${m}}$.<br>They are like terms, so add the coefficients: $${s_}\sqrt{${m}}$.<br>(Trap: square roots don't add, so it's not $\sqrt{${a*a*m+b*b*m}}$.)`}},
 r=>{let x=ri(r,2,12),y=ri(r,1,x-1);const a=x+y,b=x*y;const sx=R(1,x),sy=R(1,y);if(Number.isInteger(Math.sqrt(b))&&Number.isInteger(Math.sqrt(x))&&Number.isInteger(Math.sqrt(y)))return GENS['alg-rad'][1](r);
  const ans=O(sx.tex+'+'+sy.tex,sx.v+sy.v);
  return{lvl:2,q:T`What is $\sqrt{${a}+2\sqrt{${b}}}$?`,a:ans,w:[O(sx.tex+'-'+sy.tex,sx.v-sy.v),O('\\sqrt{'+a+'}+\\sqrt{'+b+'}',Math.sqrt(a)+Math.sqrt(b)),O('\\sqrt{'+(a+1)+'}+1',Math.sqrt(a+1)+1),O(R(1,b).tex+'+1',Math.sqrt(b)+1),O('\\sqrt{'+(2*a)+'}',Math.sqrt(2*a))],
- s:T`Look for $\sqrt x+\sqrt y$ with $x+y=${a}$ and $xy=${b}$: that is $x=${x}$, $y=${y}$.<br>Check: $(\sqrt{${x}}+\sqrt{${y}})^2=${a}+2\sqrt{${b}}$. So the answer is $${ans.tex}$.`}},
+ s:T`Try $\sqrt x+\sqrt y$: squaring gives $x+y+2\sqrt{xy}$. So we need $x+y=${a}$ and $xy=${b}$, which gives $x=${x}$, $y=${y}$.<br>Check: $(\sqrt{${x}}+\sqrt{${y}})^2=${x}+${y}+2\sqrt{${b}}=${a}+2\sqrt{${b}}$. ✓<br>So the answer is $${ans.tex}$.`}},
 r=>{const x=ri(r,2,15);const c=x*x-x;
  return{lvl:1,q:T`What is $\sqrt{${c}+\sqrt{${c}+\sqrt{${c}+\cdots}}}$?`,a:x,w:[x-1,x+1,R(1,c),c,2*x],
- s:T`Call the value $x$. Then $x=\sqrt{${c}+x}$, so $x^2-x-${c}=0$, i.e. $(x-${x})(x+${x-1})=0$. Since $x>0$, $x=${x}$.`}},
+ s:T`The expression contains a copy of itself. Call it $x$; then $x=\sqrt{${c}+x}$.<br>Square: $x^2=${c}+x$, so $x^2-x-${c}=0$, which factors as $(x-${x})(x+${x-1})=0$.<br>A square root can't be negative, so $x=${x}$.`}},
 r=>{const a=ri(r,1,6)*pick(r,[1,-1]),b=ri(r,-10,10),k=ri(r,1,20);const x1=F(k-b,a),x2=F(-k-b,a);const s_=x1.add(x2);
  return{lvl:1,q:T`What is the sum of all real solutions of $|${poly([[a,1],[b,0]],'x')}|=${k}$?`,a:s_,w:[x1,x2,s_.neg(),F(2*k,Math.abs(a)),s_.add(1)],
- s:T`Either $${poly([[a,1],[b,0]],'x')}=${k}$, giving $x=${x1.tex()}$, or $${poly([[a,1],[b,0]],'x')}=-${k}$, giving $x=${x2.tex()}$. Sum: $${s_.tex()}$.`}},
+ s:T`$|E|=${k}$ means $E=${k}$ or $E=-${k}$.<br>Case 1: $${poly([[a,1],[b,0]],'x')}=${k}$ gives $x=${x1.tex()}$.<br>Case 2: $${poly([[a,1],[b,0]],'x')}=-${k}$ gives $x=${x2.tex()}$.<br>Sum: $${s_.tex()}$. (Shortcut: the two solutions are symmetric about the zero of the inside, $x=${F(-b,a).tex()}$, so the sum is twice that.)`}},
 r=>{const a=ri(r,-8,6),b=a+ri(r,2,10),k=b-a+2*ri(r,1,8);const x1=F(a+b+k,2),x2=F(a+b-k,2);
  return{lvl:2,q:T`What is the product of all real solutions of $|x${a<0?'+':'-'}${Math.abs(a)}|+|x${b<0?'+':'-'}${Math.abs(b)}|=${k}$?`,a:x1.mul(x2),w:[x1.add(x2),x1.mul(x2).neg(),x1.mul(x2).add(k),F(a*b),x1],
- s:T`For $x>${b}$: $2x-${a+b}=${k}$ gives $x=${x1.tex()}$. For $x\lt ${a}$: $${a+b}-2x=${k}$ gives $x=${x2.tex()}$. Between ${a} and ${b} the sum is the constant $${b-a}\ne${k}$.<br>Product: $${x1.mul(x2).tex()}$.`}},
+ s:T`Read the left side as the distance from $x$ to $${a}$ plus the distance from $x$ to $${b}$.<br>Between $${a}$ and $${b}$ that sum is the constant $${b-a}\ne${k}$, so the solutions lie outside.<br>For $x\gt ${b}$ both insides are positive: $${poly([[2,1],[-(a+b),0]],'x')}=${k}$ gives $x=${x1.tex()}$.<br>For $x\lt ${a}$ both are negative: $${poly([[-2,1],[a+b,0]],'x')}=${k}$ gives $x=${x2.tex()}$.<br>Product: $${x1.tex()}\cdot${x2.n<0?'\\left('+x2.tex()+'\\right)':x2.tex()}=${x1.mul(x2).tex()}$.`}},
 ];
 /* ---- quad.txt ---- */
 GENS['quad-solve']=[
