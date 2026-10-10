@@ -48,7 +48,10 @@ W: 1
 W: -3
 W: 2
 W: 6
-S: $2^{2x}=2^{3x-3}$, so $2x=3x-3$ and $x=3$.
+S: Rewrite both sides as powers of the same base, $2$: $4=2^2$ and $8=2^3$.
+$4^x=(2^2)^x=2^{2x}$ and $8^{x-1}=(2^3)^{x-1}=2^{3x-3}$.
+Equal powers of $2$ have equal exponents: $2x=3x-3$, so $x=3$.
+Check: $4^3=64$ and $8^2=64$. ✓
 ---
 Q: What is $27^{2/3}$?
 L: 1
@@ -57,7 +60,10 @@ W: 18
 W: 3
 W: 6
 W: 81
-S: $\left(\sqrt[3]{27}\right)^2=3^2=9$.
+S: A fractional exponent $\frac mn$ means "take the $n$th root, then raise to the $m$th power": $a^{m/n}=\left(\sqrt[n]a\right)^m$.
+$\sqrt[3]{27}=3$, since $3^3=27$.
+So $27^{2/3}=3^2=9$.
+(Taking the root first keeps the numbers small; $(27^2)^{1/3}=\sqrt[3]{729}=9$ gives the same answer.)
 ---
 Q: If $2^{x+2}-2^x=48$, what is $x$?
 L: 1
@@ -66,7 +72,10 @@ W: 3
 W: 5
 W: 6
 W: 8
-S: $2^x(4-1)=48$, so $2^x=16$ and $x=4$.
+S: Factor out the smaller power: $2^{x+2}=2^x\cdot2^2=4\cdot2^x$.
+So $2^{x+2}-2^x=4\cdot2^x-2^x=3\cdot2^x$.
+$3\cdot2^x=48$ gives $2^x=16=2^4$, so $x=4$.
+Check: $2^6-2^4=64-16=48$. ✓
 ---
 Q: Which of these is largest?
 L: 2
@@ -75,7 +84,13 @@ W: 3^{60}
 W: 5^{40}
 W: 6^{30}
 W: 7^{20}
-S: Write each as a 20th power: $2^{100}=32^{20}$, $3^{60}=27^{20}$, $5^{40}=25^{20}$, $6^{30}=(6^{1.5})^{20}\approx14.7^{20}$, $7^{20}$. The largest is $2^{100}$.
+S: To compare powers with different bases and exponents, rewrite them all with the <b>same exponent</b>. Every exponent here is a multiple of $10$... and of $20$ except $30$, so use $20$ and handle $6^{30}$ separately.
+• $2^{100}=(2^5)^{20}=32^{20}$
+• $3^{60}=(3^3)^{20}=27^{20}$
+• $5^{40}=(5^2)^{20}=25^{20}$
+• $7^{20}$
+• $6^{30}=(6^3)^{10}=216^{10}$, while $2^{100}=(2^{10})^{10}=1024^{10}$.
+The base $32$ beats $27$, $25$ and $7$, and $1024^{10}\gt216^{10}$, so $2^{100}$ is the largest.
 ---
 Q: What real $x$ satisfies $4^x-3\cdot2^x-4=0$?
 L: 2
@@ -84,7 +99,10 @@ W: 1
 W: 4
 W: -1
 W: 0
-S: Let $u=2^x>0$: $u^2-3u-4=(u-4)(u+1)=0$, so $u=4$ and $x=2$.
+S: Notice $4^x=(2^x)^2$. Substitute $u=2^x$, which is always positive.
+The equation becomes $u^2-3u-4=0$, which factors as $(u-4)(u+1)=0$.
+$u=-1$ is impossible because $2^x\gt0$. So $u=4$, i.e. $2^x=4$ and $x=2$.
+Check: $16-3\cdot4-4=0$. ✓
 ---
 Q: What is $\dfrac{2^{10}+2^{10}}{2^9}$?
 L: 1
@@ -93,7 +111,9 @@ W: 2
 W: 8
 W: 2^{11}
 W: 1
-S: $\frac{2\cdot2^{10}}{2^9}=\frac{2^{11}}{2^9}=4$.
+S: The numerator is $2^{10}+2^{10}=2\cdot2^{10}=2^{11}$ (two copies of the same number).
+Divide: $\dfrac{2^{11}}{2^9}=2^{11-9}=2^2=4$.
+(A common slip is to add exponents, $2^{10}+2^{10}\ne2^{20}$.)
 ---
 Q: If $3^a=5$ and $5^b=9$, what is $ab$?
 L: 2
@@ -102,7 +122,10 @@ W: 1
 W: 3
 W: 45
 W: \frac{9}{5}
-S: $3^{ab}=(3^a)^b=5^b=9=3^2$, so $ab=2$.
+S: Chain the two equations: $3^{ab}=(3^a)^b$.
+Since $3^a=5$, this is $5^b$, and $5^b=9$.
+So $3^{ab}=9=3^2$, which forces $ab=2$.
+(You never need the individual values $a=\log_35$ and $b=\log_59$.)
 ---
 Q: How many real solutions does $2^x=x^2$ have?
 L: 3
@@ -111,7 +134,10 @@ W: 2
 W: 1
 W: 4
 W: 0
-S: $x=2$ and $x=4$ work. For negative $x$, $2^x$ increases from near $0$ to $1$ while $x^2$ decreases from large values to $0$, so they cross once more. Total $3$.
+S: Look for solutions in three regions.
+• $x=2$: $2^2=4=2^2$. ✓ $\;x=4$: $2^4=16=4^2$. ✓ These are the two positive solutions (the curves cross at $2$ and again at $4$; beyond $4$, $2^x$ grows faster).
+• $x\lt0$: as $x$ goes from $-\infty$ up to $0$, $2^x$ rises from near $0$ to $1$, while $x^2$ falls from huge values to $0$. A rising curve and a falling curve cross exactly once, somewhere near $x\approx-0.77$.
+Total: $3$ real solutions.
 ---
 @@ log-prop
 Q: What is $\log_2 8+\log_3 81$?
@@ -121,7 +147,9 @@ W: 12
 W: 5
 W: 6
 W: 24
-S: $3+4=7$.
+S: $\log_b N$ is the exponent you put on $b$ to get $N$.
+$\log_2 8=3$ because $2^3=8$, and $\log_3 81=4$ because $3^4=81$.
+Sum: $3+4=7$.
 ---
 Q: What is $\log_4 32$?
 L: 1
@@ -130,7 +158,9 @@ W: 8
 W: 2
 W: \frac{2}{5}
 W: 3
-S: $4^x=32$ means $2^{2x}=2^5$, so $x=\frac52$.
+S: Let $\log_4 32=x$, which means $4^x=32$.
+Write both as powers of $2$: $2^{2x}=2^5$, so $2x=5$ and $x=\frac52$.
+Check: $4^{5/2}=(\sqrt4)^5=2^5=32$. ✓
 ---
 Q: What is $\log_2 3\cdot\log_3 4\cdot\log_4 8$?
 L: 1
@@ -139,7 +169,9 @@ W: 24
 W: 1
 W: 6
 W: 9
-S: The chain telescopes: $\log_28=3$.
+S: Change of base: $\log_ab=\dfrac{\ln b}{\ln a}$.
+The product is $\dfrac{\ln3}{\ln2}\cdot\dfrac{\ln4}{\ln3}\cdot\dfrac{\ln8}{\ln4}$; every middle factor cancels (it telescopes), leaving $\dfrac{\ln8}{\ln2}=\log_28$.
+$\log_28=3$.
 ---
 Q: If $\log_a 2=x$ and $\log_a 3=y$, what is $\log_a 12$?
 L: 1
@@ -148,7 +180,9 @@ W: x+y
 W: 2xy
 W: x^2y
 W: x+2y
-S: $12=2^2\cdot3$, so $\log_a12=2x+y$.
+S: Factor $12$ into the given pieces: $12=2^2\cdot3$.
+Log rules: $\log_a(MN)=\log_aM+\log_aN$ and $\log_a(M^k)=k\log_aM$.
+So $\log_a12=\log_a2^2+\log_a3=2\log_a2+\log_a3=2x+y$.
 ---
 Q: What is $\log_{10}2+\log_{10}50$?
 L: 1
@@ -157,7 +191,9 @@ W: 1
 W: 52
 W: \log_{10}52
 W: 100
-S: $\log_{10}100=2$.
+S: Product rule: $\log_{10}2+\log_{10}50=\log_{10}(2\cdot50)=\log_{10}100$.
+$10^2=100$, so the answer is $2$.
+(Logs of a sum don't split, but a sum of logs is the log of a product.)
 ---
 Q: What is $\dfrac{1}{\log_2 36}+\dfrac{1}{\log_3 36}$?
 L: 2
@@ -166,7 +202,9 @@ W: 1
 W: 2
 W: \frac{1}{36}
 W: \frac{5}{36}
-S: $\log_{36}2+\log_{36}3=\log_{36}6=\frac12$.
+S: Reciprocal rule: $\dfrac{1}{\log_ab}=\log_ba$ (from change of base).
+So the expression is $\log_{36}2+\log_{36}3=\log_{36}(2\cdot3)=\log_{36}6$.
+Since $36^{1/2}=6$, $\log_{36}6=\frac12$.
 ---
 Q: What is $\log_9 27$?
 L: 1
@@ -175,7 +213,9 @@ W: \frac{2}{3}
 W: 3
 W: 2
 W: \frac{1}{3}
-S: $9^x=27$ means $3^{2x}=3^3$, so $x=\frac32$.
+S: Let $\log_927=x$, so $9^x=27$.
+In base $3$: $3^{2x}=3^3$, so $2x=3$ and $x=\frac32$.
+Check: $9^{3/2}=(\sqrt9)^3=27$. ✓
 ---
 Q: What is $\log_2\!\left(1+\frac11\right)+\log_2\!\left(1+\frac12\right)+\cdots+\log_2\!\left(1+\frac1{31}\right)$?
 L: 2
@@ -184,7 +224,10 @@ W: 4
 W: 6
 W: 31
 W: 32
-S: The product $\frac21\cdot\frac32\cdots\frac{32}{31}=32$, so the sum is $\log_232=5$.
+S: A sum of logs is the log of a product: the sum equals $\log_2\left[\left(1+\tfrac11\right)\left(1+\tfrac12\right)\cdots\left(1+\tfrac1{31}\right)\right]$.
+Each factor is $1+\frac1k=\frac{k+1}{k}$, so the product is $\frac21\cdot\frac32\cdot\frac43\cdots\frac{32}{31}$.
+It telescopes: every numerator cancels the next denominator, leaving $\frac{32}{1}=32$.
+$\log_232=5$.
 ---
 @@ log-eq
 Q: What real $x$ satisfies $\log_2 x+\log_2(x-2)=3$?
@@ -194,7 +237,10 @@ W: -2
 W: 2
 W: 8
 W: 6
-S: $x(x-2)=8$, so $x=4$ or $-2$. The domain requires $x>2$, so $x=4$.
+S: Combine the logs: $\log_2x+\log_2(x-2)=\log_2\big(x(x-2)\big)=3$, so $x(x-2)=2^3=8$.
+$x^2-2x-8=0$ factors as $(x-4)(x+2)=0$, giving $x=4$ or $x=-2$.
+Domain check: both $\log_2x$ and $\log_2(x-2)$ need positive inputs, so $x\gt2$. Reject $-2$.
+$x=4$. Check: $\log_24+\log_22=2+1=3$. ✓
 ---
 Q: Using $\log_{10}2\approx0.30103$, how many digits does $2^{100}$ have?
 L: 2
@@ -203,7 +249,9 @@ W: 30
 W: 100
 W: 32
 W: 29
-S: $\log_{10}2^{100}\approx30.103$, so $\lfloor30.103\rfloor+1=31$ digits.
+S: A positive integer $N$ has $\lfloor\log_{10}N\rfloor+1$ digits (e.g. numbers from $100$ to $999$ have logs from $2$ up to just under $3$).
+$\log_{10}2^{100}=100\log_{10}2\approx100(0.30103)=30.103$.
+So $2^{100}$ has $\lfloor30.103\rfloor+1=31$ digits. (It's about $1.27\times10^{30}$.)
 ---
 Q: If $\log_x 81=4$, what is $x$?
 L: 1
@@ -212,7 +260,8 @@ W: 9
 W: 27
 W: 81
 W: \frac{81}{4}
-S: $x^4=81$, so $x=3$.
+S: $\log_x81=4$ means $x^4=81$.
+$81=3^4$, so $x=3$ (a log base must be positive, so $x=-3$ is not allowed).
 ---
 Q: What real $x$ satisfies $\log_3(x+1)-\log_3(x-1)=1$?
 L: 1
@@ -221,7 +270,9 @@ W: 3
 W: 1
 W: 4
 W: \frac{1}{2}
-S: $\frac{x+1}{x-1}=3$, so $x+1=3x-3$ and $x=2$.
+S: Quotient rule: $\log_3(x+1)-\log_3(x-1)=\log_3\dfrac{x+1}{x-1}=1$.
+So $\dfrac{x+1}{x-1}=3^1=3$, giving $x+1=3x-3$ and $x=2$.
+Domain: we need $x-1\gt0$; $x=2$ works. Check: $\log_33-\log_31=1-0=1$. ✓
 ---
 Q: What is the product of all real solutions of $(\log_2 x)^2-5\log_2 x+6=0$?
 L: 2
@@ -230,7 +281,10 @@ W: 12
 W: 6
 W: 24
 W: 64
-S: $\log_2x=2$ or $3$, so $x=4,8$. Product $32$. (Equivalently $2^{2+3}$.)
+S: Substitute $u=\log_2x$: $u^2-5u+6=0$, i.e. $(u-2)(u-3)=0$.
+So $\log_2x=2$ or $3$, giving $x=4$ or $x=8$.
+Product: $4\cdot8=32$.
+Shortcut: by Vieta the two values of $u$ add to $5$, and $x_1x_2=2^{u_1}\cdot2^{u_2}=2^{u_1+u_2}=2^5=32$.
 ---
 Q: If $2^x=10$, what is $\lfloor x\rfloor$?
 L: 1
@@ -239,7 +293,9 @@ W: 4
 W: 2
 W: 5
 W: 10
-S: $2^3=8\lt 10\lt 16=2^4$, so $3\lt x\lt 4$.
+S: $\lfloor x\rfloor$ is the integer just below $x=\log_210$.
+Trap $10$ between consecutive powers of $2$: $2^3=8\lt10\lt16=2^4$.
+So $3\lt x\lt4$ and $\lfloor x\rfloor=3$. (In fact $x\approx3.32$.)
 ---
 Q: How many digits does $5^{20}\cdot2^{30}$ have?
 L: 2
@@ -248,7 +304,9 @@ W: 20
 W: 23
 W: 30
 W: 50
-S: $5^{20}2^{30}=10^{20}\cdot2^{10}=1024\cdot10^{20}$: $4+20=24$ digits.
+S: Pair each $5$ with a $2$ to make $10$s: $5^{20}\cdot2^{30}=(5\cdot2)^{20}\cdot2^{10}=10^{20}\cdot1024$.
+$1024$ has $4$ digits, and multiplying by $10^{20}$ appends $20$ zeros.
+Total: $4+20=24$ digits.
 ---
 Q: What real $x$ satisfies $\log_2(\log_3(\log_4 x))=0$?
 L: 2
@@ -257,41 +315,43 @@ W: 12
 W: 81
 W: 16
 W: 256
-S: $\log_3(\log_4x)=1$, so $\log_4x=3$ and $x=64$.
-
+S: Peel off the logs from the outside in, using $\log_by=c\iff y=b^c$.
+$\log_2(\cdots)=0\Rightarrow\log_3(\log_4x)=2^0=1$.
+$\log_3(\log_4x)=1\Rightarrow\log_4x=3^1=3$.
+$\log_4x=3\Rightarrow x=4^3=64$.
 === GENS ===
 GENS['exp-rules']=[
 r=>{const base=pick(r,[2,3]);const p=ri(r,1,4),q=ri(r,1,4);if(p===q)return GENS['exp-rules'][0](r);const s_=ri(r,-3,3),t=ri(r,-3,3);
  const x=F(q*t-p*s_,p-q);// base^p (x+s) = base^q (x+t) -> p(x+s)=q(x+t)
- return{lvl:1,q:T`If $${base**p}^{x${s_<0?'-':'+'}${Math.abs(s_)}}=${base**q}^{x${t<0?'-':'+'}${Math.abs(t)}}$, what is $x$?`,a:x,w:[x.neg(),x.add(1),F(t-s_),F(q*t+p*s_,p+q)],s:T`Write both as powers of ${base}: $${p}(x${s_<0?'-':'+'}${Math.abs(s_)})=${q}(x${t<0?'-':'+'}${Math.abs(t)})$, so $x=${x.tex()}$.`}},
+ return{lvl:1,q:T`If $${base**p}^{x${s_<0?'-':'+'}${Math.abs(s_)}}=${base**q}^{x${t<0?'-':'+'}${Math.abs(t)}}$, what is $x$?`,a:x,w:[x.neg(),x.add(1),F(t-s_),F(q*t+p*s_,p+q)],s:T`Both bases are powers of ${base}: $${base**p}=${base}^{${p}}$ and $${base**q}=${base}^{${q}}$.<br>So the equation says $${base}^{${p}(x${s_<0?'-':'+'}${Math.abs(s_)})}=${base}^{${q}(x${t<0?'-':'+'}${Math.abs(t)})}$, and equal powers of ${base} have equal exponents:<br>$${p}(x${s_<0?'-':'+'}${Math.abs(s_)})=${q}(x${t<0?'-':'+'}${Math.abs(t)})$<br>$${p}x${p*s_<0?'-':'+'}${Math.abs(p*s_)}=${q}x${q*t<0?'-':'+'}${Math.abs(q*t)}$<br>$${p-q===1?'':p-q===-1?'-':p-q}x=${q*t-p*s_}$, so $x=${x.tex()}$.`}},
 r=>{const t=ri(r,2,6),n=pick(r,[2,3]),m=ri(r,1,4);if(gcd(m,n)!==1)return GENS['exp-rules'][1](r);const sg=r()<.3?-1:1;const k=t**n;const v=sg>0?F(t**m):F(1,t**m);
- return{lvl:1,q:T`What is $${k}^{${sg<0?'-':''}${m}/${n}}$?`,a:v,w:[F(k*m,n),sg>0?F(1,t**m):F(t**m),F(t**(m+1)),F(t*m)],s:T`$\sqrt[${n}]{${k}}=${t}$, so the value is $${t}^{${sg*m}}=${v.tex()}$.`}},
+ return{lvl:1,q:T`What is $${k}^{${sg<0?'-':''}${m}/${n}}$?`,a:v,w:[F(k*m,n),sg>0?F(1,t**m):F(t**m),F(t**(m+1)),F(t*m)],s:T`A fractional exponent $\frac mn$ means: take the $n$th root, then the $m$th power${sg<0?', and a negative exponent means take the reciprocal':''}.<br>$\sqrt[${n}]{${k}}=${t}$, because $${t}^{${n}}=${k}$.<br>So $${k}^{${sg<0?'-':''}${m}/${n}}=${t}^{${sg*m}}=${v.tex()}$.`}},
 r=>{const k=ri(r,1,4),x=ri(r,1,8);const N=2**x*(2**k-1);
- return{lvl:1,q:T`If $2^{x+${k}}-2^x=${N}$, what is $x$?`,a:x,w:[x+1,x-1,x+k,N/2>20?x+2:N/2],s:T`$2^x(2^{${k}}-1)=${N}$, so $2^x=${2**x}$ and $x=${x}$.`}},
+ return{lvl:1,q:T`If $2^{x+${k}}-2^x=${N}$, what is $x$?`,a:x,w:[x+1,x-1,x+k,N/2>20?x+2:N/2],s:T`Factor out the smaller power: $2^{x+${k}}=2^{${k}}\cdot2^x=${2**k}\cdot2^x$.<br>So $2^{x+${k}}-2^x=(${2**k}-1)2^x=${2**k-1}\cdot2^x=${N}$.<br>Divide: $2^x=\frac{${N}}{${2**k-1}}=${2**x}=2^{${x}}$, so $x=${x}$.`}},
 r=>{const a=ri(r,1,5),b=ri(r,1,6);const u=2**a;// u^2 - (u - b) u - u b ... build (u - 2^a)(u + b)=0
  const B=b-u,C=-u*b;
  const mid=B===0?'':(B<0?'-':'+')+(Math.abs(B)===1?'':Math.abs(B)+'\\cdot ')+'2^x';
- return{lvl:2,q:T`What real $x$ satisfies $4^x${mid}${C<0?'-':'+'}${Math.abs(C)}=0$?`,a:a,w:[a+1,a-1,u,-b],s:T`Let $u=2^x>0$: $(u-${u})(u+${b})=0$, so $u=${u}$ and $x=${a}$.`}},
+ return{lvl:2,q:T`What real $x$ satisfies $4^x${mid}${C<0?'-':'+'}${Math.abs(C)}=0$?`,a:a,w:[a+1,a-1,u,-b],s:T`Notice $4^x=(2^x)^2$, so substitute $u=2^x$ (which is always positive).<br>The equation becomes $u^2${B===0?'':(B<0?'-':'+')+(Math.abs(B)===1?'':Math.abs(B))+'u'}${C<0?'-':'+'}${Math.abs(C)}=0$, which factors as $(u-${u})(u+${b})=0$.<br>$u=-${b}$ is impossible since $2^x\gt0$. So $2^x=${u}=2^{${a}}$ and $x=${a}$.`}},
 ];
 GENS['log-prop']=[
 r=>{const b=pick(r,[2,3,4,5,8,9,16,25,27]);const root={2:[2,1],3:[3,1],4:[2,2],5:[5,1],8:[2,3],9:[3,2],16:[2,4],25:[5,2],27:[3,3]}[b];const e=ri(r,1,8);const arg=root[0]**e;const v=F(e,root[1]);if(arg>1e7)return GENS['log-prop'][0](r);
- return{lvl:1,q:T`What is $\log_{${b}}${arg}$?`,a:v,w:[F(root[1],e),F(e),v.add(1),F(arg,b)],s:T`$${b}=${root[0]}^{${root[1]}}$ and $${arg}=${root[0]}^{${e}}$, so the log is $\frac{${e}}{${root[1]}}=${v.tex()}$.`}},
+ return{lvl:1,q:T`What is $\log_{${b}}${arg}$?`,a:v,w:[F(root[1],e),F(e),v.add(1),F(arg,b)],s:T`$\log_{${b}}${arg}$ is the exponent $y$ with $${b}^y=${arg}$.<br>Write both numbers as powers of ${root[0]}: $${b}=${root[0]}^{${root[1]}}$ and $${arg}=${root[0]}^{${e}}$.<br>Then $${root[0]}^{${root[1]}y}=${root[0]}^{${e}}$, so $${root[1]}y=${e}$ and $y=${v.tex()}$.`}},
 r=>{const a=ri(r,2,5),n=ri(r,3,7);const terms=Array.from({length:n},(_,i)=>a+i);const end=a+n;const isP=(()=>{let p=a;let e=0;while(p<end){p*=a;e++}return p===end?e:0})();
  if(!isP)return GENS['log-prop'][1](r);
- return{lvl:1,q:T`What is $${terms.map(k=>'\\log_{'+k+'}'+(k+1)).join('\\cdot ')}$?`,a:isP,w:[isP+1,isP-1||isP+2,n,end],s:T`Change of base telescopes the product to $\log_{${a}}${end}=${isP}$.`}},
+ return{lvl:1,q:T`What is $${terms.map(k=>'\\log_{'+k+'}'+(k+1)).join('\\cdot ')}$?`,a:isP,w:[isP+1,isP-1||isP+2,n,end],s:T`Change of base: $\log_ab=\dfrac{\ln b}{\ln a}$. The product becomes $\dfrac{\ln${a+1}}{\ln${a}}\cdot\dfrac{\ln${a+2}}{\ln${a+1}}\cdots\dfrac{\ln${end}}{\ln${end-1}}$.<br>Each numerator cancels the next denominator (the product telescopes), leaving $\dfrac{\ln${end}}{\ln${a}}=\log_{${a}}${end}$.<br>Since $${a}^{${isP}}=${end}$, the value is $${isP}$.`}},
 r=>{const b=pick(r,[2,3,5,10]),x=ri(r,1,6),y=ri(r,1,6);const ask=pick(r,[[b**x*b**y,'+'],[b**(x+y),'+']]);const p_=ri(r,2,30);const N=b**(x+y);if(N>1e7)return GENS['log-prop'][2](r);
  let q_=N/p_;if(!Number.isInteger(q_))return GENS['log-prop'][2](r);
- return{lvl:1,q:T`What is $\log_{${b}}${p_}+\log_{${b}}${q_}$?`,a:x+y,w:[x+y+1,x+y-1,p_+q_,x*y],s:T`$\log_{${b}}(${p_}\cdot${q_})=\log_{${b}}${N}=${x+y}$.`}},
+ return{lvl:1,q:T`What is $\log_{${b}}${p_}+\log_{${b}}${q_}$?`,a:x+y,w:[x+y+1,x+y-1,p_+q_,x*y],s:T`A sum of logs with the same base is the log of the product: $\log_{${b}}${p_}+\log_{${b}}${q_}=\log_{${b}}(${p_}\cdot${q_})=\log_{${b}}${N}$.<br>$${N}=${b}^{${x+y}}$, so the value is $${x+y}$.`}},
 r=>{const n=ri(r,3,40),b=pick(r,[2,3]);let N=n+1;let e=0,t=1;while(t<N){t*=b;e++}if(t!==N)return GENS['log-prop'][3](r);
- return{lvl:2,q:T`What is $\displaystyle\sum_{k=1}^{${n}}\log_{${b}}\!\left(1+\frac1k\right)$?`,a:e,w:[e+1,e-1,n,N],s:T`The product $\prod\frac{k+1}{k}=${N}$, so the sum is $\log_{${b}}${N}=${e}$.`}},
+ return{lvl:2,q:T`What is $\displaystyle\sum_{k=1}^{${n}}\log_{${b}}\!\left(1+\frac1k\right)$?`,a:e,w:[e+1,e-1,n,N],s:T`A sum of logs is the log of a product: the sum is $\log_{${b}}\prod_{k=1}^{${n}}\left(1+\frac1k\right)=\log_{${b}}\prod_{k=1}^{${n}}\frac{k+1}{k}$.<br>The product $\frac21\cdot\frac32\cdots\frac{${n+1}}{${n}}$ telescopes to $\frac{${N}}{1}=${N}$.<br>$${N}=${b}^{${e}}$, so the sum is $${e}$.`}},
 ];
 GENS['log-eq']=[
 r=>{const b=pick(r,[2,3,10]);const x=ri(r,2,12),d=ri(r,1,x-1);const P_=x*(x-d);let k=0,t=1;while(t<P_){t*=b;k++}if(t!==P_)return GENS['log-eq'][0](r);const other=d-x;
- return{lvl:1,q:T`What real $x$ satisfies $\log_{${b}}x+\log_{${b}}(x-${d})=${k}$?`,a:x,w:[other,x+d,d,P_],s:T`$x(x-${d})=${P_}$ gives $x=${x}$ or $${other}$. The domain needs $x>${d}$, so $x=${x}$.`}},
+ return{lvl:1,q:T`What real $x$ satisfies $\log_{${b}}x+\log_{${b}}(x-${d})=${k}$?`,a:x,w:[other,x+d,d,P_],s:T`Combine with the product rule: $\log_{${b}}\big(x(x-${d})\big)=${k}$, so $x(x-${d})=${b}^{${k}}=${P_}$.<br>$x^2-${d}x-${P_}=0$ factors as $(x-${x})(x+${x-d})=0$, so $x=${x}$ or $x=${other}$.<br>Domain: $\log_{${b}}x$ and $\log_{${b}}(x-${d})$ need $x\gt${d}$, so reject $${other}$.<br>Answer: $x=${x}$. Check: $\log_{${b}}${x}+\log_{${b}}${x-d}=\log_{${b}}${P_}=${k}$. ✓`}},
 r=>{const a=ri(r,1,40),b=ri(r,1,40);const N=BigInt(2)**BigInt(a)*BigInt(5)**BigInt(b);const v=N.toString().length;
- return{lvl:2,q:T`How many digits does $2^{${a}}\cdot5^{${b}}$ have?`,a:v,w:[Math.max(a,b),a+b,Math.min(a,b),v+1],s:T`Pair up factors of 10: $10^{${Math.min(a,b)}}\cdot${a>b?'2^{'+(a-b)+'}':a<b?'5^{'+(b-a)+'}':'1'}$. The leftover has $${v-Math.min(a,b)}$ digit(s), so the total is $${v}$.`}},
+ return{lvl:2,q:T`How many digits does $2^{${a}}\cdot5^{${b}}$ have?`,a:v,w:[Math.max(a,b),a+b,Math.min(a,b),v+1],s:T`Each pair of a $2$ and a $5$ makes a $10$. There are $${Math.min(a,b)}$ such pairs: $2^{${a}}\cdot5^{${b}}=10^{${Math.min(a,b)}}\cdot${a>b?'2^{'+(a-b)+'}':a<b?'5^{'+(b-a)+'}':'1'}$.<br>The leftover factor ${a!==b?T`$${a>b?'2^{'+(a-b)+'}':'5^{'+(b-a)+'}'}=${a>b?2**(a-b):5**(b-a)}$`:'$1$'} has $${v-Math.min(a,b)}$ digit${v-Math.min(a,b)===1?'':'s'}, and multiplying by $10^{${Math.min(a,b)}}$ appends $${Math.min(a,b)}$ zeros.<br>Total: $${v-Math.min(a,b)}+${Math.min(a,b)}=${v}$ digits.`}},
 r=>{const x=ri(r,2,7),k=ri(r,2,5);
- return{lvl:1,q:T`If $\log_x ${x**k}=${k}$ and $x>0$, what is $x$?`,a:x,w:[x*x,x**k,F(x**k,k),x+1],s:T`$x^{${k}}=${x**k}$, so $x=${x}$.`}},
+ return{lvl:1,q:T`If $\log_x ${x**k}=${k}$ and $x>0$, what is $x$?`,a:x,w:[x*x,x**k,F(x**k,k),x+1],s:T`$\log_x${x**k}=${k}$ means $x^{${k}}=${x**k}$.<br>Since $${x}^{${k}}=${x**k}$ and the base of a log must be positive, $x=${x}$.`}},
 r=>{const b=pick(r,[2,3]),p=ri(r,1,4),q=ri(r,p+1,6);
- return{lvl:2,q:T`What is the product of all real solutions of $(\log_{${b}}x)^2-${p+q}\log_{${b}}x+${p*q}=0$?`,a:b**(p+q),w:[p*q,b**(p*q)>1e6?b**p+b**q:b**(p*q),b**p+b**q,p+q],s:T`$\log_{${b}}x=${p}$ or $${q}$, so the product is $${b}^{${p}}\cdot${b}^{${q}}=${b**(p+q)}$.`}},
+ return{lvl:2,q:T`What is the product of all real solutions of $(\log_{${b}}x)^2-${p+q}\log_{${b}}x+${p*q}=0$?`,a:b**(p+q),w:[p*q,b**(p*q)>1e6?b**p+b**q:b**(p*q),b**p+b**q,p+q],s:T`Substitute $u=\log_{${b}}x$: $u^2-${p+q}u+${p*q}=0$ factors as $(u-${p})(u-${q})=0$.<br>So $\log_{${b}}x=${p}$ or $${q}$, i.e. $x=${b}^{${p}}=${b**p}$ or $x=${b}^{${q}}=${b**q}$.<br>Product: $${b**p}\cdot${b**q}=${b}^{${p+q}}=${b**(p+q)}$. (Shortcut: the $u$-values add to $${p+q}$ by Vieta, and multiplying the $x$'s adds their exponents.)`}},
 ];

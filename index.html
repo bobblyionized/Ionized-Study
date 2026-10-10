@@ -8701,7 +8701,9 @@ W: 3
 W: 5
 W: 6
 W: 0
-S: $2026\equiv3$, $2027\equiv4$, $2028\equiv5\pmod7$. Then $3\cdot4\cdot5=60\equiv4$.
+S: Remainders multiply: you can replace each factor by its remainder mod $7$ before multiplying.
+$2026=7\cdot289+3$, so $2026\equiv3$; then $2027\equiv4$ and $2028\equiv5\pmod7$.
+Product: $3\cdot4\cdot5=60=7\cdot8+4$, so the remainder is $4$.
 ---
 Q: What is the remainder when $1+2+3+\cdots+100$ is divided by $7$?
 L: 1
@@ -8710,7 +8712,8 @@ W: 0
 W: 1
 W: 5
 W: 6
-S: The sum is $5050=7\cdot721+3$.
+S: $1+2+\cdots+100=\frac{100\cdot101}{2}=5050$.
+$5050=7\cdot721+3$ (since $7\cdot721=5047$), so the remainder is $3$.
 ---
 Q: Which of these numbers is <b>not</b> a sum of two perfect squares?
 L: 2
@@ -8719,8 +8722,10 @@ W: 2025
 W: 2026
 W: 2029
 W: 2020
-S: Squares are $0$ or $1\pmod4$, so a sum of two squares is $0,1,$ or $2\pmod 4$. $2027\equiv3$, so it is impossible.
-(The others: $2025=45^2+0^2$, $2026=45^2+1^2$, $2029=45^2+2^2$, $2020=42^2+16^2$.)
+S: Every square is $0$ or $1\pmod4$: even squares $(2k)^2=4k^2\equiv0$, odd squares $(2k+1)^2=4k^2+4k+1\equiv1$.
+So a sum of two squares is $0+0$, $0+1$, or $1+1$: that is, $0$, $1$, or $2\pmod4$, never $3$.
+$2027=4\cdot506+3\equiv3\pmod4$, so it is not a sum of two squares.
+The others are: $2025=45^2+0^2$, $2026=45^2+1^2$, $2029=45^2+2^2$, $2020=42^2+16^2$.
 ---
 Q: If $n\equiv3\pmod5$, what is the remainder when $n^2+2n$ is divided by $5$?
 L: 1
@@ -8729,7 +8734,9 @@ W: 1
 W: 2
 W: 3
 W: 4
-S: $9+6=15\equiv0\pmod5$.
+S: Substitute the remainder: if $n\equiv3\pmod5$, then $n^2+2n\equiv3^2+2\cdot3=9+6=15\pmod5$.
+$15\equiv0\pmod5$, so the remainder is $0$.
+(Factoring confirms it: $n^2+2n=n(n+2)$, and $n+2\equiv5\equiv0$.)
 ---
 Q: If $x\equiv3\pmod7$ and $y\equiv5\pmod7$, what is the remainder when $xy+x+y$ is divided by $7$?
 L: 1
@@ -8738,7 +8745,8 @@ W: 0
 W: 1
 W: 3
 W: 4
-S: $15+3+5=23\equiv2\pmod7$.
+S: Replace $x$ and $y$ by their remainders: $xy+x+y\equiv3\cdot5+3+5=23\pmod7$.
+$23=3\cdot7+2$, so the remainder is $2$.
 ---
 Q: What is the remainder when $1^2+2^2+\cdots+10^2$ is divided by $11$?
 L: 1
@@ -8747,7 +8755,9 @@ W: 1
 W: 5
 W: 10
 W: 3
-S: The sum is $385=35\cdot11$.
+S: Sum of squares formula: $1^2+2^2+\cdots+n^2=\frac{n(n+1)(2n+1)}{6}$.
+For $n=10$: $\frac{10\cdot11\cdot21}{6}=385$.
+$385=11\cdot35$, so the remainder is $0$. (The factor $11=n+1$ appears in the formula.)
 ---
 Q: For how many integers $n$ with $1\le n\le100$ is $n^2+1$ divisible by $5$?
 L: 2
@@ -8756,7 +8766,9 @@ W: 20
 W: 10
 W: 50
 W: 25
-S: We need $n^2\equiv4\pmod5$, i.e. $n\equiv2$ or $3$. That is 2 out of every 5 numbers: $40$.
+S: $5\mid n^2+1$ means $n^2\equiv-1\equiv4\pmod5$.
+Check all residues: $0^2=0$, $1^2=1$, $2^2=4$, $3^2=9\equiv4$, $4^2=16\equiv1$. So $n\equiv2$ or $3\pmod5$.
+That's $2$ out of every $5$ consecutive integers. From $1$ to $100$ there are $20$ complete blocks of $5$, giving $2\cdot20=40$.
 ---
 Q: What is the remainder when $3^{100}$ is divided by $4$?
 L: 1
@@ -8765,7 +8777,9 @@ W: 0
 W: 2
 W: 3
 W: 100
-S: $3\equiv-1\pmod4$, so $3^{100}\equiv(-1)^{100}=1$.
+S: $3=4-1$, so $3\equiv-1\pmod4$.
+Then $3^{100}\equiv(-1)^{100}=1\pmod4$ (an even power of $-1$).
+The remainder is $1$.
 ---
 @@ mod-cycle
 Q: What is the units digit of $7^{2026}$?
@@ -8775,7 +8789,8 @@ W: 7
 W: 3
 W: 1
 W: 6
-S: Cycle $7,9,3,1$. $2026\equiv2\pmod4$, so the units digit is $9$.
+S: Only the units digit of each power matters. Powers of $7$ end in $7,9,3,1,7,9,3,1,\dots$: a cycle of length $4$.
+$2026=4\cdot506+2$, so $7^{2026}$ ends like $7^2=49$: units digit $9$.
 ---
 Q: What is the units digit of $2^{2027}$?
 L: 1
@@ -8784,7 +8799,8 @@ W: 2
 W: 4
 W: 6
 W: 0
-S: Cycle $2,4,8,6$. $2027\equiv3\pmod4$, so $8$.
+S: Powers of $2$ end in $2,4,8,6,2,4,8,6,\dots$ (cycle length $4$).
+$2027=4\cdot506+3$, so $2^{2027}$ ends like $2^3=8$.
 ---
 Q: What is the units digit of $3^{2026}+7^{2026}$?
 L: 2
@@ -8793,7 +8809,9 @@ W: 0
 W: 2
 W: 6
 W: 4
-S: $2026\equiv2\pmod4$: $3^2$ ends in $9$ and $7^2$ ends in $9$, so the sum ends in $8$.
+S: Both $3$ and $7$ have units-digit cycles of length $4$: $3,9,7,1$ and $7,9,3,1$.
+$2026\equiv2\pmod4$, so $3^{2026}$ ends like $3^2=9$ and $7^{2026}$ ends like $7^2=49$, i.e. in $9$.
+$9+9=18$, so the sum ends in $8$.
 ---
 Q: What are the last two digits of $7^{100}$? (Give them as a number from $0$ to $99$.)
 L: 2
@@ -8802,7 +8820,9 @@ W: 49
 W: 43
 W: 7
 W: 0
-S: $7^4=2401\equiv1\pmod{100}$, so $7^{100}=(7^4)^{25}\equiv1$. The last two digits are $01$.
+S: Look for a small power of $7$ that is $1\pmod{100}$: $7^2=49$, $7^4=49^2=2401\equiv1\pmod{100}$.
+$100=4\cdot25$, so $7^{100}=(7^4)^{25}\equiv1^{25}=1\pmod{100}$.
+The last two digits are $01$, i.e. the number $1$.
 ---
 Q: What is the units digit of $1+3+3^2+\cdots+3^{2026}$?
 L: 3
@@ -8811,7 +8831,9 @@ W: 1
 W: 9
 W: 7
 W: 0
-S: The units digits cycle $1,3,9,7$ with sum $20\equiv0$. There are $2027=4\cdot506+3$ terms, so only $1+3+9=13$ matters. The units digit is $3$.
+S: The units digits of $3^0,3^1,3^2,3^3,\dots$ are $1,3,9,7,1,3,9,7,\dots$, and one full cycle sums to $1+3+9+7=20$, which ends in $0$.
+The sum has $2027$ terms ($3^0$ through $3^{2026}$). $2027=4\cdot506+3$: $506$ full cycles (contributing units digit $0$) plus $3$ more terms with units digits $1,3,9$.
+$1+3+9=13$, so the units digit is $3$.
 ---
 Q: What is the units digit of $13^{13}$?
 L: 1
@@ -8820,7 +8842,8 @@ W: 9
 W: 7
 W: 1
 W: 5
-S: Only the base's last digit matters: $3^{13}$. Since $13\equiv1\pmod4$, the units digit is $3$.
+S: Only the last digit of the base matters: $13^{13}$ has the same units digit as $3^{13}$.
+Powers of $3$ end in $3,9,7,1$ (cycle $4$). $13=4\cdot3+1$, so $3^{13}$ ends like $3^1=3$.
 ---
 Q: What is the units digit of $2026^{2026}$?
 L: 1
@@ -8829,7 +8852,8 @@ W: 4
 W: 2
 W: 8
 W: 0
-S: Every power of a number ending in 6 ends in 6.
+S: $2026$ ends in $6$, and $6\cdot6=36$ ends in $6$ again. So every power of a number ending in $6$ ends in $6$.
+The units digit is $6$.
 ---
 Q: What is the units digit of $7^{7^7}$?
 L: 3
@@ -8838,7 +8862,9 @@ W: 7
 W: 9
 W: 1
 W: 5
-S: We need $7^7\bmod4$. Since $7\equiv-1\pmod4$, $7^7\equiv-1\equiv3$. So the units digit is that of $7^3=343$, which is $3$.
+S: Powers of $7$ have units digits $7,9,3,1$ with period $4$, so we need the exponent $7^7\bmod4$.
+$7\equiv-1\pmod4$, so $7^7\equiv(-1)^7=-1\equiv3\pmod4$.
+So $7^{7^7}$ ends like $7^3=343$: units digit $3$.
 ---
 @@ mod-fermat
 Q: What is the remainder when $2^{100}$ is divided by $7$?
@@ -8848,7 +8874,8 @@ W: 1
 W: 4
 W: 3
 W: 6
-S: $2^3=8\equiv1\pmod7$. $100=3\cdot33+1$, so $2^{100}\equiv2$.
+S: Find a power of $2$ that is $1\pmod7$: $2^3=8\equiv1$.
+$100=3\cdot33+1$, so $2^{100}=(2^3)^{33}\cdot2\equiv1\cdot2=2\pmod7$.
 ---
 Q: What is the remainder when $3^{2026}$ is divided by $11$?
 L: 2
@@ -8857,7 +8884,8 @@ W: 1
 W: 9
 W: 5
 W: 4
-S: $3^5=243=22\cdot11+1\equiv1$. $2026\equiv1\pmod5$, so $3^{2026}\equiv3$.
+S: Fermat says $3^{10}\equiv1\pmod{11}$, but there's a smaller cycle: $3^5=243=22\cdot11+1\equiv1$.
+$2026=5\cdot405+1$, so $3^{2026}=(3^5)^{405}\cdot3\equiv3\pmod{11}$.
 ---
 Q: What is $\varphi(100)$, the number of integers from $1$ to $100$ that are relatively prime to $100$?
 L: 1
@@ -8866,7 +8894,9 @@ W: 50
 W: 60
 W: 20
 W: 36
-S: $100\left(1-\frac12\right)\left(1-\frac15\right)=40$.
+S: Euler's formula: $\varphi(n)=n\prod_{p\mid n}\left(1-\frac1p\right)$ over the distinct primes dividing $n$.
+$100=2^2\cdot5^2$, so $\varphi(100)=100\cdot\frac12\cdot\frac45=40$.
+Equivalently: remove the $50$ even numbers and the $20$ multiples of $5$, but add back the $10$ multiples of $10$ removed twice: $100-50-20+10=40$.
 ---
 Q: What is the remainder when $5^{2026}$ is divided by $13$?
 L: 2
@@ -8875,7 +8905,8 @@ W: 1
 W: 5
 W: 8
 W: 3
-S: $5^2=25\equiv-1\pmod{13}$, so $5^4\equiv1$. $2026\equiv2\pmod4$, so $5^{2026}\equiv5^2\equiv12$.
+S: $5^2=25=26-1\equiv-1\pmod{13}$, so $5^4\equiv(-1)^2=1$.
+$2026=4\cdot506+2$, so $5^{2026}\equiv5^2\equiv-1\equiv12\pmod{13}$.
 ---
 Q: What is the remainder when $2^{2026}$ is divided by $5$?
 L: 1
@@ -8884,7 +8915,8 @@ W: 1
 W: 2
 W: 3
 W: 0
-S: $2^4\equiv1\pmod5$ (Fermat). $2026\equiv2\pmod4$, so $2^2=4$.
+S: Fermat's Little Theorem: $2^4\equiv1\pmod5$ (since $5$ is prime and $\gcd(2,5)=1$). Indeed $16=3\cdot5+1$.
+$2026=4\cdot506+2$, so $2^{2026}\equiv2^2=4\pmod5$.
 ---
 Q: What is the remainder when $10!$ is divided by $11$?
 L: 2
@@ -8893,7 +8925,9 @@ W: 1
 W: 0
 W: 9
 W: 5
-S: Wilson's theorem: $(p-1)!\equiv-1\pmod p$, so $10!\equiv-1\equiv10\pmod{11}$.
+S: Wilson's Theorem: for a prime $p$, $(p-1)!\equiv-1\pmod p$.
+With $p=11$: $10!\equiv-1\equiv10\pmod{11}$.
+(Why: in $1\cdot2\cdots10$, every number from $2$ to $9$ pairs with its inverse mod $11$ to give $1$, leaving $1\cdot10\equiv-1$.)
 ---
 Q: What are the last two digits of $7^{222}$ (as a number from $0$ to $99$)?
 L: 3
@@ -8902,7 +8936,9 @@ W: 1
 W: 43
 W: 7
 W: 51
-S: $7^4=2401\equiv1\pmod{100}$. $222=4\cdot55+2$, so $7^{222}\equiv7^2=49$.
+S: $7^4=2401\equiv1\pmod{100}$, so powers of $7$ repeat their last two digits every $4$ steps.
+$222=4\cdot55+2$, so $7^{222}\equiv7^2=49\pmod{100}$.
+The last two digits are $49$.
 ---
 Q: How many integers from $1$ to $30$ are relatively prime to $30$?
 L: 1
@@ -8911,7 +8947,8 @@ W: 10
 W: 15
 W: 7
 W: 12
-S: $\varphi(30)=30\cdot\frac12\cdot\frac23\cdot\frac45=8$: they are $1,7,11,13,17,19,23,29$.
+S: $\varphi(30)=30\left(1-\frac12\right)\left(1-\frac13\right)\left(1-\frac15\right)=30\cdot\frac12\cdot\frac23\cdot\frac45=8$.
+Listing them: $1,7,11,13,17,19,23,29$ (no factor of $2$, $3$, or $5$).
 ---
 @@ mod-crt
 Q: What is the smallest positive integer that leaves remainder $2$ when divided by $3$ and remainder $3$ when divided by $5$?
@@ -8921,7 +8958,9 @@ W: 13
 W: 23
 W: 2
 W: 18
-S: The numbers $\equiv3\pmod5$ are $3,8,13,\dots$; the first that is $\equiv2\pmod3$ is $8$.
+S: List the numbers that leave remainder $3$ on division by $5$: $3,8,13,18,\dots$
+Check each mod $3$: $3\equiv0$, $8\equiv2$. ✓
+The smallest is $8$ (and all solutions are $8+15k$).
 ---
 Q: What is the smallest positive integer that leaves remainder $1$ when divided by each of $2,3,4,5,6$ and is divisible by $7$?
 L: 3
@@ -8930,7 +8969,8 @@ W: 61
 W: 121
 W: 721
 W: 420
-S: The first conditions mean $x\equiv1\pmod{60}$: $61,121,181,241,301,\dots$ The first multiple of $7$ is $301=7\cdot43$.
+S: Remainder $1$ when divided by each of $2,3,4,5,6$ means $x-1$ is divisible by all of them, hence by $\operatorname{lcm}(2,3,4,5,6)=60$. So $x\equiv1\pmod{60}$: $61,121,181,241,301,\dots$
+Now find the first that is a multiple of $7$. Since $60\equiv4\pmod7$, these are $\equiv1+4k\pmod7$; we need $1+4k\equiv0$, i.e. $k\equiv5$. So $x=1+60\cdot5=301=7\cdot43$.
 ---
 Q: What is the inverse of $3$ modulo $7$ (the $x$ with $0\lt x\lt 7$ and $3x\equiv1$)?
 L: 1
@@ -8939,7 +8979,8 @@ W: 2
 W: 4
 W: 3
 W: 6
-S: $3\cdot5=15\equiv1\pmod7$.
+S: We need $3x\equiv1\pmod7$. Try $x=1,2,\dots$: $3\cdot5=15=2\cdot7+1$. ✓
+So the inverse of $3$ mod $7$ is $5$.
 ---
 Q: Which $x$ with $0\le x\lt 7$ satisfies $4x\equiv3\pmod7$?
 L: 1
@@ -8948,7 +8989,9 @@ W: 3
 W: 5
 W: 1
 W: 2
-S: $4^{-1}\equiv2\pmod7$ (since $4\cdot2=8\equiv1$), so $x\equiv3\cdot2=6$. Check: $24\equiv3$ ✓.
+S: Multiply both sides by the inverse of $4$ mod $7$. Since $4\cdot2=8\equiv1$, the inverse is $2$.
+$x\equiv2\cdot3=6\pmod7$.
+Check: $4\cdot6=24=3\cdot7+3\equiv3$. ✓
 ---
 Q: How many positive integers less than $100$ leave remainders $1$, $2$, and $3$ when divided by $2$, $3$, and $4$ respectively?
 L: 2
@@ -8957,7 +9000,9 @@ W: 7
 W: 9
 W: 12
 W: 6
-S: Each is $\equiv-1$ for its modulus, so $x\equiv-1\pmod{12}$: $11,23,\dots,95$. That is $8$ numbers.
+S: Each remainder is one less than the divisor: $x\equiv-1\pmod2$, $x\equiv-1\pmod3$, $x\equiv-1\pmod4$.
+So $x+1$ is divisible by $2,3,4$, hence by $\operatorname{lcm}(2,3,4)=12$: $x=12k-1=11,23,35,\dots$
+Values below $100$: $11,23,35,47,59,71,83,95$, which is $8$ numbers.
 ---
 Q: A basket of eggs leaves $2$ over when counted by threes, $4$ over by fives, and $6$ over by sevens. What is the smallest possible number of eggs?
 L: 2
@@ -8966,7 +9011,9 @@ W: 209
 W: 34
 W: 69
 W: 105
-S: $x\equiv-1\pmod3,5,7$, so $x\equiv-1\pmod{105}$ and the smallest is $104$.
+S: Each remainder is one less than the divisor, so the number of eggs $x$ satisfies $x\equiv-1$ modulo $3$, $5$, and $7$.
+Then $x+1$ is divisible by $3\cdot5\cdot7=105$, so $x=105k-1$.
+The smallest positive is $104$.
 ---
 Q: What is the smallest positive $x$ with $7x\equiv1\pmod{26}$?
 L: 2
@@ -8975,7 +9022,8 @@ W: 11
 W: 4
 W: 19
 W: 3
-S: $7\cdot15=105=4\cdot26+1$ ✓.
+S: Find $x$ with $7x\equiv1\pmod{26}$. Euclid: $26=3\cdot7+5$, $7=1\cdot5+2$, $5=2\cdot2+1$; back-substituting gives $1=3\cdot26-11\cdot7$, so $x\equiv-11\equiv15$.
+Check: $7\cdot15=105=4\cdot26+1$. ✓
 ---
 Q: What is the sum of all integers $x$ with $1\le x\le100$, $x\equiv2\pmod3$, and $x\equiv1\pmod4$?
 L: 2
@@ -8984,7 +9032,9 @@ W: 360
 W: 400
 W: 94
 W: 380
-S: $x\equiv5\pmod{12}$: $5,17,\dots,89$, which is $8$ terms. Sum $=8\cdot\frac{5+89}{2}=376$.
+S: Combine the congruences. Numbers $\equiv1\pmod4$: $1,5,9,\dots$; the first that is $\equiv2\pmod3$ is $5$. So $x\equiv5\pmod{12}$.
+In $[1,100]$: $5,17,29,41,53,65,77,89$: $8$ terms of an arithmetic sequence.
+Sum $=\text{count}\times\text{average}=8\cdot\frac{5+89}{2}=8\cdot47=376$.
 @@ base-conv
 Q: What is $2143_5$ in base $10$?
 L: 1
@@ -8993,7 +9043,8 @@ W: 2143
 W: 302
 W: 198
 W: 288
-S: $2\cdot125+1\cdot25+4\cdot5+3=298$.
+S: Each digit is multiplied by a power of the base, starting from $5^0$ on the right: $2143_5=2\cdot5^3+1\cdot5^2+4\cdot5^1+3\cdot5^0$.
+$=2\cdot125+1\cdot25+4\cdot5+3=250+25+20+3=298$.
 ---
 Q: What is $100$ written in base $7$?
 L: 1
@@ -9002,7 +9053,10 @@ W: 212_7
 W: 220_7
 W: 144_7
 W: 102_7
-S: $100=2\cdot49+0\cdot7+2$, so $202_7$.
+S: Find the base-7 digits by peeling off powers of $7$ ($1,7,49,343$). The largest power not exceeding $100$ is $49$.
+$100=2\cdot49+2$; the leftover $2$ is $0\cdot7+2$.
+So $100=2\cdot49+0\cdot7+2\cdot1=202_7$.
+(Repeated division gives the same: $100=14\cdot7+2$, $14=2\cdot7+0$, $2=0\cdot7+2$; read the remainders upward: $2,0,2$.)
 ---
 Q: In base $b$, $121_b$ equals $144$ (in base 10). What is $b$?
 L: 1
@@ -9011,7 +9065,9 @@ W: 12
 W: 10
 W: 9
 W: 13
-S: $121_b=b^2+2b+1=(b+1)^2=144$, so $b=11$.
+S: $121_b=1\cdot b^2+2\cdot b+1=b^2+2b+1=(b+1)^2$.
+$(b+1)^2=144$ gives $b+1=12$, so $b=11$.
+(The digit $2$ is allowed since $2\lt11$.)
 ---
 Q: In some base $b$, $34_b+25_b=61_b$. What is $b$?
 L: 2
@@ -9020,7 +9076,9 @@ W: 9
 W: 7
 W: 10
 W: 6
-S: $(3b+4)+(2b+5)=6b+1$, so $b=8$. (All digits are below 8 ✓.)
+S: Convert everything to base 10: $34_b=3b+4$, $25_b=2b+5$, $61_b=6b+1$.
+$(3b+4)+(2b+5)=6b+1$ gives $5b+9=6b+1$, so $b=8$.
+Check the digits: the largest digit used is $6$, which is less than $8$. ✓ (In base 8: $4+5=9=11_8$, write $1$ carry $1$; $3+2+1=6$.)
 ---
 Q: How many digits does $1000$ have when written in base $2$?
 L: 1
@@ -9029,7 +9087,9 @@ W: 9
 W: 11
 W: 8
 W: 12
-S: $2^9=512\le1000\lt 1024=2^{10}$, so it has $10$ binary digits.
+S: A number has $k$ binary digits exactly when $2^{k-1}\le n\lt2^k$.
+$2^9=512\le1000\lt1024=2^{10}$, so $k=10$.
+(Indeed $1000=1111101000_2$.)
 ---
 Q: What is the largest three-digit base-$6$ number, written in base $10$?
 L: 1
@@ -9038,7 +9098,9 @@ W: 216
 W: 555
 W: 180
 W: 210
-S: $555_6=6^3-1=215$.
+S: The largest three-digit base-6 number uses the largest digit, $5$, in every place: $555_6$.
+$555_6=5\cdot36+5\cdot6+5=180+30+5=215$.
+Shortcut: it's one less than $1000_6=6^3=216$.
 ---
 Q: A positive integer is $47$ in base $b$ and $74$ in base $c$, where $b,c>7$. What is the smallest such integer (in base 10)?
 L: 3
@@ -9047,8 +9109,11 @@ W: 39
 W: 46
 W: 74
 W: 53
-S: $4b+7=7c+4$, so $4b+3=7c$, which needs $b\equiv1\pmod7$.
-$b=8$ gives $39$, so $c=5$, which is too small. $b=15$ gives $67=7\cdot9+4$ with $c=9$ ✓.
+S: In base 10, $47_b=4b+7$ and $74_c=7c+4$. Digits must be less than the base, so $b\ge8$ and $c\ge8$.
+Set equal: $4b+7=7c+4$, so $7c=4b+3$. We need $4b+3$ divisible by $7$: $4b\equiv-3\equiv4\pmod7$, so $b\equiv1\pmod7$.
+• $b=8$: $4(8)+7=39=7c+4$ gives $c=5$, too small (needs $c\ge8$).
+• $b=15$: $4(15)+7=67=7c+4$ gives $c=9$. ✓
+The smallest such integer is $67$ ($=47_{15}=74_9$).
 ---
 Q: What is $1011_2\times11_2$, written in base $10$?
 L: 1
@@ -9057,7 +9122,8 @@ W: 30
 W: 36
 W: 13
 W: 110
-S: $1011_2=11$ and $11_2=3$, so the product is $33$.
+S: Convert each factor: $1011_2=8+0+2+1=11$ and $11_2=2+1=3$.
+Product: $11\cdot3=33$.
 ---
 @@ base-digit
 Q: How many two-digit numbers with both digits nonzero decrease by $54$ when their digits are reversed?
@@ -9067,7 +9133,9 @@ W: 4
 W: 6
 W: 2
 W: 9
-S: $\overline{ab}-\overline{ba}=9(a-b)=54$, so $a-b=6$: $71,82,93$.
+S: Write the number as $\overline{ab}=10a+b$; reversed it's $10b+a$.
+Difference: $(10a+b)-(10b+a)=9(a-b)$. Setting $9(a-b)=54$ gives $a-b=6$.
+With digits $1$–$9$: $(a,b)=(7,1),(8,2),(9,3)$, i.e. $71,82,93$. That's $3$ numbers.
 ---
 Q: How many two-digit numbers equal $4$ times the sum of their digits?
 L: 2
@@ -9076,7 +9144,9 @@ W: 3
 W: 5
 W: 2
 W: 6
-S: $10a+b=4a+4b$ gives $b=2a$: $12,24,36,48$.
+S: Write $\overline{ab}=10a+b$ with $a\ge1$. The condition is $10a+b=4(a+b)$.
+Simplify: $6a=3b$, so $b=2a$.
+$b$ must be a digit, so $a\le4$: $12,24,36,48$. That's $4$ numbers.
 ---
 Q: How many four-digit palindromes are there?
 L: 1
@@ -9085,7 +9155,9 @@ W: 100
 W: 81
 W: 900
 W: 99
-S: $\overline{abba}$ with $a\in1..9$ and $b\in0..9$: $90$.
+S: A four-digit palindrome has the form $\overline{abba}$: the last two digits are forced by the first two.
+$a$ can be $1$–$9$ (no leading zero): $9$ choices. $b$ can be $0$–$9$: $10$ choices.
+Total: $9\cdot10=90$.
 ---
 Q: How many digits are used to write the integers from $1$ to $100$?
 L: 1
@@ -9094,7 +9166,11 @@ W: 190
 W: 200
 W: 189
 W: 193
-S: $9\cdot1+90\cdot2+1\cdot3=192$.
+S: Count by number of digits:
+• $1$–$9$: $9$ numbers × $1$ digit $=9$.
+• $10$–$99$: $90$ numbers × $2$ digits $=180$.
+• $100$: $1$ number × $3$ digits $=3$.
+Total: $9+180+3=192$.
 ---
 Q: What is the sum of the digits of $10^{20}-20$?
 L: 2
@@ -9103,7 +9179,9 @@ W: 180
 W: 162
 W: 171
 W: 178
-S: $10^{20}-20=\underbrace{99\cdots9}_{18}80$: digit sum $18\cdot9+8=170$.
+S: $10^{20}$ is $1$ followed by $20$ zeros. Subtracting $20$:
+$10^{20}-20=99\cdots980$, with eighteen $9$s followed by $8$ and $0$. (Check with a small case: $10^4-20=9980$, two $9$s then $80$.)
+Digit sum: $18\cdot9+8+0=162+8=170$.
 ---
 Q: How many three-digit numbers have digit sum $5$?
 L: 2
@@ -9112,7 +9190,9 @@ W: 21
 W: 10
 W: 12
 W: 20
-S: With $a\ge1$, let $a'=a-1$: $a'+b+c=4$ has $\binom{6}{2}=15$ solutions.
+S: Let the number be $\overline{abc}$ with $a\ge1$ and $a+b+c=5$.
+Substitute $a'=a-1\ge0$: $a'+b+c=4$ with all variables $\ge0$ (no digit can exceed $9$ here).
+Stars and bars: $\binom{4+2}{2}=\binom62=15$.
 ---
 Q: How many three-digit numbers $\overline{abc}$ with $c\ne0$ satisfy $\overline{abc}-\overline{cba}=396$?
 L: 3
@@ -9121,7 +9201,11 @@ W: 40
 W: 60
 W: 45
 W: 5
-S: $99(a-c)=396$, so $a-c=4$. The pairs $(a,c)$ are $(5,1),\dots,(9,5)$ (5 pairs), and $b$ is free (10 choices). Total $50$.
+S: $\overline{abc}-\overline{cba}=(100a+10b+c)-(100c+10b+a)=99(a-c)$.
+$99(a-c)=396$ gives $a-c=4$.
+With $c\ge1$ and $a\le9$: $(a,c)=(5,1),(6,2),(7,3),(8,4),(9,5)$: $5$ pairs.
+The middle digit $b$ cancels out, so it can be anything: $10$ choices.
+Total: $5\cdot10=50$.
 ---
 Q: What is the smallest positive integer whose digits sum to $30$?
 L: 2
@@ -9130,7 +9214,9 @@ W: 6999
 W: 5799
 W: 39990
 W: 2999
-S: A 3-digit number has digit sum at most 27, so we need 4 digits. The smallest puts the most 9s at the end: $3999$.
+S: Fewer digits means a smaller number, so first find the minimum number of digits. Three digits sum to at most $9+9+9=27\lt30$, so we need at least $4$ digits.
+With $4$ digits, make the leading digit as small as possible by making the others as large as possible: last three digits $9,9,9$ (sum $27$), leading digit $30-27=3$.
+Answer: $3999$.
 ---
 @@ base-dec
 Q: How many of the fractions $\frac12,\frac13,\frac14,\dots,\frac1{20}$ have terminating decimal expansions?
@@ -9140,7 +9226,9 @@ W: 6
 W: 8
 W: 9
 W: 5
-S: The denominators of the form $2^m5^n$ are $2,4,5,8,10,16,20$: $7$.
+S: A fraction $\frac1n$ has a terminating decimal exactly when $n$ has no prime factors other than $2$ and $5$.
+Among $2,\dots,20$, those are $2,4,5,8,10,16,20$.
+That's $7$ fractions.
 ---
 Q: How many digits are after the decimal point in the decimal expansion of $\frac{3}{80}$?
 L: 1
@@ -9149,7 +9237,9 @@ W: 3
 W: 2
 W: 5
 W: 6
-S: $80=2^4\cdot5$, so $\max(4,1)=4$ digits: $0.0375$.
+S: $\frac{3}{80}$ is in lowest terms, and $80=2^4\cdot5$.
+To make the denominator a power of $10$, multiply by $5^3$: $\frac{3}{80}=\frac{3\cdot125}{10^4}=\frac{375}{10000}=0.0375$.
+In general $\frac{m}{2^a5^b}$ has $\max(a,b)$ decimal digits: $\max(4,1)=4$.
 ---
 Q: What is the $100$th digit after the decimal point in $\frac17$?
 L: 1
@@ -9158,7 +9248,9 @@ W: 1
 W: 4
 W: 2
 W: 5
-S: $\frac17=0.\overline{142857}$ has period 6. $100\equiv4\pmod6$, so the digit is the 4th one: $8$.
+S: $\frac17=0.\overline{142857}$, which repeats every $6$ digits.
+$100=6\cdot16+4$, so the $100$th digit matches the $4$th digit of the block $1,4,2,8,5,7$.
+The $4$th digit is $8$.
 ---
 Q: What is the length of the repeating block in the decimal expansion of $\frac1{13}$?
 L: 2
@@ -9167,7 +9259,8 @@ W: 12
 W: 13
 W: 3
 W: 2
-S: $\frac1{13}=0.\overline{076923}$, period $6$ (the order of 10 mod 13).
+S: Long division: $\frac1{13}=0.076923076923\ldots=0.\overline{076923}$.
+The period is $6$. (It's the smallest $k$ with $13\mid10^k-1$: $10^6-1=999999=13\cdot76923$.)
 ---
 Q: For how many integers $n$ with $1\le n\le100$ does $\frac{n}{120}$ have a terminating decimal?
 L: 2
@@ -9176,7 +9269,9 @@ W: 34
 W: 40
 W: 25
 W: 30
-S: $120=2^3\cdot3\cdot5$. The factor $3$ must cancel, so $3\mid n$: $33$ values.
+S: $\frac{n}{120}$ terminates exactly when, in lowest terms, the denominator has only the primes $2$ and $5$.
+$120=2^3\cdot3\cdot5$, so the factor $3$ must cancel: $3\mid n$.
+Multiples of $3$ from $1$ to $100$: $\lfloor100/3\rfloor=33$.
 ---
 Q: What is the $2026$th digit after the decimal point in $\frac{1}{41}$?
 L: 2
@@ -9185,7 +9280,8 @@ W: 2
 W: 4
 W: 3
 W: 9
-S: $\frac1{41}=0.\overline{02439}$ has period 5. $2026\equiv1\pmod5$, so the digit is the first one: $0$.
+S: $\frac{1}{41}=0.\overline{02439}$, repeating every $5$ digits (indeed $41\cdot2439=99999$).
+$2026=5\cdot405+1$, so the $2026$th digit is the $1$st digit of the block, which is $0$.
 ---
 Q: What is the smallest integer $n>1$ such that the decimal expansion of $\frac1n$ repeats with period exactly $3$?
 L: 3
@@ -9194,7 +9290,10 @@ W: 37
 W: 7
 W: 13
 W: 111
-S: Period 3 means $n\mid999=3^3\cdot37$ but $n\nmid 9$ or $99$. Testing divisors: $3$ (period 1), $9$ (period 1), $27$: $\frac1{27}=0.\overline{037}$, period 3 ✓.
+S: $\frac1n$ has period $3$ exactly when $n\mid10^3-1=999$ but $n\nmid10^1-1=9$ (period $1$). Also $n$ must be coprime to $10$.
+$999=3^3\cdot37$. The divisors greater than $1$ in increasing order: $3,9,27,37,\dots$
+$3$ and $9$ divide $9$ ($\frac13=0.\overline3$, $\frac19=0.\overline1$, period $1$).
+$27$: $\frac1{27}=0.\overline{037}$, period $3$. ✓ So $n=27$.
 ---
 Q: What is the sum of the digits of the decimal expansion of $\frac{7}{16}$?
 L: 1
@@ -9203,7 +9302,8 @@ W: 18
 W: 16
 W: 20
 W: 21
-S: $\frac7{16}=0.4375$, and $4+3+7+5=19$.
+S: $16=2^4$, so multiply top and bottom by $5^4=625$: $\frac7{16}=\frac{4375}{10000}=0.4375$.
+Digit sum: $4+3+7+5=19$.
 @@ dioph-lin
 Q: Using only $5$-cent and $7$-cent stamps, what is the largest amount (in cents) that cannot be made exactly?
 L: 1
@@ -10236,7 +10336,10 @@ W: 720
 W: 30
 W: 210
 W: 1000
-S: $\frac{10\cdot9\cdot8}{6}=120$.
+S: $\binom{10}{3}$ counts the ways to choose $3$ objects from $10$ when order doesn't matter.
+Formula: $\binom nk=\dfrac{n(n-1)\cdots(n-k+1)}{k!}$, with $k$ factors on top.
+$\dbinom{10}{3}=\dfrac{10\cdot9\cdot8}{3\cdot2\cdot1}=\dfrac{720}{6}=120$.
+($720$ is the number of <i>ordered</i> selections; dividing by $3!=6$ removes the orderings of each group.)
 ---
 Q: If $\dbinom n2=45$, what is $n$?
 L: 1
@@ -10245,7 +10348,10 @@ W: 9
 W: 15
 W: 45
 W: 90
-S: $\frac{n(n-1)}2=45$, so $n(n-1)=90$ and $n=10$.
+S: Write the binomial coefficient as a formula: $\dbinom n2=\dfrac{n(n-1)}{2}$.
+Set it equal to $45$: $\dfrac{n(n-1)}{2}=45$, so $n(n-1)=90$.
+$90=10\cdot9$, two consecutive integers, so $n=10$.
+Check: $\binom{10}{2}=\frac{10\cdot9}{2}=45$. ✓ (This is also the number of handshakes among $10$ people.)
 ---
 Q: If $\dbinom n4=\dbinom n6$ and $n>6$, what is $n$?
 L: 1
@@ -10254,7 +10360,9 @@ W: 24
 W: 2
 W: 5
 W: 12
-S: By symmetry $\binom nk=\binom n{n-k}$, so $4+6=n$.
+S: Symmetry: $\binom nk=\binom n{n-k}$, because choosing $k$ objects to take is the same as choosing $n-k$ to leave behind.
+If $\binom n4=\binom n6$ with $4\ne6$, the only way is $6=n-4$, i.e. $n=4+6=10$.
+Check: $\binom{10}{4}=\binom{10}{6}=210$. ✓
 ---
 Q: What is the sum of all entries in row $8$ of Pascal's triangle ($\binom80$ through $\binom88$)?
 L: 1
@@ -10263,7 +10371,10 @@ W: 128
 W: 512
 W: 70
 W: 255
-S: $2^8=256$.
+S: Row $n$ of Pascal's triangle sums to $2^n$.
+Reason: $\binom n0+\binom n1+\cdots+\binom nn$ counts all subsets of an $n$-element set (by size), and each element is either in or out, giving $2^n$ subsets. Equivalently, set $x=1$ in $(1+x)^n$.
+Row $8$: $2^8=256$.
+Check: $1+8+28+56+70+56+28+8+1=256$. ✓
 ---
 Q: How many entries in row $10$ of Pascal's triangle ($\binom{10}{0}$ through $\binom{10}{10}$) are odd?
 L: 3
@@ -10272,7 +10383,9 @@ W: 6
 W: 2
 W: 8
 W: 11
-S: $10=1010_2$ has two 1s, so there are $2^2=4$ odd entries ($\binom{10}{0},\binom{10}{2},\binom{10}{8},\binom{10}{10}$).
+S: Lucas' Theorem shortcut: the number of odd entries in row $n$ is $2^{(\text{number of 1s in the binary form of }n)}$.
+$10=8+2=1010_2$, which has two 1s, so there are $2^2=4$ odd entries.
+Check directly: row $10$ is $1,10,45,120,210,252,210,120,45,10,1$. The odd entries are $1,45,45,1$: four of them. ✓
 ---
 Q: What is $\dbinom73+\dbinom74$?
 L: 1
@@ -10281,7 +10394,10 @@ W: 35
 W: 140
 W: 56
 W: 128
-S: Pascal's rule: $\binom84=70$.
+S: Pascal's rule: $\binom{n}{k-1}+\binom nk=\binom{n+1}{k}$ (each entry is the sum of the two above it).
+$\binom73+\binom74=\binom84$.
+$\binom84=\dfrac{8\cdot7\cdot6\cdot5}{24}=70$.
+Check: $\binom73=35$ and $\binom74=35$, and $35+35=70$. ✓
 ---
 Q: What is the largest of the numbers $\dbinom{12}{0},\dbinom{12}{1},\dots,\dbinom{12}{12}$?
 L: 2
@@ -10290,7 +10406,10 @@ W: 792
 W: 495
 W: 1024
 W: 462
-S: The middle entry: $\binom{12}6=924$.
+S: The entries of a row increase toward the middle and then decrease (the row is symmetric and "unimodal").
+Row $12$ has $13$ entries, so the middle one is $\binom{12}{6}$.
+$\binom{12}{6}=\dfrac{12\cdot11\cdot10\cdot9\cdot8\cdot7}{720}=924$.
+($792=\binom{12}{5}$ is its neighbor; $1024=2^{10}$ is unrelated.)
 ---
 Q: What is $\dbinom90+\dbinom92+\dbinom94+\dbinom96+\dbinom98$?
 L: 2
@@ -10299,7 +10418,9 @@ W: 512
 W: 128
 W: 255
 W: 126
-S: The even-position entries make up half the row sum: $\frac{2^9}2=256$.
+S: Compare two expansions: $(1+1)^9=\sum\binom9k=2^9$ and $(1-1)^9=\sum(-1)^k\binom9k=0$.
+Adding them cancels the odd-$k$ terms: $2\left[\binom90+\binom92+\cdots+\binom98\right]=2^9+0$.
+So the even-position entries add to $\dfrac{2^9}{2}=256$, exactly half of the row sum $512$.
 ---
 @@ binom-exp
 Q: What is the coefficient of $x^3$ in the expansion of $(x+2)^5$?
@@ -10309,7 +10430,10 @@ W: 10
 W: 80
 W: 20
 W: 32
-S: $\binom53x^3\cdot2^2=10\cdot4x^3$.
+S: Binomial Theorem: $(x+2)^5=\sum_{k}\binom5k x^k\,2^{5-k}$.
+For $x^3$ we need $k=3$, so the term is $\binom53x^3\cdot2^{2}$.
+$\binom53=10$ and $2^2=4$, so the coefficient is $10\cdot4=40$.
+(Forgetting the power of $2$ gives $10$; using $2^3$ instead of $2^2$ gives $80$.)
 ---
 Q: What is the constant term in the expansion of $\left(x+\dfrac1x\right)^6$?
 L: 1
@@ -10318,7 +10442,9 @@ W: 15
 W: 6
 W: 1
 W: 30
-S: We need equal numbers of $x$ and $\frac1x$: $\binom63=20$.
+S: The general term of $\left(x+\frac1x\right)^6$ is $\binom6k x^{6-k}\left(\frac1x\right)^k=\binom6kx^{6-2k}$.
+The constant term has exponent $0$: $6-2k=0$, so $k=3$ (three $x$'s and three $\frac1x$'s).
+Coefficient: $\binom63=20$.
 ---
 Q: What is the coefficient of $x^2$ in $(1-2x)^6$?
 L: 1
@@ -10327,7 +10453,9 @@ W: -60
 W: 15
 W: 30
 W: 240
-S: $\binom62(-2)^2=15\cdot4=60$.
+S: The general term of $(1-2x)^6$ is $\binom6k(-2x)^k=\binom6k(-2)^kx^k$.
+For $x^2$, $k=2$: $\binom62(-2)^2=15\cdot4=60$.
+The sign is positive because $(-2)^2=+4$. ($-60$ forgets that an even power removes the minus sign.)
 ---
 Q: What is the constant term in the expansion of $\left(x^2-\dfrac2x\right)^6$?
 L: 2
@@ -10336,7 +10464,9 @@ W: -240
 W: 60
 W: 160
 W: 15
-S: The general term is $\binom6k(x^2)^{6-k}\left(-\frac2x\right)^k=\binom6k(-2)^kx^{12-3k}$. The exponent is 0 at $k=4$: $15\cdot16=240$.
+S: General term: $\binom6k(x^2)^{6-k}\left(-\dfrac2x\right)^k=\binom6k(-2)^k\,x^{12-2k}\cdot x^{-k}=\binom6k(-2)^kx^{12-3k}$.
+The constant term needs $12-3k=0$, so $k=4$.
+Coefficient: $\binom64(-2)^4=15\cdot16=240$.
 ---
 Q: What is the sum of the coefficients of $(2x-1)^7$?
 L: 1
@@ -10345,7 +10475,9 @@ W: -1
 W: 128
 W: 0
 W: 2187
-S: Plug in $x=1$: $1^7=1$.
+S: The sum of the coefficients of any polynomial $p(x)$ is $p(1)$, since every power of $x$ becomes $1$.
+$p(1)=(2\cdot1-1)^7=1^7=1$.
+(The expansion has large positive and negative coefficients that almost all cancel.)
 ---
 Q: What is the coefficient of $x^5$ in $(1+x)^4(1+x)^3$?
 L: 1
@@ -10354,7 +10486,8 @@ W: 35
 W: 12
 W: 7
 W: 10
-S: The product is $(1+x)^7$, so the coefficient is $\binom75=21$.
+S: Combine first: $(1+x)^4(1+x)^3=(1+x)^{7}$ (exponents add).
+The coefficient of $x^5$ in $(1+x)^7$ is $\binom75=\binom72=\dfrac{7\cdot6}{2}=21$.
 ---
 Q: What is the coefficient of the middle term in the expansion of $(a+b)^8$?
 L: 1
@@ -10363,7 +10496,8 @@ W: 56
 W: 28
 W: 256
 W: 8
-S: $\binom84=70$.
+S: $(a+b)^8$ has $9$ terms, $\binom80a^8,\ \binom81a^7b,\ \dots,\ \binom88b^8$, so the middle one is the $5$th, with $k=4$.
+Its coefficient is $\binom84=\dfrac{8\cdot7\cdot6\cdot5}{24}=70$.
 ---
 Q: What is the coefficient of $x^4$ in $(1+x+x^2)^3$?
 L: 3
@@ -10372,7 +10506,12 @@ W: 7
 W: 3
 W: 10
 W: 15
-S: Choose exponents from $\{0,1,2\}$ in the three factors that sum to 4: arrangements of $(2,2,0)$ give 3 and of $(2,1,1)$ give 3. Total $6$.
+S: Expanding $(1+x+x^2)^3$ means choosing one term ($1$, $x$, or $x^2$) from each of the three factors and multiplying.
+To get $x^4$, the chosen exponents (each $0,1,2$) must add to $4$:
+• $(2,2,0)$ in some order: $3$ arrangements.
+• $(2,1,1)$ in some order: $3$ arrangements.
+Each choice contributes $1$, so the coefficient is $3+3=6$.
+Check: $(1+x+x^2)^3=1+3x+6x^2+7x^3+6x^4+3x^5+x^6$. ✓
 ---
 @@ binom-id
 Q: What is $\displaystyle\sum_{k=0}^{10}\binom{10}{k}$?
@@ -10382,7 +10521,9 @@ W: 512
 W: 100
 W: 2048
 W: 1023
-S: $2^{10}=1024$.
+S: $\sum_{k=0}^{n}\binom nk=2^n$: set $x=1$ in $(1+x)^n=\sum\binom nkx^k$.
+For $n=10$: $2^{10}=1024$.
+Counting view: this adds up the number of subsets of each size of a $10$-element set, i.e. all $2^{10}$ subsets.
 ---
 Q: What is $\displaystyle\sum_{k=0}^{6}\binom6k^2$?
 L: 2
@@ -10391,7 +10532,9 @@ W: 64
 W: 4096
 W: 462
 W: 720
-S: Vandermonde: $\sum\binom nk^2=\binom{2n}n=\binom{12}6=924$.
+S: Rewrite $\binom6k^2=\binom6k\binom6{6-k}$ (symmetry).
+Vandermonde: $\sum_k\binom6k\binom6{6-k}$ counts ways to pick $6$ people from $6$ boys and $6$ girls ($k$ boys, $6-k$ girls), so it equals $\binom{12}{6}$.
+$\binom{12}6=924$.
 ---
 Q: What is $\displaystyle\sum_{k=0}^{8}k\binom8k$?
 L: 2
@@ -10400,7 +10543,9 @@ W: 256
 W: 512
 W: 2048
 W: 36
-S: $n2^{n-1}=8\cdot128=1024$.
+S: Identity: $k\binom nk=n\binom{n-1}{k-1}$ (choose a committee of $k$ and then its chair, or the chair first and then $k-1$ others).
+So $\sum k\binom8k=8\sum\binom7{k-1}=8\cdot2^7=1024$.
+In general $\sum_k k\binom nk=n\,2^{n-1}$.
 ---
 Q: What is the coefficient of $a^2b^3c$ in $(a+b+c)^6$?
 L: 2
@@ -10409,7 +10554,9 @@ W: 120
 W: 30
 W: 20
 W: 720
-S: $\frac{6!}{2!\,3!\,1!}=60$.
+S: In $(a+b+c)^6$, the coefficient of $a^2b^3c$ counts the ways to choose which $2$ of the $6$ factors give $a$, which $3$ give $b$, and which $1$ gives $c$.
+That's the multinomial coefficient $\dfrac{6!}{2!\,3!\,1!}=\dfrac{720}{12}=60$.
+Equivalently $\binom62\binom43=15\cdot4=60$.
 ---
 Q: What is $\binom30\binom43+\binom31\binom42+\binom32\binom41+\binom33\binom40$?
 L: 2
@@ -10418,7 +10565,9 @@ W: 21
 W: 70
 W: 12
 W: 64
-S: Vandermonde: $\binom{3+4}{3}=35$.
+S: Each term is $\binom3k\binom4{3-k}$, and the sum runs over all $k$.
+Vandermonde: this counts choosing $3$ items from a group of $3$ plus a group of $4$, so it's $\binom{7}{3}=35$.
+Check: $1\cdot4+3\cdot6+3\cdot4+1\cdot1=4+18+12+1=35$. ✓
 ---
 Q: What is $\displaystyle\sum_{k=0}^{20}(-1)^k\binom{20}{k}$?
 L: 1
@@ -10427,7 +10576,8 @@ W: 1
 W: -1
 W: 2^{20}
 W: 20
-S: It is $(1-1)^{20}=0$.
+S: By the Binomial Theorem, $\sum_k\binom{20}{k}(-1)^k=(1+(-1))^{20}=0^{20}=0$.
+Interpretation: a $20$-element set has as many even-size subsets as odd-size subsets.
 ---
 Q: How many subsets of $\{1,2,\dots,10\}$ have an even number of elements?
 L: 1
@@ -10436,7 +10586,9 @@ W: 1024
 W: 256
 W: 511
 W: 252
-S: Exactly half of the $2^{10}$ subsets: $512$.
+S: For a nonempty set, exactly half of all subsets have even size: $\sum\binom{10}{k}(-1)^k=0$ says even-size and odd-size subsets are equally many.
+There are $2^{10}=1024$ subsets in all, so $512$ have an even number of elements.
+(The empty set counts as even.)
 ---
 Q: What is $\displaystyle\sum_{k=0}^{9}\frac{1}{k+1}\binom9k$?
 L: 3
@@ -10445,7 +10597,8 @@ W: \frac{1023}{9}
 W: \frac{511}{5}
 W: 103
 W: 1023
-S: $\frac1{k+1}\binom9k=\frac1{10}\binom{10}{k+1}$, so the sum is $\frac{1}{10}\left(2^{10}-1\right)=\frac{1023}{10}$.
+S: Use $\dfrac1{k+1}\binom9k=\dfrac{1}{k+1}\cdot\dfrac{9!}{k!\,(9-k)!}=\dfrac{1}{10}\cdot\dfrac{10!}{(k+1)!\,(9-k)!}=\dfrac1{10}\binom{10}{k+1}$.
+So the sum is $\dfrac1{10}\left[\binom{10}{1}+\binom{10}{2}+\cdots+\binom{10}{10}\right]=\dfrac{1}{10}\left(2^{10}-\binom{10}{0}\right)=\dfrac{1023}{10}$.
 @@ exp-rules
 Q: If $4^x=8^{x-1}$, what is $x$?
 L: 1
@@ -10454,7 +10607,10 @@ W: 1
 W: -3
 W: 2
 W: 6
-S: $2^{2x}=2^{3x-3}$, so $2x=3x-3$ and $x=3$.
+S: Rewrite both sides as powers of the same base, $2$: $4=2^2$ and $8=2^3$.
+$4^x=(2^2)^x=2^{2x}$ and $8^{x-1}=(2^3)^{x-1}=2^{3x-3}$.
+Equal powers of $2$ have equal exponents: $2x=3x-3$, so $x=3$.
+Check: $4^3=64$ and $8^2=64$. ✓
 ---
 Q: What is $27^{2/3}$?
 L: 1
@@ -10463,7 +10619,10 @@ W: 18
 W: 3
 W: 6
 W: 81
-S: $\left(\sqrt[3]{27}\right)^2=3^2=9$.
+S: A fractional exponent $\frac mn$ means "take the $n$th root, then raise to the $m$th power": $a^{m/n}=\left(\sqrt[n]a\right)^m$.
+$\sqrt[3]{27}=3$, since $3^3=27$.
+So $27^{2/3}=3^2=9$.
+(Taking the root first keeps the numbers small; $(27^2)^{1/3}=\sqrt[3]{729}=9$ gives the same answer.)
 ---
 Q: If $2^{x+2}-2^x=48$, what is $x$?
 L: 1
@@ -10472,7 +10631,10 @@ W: 3
 W: 5
 W: 6
 W: 8
-S: $2^x(4-1)=48$, so $2^x=16$ and $x=4$.
+S: Factor out the smaller power: $2^{x+2}=2^x\cdot2^2=4\cdot2^x$.
+So $2^{x+2}-2^x=4\cdot2^x-2^x=3\cdot2^x$.
+$3\cdot2^x=48$ gives $2^x=16=2^4$, so $x=4$.
+Check: $2^6-2^4=64-16=48$. ✓
 ---
 Q: Which of these is largest?
 L: 2
@@ -10481,7 +10643,13 @@ W: 3^{60}
 W: 5^{40}
 W: 6^{30}
 W: 7^{20}
-S: Write each as a 20th power: $2^{100}=32^{20}$, $3^{60}=27^{20}$, $5^{40}=25^{20}$, $6^{30}=(6^{1.5})^{20}\approx14.7^{20}$, $7^{20}$. The largest is $2^{100}$.
+S: To compare powers with different bases and exponents, rewrite them all with the <b>same exponent</b>. Every exponent here is a multiple of $10$... and of $20$ except $30$, so use $20$ and handle $6^{30}$ separately.
+• $2^{100}=(2^5)^{20}=32^{20}$
+• $3^{60}=(3^3)^{20}=27^{20}$
+• $5^{40}=(5^2)^{20}=25^{20}$
+• $7^{20}$
+• $6^{30}=(6^3)^{10}=216^{10}$, while $2^{100}=(2^{10})^{10}=1024^{10}$.
+The base $32$ beats $27$, $25$ and $7$, and $1024^{10}\gt216^{10}$, so $2^{100}$ is the largest.
 ---
 Q: What real $x$ satisfies $4^x-3\cdot2^x-4=0$?
 L: 2
@@ -10490,7 +10658,10 @@ W: 1
 W: 4
 W: -1
 W: 0
-S: Let $u=2^x>0$: $u^2-3u-4=(u-4)(u+1)=0$, so $u=4$ and $x=2$.
+S: Notice $4^x=(2^x)^2$. Substitute $u=2^x$, which is always positive.
+The equation becomes $u^2-3u-4=0$, which factors as $(u-4)(u+1)=0$.
+$u=-1$ is impossible because $2^x\gt0$. So $u=4$, i.e. $2^x=4$ and $x=2$.
+Check: $16-3\cdot4-4=0$. ✓
 ---
 Q: What is $\dfrac{2^{10}+2^{10}}{2^9}$?
 L: 1
@@ -10499,7 +10670,9 @@ W: 2
 W: 8
 W: 2^{11}
 W: 1
-S: $\frac{2\cdot2^{10}}{2^9}=\frac{2^{11}}{2^9}=4$.
+S: The numerator is $2^{10}+2^{10}=2\cdot2^{10}=2^{11}$ (two copies of the same number).
+Divide: $\dfrac{2^{11}}{2^9}=2^{11-9}=2^2=4$.
+(A common slip is to add exponents, $2^{10}+2^{10}\ne2^{20}$.)
 ---
 Q: If $3^a=5$ and $5^b=9$, what is $ab$?
 L: 2
@@ -10508,7 +10681,10 @@ W: 1
 W: 3
 W: 45
 W: \frac{9}{5}
-S: $3^{ab}=(3^a)^b=5^b=9=3^2$, so $ab=2$.
+S: Chain the two equations: $3^{ab}=(3^a)^b$.
+Since $3^a=5$, this is $5^b$, and $5^b=9$.
+So $3^{ab}=9=3^2$, which forces $ab=2$.
+(You never need the individual values $a=\log_35$ and $b=\log_59$.)
 ---
 Q: How many real solutions does $2^x=x^2$ have?
 L: 3
@@ -10517,7 +10693,10 @@ W: 2
 W: 1
 W: 4
 W: 0
-S: $x=2$ and $x=4$ work. For negative $x$, $2^x$ increases from near $0$ to $1$ while $x^2$ decreases from large values to $0$, so they cross once more. Total $3$.
+S: Look for solutions in three regions.
+• $x=2$: $2^2=4=2^2$. ✓ $\;x=4$: $2^4=16=4^2$. ✓ These are the two positive solutions (the curves cross at $2$ and again at $4$; beyond $4$, $2^x$ grows faster).
+• $x\lt0$: as $x$ goes from $-\infty$ up to $0$, $2^x$ rises from near $0$ to $1$, while $x^2$ falls from huge values to $0$. A rising curve and a falling curve cross exactly once, somewhere near $x\approx-0.77$.
+Total: $3$ real solutions.
 ---
 @@ log-prop
 Q: What is $\log_2 8+\log_3 81$?
@@ -10527,7 +10706,9 @@ W: 12
 W: 5
 W: 6
 W: 24
-S: $3+4=7$.
+S: $\log_b N$ is the exponent you put on $b$ to get $N$.
+$\log_2 8=3$ because $2^3=8$, and $\log_3 81=4$ because $3^4=81$.
+Sum: $3+4=7$.
 ---
 Q: What is $\log_4 32$?
 L: 1
@@ -10536,7 +10717,9 @@ W: 8
 W: 2
 W: \frac{2}{5}
 W: 3
-S: $4^x=32$ means $2^{2x}=2^5$, so $x=\frac52$.
+S: Let $\log_4 32=x$, which means $4^x=32$.
+Write both as powers of $2$: $2^{2x}=2^5$, so $2x=5$ and $x=\frac52$.
+Check: $4^{5/2}=(\sqrt4)^5=2^5=32$. ✓
 ---
 Q: What is $\log_2 3\cdot\log_3 4\cdot\log_4 8$?
 L: 1
@@ -10545,7 +10728,9 @@ W: 24
 W: 1
 W: 6
 W: 9
-S: The chain telescopes: $\log_28=3$.
+S: Change of base: $\log_ab=\dfrac{\ln b}{\ln a}$.
+The product is $\dfrac{\ln3}{\ln2}\cdot\dfrac{\ln4}{\ln3}\cdot\dfrac{\ln8}{\ln4}$; every middle factor cancels (it telescopes), leaving $\dfrac{\ln8}{\ln2}=\log_28$.
+$\log_28=3$.
 ---
 Q: If $\log_a 2=x$ and $\log_a 3=y$, what is $\log_a 12$?
 L: 1
@@ -10554,7 +10739,9 @@ W: x+y
 W: 2xy
 W: x^2y
 W: x+2y
-S: $12=2^2\cdot3$, so $\log_a12=2x+y$.
+S: Factor $12$ into the given pieces: $12=2^2\cdot3$.
+Log rules: $\log_a(MN)=\log_aM+\log_aN$ and $\log_a(M^k)=k\log_aM$.
+So $\log_a12=\log_a2^2+\log_a3=2\log_a2+\log_a3=2x+y$.
 ---
 Q: What is $\log_{10}2+\log_{10}50$?
 L: 1
@@ -10563,7 +10750,9 @@ W: 1
 W: 52
 W: \log_{10}52
 W: 100
-S: $\log_{10}100=2$.
+S: Product rule: $\log_{10}2+\log_{10}50=\log_{10}(2\cdot50)=\log_{10}100$.
+$10^2=100$, so the answer is $2$.
+(Logs of a sum don't split, but a sum of logs is the log of a product.)
 ---
 Q: What is $\dfrac{1}{\log_2 36}+\dfrac{1}{\log_3 36}$?
 L: 2
@@ -10572,7 +10761,9 @@ W: 1
 W: 2
 W: \frac{1}{36}
 W: \frac{5}{36}
-S: $\log_{36}2+\log_{36}3=\log_{36}6=\frac12$.
+S: Reciprocal rule: $\dfrac{1}{\log_ab}=\log_ba$ (from change of base).
+So the expression is $\log_{36}2+\log_{36}3=\log_{36}(2\cdot3)=\log_{36}6$.
+Since $36^{1/2}=6$, $\log_{36}6=\frac12$.
 ---
 Q: What is $\log_9 27$?
 L: 1
@@ -10581,7 +10772,9 @@ W: \frac{2}{3}
 W: 3
 W: 2
 W: \frac{1}{3}
-S: $9^x=27$ means $3^{2x}=3^3$, so $x=\frac32$.
+S: Let $\log_927=x$, so $9^x=27$.
+In base $3$: $3^{2x}=3^3$, so $2x=3$ and $x=\frac32$.
+Check: $9^{3/2}=(\sqrt9)^3=27$. ✓
 ---
 Q: What is $\log_2\!\left(1+\frac11\right)+\log_2\!\left(1+\frac12\right)+\cdots+\log_2\!\left(1+\frac1{31}\right)$?
 L: 2
@@ -10590,7 +10783,10 @@ W: 4
 W: 6
 W: 31
 W: 32
-S: The product $\frac21\cdot\frac32\cdots\frac{32}{31}=32$, so the sum is $\log_232=5$.
+S: A sum of logs is the log of a product: the sum equals $\log_2\left[\left(1+\tfrac11\right)\left(1+\tfrac12\right)\cdots\left(1+\tfrac1{31}\right)\right]$.
+Each factor is $1+\frac1k=\frac{k+1}{k}$, so the product is $\frac21\cdot\frac32\cdot\frac43\cdots\frac{32}{31}$.
+It telescopes: every numerator cancels the next denominator, leaving $\frac{32}{1}=32$.
+$\log_232=5$.
 ---
 @@ log-eq
 Q: What real $x$ satisfies $\log_2 x+\log_2(x-2)=3$?
@@ -10600,7 +10796,10 @@ W: -2
 W: 2
 W: 8
 W: 6
-S: $x(x-2)=8$, so $x=4$ or $-2$. The domain requires $x>2$, so $x=4$.
+S: Combine the logs: $\log_2x+\log_2(x-2)=\log_2\big(x(x-2)\big)=3$, so $x(x-2)=2^3=8$.
+$x^2-2x-8=0$ factors as $(x-4)(x+2)=0$, giving $x=4$ or $x=-2$.
+Domain check: both $\log_2x$ and $\log_2(x-2)$ need positive inputs, so $x\gt2$. Reject $-2$.
+$x=4$. Check: $\log_24+\log_22=2+1=3$. ✓
 ---
 Q: Using $\log_{10}2\approx0.30103$, how many digits does $2^{100}$ have?
 L: 2
@@ -10609,7 +10808,9 @@ W: 30
 W: 100
 W: 32
 W: 29
-S: $\log_{10}2^{100}\approx30.103$, so $\lfloor30.103\rfloor+1=31$ digits.
+S: A positive integer $N$ has $\lfloor\log_{10}N\rfloor+1$ digits (e.g. numbers from $100$ to $999$ have logs from $2$ up to just under $3$).
+$\log_{10}2^{100}=100\log_{10}2\approx100(0.30103)=30.103$.
+So $2^{100}$ has $\lfloor30.103\rfloor+1=31$ digits. (It's about $1.27\times10^{30}$.)
 ---
 Q: If $\log_x 81=4$, what is $x$?
 L: 1
@@ -10618,7 +10819,8 @@ W: 9
 W: 27
 W: 81
 W: \frac{81}{4}
-S: $x^4=81$, so $x=3$.
+S: $\log_x81=4$ means $x^4=81$.
+$81=3^4$, so $x=3$ (a log base must be positive, so $x=-3$ is not allowed).
 ---
 Q: What real $x$ satisfies $\log_3(x+1)-\log_3(x-1)=1$?
 L: 1
@@ -10627,7 +10829,9 @@ W: 3
 W: 1
 W: 4
 W: \frac{1}{2}
-S: $\frac{x+1}{x-1}=3$, so $x+1=3x-3$ and $x=2$.
+S: Quotient rule: $\log_3(x+1)-\log_3(x-1)=\log_3\dfrac{x+1}{x-1}=1$.
+So $\dfrac{x+1}{x-1}=3^1=3$, giving $x+1=3x-3$ and $x=2$.
+Domain: we need $x-1\gt0$; $x=2$ works. Check: $\log_33-\log_31=1-0=1$. ✓
 ---
 Q: What is the product of all real solutions of $(\log_2 x)^2-5\log_2 x+6=0$?
 L: 2
@@ -10636,7 +10840,10 @@ W: 12
 W: 6
 W: 24
 W: 64
-S: $\log_2x=2$ or $3$, so $x=4,8$. Product $32$. (Equivalently $2^{2+3}$.)
+S: Substitute $u=\log_2x$: $u^2-5u+6=0$, i.e. $(u-2)(u-3)=0$.
+So $\log_2x=2$ or $3$, giving $x=4$ or $x=8$.
+Product: $4\cdot8=32$.
+Shortcut: by Vieta the two values of $u$ add to $5$, and $x_1x_2=2^{u_1}\cdot2^{u_2}=2^{u_1+u_2}=2^5=32$.
 ---
 Q: If $2^x=10$, what is $\lfloor x\rfloor$?
 L: 1
@@ -10645,7 +10852,9 @@ W: 4
 W: 2
 W: 5
 W: 10
-S: $2^3=8\lt 10\lt 16=2^4$, so $3\lt x\lt 4$.
+S: $\lfloor x\rfloor$ is the integer just below $x=\log_210$.
+Trap $10$ between consecutive powers of $2$: $2^3=8\lt10\lt16=2^4$.
+So $3\lt x\lt4$ and $\lfloor x\rfloor=3$. (In fact $x\approx3.32$.)
 ---
 Q: How many digits does $5^{20}\cdot2^{30}$ have?
 L: 2
@@ -10654,7 +10863,9 @@ W: 20
 W: 23
 W: 30
 W: 50
-S: $5^{20}2^{30}=10^{20}\cdot2^{10}=1024\cdot10^{20}$: $4+20=24$ digits.
+S: Pair each $5$ with a $2$ to make $10$s: $5^{20}\cdot2^{30}=(5\cdot2)^{20}\cdot2^{10}=10^{20}\cdot1024$.
+$1024$ has $4$ digits, and multiplying by $10^{20}$ appends $20$ zeros.
+Total: $4+20=24$ digits.
 ---
 Q: What real $x$ satisfies $\log_2(\log_3(\log_4 x))=0$?
 L: 2
@@ -10663,7 +10874,10 @@ W: 12
 W: 81
 W: 16
 W: 256
-S: $\log_3(\log_4x)=1$, so $\log_4x=3$ and $x=64$.
+S: Peel off the logs from the outside in, using $\log_by=c\iff y=b^c$.
+$\log_2(\cdots)=0\Rightarrow\log_3(\log_4x)=2^0=1$.
+$\log_3(\log_4x)=1\Rightarrow\log_4x=3^1=3$.
+$\log_4x=3\Rightarrow x=4^3=64$.
 @@ trig-unit
 Q: What is $\sin150^\circ$?
 L: 1
@@ -10965,7 +11179,9 @@ W: 11+10i
 W: -5-10i
 W: 3-8i
 W: -5+14i
-S: $3-12i+2i-8i^2=3-10i+8=11-10i$.
+S: Multiply out with FOIL, treating $i$ like a variable: $(3+2i)(1-4i)=3-12i+2i-8i^2$.
+Replace $i^2$ by $-1$: $-8i^2=+8$.
+Combine: real part $3+8=11$, imaginary part $-12+2=-10$. Answer: $11-10i$.
 ---
 Q: What is $i^{2027}$?
 L: 1
@@ -10974,7 +11190,8 @@ W: i
 W: -1
 W: 1
 W: 0
-S: $2027\equiv3\pmod4$, and $i^3=-i$.
+S: Powers of $i$ cycle with period $4$: $i^1=i,\ i^2=-1,\ i^3=-i,\ i^4=1$.
+$2027=4\cdot506+3$, so $i^{2027}=(i^4)^{506}\cdot i^3=i^3=-i$.
 ---
 Q: What is $\dfrac{1+i}{1-i}$?
 L: 1
@@ -10983,7 +11200,9 @@ W: -i
 W: 1
 W: 0
 W: 1+i
-S: $\frac{(1+i)^2}{(1-i)(1+i)}=\frac{2i}{2}=i$.
+S: Multiply top and bottom by the conjugate of the denominator, $1+i$:
+$\dfrac{1+i}{1-i}\cdot\dfrac{1+i}{1+i}=\dfrac{(1+i)^2}{1-i^2}=\dfrac{1+2i+i^2}{2}=\dfrac{2i}{2}=i$.
+Check: $i(1-i)=i-i^2=1+i$. ✓
 ---
 Q: What is $|3-4i|$?
 L: 1
@@ -10992,7 +11211,8 @@ W: 7
 W: 1
 W: 25
 W: \sqrt{7}
-S: $\sqrt{9+16}=5$.
+S: The modulus of $a+bi$ is its distance from the origin, $\sqrt{a^2+b^2}$.
+$|3-4i|=\sqrt{3^2+(-4)^2}=\sqrt{9+16}=\sqrt{25}=5$ (a 3-4-5 right triangle).
 ---
 Q: What is $(1+i)^{10}$?
 L: 2
@@ -11001,7 +11221,9 @@ W: -32i
 W: 32
 W: 1024i
 W: -32
-S: $(1+i)^2=2i$, so $(1+i)^{10}=(2i)^5=32i^5=32i$.
+S: Start from the square: $(1+i)^2=1+2i+i^2=2i$.
+Then $(1+i)^{10}=\big((1+i)^2\big)^5=(2i)^5=32\,i^5$.
+$i^5=i^4\cdot i=i$, so the answer is $32i$.
 ---
 Q: A complex number $z$ satisfies $z+2\bar z=9+4i$. What is $|z|$?
 L: 2
@@ -11010,7 +11232,10 @@ W: 4
 W: 3
 W: 7
 W: \sqrt{97}
-S: With $z=a+bi$: $3a-bi=9+4i$, so $a=3$, $b=-4$, and $|z|=5$.
+S: Write $z=a+bi$, so $\bar z=a-bi$.
+$z+2\bar z=(a+bi)+2(a-bi)=3a-bi$.
+Match with $9+4i$: real parts $3a=9$ gives $a=3$; imaginary parts $-b=4$ gives $b=-4$.
+$|z|=\sqrt{3^2+(-4)^2}=5$.
 ---
 Q: The complex number $z=3+bi$ with $b>0$ has $|z|=5$. What is the real part of $z^2$?
 L: 2
@@ -11019,7 +11244,9 @@ W: 7
 W: 25
 W: -16
 W: 9
-S: $b=4$, so $z^2=9-16+24i$, with real part $-7$.
+S: $|z|=5$ means $3^2+b^2=25$, so $b^2=16$ and $b=4$ (since $b\gt0$). So $z=3+4i$.
+$z^2=(3+4i)^2=9+24i+16i^2=9-16+24i=-7+24i$.
+The real part is $-7$.
 ---
 Q: How many complex numbers $z$ satisfy $z^2=\bar z$?
 L: 3
@@ -11028,7 +11255,10 @@ W: 3
 W: 2
 W: 5
 W: 6
-S: Taking moduli: $|z|^2=|z|$, so $|z|=0$ or $1$. If $|z|=1$, multiply by $z$: $z^3=z\bar z=1$, which gives 3 cube roots of unity. Adding $z=0$: $4$.
+S: Take absolute values of both sides: $|z^2|=|\bar z|$, i.e. $|z|^2=|z|$, so $|z|=0$ or $|z|=1$.
+• $|z|=0$: $z=0$ works ($0=0$).
+• $|z|=1$: then $\bar z=\frac1z$ (since $z\bar z=|z|^2=1$). The equation becomes $z^2=\frac1z$, i.e. $z^3=1$, which has three solutions: the cube roots of unity $1,\ \omega,\ \omega^2$.
+Total: $1+3=4$ solutions.
 ---
 @@ cplx-polar
 Q: What is $(1+\sqrt3\,i)^6$?
@@ -11038,7 +11268,9 @@ W: -64
 W: 64i
 W: 32
 W: 6
-S: $1+\sqrt3i=2\operatorname{cis}60^\circ$, so the power is $64\operatorname{cis}360^\circ=64$.
+S: Polar form: $1+\sqrt3i$ has modulus $\sqrt{1+3}=2$ and argument $60^\circ$ (since $\tan\theta=\sqrt3$ in quadrant I). So $1+\sqrt3i=2\operatorname{cis}60^\circ$.
+De Moivre: $(2\operatorname{cis}60^\circ)^6=2^6\operatorname{cis}(6\cdot60^\circ)=64\operatorname{cis}360^\circ$.
+$\operatorname{cis}360^\circ=1$, so the answer is $64$.
 ---
 Q: What is the argument of $-1+i$, in degrees (between $0$ and $360$)?
 L: 1
@@ -11047,7 +11279,9 @@ W: 45
 W: 225
 W: 315
 W: 90
-S: The point $(-1,1)$ lies in quadrant II, on the line $y=-x$: $135^\circ$.
+S: $-1+i$ is the point $(-1,1)$: left of the imaginary axis and above the real axis, i.e. quadrant II.
+It lies on the line $y=-x$, which makes a $45^\circ$ angle with the negative real axis.
+So the argument is $180^\circ-45^\circ=135^\circ$.
 ---
 Q: What is $(\cos20^\circ+i\sin20^\circ)^9$?
 L: 1
@@ -11056,7 +11290,8 @@ W: 1
 W: i
 W: -i
 W: 9
-S: De Moivre: $\operatorname{cis}180^\circ=-1$.
+S: De Moivre's Theorem: $(\cos\theta+i\sin\theta)^n=\cos n\theta+i\sin n\theta$.
+Here $n\theta=9\cdot20^\circ=180^\circ$, and $\cos180^\circ+i\sin180^\circ=-1+0i=-1$.
 ---
 Q: What is $|(3+4i)^3|$?
 L: 1
@@ -11065,7 +11300,9 @@ W: 25
 W: 5
 W: 343
 W: 75
-S: $|z|^3=5^3=125$.
+S: The modulus of a product is the product of the moduli, so $|z^3|=|z|^3$.
+$|3+4i|=\sqrt{9+16}=5$, so $|(3+4i)^3|=5^3=125$.
+(No need to expand $(3+4i)^3=-117+44i$, though $\sqrt{117^2+44^2}=125$ confirms it.)
 ---
 Q: The point $2+3i$ is rotated $90^\circ$ counterclockwise about the origin. What is the result?
 L: 1
@@ -11074,7 +11311,9 @@ W: 3-2i
 W: -2+3i
 W: 2-3i
 W: -3-2i
-S: Multiply by $i$: $2i+3i^2=-3+2i$.
+S: Multiplying by $i=\operatorname{cis}90^\circ$ rotates a point $90^\circ$ counterclockwise about the origin.
+$(2+3i)\cdot i=2i+3i^2=-3+2i$.
+Geometrically, $(x,y)\to(-y,x)$: $(2,3)\to(-3,2)$.
 ---
 Q: What is the smallest positive integer $n$ such that $(1+i)^n$ is a real number?
 L: 2
@@ -11083,7 +11322,9 @@ W: 2
 W: 8
 W: 1
 W: 3
-S: $\arg(1+i)^n=45n^\circ$ must be a multiple of $180^\circ$, so $n=4$. (Indeed $(1+i)^4=-4$.)
+S: $1+i=\sqrt2\operatorname{cis}45^\circ$, so $(1+i)^n=(\sqrt2)^n\operatorname{cis}(45n)^\circ$.
+This is real exactly when its argument $45n^\circ$ is a multiple of $180^\circ$, i.e. when $4\mid n$.
+The smallest positive $n$ is $4$; indeed $(1+i)^4=(2i)^2=-4$.
 ---
 Q: What is $\left(\dfrac{1+i}{\sqrt2}\right)^{2026}$?
 L: 2
@@ -11092,7 +11333,9 @@ W: 1
 W: -1
 W: -i
 W: \frac{1+i}{\sqrt{2}}
-S: $\frac{1+i}{\sqrt2}=\operatorname{cis}45^\circ$, which has period 8. $2026\equiv2\pmod8$, so the value is $\operatorname{cis}90^\circ=i$.
+S: $\dfrac{1+i}{\sqrt2}=\dfrac{\sqrt2}{2}+\dfrac{\sqrt2}{2}i=\operatorname{cis}45^\circ$, a unit complex number.
+Its powers repeat every $8$ (since $8\cdot45^\circ=360^\circ$).
+$2026=8\cdot253+2$, so the value is $\operatorname{cis}(2\cdot45^\circ)=\operatorname{cis}90^\circ=i$.
 ---
 Q: What is $|1+\operatorname{cis}60^\circ|$?
 L: 2
@@ -11101,7 +11344,10 @@ W: 2
 W: 1
 W: \sqrt{2}
 W: \frac{\sqrt{3}}{2}
-S: $1+\frac12+\frac{\sqrt3}2i$ has modulus $\sqrt{\frac94+\frac34}=\sqrt3$.
+S: $\operatorname{cis}60^\circ=\cos60^\circ+i\sin60^\circ=\frac12+\frac{\sqrt3}2i$.
+$1+\operatorname{cis}60^\circ=\frac32+\frac{\sqrt3}2i$.
+Modulus: $\sqrt{\left(\frac32\right)^2+\left(\frac{\sqrt3}2\right)^2}=\sqrt{\frac94+\frac34}=\sqrt3$.
+(Geometric view: it's the diagonal of a rhombus with sides $1$ and a $60^\circ$ angle.)
 ---
 @@ cplx-roots
 Q: Let $\omega\ne1$ satisfy $\omega^3=1$. What is $(1+\omega)(1+\omega^2)$?
@@ -11111,7 +11357,9 @@ W: 0
 W: -1
 W: 2
 W: \omega
-S: $1+\omega+\omega^2+\omega^3=0+1=1$.
+S: Expand: $(1+\omega)(1+\omega^2)=1+\omega^2+\omega+\omega^3$.
+Since $\omega^3=1$ and $\omega\ne1$, the factorization $\omega^3-1=(\omega-1)(\omega^2+\omega+1)=0$ gives $1+\omega+\omega^2=0$.
+So the expression is $(1+\omega+\omega^2)+\omega^3=0+1=1$.
 ---
 Q: What is the sum of all sixth roots of unity?
 L: 1
@@ -11120,7 +11368,9 @@ W: 1
 W: 6
 W: -1
 W: i
-S: They are the roots of $z^6-1$, whose $z^5$ coefficient is $0$.
+S: The sixth roots of unity are the six roots of $z^6-1=0$.
+By Vieta, the sum of the roots is $-\dfrac{\text{(coefficient of }z^5)}{\text{(coefficient of }z^6)}=-\dfrac01=0$.
+Geometrically, they're the vertices of a regular hexagon centered at $0$, which balance out.
 ---
 Q: What is the product of all fifth roots of unity?
 L: 2
@@ -11129,7 +11379,10 @@ W: -1
 W: 0
 W: 5
 W: i
-S: For $z^5-1$, the product of the roots is $(-1)^5\cdot(-1)=1$.
+S: The fifth roots of unity are the roots of $z^5-1=0$.
+Vieta: for a monic polynomial of degree $n$, the product of the roots is $(-1)^n\times$(constant term).
+Here $(-1)^5\cdot(-1)=1$.
+(Pairing: $1\cdot(\omega\omega^4)(\omega^2\omega^3)=1\cdot1\cdot1=1$.)
 ---
 Q: What is the area of the polygon whose vertices are the sixth roots of unity?
 L: 2
@@ -11138,7 +11391,9 @@ W: \frac{3\sqrt{3}}{4}
 W: 6
 W: \sqrt{3}
 W: \frac{\sqrt{3}}{2}
-S: It is a regular hexagon with side $1$: $6\cdot\frac{\sqrt3}4=\frac{3\sqrt3}2$.
+S: The sixth roots of unity lie on the unit circle at $60^\circ$ spacing: a regular hexagon with circumradius $1$, hence side length $1$.
+A regular hexagon with side $s$ splits into $6$ equilateral triangles of side $s$, each with area $\frac{\sqrt3}4s^2$.
+Area $=6\cdot\frac{\sqrt3}{4}=\frac{3\sqrt3}{2}$.
 ---
 Q: Let $\omega\ne1$ satisfy $\omega^3=1$. What is $\omega^{2026}+\omega^{2027}$?
 L: 2
@@ -11147,7 +11402,9 @@ W: 1
 W: 0
 W: 2
 W: \omega
-S: $2026\equiv1$ and $2027\equiv2\pmod3$, so the sum is $\omega+\omega^2=-1$.
+S: Since $\omega^3=1$, only the exponent mod $3$ matters.
+$2026=3\cdot675+1$ and $2027=3\cdot675+2$, so the sum is $\omega+\omega^2$.
+From $1+\omega+\omega^2=0$: $\omega+\omega^2=-1$.
 ---
 Q: How many of the sixth roots of unity are real?
 L: 1
@@ -11156,7 +11413,9 @@ W: 1
 W: 6
 W: 3
 W: 0
-S: Only $1$ and $-1$.
+S: The sixth roots of unity are $\operatorname{cis}(60k)^\circ$ for $k=0,\dots,5$.
+A number on the unit circle is real only at angles $0^\circ$ and $180^\circ$, giving $1$ and $-1$.
+So $2$ of them are real (the other four are two conjugate pairs).
 ---
 Q: What is the product of the four complex solutions of $z^4=-16$?
 L: 2
@@ -11165,7 +11424,9 @@ W: -16
 W: 0
 W: 2
 W: 4
-S: For $z^4+16=0$, Vieta gives a product of $(+1)\cdot16=16$.
+S: The solutions are the roots of $z^4+16=0$.
+Vieta: for a monic quartic, the product of the roots equals the constant term (degree is even), which is $16$.
+Check: the roots are $\sqrt2(\pm1\pm i)$, and $|z|=2$ for each, so $|{\rm product}|=2^4=16$; the conjugate pairs make it positive.
 ---
 Q: Let $\omega=\operatorname{cis}\frac{360^\circ}{7}$. What is $\omega+\omega^2+\cdots+\omega^6$?
 L: 2
@@ -11174,7 +11435,8 @@ W: 0
 W: 1
 W: 6
 W: 7
-S: All seven roots sum to $0$, and $\omega^0=1$ is missing: $-1$.
+S: $1,\omega,\omega^2,\dots,\omega^6$ are all seven 7th roots of unity, the roots of $z^7-1=0$, so they sum to $0$ (Vieta: no $z^6$ term).
+The requested sum leaves out $\omega^0=1$: $\omega+\cdots+\omega^6=0-1=-1$.
 @@ conic-para
 Q: What is the $y$-coordinate of the focus of the parabola $y=\dfrac{x^2}{8}$?
 L: 1
@@ -11183,7 +11445,9 @@ W: 8
 W: 4
 W: \frac{1}{8}
 W: \frac{1}{2}
-S: $x^2=8y=4py$ gives $p=2$, so the focus is $(0,2)$.
+S: A parabola $x^2=4py$ (vertex at the origin, opening up) has its focus at $(0,p)$ and directrix $y=-p$.
+Rewrite $y=\frac{x^2}{8}$ as $x^2=8y$. Matching $4p=8$ gives $p=2$.
+So the focus is $(0,2)$, and its $y$-coordinate is $2$.
 ---
 Q: The directrix of $x^2=12y$ is the line $y=k$. What is $k$?
 L: 1
@@ -11192,7 +11456,8 @@ W: 3
 W: -12
 W: -6
 W: -\frac{1}{4}
-S: $4p=12$, so $p=3$ and the directrix is $y=-3$.
+S: For $x^2=4py$, the directrix is the horizontal line $y=-p$, as far below the vertex as the focus is above it.
+$4p=12$ gives $p=3$, so the directrix is $y=-3$ and $k=-3$.
 ---
 Q: What is the $x$-coordinate of the focus of $y^2=16x$?
 L: 1
@@ -11201,7 +11466,8 @@ W: 16
 W: 8
 W: 2
 W: \frac{1}{16}
-S: $4p=16$, so $p=4$.
+S: $y^2=4px$ opens to the right, with focus $(p,0)$ and directrix $x=-p$.
+$4p=16$ gives $p=4$, so the focus is $(4,0)$.
 ---
 Q: What is the length of the latus rectum of the parabola $y=2x^2$?
 L: 2
@@ -11210,7 +11476,9 @@ W: 2
 W: \frac{1}{8}
 W: 4
 W: 1
-S: $x^2=\frac12y$, so $4p=\frac12$, and the latus rectum has length $4p=\frac12$.
+S: Put it in standard form: $y=2x^2\iff x^2=\frac12y$, so $4p=\frac12$ and $p=\frac18$.
+The latus rectum is the chord through the focus parallel to the directrix. At $y=p$: $x^2=4p\cdot p$, so $x=\pm2p$ and its length is $4p$.
+Length $=4p=\frac12$.
 ---
 Q: A point on the parabola $x^2=4y$ is at distance $10$ from the focus. What is the absolute value of its $x$-coordinate?
 L: 2
@@ -11219,7 +11487,9 @@ W: 9
 W: 3
 W: 10
 W: 8
-S: The focus is $(0,1)$ and the directrix $y=-1$. Distance $=y+1=10$, so $y=9$ and $x^2=36$.
+S: $x^2=4y$ has $4p=4$, $p=1$: focus $(0,1)$, directrix $y=-1$.
+Every point on a parabola is equally far from the focus and the directrix. The distance from $(x,y)$ to the directrix is $y-(-1)=y+1$.
+So $y+1=10$, $y=9$, and $x^2=4\cdot9=36$, giving $|x|=6$.
 ---
 Q: The vertex of $y=x^2-6x+13$ is $(h,k)$. What is $h+k$?
 L: 1
@@ -11228,7 +11498,9 @@ W: 4
 W: 3
 W: 13
 W: 10
-S: $(x-3)^2+4$, so the vertex is $(3,4)$.
+S: Complete the square: $x^2-6x+13=(x^2-6x+9)+4=(x-3)^2+4$.
+The vertex is $(3,4)$, so $h+k=7$.
+(Alternatively $h=-\frac{b}{2a}=3$ and $k=9-18+13=4$.)
 ---
 Q: A parabola has focus $(0,3)$ and directrix $y=-3$. What is $y$ on this parabola when $x=6$?
 L: 1
@@ -11237,7 +11509,9 @@ W: 6
 W: 12
 W: 2
 W: 36
-S: $x^2=12y$; at $x=6$: $y=3$.
+S: The vertex is halfway between the focus $(0,3)$ and the directrix $y=-3$: the origin. And $p=3$ (focus above vertex), so the parabola is $x^2=4py=12y$.
+At $x=6$: $36=12y$, so $y=3$.
+Check with the definition: $(6,3)$ is $\sqrt{36+0}=6$ from the focus and $3-(-3)=6$ from the directrix. ✓
 ---
 Q: What is the $y$-coordinate of the focus of $y=x^2+4x+5$?
 L: 2
@@ -11246,7 +11520,9 @@ W: 1
 W: \frac{3}{4}
 W: 5
 W: \frac{3}{2}
-S: $(x+2)^2=y-1$, with vertex $(-2,1)$ and $4p=1$. The focus is $\frac14$ above the vertex: $y=\frac54$.
+S: Complete the square to find the vertex: $y=x^2+4x+5=(x+2)^2+1$, so $(x+2)^2=y-1$.
+This is $x^2=4py$ shifted to vertex $(-2,1)$, with $4p=1$, so $p=\frac14$.
+The focus is $p$ above the vertex: $y=1+\frac14=\frac54$.
 ---
 @@ conic-ell
 Q: What is the distance between the foci of the ellipse $\dfrac{x^2}{25}+\dfrac{y^2}{9}=1$?
@@ -11256,7 +11532,9 @@ W: 4
 W: 6
 W: 10
 W: 16
-S: $c^2=25-9=16$, so $c=4$ and the foci are $8$ apart.
+S: For an ellipse $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$ with $a\gt b$, the foci are at $(\pm c,0)$ where $c^2=a^2-b^2$.
+$c^2=25-9=16$, so $c=4$.
+The foci $(-4,0)$ and $(4,0)$ are $8$ apart.
 ---
 Q: What is the area enclosed by the ellipse $\dfrac{x^2}{16}+\dfrac{y^2}{9}=1$?
 L: 1
@@ -11265,7 +11543,8 @@ W: 25\pi
 W: 7\pi
 W: 144\pi
 W: 24\pi
-S: $\pi ab=\pi\cdot4\cdot3=12\pi$.
+S: An ellipse with semi-axes $a$ and $b$ has area $\pi ab$ (a circle of radius $r$ is the case $a=b=r$).
+Here $a^2=16$, $b^2=9$, so $a=4$, $b=3$, and the area is $\pi\cdot4\cdot3=12\pi$.
 ---
 Q: The hyperbola $\dfrac{x^2}{9}-\dfrac{y^2}{16}=1$ has foci at $(\pm c,0)$. What is $c$?
 L: 1
@@ -11274,7 +11553,8 @@ W: \sqrt{7}
 W: 7
 W: 4
 W: 25
-S: $c^2=9+16=25$.
+S: For a hyperbola $\frac{x^2}{a^2}-\frac{y^2}{b^2}=1$, the foci satisfy $c^2=a^2+b^2$ (a plus sign, unlike the ellipse).
+$c^2=9+16=25$, so $c=5$.
 ---
 Q: What is the positive slope of an asymptote of $\dfrac{x^2}{4}-\dfrac{y^2}{9}=1$?
 L: 1
@@ -11283,7 +11563,8 @@ W: \frac{2}{3}
 W: \frac{9}{4}
 W: \frac{4}{9}
 W: 3
-S: $\frac ba=\frac32$.
+S: The asymptotes of $\frac{x^2}{a^2}-\frac{y^2}{b^2}=1$ are $y=\pm\frac bax$ (set the right side to $0$: $\frac{y^2}{b^2}=\frac{x^2}{a^2}$).
+$a=2$, $b=3$, so the positive slope is $\frac32$.
 ---
 Q: For any point on the ellipse $\dfrac{x^2}{25}+\dfrac{y^2}{16}=1$, what is the sum of its distances to the two foci?
 L: 1
@@ -11292,7 +11573,9 @@ W: 8
 W: 6
 W: 5
 W: 20
-S: The sum is the major axis, $2a=10$.
+S: By definition, an ellipse is the set of points whose distances to the two foci add to a constant, and that constant is the major axis length $2a$.
+(At the vertex $(a,0)$: the distances are $a-c$ and $a+c$, which add to $2a$.)
+Here $a^2=25$, so the sum is $2a=10$.
 ---
 Q: An ellipse has foci $(\pm4,0)$ and major axis length $10$. What is the length of its minor axis?
 L: 2
@@ -11301,7 +11584,9 @@ W: 8
 W: 3
 W: 5
 W: 4
-S: $a=5$ and $c=4$, so $b=3$ and the minor axis is $6$.
+S: Major axis $10$ means $a=5$. Foci at $(\pm4,0)$ means $c=4$.
+For an ellipse, $b^2=a^2-c^2=25-16=9$, so $b=3$.
+The minor axis has length $2b=6$.
 ---
 Q: What is the area enclosed by $4x^2+9y^2=36$?
 L: 2
@@ -11310,7 +11595,8 @@ W: 36\pi
 W: 13\pi
 W: 9\pi
 W: 12\pi
-S: $\frac{x^2}9+\frac{y^2}4=1$: $\pi\cdot3\cdot2=6\pi$.
+S: Divide by $36$ to get standard form: $\frac{4x^2}{36}+\frac{9y^2}{36}=1$, i.e. $\frac{x^2}{9}+\frac{y^2}{4}=1$.
+So $a=3$, $b=2$, and the area is $\pi ab=6\pi$.
 ---
 Q: What is the eccentricity of the ellipse $\dfrac{x^2}{169}+\dfrac{y^2}{144}=1$?
 L: 2
@@ -11319,7 +11605,9 @@ W: \frac{12}{13}
 W: \frac{5}{12}
 W: \frac{13}{12}
 W: \frac{144}{169}
-S: $c^2=169-144=25$, so $e=\frac ca=\frac5{13}$.
+S: Eccentricity of an ellipse: $e=\frac ca$, where $c^2=a^2-b^2$.
+$c^2=169-144=25$, so $c=5$; and $a=13$.
+$e=\frac5{13}$. (It's between $0$ and $1$, as every ellipse's is; closer to $0$ means rounder.)
 ---
 @@ conic-param
 Q: A curve is given by $x=2t+1$, $y=t-3$. What is its slope?
@@ -11329,7 +11617,8 @@ W: 2
 W: -\frac{1}{2}
 W: 7
 W: 1
-S: $t=y+3$, so $x=2y+7$ and $y=\frac12x-\frac72$.
+S: Eliminate $t$: from $y=t-3$, $t=y+3$. Then $x=2(y+3)+1=2y+7$, i.e. $y=\frac12x-\frac72$.
+Slope $\frac12$. Shortcut: as $t$ increases by $1$, $x$ increases by $2$ and $y$ by $1$, so rise/run $=\frac12$.
 ---
 Q: What is the area enclosed by the curve $x=3\cos t$, $y=3\sin t$?
 L: 1
@@ -11338,7 +11627,8 @@ W: 3\pi
 W: 6\pi
 W: 9
 W: 18\pi
-S: It is the circle $x^2+y^2=9$, with area $9\pi$.
+S: $x^2+y^2=9\cos^2t+9\sin^2t=9(\cos^2t+\sin^2t)=9$.
+So the curve is the circle of radius $3$ centered at the origin, enclosing area $\pi\cdot3^2=9\pi$.
 ---
 Q: What is the dot product of $(3,4)$ and $(-4,3)$?
 L: 1
@@ -11347,7 +11637,8 @@ W: 25
 W: 1
 W: -24
 W: 24
-S: $-12+12=0$ (the vectors are perpendicular).
+S: Dot product: multiply matching components and add: $(3)(-4)+(4)(3)=-12+12=0$.
+A zero dot product means the vectors are perpendicular (indeed $(-4,3)$ is $(3,4)$ rotated $90^\circ$).
 ---
 Q: What is the angle between the vectors $(1,0)$ and $(1,1)$, in degrees?
 L: 1
@@ -11356,7 +11647,8 @@ W: 30
 W: 60
 W: 90
 W: 135
-S: $\cos\theta=\frac{1}{1\cdot\sqrt2}$, so $\theta=45^\circ$.
+S: $\cos\theta=\dfrac{\mathbf u\cdot\mathbf v}{|\mathbf u||\mathbf v|}=\dfrac{1\cdot1+0\cdot1}{1\cdot\sqrt2}=\dfrac1{\sqrt2}$.
+So $\theta=45^\circ$. (Geometrically, $(1,1)$ points along the line $y=x$, at $45^\circ$ to the $x$-axis.)
 ---
 Q: What is the area of the parallelogram spanned by $(3,1)$ and $(2,5)$?
 L: 1
@@ -11365,7 +11657,9 @@ W: 17
 W: \frac{13}{2}
 W: 11
 W: 15
-S: $|3\cdot5-1\cdot2|=13$.
+S: The parallelogram spanned by $(a,b)$ and $(c,d)$ has area $|ad-bc|$ (the absolute value of the determinant).
+$|3\cdot5-1\cdot2|=|15-2|=13$.
+(Half of this, $\frac{13}2$, would be the triangle with those two sides.)
 ---
 Q: The curve $x=t^2$, $y=2t$ is a parabola. What is the $x$-coordinate of its focus?
 L: 2
@@ -11374,7 +11668,8 @@ W: 2
 W: 4
 W: \frac{1}{2}
 W: \frac{1}{4}
-S: Eliminating $t$: $y^2=4x$, so $p=1$ and the focus is $(1,0)$.
+S: Eliminate $t$: $t=\frac y2$, so $x=\left(\frac y2\right)^2=\frac{y^2}4$, i.e. $y^2=4x$.
+$y^2=4px$ with $p=1$ opens right with focus $(p,0)=(1,0)$.
 ---
 Q: For what $k$ are the vectors $(2,k)$ and $(3,-6)$ perpendicular?
 L: 1
@@ -11383,7 +11678,8 @@ W: -1
 W: 2
 W: 6
 W: 0
-S: $6-6k=0$, so $k=1$.
+S: Vectors are perpendicular when their dot product is $0$: $(2)(3)+(k)(-6)=6-6k=0$, so $k=1$.
+Check: $(2,1)\cdot(3,-6)=6-6=0$. ✓
 ---
 Q: The curve $x=\cos t$, $y=\cos2t$ lies on a parabola. What is the minimum value of $y$ on this curve?
 L: 2
@@ -11392,7 +11688,9 @@ W: 0
 W: 1
 W: -2
 W: -\frac{1}{2}
-S: $y=2x^2-1$ with $-1\le x\le1$, so the minimum is $-1$ (at $x=0$).
+S: Double-angle identity: $\cos2t=2\cos^2t-1$, so $y=2x^2-1$: a parabola.
+But $x=\cos t$ only takes values in $[-1,1]$, so the curve is the arc of $y=2x^2-1$ over that interval.
+On it, $y$ is smallest at $x=0$: $y=-1$ (and largest, $1$, at $x=\pm1$).
 @@ pc3-func
 Q: Which of the following tables could <b>not</b> be a table of values of a function?
 L: 1
@@ -15798,78 +16096,78 @@ r=>{const p=pick(r,[2,3,5,7]),e=ri(r,2,p===2?10:p===3?6:4);let n=1;while(vp(n,p)
 /* ---- mod.txt ---- */
 GENS['mod-basic']=[
 r=>{const m=ri(r,5,13),a=ri(r,100,5000),k=ri(r,2,4);let prod=1;const rs=[];for(let i=0;i<k;i++){rs.push((a+i)%m);prod=prod*((a+i)%m)%m}
- return{lvl:1,q:T`What is the remainder when $${Array.from({length:k},(_,i)=>a+i).join('\\cdot ')}$ is divided by $${m}$?`,a:prod,w:Array.from({length:m},(_,i)=>i).filter(x=>x!==prod),s:T`Reduce each factor mod ${m}: $${rs.join('\\cdot ')}\equiv${prod}$.`}},
+ return{lvl:1,q:T`What is the remainder when $${Array.from({length:k},(_,i)=>a+i).join('\\cdot ')}$ is divided by $${m}$?`,a:prod,w:Array.from({length:m},(_,i)=>i).filter(x=>x!==prod),s:T`Remainders multiply, so reduce each factor mod ${m} first.<br>${Array.from({length:k},(_,i)=>'$'+(a+i)+'\\equiv'+rs[i]+'$').join(', ')} $\pmod{${m}}$.<br>Multiply the remainders, reducing as you go: $${rs.join('\\cdot ')}=${rs.reduce((x,y)=>x*y,1)}\equiv${prod}\pmod{${m}}$.<br>The remainder is $${prod}$.`}},
 r=>{const N=ri(r,20,500),m=ri(r,3,13);const v=(N*(N+1)/2)%m;
- return{lvl:1,q:T`What is the remainder when $1+2+\cdots+${N}$ is divided by $${m}$?`,a:v,w:Array.from({length:m},(_,i)=>i).filter(x=>x!==v),s:T`The sum is $\frac{${N}\cdot${N+1}}{2}=${N*(N+1)/2}\equiv${v}\pmod{${m}}$.`}},
+ return{lvl:1,q:T`What is the remainder when $1+2+\cdots+${N}$ is divided by $${m}$?`,a:v,w:Array.from({length:m},(_,i)=>i).filter(x=>x!==v),s:T`The sum is $\frac{n(n+1)}{2}$ with $n=${N}$: $\frac{${N}\cdot${N+1}}{2}=${N*(N+1)/2}$.<br>Divide by ${m}: $${N*(N+1)/2}=${m}\cdot${Math.floor(N*(N+1)/2/m)}+${v}$.<br>The remainder is $${v}$.`}},
 r=>{const p=pick(r,[5,7,11,13]),c=ri(r,1,p-1),N=p*ri(r,4,20);let k=0;for(let x=0;x<p;x++)if((x*x+c)%p===0)k++;if(!k)return GENS['mod-basic'][2](r);const v=k*N/p;
- return{lvl:2,q:T`For how many integers $n$ with $1\le n\le${N}$ is $n^2+${c}$ divisible by $${p}$?`,a:v,w:[v/k,v+N/p,N/p*(k+1)===v?v-N/p:N/p*(k+1),Math.floor(N/2)],s:T`$n^2\equiv${(p-c)%p}\pmod{${p}}$ has ${k} solution(s) mod ${p}, so the count is $${k}\cdot\frac{${N}}{${p}}=${v}$.`}},
+ return{lvl:2,q:T`For how many integers $n$ with $1\le n\le${N}$ is $n^2+${c}$ divisible by $${p}$?`,a:v,w:[v/k,v+N/p,N/p*(k+1)===v?v-N/p:N/p*(k+1),Math.floor(N/2)],s:T`$${p}\mid n^2+${c}$ means $n^2\equiv-${c}\equiv${(p-c)%p}\pmod{${p}}$.<br>Square every residue mod ${p}: ${Array.from({length:p},(_,x)=>'$'+x+'^2\\equiv'+(x*x%p)+'$').join(', ')}.<br>The residues that work are $${Array.from({length:p},(_,x)=>x).filter(x=>(x*x+c)%p===0).join(',\\ ')}$: $${k}$ out of every ${p} consecutive integers.<br>$1$ to $${N}$ contains $\frac{${N}}{${p}}=${N/p}$ full blocks of ${p}, so the count is $${k}\cdot${N/p}=${v}$.`}},
 r=>{const m=pick(r,[3,4,5,7,8,9]),a=ri(r,1,m-1),c1=ri(r,1,5),c2=ri(r,0,9);const v=((a*a*c1+c2*a)%m+m)%m;
- return{lvl:1,q:T`If $n\equiv${a}\pmod{${m}}$, what is the remainder when $${poly([[c1,2],[c2,1]],'n')}$ is divided by $${m}$?`,a:v,w:Array.from({length:m},(_,i)=>i).filter(x=>x!==v).concat([m]),s:T`Substitute $n\equiv${a}$: $${c1*a*a+c2*a}\equiv${v}\pmod{${m}}$.`}},
+ return{lvl:1,q:T`If $n\equiv${a}\pmod{${m}}$, what is the remainder when $${poly([[c1,2],[c2,1]],'n')}$ is divided by $${m}$?`,a:v,w:Array.from({length:m},(_,i)=>i).filter(x=>x!==v).concat([m]),s:T`Replace $n$ by its remainder ${a}; sums and products of remainders give the right remainder.<br>$${poly([[c1,2],[c2,1]],'n')}\equiv${c1}\cdot${a}^2+${c2}\cdot${a}=${c1*a*a}+${c2*a}=${c1*a*a+c2*a}\pmod{${m}}$.<br>$${c1*a*a+c2*a}=${m}\cdot${Math.floor((c1*a*a+c2*a)/m)}+${v}$, so the remainder is $${v}$.`}},
 ];
 GENS['mod-cycle']=[
 r=>{const b=ri(r,2,99),n=ri(r,10,3000);const v=modpow(b,n,10);
- return{lvl:1,q:T`What is the units digit of $${b}^{${n}}$?`,a:v,w:[0,1,2,3,4,5,6,7,8,9].filter(x=>x!==v),s:T`Only the last digit ${b%10} matters, and its powers cycle with period dividing 4. $${n}\bmod4=${n%4}$, so the units digit is $${v}$.`}},
+ return{lvl:1,q:T`What is the units digit of $${b}^{${n}}$?`,a:v,w:[0,1,2,3,4,5,6,7,8,9].filter(x=>x!==v),s:T`Only the last digit of the base matters: ${b%10}. Its powers have units digits $${[1,2,3,4].map(e=>modpow(b%10,e,10)).join(',\\ ')},\dots$, repeating with period dividing 4.<br>$${n}=4\cdot${Math.floor(n/4)}+${n%4}$, so $${b}^{${n}}$ ends like $${b%10}^{${n%4||4}}$.<br>Units digit: $${v}$.`}},
 r=>{const a=ri(r,2,9),b=ri(r,2,9),n=ri(r,10,3000);const v=(modpow(a,n,10)+modpow(b,n,10))%10;
- return{lvl:2,q:T`What is the units digit of $${a}^{${n}}+${b}^{${n}}$?`,a:v,w:[0,1,2,3,4,5,6,7,8,9].filter(x=>x!==v),s:T`$${a}^{${n}}$ ends in $${modpow(a,n,10)}$ and $${b}^{${n}}$ ends in $${modpow(b,n,10)}$; the sum ends in $${v}$.`}},
+ return{lvl:2,q:T`What is the units digit of $${a}^{${n}}+${b}^{${n}}$?`,a:v,w:[0,1,2,3,4,5,6,7,8,9].filter(x=>x!==v),s:T`Units digits of powers repeat with period dividing $4$, and $${n}\equiv${n%4}\pmod4$.<br>• Powers of ${a} end in $${[1,2,3,4].map(e=>modpow(a,e,10)).join(',')}$, so $${a}^{${n}}$ ends in $${modpow(a,n,10)}$.<br>• Powers of ${b} end in $${[1,2,3,4].map(e=>modpow(b,e,10)).join(',')}$, so $${b}^{${n}}$ ends in $${modpow(b,n,10)}$.<br>Add: $${modpow(a,n,10)}+${modpow(b,n,10)}=${modpow(a,n,10)+modpow(b,n,10)}$, which ends in $${v}$.`}},
 r=>{const b=pick(r,[3,7,9,11,13,17,19,21,23,29,31,33,37,39,41,43,47,49]),n=ri(r,10,500);const v=modpow(b,n,100);
- return{lvl:2,q:T`What are the last two digits of $${b}^{${n}}$ (as a number from $0$ to $99$)?`,a:v,w:[modpow(b,n+1,100),modpow(b,n-1,100),(v+50)%100,modpow(b,n,10)],s:T`Work mod 100 and use a cycle (or Euler, $\varphi(100)=40$): $${b}^{${n}}\equiv${v}\pmod{100}$.`}},
+ return{lvl:2,q:T`What are the last two digits of $${b}^{${n}}$ (as a number from $0$ to $99$)?`,a:v,w:[modpow(b,n+1,100),modpow(b,n-1,100),(v+50)%100,modpow(b,n,10)],s:T`Work mod $100$. Euler's theorem gives $${b}^{40}\equiv1\pmod{100}$ (since $\varphi(100)=40$ and $\gcd(${b},100)=1$), so exponents can be reduced mod $40$ (the true cycle may be even shorter).<br>$${n}\equiv${n%40}\pmod{40}$, so $${b}^{${n}}\equiv${b}^{${n%40}}\pmod{100}$.<br>Computing by repeated squaring mod 100 gives $${v}$: the last two digits are $${String(v).padStart(2,'0')}$.`}},
 r=>{const a=pick(r,[3,7,9]),n=ri(r,20,3000);let v=0;for(let k=0;k<=n;k++)v=(v+modpow(a,k,10))%10;const cyc=[1,a%10,(a*a)%10,(a**3)%10];const total=n+1;
- return{lvl:3,q:T`What is the units digit of $1+${a}+${a}^2+\cdots+${a}^{${n}}$?`,a:v,w:[0,1,2,3,4,5,6,7,8,9].filter(x=>x!==v),s:T`The units digits of $${a}^0,${a}^1,${a}^2,${a}^3$ are $${cyc.join(',')}$, which repeat and sum to $${cyc.reduce((x,y)=>x+y,0)}\equiv0\pmod{10}$. There are $${total}$ terms: ${Math.floor(total/4)} full cycles plus ${total%4} leftover term(s), giving units digit $${v}$.`}},
+ return{lvl:3,q:T`What is the units digit of $1+${a}+${a}^2+\cdots+${a}^{${n}}$?`,a:v,w:[0,1,2,3,4,5,6,7,8,9].filter(x=>x!==v),s:T`The units digits of $${a}^0,${a}^1,${a}^2,${a}^3$ are $${cyc.join(',')}$; they repeat every 4 terms, and each full cycle sums to $${cyc.reduce((x,y)=>x+y,0)}$, which ends in $0$.<br>There are $${total}$ terms: $${total}=4\cdot${Math.floor(total/4)}+${total%4}$. The full cycles contribute nothing to the units digit.<br>${total%4?T`The leftover ${total%4} term${total%4>1?'s have':' has'} units digit${total%4>1?'s':''} $${cyc.slice(0,total%4).join(',')}$, summing to $${cyc.slice(0,total%4).reduce((x,y)=>x+y,0)}$.`:'No terms are left over.'}<br>Units digit: $${v}$.`}},
 ];
 GENS['mod-fermat']=[
 r=>{const p=pick(r,[5,7,11,13,17,19]),a=ri(r,2,p-1),n=ri(r,50,3000);const v=modpow(a,n,p);
- return{lvl:2,q:T`What is the remainder when $${a}^{${n}}$ is divided by $${p}$?`,a:v,w:Array.from({length:p},(_,i)=>i).filter(x=>x!==v),s:T`Fermat: $${a}^{${p-1}}\equiv1\pmod{${p}}$. $${n}\equiv${n%(p-1)}\pmod{${p-1}}$, so $${a}^{${n}}\equiv${a}^{${n%(p-1)}}\equiv${v}$.`}},
+ return{lvl:2,q:T`What is the remainder when $${a}^{${n}}$ is divided by $${p}$?`,a:v,w:Array.from({length:p},(_,i)=>i).filter(x=>x!==v),s:T`Fermat's Little Theorem: since ${p} is prime and doesn't divide ${a}, $${a}^{${p-1}}\equiv1\pmod{${p}}$.<br>So exponents can be reduced mod ${p-1}: $${n}=${p-1}\cdot${Math.floor(n/(p-1))}+${n%(p-1)}$.<br>$${a}^{${n}}\equiv${a}^{${n%(p-1)}}${n%(p-1)>1?T`=${a**(n%(p-1))>1e9?'\\dots':a**(n%(p-1))}`:''}\equiv${v}\pmod{${p}}$.`}},
 r=>{const n=pick(r,[12,15,18,20,24,28,30,36,40,42,45,48,50,60,72,84,90,96,100,120,144,180,210]);const v=phi(n);
- return{lvl:1,q:T`How many integers from $1$ to $${n}$ are relatively prime to $${n}$?`,a:v,w:[v+2,v-2,n/2,n-ndiv(n)],s:T`$\varphi(${n})=${n}${Object.keys(factorize(n)).map(p=>'\\left(1-\\tfrac1{'+p+'}\\right)').join('')}=${v}$.`}},
+ return{lvl:1,q:T`How many integers from $1$ to $${n}$ are relatively prime to $${n}$?`,a:v,w:[v+2,v-2,n/2,n-ndiv(n)],s:T`Euler's totient: $\varphi(n)=n\prod\left(1-\frac1p\right)$ over the distinct primes $p$ dividing $n$.<br>$${n}=${factTex(n)}$.<br>$\varphi(${n})=${n}${Object.keys(factorize(n)).map(p=>'\\left(1-\\tfrac1{'+p+'}\\right)').join('')}=${v}$.<br>(Each factor removes the fraction of numbers divisible by that prime.)`}},
 r=>{const p=pick(r,[5,7,11,13,17]);
- return{lvl:2,q:T`What is the remainder when $${p-1}!$ is divided by $${p}$?`,a:p-1,w:[0,1,p-2,Math.floor(p/2)],s:T`Wilson's theorem: $(p-1)!\equiv-1\equiv${p-1}\pmod{${p}}$.`}},
+ return{lvl:2,q:T`What is the remainder when $${p-1}!$ is divided by $${p}$?`,a:p-1,w:[0,1,p-2,Math.floor(p/2)],s:T`Wilson's Theorem: for a prime $p$, $(p-1)!\equiv-1\pmod p$.<br>Reason: each of $2,3,\dots,p-2$ pairs with a different inverse in that range (product $\equiv1$), leaving $1\cdot(p-1)\equiv-1$.<br>So $${p-1}!\equiv-1\equiv${p-1}\pmod{${p}}$.`}},
 ];
 GENS['mod-crt']=[
 r=>{const [m,n]=pick(r,[[3,5],[3,7],[4,5],[5,7],[4,7],[5,8],[7,9],[3,8],[5,9],[7,8],[9,10],[7,11]]);const a=ri(r,0,m-1),b=ri(r,0,n-1);let x=1;while(!(x%m===a&&x%n===b))x++;
- return{lvl:1,q:T`What is the smallest positive integer that leaves remainder $${a}$ when divided by $${m}$ and remainder $${b}$ when divided by $${n}$?`,a:x,w:[x+m*n,x+m,x+n,Math.abs(x-m*n)||x+2*m*n],s:T`List the numbers $\equiv${b}\pmod{${n}}$ and find the first that is $\equiv${a}\pmod{${m}}$: $${x}$. (The solutions repeat every $${m*n}$.)`}},
+ return{lvl:1,q:T`What is the smallest positive integer that leaves remainder $${a}$ when divided by $${m}$ and remainder $${b}$ when divided by $${n}$?`,a:x,w:[x+m*n,x+m,x+n,Math.abs(x-m*n)||x+2*m*n],s:T`List the numbers with remainder ${b} when divided by ${n}: $${Array.from({length:Math.min(m,6)},(_,i)=>b+i*n).join(',\\ ')},\dots$ (start at $${b}$${b===0?', but $0$ is not positive':''}).<br>Check each one mod ${m} until the remainder is ${a}: $${x}=${m}\cdot${Math.floor(x/m)}+${a}$. ✓<br>The smallest is $${x}$; by the Chinese Remainder Theorem every solution is $${x}+${m*n}k$.`}},
 r=>{const m=pick(r,[7,9,11,13,17,19,26,31]),a=ri(r,2,m-1);if(gcd(a,m)!==1)return GENS['mod-crt'][1](r);let x=1;while(a*x%m!==1)x++;
- return{lvl:1,q:T`What is the inverse of $${a}$ modulo $${m}$ (the $x$ with $0\lt x\lt ${m}$ and $${a}x\equiv1$)?`,a:x,w:[m-x,a,(x+1)%m||2,(x*2)%m||3],s:T`$${a}\cdot${x}=${a*x}=${Math.floor(a*x/m)}\cdot${m}+1$.`}},
+ return{lvl:1,q:T`What is the inverse of $${a}$ modulo $${m}$ (the $x$ with $0\lt x\lt ${m}$ and $${a}x\equiv1$)?`,a:x,w:[m-x,a,(x+1)%m||2,(x*2)%m||3],s:T`We need $x$ with $${a}x\equiv1\pmod{${m}}$, i.e. $${a}x$ is one more than a multiple of ${m}.<br>Trying $x=1,2,3,\dots$ (or using the Euclidean algorithm): $${a}\cdot${x}=${a*x}=${Math.floor(a*x/m)}\cdot${m}+1$. ✓<br>So the inverse is $${x}$.`}},
 r=>{const m=pick(r,[7,11,13]),a=ri(r,2,m-1),b=ri(r,1,m-1);let x=0;while(a*x%m!==b)x++;
- return{lvl:1,q:T`Which $x$ with $0\le x\lt ${m}$ satisfies $${a}x\equiv${b}\pmod{${m}}$?`,a:x,w:Array.from({length:m},(_,i)=>i).filter(t=>t!==x),s:T`Multiply by $${a}^{-1}$: $x\equiv${x}$. Check: $${a*x}\equiv${b}$ ✓.`}},
+ return{lvl:1,q:T`Which $x$ with $0\le x\lt ${m}$ satisfies $${a}x\equiv${b}\pmod{${m}}$?`,a:x,w:Array.from({length:m},(_,i)=>i).filter(t=>t!==x),s:T`Multiply both sides by the inverse of ${a} mod ${m}. ${(()=>{let y=1;while(a*y%m!==1)y++;return T`Since $${a}\cdot${y}=${a*y}\equiv1$, the inverse is $${y}$.<br>$x\equiv${y}\cdot${b}=${y*b}\equiv${x}\pmod{${m}}$.`})()}<br>Check: $${a}\cdot${x}=${a*x}\equiv${b}\pmod{${m}}$. ✓`}},
 r=>{const [m,n]=pick(r,[[3,4],[3,5],[4,5],[5,6],[3,7],[4,7]]);const a=ri(r,0,m-1),b=ri(r,0,n-1),N=ri(r,50,300);let c=0;for(let x=1;x<=N;x++)if(x%m===a&&x%n===b)c++;
- return{lvl:2,q:T`How many integers $x$ with $1\le x\le${N}$ satisfy $x\equiv${a}\pmod{${m}}$ and $x\equiv${b}\pmod{${n}}$?`,a:c,w:[c+1,c-1>=0?c-1:c+2,Math.floor(N/m),Math.floor(N/n)],s:T`The solutions form one residue class mod $${m*n}$, and $${c}$ of them lie in $[1,${N}]$.`}},
+ return{lvl:2,q:T`How many integers $x$ with $1\le x\le${N}$ satisfy $x\equiv${a}\pmod{${m}}$ and $x\equiv${b}\pmod{${n}}$?`,a:c,w:[c+1,c-1>=0?c-1:c+2,Math.floor(N/m),Math.floor(N/n)],s:T`Since ${m} and ${n} are relatively prime, the Chinese Remainder Theorem says the solutions form a single residue class mod $${m*n}$.<br>${(()=>{let x0=0;while(!(x0%m===a&&x0%n===b))x0++;return T`The smallest nonnegative solution is $${x0}$, so the solutions are $${x0}+${m*n}k$.<br>In $[1,${N}]$: ${x0===0?T`$${m*n},${2*m*n},\dots$`:T`$${x0},${x0+m*n},\dots$`}, up to $${x0+Math.floor((N-x0)/(m*n))*m*n}$.`})()}<br>That's $${c}$ numbers.`}},
 ];
 /* ---- base.txt ---- */
 const toBase=(n,b)=>n.toString(b).toUpperCase();
 const BS=(s,b,v)=>O(s+'_{'+b+'}',v);
 GENS['base-conv']=[
 r=>{const b=ri(r,2,9),len=ri(r,3,5);const ds=Array.from({length:len},(_,i)=>i===0?ri(r,1,b-1):ri(r,0,b-1));const s_=ds.join('');const v=parseInt(s_,b);
- return{lvl:1,q:T`What is $${s_}_{${b}}$ in base $10$?`,a:v,w:[+s_,parseInt(s_,b+1),parseInt(s_.split('').reverse().join(''),b),v+b,v-1],s:T`$${ds.map((d,i)=>d+'\\cdot'+b+'^{'+(len-1-i)+'}').join('+')}=${v}$.`}},
+ return{lvl:1,q:T`What is $${s_}_{${b}}$ in base $10$?`,a:v,w:[+s_,parseInt(s_,b+1),parseInt(s_.split('').reverse().join(''),b),v+b,v-1],s:T`Each digit is multiplied by the power of ${b} for its place, starting with ${b}^0 on the right:<br>$${s_}_{${b}}=${ds.map((d,i)=>d+'\\cdot '+b+'^{'+(len-1-i)+'}').join('+')}$<br>$=${ds.map((d,i)=>d+'\\cdot '+b**(len-1-i)).join('+')}=${v}$.`}},
 r=>{const b=ri(r,2,9),n=ri(r,b*b,b**4-1);const s_=toBase(n,b);const alt=[toBase(n+1,b),toBase(n-1,b),s_.split('').reverse().join(''),toBase(n+b,b),toBase(n,b+1)];
  return{lvl:1,q:T`What is $${n}$ written in base $${b}$?`,a:BS(s_,b,n),w:alt.filter(x=>x!==s_).map(x=>BS(x,b,/^[0-9]+$/.test(x)&&[...x].every(c=>+c<b)?parseInt(x,b):parseInt(x,b+1)+0.5)),
- s:T`Divide by ${b} repeatedly and read the remainders from bottom to top: $${n}=${s_.split('').map((d,i)=>d+'\\cdot'+b+'^{'+(s_.length-1-i)+'}').join('+')}$.`}},
+ s:T`Repeated division by ${b}: each remainder is the next digit, from right to left.<br>${(()=>{let m=n,rows=[];while(m>0){rows.push('$'+m+'='+Math.floor(m/b)+'\\cdot '+b+'+'+(m%b)+'$');m=Math.floor(m/b)}return rows.join('<br>')})()}<br>Reading the remainders from bottom to top: $${s_}_{${b}}$.<br>Check: $${s_.split('').map((d,i)=>d+'\\cdot '+b+'^{'+(s_.length-1-i)+'}').join('+')}=${n}$. ✓`}},
 r=>{const b=ri(r,4,15),kind=pick(r,[[1,2,1],[1,3,3,1],[1,0,1],[2,1]]);const v=kind.reduce((s,d)=>s*b+d,0);
- return{lvl:1,q:T`In base $b$, $${kind.join('')}_b$ equals $${v}$ in base 10. What is $b$?`,a:b,w:[b+1,b-1,b+2,b-2],s:T`$${kind.map((d,i)=>d+'b^{'+(kind.length-1-i)+'}').join('+')}=${v}$ gives $b=${b}$.`}},
+ return{lvl:1,q:T`In base $b$, $${kind.join('')}_b$ equals $${v}$ in base 10. What is $b$?`,a:b,w:[b+1,b-1,b+2,b-2],s:T`Expand in base $b$: $${kind.join('')}_b=${kind.map((d,i)=>(d===1&&kind.length-1-i>0?'':d)+(kind.length-1-i>0?'b'+(kind.length-1-i>1?'^{'+(kind.length-1-i)+'}':''):'')).filter((t,i)=>kind[i]!==0).join('+')}$.<br>${kind.join()==='1,2,1'?T`This is $(b+1)^2=${v}$, so $b+1=${b+1}$ and $b=${b}$.`:kind.join()==='1,3,3,1'?T`This is $(b+1)^3=${v}$, so $b+1=${b+1}$ and $b=${b}$.`:kind.join()==='1,0,1'?T`So $b^2+1=${v}$, $b^2=${b*b}$, and $b=${b}$.`:T`So $2b+1=${v}$ and $b=${b}$.`}<br>(All digits are smaller than $${b}$, so the base is valid.)`}},
 r=>{const b=ri(r,2,9),n=ri(r,10,5000);const k=toBase(n,b).length;
- return{lvl:1,q:T`How many digits does $${n}$ have when written in base $${b}$?`,a:k,w:[k+1,k-1,k+2,String(n).length===k?k+3:String(n).length],s:T`$${b}^{${k-1}}=${b**(k-1)}\le${n}\lt ${b**k}=${b}^{${k}}$, so $${k}$ digits.`}},
+ return{lvl:1,q:T`How many digits does $${n}$ have when written in base $${b}$?`,a:k,w:[k+1,k-1,k+2,String(n).length===k?k+3:String(n).length],s:T`A number has $k$ digits in base ${b} exactly when ${b}^{k-1}\le n\lt ${b}^k$ (just as base-10 numbers with 3 digits run from $10^2$ to $10^3-1$).<br>Here $${b}^{${k-1}}=${b**(k-1)}\le${n}\lt${b**k}=${b}^{${k}}$.<br>So $${n}$ has $${k}$ digits in base ${b} (it's $${toBase(n,b)}_{${b}}$).`}},
 ];
 GENS['base-digit']=[
 r=>{const d=ri(r,1,8);const n=9-d;
- return{lvl:2,q:T`How many two-digit numbers with both digits nonzero decrease by $${9*d}$ when their digits are reversed?`,a:n,w:[n+1,n-1>0?n-1:n+2,9,d],s:T`$9(a-b)=${9*d}$ means $a-b=${d}$ with $1\le b$ and $a\le9$: $a=${d+1},\dots,9$, so $${n}$ numbers.`}},
+ return{lvl:2,q:T`How many two-digit numbers with both digits nonzero decrease by $${9*d}$ when their digits are reversed?`,a:n,w:[n+1,n-1>0?n-1:n+2,9,d],s:T`Write the number as $10a+b$; reversed it is $10b+a$. The decrease is $(10a+b)-(10b+a)=9(a-b)$.<br>$9(a-b)=${9*d}$ gives $a-b=${d}$.<br>With nonzero digits ($b\ge1$, $a\le9$): $b$ can be $1,\dots,${9-d}$, giving $a=${d+1},\dots,9$.<br>That's $${n}$ numbers${n<=4?T`: ${Array.from({length:n},(_,i)=>''+(i+1+d)+(i+1)).join(', ')}`:''}.`}},
 r=>{const k=ri(r,2,10);let c=0,list=[];for(let x=10;x<100;x++)if(x===k*(Math.floor(x/10)+x%10)){c++;list.push(x)}
- return{lvl:2,q:T`How many two-digit numbers equal $${k}$ times the sum of their digits?`,a:c,w:[c+1,c+2,c>0?c-1:c+3,9].filter(x=>x!==c),s:T`$10a+b=${k}(a+b)$. ${c?'Checking digits gives '+list.join(', ')+'.':'No two-digit number works.'}`}},
+ return{lvl:2,q:T`How many two-digit numbers equal $${k}$ times the sum of their digits?`,a:c,w:[c+1,c+2,c>0?c-1:c+3,9].filter(x=>x!==c),s:T`Write the number as $10a+b$ ($a\ge1$). The condition $10a+b=${k}(a+b)$ simplifies to $${10-k}a=${k-1}b$${10-k>0?T`, so $b=\frac{${10-k}}{${k-1}}a$`:''}.<br>${c?T`Trying $a=1,\dots,9$ and keeping only digit values of $b$: ${list.join(', ')}.`:'No digit pair satisfies it, so no two-digit number works.'}<br>Count: $${c}$.`}},
 r=>{const n=ri(r,2,8);const v=9*10**(Math.ceil(n/2)-1);
- return{lvl:1,q:T`How many ${n}-digit palindromes are there?`,a:v,w:[10**Math.ceil(n/2),v*10,v/10<1?v+9:v/10,9**Math.ceil(n/2)],s:T`Choose the first $${Math.ceil(n/2)}$ digits (first digit nonzero): $9\cdot10^{${Math.ceil(n/2)-1}}=${v}$.`}},
+ return{lvl:1,q:T`How many ${n}-digit palindromes are there?`,a:v,w:[10**Math.ceil(n/2),v*10,v/10<1?v+9:v/10,9**Math.ceil(n/2)],s:T`A palindrome is determined by its first half: the remaining digits mirror it. An ${n}-digit palindrome is determined by its first $\lceil ${n}/2\rceil=${Math.ceil(n/2)}$ digits.<br>The first digit can't be $0$ (9 choices); each of the other $${Math.ceil(n/2)-1}$ free digits has 10 choices.<br>Total: $9\cdot10^{${Math.ceil(n/2)-1}}=${v}$.`}},
 r=>{const N=ri(r,50,3000);let c=0;for(let k=1;k<=N;k++)c+=String(k).length;
- return{lvl:1,q:T`How many digits are used to write the integers from $1$ to $${N}$?`,a:c,w:[c+1,c-1,c+9,N*String(N).length],s:T`Count by length: ${[1,2,3,4].filter(L=>10**(L-1)<=N).map(L=>Math.min(N,10**L-1)-10**(L-1)+1+' numbers with '+L+' digit'+(L>1?'s':'')).join(', ')}. Total $${c}$.`}},
+ return{lvl:1,q:T`How many digits are used to write the integers from $1$ to $${N}$?`,a:c,w:[c+1,c-1,c+9,N*String(N).length],s:T`Group the numbers by how many digits they have:<br>${[1,2,3,4].filter(L=>10**(L-1)<=N).map(L=>{const cnt=Math.min(N,10**L-1)-10**(L-1)+1;return '• '+cnt+' number'+(cnt>1?'s':'')+' with '+L+' digit'+(L>1?'s':'')+': $'+cnt+'\\cdot '+L+'='+cnt*L+'$'}).join('<br>')}<br>Total: $${c}$ digits.`}},
 r=>{const s_=ri(r,2,20);let c=0;for(let x=100;x<1000;x++)if(digsum(x)===s_)c++;
- return{lvl:2,q:T`How many three-digit numbers have digit sum $${s_}$?`,a:c,w:[c+1,c-1,comb(s_+2,2),comb(s_+1,2)].filter(x=>x!==c),s:T`Let $a'=a-1\ge0$: $a'+b+c=${s_-1}$ with each digit at most 9. Counting (removing cases with a digit over 9) gives $${c}$.`}},
+ return{lvl:2,q:T`How many three-digit numbers have digit sum $${s_}$?`,a:c,w:[c+1,c-1,comb(s_+2,2),comb(s_+1,2)].filter(x=>x!==c),s:T`Write the number as $\overline{abc}$ with $a\ge1$, and let $a'=a-1\ge0$. We need $a'+b+c=${s_-1}$ with $a'\le8$ and $b,c\le9$.<br>${(()=>{const n=s_-1,f=k=>k>=0?comb(k+2,2):0;const t=[f(n),f(n-9),f(n-10),f(n-19),f(n-20),f(n-29)];return T`Stars and bars without upper limits gives $\binom{${n+2}}{2}=${t[0]}$. Now remove solutions where a digit is too big (inclusion-exclusion):<br>• $a'\ge9$: replace $a'$ by $a'-9$: $${t[1]}$ solutions. $\ b\ge10$ or $c\ge10$: $${t[2]}$ each.<br>• Two digits too big at once: $${t[3]}$ (for $a'$ with $b$, or with $c$) and $${t[4]}$ (for $b$ with $c$); all three: $${t[5]}$.<br>Count $=${t[0]}-${t[1]}-2\cdot${t[2]}+2\cdot${t[3]}+${t[4]}-${t[5]}=${c}$.`})()}`}},
 ];
 GENS['base-dec']=[
 r=>{const N=ri(r,10,60);let c=0;for(let k=2;k<=N;k++){let m=k;while(m%2===0)m/=2;while(m%5===0)m/=5;if(m===1)c++}
- return{lvl:1,q:T`How many of the fractions $\frac12,\frac13,\dots,\frac1{${N}}$ have terminating decimal expansions?`,a:c,w:[c+1,c-1,c+2,Math.floor(N/2)],s:T`Count denominators of the form $2^m5^n$ between 2 and ${N}: $${c}$.`}},
+ return{lvl:1,q:T`How many of the fractions $\frac12,\frac13,\dots,\frac1{${N}}$ have terminating decimal expansions?`,a:c,w:[c+1,c-1,c+2,Math.floor(N/2)],s:T`$\frac1n$ terminates exactly when $n$ has no prime factors other than $2$ and $5$ (then $\frac1n$ can be rewritten with a power of $10$ in the denominator).<br>The numbers from $2$ to $${N}$ of the form $2^m5^k$ are: $${(()=>{const o=[];for(let k=2;k<=N;k++){let m=k;while(m%2===0)m/=2;while(m%5===0)m/=5;if(m===1)o.push(k)}return o.join(',\\ ')})()}$.<br>That's $${c}$ fractions.`}},
 r=>{const a=ri(r,0,5),b=ri(r,0,4);if(a+b===0)return GENS['base-dec'][1](r);const D=2**a*5**b;let m=ri(r,1,D*3);while(gcd(m,D)!==1)m++;
- return{lvl:1,q:T`How many digits are after the decimal point in the decimal expansion of $\frac{${m}}{${D}}$?`,a:Math.max(a,b),w:[a+b,Math.max(a,b)+1,Math.min(a,b)||Math.max(a,b)+2,String(D).length],s:T`$${D}=2^{${a}}\cdot5^{${b}}$, so the decimal has $\max(${a},${b})=${Math.max(a,b)}$ digits.`}},
+ return{lvl:1,q:T`How many digits are after the decimal point in the decimal expansion of $\frac{${m}}{${D}}$?`,a:Math.max(a,b),w:[a+b,Math.max(a,b)+1,Math.min(a,b)||Math.max(a,b)+2,String(D).length],s:T`$\frac{${m}}{${D}}$ is in lowest terms, and $${D}=2^{${a}}\cdot5^{${b}}$.<br>Multiply top and bottom by ${a>b?'$5^{'+(a-b)+'}$':a<b?'$2^{'+(b-a)+'}$':'nothing'} to make the denominator $10^{${Math.max(a,b)}}$.<br>A fraction over $10^{${Math.max(a,b)}}$ (with numerator not divisible by 10) has exactly $${Math.max(a,b)}$ digits after the decimal point.`}},
 r=>{const q=pick(r,[7,13,17,19,21,27,37,41,11,3]);const n=ri(r,20,3000);let rem=1,dig=0;for(let i=0;i<n;i++){rem*=10;dig=Math.floor(rem/q);rem%=q}
  let per=1,t=10%q;while(t!==1){t=t*10%q;per++}
- return{lvl:2,q:T`What is the ${ord(n)} digit after the decimal point in $\frac1{${q}}$?`,a:dig,w:[0,1,2,3,4,5,6,7,8,9].filter(x=>x!==dig),s:T`$\frac1{${q}}$ repeats with period ${per}. $${n}\equiv${n%per||per}\pmod{${per}}$, so the digit is the ${ord(n%per||per)} in the block: $${dig}$.`}},
+ return{lvl:2,q:T`What is the ${ord(n)} digit after the decimal point in $\frac1{${q}}$?`,a:dig,w:[0,1,2,3,4,5,6,7,8,9].filter(x=>x!==dig),s:T`Long division shows $\frac1{${q}}$ repeats with period ${per}: $\frac1{${q}}=0.\overline{${(()=>{let rm=1,s='';for(let i=0;i<per;i++){rm*=10;s+=Math.floor(rm/q);rm%=q}return s})()}}$.<br>$${n}=${per}\cdot${Math.floor((n-1)/per)}+${n%per||per}$, so the ${ord(n)} digit is the ${ord(n%per||per)} digit of the repeating block.<br>That digit is $${dig}$.`}},
 r=>{const D=pick(r,[12,24,30,36,48,60,72,90,120,150,180,240,360]);let m=D;while(m%2===0)m/=2;while(m%5===0)m/=5;const N=ri(r,50,400);const c=Math.floor(N/m);
- return{lvl:2,q:T`For how many integers $n$ with $1\le n\le${N}$ does $\frac{n}{${D}}$ have a terminating decimal?`,a:c,w:[c+1,c-1,Math.floor(N/D),N-c],s:T`$${D}=${factTex(D)}$. The factor $${m}$ must cancel, so $${m}\mid n$: $\lfloor\frac{${N}}{${m}}\rfloor=${c}$.`}},
+ return{lvl:2,q:T`For how many integers $n$ with $1\le n\le${N}$ does $\frac{n}{${D}}$ have a terminating decimal?`,a:c,w:[c+1,c-1,Math.floor(N/D),N-c],s:T`$\frac{n}{${D}}$ terminates exactly when, in lowest terms, the denominator has no primes other than $2$ and $5$.<br>$${D}=${factTex(D)}$, so the part $${m}$ (everything except the 2s and 5s) must cancel: $${m}\mid n$.<br>Multiples of $${m}$ from $1$ to $${N}$: $\left\lfloor\frac{${N}}{${m}}\right\rfloor=${c}$.`}},
 ];
 /* ---- dioph.txt ---- */
 GENS['dioph-lin']=[
@@ -16025,68 +16323,68 @@ r=>{const s_=pick(r,[4,6,8,10]);const p=F(1,s_),q=F(s_-1,s_);const odd=p.div(F(1
 const popc=n=>n.toString(2).split('').filter(c=>c==='1').length;
 GENS['binom-coef']=[
 r=>{const n=ri(r,5,20),k=ri(r,2,Math.min(6,n-2));
- return{lvl:1,q:T`What is $\dbinom{${n}}{${k}}$?`,a:comb(n,k),w:[comb(n,k)*fact(k),comb(n,k-1),comb(n,k+1),n*k],s:T`$\frac{${Array.from({length:k},(_,i)=>n-i).join('\\cdot ')}}{${k}!}=${comb(n,k)}$.`}},
+ return{lvl:1,q:T`What is $\dbinom{${n}}{${k}}$?`,a:comb(n,k),w:[comb(n,k)*fact(k),comb(n,k-1),comb(n,k+1),n*k],s:T`Use $\binom nk=\dfrac{n(n-1)\cdots(n-k+1)}{k!}$: ${k} factors on top, starting at ${n} and counting down.<br>$\dbinom{${n}}{${k}}=\dfrac{${Array.from({length:k},(_,i)=>n-i).join('\\cdot ')}}{${k}!}=\dfrac{${comb(n,k)*fact(k)}}{${fact(k)}}=${comb(n,k)}$.<br>The numerator counts ordered choices; dividing by $${k}!=${fact(k)}$ removes the orderings, since order doesn't matter in a combination.`}},
 r=>{const n=ri(r,4,40);const v=comb(n,2);
- return{lvl:1,q:T`If $\dbinom n2=${v}$, what is $n$?`,a:n,w:[n-1,n+1,2*n,Math.round(Math.sqrt(v))],s:T`$\frac{n(n-1)}2=${v}$ gives $n(n-1)=${2*v}=${n}\cdot${n-1}$, so $n=${n}$.`}},
+ return{lvl:1,q:T`If $\dbinom n2=${v}$, what is $n$?`,a:n,w:[n-1,n+1,2*n,Math.round(Math.sqrt(v))],s:T`Write the coefficient as a formula: $\dbinom n2=\dfrac{n(n-1)}{2}$.<br>So $\dfrac{n(n-1)}{2}=${v}$, i.e. $n(n-1)=${2*v}$.<br>Look for two consecutive integers with product $${2*v}$: $${n}\cdot${n-1}=${2*v}$, so $n=${n}$.<br>(A fast estimate: $n\approx\sqrt{${2*v}}\approx${Math.sqrt(2*v).toFixed(1)}$, and $n$ is just above that.)`}},
 r=>{const n=ri(r,1,63);const v=2**popc(n);
- return{lvl:3,q:T`How many entries in row ${n} of Pascal's triangle ($\binom{${n}}{0}$ through $\binom{${n}}{${n}}$) are odd?`,a:v,w:[n+1,v*2,v/2>=1?v/2:v+3,Math.ceil((n+1)/2)].filter(x=>x!==v),s:T`$${n}=${n.toString(2)}_2$ has ${popc(n)} ones, so there are $2^{${popc(n)}}=${v}$ odd entries.`}},
+ return{lvl:3,q:T`How many entries in row ${n} of Pascal's triangle ($\binom{${n}}{0}$ through $\binom{${n}}{${n}}$) are odd?`,a:v,w:[n+1,v*2,v/2>=1?v/2:v+3,Math.ceil((n+1)/2)].filter(x=>x!==v),s:T`Lucas' Theorem shortcut: the number of odd entries in row $n$ is $2^{b}$, where $b$ is the number of 1s in the binary form of $n$.<br>Convert: $${n}=${n.toString(2)}_2$, which has $${popc(n)}$ one${popc(n)===1?'':'s'}.<br>So row ${n} has $2^{${popc(n)}}=${v}$ odd entries.<br>(The reason: $\binom nk$ is odd exactly when every binary 1 of $k$ sits where $n$ also has a 1, so we choose independently for each 1 of $n$.)`}},
 r=>{const n=ri(r,4,16);const ask=r()<.5;
- return ask?{lvl:1,q:T`What is the sum of all entries in row ${n} of Pascal's triangle?`,a:2**n,w:[2**(n-1),2**n-1,comb(n,Math.floor(n/2)),2**(n+1)],s:T`$2^{${n}}=${2**n}$.`}
- :{lvl:2,q:T`What is the largest of $\binom{${n}}{0},\binom{${n}}{1},\dots,\binom{${n}}{${n}}$?`,a:comb(n,Math.floor(n/2)),w:[comb(n,Math.floor(n/2)-1),2**(n-1),comb(n,2),comb(n+1,Math.floor(n/2))],s:T`The middle entry: $\binom{${n}}{${Math.floor(n/2)}}=${comb(n,Math.floor(n/2))}$.`}},
+ return ask?{lvl:1,q:T`What is the sum of all entries in row ${n} of Pascal's triangle?`,a:2**n,w:[2**(n-1),2**n-1,comb(n,Math.floor(n/2)),2**(n+1)],s:T`The entries of row $${n}$ count the subsets of an ${n}-element set of each size, so their total is the number of all subsets: $2^{${n}}$.<br>Algebraically, set $x=1$ in $(1+x)^{${n}}=\sum_k\binom{${n}}{k}x^k$.<br>Sum: $2^{${n}}=${2**n}$.`}
+ :{lvl:2,q:T`What is the largest of $\binom{${n}}{0},\binom{${n}}{1},\dots,\binom{${n}}{${n}}$?`,a:comb(n,Math.floor(n/2)),w:[comb(n,Math.floor(n/2)-1),2**(n-1),comb(n,2),comb(n+1,Math.floor(n/2))],s:T`Each row of Pascal's triangle rises to the middle and then falls symmetrically, so the largest entry is the middle one.<br>Row $${n}$ has $${n+1}$ entries; the middle is at $k=\lfloor ${n}/2\rfloor=${Math.floor(n/2)}$${n%2?T` (with $\binom{${n}}{${Math.floor(n/2)+1}}$ tied, by symmetry)`:''}.<br>$\binom{${n}}{${Math.floor(n/2)}}=${comb(n,Math.floor(n/2))}$.`}},
 ];
 GENS['binom-exp']=[
 r=>{const n=ri(r,3,8),a=pick(r,[1,2,3,-1,-2]),b=pick(r,[1,2,3,-1,-2,-3]),m=ri(r,1,n-1);const v=comb(n,m)*a**m*b**(n-m);
- return{lvl:1,q:T`What is the coefficient of $x^{${m}}$ in $(${poly([[a,1],[b,0]],'x')})^{${n}}$?`,a:v,w:[comb(n,m),-v,comb(n,m)*a**(n-m)*b**m===v?v+comb(n,m):comb(n,m)*a**(n-m)*b**m,comb(n,m)*a*b],s:T`$\binom{${n}}{${m}}(${a})^{${m}}(${b})^{${n-m}}=${comb(n,m)}\cdot${P(a**m)}\cdot${P(b**(n-m))}=${v}$.`}},
+ return{lvl:1,q:T`What is the coefficient of $x^{${m}}$ in $(${poly([[a,1],[b,0]],'x')})^{${n}}$?`,a:v,w:[comb(n,m),-v,comb(n,m)*a**(n-m)*b**m===v?v+comb(n,m):comb(n,m)*a**(n-m)*b**m,comb(n,m)*a*b],s:T`Binomial Theorem: $(${poly([[a,1],[b,0]],'x')})^{${n}}=\sum_k\binom{${n}}{k}(${a===1?'':a}x)^k(${b})^{${n}-k}$.<br>For $x^{${m}}$ we need $k=${m}$, so the term is $\binom{${n}}{${m}}(${a}x)^{${m}}(${b})^{${n-m}}$.<br>Coefficient: $\binom{${n}}{${m}}\cdot(${a})^{${m}}\cdot(${b})^{${n-m}}=${comb(n,m)}\cdot${P(a**m)}\cdot${P(b**(n-m))}=${v}$.<br>Watch the signs: a negative number to an odd power stays negative.`}},
 r=>{const p=ri(r,1,3),q=ri(r,1,3),n=ri(r,3,9),c=pick(r,[1,2,-1,-2,3]);if((p*n)%(p+q))return GENS['binom-exp'][1](r);const k=p*n/(p+q);const v=comb(n,k)*c**k;
- return{lvl:2,q:T`What is the constant term in the expansion of $\left(x${p>1?'^'+p:''}${c<0?'-':'+'}\dfrac{${Math.abs(c)}}{x${q>1?'^'+q:''}}\right)^{${n}}$?`,a:v,w:[comb(n,k),-v,comb(n,k)*Math.abs(c)**(n-k),v*2],s:T`The general term has exponent $${p}(${n}-k)-${q}k$, which is $0$ at $k=${k}$: $\binom{${n}}{${k}}(${c})^{${k}}=${v}$.`}},
+ return{lvl:2,q:T`What is the constant term in the expansion of $\left(x${p>1?'^'+p:''}${c<0?'-':'+'}\dfrac{${Math.abs(c)}}{x${q>1?'^'+q:''}}\right)^{${n}}$?`,a:v,w:[comb(n,k),-v,comb(n,k)*Math.abs(c)**(n-k),v*2],s:T`General term: $\binom{${n}}{k}\left(x${p>1?'^'+p:''}\right)^{${n}-k}\left(\dfrac{${c}}{x${q>1?'^'+q:''}}\right)^{k}=\binom{${n}}{k}(${c})^k\,x^{${p}(${n}-k)-${q}k}$.<br>Constant term means exponent $0$: $${p}(${n}-k)=${q}k$, so $${p*n}=${p+q}k$ and $k=${k}$.<br>Coefficient: $\binom{${n}}{${k}}(${c})^{${k}}=${comb(n,k)}\cdot${P(c**k)}=${v}$.`}},
 r=>{const a=ri(r,2,7),b=ri(r,2,7),m=ri(r,1,a+b-1);
- return{lvl:1,q:T`What is the coefficient of $x^{${m}}$ in $(1+x)^{${a}}(1+x)^{${b}}$?`,a:comb(a+b,m),w:[comb(a,Math.min(m,a))*comb(b,Math.min(m,b)),comb(a+b,m-1),comb(a*b,m)>1e6?m:comb(a*b,m),comb(a,m%(a+1))+comb(b,m%(b+1))],s:T`$(1+x)^{${a+b}}$ has $x^{${m}}$ coefficient $\binom{${a+b}}{${m}}=${comb(a+b,m)}$.`}},
+ return{lvl:1,q:T`What is the coefficient of $x^{${m}}$ in $(1+x)^{${a}}(1+x)^{${b}}$?`,a:comb(a+b,m),w:[comb(a,Math.min(m,a))*comb(b,Math.min(m,b)),comb(a+b,m-1),comb(a*b,m)>1e6?m:comb(a*b,m),comb(a,m%(a+1))+comb(b,m%(b+1))],s:T`Combine the factors first: $(1+x)^{${a}}(1+x)^{${b}}=(1+x)^{${a+b}}$, since exponents add.<br>The coefficient of $x^{${m}}$ in $(1+x)^{${a+b}}$ is $\binom{${a+b}}{${m}}=${comb(a+b,m)}$.<br>(This is Vandermonde's identity in disguise: $\sum_j\binom{${a}}{j}\binom{${b}}{${m}-j}=\binom{${a+b}}{${m}}$.)`}},
 ];
 GENS['binom-id']=[
 r=>{const n=ri(r,3,10);
- return{lvl:2,q:T`What is $\displaystyle\sum_{k=0}^{${n}}\binom{${n}}{k}^2$?`,a:comb(2*n,n),w:[4**n,2**n,comb(2*n,n-1),comb(2*n,n)/2],s:T`Vandermonde: $\binom{${2*n}}{${n}}=${comb(2*n,n)}$.`}},
+ return{lvl:2,q:T`What is $\displaystyle\sum_{k=0}^{${n}}\binom{${n}}{k}^2$?`,a:comb(2*n,n),w:[4**n,2**n,comb(2*n,n-1),comb(2*n,n)/2],s:T`Use symmetry to rewrite each square: $\binom{${n}}{k}^2=\binom{${n}}{k}\binom{${n}}{${n}-k}$.<br>Vandermonde: $\sum_k\binom{${n}}{k}\binom{${n}}{${n}-k}$ counts ways to choose ${n} people from ${n} boys and ${n} girls ($k$ boys and ${n}-k$ girls), which is $\binom{${2*n}}{${n}}$.<br>$\binom{${2*n}}{${n}}=${comb(2*n,n)}$.`}},
 r=>{const n=ri(r,3,12);
- return{lvl:2,q:T`What is $\displaystyle\sum_{k=0}^{${n}}k\binom{${n}}{k}$?`,a:n*2**(n-1),w:[2**n,n*2**n,(n-1)*2**(n-1),n*(n+1)/2],s:T`$n2^{n-1}=${n}\cdot${2**(n-1)}=${n*2**(n-1)}$.`}},
+ return{lvl:2,q:T`What is $\displaystyle\sum_{k=0}^{${n}}k\binom{${n}}{k}$?`,a:n*2**(n-1),w:[2**n,n*2**n,(n-1)*2**(n-1),n*(n+1)/2],s:T`Use $k\binom nk=n\binom{n-1}{k-1}$ (pick a $k$-person committee and its chair, or pick the chair first and then $k-1$ others).<br>So $\sum_k k\binom{${n}}{k}=${n}\sum_k\binom{${n-1}}{k-1}=${n}\cdot2^{${n-1}}$.<br>$=${n}\cdot${2**(n-1)}=${n*2**(n-1)}$.`}},
 r=>{const i=ri(r,1,4),j=ri(r,1,4),k=ri(r,0,3);const n=i+j+k;const v=fact(n)/(fact(i)*fact(j)*fact(k));
- return{lvl:2,q:T`What is the coefficient of $a^{${i}}b^{${j}}${k?'c^{'+k+'}':''}$ in $(a+b+c)^{${n}}$?`,a:v,w:[comb(n,i),comb(n,i)*comb(n,j),fact(n),v*2],s:T`$\frac{${n}!}{${i}!\,${j}!\,${k}!}=${v}$.`}},
+ return{lvl:2,q:T`What is the coefficient of $a^{${i}}b^{${j}}${k?'c^{'+k+'}':''}$ in $(a+b+c)^{${n}}$?`,a:v,w:[comb(n,i),comb(n,i)*comb(n,j),fact(n),v*2],s:T`A term $a^{${i}}b^{${j}}${k?'c^{'+k+'}':''}$ arises by choosing, from the $${n}$ factors $(a+b+c)$, which ${i} give $a$, which ${j} give $b$${k?', and which '+k+' give $c$':''}.<br>The number of ways is the multinomial coefficient $\dfrac{${n}!}{${i}!\,${j}!\,${k}!}=\dfrac{${fact(n)}}{${fact(i)*fact(j)*fact(k)}}=${v}$.<br>Equivalently $\binom{${n}}{${i}}\binom{${n-i}}{${j}}=${comb(n,i)}\cdot${comb(n-i,j)}=${v}$.`}},
 r=>{const m=ri(r,2,7),n=ri(r,2,7),rr=ri(r,1,Math.min(m,n));
- return{lvl:2,q:T`What is $\displaystyle\sum_{k=0}^{${rr}}\binom{${m}}{k}\binom{${n}}{${rr}-k}$?`,a:comb(m+n,rr),w:[comb(m,rr)*comb(n,rr),comb(m+n,rr+1),2**rr,comb(m*n,rr)>1e6?rr:comb(m*n,rr)],s:T`Vandermonde: choose ${rr} from ${m}+${n} items: $\binom{${m+n}}{${rr}}=${comb(m+n,rr)}$.`}},
+ return{lvl:2,q:T`What is $\displaystyle\sum_{k=0}^{${rr}}\binom{${m}}{k}\binom{${n}}{${rr}-k}$?`,a:comb(m+n,rr),w:[comb(m,rr)*comb(n,rr),comb(m+n,rr+1),2**rr,comb(m*n,rr)>1e6?rr:comb(m*n,rr)],s:T`Vandermonde's identity: $\sum_k\binom{${m}}{k}\binom{${n}}{${rr}-k}=\binom{${m}+${n}}{${rr}}$.<br>Reason: to choose ${rr} items from a group of ${m} plus a group of ${n}, choose $k$ from the first group and the other ${rr}-k$ from the second, then add over $k$.<br>$\binom{${m+n}}{${rr}}=${comb(m+n,rr)}$.`}},
 ];
 /* ---- explog.txt ---- */
 GENS['exp-rules']=[
 r=>{const base=pick(r,[2,3]);const p=ri(r,1,4),q=ri(r,1,4);if(p===q)return GENS['exp-rules'][0](r);const s_=ri(r,-3,3),t=ri(r,-3,3);
  const x=F(q*t-p*s_,p-q);// base^p (x+s) = base^q (x+t) -> p(x+s)=q(x+t)
- return{lvl:1,q:T`If $${base**p}^{x${s_<0?'-':'+'}${Math.abs(s_)}}=${base**q}^{x${t<0?'-':'+'}${Math.abs(t)}}$, what is $x$?`,a:x,w:[x.neg(),x.add(1),F(t-s_),F(q*t+p*s_,p+q)],s:T`Write both as powers of ${base}: $${p}(x${s_<0?'-':'+'}${Math.abs(s_)})=${q}(x${t<0?'-':'+'}${Math.abs(t)})$, so $x=${x.tex()}$.`}},
+ return{lvl:1,q:T`If $${base**p}^{x${s_<0?'-':'+'}${Math.abs(s_)}}=${base**q}^{x${t<0?'-':'+'}${Math.abs(t)}}$, what is $x$?`,a:x,w:[x.neg(),x.add(1),F(t-s_),F(q*t+p*s_,p+q)],s:T`Both bases are powers of ${base}: $${base**p}=${base}^{${p}}$ and $${base**q}=${base}^{${q}}$.<br>So the equation says $${base}^{${p}(x${s_<0?'-':'+'}${Math.abs(s_)})}=${base}^{${q}(x${t<0?'-':'+'}${Math.abs(t)})}$, and equal powers of ${base} have equal exponents:<br>$${p}(x${s_<0?'-':'+'}${Math.abs(s_)})=${q}(x${t<0?'-':'+'}${Math.abs(t)})$<br>$${p}x${p*s_<0?'-':'+'}${Math.abs(p*s_)}=${q}x${q*t<0?'-':'+'}${Math.abs(q*t)}$<br>$${p-q===1?'':p-q===-1?'-':p-q}x=${q*t-p*s_}$, so $x=${x.tex()}$.`}},
 r=>{const t=ri(r,2,6),n=pick(r,[2,3]),m=ri(r,1,4);if(gcd(m,n)!==1)return GENS['exp-rules'][1](r);const sg=r()<.3?-1:1;const k=t**n;const v=sg>0?F(t**m):F(1,t**m);
- return{lvl:1,q:T`What is $${k}^{${sg<0?'-':''}${m}/${n}}$?`,a:v,w:[F(k*m,n),sg>0?F(1,t**m):F(t**m),F(t**(m+1)),F(t*m)],s:T`$\sqrt[${n}]{${k}}=${t}$, so the value is $${t}^{${sg*m}}=${v.tex()}$.`}},
+ return{lvl:1,q:T`What is $${k}^{${sg<0?'-':''}${m}/${n}}$?`,a:v,w:[F(k*m,n),sg>0?F(1,t**m):F(t**m),F(t**(m+1)),F(t*m)],s:T`A fractional exponent $\frac mn$ means: take the $n$th root, then the $m$th power${sg<0?', and a negative exponent means take the reciprocal':''}.<br>$\sqrt[${n}]{${k}}=${t}$, because $${t}^{${n}}=${k}$.<br>So $${k}^{${sg<0?'-':''}${m}/${n}}=${t}^{${sg*m}}=${v.tex()}$.`}},
 r=>{const k=ri(r,1,4),x=ri(r,1,8);const N=2**x*(2**k-1);
- return{lvl:1,q:T`If $2^{x+${k}}-2^x=${N}$, what is $x$?`,a:x,w:[x+1,x-1,x+k,N/2>20?x+2:N/2],s:T`$2^x(2^{${k}}-1)=${N}$, so $2^x=${2**x}$ and $x=${x}$.`}},
+ return{lvl:1,q:T`If $2^{x+${k}}-2^x=${N}$, what is $x$?`,a:x,w:[x+1,x-1,x+k,N/2>20?x+2:N/2],s:T`Factor out the smaller power: $2^{x+${k}}=2^{${k}}\cdot2^x=${2**k}\cdot2^x$.<br>So $2^{x+${k}}-2^x=(${2**k}-1)2^x=${2**k-1}\cdot2^x=${N}$.<br>Divide: $2^x=\frac{${N}}{${2**k-1}}=${2**x}=2^{${x}}$, so $x=${x}$.`}},
 r=>{const a=ri(r,1,5),b=ri(r,1,6);const u=2**a;// u^2 - (u - b) u - u b ... build (u - 2^a)(u + b)=0
  const B=b-u,C=-u*b;
  const mid=B===0?'':(B<0?'-':'+')+(Math.abs(B)===1?'':Math.abs(B)+'\\cdot ')+'2^x';
- return{lvl:2,q:T`What real $x$ satisfies $4^x${mid}${C<0?'-':'+'}${Math.abs(C)}=0$?`,a:a,w:[a+1,a-1,u,-b],s:T`Let $u=2^x>0$: $(u-${u})(u+${b})=0$, so $u=${u}$ and $x=${a}$.`}},
+ return{lvl:2,q:T`What real $x$ satisfies $4^x${mid}${C<0?'-':'+'}${Math.abs(C)}=0$?`,a:a,w:[a+1,a-1,u,-b],s:T`Notice $4^x=(2^x)^2$, so substitute $u=2^x$ (which is always positive).<br>The equation becomes $u^2${B===0?'':(B<0?'-':'+')+(Math.abs(B)===1?'':Math.abs(B))+'u'}${C<0?'-':'+'}${Math.abs(C)}=0$, which factors as $(u-${u})(u+${b})=0$.<br>$u=-${b}$ is impossible since $2^x\gt0$. So $2^x=${u}=2^{${a}}$ and $x=${a}$.`}},
 ];
 GENS['log-prop']=[
 r=>{const b=pick(r,[2,3,4,5,8,9,16,25,27]);const root={2:[2,1],3:[3,1],4:[2,2],5:[5,1],8:[2,3],9:[3,2],16:[2,4],25:[5,2],27:[3,3]}[b];const e=ri(r,1,8);const arg=root[0]**e;const v=F(e,root[1]);if(arg>1e7)return GENS['log-prop'][0](r);
- return{lvl:1,q:T`What is $\log_{${b}}${arg}$?`,a:v,w:[F(root[1],e),F(e),v.add(1),F(arg,b)],s:T`$${b}=${root[0]}^{${root[1]}}$ and $${arg}=${root[0]}^{${e}}$, so the log is $\frac{${e}}{${root[1]}}=${v.tex()}$.`}},
+ return{lvl:1,q:T`What is $\log_{${b}}${arg}$?`,a:v,w:[F(root[1],e),F(e),v.add(1),F(arg,b)],s:T`$\log_{${b}}${arg}$ is the exponent $y$ with $${b}^y=${arg}$.<br>Write both numbers as powers of ${root[0]}: $${b}=${root[0]}^{${root[1]}}$ and $${arg}=${root[0]}^{${e}}$.<br>Then $${root[0]}^{${root[1]}y}=${root[0]}^{${e}}$, so $${root[1]}y=${e}$ and $y=${v.tex()}$.`}},
 r=>{const a=ri(r,2,5),n=ri(r,3,7);const terms=Array.from({length:n},(_,i)=>a+i);const end=a+n;const isP=(()=>{let p=a;let e=0;while(p<end){p*=a;e++}return p===end?e:0})();
  if(!isP)return GENS['log-prop'][1](r);
- return{lvl:1,q:T`What is $${terms.map(k=>'\\log_{'+k+'}'+(k+1)).join('\\cdot ')}$?`,a:isP,w:[isP+1,isP-1||isP+2,n,end],s:T`Change of base telescopes the product to $\log_{${a}}${end}=${isP}$.`}},
+ return{lvl:1,q:T`What is $${terms.map(k=>'\\log_{'+k+'}'+(k+1)).join('\\cdot ')}$?`,a:isP,w:[isP+1,isP-1||isP+2,n,end],s:T`Change of base: $\log_ab=\dfrac{\ln b}{\ln a}$. The product becomes $\dfrac{\ln${a+1}}{\ln${a}}\cdot\dfrac{\ln${a+2}}{\ln${a+1}}\cdots\dfrac{\ln${end}}{\ln${end-1}}$.<br>Each numerator cancels the next denominator (the product telescopes), leaving $\dfrac{\ln${end}}{\ln${a}}=\log_{${a}}${end}$.<br>Since $${a}^{${isP}}=${end}$, the value is $${isP}$.`}},
 r=>{const b=pick(r,[2,3,5,10]),x=ri(r,1,6),y=ri(r,1,6);const ask=pick(r,[[b**x*b**y,'+'],[b**(x+y),'+']]);const p_=ri(r,2,30);const N=b**(x+y);if(N>1e7)return GENS['log-prop'][2](r);
  let q_=N/p_;if(!Number.isInteger(q_))return GENS['log-prop'][2](r);
- return{lvl:1,q:T`What is $\log_{${b}}${p_}+\log_{${b}}${q_}$?`,a:x+y,w:[x+y+1,x+y-1,p_+q_,x*y],s:T`$\log_{${b}}(${p_}\cdot${q_})=\log_{${b}}${N}=${x+y}$.`}},
+ return{lvl:1,q:T`What is $\log_{${b}}${p_}+\log_{${b}}${q_}$?`,a:x+y,w:[x+y+1,x+y-1,p_+q_,x*y],s:T`A sum of logs with the same base is the log of the product: $\log_{${b}}${p_}+\log_{${b}}${q_}=\log_{${b}}(${p_}\cdot${q_})=\log_{${b}}${N}$.<br>$${N}=${b}^{${x+y}}$, so the value is $${x+y}$.`}},
 r=>{const n=ri(r,3,40),b=pick(r,[2,3]);let N=n+1;let e=0,t=1;while(t<N){t*=b;e++}if(t!==N)return GENS['log-prop'][3](r);
- return{lvl:2,q:T`What is $\displaystyle\sum_{k=1}^{${n}}\log_{${b}}\!\left(1+\frac1k\right)$?`,a:e,w:[e+1,e-1,n,N],s:T`The product $\prod\frac{k+1}{k}=${N}$, so the sum is $\log_{${b}}${N}=${e}$.`}},
+ return{lvl:2,q:T`What is $\displaystyle\sum_{k=1}^{${n}}\log_{${b}}\!\left(1+\frac1k\right)$?`,a:e,w:[e+1,e-1,n,N],s:T`A sum of logs is the log of a product: the sum is $\log_{${b}}\prod_{k=1}^{${n}}\left(1+\frac1k\right)=\log_{${b}}\prod_{k=1}^{${n}}\frac{k+1}{k}$.<br>The product $\frac21\cdot\frac32\cdots\frac{${n+1}}{${n}}$ telescopes to $\frac{${N}}{1}=${N}$.<br>$${N}=${b}^{${e}}$, so the sum is $${e}$.`}},
 ];
 GENS['log-eq']=[
 r=>{const b=pick(r,[2,3,10]);const x=ri(r,2,12),d=ri(r,1,x-1);const P_=x*(x-d);let k=0,t=1;while(t<P_){t*=b;k++}if(t!==P_)return GENS['log-eq'][0](r);const other=d-x;
- return{lvl:1,q:T`What real $x$ satisfies $\log_{${b}}x+\log_{${b}}(x-${d})=${k}$?`,a:x,w:[other,x+d,d,P_],s:T`$x(x-${d})=${P_}$ gives $x=${x}$ or $${other}$. The domain needs $x>${d}$, so $x=${x}$.`}},
+ return{lvl:1,q:T`What real $x$ satisfies $\log_{${b}}x+\log_{${b}}(x-${d})=${k}$?`,a:x,w:[other,x+d,d,P_],s:T`Combine with the product rule: $\log_{${b}}\big(x(x-${d})\big)=${k}$, so $x(x-${d})=${b}^{${k}}=${P_}$.<br>$x^2-${d}x-${P_}=0$ factors as $(x-${x})(x+${x-d})=0$, so $x=${x}$ or $x=${other}$.<br>Domain: $\log_{${b}}x$ and $\log_{${b}}(x-${d})$ need $x\gt${d}$, so reject $${other}$.<br>Answer: $x=${x}$. Check: $\log_{${b}}${x}+\log_{${b}}${x-d}=\log_{${b}}${P_}=${k}$. ✓`}},
 r=>{const a=ri(r,1,40),b=ri(r,1,40);const N=BigInt(2)**BigInt(a)*BigInt(5)**BigInt(b);const v=N.toString().length;
- return{lvl:2,q:T`How many digits does $2^{${a}}\cdot5^{${b}}$ have?`,a:v,w:[Math.max(a,b),a+b,Math.min(a,b),v+1],s:T`Pair up factors of 10: $10^{${Math.min(a,b)}}\cdot${a>b?'2^{'+(a-b)+'}':a<b?'5^{'+(b-a)+'}':'1'}$. The leftover has $${v-Math.min(a,b)}$ digit(s), so the total is $${v}$.`}},
+ return{lvl:2,q:T`How many digits does $2^{${a}}\cdot5^{${b}}$ have?`,a:v,w:[Math.max(a,b),a+b,Math.min(a,b),v+1],s:T`Each pair of a $2$ and a $5$ makes a $10$. There are $${Math.min(a,b)}$ such pairs: $2^{${a}}\cdot5^{${b}}=10^{${Math.min(a,b)}}\cdot${a>b?'2^{'+(a-b)+'}':a<b?'5^{'+(b-a)+'}':'1'}$.<br>The leftover factor ${a!==b?T`$${a>b?'2^{'+(a-b)+'}':'5^{'+(b-a)+'}'}=${a>b?2**(a-b):5**(b-a)}$`:'$1$'} has $${v-Math.min(a,b)}$ digit${v-Math.min(a,b)===1?'':'s'}, and multiplying by $10^{${Math.min(a,b)}}$ appends $${Math.min(a,b)}$ zeros.<br>Total: $${v-Math.min(a,b)}+${Math.min(a,b)}=${v}$ digits.`}},
 r=>{const x=ri(r,2,7),k=ri(r,2,5);
- return{lvl:1,q:T`If $\log_x ${x**k}=${k}$ and $x>0$, what is $x$?`,a:x,w:[x*x,x**k,F(x**k,k),x+1],s:T`$x^{${k}}=${x**k}$, so $x=${x}$.`}},
+ return{lvl:1,q:T`If $\log_x ${x**k}=${k}$ and $x>0$, what is $x$?`,a:x,w:[x*x,x**k,F(x**k,k),x+1],s:T`$\log_x${x**k}=${k}$ means $x^{${k}}=${x**k}$.<br>Since $${x}^{${k}}=${x**k}$ and the base of a log must be positive, $x=${x}$.`}},
 r=>{const b=pick(r,[2,3]),p=ri(r,1,4),q=ri(r,p+1,6);
- return{lvl:2,q:T`What is the product of all real solutions of $(\log_{${b}}x)^2-${p+q}\log_{${b}}x+${p*q}=0$?`,a:b**(p+q),w:[p*q,b**(p*q)>1e6?b**p+b**q:b**(p*q),b**p+b**q,p+q],s:T`$\log_{${b}}x=${p}$ or $${q}$, so the product is $${b}^{${p}}\cdot${b}^{${q}}=${b**(p+q)}$.`}},
+ return{lvl:2,q:T`What is the product of all real solutions of $(\log_{${b}}x)^2-${p+q}\log_{${b}}x+${p*q}=0$?`,a:b**(p+q),w:[p*q,b**(p*q)>1e6?b**p+b**q:b**(p*q),b**p+b**q,p+q],s:T`Substitute $u=\log_{${b}}x$: $u^2-${p+q}u+${p*q}=0$ factors as $(u-${p})(u-${q})=0$.<br>So $\log_{${b}}x=${p}$ or $${q}$, i.e. $x=${b}^{${p}}=${b**p}$ or $x=${b}^{${q}}=${b**q}$.<br>Product: $${b**p}\cdot${b**q}=${b}^{${p+q}}=${b**(p+q)}$. (Shortcut: the $u$-values add to $${p+q}$ by Vieta, and multiplying the $x$'s adds their exponents.)`}},
 ];
 /* ---- trig.txt ---- */
 const TRIG_TBL={0:[F(0),1,F(1),1],30:[F(1,2),1,F(1,2),3],45:[F(1,2),2,F(1,2),2],60:[F(1,2),3,F(1,2),1],90:[F(1),1,F(0),1]};
@@ -16142,36 +16440,36 @@ r=>{const k=pick(r,[1,2,3,4]);const v=F(1,2);
 const CX=(a,b)=>{let s;if(b===0)s=String(a);else if(a===0)s=(b===1?'':b===-1?'-':b)+'i';else s=a+(b>0?'+':'-')+(Math.abs(b)===1?'':Math.abs(b))+'i';return O(s,a*1000+b+0.5)};
 GENS['cplx-arith']=[
 r=>{const a=ri(r,-6,6),b=ri(r,-6,6)||1,c=ri(r,-6,6),d=ri(r,-6,6)||1;const re=a*c-b*d,im=a*d+b*c;
- return{lvl:1,q:T`What is $(${CX(a,b).tex})(${CX(c,d).tex})$?`,a:CX(re,im),w:[CX(a*c+b*d,im),CX(re,-im),CX(a*c,b*d),CX(re,a*d-b*c),CX(-re,im)],s:T`$(ac-bd)+(ad+bc)i=(${a*c}-${P(b*d)})+(${a*d}+${P(b*c)})i=${CX(re,im).tex}$.`}},
+ return{lvl:1,q:T`What is $(${CX(a,b).tex})(${CX(c,d).tex})$?`,a:CX(re,im),w:[CX(a*c+b*d,im),CX(re,-im),CX(a*c,b*d),CX(re,a*d-b*c),CX(-re,im)],s:T`Multiply out with FOIL: $(a+bi)(c+di)=ac+adi+bci+bdi^2$, and $i^2=-1$, so the product is $(ac-bd)+(ad+bc)i$.<br>Here $a=${a}$, $b=${b}$, $c=${c}$, $d=${d}$.<br>Real part: $ac-bd=${a*c}-${P(b*d)}=${re}$.<br>Imaginary part: $ad+bc=${a*d}+${P(b*c)}=${im}$.<br>Product: $${CX(re,im).tex}$.`}},
 r=>{const n=ri(r,10,5000);const v=[CX(1,0),CX(0,1),CX(-1,0),CX(0,-1)][n%4];
- return{lvl:1,q:T`What is $i^{${n}}$?`,a:v,w:[CX(1,0),CX(0,1),CX(-1,0),CX(0,-1),CX(0,0)].filter(x=>x.tex!==v.tex),s:T`$${n}\equiv${n%4}\pmod4$, so $i^{${n}}=${v.tex}$.`}},
+ return{lvl:1,q:T`What is $i^{${n}}$?`,a:v,w:[CX(1,0),CX(0,1),CX(-1,0),CX(0,-1),CX(0,0)].filter(x=>x.tex!==v.tex),s:T`Powers of $i$ repeat every $4$: $i^1=i,\ i^2=-1,\ i^3=-i,\ i^4=1$.<br>$${n}=4\cdot${Math.floor(n/4)}+${n%4}$, so $i^{${n}}=(i^4)^{${Math.floor(n/4)}}\cdot i^{${n%4}}=i^{${n%4}}=${v.tex}$.`}},
 r=>{const qa=ri(r,-5,5),qb=ri(r,-5,5),c=ri(r,-4,4)||1,d=ri(r,-4,4)||1;const na=qa*c-qb*d,nb=qa*d+qb*c;if(na===0&&nb===0)return GENS['cplx-arith'][2](r);
- return{lvl:2,q:T`What is $\dfrac{${CX(na,nb).tex}}{${CX(c,d).tex}}$?`,a:CX(qa,qb),w:[CX(qb,qa),CX(qa,-qb),CX(-qa,qb),CX(na,nb),CX(qa+1,qb)],s:T`Multiply by the conjugate $${CX(c,-d).tex}$: the denominator becomes $${c*c+d*d}$, and the quotient is $${CX(qa,qb).tex}$. (Check: $(${CX(qa,qb).tex})(${CX(c,d).tex})=${CX(na,nb).tex}$.)`}},
+ return{lvl:2,q:T`What is $\dfrac{${CX(na,nb).tex}}{${CX(c,d).tex}}$?`,a:CX(qa,qb),w:[CX(qb,qa),CX(qa,-qb),CX(-qa,qb),CX(na,nb),CX(qa+1,qb)],s:T`To divide, multiply numerator and denominator by the conjugate of the denominator, $${CX(c,-d).tex}$.<br>Denominator: $(${CX(c,d).tex})(${CX(c,-d).tex})=${c}^2+${P(d)}^2=${c*c+d*d}$, a real number.<br>Numerator: $(${CX(na,nb).tex})(${CX(c,-d).tex})=${CX(na*c+nb*d,nb*c-na*d).tex}$.<br>Divide each part by $${c*c+d*d}$: $${CX(qa,qb).tex}$.<br>Check: $(${CX(qa,qb).tex})(${CX(c,d).tex})=${CX(na,nb).tex}$. ✓`}},
 r=>{const [a,b,c]=pick(r,TRIPLES);const k=pick(r,[1,2,3]);const sa=pick(r,[1,-1]),sb=pick(r,[1,-1]);
- return{lvl:1,q:k>1?T`What is $\left|\left(${CX(sa*a,sb*b).tex}\right)^{${k}}\right|$?`:T`What is $|${CX(sa*a,sb*b).tex}|$?`,a:c**k,w:[(a+b)**k,c**k*2,c**(k+1),c*k,a*b],s:T`$|z|=\sqrt{${a*a}+${b*b}}=${c}$${k>1?', so the answer is $'+c+'^'+k+'='+c**k+'$':''}.`}},
+ return{lvl:1,q:k>1?T`What is $\left|\left(${CX(sa*a,sb*b).tex}\right)^{${k}}\right|$?`:T`What is $|${CX(sa*a,sb*b).tex}|$?`,a:c**k,w:[(a+b)**k,c**k*2,c**(k+1),c*k,a*b],s:T`The modulus of $a+bi$ is $\sqrt{a^2+b^2}$, its distance from the origin.<br>$|${CX(sa*a,sb*b).tex}|=\sqrt{${a*a}+${b*b}}=\sqrt{${c*c}}=${c}$.${k>1?T`<br>Moduli multiply, so $|z^{${k}}|=|z|^{${k}}=${c}^{${k}}=${c**k}$. (No need to expand the power.)`:''}`}},
 r=>{const k=ri(r,1,8);const pw=2*k;const m=2**k;const v=[CX(m,0),CX(0,m),CX(-m,0),CX(0,-m)][k%4];
- return{lvl:2,q:T`What is $(1+i)^{${pw}}$?`,a:v,w:[CX(m,0),CX(0,m),CX(-m,0),CX(0,-m),CX(2**pw,0)].filter(x=>x.tex!==v.tex),s:T`$(1+i)^2=2i$, so $(1+i)^{${pw}}=(2i)^{${k}}=${m}i^{${k}}=${v.tex}$.`}},
+ return{lvl:2,q:T`What is $(1+i)^{${pw}}$?`,a:v,w:[CX(m,0),CX(0,m),CX(-m,0),CX(0,-m),CX(2**pw,0)].filter(x=>x.tex!==v.tex),s:T`Start from the square: $(1+i)^2=1+2i+i^2=2i$.<br>So $(1+i)^{${pw}}=\big((1+i)^2\big)^{${k}}=(2i)^{${k}}=2^{${k}}\,i^{${k}}=${m}\,i^{${k}}$.<br>$i^{${k}}=i^{${k%4}}$ ${['$=1$','$=i$','$=-1$','$=-i$'][k%4]}, so the answer is $${v.tex}$.`}},
 ];
 GENS['cplx-polar']=[
 r=>{const k=ri(r,1,4);const n=3*k;const m=2**n;const v=CX(k%2?-m:m,0);
- return{lvl:2,q:T`What is $(1+\sqrt3\,i)^{${n}}$?`,a:v,w:[CX(k%2?m:-m,0),CX(0,m),CX(0,-m),CX(2**(n-1)*(k%2?-1:1),0)],s:T`$1+\sqrt3i=2\operatorname{cis}60^\circ$, so the power is $${m}\operatorname{cis}${60*n}^\circ=${v.tex}$.`}},
+ return{lvl:2,q:T`What is $(1+\sqrt3\,i)^{${n}}$?`,a:v,w:[CX(k%2?m:-m,0),CX(0,m),CX(0,-m),CX(2**(n-1)*(k%2?-1:1),0)],s:T`Polar form: $|1+\sqrt3i|=\sqrt{1+3}=2$ and the angle is $60^\circ$ (since $\tan\theta=\sqrt3$), so $1+\sqrt3i=2\operatorname{cis}60^\circ$.<br>De Moivre: $(2\operatorname{cis}60^\circ)^{${n}}=2^{${n}}\operatorname{cis}(${n}\cdot60^\circ)=${m}\operatorname{cis}${60*n}^\circ$.<br>$${60*n}^\circ$ is ${k} half-turn${k===1?'':'s'} ($${k}\times180^\circ$), so $\operatorname{cis}${60*n}^\circ=${k%2?-1:1}$ and the answer is $${v.tex}$.`}},
 r=>{const pts=[[1,0,0],[1,1,45],[0,1,90],[-1,1,135],[-1,0,180],[-1,-1,225],[0,-1,270],[1,-1,315]];const [x,y,ang]=pick(r,pts);const k=ri(r,1,5);
- return{lvl:1,q:T`What is the argument of $${CX(k*x,k*y).tex}$, in degrees (from $0$ up to but not including $360$)?`,a:ang,w:[(ang+90)%360,(ang+180)%360,(ang+270)%360,(360-ang)%360===ang?(ang+45)%360:(360-ang)%360],s:T`The point $(${k*x},${k*y})$ makes an angle of $${ang}^\circ$ with the positive real axis.`}},
+ return{lvl:1,q:T`What is the argument of $${CX(k*x,k*y).tex}$, in degrees (from $0$ up to but not including $360$)?`,a:ang,w:[(ang+90)%360,(ang+180)%360,(ang+270)%360,(360-ang)%360===ang?(ang+45)%360:(360-ang)%360],s:T`The argument is the angle from the positive real axis to the point $(${k*x},${k*y})$, measured counterclockwise.<br>${x===0||y===0?T`The point lies on an axis, pointing ${x>0?'right':x<0?'left':y>0?'up':'down'}.`:T`The point is in quadrant ${x>0?(y>0?'I':'IV'):(y>0?'II':'III')} on the line $y=${x===y?'':'-'}x$, at $45^\circ$ from the nearest horizontal axis.`}<br>So the argument is $${ang}^\circ$. (The scale factor ${k} doesn't change the angle.)`}},
 r=>{const t=pick(r,[10,15,18,20,30,36,40,45,60,72]);const n=ri(r,2,30);const tot=(t*n)%360;const map={0:CX(1,0),90:CX(0,1),180:CX(-1,0),270:CX(0,-1)};if(!(tot in map))return GENS['cplx-polar'][2](r);
- return{lvl:1,q:T`What is $(\cos${t}^\circ+i\sin${t}^\circ)^{${n}}$?`,a:map[tot],w:Object.values(map).filter(x=>x.tex!==map[tot].tex).concat([CX(n,0)]),s:T`De Moivre: $\operatorname{cis}${t*n}^\circ=\operatorname{cis}${tot}^\circ=${map[tot].tex}$.`}},
+ return{lvl:1,q:T`What is $(\cos${t}^\circ+i\sin${t}^\circ)^{${n}}$?`,a:map[tot],w:Object.values(map).filter(x=>x.tex!==map[tot].tex).concat([CX(n,0)]),s:T`De Moivre's Theorem: $(\cos\theta+i\sin\theta)^n=\cos n\theta+i\sin n\theta$.<br>$n\theta=${n}\cdot${t}^\circ=${t*n}^\circ$, which is coterminal with $${tot}^\circ$ (subtract multiples of $360^\circ$).<br>$\cos${tot}^\circ+i\sin${tot}^\circ=${map[tot].tex}$.`}},
 r=>{const x=ri(r,-7,7),y=ri(r,-7,7)||2;const ccw=r()<.5;const v=ccw?CX(-y,x):CX(y,-x);
- return{lvl:1,q:T`The point $${CX(x,y).tex}$ is rotated $90^\circ$ ${ccw?'counterclockwise':'clockwise'} about the origin. What is the result?`,a:v,w:[ccw?CX(y,-x):CX(-y,x),CX(-x,-y),CX(y,x),CX(-x,y)],s:T`Multiply by $${ccw?'i':'-i'}$: $${v.tex}$.`}},
+ return{lvl:1,q:T`The point $${CX(x,y).tex}$ is rotated $90^\circ$ ${ccw?'counterclockwise':'clockwise'} about the origin. What is the result?`,a:v,w:[ccw?CX(y,-x):CX(-y,x),CX(-x,-y),CX(y,x),CX(-x,y)],s:T`Multiplying by $i=\operatorname{cis}90^\circ$ rotates $90^\circ$ counterclockwise; multiplying by $-i$ rotates $90^\circ$ clockwise.<br>$(${CX(x,y).tex})\cdot(${ccw?'i':'-i'})=${ccw?CX(-y,x).tex:CX(y,-x).tex}$ (using $i^2=-1$).<br>In coordinates: $(${x},${y})\to${ccw?'(-y,x)':'(y,-x)'}=(${ccw?-y:y},${ccw?x:-x})$, i.e. $${v.tex}$.`}},
 ];
 GENS['cplx-roots']=[
 r=>{const n=ri(r,2,12),k=ri(r,1,30);const v=k%n===0?n:0;
- return{lvl:2,q:T`Let $z_1,\dots,z_{${n}}$ be the ${n}th roots of unity. What is $z_1^{${k}}+z_2^{${k}}+\cdots+z_{${n}}^{${k}}$?`,a:v,w:[v===0?n:0,1,-1,k],s:T`$\sum\omega^{jk}$ is $n$ if $n\mid k$ and $0$ otherwise. Here ${n}${k%n===0?' divides':' does not divide'} ${k}: $${v}$.`}},
+ return{lvl:2,q:T`Let $z_1,\dots,z_{${n}}$ be the ${n}th roots of unity. What is $z_1^{${k}}+z_2^{${k}}+\cdots+z_{${n}}^{${k}}$?`,a:v,w:[v===0?n:0,1,-1,k],s:T`The roots are $\omega^j$ for $j=0,\dots,${n-1}$, where $\omega=\operatorname{cis}\frac{360^\circ}{${n}}$. So the sum is $\sum_j(\omega^{${k}})^j$.<br>${k%n===0?T`Since $${n}\mid${k}$, $\omega^{${k}}=1$ and every term is $1$: the sum is $${n}$.`:T`Since $${n}\nmid${k}$, $\omega^{${k}}\ne1$, and the geometric series sums to $\dfrac{(\omega^{${k}})^{${n}}-1}{\omega^{${k}}-1}=\dfrac{1-1}{\omega^{${k}}-1}=0$.`}<br>Answer: $${v}$.`}},
 r=>{const n=ri(r,2,15);const v=n%2?1:-1;
- return{lvl:2,q:T`What is the product of all ${n}th roots of unity?`,a:v,w:[-v,0,n,(-1)**n===v?n+1:(-1)**n],s:T`For $z^{${n}}-1$, the product of the roots is $(-1)^{${n}}\cdot(-1)=${v}$.`}},
+ return{lvl:2,q:T`What is the product of all ${n}th roots of unity?`,a:v,w:[-v,0,n,(-1)**n===v?n+1:(-1)**n],s:T`The ${n}th roots of unity are the roots of $z^{${n}}-1=0$.<br>Vieta: for a monic polynomial of degree $n$, the product of the roots is $(-1)^n$ times the constant term: $(-1)^{${n}}\cdot(-1)=${v}$.<br>${n%2?'(Odd $n$: the non-real roots pair up into conjugates with product $1$, and the remaining root is $1$.)':'(Even $n$: the roots pair into conjugates with product $1$, except $1$ and $-1$, whose product is $-1$.)'}`}},
 r=>{const a=ri(r,10,3000),b=ri(r,10,3000);const s=[a%3,b%3].sort();const val=(e)=>e===0?'1':e===1?'\\omega':'\\omega^2';
  const tbl={'0,0':O('2',2),'0,1':O('1+\\omega',1.1),'0,2':O('1+\\omega^2',1.2),'1,1':O('2\\omega',2.1),'1,2':O('-1',-1),'2,2':O('2\\omega^2',2.2)};const v=tbl[s.join(',')];
- return{lvl:2,q:T`Let $\omega\ne1$ satisfy $\omega^3=1$. What is $\omega^{${a}}+\omega^{${b}}$?`,a:v,w:Object.values(tbl).filter(x=>x.tex!==v.tex).concat([O('0',0)]),s:T`Reduce the exponents mod 3: $${val(a%3)}+${val(b%3)}$${s.join(',')==='1,2'?', and $\\omega+\\omega^2=-1$':''}.`}},
+ return{lvl:2,q:T`Let $\omega\ne1$ satisfy $\omega^3=1$. What is $\omega^{${a}}+\omega^{${b}}$?`,a:v,w:Object.values(tbl).filter(x=>x.tex!==v.tex).concat([O('0',0)]),s:T`Since $\omega^3=1$, only exponents mod $3$ matter: $${a}\equiv${a%3}$ and $${b}\equiv${b%3}\pmod3$.<br>So the sum is $${val(a%3)}+${val(b%3)}$${s.join(',')==='1,2'?'. From $1+\\omega+\\omega^2=0$ we get $\\omega+\\omega^2=-1$':''}.<br>Answer: $${v.tex}$.`}},
 r=>{const n=pick(r,[3,4,6,8,12]);const areas={3:O('\\frac{3\\sqrt{3}}{4}',3*Math.sqrt(3)/4),4:O('2',2),6:O('\\frac{3\\sqrt{3}}{2}',3*Math.sqrt(3)/2),8:O('2\\sqrt{2}',2*Math.SQRT2),12:O('3',3)};
- return{lvl:2,q:T`What is the area of the polygon whose vertices are the ${n}th roots of unity?`,a:areas[n],w:Object.values(areas).filter(x=>x.tex!==areas[n].tex).concat([O('\\pi',Math.PI)]),s:T`A regular ${n}-gon with circumradius 1 has area $\frac{${n}}{2}\sin\frac{360^\circ}{${n}}=${areas[n].tex}$.`}},
+ return{lvl:2,q:T`What is the area of the polygon whose vertices are the ${n}th roots of unity?`,a:areas[n],w:Object.values(areas).filter(x=>x.tex!==areas[n].tex).concat([O('\\pi',Math.PI)]),s:T`The ${n}th roots of unity are the vertices of a regular ${n}-gon inscribed in the unit circle.<br>Split it into ${n} congruent triangles from the center, each with two sides of length $1$ and angle $\frac{360^\circ}{${n}}=${360/n}^\circ$ between them. Each has area $\frac12\sin${360/n}^\circ$.<br>Total: $\frac{${n}}{2}\sin${360/n}^\circ=${areas[n].tex}$.`}},
 ];
 /* ---- conic.txt ---- */
 GENS['conic-para']=[
@@ -16179,38 +16477,38 @@ r=>{const p=pick(r,[F(1),F(2),F(3),F(1,2),F(1,4),F(5),F(3,2)])  ;const ax=r()<.5
  const eq=ax?T`x^2=${four.tex()}y`:T`y^2=${four.tex()}x`;
  const v=ask==='focus'?p:ask==='directrix'?p.neg():four;
  return{lvl:1,q:ask==='focus'?T`What is the ${ax?'$y$':'$x$'}-coordinate of the focus of $${eq}$?`:ask==='directrix'?T`The directrix of $${eq}$ is the line ${ax?'$y=k$':'$x=k$'}. What is $k$?`:T`What is the length of the latus rectum of $${eq}$?`,
- a:v,w:[four,p.neg().v===v.v?p:p.neg(),p.mul(2),F(1).div(four),F(1).div(p)],s:T`$4p=${four.tex()}$, so $p=${p.tex()}$. Focus at distance $p$ from the vertex, directrix at $-p$, latus rectum $4p$: the answer is $${v.tex()}$.`}},
+ a:v,w:[four,p.neg().v===v.v?p:p.neg(),p.mul(2),F(1).div(four),F(1).div(p)],s:T`Standard forms with vertex at the origin: $x^2=4py$ opens up or down (focus $(0,p)$, directrix $y=-p$); $y^2=4px$ opens right or left (focus $(p,0)$, directrix $x=-p$). The latus rectum, the focal chord parallel to the directrix, has length $4p$.<br>Here the equation is $${eq}$, so $4p=${four.tex()}$ and $p=${p.tex()}$.<br>${ask==='focus'?T`The focus is at distance $p$ from the vertex: coordinate $${p.tex()}$.`:ask==='directrix'?T`The directrix is on the opposite side at distance $p$: $k=${p.neg().tex()}$.`:T`The latus rectum has length $4p=${four.tex()}$.`}`}},
 r=>{const a=pick(r,[F(1),F(2),F(1,2),F(1,4),F(3),F(1,8),F(4)]);const p=F(1).div(a.mul(4));
- return{lvl:2,q:T`What is the ${r()<.5?'$y$-coordinate of the focus':'distance from the vertex to the focus'} of $y=${a.tex()==='1'?'':a.tex()}x^2$?`,a:p,w:[a,p.mul(4),F(1).div(a),p.mul(2)],s:T`$x^2=\frac1{${a.tex()}}y=4py$, so $p=\frac{1}{4\cdot${a.tex()}}=${p.tex()}$.`}},
+ return{lvl:2,q:T`What is the ${r()<.5?'$y$-coordinate of the focus':'distance from the vertex to the focus'} of $y=${a.tex()==='1'?'':a.tex()}x^2$?`,a:p,w:[a,p.mul(4),F(1).div(a),p.mul(2)],s:T`Rewrite in standard form: $y=${a.tex()==='1'?'':a.tex()}x^2\iff x^2=\dfrac{1}{${a.tex()}}y$.<br>Match with $x^2=4py$: $4p=\dfrac1{${a.tex()}}$, so $p=\dfrac{1}{4\cdot${a.tex()}}=${p.tex()}$.<br>The vertex is the origin, so the focus is $(0,${p.tex()})$: both the requested coordinate and the vertex-to-focus distance equal $${p.tex()}$.`}},
 r=>{const p=ri(r,1,4),x=2*p*ri(r,1,5);const y=x*x/(4*p);const d=y+p;
- return{lvl:2,q:T`A point on the parabola $x^2=${4*p}y$ is at distance ${d} from the focus. What is the absolute value of its $x$-coordinate?`,a:x,w:[y,d,x/2,R(1,4*p*d)],s:T`The focus is $(0,${p})$ and the directrix $y=-${p}$, so the distance is $y+${p}=${d}$. Then $y=${y}$ and $x^2=${x*x}$.`}},
+ return{lvl:2,q:T`A point on the parabola $x^2=${4*p}y$ is at distance ${d} from the focus. What is the absolute value of its $x$-coordinate?`,a:x,w:[y,d,x/2,R(1,4*p*d)],s:T`$x^2=${4*p}y$ has $4p=${4*p}$, so $p=${p}$: focus $(0,${p})$ and directrix $y=-${p}$.<br>Every point of a parabola is as far from the focus as from the directrix, and the distance to the directrix is $y+${p}$.<br>So $y+${p}=${d}$, giving $y=${y}$, and then $x^2=${4*p}\cdot${y}=${x*x}$, so $|x|=${x}$.`}},
 r=>{const h=ri(r,-7,7),k=ri(r,-9,9);const b=-2*h,c=h*h+k;
- return{lvl:1,q:T`The vertex of $y=${poly([[1,2],[b,1],[c,0]],'x')}$ is $(h,k)$. What is $h+k$?`,a:h+k,w:[h-k,k,c,b+c],s:T`$(x${-h<0?'-':'+'}${Math.abs(h)})^2${k<0?'-':'+'}${Math.abs(k)}$: vertex $(${h},${k})$, sum $${h+k}$.`}},
+ return{lvl:1,q:T`The vertex of $y=${poly([[1,2],[b,1],[c,0]],'x')}$ is $(h,k)$. What is $h+k$?`,a:h+k,w:[h-k,k,c,b+c],s:T`Complete the square: $x^2${b<0?'-':'+'}${Math.abs(b)}x${c<0?'-':'+'}${Math.abs(c)}=\left(x^2${b<0?'-':'+'}${Math.abs(b)}x+${h*h}\right)${c-h*h<0?'-':'+'}${Math.abs(c-h*h)}=(x${-h<0?'-':'+'}${Math.abs(h)})^2${k<0?'-':'+'}${Math.abs(k)}$.<br>Vertex form $(x-h)^2+k$ gives $h=${h}$ and $k=${k}$.<br>$h+k=${h+k}$. (Check with $h=-\frac{b}{2a}=${h}$.)`}},
 ];
 GENS['conic-ell']=[
 r=>{const [b,c,a]=pick(r,TRIPLES.filter(t=>t[2]<=29));const ask=pick(r,['foci','area','sum','minor']);const A2=a*a,B2=b*b;
- if(ask==='foci')return{lvl:1,q:T`What is the distance between the foci of $\dfrac{x^2}{${A2}}+\dfrac{y^2}{${B2}}=1$?`,a:2*c,w:[c,2*a,2*b,a+b],s:T`$c^2=${A2}-${B2}=${c*c}$, so $c=${c}$ and the foci are $${2*c}$ apart.`};
- if(ask==='area')return{lvl:1,q:T`What is the area enclosed by $\dfrac{x^2}{${A2}}+\dfrac{y^2}{${B2}}=1$?`,a:PI(a*b),w:[PI(A2*B2),PI(a+b),PI(2*a*b),PI(A2)],s:T`$\pi ab=\pi\cdot${a}\cdot${b}=${PI(a*b).tex}$.`};
- if(ask==='sum')return{lvl:1,q:T`For any point on $\dfrac{x^2}{${A2}}+\dfrac{y^2}{${B2}}=1$, what is the sum of the distances to the foci?`,a:2*a,w:[2*b,2*c,a,a+b],s:T`The sum equals the major axis, $2a=${2*a}$.`};
- return{lvl:2,q:T`An ellipse has foci $(\pm${c},0)$ and major axis ${2*a}. What is the length of its minor axis?`,a:2*b,w:[b,2*c,2*a-2*c,a+c],s:T`$a=${a}$ and $c=${c}$, so $b=\sqrt{${a*a}-${c*c}}=${b}$ and the minor axis is $${2*b}$.`}},
+ if(ask==='foci')return{lvl:1,q:T`What is the distance between the foci of $\dfrac{x^2}{${A2}}+\dfrac{y^2}{${B2}}=1$?`,a:2*c,w:[c,2*a,2*b,a+b],s:T`For $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$ with $a\gt b$, the foci are $(\pm c,0)$ with $c^2=a^2-b^2$.<br>$c^2=${A2}-${B2}=${c*c}$, so $c=${c}$.<br>The foci $(\pm${c},0)$ are $2c=${2*c}$ apart.`};
+ if(ask==='area')return{lvl:1,q:T`What is the area enclosed by $\dfrac{x^2}{${A2}}+\dfrac{y^2}{${B2}}=1$?`,a:PI(a*b),w:[PI(A2*B2),PI(a+b),PI(2*a*b),PI(A2)],s:T`An ellipse with semi-axes $a$ and $b$ encloses area $\pi ab$ (it's a circle stretched by $\frac ba$ in one direction).<br>$a=\sqrt{${A2}}=${a}$ and $b=\sqrt{${B2}}=${b}$.<br>Area: $\pi\cdot${a}\cdot${b}=${PI(a*b).tex}$.`};
+ if(ask==='sum')return{lvl:1,q:T`For any point on $\dfrac{x^2}{${A2}}+\dfrac{y^2}{${B2}}=1$, what is the sum of the distances to the foci?`,a:2*a,w:[2*b,2*c,a,a+b],s:T`By definition, an ellipse is the set of points whose distances to the two foci have a constant sum, and that sum is the length of the major axis, $2a$.<br>(At the vertex $(a,0)$ the distances are $a-c$ and $a+c$, which add to $2a$.)<br>Here $a=\sqrt{${A2}}=${a}$, so the sum is $${2*a}$.`};
+ return{lvl:2,q:T`An ellipse has foci $(\pm${c},0)$ and major axis ${2*a}. What is the length of its minor axis?`,a:2*b,w:[b,2*c,2*a-2*c,a+c],s:T`Major axis ${2*a} means $a=${a}$; foci $(\pm${c},0)$ means $c=${c}$.<br>For an ellipse, $b^2=a^2-c^2=${a*a}-${c*c}=${b*b}$, so $b=${b}$.<br>The minor axis is $2b=${2*b}$.`}},
 r=>{const [a,b,c]=pick(r,TRIPLES.filter(t=>t[2]<=29));const ask=r()<.5;
- return ask?{lvl:1,q:T`The hyperbola $\dfrac{x^2}{${a*a}}-\dfrac{y^2}{${b*b}}=1$ has foci $(\pm c,0)$. What is $c$?`,a:c,w:[R(1,Math.abs(a*a-b*b)||2),a+b,c*c,Math.max(a,b)],s:T`$c^2=a^2+b^2=${c*c}$.`}
- :{lvl:1,q:T`What is the positive slope of an asymptote of $\dfrac{x^2}{${a*a}}-\dfrac{y^2}{${b*b}}=1$?`,a:F(b,a),w:[F(a,b),F(b*b,a*a),F(c,a),F(b,c)],s:T`The asymptotes are $y=\pm\frac ba x$: slope $${F(b,a).tex()}$.`}},
+ return ask?{lvl:1,q:T`The hyperbola $\dfrac{x^2}{${a*a}}-\dfrac{y^2}{${b*b}}=1$ has foci $(\pm c,0)$. What is $c$?`,a:c,w:[R(1,Math.abs(a*a-b*b)||2),a+b,c*c,Math.max(a,b)],s:T`For a hyperbola $\frac{x^2}{a^2}-\frac{y^2}{b^2}=1$, the foci satisfy $c^2=a^2+b^2$ (the ellipse has a minus sign; the hyperbola a plus).<br>$c^2=${a*a}+${b*b}=${c*c}$, so $c=${c}$.`}
+ :{lvl:1,q:T`What is the positive slope of an asymptote of $\dfrac{x^2}{${a*a}}-\dfrac{y^2}{${b*b}}=1$?`,a:F(b,a),w:[F(a,b),F(b*b,a*a),F(c,a),F(b,c)],s:T`Setting the right side to $0$ gives the asymptotes: $\frac{x^2}{${a*a}}=\frac{y^2}{${b*b}}$, so $y=\pm\frac{${b}}{${a}}x$.<br>In general the asymptotes of $\frac{x^2}{a^2}-\frac{y^2}{b^2}=1$ are $y=\pm\frac bax$.<br>Positive slope: $${F(b,a).tex()}$.`}},
 r=>{const a=ri(r,2,7),b=ri(r,1,a-1);const p=ri(r,1,4),q=ri(r,1,4);const A=b*b*p,B=a*a*p;// A x^2 + B y^2 = a^2 b^2 p -> x^2/a^2 + y^2/b^2
  const g=gcd(gcd(A,B),a*a*b*b*p);
- return{lvl:2,q:T`What is the area enclosed by $${A/g}x^2+${B/g}y^2=${a*a*b*b*p/g}$?`,a:PI(a*b),w:[PI(a*a*b*b),PI(a+b),PI(a*a),PI(2*a*b)],s:T`Divide: $\frac{x^2}{${a*a}}+\frac{y^2}{${b*b}}=1$, so the area is $\pi\cdot${a}\cdot${b}=${PI(a*b).tex}$.`}},
+ return{lvl:2,q:T`What is the area enclosed by $${A/g}x^2+${B/g}y^2=${a*a*b*b*p/g}$?`,a:PI(a*b),w:[PI(a*a*b*b),PI(a+b),PI(a*a),PI(2*a*b)],s:T`Divide both sides by $${a*a*b*b*p/g}$ to get standard form: $\dfrac{x^2}{${a*a}}+\dfrac{y^2}{${b*b}}=1$.<br>So the semi-axes are $a=${a}$ and $b=${b}$.<br>Area $=\pi ab=\pi\cdot${a}\cdot${b}=${PI(a*b).tex}$.`}},
 ];
 GENS['conic-param']=[
 r=>{const a=ri(r,-5,5)||2,b=ri(r,-6,6),c=ri(r,-5,5)||1,d=ri(r,-6,6);const m=F(c,a);
- return{lvl:1,q:T`A curve is given by $x=${poly([[a,1],[b,0]],'t')}$, $y=${poly([[c,1],[d,0]],'t')}$. What is its slope?`,a:m,w:[F(a,c),m.neg(),F(d,b||1),F(c+d,a+b||1)],s:T`The slope is $\frac{\Delta y}{\Delta x}=\frac{${c}}{${a}}=${m.tex()}$ per unit of $t$.`}},
+ return{lvl:1,q:T`A curve is given by $x=${poly([[a,1],[b,0]],'t')}$, $y=${poly([[c,1],[d,0]],'t')}$. What is its slope?`,a:m,w:[F(a,c),m.neg(),F(d,b||1),F(c+d,a+b||1)],s:T`Both coordinates are linear in $t$, so the curve is a line. When $t$ increases by $1$, $x$ changes by $${a}$ and $y$ by $${c}$.<br>Slope $=\dfrac{\Delta y}{\Delta x}=\dfrac{${c}}{${a}}=${m.tex()}$.<br>(Eliminating $t$ confirms it: $t=\frac{x${b<0?'+':'-'}${Math.abs(b)}}{${a}}$, so $y=${c}\cdot\frac{x${b<0?'+':'-'}${Math.abs(b)}}{${a}}${d<0?'-':'+'}${Math.abs(d)}$, with $x$-coefficient $${m.tex()}$.)`}},
 r=>{const a=ri(r,-6,6),b=ri(r,-6,6),c=ri(r,-6,6),d=ri(r,-6,6);const ask=pick(r,['dot','area']);const dot=a*c+b*d,ar=Math.abs(a*d-b*c);
- return ask==='dot'?{lvl:1,q:T`What is the dot product of $(${a},${b})$ and $(${c},${d})$?`,a:dot,w:[a*d-b*c,a*c-b*d,dot+1,(a+c)*(b+d)],s:T`$${a}\cdot${P(c)}+${b}\cdot${P(d)}=${dot}$.`}
- :{lvl:1,q:T`What is the area of the parallelogram spanned by $(${a},${b})$ and $(${c},${d})$?`,a:ar,w:[Math.abs(dot),ar+1,F(ar,2),Math.abs(a*c-b*d)],s:T`$|${a}\cdot${P(d)}-${b}\cdot${P(c)}|=${ar}$.`}},
+ return ask==='dot'?{lvl:1,q:T`What is the dot product of $(${a},${b})$ and $(${c},${d})$?`,a:dot,w:[a*d-b*c,a*c-b*d,dot+1,(a+c)*(b+d)],s:T`Dot product: multiply matching components and add.<br>$(${a},${b})\cdot(${c},${d})=${a}\cdot${P(c)}+${b}\cdot${P(d)}=${a*c}+${P(b*d)}=${dot}$.${dot===0?' (Zero: the vectors are perpendicular.)':''}`}
+ :{lvl:1,q:T`What is the area of the parallelogram spanned by $(${a},${b})$ and $(${c},${d})$?`,a:ar,w:[Math.abs(dot),ar+1,F(ar,2),Math.abs(a*c-b*d)],s:T`The parallelogram spanned by $(a,b)$ and $(c,d)$ has area $|ad-bc|$, the absolute value of the $2\times2$ determinant.<br>$|${a}\cdot${P(d)}-${b}\cdot${P(c)}|=|${a*d}-${P(b*c)}|=${ar}$.`}},
 r=>{const a=ri(r,1,6),b=ri(r,-6,6)||3,c=ri(r,1,6);// (a, k) . (c, b) = 0 -> ac + kb = 0
  const k=F(-a*c,b);
- return{lvl:1,q:T`For what $k$ are $(${a},k)$ and $(${c},${b})$ perpendicular?`,a:k,w:[k.neg(),F(a*c,b*b),F(b,a*c||1),F(0)],s:T`$${a*c}+${b}k=0$, so $k=${k.tex()}$.`}},
+ return{lvl:1,q:T`For what $k$ are $(${a},k)$ and $(${c},${b})$ perpendicular?`,a:k,w:[k.neg(),F(a*c,b*b),F(b,a*c||1),F(0)],s:T`Two vectors are perpendicular exactly when their dot product is $0$.<br>$(${a},k)\cdot(${c},${b})=${a*c}+${b}k=0$, so $k=\dfrac{-${a*c}}{${b}}=${k.tex()}$.`}},
 r=>{const R_=ri(r,1,9),S_=ri(r,1,9);const ask=R_===S_;
- return{lvl:1,q:T`What is the area enclosed by the curve $x=${R_}\cos t$, $y=${S_}\sin t$?`,a:PI(R_*S_),w:[PI(R_*R_+S_*S_),PI(R_+S_),PI(2*R_*S_),O(String(R_*S_),R_*S_)],s:T`It is the ellipse $\frac{x^2}{${R_*R_}}+\frac{y^2}{${S_*S_}}=1$, with area $\pi\cdot${R_}\cdot${S_}=${PI(R_*S_).tex}$.`}},
+ return{lvl:1,q:T`What is the area enclosed by the curve $x=${R_}\cos t$, $y=${S_}\sin t$?`,a:PI(R_*S_),w:[PI(R_*R_+S_*S_),PI(R_+S_),PI(2*R_*S_),O(String(R_*S_),R_*S_)],s:T`Use $\cos^2t+\sin^2t=1$: $\left(\frac{x}{${R_}}\right)^2+\left(\frac{y}{${S_}}\right)^2=\cos^2t+\sin^2t=1$.<br>So the curve is the ${R_===S_?'circle':'ellipse'} $\frac{x^2}{${R_*R_}}+\frac{y^2}{${S_*S_}}=1$ with semi-axes $${R_}$ and $${S_}$.<br>Area $=\pi\cdot${R_}\cdot${S_}=${PI(R_*S_).tex}$.`}},
 ];
 /* ---- pc3/00-helpers.txt ---- */
 /* ---------- precalculus helpers ---------- */

@@ -45,7 +45,8 @@ W: 2143
 W: 302
 W: 198
 W: 288
-S: $2\cdot125+1\cdot25+4\cdot5+3=298$.
+S: Each digit is multiplied by a power of the base, starting from $5^0$ on the right: $2143_5=2\cdot5^3+1\cdot5^2+4\cdot5^1+3\cdot5^0$.
+$=2\cdot125+1\cdot25+4\cdot5+3=250+25+20+3=298$.
 ---
 Q: What is $100$ written in base $7$?
 L: 1
@@ -54,7 +55,10 @@ W: 212_7
 W: 220_7
 W: 144_7
 W: 102_7
-S: $100=2\cdot49+0\cdot7+2$, so $202_7$.
+S: Find the base-7 digits by peeling off powers of $7$ ($1,7,49,343$). The largest power not exceeding $100$ is $49$.
+$100=2\cdot49+2$; the leftover $2$ is $0\cdot7+2$.
+So $100=2\cdot49+0\cdot7+2\cdot1=202_7$.
+(Repeated division gives the same: $100=14\cdot7+2$, $14=2\cdot7+0$, $2=0\cdot7+2$; read the remainders upward: $2,0,2$.)
 ---
 Q: In base $b$, $121_b$ equals $144$ (in base 10). What is $b$?
 L: 1
@@ -63,7 +67,9 @@ W: 12
 W: 10
 W: 9
 W: 13
-S: $121_b=b^2+2b+1=(b+1)^2=144$, so $b=11$.
+S: $121_b=1\cdot b^2+2\cdot b+1=b^2+2b+1=(b+1)^2$.
+$(b+1)^2=144$ gives $b+1=12$, so $b=11$.
+(The digit $2$ is allowed since $2\lt11$.)
 ---
 Q: In some base $b$, $34_b+25_b=61_b$. What is $b$?
 L: 2
@@ -72,7 +78,9 @@ W: 9
 W: 7
 W: 10
 W: 6
-S: $(3b+4)+(2b+5)=6b+1$, so $b=8$. (All digits are below 8 ✓.)
+S: Convert everything to base 10: $34_b=3b+4$, $25_b=2b+5$, $61_b=6b+1$.
+$(3b+4)+(2b+5)=6b+1$ gives $5b+9=6b+1$, so $b=8$.
+Check the digits: the largest digit used is $6$, which is less than $8$. ✓ (In base 8: $4+5=9=11_8$, write $1$ carry $1$; $3+2+1=6$.)
 ---
 Q: How many digits does $1000$ have when written in base $2$?
 L: 1
@@ -81,7 +89,9 @@ W: 9
 W: 11
 W: 8
 W: 12
-S: $2^9=512\le1000\lt 1024=2^{10}$, so it has $10$ binary digits.
+S: A number has $k$ binary digits exactly when $2^{k-1}\le n\lt2^k$.
+$2^9=512\le1000\lt1024=2^{10}$, so $k=10$.
+(Indeed $1000=1111101000_2$.)
 ---
 Q: What is the largest three-digit base-$6$ number, written in base $10$?
 L: 1
@@ -90,7 +100,9 @@ W: 216
 W: 555
 W: 180
 W: 210
-S: $555_6=6^3-1=215$.
+S: The largest three-digit base-6 number uses the largest digit, $5$, in every place: $555_6$.
+$555_6=5\cdot36+5\cdot6+5=180+30+5=215$.
+Shortcut: it's one less than $1000_6=6^3=216$.
 ---
 Q: A positive integer is $47$ in base $b$ and $74$ in base $c$, where $b,c>7$. What is the smallest such integer (in base 10)?
 L: 3
@@ -99,8 +111,11 @@ W: 39
 W: 46
 W: 74
 W: 53
-S: $4b+7=7c+4$, so $4b+3=7c$, which needs $b\equiv1\pmod7$.
-$b=8$ gives $39$, so $c=5$, which is too small. $b=15$ gives $67=7\cdot9+4$ with $c=9$ ✓.
+S: In base 10, $47_b=4b+7$ and $74_c=7c+4$. Digits must be less than the base, so $b\ge8$ and $c\ge8$.
+Set equal: $4b+7=7c+4$, so $7c=4b+3$. We need $4b+3$ divisible by $7$: $4b\equiv-3\equiv4\pmod7$, so $b\equiv1\pmod7$.
+• $b=8$: $4(8)+7=39=7c+4$ gives $c=5$, too small (needs $c\ge8$).
+• $b=15$: $4(15)+7=67=7c+4$ gives $c=9$. ✓
+The smallest such integer is $67$ ($=47_{15}=74_9$).
 ---
 Q: What is $1011_2\times11_2$, written in base $10$?
 L: 1
@@ -109,7 +124,8 @@ W: 30
 W: 36
 W: 13
 W: 110
-S: $1011_2=11$ and $11_2=3$, so the product is $33$.
+S: Convert each factor: $1011_2=8+0+2+1=11$ and $11_2=2+1=3$.
+Product: $11\cdot3=33$.
 ---
 @@ base-digit
 Q: How many two-digit numbers with both digits nonzero decrease by $54$ when their digits are reversed?
@@ -119,7 +135,9 @@ W: 4
 W: 6
 W: 2
 W: 9
-S: $\overline{ab}-\overline{ba}=9(a-b)=54$, so $a-b=6$: $71,82,93$.
+S: Write the number as $\overline{ab}=10a+b$; reversed it's $10b+a$.
+Difference: $(10a+b)-(10b+a)=9(a-b)$. Setting $9(a-b)=54$ gives $a-b=6$.
+With digits $1$–$9$: $(a,b)=(7,1),(8,2),(9,3)$, i.e. $71,82,93$. That's $3$ numbers.
 ---
 Q: How many two-digit numbers equal $4$ times the sum of their digits?
 L: 2
@@ -128,7 +146,9 @@ W: 3
 W: 5
 W: 2
 W: 6
-S: $10a+b=4a+4b$ gives $b=2a$: $12,24,36,48$.
+S: Write $\overline{ab}=10a+b$ with $a\ge1$. The condition is $10a+b=4(a+b)$.
+Simplify: $6a=3b$, so $b=2a$.
+$b$ must be a digit, so $a\le4$: $12,24,36,48$. That's $4$ numbers.
 ---
 Q: How many four-digit palindromes are there?
 L: 1
@@ -137,7 +157,9 @@ W: 100
 W: 81
 W: 900
 W: 99
-S: $\overline{abba}$ with $a\in1..9$ and $b\in0..9$: $90$.
+S: A four-digit palindrome has the form $\overline{abba}$: the last two digits are forced by the first two.
+$a$ can be $1$–$9$ (no leading zero): $9$ choices. $b$ can be $0$–$9$: $10$ choices.
+Total: $9\cdot10=90$.
 ---
 Q: How many digits are used to write the integers from $1$ to $100$?
 L: 1
@@ -146,7 +168,11 @@ W: 190
 W: 200
 W: 189
 W: 193
-S: $9\cdot1+90\cdot2+1\cdot3=192$.
+S: Count by number of digits:
+• $1$–$9$: $9$ numbers × $1$ digit $=9$.
+• $10$–$99$: $90$ numbers × $2$ digits $=180$.
+• $100$: $1$ number × $3$ digits $=3$.
+Total: $9+180+3=192$.
 ---
 Q: What is the sum of the digits of $10^{20}-20$?
 L: 2
@@ -155,7 +181,9 @@ W: 180
 W: 162
 W: 171
 W: 178
-S: $10^{20}-20=\underbrace{99\cdots9}_{18}80$: digit sum $18\cdot9+8=170$.
+S: $10^{20}$ is $1$ followed by $20$ zeros. Subtracting $20$:
+$10^{20}-20=99\cdots980$, with eighteen $9$s followed by $8$ and $0$. (Check with a small case: $10^4-20=9980$, two $9$s then $80$.)
+Digit sum: $18\cdot9+8+0=162+8=170$.
 ---
 Q: How many three-digit numbers have digit sum $5$?
 L: 2
@@ -164,7 +192,9 @@ W: 21
 W: 10
 W: 12
 W: 20
-S: With $a\ge1$, let $a'=a-1$: $a'+b+c=4$ has $\binom{6}{2}=15$ solutions.
+S: Let the number be $\overline{abc}$ with $a\ge1$ and $a+b+c=5$.
+Substitute $a'=a-1\ge0$: $a'+b+c=4$ with all variables $\ge0$ (no digit can exceed $9$ here).
+Stars and bars: $\binom{4+2}{2}=\binom62=15$.
 ---
 Q: How many three-digit numbers $\overline{abc}$ with $c\ne0$ satisfy $\overline{abc}-\overline{cba}=396$?
 L: 3
@@ -173,7 +203,11 @@ W: 40
 W: 60
 W: 45
 W: 5
-S: $99(a-c)=396$, so $a-c=4$. The pairs $(a,c)$ are $(5,1),\dots,(9,5)$ (5 pairs), and $b$ is free (10 choices). Total $50$.
+S: $\overline{abc}-\overline{cba}=(100a+10b+c)-(100c+10b+a)=99(a-c)$.
+$99(a-c)=396$ gives $a-c=4$.
+With $c\ge1$ and $a\le9$: $(a,c)=(5,1),(6,2),(7,3),(8,4),(9,5)$: $5$ pairs.
+The middle digit $b$ cancels out, so it can be anything: $10$ choices.
+Total: $5\cdot10=50$.
 ---
 Q: What is the smallest positive integer whose digits sum to $30$?
 L: 2
@@ -182,7 +216,9 @@ W: 6999
 W: 5799
 W: 39990
 W: 2999
-S: A 3-digit number has digit sum at most 27, so we need 4 digits. The smallest puts the most 9s at the end: $3999$.
+S: Fewer digits means a smaller number, so first find the minimum number of digits. Three digits sum to at most $9+9+9=27\lt30$, so we need at least $4$ digits.
+With $4$ digits, make the leading digit as small as possible by making the others as large as possible: last three digits $9,9,9$ (sum $27$), leading digit $30-27=3$.
+Answer: $3999$.
 ---
 @@ base-dec
 Q: How many of the fractions $\frac12,\frac13,\frac14,\dots,\frac1{20}$ have terminating decimal expansions?
@@ -192,7 +228,9 @@ W: 6
 W: 8
 W: 9
 W: 5
-S: The denominators of the form $2^m5^n$ are $2,4,5,8,10,16,20$: $7$.
+S: A fraction $\frac1n$ has a terminating decimal exactly when $n$ has no prime factors other than $2$ and $5$.
+Among $2,\dots,20$, those are $2,4,5,8,10,16,20$.
+That's $7$ fractions.
 ---
 Q: How many digits are after the decimal point in the decimal expansion of $\frac{3}{80}$?
 L: 1
@@ -201,7 +239,9 @@ W: 3
 W: 2
 W: 5
 W: 6
-S: $80=2^4\cdot5$, so $\max(4,1)=4$ digits: $0.0375$.
+S: $\frac{3}{80}$ is in lowest terms, and $80=2^4\cdot5$.
+To make the denominator a power of $10$, multiply by $5^3$: $\frac{3}{80}=\frac{3\cdot125}{10^4}=\frac{375}{10000}=0.0375$.
+In general $\frac{m}{2^a5^b}$ has $\max(a,b)$ decimal digits: $\max(4,1)=4$.
 ---
 Q: What is the $100$th digit after the decimal point in $\frac17$?
 L: 1
@@ -210,7 +250,9 @@ W: 1
 W: 4
 W: 2
 W: 5
-S: $\frac17=0.\overline{142857}$ has period 6. $100\equiv4\pmod6$, so the digit is the 4th one: $8$.
+S: $\frac17=0.\overline{142857}$, which repeats every $6$ digits.
+$100=6\cdot16+4$, so the $100$th digit matches the $4$th digit of the block $1,4,2,8,5,7$.
+The $4$th digit is $8$.
 ---
 Q: What is the length of the repeating block in the decimal expansion of $\frac1{13}$?
 L: 2
@@ -219,7 +261,8 @@ W: 12
 W: 13
 W: 3
 W: 2
-S: $\frac1{13}=0.\overline{076923}$, period $6$ (the order of 10 mod 13).
+S: Long division: $\frac1{13}=0.076923076923\ldots=0.\overline{076923}$.
+The period is $6$. (It's the smallest $k$ with $13\mid10^k-1$: $10^6-1=999999=13\cdot76923$.)
 ---
 Q: For how many integers $n$ with $1\le n\le100$ does $\frac{n}{120}$ have a terminating decimal?
 L: 2
@@ -228,7 +271,9 @@ W: 34
 W: 40
 W: 25
 W: 30
-S: $120=2^3\cdot3\cdot5$. The factor $3$ must cancel, so $3\mid n$: $33$ values.
+S: $\frac{n}{120}$ terminates exactly when, in lowest terms, the denominator has only the primes $2$ and $5$.
+$120=2^3\cdot3\cdot5$, so the factor $3$ must cancel: $3\mid n$.
+Multiples of $3$ from $1$ to $100$: $\lfloor100/3\rfloor=33$.
 ---
 Q: What is the $2026$th digit after the decimal point in $\frac{1}{41}$?
 L: 2
@@ -237,7 +282,8 @@ W: 2
 W: 4
 W: 3
 W: 9
-S: $\frac1{41}=0.\overline{02439}$ has period 5. $2026\equiv1\pmod5$, so the digit is the first one: $0$.
+S: $\frac{1}{41}=0.\overline{02439}$, repeating every $5$ digits (indeed $41\cdot2439=99999$).
+$2026=5\cdot405+1$, so the $2026$th digit is the $1$st digit of the block, which is $0$.
 ---
 Q: What is the smallest integer $n>1$ such that the decimal expansion of $\frac1n$ repeats with period exactly $3$?
 L: 3
@@ -246,7 +292,10 @@ W: 37
 W: 7
 W: 13
 W: 111
-S: Period 3 means $n\mid999=3^3\cdot37$ but $n\nmid 9$ or $99$. Testing divisors: $3$ (period 1), $9$ (period 1), $27$: $\frac1{27}=0.\overline{037}$, period 3 ✓.
+S: $\frac1n$ has period $3$ exactly when $n\mid10^3-1=999$ but $n\nmid10^1-1=9$ (period $1$). Also $n$ must be coprime to $10$.
+$999=3^3\cdot37$. The divisors greater than $1$ in increasing order: $3,9,27,37,\dots$
+$3$ and $9$ divide $9$ ($\frac13=0.\overline3$, $\frac19=0.\overline1$, period $1$).
+$27$: $\frac1{27}=0.\overline{037}$, period $3$. ✓ So $n=27$.
 ---
 Q: What is the sum of the digits of the decimal expansion of $\frac{7}{16}$?
 L: 1
@@ -255,42 +304,42 @@ W: 18
 W: 16
 W: 20
 W: 21
-S: $\frac7{16}=0.4375$, and $4+3+7+5=19$.
-
+S: $16=2^4$, so multiply top and bottom by $5^4=625$: $\frac7{16}=\frac{4375}{10000}=0.4375$.
+Digit sum: $4+3+7+5=19$.
 === GENS ===
 const toBase=(n,b)=>n.toString(b).toUpperCase();
 const BS=(s,b,v)=>O(s+'_{'+b+'}',v);
 GENS['base-conv']=[
 r=>{const b=ri(r,2,9),len=ri(r,3,5);const ds=Array.from({length:len},(_,i)=>i===0?ri(r,1,b-1):ri(r,0,b-1));const s_=ds.join('');const v=parseInt(s_,b);
- return{lvl:1,q:T`What is $${s_}_{${b}}$ in base $10$?`,a:v,w:[+s_,parseInt(s_,b+1),parseInt(s_.split('').reverse().join(''),b),v+b,v-1],s:T`$${ds.map((d,i)=>d+'\\cdot'+b+'^{'+(len-1-i)+'}').join('+')}=${v}$.`}},
+ return{lvl:1,q:T`What is $${s_}_{${b}}$ in base $10$?`,a:v,w:[+s_,parseInt(s_,b+1),parseInt(s_.split('').reverse().join(''),b),v+b,v-1],s:T`Each digit is multiplied by the power of ${b} for its place, starting with ${b}^0 on the right:<br>$${s_}_{${b}}=${ds.map((d,i)=>d+'\\cdot '+b+'^{'+(len-1-i)+'}').join('+')}$<br>$=${ds.map((d,i)=>d+'\\cdot '+b**(len-1-i)).join('+')}=${v}$.`}},
 r=>{const b=ri(r,2,9),n=ri(r,b*b,b**4-1);const s_=toBase(n,b);const alt=[toBase(n+1,b),toBase(n-1,b),s_.split('').reverse().join(''),toBase(n+b,b),toBase(n,b+1)];
  return{lvl:1,q:T`What is $${n}$ written in base $${b}$?`,a:BS(s_,b,n),w:alt.filter(x=>x!==s_).map(x=>BS(x,b,/^[0-9]+$/.test(x)&&[...x].every(c=>+c<b)?parseInt(x,b):parseInt(x,b+1)+0.5)),
- s:T`Divide by ${b} repeatedly and read the remainders from bottom to top: $${n}=${s_.split('').map((d,i)=>d+'\\cdot'+b+'^{'+(s_.length-1-i)+'}').join('+')}$.`}},
+ s:T`Repeated division by ${b}: each remainder is the next digit, from right to left.<br>${(()=>{let m=n,rows=[];while(m>0){rows.push('$'+m+'='+Math.floor(m/b)+'\\cdot '+b+'+'+(m%b)+'$');m=Math.floor(m/b)}return rows.join('<br>')})()}<br>Reading the remainders from bottom to top: $${s_}_{${b}}$.<br>Check: $${s_.split('').map((d,i)=>d+'\\cdot '+b+'^{'+(s_.length-1-i)+'}').join('+')}=${n}$. ✓`}},
 r=>{const b=ri(r,4,15),kind=pick(r,[[1,2,1],[1,3,3,1],[1,0,1],[2,1]]);const v=kind.reduce((s,d)=>s*b+d,0);
- return{lvl:1,q:T`In base $b$, $${kind.join('')}_b$ equals $${v}$ in base 10. What is $b$?`,a:b,w:[b+1,b-1,b+2,b-2],s:T`$${kind.map((d,i)=>d+'b^{'+(kind.length-1-i)+'}').join('+')}=${v}$ gives $b=${b}$.`}},
+ return{lvl:1,q:T`In base $b$, $${kind.join('')}_b$ equals $${v}$ in base 10. What is $b$?`,a:b,w:[b+1,b-1,b+2,b-2],s:T`Expand in base $b$: $${kind.join('')}_b=${kind.map((d,i)=>(d===1&&kind.length-1-i>0?'':d)+(kind.length-1-i>0?'b'+(kind.length-1-i>1?'^{'+(kind.length-1-i)+'}':''):'')).filter((t,i)=>kind[i]!==0).join('+')}$.<br>${kind.join()==='1,2,1'?T`This is $(b+1)^2=${v}$, so $b+1=${b+1}$ and $b=${b}$.`:kind.join()==='1,3,3,1'?T`This is $(b+1)^3=${v}$, so $b+1=${b+1}$ and $b=${b}$.`:kind.join()==='1,0,1'?T`So $b^2+1=${v}$, $b^2=${b*b}$, and $b=${b}$.`:T`So $2b+1=${v}$ and $b=${b}$.`}<br>(All digits are smaller than $${b}$, so the base is valid.)`}},
 r=>{const b=ri(r,2,9),n=ri(r,10,5000);const k=toBase(n,b).length;
- return{lvl:1,q:T`How many digits does $${n}$ have when written in base $${b}$?`,a:k,w:[k+1,k-1,k+2,String(n).length===k?k+3:String(n).length],s:T`$${b}^{${k-1}}=${b**(k-1)}\le${n}\lt ${b**k}=${b}^{${k}}$, so $${k}$ digits.`}},
+ return{lvl:1,q:T`How many digits does $${n}$ have when written in base $${b}$?`,a:k,w:[k+1,k-1,k+2,String(n).length===k?k+3:String(n).length],s:T`A number has $k$ digits in base ${b} exactly when ${b}^{k-1}\le n\lt ${b}^k$ (just as base-10 numbers with 3 digits run from $10^2$ to $10^3-1$).<br>Here $${b}^{${k-1}}=${b**(k-1)}\le${n}\lt${b**k}=${b}^{${k}}$.<br>So $${n}$ has $${k}$ digits in base ${b} (it's $${toBase(n,b)}_{${b}}$).`}},
 ];
 GENS['base-digit']=[
 r=>{const d=ri(r,1,8);const n=9-d;
- return{lvl:2,q:T`How many two-digit numbers with both digits nonzero decrease by $${9*d}$ when their digits are reversed?`,a:n,w:[n+1,n-1>0?n-1:n+2,9,d],s:T`$9(a-b)=${9*d}$ means $a-b=${d}$ with $1\le b$ and $a\le9$: $a=${d+1},\dots,9$, so $${n}$ numbers.`}},
+ return{lvl:2,q:T`How many two-digit numbers with both digits nonzero decrease by $${9*d}$ when their digits are reversed?`,a:n,w:[n+1,n-1>0?n-1:n+2,9,d],s:T`Write the number as $10a+b$; reversed it is $10b+a$. The decrease is $(10a+b)-(10b+a)=9(a-b)$.<br>$9(a-b)=${9*d}$ gives $a-b=${d}$.<br>With nonzero digits ($b\ge1$, $a\le9$): $b$ can be $1,\dots,${9-d}$, giving $a=${d+1},\dots,9$.<br>That's $${n}$ numbers${n<=4?T`: ${Array.from({length:n},(_,i)=>''+(i+1+d)+(i+1)).join(', ')}`:''}.`}},
 r=>{const k=ri(r,2,10);let c=0,list=[];for(let x=10;x<100;x++)if(x===k*(Math.floor(x/10)+x%10)){c++;list.push(x)}
- return{lvl:2,q:T`How many two-digit numbers equal $${k}$ times the sum of their digits?`,a:c,w:[c+1,c+2,c>0?c-1:c+3,9].filter(x=>x!==c),s:T`$10a+b=${k}(a+b)$. ${c?'Checking digits gives '+list.join(', ')+'.':'No two-digit number works.'}`}},
+ return{lvl:2,q:T`How many two-digit numbers equal $${k}$ times the sum of their digits?`,a:c,w:[c+1,c+2,c>0?c-1:c+3,9].filter(x=>x!==c),s:T`Write the number as $10a+b$ ($a\ge1$). The condition $10a+b=${k}(a+b)$ simplifies to $${10-k}a=${k-1}b$${10-k>0?T`, so $b=\frac{${10-k}}{${k-1}}a$`:''}.<br>${c?T`Trying $a=1,\dots,9$ and keeping only digit values of $b$: ${list.join(', ')}.`:'No digit pair satisfies it, so no two-digit number works.'}<br>Count: $${c}$.`}},
 r=>{const n=ri(r,2,8);const v=9*10**(Math.ceil(n/2)-1);
- return{lvl:1,q:T`How many ${n}-digit palindromes are there?`,a:v,w:[10**Math.ceil(n/2),v*10,v/10<1?v+9:v/10,9**Math.ceil(n/2)],s:T`Choose the first $${Math.ceil(n/2)}$ digits (first digit nonzero): $9\cdot10^{${Math.ceil(n/2)-1}}=${v}$.`}},
+ return{lvl:1,q:T`How many ${n}-digit palindromes are there?`,a:v,w:[10**Math.ceil(n/2),v*10,v/10<1?v+9:v/10,9**Math.ceil(n/2)],s:T`A palindrome is determined by its first half: the remaining digits mirror it. An ${n}-digit palindrome is determined by its first $\lceil ${n}/2\rceil=${Math.ceil(n/2)}$ digits.<br>The first digit can't be $0$ (9 choices); each of the other $${Math.ceil(n/2)-1}$ free digits has 10 choices.<br>Total: $9\cdot10^{${Math.ceil(n/2)-1}}=${v}$.`}},
 r=>{const N=ri(r,50,3000);let c=0;for(let k=1;k<=N;k++)c+=String(k).length;
- return{lvl:1,q:T`How many digits are used to write the integers from $1$ to $${N}$?`,a:c,w:[c+1,c-1,c+9,N*String(N).length],s:T`Count by length: ${[1,2,3,4].filter(L=>10**(L-1)<=N).map(L=>Math.min(N,10**L-1)-10**(L-1)+1+' numbers with '+L+' digit'+(L>1?'s':'')).join(', ')}. Total $${c}$.`}},
+ return{lvl:1,q:T`How many digits are used to write the integers from $1$ to $${N}$?`,a:c,w:[c+1,c-1,c+9,N*String(N).length],s:T`Group the numbers by how many digits they have:<br>${[1,2,3,4].filter(L=>10**(L-1)<=N).map(L=>{const cnt=Math.min(N,10**L-1)-10**(L-1)+1;return '• '+cnt+' number'+(cnt>1?'s':'')+' with '+L+' digit'+(L>1?'s':'')+': $'+cnt+'\\cdot '+L+'='+cnt*L+'$'}).join('<br>')}<br>Total: $${c}$ digits.`}},
 r=>{const s_=ri(r,2,20);let c=0;for(let x=100;x<1000;x++)if(digsum(x)===s_)c++;
- return{lvl:2,q:T`How many three-digit numbers have digit sum $${s_}$?`,a:c,w:[c+1,c-1,comb(s_+2,2),comb(s_+1,2)].filter(x=>x!==c),s:T`Let $a'=a-1\ge0$: $a'+b+c=${s_-1}$ with each digit at most 9. Counting (removing cases with a digit over 9) gives $${c}$.`}},
+ return{lvl:2,q:T`How many three-digit numbers have digit sum $${s_}$?`,a:c,w:[c+1,c-1,comb(s_+2,2),comb(s_+1,2)].filter(x=>x!==c),s:T`Write the number as $\overline{abc}$ with $a\ge1$, and let $a'=a-1\ge0$. We need $a'+b+c=${s_-1}$ with $a'\le8$ and $b,c\le9$.<br>${(()=>{const n=s_-1,f=k=>k>=0?comb(k+2,2):0;const t=[f(n),f(n-9),f(n-10),f(n-19),f(n-20),f(n-29)];return T`Stars and bars without upper limits gives $\binom{${n+2}}{2}=${t[0]}$. Now remove solutions where a digit is too big (inclusion-exclusion):<br>• $a'\ge9$: replace $a'$ by $a'-9$: $${t[1]}$ solutions. $\ b\ge10$ or $c\ge10$: $${t[2]}$ each.<br>• Two digits too big at once: $${t[3]}$ (for $a'$ with $b$, or with $c$) and $${t[4]}$ (for $b$ with $c$); all three: $${t[5]}$.<br>Count $=${t[0]}-${t[1]}-2\cdot${t[2]}+2\cdot${t[3]}+${t[4]}-${t[5]}=${c}$.`})()}`}},
 ];
 GENS['base-dec']=[
 r=>{const N=ri(r,10,60);let c=0;for(let k=2;k<=N;k++){let m=k;while(m%2===0)m/=2;while(m%5===0)m/=5;if(m===1)c++}
- return{lvl:1,q:T`How many of the fractions $\frac12,\frac13,\dots,\frac1{${N}}$ have terminating decimal expansions?`,a:c,w:[c+1,c-1,c+2,Math.floor(N/2)],s:T`Count denominators of the form $2^m5^n$ between 2 and ${N}: $${c}$.`}},
+ return{lvl:1,q:T`How many of the fractions $\frac12,\frac13,\dots,\frac1{${N}}$ have terminating decimal expansions?`,a:c,w:[c+1,c-1,c+2,Math.floor(N/2)],s:T`$\frac1n$ terminates exactly when $n$ has no prime factors other than $2$ and $5$ (then $\frac1n$ can be rewritten with a power of $10$ in the denominator).<br>The numbers from $2$ to $${N}$ of the form $2^m5^k$ are: $${(()=>{const o=[];for(let k=2;k<=N;k++){let m=k;while(m%2===0)m/=2;while(m%5===0)m/=5;if(m===1)o.push(k)}return o.join(',\\ ')})()}$.<br>That's $${c}$ fractions.`}},
 r=>{const a=ri(r,0,5),b=ri(r,0,4);if(a+b===0)return GENS['base-dec'][1](r);const D=2**a*5**b;let m=ri(r,1,D*3);while(gcd(m,D)!==1)m++;
- return{lvl:1,q:T`How many digits are after the decimal point in the decimal expansion of $\frac{${m}}{${D}}$?`,a:Math.max(a,b),w:[a+b,Math.max(a,b)+1,Math.min(a,b)||Math.max(a,b)+2,String(D).length],s:T`$${D}=2^{${a}}\cdot5^{${b}}$, so the decimal has $\max(${a},${b})=${Math.max(a,b)}$ digits.`}},
+ return{lvl:1,q:T`How many digits are after the decimal point in the decimal expansion of $\frac{${m}}{${D}}$?`,a:Math.max(a,b),w:[a+b,Math.max(a,b)+1,Math.min(a,b)||Math.max(a,b)+2,String(D).length],s:T`$\frac{${m}}{${D}}$ is in lowest terms, and $${D}=2^{${a}}\cdot5^{${b}}$.<br>Multiply top and bottom by ${a>b?'$5^{'+(a-b)+'}$':a<b?'$2^{'+(b-a)+'}$':'nothing'} to make the denominator $10^{${Math.max(a,b)}}$.<br>A fraction over $10^{${Math.max(a,b)}}$ (with numerator not divisible by 10) has exactly $${Math.max(a,b)}$ digits after the decimal point.`}},
 r=>{const q=pick(r,[7,13,17,19,21,27,37,41,11,3]);const n=ri(r,20,3000);let rem=1,dig=0;for(let i=0;i<n;i++){rem*=10;dig=Math.floor(rem/q);rem%=q}
  let per=1,t=10%q;while(t!==1){t=t*10%q;per++}
- return{lvl:2,q:T`What is the ${ord(n)} digit after the decimal point in $\frac1{${q}}$?`,a:dig,w:[0,1,2,3,4,5,6,7,8,9].filter(x=>x!==dig),s:T`$\frac1{${q}}$ repeats with period ${per}. $${n}\equiv${n%per||per}\pmod{${per}}$, so the digit is the ${ord(n%per||per)} in the block: $${dig}$.`}},
+ return{lvl:2,q:T`What is the ${ord(n)} digit after the decimal point in $\frac1{${q}}$?`,a:dig,w:[0,1,2,3,4,5,6,7,8,9].filter(x=>x!==dig),s:T`Long division shows $\frac1{${q}}$ repeats with period ${per}: $\frac1{${q}}=0.\overline{${(()=>{let rm=1,s='';for(let i=0;i<per;i++){rm*=10;s+=Math.floor(rm/q);rm%=q}return s})()}}$.<br>$${n}=${per}\cdot${Math.floor((n-1)/per)}+${n%per||per}$, so the ${ord(n)} digit is the ${ord(n%per||per)} digit of the repeating block.<br>That digit is $${dig}$.`}},
 r=>{const D=pick(r,[12,24,30,36,48,60,72,90,120,150,180,240,360]);let m=D;while(m%2===0)m/=2;while(m%5===0)m/=5;const N=ri(r,50,400);const c=Math.floor(N/m);
- return{lvl:2,q:T`For how many integers $n$ with $1\le n\le${N}$ does $\frac{n}{${D}}$ have a terminating decimal?`,a:c,w:[c+1,c-1,Math.floor(N/D),N-c],s:T`$${D}=${factTex(D)}$. The factor $${m}$ must cancel, so $${m}\mid n$: $\lfloor\frac{${N}}{${m}}\rfloor=${c}$.`}},
+ return{lvl:2,q:T`For how many integers $n$ with $1\le n\le${N}$ does $\frac{n}{${D}}$ have a terminating decimal?`,a:c,w:[c+1,c-1,Math.floor(N/D),N-c],s:T`$\frac{n}{${D}}$ terminates exactly when, in lowest terms, the denominator has no primes other than $2$ and $5$.<br>$${D}=${factTex(D)}$, so the part $${m}$ (everything except the 2s and 5s) must cancel: $${m}\mid n$.<br>Multiples of $${m}$ from $1$ to $${N}$: $\left\lfloor\frac{${N}}{${m}}\right\rfloor=${c}$.`}},
 ];

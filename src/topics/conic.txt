@@ -50,7 +50,9 @@ W: 8
 W: 4
 W: \frac{1}{8}
 W: \frac{1}{2}
-S: $x^2=8y=4py$ gives $p=2$, so the focus is $(0,2)$.
+S: A parabola $x^2=4py$ (vertex at the origin, opening up) has its focus at $(0,p)$ and directrix $y=-p$.
+Rewrite $y=\frac{x^2}{8}$ as $x^2=8y$. Matching $4p=8$ gives $p=2$.
+So the focus is $(0,2)$, and its $y$-coordinate is $2$.
 ---
 Q: The directrix of $x^2=12y$ is the line $y=k$. What is $k$?
 L: 1
@@ -59,7 +61,8 @@ W: 3
 W: -12
 W: -6
 W: -\frac{1}{4}
-S: $4p=12$, so $p=3$ and the directrix is $y=-3$.
+S: For $x^2=4py$, the directrix is the horizontal line $y=-p$, as far below the vertex as the focus is above it.
+$4p=12$ gives $p=3$, so the directrix is $y=-3$ and $k=-3$.
 ---
 Q: What is the $x$-coordinate of the focus of $y^2=16x$?
 L: 1
@@ -68,7 +71,8 @@ W: 16
 W: 8
 W: 2
 W: \frac{1}{16}
-S: $4p=16$, so $p=4$.
+S: $y^2=4px$ opens to the right, with focus $(p,0)$ and directrix $x=-p$.
+$4p=16$ gives $p=4$, so the focus is $(4,0)$.
 ---
 Q: What is the length of the latus rectum of the parabola $y=2x^2$?
 L: 2
@@ -77,7 +81,9 @@ W: 2
 W: \frac{1}{8}
 W: 4
 W: 1
-S: $x^2=\frac12y$, so $4p=\frac12$, and the latus rectum has length $4p=\frac12$.
+S: Put it in standard form: $y=2x^2\iff x^2=\frac12y$, so $4p=\frac12$ and $p=\frac18$.
+The latus rectum is the chord through the focus parallel to the directrix. At $y=p$: $x^2=4p\cdot p$, so $x=\pm2p$ and its length is $4p$.
+Length $=4p=\frac12$.
 ---
 Q: A point on the parabola $x^2=4y$ is at distance $10$ from the focus. What is the absolute value of its $x$-coordinate?
 L: 2
@@ -86,7 +92,9 @@ W: 9
 W: 3
 W: 10
 W: 8
-S: The focus is $(0,1)$ and the directrix $y=-1$. Distance $=y+1=10$, so $y=9$ and $x^2=36$.
+S: $x^2=4y$ has $4p=4$, $p=1$: focus $(0,1)$, directrix $y=-1$.
+Every point on a parabola is equally far from the focus and the directrix. The distance from $(x,y)$ to the directrix is $y-(-1)=y+1$.
+So $y+1=10$, $y=9$, and $x^2=4\cdot9=36$, giving $|x|=6$.
 ---
 Q: The vertex of $y=x^2-6x+13$ is $(h,k)$. What is $h+k$?
 L: 1
@@ -95,7 +103,9 @@ W: 4
 W: 3
 W: 13
 W: 10
-S: $(x-3)^2+4$, so the vertex is $(3,4)$.
+S: Complete the square: $x^2-6x+13=(x^2-6x+9)+4=(x-3)^2+4$.
+The vertex is $(3,4)$, so $h+k=7$.
+(Alternatively $h=-\frac{b}{2a}=3$ and $k=9-18+13=4$.)
 ---
 Q: A parabola has focus $(0,3)$ and directrix $y=-3$. What is $y$ on this parabola when $x=6$?
 L: 1
@@ -104,7 +114,9 @@ W: 6
 W: 12
 W: 2
 W: 36
-S: $x^2=12y$; at $x=6$: $y=3$.
+S: The vertex is halfway between the focus $(0,3)$ and the directrix $y=-3$: the origin. And $p=3$ (focus above vertex), so the parabola is $x^2=4py=12y$.
+At $x=6$: $36=12y$, so $y=3$.
+Check with the definition: $(6,3)$ is $\sqrt{36+0}=6$ from the focus and $3-(-3)=6$ from the directrix. ✓
 ---
 Q: What is the $y$-coordinate of the focus of $y=x^2+4x+5$?
 L: 2
@@ -113,7 +125,9 @@ W: 1
 W: \frac{3}{4}
 W: 5
 W: \frac{3}{2}
-S: $(x+2)^2=y-1$, with vertex $(-2,1)$ and $4p=1$. The focus is $\frac14$ above the vertex: $y=\frac54$.
+S: Complete the square to find the vertex: $y=x^2+4x+5=(x+2)^2+1$, so $(x+2)^2=y-1$.
+This is $x^2=4py$ shifted to vertex $(-2,1)$, with $4p=1$, so $p=\frac14$.
+The focus is $p$ above the vertex: $y=1+\frac14=\frac54$.
 ---
 @@ conic-ell
 Q: What is the distance between the foci of the ellipse $\dfrac{x^2}{25}+\dfrac{y^2}{9}=1$?
@@ -123,7 +137,9 @@ W: 4
 W: 6
 W: 10
 W: 16
-S: $c^2=25-9=16$, so $c=4$ and the foci are $8$ apart.
+S: For an ellipse $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$ with $a\gt b$, the foci are at $(\pm c,0)$ where $c^2=a^2-b^2$.
+$c^2=25-9=16$, so $c=4$.
+The foci $(-4,0)$ and $(4,0)$ are $8$ apart.
 ---
 Q: What is the area enclosed by the ellipse $\dfrac{x^2}{16}+\dfrac{y^2}{9}=1$?
 L: 1
@@ -132,7 +148,8 @@ W: 25\pi
 W: 7\pi
 W: 144\pi
 W: 24\pi
-S: $\pi ab=\pi\cdot4\cdot3=12\pi$.
+S: An ellipse with semi-axes $a$ and $b$ has area $\pi ab$ (a circle of radius $r$ is the case $a=b=r$).
+Here $a^2=16$, $b^2=9$, so $a=4$, $b=3$, and the area is $\pi\cdot4\cdot3=12\pi$.
 ---
 Q: The hyperbola $\dfrac{x^2}{9}-\dfrac{y^2}{16}=1$ has foci at $(\pm c,0)$. What is $c$?
 L: 1
@@ -141,7 +158,8 @@ W: \sqrt{7}
 W: 7
 W: 4
 W: 25
-S: $c^2=9+16=25$.
+S: For a hyperbola $\frac{x^2}{a^2}-\frac{y^2}{b^2}=1$, the foci satisfy $c^2=a^2+b^2$ (a plus sign, unlike the ellipse).
+$c^2=9+16=25$, so $c=5$.
 ---
 Q: What is the positive slope of an asymptote of $\dfrac{x^2}{4}-\dfrac{y^2}{9}=1$?
 L: 1
@@ -150,7 +168,8 @@ W: \frac{2}{3}
 W: \frac{9}{4}
 W: \frac{4}{9}
 W: 3
-S: $\frac ba=\frac32$.
+S: The asymptotes of $\frac{x^2}{a^2}-\frac{y^2}{b^2}=1$ are $y=\pm\frac bax$ (set the right side to $0$: $\frac{y^2}{b^2}=\frac{x^2}{a^2}$).
+$a=2$, $b=3$, so the positive slope is $\frac32$.
 ---
 Q: For any point on the ellipse $\dfrac{x^2}{25}+\dfrac{y^2}{16}=1$, what is the sum of its distances to the two foci?
 L: 1
@@ -159,7 +178,9 @@ W: 8
 W: 6
 W: 5
 W: 20
-S: The sum is the major axis, $2a=10$.
+S: By definition, an ellipse is the set of points whose distances to the two foci add to a constant, and that constant is the major axis length $2a$.
+(At the vertex $(a,0)$: the distances are $a-c$ and $a+c$, which add to $2a$.)
+Here $a^2=25$, so the sum is $2a=10$.
 ---
 Q: An ellipse has foci $(\pm4,0)$ and major axis length $10$. What is the length of its minor axis?
 L: 2
@@ -168,7 +189,9 @@ W: 8
 W: 3
 W: 5
 W: 4
-S: $a=5$ and $c=4$, so $b=3$ and the minor axis is $6$.
+S: Major axis $10$ means $a=5$. Foci at $(\pm4,0)$ means $c=4$.
+For an ellipse, $b^2=a^2-c^2=25-16=9$, so $b=3$.
+The minor axis has length $2b=6$.
 ---
 Q: What is the area enclosed by $4x^2+9y^2=36$?
 L: 2
@@ -177,7 +200,8 @@ W: 36\pi
 W: 13\pi
 W: 9\pi
 W: 12\pi
-S: $\frac{x^2}9+\frac{y^2}4=1$: $\pi\cdot3\cdot2=6\pi$.
+S: Divide by $36$ to get standard form: $\frac{4x^2}{36}+\frac{9y^2}{36}=1$, i.e. $\frac{x^2}{9}+\frac{y^2}{4}=1$.
+So $a=3$, $b=2$, and the area is $\pi ab=6\pi$.
 ---
 Q: What is the eccentricity of the ellipse $\dfrac{x^2}{169}+\dfrac{y^2}{144}=1$?
 L: 2
@@ -186,7 +210,9 @@ W: \frac{12}{13}
 W: \frac{5}{12}
 W: \frac{13}{12}
 W: \frac{144}{169}
-S: $c^2=169-144=25$, so $e=\frac ca=\frac5{13}$.
+S: Eccentricity of an ellipse: $e=\frac ca$, where $c^2=a^2-b^2$.
+$c^2=169-144=25$, so $c=5$; and $a=13$.
+$e=\frac5{13}$. (It's between $0$ and $1$, as every ellipse's is; closer to $0$ means rounder.)
 ---
 @@ conic-param
 Q: A curve is given by $x=2t+1$, $y=t-3$. What is its slope?
@@ -196,7 +222,8 @@ W: 2
 W: -\frac{1}{2}
 W: 7
 W: 1
-S: $t=y+3$, so $x=2y+7$ and $y=\frac12x-\frac72$.
+S: Eliminate $t$: from $y=t-3$, $t=y+3$. Then $x=2(y+3)+1=2y+7$, i.e. $y=\frac12x-\frac72$.
+Slope $\frac12$. Shortcut: as $t$ increases by $1$, $x$ increases by $2$ and $y$ by $1$, so rise/run $=\frac12$.
 ---
 Q: What is the area enclosed by the curve $x=3\cos t$, $y=3\sin t$?
 L: 1
@@ -205,7 +232,8 @@ W: 3\pi
 W: 6\pi
 W: 9
 W: 18\pi
-S: It is the circle $x^2+y^2=9$, with area $9\pi$.
+S: $x^2+y^2=9\cos^2t+9\sin^2t=9(\cos^2t+\sin^2t)=9$.
+So the curve is the circle of radius $3$ centered at the origin, enclosing area $\pi\cdot3^2=9\pi$.
 ---
 Q: What is the dot product of $(3,4)$ and $(-4,3)$?
 L: 1
@@ -214,7 +242,8 @@ W: 25
 W: 1
 W: -24
 W: 24
-S: $-12+12=0$ (the vectors are perpendicular).
+S: Dot product: multiply matching components and add: $(3)(-4)+(4)(3)=-12+12=0$.
+A zero dot product means the vectors are perpendicular (indeed $(-4,3)$ is $(3,4)$ rotated $90^\circ$).
 ---
 Q: What is the angle between the vectors $(1,0)$ and $(1,1)$, in degrees?
 L: 1
@@ -223,7 +252,8 @@ W: 30
 W: 60
 W: 90
 W: 135
-S: $\cos\theta=\frac{1}{1\cdot\sqrt2}$, so $\theta=45^\circ$.
+S: $\cos\theta=\dfrac{\mathbf u\cdot\mathbf v}{|\mathbf u||\mathbf v|}=\dfrac{1\cdot1+0\cdot1}{1\cdot\sqrt2}=\dfrac1{\sqrt2}$.
+So $\theta=45^\circ$. (Geometrically, $(1,1)$ points along the line $y=x$, at $45^\circ$ to the $x$-axis.)
 ---
 Q: What is the area of the parallelogram spanned by $(3,1)$ and $(2,5)$?
 L: 1
@@ -232,7 +262,9 @@ W: 17
 W: \frac{13}{2}
 W: 11
 W: 15
-S: $|3\cdot5-1\cdot2|=13$.
+S: The parallelogram spanned by $(a,b)$ and $(c,d)$ has area $|ad-bc|$ (the absolute value of the determinant).
+$|3\cdot5-1\cdot2|=|15-2|=13$.
+(Half of this, $\frac{13}2$, would be the triangle with those two sides.)
 ---
 Q: The curve $x=t^2$, $y=2t$ is a parabola. What is the $x$-coordinate of its focus?
 L: 2
@@ -241,7 +273,8 @@ W: 2
 W: 4
 W: \frac{1}{2}
 W: \frac{1}{4}
-S: Eliminating $t$: $y^2=4x$, so $p=1$ and the focus is $(1,0)$.
+S: Eliminate $t$: $t=\frac y2$, so $x=\left(\frac y2\right)^2=\frac{y^2}4$, i.e. $y^2=4x$.
+$y^2=4px$ with $p=1$ opens right with focus $(p,0)=(1,0)$.
 ---
 Q: For what $k$ are the vectors $(2,k)$ and $(3,-6)$ perpendicular?
 L: 1
@@ -250,7 +283,8 @@ W: -1
 W: 2
 W: 6
 W: 0
-S: $6-6k=0$, so $k=1$.
+S: Vectors are perpendicular when their dot product is $0$: $(2)(3)+(k)(-6)=6-6k=0$, so $k=1$.
+Check: $(2,1)\cdot(3,-6)=6-6=0$. ✓
 ---
 Q: The curve $x=\cos t$, $y=\cos2t$ lies on a parabola. What is the minimum value of $y$ on this curve?
 L: 2
@@ -259,44 +293,45 @@ W: 0
 W: 1
 W: -2
 W: -\frac{1}{2}
-S: $y=2x^2-1$ with $-1\le x\le1$, so the minimum is $-1$ (at $x=0$).
-
+S: Double-angle identity: $\cos2t=2\cos^2t-1$, so $y=2x^2-1$: a parabola.
+But $x=\cos t$ only takes values in $[-1,1]$, so the curve is the arc of $y=2x^2-1$ over that interval.
+On it, $y$ is smallest at $x=0$: $y=-1$ (and largest, $1$, at $x=\pm1$).
 === GENS ===
 GENS['conic-para']=[
 r=>{const p=pick(r,[F(1),F(2),F(3),F(1,2),F(1,4),F(5),F(3,2)])  ;const ax=r()<.5;const four=p.mul(4);const ask=pick(r,['focus','directrix','latus']);
  const eq=ax?T`x^2=${four.tex()}y`:T`y^2=${four.tex()}x`;
  const v=ask==='focus'?p:ask==='directrix'?p.neg():four;
  return{lvl:1,q:ask==='focus'?T`What is the ${ax?'$y$':'$x$'}-coordinate of the focus of $${eq}$?`:ask==='directrix'?T`The directrix of $${eq}$ is the line ${ax?'$y=k$':'$x=k$'}. What is $k$?`:T`What is the length of the latus rectum of $${eq}$?`,
- a:v,w:[four,p.neg().v===v.v?p:p.neg(),p.mul(2),F(1).div(four),F(1).div(p)],s:T`$4p=${four.tex()}$, so $p=${p.tex()}$. Focus at distance $p$ from the vertex, directrix at $-p$, latus rectum $4p$: the answer is $${v.tex()}$.`}},
+ a:v,w:[four,p.neg().v===v.v?p:p.neg(),p.mul(2),F(1).div(four),F(1).div(p)],s:T`Standard forms with vertex at the origin: $x^2=4py$ opens up or down (focus $(0,p)$, directrix $y=-p$); $y^2=4px$ opens right or left (focus $(p,0)$, directrix $x=-p$). The latus rectum, the focal chord parallel to the directrix, has length $4p$.<br>Here the equation is $${eq}$, so $4p=${four.tex()}$ and $p=${p.tex()}$.<br>${ask==='focus'?T`The focus is at distance $p$ from the vertex: coordinate $${p.tex()}$.`:ask==='directrix'?T`The directrix is on the opposite side at distance $p$: $k=${p.neg().tex()}$.`:T`The latus rectum has length $4p=${four.tex()}$.`}`}},
 r=>{const a=pick(r,[F(1),F(2),F(1,2),F(1,4),F(3),F(1,8),F(4)]);const p=F(1).div(a.mul(4));
- return{lvl:2,q:T`What is the ${r()<.5?'$y$-coordinate of the focus':'distance from the vertex to the focus'} of $y=${a.tex()==='1'?'':a.tex()}x^2$?`,a:p,w:[a,p.mul(4),F(1).div(a),p.mul(2)],s:T`$x^2=\frac1{${a.tex()}}y=4py$, so $p=\frac{1}{4\cdot${a.tex()}}=${p.tex()}$.`}},
+ return{lvl:2,q:T`What is the ${r()<.5?'$y$-coordinate of the focus':'distance from the vertex to the focus'} of $y=${a.tex()==='1'?'':a.tex()}x^2$?`,a:p,w:[a,p.mul(4),F(1).div(a),p.mul(2)],s:T`Rewrite in standard form: $y=${a.tex()==='1'?'':a.tex()}x^2\iff x^2=\dfrac{1}{${a.tex()}}y$.<br>Match with $x^2=4py$: $4p=\dfrac1{${a.tex()}}$, so $p=\dfrac{1}{4\cdot${a.tex()}}=${p.tex()}$.<br>The vertex is the origin, so the focus is $(0,${p.tex()})$: both the requested coordinate and the vertex-to-focus distance equal $${p.tex()}$.`}},
 r=>{const p=ri(r,1,4),x=2*p*ri(r,1,5);const y=x*x/(4*p);const d=y+p;
- return{lvl:2,q:T`A point on the parabola $x^2=${4*p}y$ is at distance ${d} from the focus. What is the absolute value of its $x$-coordinate?`,a:x,w:[y,d,x/2,R(1,4*p*d)],s:T`The focus is $(0,${p})$ and the directrix $y=-${p}$, so the distance is $y+${p}=${d}$. Then $y=${y}$ and $x^2=${x*x}$.`}},
+ return{lvl:2,q:T`A point on the parabola $x^2=${4*p}y$ is at distance ${d} from the focus. What is the absolute value of its $x$-coordinate?`,a:x,w:[y,d,x/2,R(1,4*p*d)],s:T`$x^2=${4*p}y$ has $4p=${4*p}$, so $p=${p}$: focus $(0,${p})$ and directrix $y=-${p}$.<br>Every point of a parabola is as far from the focus as from the directrix, and the distance to the directrix is $y+${p}$.<br>So $y+${p}=${d}$, giving $y=${y}$, and then $x^2=${4*p}\cdot${y}=${x*x}$, so $|x|=${x}$.`}},
 r=>{const h=ri(r,-7,7),k=ri(r,-9,9);const b=-2*h,c=h*h+k;
- return{lvl:1,q:T`The vertex of $y=${poly([[1,2],[b,1],[c,0]],'x')}$ is $(h,k)$. What is $h+k$?`,a:h+k,w:[h-k,k,c,b+c],s:T`$(x${-h<0?'-':'+'}${Math.abs(h)})^2${k<0?'-':'+'}${Math.abs(k)}$: vertex $(${h},${k})$, sum $${h+k}$.`}},
+ return{lvl:1,q:T`The vertex of $y=${poly([[1,2],[b,1],[c,0]],'x')}$ is $(h,k)$. What is $h+k$?`,a:h+k,w:[h-k,k,c,b+c],s:T`Complete the square: $x^2${b<0?'-':'+'}${Math.abs(b)}x${c<0?'-':'+'}${Math.abs(c)}=\left(x^2${b<0?'-':'+'}${Math.abs(b)}x+${h*h}\right)${c-h*h<0?'-':'+'}${Math.abs(c-h*h)}=(x${-h<0?'-':'+'}${Math.abs(h)})^2${k<0?'-':'+'}${Math.abs(k)}$.<br>Vertex form $(x-h)^2+k$ gives $h=${h}$ and $k=${k}$.<br>$h+k=${h+k}$. (Check with $h=-\frac{b}{2a}=${h}$.)`}},
 ];
 GENS['conic-ell']=[
 r=>{const [b,c,a]=pick(r,TRIPLES.filter(t=>t[2]<=29));const ask=pick(r,['foci','area','sum','minor']);const A2=a*a,B2=b*b;
- if(ask==='foci')return{lvl:1,q:T`What is the distance between the foci of $\dfrac{x^2}{${A2}}+\dfrac{y^2}{${B2}}=1$?`,a:2*c,w:[c,2*a,2*b,a+b],s:T`$c^2=${A2}-${B2}=${c*c}$, so $c=${c}$ and the foci are $${2*c}$ apart.`};
- if(ask==='area')return{lvl:1,q:T`What is the area enclosed by $\dfrac{x^2}{${A2}}+\dfrac{y^2}{${B2}}=1$?`,a:PI(a*b),w:[PI(A2*B2),PI(a+b),PI(2*a*b),PI(A2)],s:T`$\pi ab=\pi\cdot${a}\cdot${b}=${PI(a*b).tex}$.`};
- if(ask==='sum')return{lvl:1,q:T`For any point on $\dfrac{x^2}{${A2}}+\dfrac{y^2}{${B2}}=1$, what is the sum of the distances to the foci?`,a:2*a,w:[2*b,2*c,a,a+b],s:T`The sum equals the major axis, $2a=${2*a}$.`};
- return{lvl:2,q:T`An ellipse has foci $(\pm${c},0)$ and major axis ${2*a}. What is the length of its minor axis?`,a:2*b,w:[b,2*c,2*a-2*c,a+c],s:T`$a=${a}$ and $c=${c}$, so $b=\sqrt{${a*a}-${c*c}}=${b}$ and the minor axis is $${2*b}$.`}},
+ if(ask==='foci')return{lvl:1,q:T`What is the distance between the foci of $\dfrac{x^2}{${A2}}+\dfrac{y^2}{${B2}}=1$?`,a:2*c,w:[c,2*a,2*b,a+b],s:T`For $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$ with $a\gt b$, the foci are $(\pm c,0)$ with $c^2=a^2-b^2$.<br>$c^2=${A2}-${B2}=${c*c}$, so $c=${c}$.<br>The foci $(\pm${c},0)$ are $2c=${2*c}$ apart.`};
+ if(ask==='area')return{lvl:1,q:T`What is the area enclosed by $\dfrac{x^2}{${A2}}+\dfrac{y^2}{${B2}}=1$?`,a:PI(a*b),w:[PI(A2*B2),PI(a+b),PI(2*a*b),PI(A2)],s:T`An ellipse with semi-axes $a$ and $b$ encloses area $\pi ab$ (it's a circle stretched by $\frac ba$ in one direction).<br>$a=\sqrt{${A2}}=${a}$ and $b=\sqrt{${B2}}=${b}$.<br>Area: $\pi\cdot${a}\cdot${b}=${PI(a*b).tex}$.`};
+ if(ask==='sum')return{lvl:1,q:T`For any point on $\dfrac{x^2}{${A2}}+\dfrac{y^2}{${B2}}=1$, what is the sum of the distances to the foci?`,a:2*a,w:[2*b,2*c,a,a+b],s:T`By definition, an ellipse is the set of points whose distances to the two foci have a constant sum, and that sum is the length of the major axis, $2a$.<br>(At the vertex $(a,0)$ the distances are $a-c$ and $a+c$, which add to $2a$.)<br>Here $a=\sqrt{${A2}}=${a}$, so the sum is $${2*a}$.`};
+ return{lvl:2,q:T`An ellipse has foci $(\pm${c},0)$ and major axis ${2*a}. What is the length of its minor axis?`,a:2*b,w:[b,2*c,2*a-2*c,a+c],s:T`Major axis ${2*a} means $a=${a}$; foci $(\pm${c},0)$ means $c=${c}$.<br>For an ellipse, $b^2=a^2-c^2=${a*a}-${c*c}=${b*b}$, so $b=${b}$.<br>The minor axis is $2b=${2*b}$.`}},
 r=>{const [a,b,c]=pick(r,TRIPLES.filter(t=>t[2]<=29));const ask=r()<.5;
- return ask?{lvl:1,q:T`The hyperbola $\dfrac{x^2}{${a*a}}-\dfrac{y^2}{${b*b}}=1$ has foci $(\pm c,0)$. What is $c$?`,a:c,w:[R(1,Math.abs(a*a-b*b)||2),a+b,c*c,Math.max(a,b)],s:T`$c^2=a^2+b^2=${c*c}$.`}
- :{lvl:1,q:T`What is the positive slope of an asymptote of $\dfrac{x^2}{${a*a}}-\dfrac{y^2}{${b*b}}=1$?`,a:F(b,a),w:[F(a,b),F(b*b,a*a),F(c,a),F(b,c)],s:T`The asymptotes are $y=\pm\frac ba x$: slope $${F(b,a).tex()}$.`}},
+ return ask?{lvl:1,q:T`The hyperbola $\dfrac{x^2}{${a*a}}-\dfrac{y^2}{${b*b}}=1$ has foci $(\pm c,0)$. What is $c$?`,a:c,w:[R(1,Math.abs(a*a-b*b)||2),a+b,c*c,Math.max(a,b)],s:T`For a hyperbola $\frac{x^2}{a^2}-\frac{y^2}{b^2}=1$, the foci satisfy $c^2=a^2+b^2$ (the ellipse has a minus sign; the hyperbola a plus).<br>$c^2=${a*a}+${b*b}=${c*c}$, so $c=${c}$.`}
+ :{lvl:1,q:T`What is the positive slope of an asymptote of $\dfrac{x^2}{${a*a}}-\dfrac{y^2}{${b*b}}=1$?`,a:F(b,a),w:[F(a,b),F(b*b,a*a),F(c,a),F(b,c)],s:T`Setting the right side to $0$ gives the asymptotes: $\frac{x^2}{${a*a}}=\frac{y^2}{${b*b}}$, so $y=\pm\frac{${b}}{${a}}x$.<br>In general the asymptotes of $\frac{x^2}{a^2}-\frac{y^2}{b^2}=1$ are $y=\pm\frac bax$.<br>Positive slope: $${F(b,a).tex()}$.`}},
 r=>{const a=ri(r,2,7),b=ri(r,1,a-1);const p=ri(r,1,4),q=ri(r,1,4);const A=b*b*p,B=a*a*p;// A x^2 + B y^2 = a^2 b^2 p -> x^2/a^2 + y^2/b^2
  const g=gcd(gcd(A,B),a*a*b*b*p);
- return{lvl:2,q:T`What is the area enclosed by $${A/g}x^2+${B/g}y^2=${a*a*b*b*p/g}$?`,a:PI(a*b),w:[PI(a*a*b*b),PI(a+b),PI(a*a),PI(2*a*b)],s:T`Divide: $\frac{x^2}{${a*a}}+\frac{y^2}{${b*b}}=1$, so the area is $\pi\cdot${a}\cdot${b}=${PI(a*b).tex}$.`}},
+ return{lvl:2,q:T`What is the area enclosed by $${A/g}x^2+${B/g}y^2=${a*a*b*b*p/g}$?`,a:PI(a*b),w:[PI(a*a*b*b),PI(a+b),PI(a*a),PI(2*a*b)],s:T`Divide both sides by $${a*a*b*b*p/g}$ to get standard form: $\dfrac{x^2}{${a*a}}+\dfrac{y^2}{${b*b}}=1$.<br>So the semi-axes are $a=${a}$ and $b=${b}$.<br>Area $=\pi ab=\pi\cdot${a}\cdot${b}=${PI(a*b).tex}$.`}},
 ];
 GENS['conic-param']=[
 r=>{const a=ri(r,-5,5)||2,b=ri(r,-6,6),c=ri(r,-5,5)||1,d=ri(r,-6,6);const m=F(c,a);
- return{lvl:1,q:T`A curve is given by $x=${poly([[a,1],[b,0]],'t')}$, $y=${poly([[c,1],[d,0]],'t')}$. What is its slope?`,a:m,w:[F(a,c),m.neg(),F(d,b||1),F(c+d,a+b||1)],s:T`The slope is $\frac{\Delta y}{\Delta x}=\frac{${c}}{${a}}=${m.tex()}$ per unit of $t$.`}},
+ return{lvl:1,q:T`A curve is given by $x=${poly([[a,1],[b,0]],'t')}$, $y=${poly([[c,1],[d,0]],'t')}$. What is its slope?`,a:m,w:[F(a,c),m.neg(),F(d,b||1),F(c+d,a+b||1)],s:T`Both coordinates are linear in $t$, so the curve is a line. When $t$ increases by $1$, $x$ changes by $${a}$ and $y$ by $${c}$.<br>Slope $=\dfrac{\Delta y}{\Delta x}=\dfrac{${c}}{${a}}=${m.tex()}$.<br>(Eliminating $t$ confirms it: $t=\frac{x${b<0?'+':'-'}${Math.abs(b)}}{${a}}$, so $y=${c}\cdot\frac{x${b<0?'+':'-'}${Math.abs(b)}}{${a}}${d<0?'-':'+'}${Math.abs(d)}$, with $x$-coefficient $${m.tex()}$.)`}},
 r=>{const a=ri(r,-6,6),b=ri(r,-6,6),c=ri(r,-6,6),d=ri(r,-6,6);const ask=pick(r,['dot','area']);const dot=a*c+b*d,ar=Math.abs(a*d-b*c);
- return ask==='dot'?{lvl:1,q:T`What is the dot product of $(${a},${b})$ and $(${c},${d})$?`,a:dot,w:[a*d-b*c,a*c-b*d,dot+1,(a+c)*(b+d)],s:T`$${a}\cdot${P(c)}+${b}\cdot${P(d)}=${dot}$.`}
- :{lvl:1,q:T`What is the area of the parallelogram spanned by $(${a},${b})$ and $(${c},${d})$?`,a:ar,w:[Math.abs(dot),ar+1,F(ar,2),Math.abs(a*c-b*d)],s:T`$|${a}\cdot${P(d)}-${b}\cdot${P(c)}|=${ar}$.`}},
+ return ask==='dot'?{lvl:1,q:T`What is the dot product of $(${a},${b})$ and $(${c},${d})$?`,a:dot,w:[a*d-b*c,a*c-b*d,dot+1,(a+c)*(b+d)],s:T`Dot product: multiply matching components and add.<br>$(${a},${b})\cdot(${c},${d})=${a}\cdot${P(c)}+${b}\cdot${P(d)}=${a*c}+${P(b*d)}=${dot}$.${dot===0?' (Zero: the vectors are perpendicular.)':''}`}
+ :{lvl:1,q:T`What is the area of the parallelogram spanned by $(${a},${b})$ and $(${c},${d})$?`,a:ar,w:[Math.abs(dot),ar+1,F(ar,2),Math.abs(a*c-b*d)],s:T`The parallelogram spanned by $(a,b)$ and $(c,d)$ has area $|ad-bc|$, the absolute value of the $2\times2$ determinant.<br>$|${a}\cdot${P(d)}-${b}\cdot${P(c)}|=|${a*d}-${P(b*c)}|=${ar}$.`}},
 r=>{const a=ri(r,1,6),b=ri(r,-6,6)||3,c=ri(r,1,6);// (a, k) . (c, b) = 0 -> ac + kb = 0
  const k=F(-a*c,b);
- return{lvl:1,q:T`For what $k$ are $(${a},k)$ and $(${c},${b})$ perpendicular?`,a:k,w:[k.neg(),F(a*c,b*b),F(b,a*c||1),F(0)],s:T`$${a*c}+${b}k=0$, so $k=${k.tex()}$.`}},
+ return{lvl:1,q:T`For what $k$ are $(${a},k)$ and $(${c},${b})$ perpendicular?`,a:k,w:[k.neg(),F(a*c,b*b),F(b,a*c||1),F(0)],s:T`Two vectors are perpendicular exactly when their dot product is $0$.<br>$(${a},k)\cdot(${c},${b})=${a*c}+${b}k=0$, so $k=\dfrac{-${a*c}}{${b}}=${k.tex()}$.`}},
 r=>{const R_=ri(r,1,9),S_=ri(r,1,9);const ask=R_===S_;
- return{lvl:1,q:T`What is the area enclosed by the curve $x=${R_}\cos t$, $y=${S_}\sin t$?`,a:PI(R_*S_),w:[PI(R_*R_+S_*S_),PI(R_+S_),PI(2*R_*S_),O(String(R_*S_),R_*S_)],s:T`It is the ellipse $\frac{x^2}{${R_*R_}}+\frac{y^2}{${S_*S_}}=1$, with area $\pi\cdot${R_}\cdot${S_}=${PI(R_*S_).tex}$.`}},
+ return{lvl:1,q:T`What is the area enclosed by the curve $x=${R_}\cos t$, $y=${S_}\sin t$?`,a:PI(R_*S_),w:[PI(R_*R_+S_*S_),PI(R_+S_),PI(2*R_*S_),O(String(R_*S_),R_*S_)],s:T`Use $\cos^2t+\sin^2t=1$: $\left(\frac{x}{${R_}}\right)^2+\left(\frac{y}{${S_}}\right)^2=\cos^2t+\sin^2t=1$.<br>So the curve is the ${R_===S_?'circle':'ellipse'} $\frac{x^2}{${R_*R_}}+\frac{y^2}{${S_*S_}}=1$ with semi-axes $${R_}$ and $${S_}$.<br>Area $=\pi\cdot${R_}\cdot${S_}=${PI(R_*S_).tex}$.`}},
 ];

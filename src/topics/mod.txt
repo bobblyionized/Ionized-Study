@@ -57,7 +57,9 @@ W: 3
 W: 5
 W: 6
 W: 0
-S: $2026\equiv3$, $2027\equiv4$, $2028\equiv5\pmod7$. Then $3\cdot4\cdot5=60\equiv4$.
+S: Remainders multiply: you can replace each factor by its remainder mod $7$ before multiplying.
+$2026=7\cdot289+3$, so $2026\equiv3$; then $2027\equiv4$ and $2028\equiv5\pmod7$.
+Product: $3\cdot4\cdot5=60=7\cdot8+4$, so the remainder is $4$.
 ---
 Q: What is the remainder when $1+2+3+\cdots+100$ is divided by $7$?
 L: 1
@@ -66,7 +68,8 @@ W: 0
 W: 1
 W: 5
 W: 6
-S: The sum is $5050=7\cdot721+3$.
+S: $1+2+\cdots+100=\frac{100\cdot101}{2}=5050$.
+$5050=7\cdot721+3$ (since $7\cdot721=5047$), so the remainder is $3$.
 ---
 Q: Which of these numbers is <b>not</b> a sum of two perfect squares?
 L: 2
@@ -75,8 +78,10 @@ W: 2025
 W: 2026
 W: 2029
 W: 2020
-S: Squares are $0$ or $1\pmod4$, so a sum of two squares is $0,1,$ or $2\pmod 4$. $2027\equiv3$, so it is impossible.
-(The others: $2025=45^2+0^2$, $2026=45^2+1^2$, $2029=45^2+2^2$, $2020=42^2+16^2$.)
+S: Every square is $0$ or $1\pmod4$: even squares $(2k)^2=4k^2\equiv0$, odd squares $(2k+1)^2=4k^2+4k+1\equiv1$.
+So a sum of two squares is $0+0$, $0+1$, or $1+1$: that is, $0$, $1$, or $2\pmod4$, never $3$.
+$2027=4\cdot506+3\equiv3\pmod4$, so it is not a sum of two squares.
+The others are: $2025=45^2+0^2$, $2026=45^2+1^2$, $2029=45^2+2^2$, $2020=42^2+16^2$.
 ---
 Q: If $n\equiv3\pmod5$, what is the remainder when $n^2+2n$ is divided by $5$?
 L: 1
@@ -85,7 +90,9 @@ W: 1
 W: 2
 W: 3
 W: 4
-S: $9+6=15\equiv0\pmod5$.
+S: Substitute the remainder: if $n\equiv3\pmod5$, then $n^2+2n\equiv3^2+2\cdot3=9+6=15\pmod5$.
+$15\equiv0\pmod5$, so the remainder is $0$.
+(Factoring confirms it: $n^2+2n=n(n+2)$, and $n+2\equiv5\equiv0$.)
 ---
 Q: If $x\equiv3\pmod7$ and $y\equiv5\pmod7$, what is the remainder when $xy+x+y$ is divided by $7$?
 L: 1
@@ -94,7 +101,8 @@ W: 0
 W: 1
 W: 3
 W: 4
-S: $15+3+5=23\equiv2\pmod7$.
+S: Replace $x$ and $y$ by their remainders: $xy+x+y\equiv3\cdot5+3+5=23\pmod7$.
+$23=3\cdot7+2$, so the remainder is $2$.
 ---
 Q: What is the remainder when $1^2+2^2+\cdots+10^2$ is divided by $11$?
 L: 1
@@ -103,7 +111,9 @@ W: 1
 W: 5
 W: 10
 W: 3
-S: The sum is $385=35\cdot11$.
+S: Sum of squares formula: $1^2+2^2+\cdots+n^2=\frac{n(n+1)(2n+1)}{6}$.
+For $n=10$: $\frac{10\cdot11\cdot21}{6}=385$.
+$385=11\cdot35$, so the remainder is $0$. (The factor $11=n+1$ appears in the formula.)
 ---
 Q: For how many integers $n$ with $1\le n\le100$ is $n^2+1$ divisible by $5$?
 L: 2
@@ -112,7 +122,9 @@ W: 20
 W: 10
 W: 50
 W: 25
-S: We need $n^2\equiv4\pmod5$, i.e. $n\equiv2$ or $3$. That is 2 out of every 5 numbers: $40$.
+S: $5\mid n^2+1$ means $n^2\equiv-1\equiv4\pmod5$.
+Check all residues: $0^2=0$, $1^2=1$, $2^2=4$, $3^2=9\equiv4$, $4^2=16\equiv1$. So $n\equiv2$ or $3\pmod5$.
+That's $2$ out of every $5$ consecutive integers. From $1$ to $100$ there are $20$ complete blocks of $5$, giving $2\cdot20=40$.
 ---
 Q: What is the remainder when $3^{100}$ is divided by $4$?
 L: 1
@@ -121,7 +133,9 @@ W: 0
 W: 2
 W: 3
 W: 100
-S: $3\equiv-1\pmod4$, so $3^{100}\equiv(-1)^{100}=1$.
+S: $3=4-1$, so $3\equiv-1\pmod4$.
+Then $3^{100}\equiv(-1)^{100}=1\pmod4$ (an even power of $-1$).
+The remainder is $1$.
 ---
 @@ mod-cycle
 Q: What is the units digit of $7^{2026}$?
@@ -131,7 +145,8 @@ W: 7
 W: 3
 W: 1
 W: 6
-S: Cycle $7,9,3,1$. $2026\equiv2\pmod4$, so the units digit is $9$.
+S: Only the units digit of each power matters. Powers of $7$ end in $7,9,3,1,7,9,3,1,\dots$: a cycle of length $4$.
+$2026=4\cdot506+2$, so $7^{2026}$ ends like $7^2=49$: units digit $9$.
 ---
 Q: What is the units digit of $2^{2027}$?
 L: 1
@@ -140,7 +155,8 @@ W: 2
 W: 4
 W: 6
 W: 0
-S: Cycle $2,4,8,6$. $2027\equiv3\pmod4$, so $8$.
+S: Powers of $2$ end in $2,4,8,6,2,4,8,6,\dots$ (cycle length $4$).
+$2027=4\cdot506+3$, so $2^{2027}$ ends like $2^3=8$.
 ---
 Q: What is the units digit of $3^{2026}+7^{2026}$?
 L: 2
@@ -149,7 +165,9 @@ W: 0
 W: 2
 W: 6
 W: 4
-S: $2026\equiv2\pmod4$: $3^2$ ends in $9$ and $7^2$ ends in $9$, so the sum ends in $8$.
+S: Both $3$ and $7$ have units-digit cycles of length $4$: $3,9,7,1$ and $7,9,3,1$.
+$2026\equiv2\pmod4$, so $3^{2026}$ ends like $3^2=9$ and $7^{2026}$ ends like $7^2=49$, i.e. in $9$.
+$9+9=18$, so the sum ends in $8$.
 ---
 Q: What are the last two digits of $7^{100}$? (Give them as a number from $0$ to $99$.)
 L: 2
@@ -158,7 +176,9 @@ W: 49
 W: 43
 W: 7
 W: 0
-S: $7^4=2401\equiv1\pmod{100}$, so $7^{100}=(7^4)^{25}\equiv1$. The last two digits are $01$.
+S: Look for a small power of $7$ that is $1\pmod{100}$: $7^2=49$, $7^4=49^2=2401\equiv1\pmod{100}$.
+$100=4\cdot25$, so $7^{100}=(7^4)^{25}\equiv1^{25}=1\pmod{100}$.
+The last two digits are $01$, i.e. the number $1$.
 ---
 Q: What is the units digit of $1+3+3^2+\cdots+3^{2026}$?
 L: 3
@@ -167,7 +187,9 @@ W: 1
 W: 9
 W: 7
 W: 0
-S: The units digits cycle $1,3,9,7$ with sum $20\equiv0$. There are $2027=4\cdot506+3$ terms, so only $1+3+9=13$ matters. The units digit is $3$.
+S: The units digits of $3^0,3^1,3^2,3^3,\dots$ are $1,3,9,7,1,3,9,7,\dots$, and one full cycle sums to $1+3+9+7=20$, which ends in $0$.
+The sum has $2027$ terms ($3^0$ through $3^{2026}$). $2027=4\cdot506+3$: $506$ full cycles (contributing units digit $0$) plus $3$ more terms with units digits $1,3,9$.
+$1+3+9=13$, so the units digit is $3$.
 ---
 Q: What is the units digit of $13^{13}$?
 L: 1
@@ -176,7 +198,8 @@ W: 9
 W: 7
 W: 1
 W: 5
-S: Only the base's last digit matters: $3^{13}$. Since $13\equiv1\pmod4$, the units digit is $3$.
+S: Only the last digit of the base matters: $13^{13}$ has the same units digit as $3^{13}$.
+Powers of $3$ end in $3,9,7,1$ (cycle $4$). $13=4\cdot3+1$, so $3^{13}$ ends like $3^1=3$.
 ---
 Q: What is the units digit of $2026^{2026}$?
 L: 1
@@ -185,7 +208,8 @@ W: 4
 W: 2
 W: 8
 W: 0
-S: Every power of a number ending in 6 ends in 6.
+S: $2026$ ends in $6$, and $6\cdot6=36$ ends in $6$ again. So every power of a number ending in $6$ ends in $6$.
+The units digit is $6$.
 ---
 Q: What is the units digit of $7^{7^7}$?
 L: 3
@@ -194,7 +218,9 @@ W: 7
 W: 9
 W: 1
 W: 5
-S: We need $7^7\bmod4$. Since $7\equiv-1\pmod4$, $7^7\equiv-1\equiv3$. So the units digit is that of $7^3=343$, which is $3$.
+S: Powers of $7$ have units digits $7,9,3,1$ with period $4$, so we need the exponent $7^7\bmod4$.
+$7\equiv-1\pmod4$, so $7^7\equiv(-1)^7=-1\equiv3\pmod4$.
+So $7^{7^7}$ ends like $7^3=343$: units digit $3$.
 ---
 @@ mod-fermat
 Q: What is the remainder when $2^{100}$ is divided by $7$?
@@ -204,7 +230,8 @@ W: 1
 W: 4
 W: 3
 W: 6
-S: $2^3=8\equiv1\pmod7$. $100=3\cdot33+1$, so $2^{100}\equiv2$.
+S: Find a power of $2$ that is $1\pmod7$: $2^3=8\equiv1$.
+$100=3\cdot33+1$, so $2^{100}=(2^3)^{33}\cdot2\equiv1\cdot2=2\pmod7$.
 ---
 Q: What is the remainder when $3^{2026}$ is divided by $11$?
 L: 2
@@ -213,7 +240,8 @@ W: 1
 W: 9
 W: 5
 W: 4
-S: $3^5=243=22\cdot11+1\equiv1$. $2026\equiv1\pmod5$, so $3^{2026}\equiv3$.
+S: Fermat says $3^{10}\equiv1\pmod{11}$, but there's a smaller cycle: $3^5=243=22\cdot11+1\equiv1$.
+$2026=5\cdot405+1$, so $3^{2026}=(3^5)^{405}\cdot3\equiv3\pmod{11}$.
 ---
 Q: What is $\varphi(100)$, the number of integers from $1$ to $100$ that are relatively prime to $100$?
 L: 1
@@ -222,7 +250,9 @@ W: 50
 W: 60
 W: 20
 W: 36
-S: $100\left(1-\frac12\right)\left(1-\frac15\right)=40$.
+S: Euler's formula: $\varphi(n)=n\prod_{p\mid n}\left(1-\frac1p\right)$ over the distinct primes dividing $n$.
+$100=2^2\cdot5^2$, so $\varphi(100)=100\cdot\frac12\cdot\frac45=40$.
+Equivalently: remove the $50$ even numbers and the $20$ multiples of $5$, but add back the $10$ multiples of $10$ removed twice: $100-50-20+10=40$.
 ---
 Q: What is the remainder when $5^{2026}$ is divided by $13$?
 L: 2
@@ -231,7 +261,8 @@ W: 1
 W: 5
 W: 8
 W: 3
-S: $5^2=25\equiv-1\pmod{13}$, so $5^4\equiv1$. $2026\equiv2\pmod4$, so $5^{2026}\equiv5^2\equiv12$.
+S: $5^2=25=26-1\equiv-1\pmod{13}$, so $5^4\equiv(-1)^2=1$.
+$2026=4\cdot506+2$, so $5^{2026}\equiv5^2\equiv-1\equiv12\pmod{13}$.
 ---
 Q: What is the remainder when $2^{2026}$ is divided by $5$?
 L: 1
@@ -240,7 +271,8 @@ W: 1
 W: 2
 W: 3
 W: 0
-S: $2^4\equiv1\pmod5$ (Fermat). $2026\equiv2\pmod4$, so $2^2=4$.
+S: Fermat's Little Theorem: $2^4\equiv1\pmod5$ (since $5$ is prime and $\gcd(2,5)=1$). Indeed $16=3\cdot5+1$.
+$2026=4\cdot506+2$, so $2^{2026}\equiv2^2=4\pmod5$.
 ---
 Q: What is the remainder when $10!$ is divided by $11$?
 L: 2
@@ -249,7 +281,9 @@ W: 1
 W: 0
 W: 9
 W: 5
-S: Wilson's theorem: $(p-1)!\equiv-1\pmod p$, so $10!\equiv-1\equiv10\pmod{11}$.
+S: Wilson's Theorem: for a prime $p$, $(p-1)!\equiv-1\pmod p$.
+With $p=11$: $10!\equiv-1\equiv10\pmod{11}$.
+(Why: in $1\cdot2\cdots10$, every number from $2$ to $9$ pairs with its inverse mod $11$ to give $1$, leaving $1\cdot10\equiv-1$.)
 ---
 Q: What are the last two digits of $7^{222}$ (as a number from $0$ to $99$)?
 L: 3
@@ -258,7 +292,9 @@ W: 1
 W: 43
 W: 7
 W: 51
-S: $7^4=2401\equiv1\pmod{100}$. $222=4\cdot55+2$, so $7^{222}\equiv7^2=49$.
+S: $7^4=2401\equiv1\pmod{100}$, so powers of $7$ repeat their last two digits every $4$ steps.
+$222=4\cdot55+2$, so $7^{222}\equiv7^2=49\pmod{100}$.
+The last two digits are $49$.
 ---
 Q: How many integers from $1$ to $30$ are relatively prime to $30$?
 L: 1
@@ -267,7 +303,8 @@ W: 10
 W: 15
 W: 7
 W: 12
-S: $\varphi(30)=30\cdot\frac12\cdot\frac23\cdot\frac45=8$: they are $1,7,11,13,17,19,23,29$.
+S: $\varphi(30)=30\left(1-\frac12\right)\left(1-\frac13\right)\left(1-\frac15\right)=30\cdot\frac12\cdot\frac23\cdot\frac45=8$.
+Listing them: $1,7,11,13,17,19,23,29$ (no factor of $2$, $3$, or $5$).
 ---
 @@ mod-crt
 Q: What is the smallest positive integer that leaves remainder $2$ when divided by $3$ and remainder $3$ when divided by $5$?
@@ -277,7 +314,9 @@ W: 13
 W: 23
 W: 2
 W: 18
-S: The numbers $\equiv3\pmod5$ are $3,8,13,\dots$; the first that is $\equiv2\pmod3$ is $8$.
+S: List the numbers that leave remainder $3$ on division by $5$: $3,8,13,18,\dots$
+Check each mod $3$: $3\equiv0$, $8\equiv2$. ✓
+The smallest is $8$ (and all solutions are $8+15k$).
 ---
 Q: What is the smallest positive integer that leaves remainder $1$ when divided by each of $2,3,4,5,6$ and is divisible by $7$?
 L: 3
@@ -286,7 +325,8 @@ W: 61
 W: 121
 W: 721
 W: 420
-S: The first conditions mean $x\equiv1\pmod{60}$: $61,121,181,241,301,\dots$ The first multiple of $7$ is $301=7\cdot43$.
+S: Remainder $1$ when divided by each of $2,3,4,5,6$ means $x-1$ is divisible by all of them, hence by $\operatorname{lcm}(2,3,4,5,6)=60$. So $x\equiv1\pmod{60}$: $61,121,181,241,301,\dots$
+Now find the first that is a multiple of $7$. Since $60\equiv4\pmod7$, these are $\equiv1+4k\pmod7$; we need $1+4k\equiv0$, i.e. $k\equiv5$. So $x=1+60\cdot5=301=7\cdot43$.
 ---
 Q: What is the inverse of $3$ modulo $7$ (the $x$ with $0\lt x\lt 7$ and $3x\equiv1$)?
 L: 1
@@ -295,7 +335,8 @@ W: 2
 W: 4
 W: 3
 W: 6
-S: $3\cdot5=15\equiv1\pmod7$.
+S: We need $3x\equiv1\pmod7$. Try $x=1,2,\dots$: $3\cdot5=15=2\cdot7+1$. ✓
+So the inverse of $3$ mod $7$ is $5$.
 ---
 Q: Which $x$ with $0\le x\lt 7$ satisfies $4x\equiv3\pmod7$?
 L: 1
@@ -304,7 +345,9 @@ W: 3
 W: 5
 W: 1
 W: 2
-S: $4^{-1}\equiv2\pmod7$ (since $4\cdot2=8\equiv1$), so $x\equiv3\cdot2=6$. Check: $24\equiv3$ ✓.
+S: Multiply both sides by the inverse of $4$ mod $7$. Since $4\cdot2=8\equiv1$, the inverse is $2$.
+$x\equiv2\cdot3=6\pmod7$.
+Check: $4\cdot6=24=3\cdot7+3\equiv3$. ✓
 ---
 Q: How many positive integers less than $100$ leave remainders $1$, $2$, and $3$ when divided by $2$, $3$, and $4$ respectively?
 L: 2
@@ -313,7 +356,9 @@ W: 7
 W: 9
 W: 12
 W: 6
-S: Each is $\equiv-1$ for its modulus, so $x\equiv-1\pmod{12}$: $11,23,\dots,95$. That is $8$ numbers.
+S: Each remainder is one less than the divisor: $x\equiv-1\pmod2$, $x\equiv-1\pmod3$, $x\equiv-1\pmod4$.
+So $x+1$ is divisible by $2,3,4$, hence by $\operatorname{lcm}(2,3,4)=12$: $x=12k-1=11,23,35,\dots$
+Values below $100$: $11,23,35,47,59,71,83,95$, which is $8$ numbers.
 ---
 Q: A basket of eggs leaves $2$ over when counted by threes, $4$ over by fives, and $6$ over by sevens. What is the smallest possible number of eggs?
 L: 2
@@ -322,7 +367,9 @@ W: 209
 W: 34
 W: 69
 W: 105
-S: $x\equiv-1\pmod3,5,7$, so $x\equiv-1\pmod{105}$ and the smallest is $104$.
+S: Each remainder is one less than the divisor, so the number of eggs $x$ satisfies $x\equiv-1$ modulo $3$, $5$, and $7$.
+Then $x+1$ is divisible by $3\cdot5\cdot7=105$, so $x=105k-1$.
+The smallest positive is $104$.
 ---
 Q: What is the smallest positive $x$ with $7x\equiv1\pmod{26}$?
 L: 2
@@ -331,7 +378,8 @@ W: 11
 W: 4
 W: 19
 W: 3
-S: $7\cdot15=105=4\cdot26+1$ ✓.
+S: Find $x$ with $7x\equiv1\pmod{26}$. Euclid: $26=3\cdot7+5$, $7=1\cdot5+2$, $5=2\cdot2+1$; back-substituting gives $1=3\cdot26-11\cdot7$, so $x\equiv-11\equiv15$.
+Check: $7\cdot15=105=4\cdot26+1$. ✓
 ---
 Q: What is the sum of all integers $x$ with $1\le x\le100$, $x\equiv2\pmod3$, and $x\equiv1\pmod4$?
 L: 2
@@ -340,44 +388,45 @@ W: 360
 W: 400
 W: 94
 W: 380
-S: $x\equiv5\pmod{12}$: $5,17,\dots,89$, which is $8$ terms. Sum $=8\cdot\frac{5+89}{2}=376$.
-
+S: Combine the congruences. Numbers $\equiv1\pmod4$: $1,5,9,\dots$; the first that is $\equiv2\pmod3$ is $5$. So $x\equiv5\pmod{12}$.
+In $[1,100]$: $5,17,29,41,53,65,77,89$: $8$ terms of an arithmetic sequence.
+Sum $=\text{count}\times\text{average}=8\cdot\frac{5+89}{2}=8\cdot47=376$.
 === GENS ===
 GENS['mod-basic']=[
 r=>{const m=ri(r,5,13),a=ri(r,100,5000),k=ri(r,2,4);let prod=1;const rs=[];for(let i=0;i<k;i++){rs.push((a+i)%m);prod=prod*((a+i)%m)%m}
- return{lvl:1,q:T`What is the remainder when $${Array.from({length:k},(_,i)=>a+i).join('\\cdot ')}$ is divided by $${m}$?`,a:prod,w:Array.from({length:m},(_,i)=>i).filter(x=>x!==prod),s:T`Reduce each factor mod ${m}: $${rs.join('\\cdot ')}\equiv${prod}$.`}},
+ return{lvl:1,q:T`What is the remainder when $${Array.from({length:k},(_,i)=>a+i).join('\\cdot ')}$ is divided by $${m}$?`,a:prod,w:Array.from({length:m},(_,i)=>i).filter(x=>x!==prod),s:T`Remainders multiply, so reduce each factor mod ${m} first.<br>${Array.from({length:k},(_,i)=>'$'+(a+i)+'\\equiv'+rs[i]+'$').join(', ')} $\pmod{${m}}$.<br>Multiply the remainders, reducing as you go: $${rs.join('\\cdot ')}=${rs.reduce((x,y)=>x*y,1)}\equiv${prod}\pmod{${m}}$.<br>The remainder is $${prod}$.`}},
 r=>{const N=ri(r,20,500),m=ri(r,3,13);const v=(N*(N+1)/2)%m;
- return{lvl:1,q:T`What is the remainder when $1+2+\cdots+${N}$ is divided by $${m}$?`,a:v,w:Array.from({length:m},(_,i)=>i).filter(x=>x!==v),s:T`The sum is $\frac{${N}\cdot${N+1}}{2}=${N*(N+1)/2}\equiv${v}\pmod{${m}}$.`}},
+ return{lvl:1,q:T`What is the remainder when $1+2+\cdots+${N}$ is divided by $${m}$?`,a:v,w:Array.from({length:m},(_,i)=>i).filter(x=>x!==v),s:T`The sum is $\frac{n(n+1)}{2}$ with $n=${N}$: $\frac{${N}\cdot${N+1}}{2}=${N*(N+1)/2}$.<br>Divide by ${m}: $${N*(N+1)/2}=${m}\cdot${Math.floor(N*(N+1)/2/m)}+${v}$.<br>The remainder is $${v}$.`}},
 r=>{const p=pick(r,[5,7,11,13]),c=ri(r,1,p-1),N=p*ri(r,4,20);let k=0;for(let x=0;x<p;x++)if((x*x+c)%p===0)k++;if(!k)return GENS['mod-basic'][2](r);const v=k*N/p;
- return{lvl:2,q:T`For how many integers $n$ with $1\le n\le${N}$ is $n^2+${c}$ divisible by $${p}$?`,a:v,w:[v/k,v+N/p,N/p*(k+1)===v?v-N/p:N/p*(k+1),Math.floor(N/2)],s:T`$n^2\equiv${(p-c)%p}\pmod{${p}}$ has ${k} solution(s) mod ${p}, so the count is $${k}\cdot\frac{${N}}{${p}}=${v}$.`}},
+ return{lvl:2,q:T`For how many integers $n$ with $1\le n\le${N}$ is $n^2+${c}$ divisible by $${p}$?`,a:v,w:[v/k,v+N/p,N/p*(k+1)===v?v-N/p:N/p*(k+1),Math.floor(N/2)],s:T`$${p}\mid n^2+${c}$ means $n^2\equiv-${c}\equiv${(p-c)%p}\pmod{${p}}$.<br>Square every residue mod ${p}: ${Array.from({length:p},(_,x)=>'$'+x+'^2\\equiv'+(x*x%p)+'$').join(', ')}.<br>The residues that work are $${Array.from({length:p},(_,x)=>x).filter(x=>(x*x+c)%p===0).join(',\\ ')}$: $${k}$ out of every ${p} consecutive integers.<br>$1$ to $${N}$ contains $\frac{${N}}{${p}}=${N/p}$ full blocks of ${p}, so the count is $${k}\cdot${N/p}=${v}$.`}},
 r=>{const m=pick(r,[3,4,5,7,8,9]),a=ri(r,1,m-1),c1=ri(r,1,5),c2=ri(r,0,9);const v=((a*a*c1+c2*a)%m+m)%m;
- return{lvl:1,q:T`If $n\equiv${a}\pmod{${m}}$, what is the remainder when $${poly([[c1,2],[c2,1]],'n')}$ is divided by $${m}$?`,a:v,w:Array.from({length:m},(_,i)=>i).filter(x=>x!==v).concat([m]),s:T`Substitute $n\equiv${a}$: $${c1*a*a+c2*a}\equiv${v}\pmod{${m}}$.`}},
+ return{lvl:1,q:T`If $n\equiv${a}\pmod{${m}}$, what is the remainder when $${poly([[c1,2],[c2,1]],'n')}$ is divided by $${m}$?`,a:v,w:Array.from({length:m},(_,i)=>i).filter(x=>x!==v).concat([m]),s:T`Replace $n$ by its remainder ${a}; sums and products of remainders give the right remainder.<br>$${poly([[c1,2],[c2,1]],'n')}\equiv${c1}\cdot${a}^2+${c2}\cdot${a}=${c1*a*a}+${c2*a}=${c1*a*a+c2*a}\pmod{${m}}$.<br>$${c1*a*a+c2*a}=${m}\cdot${Math.floor((c1*a*a+c2*a)/m)}+${v}$, so the remainder is $${v}$.`}},
 ];
 GENS['mod-cycle']=[
 r=>{const b=ri(r,2,99),n=ri(r,10,3000);const v=modpow(b,n,10);
- return{lvl:1,q:T`What is the units digit of $${b}^{${n}}$?`,a:v,w:[0,1,2,3,4,5,6,7,8,9].filter(x=>x!==v),s:T`Only the last digit ${b%10} matters, and its powers cycle with period dividing 4. $${n}\bmod4=${n%4}$, so the units digit is $${v}$.`}},
+ return{lvl:1,q:T`What is the units digit of $${b}^{${n}}$?`,a:v,w:[0,1,2,3,4,5,6,7,8,9].filter(x=>x!==v),s:T`Only the last digit of the base matters: ${b%10}. Its powers have units digits $${[1,2,3,4].map(e=>modpow(b%10,e,10)).join(',\\ ')},\dots$, repeating with period dividing 4.<br>$${n}=4\cdot${Math.floor(n/4)}+${n%4}$, so $${b}^{${n}}$ ends like $${b%10}^{${n%4||4}}$.<br>Units digit: $${v}$.`}},
 r=>{const a=ri(r,2,9),b=ri(r,2,9),n=ri(r,10,3000);const v=(modpow(a,n,10)+modpow(b,n,10))%10;
- return{lvl:2,q:T`What is the units digit of $${a}^{${n}}+${b}^{${n}}$?`,a:v,w:[0,1,2,3,4,5,6,7,8,9].filter(x=>x!==v),s:T`$${a}^{${n}}$ ends in $${modpow(a,n,10)}$ and $${b}^{${n}}$ ends in $${modpow(b,n,10)}$; the sum ends in $${v}$.`}},
+ return{lvl:2,q:T`What is the units digit of $${a}^{${n}}+${b}^{${n}}$?`,a:v,w:[0,1,2,3,4,5,6,7,8,9].filter(x=>x!==v),s:T`Units digits of powers repeat with period dividing $4$, and $${n}\equiv${n%4}\pmod4$.<br>• Powers of ${a} end in $${[1,2,3,4].map(e=>modpow(a,e,10)).join(',')}$, so $${a}^{${n}}$ ends in $${modpow(a,n,10)}$.<br>• Powers of ${b} end in $${[1,2,3,4].map(e=>modpow(b,e,10)).join(',')}$, so $${b}^{${n}}$ ends in $${modpow(b,n,10)}$.<br>Add: $${modpow(a,n,10)}+${modpow(b,n,10)}=${modpow(a,n,10)+modpow(b,n,10)}$, which ends in $${v}$.`}},
 r=>{const b=pick(r,[3,7,9,11,13,17,19,21,23,29,31,33,37,39,41,43,47,49]),n=ri(r,10,500);const v=modpow(b,n,100);
- return{lvl:2,q:T`What are the last two digits of $${b}^{${n}}$ (as a number from $0$ to $99$)?`,a:v,w:[modpow(b,n+1,100),modpow(b,n-1,100),(v+50)%100,modpow(b,n,10)],s:T`Work mod 100 and use a cycle (or Euler, $\varphi(100)=40$): $${b}^{${n}}\equiv${v}\pmod{100}$.`}},
+ return{lvl:2,q:T`What are the last two digits of $${b}^{${n}}$ (as a number from $0$ to $99$)?`,a:v,w:[modpow(b,n+1,100),modpow(b,n-1,100),(v+50)%100,modpow(b,n,10)],s:T`Work mod $100$. Euler's theorem gives $${b}^{40}\equiv1\pmod{100}$ (since $\varphi(100)=40$ and $\gcd(${b},100)=1$), so exponents can be reduced mod $40$ (the true cycle may be even shorter).<br>$${n}\equiv${n%40}\pmod{40}$, so $${b}^{${n}}\equiv${b}^{${n%40}}\pmod{100}$.<br>Computing by repeated squaring mod 100 gives $${v}$: the last two digits are $${String(v).padStart(2,'0')}$.`}},
 r=>{const a=pick(r,[3,7,9]),n=ri(r,20,3000);let v=0;for(let k=0;k<=n;k++)v=(v+modpow(a,k,10))%10;const cyc=[1,a%10,(a*a)%10,(a**3)%10];const total=n+1;
- return{lvl:3,q:T`What is the units digit of $1+${a}+${a}^2+\cdots+${a}^{${n}}$?`,a:v,w:[0,1,2,3,4,5,6,7,8,9].filter(x=>x!==v),s:T`The units digits of $${a}^0,${a}^1,${a}^2,${a}^3$ are $${cyc.join(',')}$, which repeat and sum to $${cyc.reduce((x,y)=>x+y,0)}\equiv0\pmod{10}$. There are $${total}$ terms: ${Math.floor(total/4)} full cycles plus ${total%4} leftover term(s), giving units digit $${v}$.`}},
+ return{lvl:3,q:T`What is the units digit of $1+${a}+${a}^2+\cdots+${a}^{${n}}$?`,a:v,w:[0,1,2,3,4,5,6,7,8,9].filter(x=>x!==v),s:T`The units digits of $${a}^0,${a}^1,${a}^2,${a}^3$ are $${cyc.join(',')}$; they repeat every 4 terms, and each full cycle sums to $${cyc.reduce((x,y)=>x+y,0)}$, which ends in $0$.<br>There are $${total}$ terms: $${total}=4\cdot${Math.floor(total/4)}+${total%4}$. The full cycles contribute nothing to the units digit.<br>${total%4?T`The leftover ${total%4} term${total%4>1?'s have':' has'} units digit${total%4>1?'s':''} $${cyc.slice(0,total%4).join(',')}$, summing to $${cyc.slice(0,total%4).reduce((x,y)=>x+y,0)}$.`:'No terms are left over.'}<br>Units digit: $${v}$.`}},
 ];
 GENS['mod-fermat']=[
 r=>{const p=pick(r,[5,7,11,13,17,19]),a=ri(r,2,p-1),n=ri(r,50,3000);const v=modpow(a,n,p);
- return{lvl:2,q:T`What is the remainder when $${a}^{${n}}$ is divided by $${p}$?`,a:v,w:Array.from({length:p},(_,i)=>i).filter(x=>x!==v),s:T`Fermat: $${a}^{${p-1}}\equiv1\pmod{${p}}$. $${n}\equiv${n%(p-1)}\pmod{${p-1}}$, so $${a}^{${n}}\equiv${a}^{${n%(p-1)}}\equiv${v}$.`}},
+ return{lvl:2,q:T`What is the remainder when $${a}^{${n}}$ is divided by $${p}$?`,a:v,w:Array.from({length:p},(_,i)=>i).filter(x=>x!==v),s:T`Fermat's Little Theorem: since ${p} is prime and doesn't divide ${a}, $${a}^{${p-1}}\equiv1\pmod{${p}}$.<br>So exponents can be reduced mod ${p-1}: $${n}=${p-1}\cdot${Math.floor(n/(p-1))}+${n%(p-1)}$.<br>$${a}^{${n}}\equiv${a}^{${n%(p-1)}}${n%(p-1)>1?T`=${a**(n%(p-1))>1e9?'\\dots':a**(n%(p-1))}`:''}\equiv${v}\pmod{${p}}$.`}},
 r=>{const n=pick(r,[12,15,18,20,24,28,30,36,40,42,45,48,50,60,72,84,90,96,100,120,144,180,210]);const v=phi(n);
- return{lvl:1,q:T`How many integers from $1$ to $${n}$ are relatively prime to $${n}$?`,a:v,w:[v+2,v-2,n/2,n-ndiv(n)],s:T`$\varphi(${n})=${n}${Object.keys(factorize(n)).map(p=>'\\left(1-\\tfrac1{'+p+'}\\right)').join('')}=${v}$.`}},
+ return{lvl:1,q:T`How many integers from $1$ to $${n}$ are relatively prime to $${n}$?`,a:v,w:[v+2,v-2,n/2,n-ndiv(n)],s:T`Euler's totient: $\varphi(n)=n\prod\left(1-\frac1p\right)$ over the distinct primes $p$ dividing $n$.<br>$${n}=${factTex(n)}$.<br>$\varphi(${n})=${n}${Object.keys(factorize(n)).map(p=>'\\left(1-\\tfrac1{'+p+'}\\right)').join('')}=${v}$.<br>(Each factor removes the fraction of numbers divisible by that prime.)`}},
 r=>{const p=pick(r,[5,7,11,13,17]);
- return{lvl:2,q:T`What is the remainder when $${p-1}!$ is divided by $${p}$?`,a:p-1,w:[0,1,p-2,Math.floor(p/2)],s:T`Wilson's theorem: $(p-1)!\equiv-1\equiv${p-1}\pmod{${p}}$.`}},
+ return{lvl:2,q:T`What is the remainder when $${p-1}!$ is divided by $${p}$?`,a:p-1,w:[0,1,p-2,Math.floor(p/2)],s:T`Wilson's Theorem: for a prime $p$, $(p-1)!\equiv-1\pmod p$.<br>Reason: each of $2,3,\dots,p-2$ pairs with a different inverse in that range (product $\equiv1$), leaving $1\cdot(p-1)\equiv-1$.<br>So $${p-1}!\equiv-1\equiv${p-1}\pmod{${p}}$.`}},
 ];
 GENS['mod-crt']=[
 r=>{const [m,n]=pick(r,[[3,5],[3,7],[4,5],[5,7],[4,7],[5,8],[7,9],[3,8],[5,9],[7,8],[9,10],[7,11]]);const a=ri(r,0,m-1),b=ri(r,0,n-1);let x=1;while(!(x%m===a&&x%n===b))x++;
- return{lvl:1,q:T`What is the smallest positive integer that leaves remainder $${a}$ when divided by $${m}$ and remainder $${b}$ when divided by $${n}$?`,a:x,w:[x+m*n,x+m,x+n,Math.abs(x-m*n)||x+2*m*n],s:T`List the numbers $\equiv${b}\pmod{${n}}$ and find the first that is $\equiv${a}\pmod{${m}}$: $${x}$. (The solutions repeat every $${m*n}$.)`}},
+ return{lvl:1,q:T`What is the smallest positive integer that leaves remainder $${a}$ when divided by $${m}$ and remainder $${b}$ when divided by $${n}$?`,a:x,w:[x+m*n,x+m,x+n,Math.abs(x-m*n)||x+2*m*n],s:T`List the numbers with remainder ${b} when divided by ${n}: $${Array.from({length:Math.min(m,6)},(_,i)=>b+i*n).join(',\\ ')},\dots$ (start at $${b}$${b===0?', but $0$ is not positive':''}).<br>Check each one mod ${m} until the remainder is ${a}: $${x}=${m}\cdot${Math.floor(x/m)}+${a}$. ✓<br>The smallest is $${x}$; by the Chinese Remainder Theorem every solution is $${x}+${m*n}k$.`}},
 r=>{const m=pick(r,[7,9,11,13,17,19,26,31]),a=ri(r,2,m-1);if(gcd(a,m)!==1)return GENS['mod-crt'][1](r);let x=1;while(a*x%m!==1)x++;
- return{lvl:1,q:T`What is the inverse of $${a}$ modulo $${m}$ (the $x$ with $0\lt x\lt ${m}$ and $${a}x\equiv1$)?`,a:x,w:[m-x,a,(x+1)%m||2,(x*2)%m||3],s:T`$${a}\cdot${x}=${a*x}=${Math.floor(a*x/m)}\cdot${m}+1$.`}},
+ return{lvl:1,q:T`What is the inverse of $${a}$ modulo $${m}$ (the $x$ with $0\lt x\lt ${m}$ and $${a}x\equiv1$)?`,a:x,w:[m-x,a,(x+1)%m||2,(x*2)%m||3],s:T`We need $x$ with $${a}x\equiv1\pmod{${m}}$, i.e. $${a}x$ is one more than a multiple of ${m}.<br>Trying $x=1,2,3,\dots$ (or using the Euclidean algorithm): $${a}\cdot${x}=${a*x}=${Math.floor(a*x/m)}\cdot${m}+1$. ✓<br>So the inverse is $${x}$.`}},
 r=>{const m=pick(r,[7,11,13]),a=ri(r,2,m-1),b=ri(r,1,m-1);let x=0;while(a*x%m!==b)x++;
- return{lvl:1,q:T`Which $x$ with $0\le x\lt ${m}$ satisfies $${a}x\equiv${b}\pmod{${m}}$?`,a:x,w:Array.from({length:m},(_,i)=>i).filter(t=>t!==x),s:T`Multiply by $${a}^{-1}$: $x\equiv${x}$. Check: $${a*x}\equiv${b}$ ✓.`}},
+ return{lvl:1,q:T`Which $x$ with $0\le x\lt ${m}$ satisfies $${a}x\equiv${b}\pmod{${m}}$?`,a:x,w:Array.from({length:m},(_,i)=>i).filter(t=>t!==x),s:T`Multiply both sides by the inverse of ${a} mod ${m}. ${(()=>{let y=1;while(a*y%m!==1)y++;return T`Since $${a}\cdot${y}=${a*y}\equiv1$, the inverse is $${y}$.<br>$x\equiv${y}\cdot${b}=${y*b}\equiv${x}\pmod{${m}}$.`})()}<br>Check: $${a}\cdot${x}=${a*x}\equiv${b}\pmod{${m}}$. ✓`}},
 r=>{const [m,n]=pick(r,[[3,4],[3,5],[4,5],[5,6],[3,7],[4,7]]);const a=ri(r,0,m-1),b=ri(r,0,n-1),N=ri(r,50,300);let c=0;for(let x=1;x<=N;x++)if(x%m===a&&x%n===b)c++;
- return{lvl:2,q:T`How many integers $x$ with $1\le x\le${N}$ satisfy $x\equiv${a}\pmod{${m}}$ and $x\equiv${b}\pmod{${n}}$?`,a:c,w:[c+1,c-1>=0?c-1:c+2,Math.floor(N/m),Math.floor(N/n)],s:T`The solutions form one residue class mod $${m*n}$, and $${c}$ of them lie in $[1,${N}]$.`}},
+ return{lvl:2,q:T`How many integers $x$ with $1\le x\le${N}$ satisfy $x\equiv${a}\pmod{${m}}$ and $x\equiv${b}\pmod{${n}}$?`,a:c,w:[c+1,c-1>=0?c-1:c+2,Math.floor(N/m),Math.floor(N/n)],s:T`Since ${m} and ${n} are relatively prime, the Chinese Remainder Theorem says the solutions form a single residue class mod $${m*n}$.<br>${(()=>{let x0=0;while(!(x0%m===a&&x0%n===b))x0++;return T`The smallest nonnegative solution is $${x0}$, so the solutions are $${x0}+${m*n}k$.<br>In $[1,${N}]$: ${x0===0?T`$${m*n},${2*m*n},\dots$`:T`$${x0},${x0+m*n},\dots$`}, up to $${x0+Math.floor((N-x0)/(m*n))*m*n}$.`})()}<br>That's $${c}$ numbers.`}},
 ];
