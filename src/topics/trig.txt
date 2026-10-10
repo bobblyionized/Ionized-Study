@@ -62,7 +62,9 @@ W: -\frac{1}{2}
 W: \frac{\sqrt{3}}{2}
 W: -\frac{\sqrt{3}}{2}
 W: 1
-S: The reference angle is $30^\circ$, and sine is positive in QII.
+S: $150^\circ$ is in quadrant II. Its reference angle (the acute angle to the $x$-axis) is $180^\circ-150^\circ=30^\circ$.
+$\sin30^\circ=\frac12$, and sine ($y$-coordinate) is positive in quadrant II.
+So $\sin150^\circ=\frac12$.
 ---
 Q: What is $\cos225^\circ$?
 L: 1
@@ -71,7 +73,9 @@ W: \frac{\sqrt{2}}{2}
 W: -\frac{1}{2}
 W: \frac{1}{2}
 W: -\frac{\sqrt{3}}{2}
-S: The reference angle is $45^\circ$, and cosine is negative in QIII.
+S: $225^\circ$ is in quadrant III, with reference angle $225^\circ-180^\circ=45^\circ$.
+$\cos45^\circ=\frac{\sqrt2}2$, and cosine ($x$-coordinate) is negative in quadrant III.
+So $\cos225^\circ=-\frac{\sqrt2}2$.
 ---
 Q: What is $\tan300^\circ$?
 L: 1
@@ -80,7 +84,9 @@ W: \sqrt{3}
 W: -\frac{\sqrt{3}}{3}
 W: \frac{\sqrt{3}}{3}
 W: -1
-S: The reference angle is $60^\circ$, and tangent is negative in QIV.
+S: $300^\circ$ is in quadrant IV, with reference angle $360^\circ-300^\circ=60^\circ$.
+$\tan60^\circ=\sqrt3$. In quadrant IV, $x\gt0$ and $y\lt0$, so $\tan=\frac yx$ is negative.
+$\tan300^\circ=-\sqrt3$.
 ---
 Q: What is $\dfrac{5\pi}{6}$ radians in degrees?
 L: 1
@@ -89,7 +95,8 @@ W: 120
 W: 135
 W: 300
 W: 75
-S: $\frac56\cdot180=150$.
+S: $\pi$ radians $=180^\circ$, so multiply by $\frac{180^\circ}{\pi}$.
+$\frac{5\pi}{6}\cdot\frac{180^\circ}{\pi}=5\cdot30^\circ=150^\circ$.
 ---
 Q: What is $\sin^2 17^\circ+\sin^2 73^\circ$?
 L: 1
@@ -98,7 +105,8 @@ W: 0
 W: 2
 W: \frac{1}{2}
 W: \frac{\sqrt{2}}{2}
-S: $\sin73^\circ=\cos17^\circ$, so the sum is $\sin^2+\cos^2=1$.
+S: $17^\circ$ and $73^\circ$ are complementary ($17+73=90$), so $\sin73^\circ=\cos17^\circ$.
+The sum is $\sin^217^\circ+\cos^217^\circ=1$ (Pythagorean identity).
 ---
 Q: If $\cos\theta=-\frac35$ and $\theta$ is in the second quadrant, what is $\tan\theta$?
 L: 2
@@ -107,7 +115,8 @@ W: \frac{4}{3}
 W: -\frac{3}{4}
 W: \frac{3}{4}
 W: -\frac{4}{5}
-S: $\sin\theta=\frac45$ (positive in QII), so $\tan\theta=\frac{4/5}{-3/5}=-\frac43$.
+S: In quadrant II, sine is positive and cosine negative. From $\cos\theta=-\frac35$, use a $3$-$4$-$5$ triangle: $\sin\theta=\sqrt{1-\frac{9}{25}}=\frac45$.
+$\tan\theta=\dfrac{\sin\theta}{\cos\theta}=\dfrac{4/5}{-3/5}=-\dfrac43$.
 ---
 Q: What is $\sin1110^\circ$?
 L: 2
@@ -116,7 +125,8 @@ W: -\frac{1}{2}
 W: \frac{\sqrt{3}}{2}
 W: 0
 W: 1
-S: $1110=3\cdot360+30$, so $\sin1110^\circ=\sin30^\circ=\frac12$.
+S: Sine has period $360^\circ$, so subtract full turns: $1110=3\cdot360+30$.
+$\sin1110^\circ=\sin30^\circ=\frac12$.
 ---
 Q: What is $\cos20^\circ\cos40^\circ\cos80^\circ$?
 L: 3
@@ -125,8 +135,10 @@ W: \frac{1}{4}
 W: \frac{1}{16}
 W: \frac{\sqrt{3}}{8}
 W: \frac{1}{2}
-S: Multiply by $\sin20^\circ$ and use $2\sin\theta\cos\theta=\sin2\theta$ three times: $\sin20\cos20\cos40\cos80=\frac18\sin160=\frac18\sin20$.
-So the product is $\frac18$.
+S: Let $P=\cos20^\circ\cos40^\circ\cos80^\circ$ and multiply by $\sin20^\circ$, using $\sin\theta\cos\theta=\frac12\sin2\theta$ repeatedly:
+$\sin20\cos20=\frac12\sin40$; then $\frac12\sin40\cos40=\frac14\sin80$; then $\frac14\sin80\cos80=\frac18\sin160$.
+So $P\sin20^\circ=\frac18\sin160^\circ=\frac18\sin20^\circ$ (since $\sin160^\circ=\sin20^\circ$).
+Divide by $\sin20^\circ\ne0$: $P=\frac18$.
 ---
 @@ trig-id
 Q: If $\sin x+\cos x=\frac12$, what is $\sin2x$?
@@ -136,7 +148,8 @@ W: \frac{3}{4}
 W: -\frac{1}{2}
 W: \frac{1}{4}
 W: -\frac{1}{4}
-S: Square: $1+\sin2x=\frac14$, so $\sin2x=-\frac34$.
+S: Square both sides: $(\sin x+\cos x)^2=\sin^2x+2\sin x\cos x+\cos^2x=1+\sin2x$.
+So $1+\sin2x=\left(\frac12\right)^2=\frac14$, giving $\sin2x=-\frac34$.
 ---
 Q: What is $\sin15^\circ$?
 L: 2
@@ -145,7 +158,9 @@ W: \frac{\sqrt{6}+\sqrt{2}}{4}
 W: \frac{\sqrt{3}-1}{2}
 W: \frac{1}{4}
 W: \frac{\sqrt{2}}{4}
-S: $\sin(45-30)=\frac{\sqrt2}2\cdot\frac{\sqrt3}2-\frac{\sqrt2}2\cdot\frac12=\frac{\sqrt6-\sqrt2}{4}$.
+S: Write $15^\circ=45^\circ-30^\circ$ and use $\sin(A-B)=\sin A\cos B-\cos A\sin B$:
+$\sin15^\circ=\frac{\sqrt2}2\cdot\frac{\sqrt3}2-\frac{\sqrt2}2\cdot\frac12=\frac{\sqrt6}{4}-\frac{\sqrt2}{4}=\frac{\sqrt6-\sqrt2}{4}\approx0.259$.
+($\frac{\sqrt6+\sqrt2}{4}$ is $\cos15^\circ=\sin75^\circ$.)
 ---
 Q: If $\sin x=\frac13$, what is $\cos2x$?
 L: 1
@@ -154,7 +169,8 @@ W: \frac{2}{9}
 W: \frac{8}{9}
 W: -\frac{7}{9}
 W: \frac{1}{3}
-S: $1-2\sin^2x=1-\frac29=\frac79$.
+S: Use the double-angle form that involves only sine: $\cos2x=1-2\sin^2x$.
+$\cos2x=1-2\cdot\frac19=1-\frac29=\frac79$.
 ---
 Q: What is $\tan75^\circ$?
 L: 2
@@ -163,7 +179,8 @@ W: \sqrt{3}
 W: 1+\sqrt{3}
 W: 2-\sqrt{3}
 W: \frac{1+\sqrt{3}}{2}
-S: $\tan(45+30)=\frac{1+\frac{1}{\sqrt3}}{1-\frac1{\sqrt3}}=\frac{\sqrt3+1}{\sqrt3-1}=2+\sqrt3$.
+S: $\tan(45^\circ+30^\circ)=\dfrac{\tan45^\circ+\tan30^\circ}{1-\tan45^\circ\tan30^\circ}=\dfrac{1+\frac1{\sqrt3}}{1-\frac1{\sqrt3}}$.
+Multiply top and bottom by $\sqrt3$: $\dfrac{\sqrt3+1}{\sqrt3-1}$. Rationalize with $\sqrt3+1$: $\dfrac{(\sqrt3+1)^2}{3-1}=\dfrac{4+2\sqrt3}{2}=2+\sqrt3$.
 ---
 Q: If $\sin x\cos x=\frac14$, what is $(\sin x+\cos x)^2$?
 L: 1
@@ -172,7 +189,8 @@ W: \frac{1}{2}
 W: \frac{5}{4}
 W: 1
 W: 2
-S: $1+2\sin x\cos x=1+\frac12=\frac32$.
+S: Expand: $(\sin x+\cos x)^2=\sin^2x+\cos^2x+2\sin x\cos x=1+2\sin x\cos x$.
+$=1+2\cdot\frac14=\frac32$.
 ---
 Q: If $\tan x=2$, what is $\sin2x$?
 L: 2
@@ -181,7 +199,9 @@ W: \frac{2}{5}
 W: \frac{3}{5}
 W: -\frac{3}{5}
 W: \frac{4}{3}
-S: $\sin2x=\frac{2\tan x}{1+\tan^2x}=\frac45$.
+S: Use $\sin2x=2\sin x\cos x=\dfrac{2\tan x}{1+\tan^2x}$ (divide $2\sin x\cos x$ by $\sin^2x+\cos^2x=1$ and then divide top and bottom by $\cos^2x$).
+$\sin2x=\dfrac{2\cdot2}{1+4}=\dfrac45$.
+(Or: $\tan x=2$ gives a $1$-$2$-$\sqrt5$ triangle, $\sin x=\frac{2}{\sqrt5}$, $\cos x=\frac1{\sqrt5}$, and $2\cdot\frac2{\sqrt5}\cdot\frac1{\sqrt5}=\frac45$.)
 ---
 Q: What is $\sin75^\circ\cos15^\circ$?
 L: 3
@@ -190,7 +210,9 @@ W: \frac{\sqrt{3}}{4}
 W: \frac{1}{2}
 W: \frac{2-\sqrt{3}}{4}
 W: \frac{1+\sqrt{3}}{4}
-S: $\sin a\cos b=\frac12[\sin(a+b)+\sin(a-b)]=\frac12\left[1+\frac{\sqrt3}2\right]=\frac{2+\sqrt3}4$.
+S: Product-to-sum: $\sin a\cos b=\frac12[\sin(a+b)+\sin(a-b)]$.
+$\sin75^\circ\cos15^\circ=\frac12[\sin90^\circ+\sin60^\circ]=\frac12\left[1+\frac{\sqrt3}2\right]=\frac{2+\sqrt3}{4}$.
+(Also $\cos15^\circ=\sin75^\circ$, so this is $\sin^275^\circ=\frac{1-\cos150^\circ}{2}$, the same value.)
 ---
 Q: If $\cos2x=\frac13$, what is $\cos^4x-\sin^4x$?
 L: 1
@@ -199,7 +221,8 @@ W: \frac{1}{9}
 W: \frac{2}{3}
 W: 1
 W: \frac{\sqrt{3}}{3}
-S: $\cos^4x-\sin^4x=(\cos^2x-\sin^2x)(\cos^2x+\sin^2x)=\cos2x=\frac13$.
+S: Factor as a difference of squares: $\cos^4x-\sin^4x=(\cos^2x-\sin^2x)(\cos^2x+\sin^2x)$.
+The second factor is $1$ and the first is $\cos2x$, so the expression equals $\cos2x=\frac13$.
 ---
 @@ trig-law
 Q: A triangle has $a=7$, $b=8$, and $C=60^\circ$. What is $c$?
@@ -209,7 +232,8 @@ W: 13
 W: \sqrt{113}
 W: \frac{15}{2}
 W: \sqrt{65}
-S: $c^2=49+64-2\cdot56\cdot\frac12=57$.
+S: Law of Cosines: $c^2=a^2+b^2-2ab\cos C$.
+$c^2=49+64-2\cdot7\cdot8\cdot\frac12=113-56=57$, so $c=\sqrt{57}$.
 ---
 Q: A triangle has sides $5$, $7$, $8$. What is the angle opposite the side of length $7$, in degrees?
 L: 1
@@ -218,7 +242,8 @@ W: 30
 W: 45
 W: 90
 W: 120
-S: $\cos\theta=\frac{25+64-49}{2\cdot5\cdot8}=\frac{40}{80}=\frac12$, so $60^\circ$.
+S: Law of Cosines solved for the angle: $\cos\theta=\dfrac{(\text{adjacent})^2+(\text{adjacent})^2-(\text{opposite})^2}{2\cdot(\text{adjacent})(\text{adjacent})}$.
+$\cos\theta=\dfrac{5^2+8^2-7^2}{2\cdot5\cdot8}=\dfrac{25+64-49}{80}=\dfrac{40}{80}=\dfrac12$, so $\theta=60^\circ$.
 ---
 Q: In a triangle, $a=10$ and $A=30^\circ$. What is the circumradius?
 L: 1
@@ -227,7 +252,8 @@ W: 5
 W: 20
 W: 10\sqrt{3}
 W: 5\sqrt{3}
-S: $2R=\frac{a}{\sin A}=20$, so $R=10$.
+S: Extended Law of Sines: $\dfrac{a}{\sin A}=2R$.
+$2R=\dfrac{10}{\sin30^\circ}=\dfrac{10}{1/2}=20$, so $R=10$.
 ---
 Q: A triangle has sides $3$, $5$, $7$. What is its largest angle, in degrees?
 L: 1
@@ -236,7 +262,9 @@ W: 135
 W: 150
 W: 90
 W: 105
-S: $\cos\theta=\frac{9+25-49}{30}=-\frac12$, so $120^\circ$.
+S: The largest angle is opposite the longest side, $7$.
+$\cos\theta=\dfrac{3^2+5^2-7^2}{2\cdot3\cdot5}=\dfrac{9+25-49}{30}=\dfrac{-15}{30}=-\dfrac12$.
+So $\theta=120^\circ$ (an obtuse angle, since the cosine is negative).
 ---
 Q: In a triangle, $A=45^\circ$, $B=60^\circ$, and $a=2$. What is $b$?
 L: 2
@@ -245,7 +273,8 @@ W: \sqrt{3}
 W: 2\sqrt{3}
 W: \sqrt{2}
 W: 3
-S: $b=\frac{a\sin B}{\sin A}=\frac{2\cdot\frac{\sqrt3}2}{\frac{\sqrt2}2}=\frac{2\sqrt3}{\sqrt2}=\sqrt6$.
+S: Law of Sines: $\dfrac{a}{\sin A}=\dfrac{b}{\sin B}$, so $b=\dfrac{a\sin B}{\sin A}$.
+$b=\dfrac{2\cdot\frac{\sqrt3}2}{\frac{\sqrt2}2}=\dfrac{\sqrt3}{\frac{\sqrt2}{2}}=\dfrac{2\sqrt3}{\sqrt2}=\sqrt2\cdot\sqrt3=\sqrt6$.
 ---
 Q: A triangle has two sides of length $6$ with an included angle of $150^\circ$. What is its area?
 L: 1
@@ -254,7 +283,9 @@ W: 18
 W: 9\sqrt{3}
 W: 36
 W: 12
-S: $\frac12\cdot36\cdot\sin150^\circ=18\cdot\frac12=9$.
+S: Area of a triangle from two sides and the included angle: $\frac12ab\sin C$.
+$\frac12\cdot6\cdot6\cdot\sin150^\circ=18\cdot\frac12=9$.
+($\sin150^\circ=\sin30^\circ=\frac12$.)
 ---
 Q: A triangle has sides $4$, $5$, $6$. What is the cosine of its largest angle?
 L: 2
@@ -263,7 +294,9 @@ W: \frac{1}{4}
 W: -\frac{1}{8}
 W: \frac{3}{4}
 W: \frac{9}{16}
-S: $\frac{16+25-36}{40}=\frac{5}{40}=\frac18$.
+S: The largest angle is opposite the longest side, $6$.
+$\cos\theta=\dfrac{4^2+5^2-6^2}{2\cdot4\cdot5}=\dfrac{16+25-36}{40}=\dfrac5{40}=\dfrac18$.
+(Positive, so even the largest angle is acute.)
 ---
 Q: A triangle has sides $a=8$, $b=5$, $c=7$. What is $\sin C$?
 L: 2
@@ -272,7 +305,9 @@ W: \frac{1}{2}
 W: \frac{\sqrt{2}}{2}
 W: \sqrt{3}
 W: 1
-S: $\cos C=\frac{64+25-49}{80}=\frac12$, so $C=60^\circ$ and $\sin C=\frac{\sqrt3}2$.
+S: Angle $C$ is opposite side $c=7$, between sides $a=8$ and $b=5$.
+$\cos C=\dfrac{8^2+5^2-7^2}{2\cdot8\cdot5}=\dfrac{64+25-49}{80}=\dfrac{40}{80}=\dfrac12$, so $C=60^\circ$.
+$\sin C=\sin60^\circ=\frac{\sqrt3}2$.
 ---
 @@ trig-eq
 Q: How many solutions does $\sin x=\frac12$ have in $[0,2\pi)$?
@@ -282,7 +317,8 @@ W: 1
 W: 4
 W: 3
 W: 0
-S: $x=\frac\pi6,\frac{5\pi}6$.
+S: $\sin x=\frac12$ when the reference angle is $\frac\pi6$ and sine is positive: quadrants I and II.
+$x=\frac\pi6$ and $x=\pi-\frac\pi6=\frac{5\pi}6$. That's $2$ solutions.
 ---
 Q: How many solutions does $\sin3x=0$ have in $[0,2\pi)$?
 L: 2
@@ -291,7 +327,9 @@ W: 3
 W: 7
 W: 4
 W: 5
-S: $3x=k\pi$, so $x=\frac{k\pi}3$ for $k=0,1,\dots,5$: $6$ solutions.
+S: $\sin\theta=0$ exactly when $\theta=k\pi$. So $3x=k\pi$, i.e. $x=\frac{k\pi}{3}$.
+In $[0,2\pi)$: $k=0,1,2,3,4,5$ (at $k=6$, $x=2\pi$ is excluded). That's $6$ solutions.
+(Compressing by $3$ fits three periods of $\sin$ into $[0,2\pi)$, each with $2$ zeros.)
 ---
 Q: What is the maximum value of $3\sin x+4\cos x$?
 L: 1
@@ -300,7 +338,9 @@ W: 7
 W: 4
 W: 3
 W: 12
-S: $\sqrt{3^2+4^2}=5$.
+S: Write $3\sin x+4\cos x=5\left(\frac35\sin x+\frac45\cos x\right)=5\sin(x+\varphi)$ where $\cos\varphi=\frac35$, $\sin\varphi=\frac45$.
+Since $\sin$ is at most $1$, the maximum is $5=\sqrt{3^2+4^2}$.
+In general, $a\sin x+b\cos x$ ranges from $-\sqrt{a^2+b^2}$ to $\sqrt{a^2+b^2}$.
 ---
 Q: How many solutions does $2\sin^2x-\sin x-1=0$ have in $[0,2\pi)$?
 L: 2
@@ -309,7 +349,10 @@ W: 2
 W: 4
 W: 5
 W: 1
-S: $(2\sin x+1)(\sin x-1)=0$. $\sin x=1$ gives one solution and $\sin x=-\frac12$ gives two: $3$.
+S: Treat it as a quadratic in $s=\sin x$: $2s^2-s-1=(2s+1)(s-1)=0$, so $\sin x=1$ or $\sin x=-\frac12$.
+$\sin x=1$: $x=\frac\pi2$ (one solution).
+$\sin x=-\frac12$: $x=\frac{7\pi}6,\frac{11\pi}6$ (two solutions).
+Total: $3$.
 ---
 Q: What is the sum of the solutions of $\cos x=0$ in $[0,2\pi)$?
 L: 1
@@ -318,7 +361,8 @@ W: \pi
 W: 3\pi
 W: \frac{\pi}{2}
 W: 4\pi
-S: $\frac\pi2+\frac{3\pi}2=2\pi$.
+S: $\cos x=0$ in $[0,2\pi)$ at $x=\frac\pi2$ and $x=\frac{3\pi}2$ (the top and bottom of the unit circle).
+Sum: $\frac\pi2+\frac{3\pi}2=2\pi$.
 ---
 Q: What is the minimum value of $\sin x\cos x$?
 L: 1
@@ -327,7 +371,9 @@ W: -1
 W: 0
 W: -\frac{1}{4}
 W: -\frac{\sqrt{2}}{2}
-S: $\sin x\cos x=\frac12\sin2x\ge-\frac12$.
+S: Double-angle: $\sin x\cos x=\frac12\sin2x$.
+$\sin2x$ ranges over $[-1,1]$, so $\frac12\sin2x$ ranges over $\left[-\frac12,\frac12\right]$.
+The minimum is $-\frac12$ (at $x=\frac{3\pi}4$, for example).
 ---
 Q: How many solutions does $\sin x=\cos x$ have in $[0,2\pi)$?
 L: 1
@@ -336,7 +382,8 @@ W: 1
 W: 4
 W: 0
 W: 3
-S: $\tan x=1$: $x=\frac\pi4,\frac{5\pi}4$.
+S: Divide by $\cos x$ (it can't be $0$ here, since then $\sin x=\pm1\ne0$): $\tan x=1$.
+In $[0,2\pi)$: $x=\frac\pi4$ and $x=\frac{5\pi}4$ (tangent has period $\pi$). That's $2$ solutions.
 ---
 Q: How many real solutions does $\sin x=\dfrac{x}{10}$ have?
 L: 3
@@ -345,9 +392,12 @@ W: 5
 W: 6
 W: 8
 W: 3
-S: Solutions need $|x|\le10$. For $x>0$ the line meets each arch of $\sin x$ above the axis: once in $(0,\pi)$, twice in $(2\pi,3\pi)$, and none after $10$ (since $3\pi\lt 10\lt 4\pi$ and $\sin x\lt 0$ on $(3\pi,10]$). That is 3 positive solutions.
-By symmetry there are 3 negative ones, plus $x=0$: $7$.
-
+S: Since $|\sin x|\le1$, solutions need $\left|\frac{x}{10}\right|\le1$, i.e. $|x|\le10$.
+For $x\gt0$: the line $y=\frac x{10}$ (between $0$ and $1$) can meet $\sin x$ only where $\sin x\gt0$:
+• on $(0,\pi)$: once (besides $x=0$),
+• on $(2\pi,3\pi)\approx(6.28,9.42)$: twice (the arch rises above the line and comes back down),
+• on $(3\pi,10]$: $\sin x\lt0$, so none. ($4\pi\approx12.6\gt10$.)
+That's $3$ positive solutions. Both sides are odd functions, so there are also $3$ negative ones, plus $x=0$: $7$ in all.
 === GENS ===
 const TRIG_TBL={0:[F(0),1,F(1),1],30:[F(1,2),1,F(1,2),3],45:[F(1,2),2,F(1,2),2],60:[F(1,2),3,F(1,2),1],90:[F(1),1,F(0),1]};
 function trigVal(deg,fn){deg=((deg%360)+360)%360;let ref,ss,cs;
@@ -361,40 +411,40 @@ const TRIG_V={'0':0,'1':1,'-1':-1,'\\frac{1}{2}':.5,'-\\frac{1}{2}':-.5,'\\frac{
 GENS['trig-unit']=[
 r=>{const fn=pick(r,['sin','cos','tan']);const deg=pick(r,[0,30,45,60,90,120,135,150,180,210,225,240,270,300,315,330])+360*ri(r,0,2);const v=trigVal(deg,fn);if(!v)return GENS['trig-unit'][0](r);
  const ws=shuffle(r,TRIG_ALL.filter(t=>t!==v.tex&&Math.abs(TRIG_V[t]-v.v)>1e-9)).map(t=>O(t,TRIG_V[t]));
- return{lvl:1,q:T`What is $${'\\'+(fn)} ${deg}^\circ$?`,a:v,w:ws,s:T`$${deg}^\circ$ ${deg>=360?'is coterminal with $'+(deg%360)+'^\\circ$; it ':''}has reference angle $${(()=>{const d=deg%360;return d<=90?d:d<=180?180-d:d<=270?d-180:360-d})()}^\circ$. Apply the quadrant sign: $${'\\'+(fn)} ${deg}^\circ=${v.tex}$.`}},
+ return{lvl:1,q:T`What is $${'\\'+(fn)} ${deg}^\circ$?`,a:v,w:ws,s:T`${deg>=360?T`First remove full turns: $${deg}^\circ$ is coterminal with $${deg%360}^\circ$ (subtract $${deg-deg%360}^\circ$).<br>`:''}${(()=>{const d=deg%360,ref=d<=90?d:d<=180?180-d:d<=270?d-180:360-d,qd=d===0||d===90||d===180||d===270?'on an axis':d<90?'in quadrant I':d<180?'in quadrant II':d<270?'in quadrant III':'in quadrant IV';return T`$${d}^\circ$ lies ${qd}${d%90?T`, with reference angle $${ref}^\circ$`:''}.<br>`})()}Signs by quadrant: all positive in I; only $\sin$ in II; only $\tan$ in III; only $\cos$ in IV ("All Students Take Calculus").<br>So $${'\\'+(fn)} ${deg}^\circ=${v.tex}$.`}},
 r=>{const pairs=[[1,6],[1,4],[1,3],[1,2],[2,3],[3,4],[5,6],[1,1],[5,4],[4,3],[3,2],[5,3],[7,4],[11,6],[2,1],[7,6]];const [n,d]=pick(r,pairs);const deg=180*n/d;const toDeg=r()<.5;
- return toDeg?{lvl:1,q:T`What is $${n===1?'':n}\pi${d>1?'/'+d:''}$ radians in degrees?`,a:deg,w:[deg/2,deg+30,360-deg===deg?deg+45:360-deg,deg*2>720?deg-15:deg*2],s:T`Multiply by $\frac{180}{\pi}$: $${deg}^\circ$.`}
- :{lvl:1,q:T`What is $${deg}^\circ$ in radians?`,a:PI(F(n,d)),w:[PI(F(n,d).mul(2)),PI(F(n,d).div(2)),PI(F(d,n)),PI(F(n,d).add(F(1,6)))],s:T`Multiply by $\frac{\pi}{180}$: $${PI(F(n,d)).tex}$.`}},
+ return toDeg?{lvl:1,q:T`What is $${n===1?'':n}\pi${d>1?'/'+d:''}$ radians in degrees?`,a:deg,w:[deg/2,deg+30,360-deg===deg?deg+45:360-deg,deg*2>720?deg-15:deg*2],s:T`$\pi$ radians $=180^\circ$, so multiply by $\frac{180^\circ}{\pi}$:<br>$\frac{${n}\pi}{${d}}\cdot\frac{180^\circ}{\pi}=\frac{${n}\cdot180^\circ}{${d}}=${deg}^\circ$.`}
+ :{lvl:1,q:T`What is $${deg}^\circ$ in radians?`,a:PI(F(n,d)),w:[PI(F(n,d).mul(2)),PI(F(n,d).div(2)),PI(F(d,n)),PI(F(n,d).add(F(1,6)))],s:T`$180^\circ=\pi$ radians, so multiply by $\frac{\pi}{180^\circ}$:<br>$${deg}^\circ\cdot\frac{\pi}{180^\circ}=\frac{${deg}}{180}\pi=${PI(F(n,d)).tex}$ (reduce the fraction $\frac{${deg}}{180}=${F(n,d).tex()}$).`}},
 r=>{const [a,b,c]=pick(r,TRIPLES.slice(0,6));const quad=ri(r,1,4);const sx=quad===1||quad===4?1:-1,sy=quad<=2?1:-1;const given=pick(r,['cos','sin']);const want=pick(r,['tan','sin','cos'].filter(x=>x!==given));
  const cosv=F(sx*a,c),sinv=F(sy*b,c),tanv=F(sy*b,sx*a);const vals={sin:sinv,cos:cosv,tan:tanv};
  return{lvl:2,q:T`If $${'\\'+(given)}\theta=${vals[given].tex()}$ and $\theta$ is in quadrant ${['I','II','III','IV'][quad-1]}, what is $${'\\'+(want)}\theta$?`,a:vals[want],w:[vals[want].neg(),F(1).div(vals[want]).v===vals[want].v?vals[want].add(1):F(1).div(vals[want]),F(sx*a,sy*b),vals[given]],
- s:T`Use the $${a}$-$${b}$-$${c}$ triangle with quadrant ${['I','II','III','IV'][quad-1]} signs: $\cos\theta=${cosv.tex()}$, $\sin\theta=${sinv.tex()}$, $\tan\theta=${tanv.tex()}$.`}},
+ s:T`Ignoring signs, the given value fits the right triangle with legs $${a}$, $${b}$ and hypotenuse $${c}$ (a Pythagorean triple), so $|\cos\theta|=\frac{${a}}{${c}}$, $|\sin\theta|=\frac{${b}}{${c}}$, $|\tan\theta|=\frac{${b}}{${a}}$.<br>Quadrant ${['I','II','III','IV'][quad-1]} signs: $\cos\theta$ is ${sx>0?'positive':'negative'} and $\sin\theta$ is ${sy>0?'positive':'negative'}, so $\cos\theta=${cosv.tex()}$, $\sin\theta=${sinv.tex()}$, and $\tan\theta=\frac{\sin\theta}{\cos\theta}=${tanv.tex()}$.<br>Answer: $${'\\'+(want)}\theta=${vals[want].tex()}$.`}},
 ];
 GENS['trig-id']=[
 r=>{const q=ri(r,2,9),p=ri(r,1,q-1);const s=F(p,q);const v=F(1).sub(s.mul(s).mul(2));const ask=r()<.5;
- return ask?{lvl:1,q:T`If $\sin x=${s.tex()}$, what is $\cos2x$?`,a:v,w:[s.mul(s).mul(2),F(1).sub(s.mul(s)),v.neg(),s.mul(2)],s:T`$\cos2x=1-2\sin^2x=1-2\cdot${s.mul(s).tex()}=${v.tex()}$.`}
- :{lvl:1,q:T`If $\cos x=${s.tex()}$, what is $\cos2x$?`,a:s.mul(s).mul(2).sub(1),w:[F(1).sub(s.mul(s).mul(2)),s.mul(s),s.mul(2),s.mul(s).mul(2)],s:T`$\cos2x=2\cos^2x-1=${s.mul(s).mul(2).sub(1).tex()}$.`}},
+ return ask?{lvl:1,q:T`If $\sin x=${s.tex()}$, what is $\cos2x$?`,a:v,w:[s.mul(s).mul(2),F(1).sub(s.mul(s)),v.neg(),s.mul(2)],s:T`Use the version of the double-angle formula that involves only sine: $\cos2x=1-2\sin^2x$.<br>$\sin^2x=\left(${s.tex()}\right)^2=${s.mul(s).tex()}$.<br>$\cos2x=1-2\cdot${s.mul(s).tex()}=1-${s.mul(s).mul(2).tex()}=${v.tex()}$.`}
+ :{lvl:1,q:T`If $\cos x=${s.tex()}$, what is $\cos2x$?`,a:s.mul(s).mul(2).sub(1),w:[F(1).sub(s.mul(s).mul(2)),s.mul(s),s.mul(2),s.mul(s).mul(2)],s:T`Use the version of the double-angle formula that involves only cosine: $\cos2x=2\cos^2x-1$.<br>$\cos^2x=\left(${s.tex()}\right)^2=${s.mul(s).tex()}$.<br>$\cos2x=2\cdot${s.mul(s).tex()}-1=${s.mul(s).mul(2).tex()}-1=${s.mul(s).mul(2).sub(1).tex()}$.`}},
 r=>{const t=pick(r,[F(1,2),F(1,3),F(2),F(3),F(3,4),F(4,3),F(1,4),F(2,3),F(5,12)]);const t2=t.mul(t);const s2=t.mul(2).div(F(1).add(t2)),c2=F(1).sub(t2).div(F(1).add(t2));const ask=r()<.5;
- return{lvl:2,q:T`If $\tan x=${t.tex()}$, what is $${'\\'+(ask?'sin':'cos')}2x$?`,a:ask?s2:c2,w:[ask?c2:s2,(ask?s2:c2).neg(),t.mul(2),t.div(F(1).add(t2))],s:T`$\sin2x=\frac{2t}{1+t^2}=${s2.tex()}$ and $\cos2x=\frac{1-t^2}{1+t^2}=${c2.tex()}$.`}},
+ return{lvl:2,q:T`If $\tan x=${t.tex()}$, what is $${'\\'+(ask?'sin':'cos')}2x$?`,a:ask?s2:c2,w:[ask?c2:s2,(ask?s2:c2).neg(),t.mul(2),t.div(F(1).add(t2))],s:T`Express the double angles in terms of $t=\tan x$ (divide by $\sin^2x+\cos^2x=1$, then by $\cos^2x$):<br>$\sin2x=\dfrac{2\sin x\cos x}{\sin^2x+\cos^2x}=\dfrac{2t}{1+t^2}$ and $\cos2x=\dfrac{\cos^2x-\sin^2x}{\cos^2x+\sin^2x}=\dfrac{1-t^2}{1+t^2}$.<br>With $t=${t.tex()}$, $t^2=${t2.tex()}$: ${ask?T`$\sin2x=\dfrac{${t.mul(2).tex()}}{${F(1).add(t2).tex()}}=${s2.tex()}$`:T`$\cos2x=\dfrac{${F(1).sub(t2).tex()}}{${F(1).add(t2).tex()}}=${c2.tex()}$`}.`}},
 r=>{const s=pick(r,[F(1,2),F(1,3),F(2,3),F(1,4),F(3,4),F(5,4),F(4,3),F(6,5),F(7,5)]);const v=s.mul(s).sub(1);
- return{lvl:2,q:T`If $\sin x+\cos x=${s.tex()}$, what is $\sin2x$?`,a:v,w:[v.neg(),s.mul(s),F(1).sub(s.mul(s)).div(2),s.mul(2)],s:T`Square: $1+\sin2x=${s.mul(s).tex()}$, so $\sin2x=${v.tex()}$.`}},
+ return{lvl:2,q:T`If $\sin x+\cos x=${s.tex()}$, what is $\sin2x$?`,a:v,w:[v.neg(),s.mul(s),F(1).sub(s.mul(s)).div(2),s.mul(2)],s:T`Square both sides: $(\sin x+\cos x)^2=\sin^2x+\cos^2x+2\sin x\cos x=1+\sin2x$.<br>So $1+\sin2x=\left(${s.tex()}\right)^2=${s.mul(s).tex()}$.<br>$\sin2x=${s.mul(s).tex()}-1=${v.tex()}$.`}},
 r=>{const a=pick(r,[F(1,2),F(1,3),F(2),F(1,4),F(2,3),F(1,5)]),b=pick(r,[F(1,2),F(1,3),F(1,4),F(3),F(1,7),F(2,5)]);if(a.mul(b).v===1)return GENS['trig-id'][3](r);const v=a.add(b).div(F(1).sub(a.mul(b)));
- return{lvl:2,q:T`If $\tan a=${a.tex()}$ and $\tan b=${b.tex()}$, what is $\tan(a+b)$?`,a:v,w:[a.add(b),a.add(b).div(F(1).add(a.mul(b))),a.mul(b),v.neg()],s:T`$\frac{\tan a+\tan b}{1-\tan a\tan b}=\frac{${a.add(b).tex()}}{1-${a.mul(b).tex()}}=${v.tex()}$.`}},
+ return{lvl:2,q:T`If $\tan a=${a.tex()}$ and $\tan b=${b.tex()}$, what is $\tan(a+b)$?`,a:v,w:[a.add(b),a.add(b).div(F(1).add(a.mul(b))),a.mul(b),v.neg()],s:T`Tangent addition formula: $\tan(a+b)=\dfrac{\tan a+\tan b}{1-\tan a\tan b}$.<br>Numerator: $${a.tex()}+${b.tex()}=${a.add(b).tex()}$. Denominator: $1-${a.tex()}\cdot${b.tex()}=1-${a.mul(b).tex()}=${F(1).sub(a.mul(b)).tex()}$.<br>$\tan(a+b)=\dfrac{${a.add(b).tex()}}{${F(1).sub(a.mul(b)).tex()}}=${v.tex()}$.`}},
 ];
 GENS['trig-law']=[
 r=>{const a=ri(r,2,12),b=ri(r,2,12);const C=pick(r,[60,90,120]);const c2=C===60?a*a+b*b-a*b:C===90?a*a+b*b:a*a+b*b+a*b;
- return{lvl:1,q:T`A triangle has $a=${a}$, $b=${b}$, and $C=${C}^\circ$. What is $c$?`,a:R(1,c2),w:[R(1,a*a+b*b+(C===90?a*b:0)),R(1,C===120?a*a+b*b-a*b:a*a+b*b+a*b+(C===90?1:0)),O(String(a+b),a+b),R(1,Math.abs(c2-1)||2)],s:T`$c^2=a^2+b^2-2ab\cos C=${a*a}+${b*b}${C===60?'-'+a*b:C===120?'+'+a*b:''}=${c2}$, so $c=${R(1,c2).tex}$.`}},
+ return{lvl:1,q:T`A triangle has $a=${a}$, $b=${b}$, and $C=${C}^\circ$. What is $c$?`,a:R(1,c2),w:[R(1,a*a+b*b+(C===90?a*b:0)),R(1,C===120?a*a+b*b-a*b:a*a+b*b+a*b+(C===90?1:0)),O(String(a+b),a+b),R(1,Math.abs(c2-1)||2)],s:T`Law of Cosines: $c^2=a^2+b^2-2ab\cos C$, with $\cos${C}^\circ=${C===60?'\\frac12':C===90?'0':'-\\frac12'}$.<br>$c^2=${a*a}+${b*b}-2\cdot${a}\cdot${b}\cdot${C===60?'\\frac12':C===90?'0':'\\left(-\\frac12\\right)'}=${a*a+b*b}${C===60?'-'+a*b:C===120?'+'+a*b:''}=${c2}$.<br>$c=\sqrt{${c2}}${R(1,c2).tex==='\\sqrt{'+c2+'}'?'':'='+R(1,c2).tex}$.${C===90?' (With a right angle this is just the Pythagorean theorem.)':''}`}},
 r=>{const tris=[[3,5,7,120],[5,7,8,60],[3,7,8,60],[7,8,13,120],[5,16,19,120],[8,15,13,60],[7,15,13,60],[5,8,7,60]];const [a,b,c,C]=pick(r,tris);const k=ri(r,1,3);
- return{lvl:1,q:T`A triangle has sides $${a*k}$, $${b*k}$, $${c*k}$. What is the angle opposite the side of length $${c*k}$, in degrees?`,a:C,w:[180-C,90,C===60?45:135,C===60?30:150],s:T`$\cos\theta=\frac{${(a*k)**2}+${(b*k)**2}-${(c*k)**2}}{2\cdot${a*k}\cdot${b*k}}=${F(a*a+b*b-c*c,2*a*b).tex()}$, so $\theta=${C}^\circ$.`}},
+ return{lvl:1,q:T`A triangle has sides $${a*k}$, $${b*k}$, $${c*k}$. What is the angle opposite the side of length $${c*k}$, in degrees?`,a:C,w:[180-C,90,C===60?45:135,C===60?30:150],s:T`Use the Law of Cosines solved for the angle opposite side $${c*k}$:<br>$\cos\theta=\dfrac{${a*k}^2+${b*k}^2-${c*k}^2}{2\cdot${a*k}\cdot${b*k}}=\dfrac{${(a*k)**2}+${(b*k)**2}-${(c*k)**2}}{${2*a*b*k*k}}=\dfrac{${(a*a+b*b-c*c)*k*k}}{${2*a*b*k*k}}=${F(a*a+b*b-c*c,2*a*b).tex()}$.<br>The angle with that cosine is $${C}^\circ$${C>90?' (obtuse, since the cosine is negative)':''}.`}},
 r=>{const A=pick(r,[30,45,60,90,120,135,150]);const sinA={30:[F(1,2),1],150:[F(1,2),1],45:[F(1,2),2],135:[F(1,2),2],60:[F(1,2),3],120:[F(1,2),3],90:[F(1),1]}[A];const a=ri(r,2,12);
  const Rv=FR(F(a).div(sinA[0]).div(2).mul(sinA[1]===1?1:F(1,sinA[1])),sinA[1]);
- return{lvl:1,q:T`In a triangle, $a=${a}$ and $A=${A}^\circ$. What is the circumradius $R$?`,a:Rv,w:[FR(F(a,2),1),FR(F(a),1),FR(F(a).div(sinA[0]),sinA[1]===1?3:1),O('2\\left('+Rv.tex+'\\right)',2*Rv.v)],s:T`$2R=\frac{a}{\sin A}$, so $R=\frac{${a}}{2\sin${A}^\circ}=${Rv.tex}$.`}},
+ return{lvl:1,q:T`In a triangle, $a=${a}$ and $A=${A}^\circ$. What is the circumradius $R$?`,a:Rv,w:[FR(F(a,2),1),FR(F(a),1),FR(F(a).div(sinA[0]),sinA[1]===1?3:1),O('2\\left('+Rv.tex+'\\right)',2*Rv.v)],s:T`Extended Law of Sines: $\dfrac{a}{\sin A}=2R$, where $R$ is the circumradius.<br>$\sin${A}^\circ=${A===90?'1':A===30||A===150?'\\frac12':A===45||A===135?'\\frac{\\sqrt2}2':'\\frac{\\sqrt3}2'}$, so $2R=\dfrac{${a}}{\sin${A}^\circ}$ and $R=\dfrac{${a}}{2\sin${A}^\circ}=${Rv.tex}$.`}},
 ];
 GENS['trig-eq']=[
 r=>{const n=ri(r,1,6),k=pick(r,[['0',0],['\\frac12',1],['-\\frac12',1],['1',2],['-1',2],['\\frac{\\sqrt3}{2}',1],['2',3]]);const fn=pick(r,['sin','cos']);const per={0:2,1:2,2:1,3:0}[k[1]];const v=per*n;
- return{lvl:2,q:T`How many solutions does $${'\\'+(fn)}(${n===1?'':n}x)=${k[0]}$ have in $[0,2\pi)$?`,a:v,w:[v+1,v>0?v-1:v+2,n,2*v||4,v+n],s:T`On one period, $${'\\'+(fn)}\theta=${k[0]}$ has ${per} solution(s). As $x$ runs over $[0,2\pi)$, $${n===1?'':n}x$ covers ${n} period(s): $${per}\cdot${n}=${v}$.`}},
+ return{lvl:2,q:T`How many solutions does $${'\\'+(fn)}(${n===1?'':n}x)=${k[0]}$ have in $[0,2\pi)$?`,a:v,w:[v+1,v>0?v-1:v+2,n,2*v||4,v+n],s:T`First count solutions of $${'\\'+(fn)}\theta=${k[0]}$ on one period $[0,2\pi)$: ${per===0?'none, since sine and cosine never exceed 1 in absolute value':per===1?'exactly one (a maximum or minimum of the wave)':'two'}.<br>Now let $\theta=${n===1?'':n}x$. As $x$ runs over $[0,2\pi)$, $\theta$ runs over $[0,${2*n===2?'':2*n}\pi)$, which is ${n} full period${n>1?'s':''}.<br>Total: $${per}\cdot${n}=${v}$ solution${v===1?'':'s'}.`}},
 r=>{const [a,b,c]=pick(r,TRIPLES);const ask=r()<.5;
- return{lvl:1,q:T`What is the ${ask?'maximum':'minimum'} value of $${a}\sin x+${b}\cos x$?`,a:ask?c:-c,w:[ask?a+b:-(a+b),ask?-c:c,ask?b:-b,ask?c*c:-c*c],s:T`$a\sin x+b\cos x$ ranges over $\pm\sqrt{a^2+b^2}=\pm${c}$.`}},
+ return{lvl:1,q:T`What is the ${ask?'maximum':'minimum'} value of $${a}\sin x+${b}\cos x$?`,a:ask?c:-c,w:[ask?a+b:-(a+b),ask?-c:c,ask?b:-b,ask?c*c:-c*c],s:T`Write $${a}\sin x+${b}\cos x=${c}\left(\frac{${a}}{${c}}\sin x+\frac{${b}}{${c}}\cos x\right)=${c}\sin(x+\varphi)$, where $\cos\varphi=\frac{${a}}{${c}}$ and $\sin\varphi=\frac{${b}}{${c}}$ (possible because $${a}^2+${b}^2=${c}^2$).<br>$\sin(x+\varphi)$ ranges over $[-1,1]$, so the expression ranges over $[-${c},${c}]$.<br>The ${ask?'maximum':'minimum'} is $${ask?c:-c}$.`}},
 r=>{const k=pick(r,[1,2,3,4]);const v=F(1,2);
- return{lvl:1,q:T`What is the maximum value of $${2*k}\sin x\cos x$?`,a:k,w:[2*k,k/2,4*k,k+1],s:T`$\sin x\cos x=\frac12\sin2x\le\frac12$, so the maximum of $${2*k}\sin x\cos x$ is $${k}$.`}},
+ return{lvl:1,q:T`What is the maximum value of $${2*k}\sin x\cos x$?`,a:k,w:[2*k,k/2,4*k,k+1],s:T`Double-angle identity: $\sin x\cos x=\frac12\sin2x$, so $${2*k}\sin x\cos x=${k===1?'':k}\sin2x$.<br>$\sin2x$ is at most $1$ (at $x=\frac\pi4$), so the maximum is $${k}$.`}},
 ];

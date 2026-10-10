@@ -7528,7 +7528,9 @@ W: 17
 W: 26
 W: 120
 W: 14
-S: The diagonals bisect each other at right angles: $\sqrt{5^2+12^2}=13$.
+S: The diagonals of a rhombus bisect each other at right angles, splitting it into four congruent right triangles.
+Each triangle has legs equal to half the diagonals, $5$ and $12$, and its hypotenuse is a side of the rhombus.
+Side $=\sqrt{5^2+12^2}=\sqrt{169}=13$.
 ---
 Q: A rhombus has diagonals $10$ and $24$. What is its area?
 L: 1
@@ -7537,7 +7539,9 @@ W: 240
 W: 60
 W: 34
 W: 169
-S: $\frac{10\cdot24}{2}=120$.
+S: A rhombus (like any quadrilateral with perpendicular diagonals) has area $\frac{d_1d_2}{2}$.
+Reason: the four right triangles have total area $4\cdot\frac12\cdot\frac{d_1}2\cdot\frac{d_2}2=\frac{d_1d_2}{2}$.
+Area $=\frac{10\cdot24}{2}=120$.
 ---
 Q: A trapezoid has bases $8$ and $14$ and height $5$. What is its area?
 L: 1
@@ -7546,7 +7550,8 @@ W: 110
 W: 70
 W: 40
 W: 60
-S: $\frac{8+14}{2}\cdot5=55$.
+S: Trapezoid area $=$ (average of the bases) $\times$ height.
+$\frac{8+14}{2}\cdot5=11\cdot5=55$.
 ---
 Q: An isosceles trapezoid has bases $10$ and $22$ and legs of length $10$. What is its area?
 L: 2
@@ -7555,7 +7560,9 @@ W: 160
 W: 96
 W: 136
 W: 112
-S: Each overhang is $\frac{22-10}{2}=6$, so $h=\sqrt{100-36}=8$ and the area is $\frac{10+22}2\cdot8=128$.
+S: Drop perpendiculars from the ends of the short base. They cut off two congruent right triangles, each with horizontal leg ("overhang") $\frac{22-10}{2}=6$ and hypotenuse $10$ (the leg).
+Height: $h=\sqrt{10^2-6^2}=\sqrt{64}=8$.
+Area $=\frac{10+22}{2}\cdot8=16\cdot8=128$.
 ---
 Q: A parallelogram has sides $6$ and $10$ with an included angle of $30^\circ$. What is its area?
 L: 1
@@ -7564,7 +7571,8 @@ W: 60
 W: 15
 W: 30\sqrt{3}
 W: 16
-S: $ab\sin\theta=60\cdot\frac12=30$.
+S: A parallelogram with sides $a,b$ and angle $\theta$ between them has area $ab\sin\theta$ (base $a$, height $b\sin\theta$).
+$6\cdot10\cdot\sin30^\circ=60\cdot\frac12=30$.
 ---
 Q: A quadrilateral has area $40$. What is the area of the quadrilateral formed by joining the midpoints of its sides?
 L: 2
@@ -7573,7 +7581,9 @@ W: 10
 W: 40
 W: 30
 W: 15
-S: Varignon's parallelogram always has half the area: $20$.
+S: Varignon's Theorem: joining the midpoints of any quadrilateral's sides gives a parallelogram with half the original area.
+(Each of the four corner triangles cut off is $\frac14$ of the triangle formed by two sides and a diagonal, so the corners total half the area.)
+$\frac12\cdot40=20$.
 ---
 Q: A rectangle has perimeter $34$ and diagonal $13$. What is its area?
 L: 2
@@ -7582,7 +7592,9 @@ W: 65
 W: 72
 W: 30
 W: 56
-S: $a+b=17$ and $a^2+b^2=169$, so $2ab=289-169=120$ and $ab=60$ (sides $5$ and $12$).
+S: Let the sides be $a,b$. Perimeter: $2(a+b)=34$, so $a+b=17$. Diagonal (Pythagoras): $a^2+b^2=169$.
+Use $(a+b)^2=a^2+2ab+b^2$: $289=169+2ab$, so $2ab=120$ and the area is $ab=60$.
+(The sides are $5$ and $12$.)
 ---
 Q: A trapezoid has a midsegment of length $15$ and a height of $8$. What is its area?
 L: 1
@@ -7591,7 +7603,8 @@ W: 60
 W: 240
 W: 23
 W: 135
-S: Area $=$ midsegment × height $=15\cdot8=120$.
+S: The midsegment of a trapezoid is the average of the bases, $\frac{b_1+b_2}{2}$.
+So area $=\frac{b_1+b_2}{2}\cdot h=$ midsegment $\times$ height $=15\cdot8=120$.
 ---
 @@ polyg-reg
 Q: How many diagonals does a decagon have?
@@ -7601,7 +7614,8 @@ W: 45
 W: 70
 W: 40
 W: 30
-S: $\frac{10\cdot7}{2}=35$.
+S: Each vertex connects to $n-3$ others by diagonals (not itself and not its two neighbors), and each diagonal is counted from both ends.
+Diagonals $=\frac{n(n-3)}{2}=\frac{10\cdot7}{2}=35$.
 ---
 Q: Each interior angle of a regular polygon is $150^\circ$. How many sides does it have?
 L: 1
@@ -7610,7 +7624,8 @@ W: 10
 W: 15
 W: 8
 W: 6
-S: Each exterior angle is $30^\circ$, so $n=\frac{360}{30}=12$.
+S: Interior and exterior angles at a vertex add to $180^\circ$, so each exterior angle is $180^\circ-150^\circ=30^\circ$.
+The exterior angles of any convex polygon add to $360^\circ$, so $n=\frac{360}{30}=12$.
 ---
 Q: What is the area of a regular hexagon with side $4$?
 L: 1
@@ -7619,7 +7634,9 @@ W: 48\sqrt{3}
 W: 12\sqrt{3}
 W: 96
 W: 16\sqrt{3}
-S: Six equilateral triangles of side $4$: $6\cdot\frac{\sqrt3}{4}\cdot16=24\sqrt3$.
+S: A regular hexagon splits into $6$ equilateral triangles with side equal to the hexagon's side.
+Each has area $\frac{\sqrt3}{4}s^2=\frac{\sqrt3}{4}\cdot16=4\sqrt3$.
+Total: $6\cdot4\sqrt3=24\sqrt3$.
 ---
 Q: Each exterior angle of a regular polygon is $24^\circ$. How many sides does it have?
 L: 1
@@ -7628,7 +7645,8 @@ W: 12
 W: 24
 W: 18
 W: 20
-S: $\frac{360}{24}=15$.
+S: The exterior angles of a convex polygon sum to $360^\circ$, and in a regular polygon they're all equal.
+$n=\frac{360}{24}=15$.
 ---
 Q: What is the length of the longest diagonal of a regular hexagon with side $6$?
 L: 1
@@ -7637,7 +7655,8 @@ W: 6\sqrt{3}
 W: 6\sqrt{2}
 W: 18
 W: 9
-S: The long diagonal passes through the center: $2s=12$.
+S: A regular hexagon is made of $6$ equilateral triangles meeting at the center, each with side $6$.
+The longest diagonal goes through the center, crossing two of those triangles' sides: length $2\cdot6=12$.
 ---
 Q: What is the area of a regular octagon with side length $1$?
 L: 3
@@ -7646,8 +7665,10 @@ W: 4
 W: 2+\sqrt{2}
 W: 1+2\sqrt{2}
 W: 3\sqrt{2}
-S: The octagon is a square of side $1+\sqrt2$ with four corner triangles (legs $\frac{\sqrt2}2$, area $\frac14$ each) removed.
-$(1+\sqrt2)^2-1=3+2\sqrt2-1=2+2\sqrt2$.
+S: Extend four alternate sides to form a square around the octagon. Each corner of the square cuts off a right isosceles triangle whose hypotenuse is a side of the octagon, $1$, so its legs are $\frac{1}{\sqrt2}=\frac{\sqrt2}{2}$.
+The square's side is $\frac{\sqrt2}2+1+\frac{\sqrt2}2=1+\sqrt2$, with area $(1+\sqrt2)^2=3+2\sqrt2$.
+The four corner triangles have area $4\cdot\frac12\cdot\left(\frac{\sqrt2}2\right)^2=1$.
+Octagon area: $3+2\sqrt2-1=2+2\sqrt2$.
 ---
 Q: What is the length of a shorter diagonal of a regular hexagon with side $6$?
 L: 1
@@ -7656,7 +7677,9 @@ W: 12
 W: 6
 W: 3\sqrt{3}
 W: 6\sqrt{2}
-S: It spans two sides with a $120^\circ$ angle between them: $s\sqrt3=6\sqrt3$.
+S: A shorter diagonal connects two vertices with one vertex between them. It's the third side of a triangle with two hexagon sides ($6$ and $6$) and the $120^\circ$ interior angle between them.
+Law of Cosines: $d^2=36+36-2\cdot36\cos120^\circ=72+36=108$, so $d=6\sqrt3$.
+(It equals $s\sqrt3$: twice the height of an equilateral triangle of side $6$.)
 ---
 Q: The interior angles of a convex polygon sum to $1980^\circ$. How many sides does it have?
 L: 1
@@ -7665,7 +7688,8 @@ W: 11
 W: 12
 W: 14
 W: 15
-S: $180(n-2)=1980$, so $n-2=11$ and $n=13$.
+S: The interior angles of a convex $n$-gon sum to $180(n-2)$ degrees (it splits into $n-2$ triangles from one vertex).
+$180(n-2)=1980$ gives $n-2=11$, so $n=13$.
 ---
 @@ polyg-shoe
 Q: What is the area of the quadrilateral with vertices $(0,0)$, $(4,0)$, $(5,3)$, $(1,4)$ (in that order)?
@@ -7675,7 +7699,12 @@ W: 29
 W: 14
 W: 15
 W: \frac{27}{2}
-S: Shoelace terms: $0\cdot0-4\cdot0=0$; $4\cdot3-5\cdot0=12$; $5\cdot4-1\cdot3=17$; $1\cdot0-0\cdot4=0$. Total $29$, area $\frac{29}2$.
+S: Shoelace formula: Area $=\frac12\left|\sum(x_iy_{i+1}-x_{i+1}y_i)\right|$, going around the vertices in order and back to the start.
+• $(0,0)\to(4,0)$: $0\cdot0-4\cdot0=0$
+• $(4,0)\to(5,3)$: $4\cdot3-5\cdot0=12$
+• $(5,3)\to(1,4)$: $5\cdot4-1\cdot3=17$
+• $(1,4)\to(0,0)$: $1\cdot0-0\cdot4=0$
+Sum $29$, so the area is $\frac{29}{2}$.
 ---
 Q: A lattice polygon has $10$ interior lattice points and $8$ boundary lattice points. What is its area?
 L: 1
@@ -7684,7 +7713,8 @@ W: 14
 W: 18
 W: 12
 W: 17
-S: Pick: $10+\frac82-1=13$.
+S: Pick's Theorem: a lattice polygon with $I$ interior and $B$ boundary lattice points has area $I+\frac B2-1$.
+$10+\frac82-1=10+4-1=13$.
 ---
 Q: How many lattice points lie on the segment from $(0,0)$ to $(12,18)$, including the endpoints?
 L: 1
@@ -7693,7 +7723,8 @@ W: 6
 W: 13
 W: 31
 W: 19
-S: $\gcd(12,18)+1=7$.
+S: The segment from $(0,0)$ to $(12,18)$ moves in equal steps of $\left(\frac{12}{g},\frac{18}{g}\right)$, where $g=\gcd(12,18)=6$: steps of $(2,3)$.
+There are $6$ steps, so $6+1=7$ lattice points including both endpoints.
 ---
 Q: What is the area of the triangle with vertices $(1,1)$, $(5,2)$, $(3,6)$?
 L: 1
@@ -7702,7 +7733,8 @@ W: 18
 W: 12
 W: 8
 W: 10
-S: $\frac12|1(2-6)+5(6-1)+3(1-2)|=\frac12|{-4}+25-3|=9$.
+S: Triangle shoelace: Area $=\frac12|x_1(y_2-y_3)+x_2(y_3-y_1)+x_3(y_1-y_2)|$.
+$=\frac12|1(2-6)+5(6-1)+3(1-2)|=\frac12|-4+25-3|=\frac12\cdot18=9$.
 ---
 Q: A square has vertices $(0,0)$, $(3,4)$, $(-1,7)$, $(-4,3)$. What is its area?
 L: 1
@@ -7711,7 +7743,9 @@ W: 49
 W: 20
 W: 24
 W: 50
-S: The side is $\sqrt{3^2+4^2}=5$, so the area is $25$.
+S: Check it's a square: consecutive sides are $(3,4)$, $(-4,3)$, $(-3,-4)$, $(4,-3)$, all of length $5$ and each a $90^\circ$ turn of the last.
+So the side is $\sqrt{3^2+4^2}=5$ and the area is $25$.
+(A tilted square: its sides aren't horizontal, but side² still gives the area.)
 ---
 Q: How many lattice points lie strictly inside the triangle with vertices $(0,0)$, $(6,0)$, $(0,4)$?
 L: 2
@@ -7720,8 +7754,9 @@ W: 6
 W: 8
 W: 12
 W: 9
-S: Area $12$. Boundary points: $\gcd(6,0)+\gcd(6,4)+\gcd(0,4)=6+2+4=12$.
-Pick: $I=12-6+1=7$.
+S: Area of the right triangle: $\frac12\cdot6\cdot4=12$.
+Boundary lattice points: each edge contributes $\gcd(\Delta x,\Delta y)$ points (not double-counting endpoints): $\gcd(6,0)+\gcd(6,4)+\gcd(0,4)=6+2+4=12$.
+Pick's Theorem $A=I+\frac B2-1$ gives $12=I+6-1$, so $I=7$.
 ---
 Q: What is the area of the pentagon with vertices $(0,0)$, $(2,0)$, $(3,2)$, $(1,4)$, $(-1,2)$?
 L: 2
@@ -7730,7 +7765,9 @@ W: 12
 W: 20
 W: 8
 W: 9
-S: Shoelace terms: $0$, $4$, $10$, $6$, $0$. Total $20$, area $10$.
+S: Shoelace around $(0,0)\to(2,0)\to(3,2)\to(1,4)\to(-1,2)\to(0,0)$:
+$0\cdot0-2\cdot0=0$; $2\cdot2-3\cdot0=4$; $3\cdot4-1\cdot2=10$; $1\cdot2-(-1)\cdot4=6$; $(-1)\cdot0-0\cdot2=0$.
+Sum $20$, area $\frac{20}{2}=10$.
 ---
 Q: How many lattice points lie strictly inside the triangle with vertices $(0,0)$, $(10,0)$, $(0,10)$?
 L: 3
@@ -7739,7 +7776,9 @@ W: 45
 W: 55
 W: 35
 W: 40
-S: Area $50$; boundary $10+10+10=30$. Pick: $I=50-15+1=36$. (Check: points with $x,y\ge1$ and $x+y\le9$: $8+7+\dots+1=36$.)
+S: Area $=\frac12\cdot10\cdot10=50$. Boundary points: $\gcd(10,0)+\gcd(10,10)+\gcd(0,10)=10+10+10=30$.
+Pick: $50=I+15-1$, so $I=36$.
+Check by counting: interior points have $x,y\ge1$ and $x+y\le9$; for $x=1$ there are $8$ values of $y$, for $x=2$ seven, ..., for $x=8$ one: $8+7+\cdots+1=36$. ✓
 ---
 @@ polyg-ratio
 Q: Point $D$ is on side $BC$ of triangle $ABC$ with $BD:DC=2:3$. If the area of $ABC$ is $50$, what is the area of $ABD$?
@@ -7749,7 +7788,9 @@ W: 30
 W: 25
 W: 40
 W: 10
-S: Same height from $A$, so the areas follow the bases: $\frac25\cdot50=20$.
+S: Triangles $ABD$ and $ABC$ share the vertex $A$, so they have the same height to line $BC$.
+Their areas are proportional to their bases: $\frac{BD}{BC}=\frac{2}{2+3}=\frac25$.
+$[ABD]=\frac25\cdot50=20$.
 ---
 Q: In triangle $ABC$, $D$ is the midpoint of $BC$ and $E$ is the midpoint of $AD$. What fraction of the area of $ABC$ is triangle $ABE$?
 L: 1
@@ -7758,7 +7799,9 @@ W: \frac{1}{2}
 W: \frac{1}{3}
 W: \frac{1}{8}
 W: \frac{1}{6}
-S: $[ABD]=\frac12[ABC]$ and $[ABE]=\frac12[ABD]$, so the fraction is $\frac14$.
+S: Median $AD$ splits $ABC$ into two equal halves: $[ABD]=\frac12[ABC]$ (same height, equal bases $BD=DC$).
+In triangle $ABD$, $BE$ is a median (since $E$ is the midpoint of $AD$), so $[ABE]=\frac12[ABD]$.
+$[ABE]=\frac12\cdot\frac12[ABC]=\frac14[ABC]$.
 ---
 Q: In triangle $ABC$, $D$ is on $BC$ with $BD:DC=1:2$, and $E$ is the midpoint of $AC$. Cevians $AD$ and $BE$ meet at $P$. What is $\dfrac{AP}{PD}$?
 L: 2
@@ -7767,8 +7810,10 @@ W: 2
 W: \frac{3}{2}
 W: 4
 W: \frac{3}{4}
-S: Mass points: $BD:DC=1:2$ gives $m_B=2$, $m_C=1$, so $m_D=3$. $E$ is the midpoint of $AC$, so $m_A=m_C=1$.
-$\frac{AP}{PD}=\frac{m_D}{m_A}=3$.
+S: Mass points: put masses so each cevian's foot is a balance point.
+On $BC$: $BD:DC=1:2$ means $m_B\cdot1=m_C\cdot2$, so take $m_B=2$, $m_C=1$; then $m_D=m_B+m_C=3$.
+On $AC$: $E$ is the midpoint, so $m_A=m_C=1$.
+On $AD$, the balance point $P$ divides it inversely to the masses: $\frac{AP}{PD}=\frac{m_D}{m_A}=\frac31=3$.
 ---
 Q: Parallelogram $ABCD$ has area $60$, and $P$ is any point on side $CD$. What is the area of triangle $ABP$?
 L: 1
@@ -7777,7 +7822,8 @@ W: 20
 W: 15
 W: 60
 W: 40
-S: Base $AB$ and height equal to the parallelogram's height: half the area, $30$.
+S: Triangle $ABP$ has base $AB$, and its height is the distance from $P$ to line $AB$, which is the parallelogram's height (since $P$ is on the opposite side $CD$).
+So $[ABP]=\frac12\cdot AB\cdot h=\frac12[ABCD]=30$, wherever $P$ is on $CD$.
 ---
 Q: A triangle has area $36$. Points are chosen one-third of the way along each side (all in the same rotational direction), forming an inner triangle. What is its area?
 L: 3
@@ -7786,7 +7832,9 @@ W: 9
 W: 18
 W: 4
 W: 16
-S: Each corner triangle has area $\frac13\cdot\frac23=\frac29$ of the whole. The inner one is $1-3\cdot\frac29=\frac13$ of $36$, i.e. $12$.
+S: Each corner triangle shares an angle with the big triangle, with the two sides around it being $\frac13$ and $\frac23$ of the original sides.
+Since area scales with the product of those two sides ($\frac12ab\sin C$), each corner triangle has $\frac13\cdot\frac23=\frac29$ of the whole area.
+Inner triangle: $1-3\cdot\frac29=1-\frac23=\frac13$ of $36$, i.e. $12$.
 ---
 Q: Square $ABCD$ has side $6$, and $E$ is the midpoint of $BC$. What is the area of triangle $AED$?
 L: 1
@@ -7795,7 +7843,8 @@ W: 9
 W: 12
 W: 24
 W: 36
-S: Base $AD=6$ and height $6$ (the distance from $E$ to $AD$): area $18$, half the square.
+S: Triangle $AED$ has base $AD=6$ (a side of the square). Its height is the distance from $E$ (on the opposite side $BC$) to $AD$, which is $6$.
+Area $=\frac12\cdot6\cdot6=18$, exactly half the square.
 ---
 Q: In trapezoid $ABCD$ with $AB\parallel CD$ and $AB=2CD$, the diagonals meet at $P$. If triangle $PAB$ has area $20$, what is the area of triangle $PCD$?
 L: 2
@@ -7804,7 +7853,9 @@ W: 10
 W: 40
 W: 8
 W: 4
-S: Triangles $PAB$ and $PCD$ are similar with ratio $2$, so their areas are in ratio $4$: $\frac{20}4=5$.
+S: Since $AB\parallel CD$, triangles $PAB$ and $PCD$ are similar (alternate interior angles are equal), with ratio $\frac{AB}{CD}=2$.
+Areas of similar figures scale with the square of the ratio: $\frac{[PAB]}{[PCD]}=4$.
+$[PCD]=\frac{20}4=5$.
 ---
 Q: In triangle $ABC$, $D$ is on $BC$ with $BD:DC=3:2$ and $E$ is on $AB$ with $AE:EB=1:2$. Cevians $AD$ and $CE$ meet at $P$. What is $\dfrac{CP}{PE}$?
 L: 3
@@ -7813,8 +7864,9 @@ W: 3
 W: \frac{3}{2}
 W: \frac{5}{2}
 W: 4
-S: $BD:DC=3:2$ gives $m_B=2$, $m_C=3$. $AE:EB=1:2$ needs $m_A\cdot1=m_B\cdot2$, so $m_A=4$ and $m_E=6$.
-$\frac{CP}{PE}=\frac{m_E}{m_C}=\frac63=2$.
+S: Mass points. On $BC$: $BD:DC=3:2$ means $m_B\cdot3=m_C\cdot2$; take $m_B=2$, $m_C=3$.
+On $AB$: $AE:EB=1:2$ means $m_A\cdot1=m_B\cdot2=4$, so $m_A=4$, and $m_E=m_A+m_B=6$.
+On cevian $CE$: $\frac{CP}{PE}=\frac{m_E}{m_C}=\frac63=2$.
 @@ coord-line
 Q: What is the slope of the line through $(2,3)$ and $(6,11)$?
 L: 1
@@ -7823,7 +7875,8 @@ W: \frac{1}{2}
 W: 4
 W: -2
 W: 3
-S: $\frac{11-3}{6-2}=2$.
+S: Slope $=\dfrac{\text{rise}}{\text{run}}=\dfrac{y_2-y_1}{x_2-x_1}=\dfrac{11-3}{6-2}=\dfrac84=2$.
+(Use the same order on top and bottom; mixing orders flips the sign.)
 ---
 Q: A line passes through $(4,1)$ and is perpendicular to $y=2x+1$. What is its $y$-intercept?
 L: 1
@@ -7832,7 +7885,9 @@ W: -1
 W: 1
 W: 9
 W: -7
-S: Slope $-\frac12$: $y-1=-\frac12(x-4)$, so $y=-\frac12x+3$.
+S: $y=2x+1$ has slope $2$. Perpendicular slopes are negative reciprocals, so the new line has slope $-\frac12$.
+Point-slope form through $(4,1)$: $y-1=-\frac12(x-4)$, so $y=-\frac12x+2+1=-\frac12x+3$.
+The $y$-intercept is $3$.
 ---
 Q: What is the area of the triangle formed by the line $3x+4y=24$ and the coordinate axes?
 L: 1
@@ -7841,7 +7896,9 @@ W: 48
 W: 12
 W: 14
 W: 96
-S: The intercepts are $8$ and $6$, so the area is $\frac12\cdot8\cdot6=24$.
+S: Find the intercepts: $x=0$ gives $4y=24$, $y=6$; $y=0$ gives $3x=24$, $x=8$.
+The triangle with the axes is a right triangle with legs $8$ and $6$.
+Area $=\frac12\cdot8\cdot6=24$.
 ---
 Q: The lines $y=2x-1$ and $y=-x+8$ intersect at $(a,b)$. What is $a+b$?
 L: 1
@@ -7850,7 +7907,8 @@ W: 7
 W: 9
 W: 3
 W: 5
-S: $2x-1=-x+8$ gives $x=3$, $y=5$. Sum $8$.
+S: At the intersection both equations hold: $2x-1=-x+8$, so $3x=9$ and $x=3$.
+Then $y=2(3)-1=5$. So $(a,b)=(3,5)$ and $a+b=8$.
 ---
 Q: The points $(1,2)$, $(3,8)$, and $(k,14)$ are collinear. What is $k$?
 L: 1
@@ -7859,7 +7917,8 @@ W: 4
 W: 6
 W: 7
 W: \frac{14}{3}
-S: The slope is $3$, so $14=2+3(k-1)$ and $k=5$.
+S: Collinear points share one slope. From $(1,2)$ to $(3,8)$: slope $\frac{8-2}{3-1}=3$.
+From $(1,2)$ to $(k,14)$ the slope must also be $3$: $\frac{14-2}{k-1}=3$, so $k-1=4$ and $k=5$.
 ---
 Q: The line through $(0,4)$ and $(6,0)$ contains a point with equal coordinates. What is that coordinate?
 L: 2
@@ -7868,7 +7927,9 @@ W: 2
 W: \frac{5}{2}
 W: 3
 W: \frac{24}{5}
-S: The line is $\frac x6+\frac y4=1$. With $x=y$: $x\left(\frac16+\frac14\right)=1$, so $x=\frac{12}5$.
+S: Intercept form: the line through $(6,0)$ and $(0,4)$ is $\frac x6+\frac y4=1$.
+Set $x=y$: $x\left(\frac16+\frac14\right)=x\cdot\frac{5}{12}=1$, so $x=\frac{12}5$.
+Check: $\frac{12/5}{6}+\frac{12/5}{4}=\frac25+\frac35=1$. ✓
 ---
 Q: Lines with slopes $2$ and $3$ both pass through $(10,15)$. What is the distance between their $x$-intercepts?
 L: 2
@@ -7877,7 +7938,9 @@ W: 5
 W: \frac{3}{2}
 W: 2
 W: 15
-S: Slope 2: the $x$-intercept is $10-\frac{15}2=\frac52$. Slope 3: $10-5=5$. The distance is $\frac52$.
+S: A line of slope $m$ through $(10,15)$ hits the $x$-axis when it has dropped $15$, i.e. after moving $\frac{15}{m}$ to the left: $x=10-\frac{15}{m}$.
+Slope $2$: $x=10-7.5=\frac52$. Slope $3$: $x=10-5=5$.
+Distance between them: $5-\frac52=\frac52$.
 ---
 Q: What is the slope of the line $2x-3y=6$?
 L: 1
@@ -7886,7 +7949,8 @@ W: -\frac{2}{3}
 W: \frac{3}{2}
 W: -\frac{3}{2}
 W: 2
-S: $y=\frac23x-2$.
+S: Solve for $y$: $-3y=-2x+6$, so $y=\frac23x-2$.
+The slope is the coefficient of $x$: $\frac23$. (Shortcut: for $Ax+By=C$ the slope is $-\frac AB=-\frac{2}{-3}$.)
 ---
 @@ coord-dist
 Q: What is the distance between $(1,2)$ and $(7,10)$?
@@ -7896,7 +7960,8 @@ W: 14
 W: 8
 W: 12
 W: 2\sqrt{7}
-S: $\sqrt{6^2+8^2}=10$.
+S: Distance formula: $\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}=\sqrt{(7-1)^2+(10-2)^2}=\sqrt{36+64}=\sqrt{100}=10$.
+(A 6-8-10 right triangle.)
 ---
 Q: What is the sum of the coordinates of the midpoint of the segment from $(-3,5)$ to $(7,-1)$?
 L: 1
@@ -7905,7 +7970,8 @@ W: 8
 W: 3
 W: 6
 W: 10
-S: The midpoint is $(2,2)$, with sum $4$.
+S: Midpoint $=$ average of the coordinates: $\left(\frac{-3+7}{2},\frac{5+(-1)}{2}\right)=(2,2)$.
+Sum: $2+2=4$.
 ---
 Q: What is the radius of the circle $x^2+y^2-6x+8y=0$?
 L: 1
@@ -7914,7 +7980,9 @@ W: 25
 W: 10
 W: 7
 W: \sqrt{7}
-S: $(x-3)^2+(y+4)^2=25$, so $r=5$.
+S: Complete the square in each variable: $x^2-6x=(x-3)^2-9$ and $y^2+8y=(y+4)^2-16$.
+So $(x-3)^2+(y+4)^2-25=0$, i.e. $(x-3)^2+(y+4)^2=25$.
+Center $(3,-4)$, radius $\sqrt{25}=5$.
 ---
 Q: What is the distance from $(1,2)$ to the line $3x+4y-1=0$?
 L: 2
@@ -7923,7 +7991,8 @@ W: 10
 W: 1
 W: \frac{2}{5}
 W: \frac{11}{5}
-S: $\frac{|3+8-1|}{5}=2$.
+S: Distance from $(x_0,y_0)$ to $Ax+By+C=0$: $\dfrac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}$.
+$\dfrac{|3(1)+4(2)-1|}{\sqrt{9+16}}=\dfrac{|10|}{5}=2$.
 ---
 Q: What is the distance between the parallel lines $3x+4y=5$ and $3x+4y=20$?
 L: 2
@@ -7932,7 +8001,9 @@ W: 15
 W: 5
 W: \frac{3}{5}
 W: 25
-S: $\frac{|20-5|}{\sqrt{9+16}}=3$.
+S: The lines have the same normal direction $(3,4)$, so they are parallel. Distance between $Ax+By=C_1$ and $Ax+By=C_2$ is $\dfrac{|C_2-C_1|}{\sqrt{A^2+B^2}}$.
+$\dfrac{|20-5|}{\sqrt{9+16}}=\dfrac{15}{5}=3$.
+(Check: $(\frac53,0)$ is on the first line; its distance to $3x+4y-20=0$ is $\frac{|5-20|}{5}=3$.)
 ---
 Q: A circle centered at $(2,3)$ passes through $(5,7)$. What is its area?
 L: 1
@@ -7941,7 +8012,8 @@ W: 5\pi
 W: 10\pi
 W: 50\pi
 W: 25
-S: $r=\sqrt{9+16}=5$, so the area is $25\pi$.
+S: The radius is the distance from the center to any point on the circle: $r=\sqrt{(5-2)^2+(7-3)^2}=\sqrt{9+16}=5$.
+Area $=\pi r^2=25\pi$.
 ---
 Q: Point $P$ on the $x$-axis is equidistant from $(1,3)$ and $(5,1)$. What is its $x$-coordinate?
 L: 2
@@ -7950,7 +8022,10 @@ W: 3
 W: 4
 W: 1
 W: \frac{5}{2}
-S: $(x-1)^2+9=(x-5)^2+1$, so $-2x+10=-10x+26$ and $x=2$.
+S: Let $P=(x,0)$. Equal distances means equal squared distances:
+$(x-1)^2+3^2=(x-5)^2+1^2$.
+Expand: $x^2-2x+1+9=x^2-10x+25+1$, so $8x=16$ and $x=2$.
+Check: from $(2,0)$, distances are $\sqrt{1+9}=\sqrt{10}$ and $\sqrt{9+1}=\sqrt{10}$. ✓
 ---
 Q: The line $y=x+1$ cuts a chord from the circle $x^2+y^2=25$. How long is the chord?
 L: 3
@@ -7959,7 +8034,9 @@ W: 7
 W: 5\sqrt{2}
 W: 10
 W: 6\sqrt{2}
-S: The distance from the origin to $x-y+1=0$ is $\frac1{\sqrt2}$. Chord $=2\sqrt{25-\frac12}=2\sqrt{\frac{49}{2}}=7\sqrt2$.
+S: The perpendicular from the center bisects a chord. Write the line as $x-y+1=0$; its distance from the center $(0,0)$ is $d=\frac{|1|}{\sqrt{1+1}}=\frac1{\sqrt2}$.
+Half the chord: $\sqrt{r^2-d^2}=\sqrt{25-\frac12}=\sqrt{\frac{49}{2}}=\frac{7}{\sqrt2}$.
+Full chord: $2\cdot\frac{7}{\sqrt2}=7\sqrt2$.
 ---
 @@ coord-lattice
 Q: How many lattice points lie on the circle $x^2+y^2=25$?
@@ -7969,7 +8046,10 @@ W: 4
 W: 8
 W: 6
 W: 16
-S: $(\pm5,0),(0,\pm5)$ give 4 points; $(\pm3,\pm4),(\pm4,\pm3)$ give 8. Total $12$.
+S: Find integer solutions of $x^2+y^2=25$. The ways to write $25$ as a sum of two squares: $25+0$ and $16+9$.
+• $25+0$: $(\pm5,0)$ and $(0,\pm5)$, $4$ points.
+• $16+9$: $(\pm4,\pm3)$ and $(\pm3,\pm4)$, $4+4=8$ points.
+Total: $12$.
 ---
 Q: How many lattice points lie on the segment from $(3,-2)$ to $(15,7)$, including endpoints?
 L: 1
@@ -7978,7 +8058,9 @@ W: 3
 W: 13
 W: 10
 W: 5
-S: $\gcd(12,9)+1=4$.
+S: Change in $x$: $15-3=12$; change in $y$: $7-(-2)=9$. $\gcd(12,9)=3$.
+The segment splits into $3$ equal steps of $(4,3)$, so it hits lattice points at $(3,-2),(7,1),(11,4),(15,7)$.
+That's $\gcd+1=4$ points, including the endpoints.
 ---
 Q: How many ordered pairs of positive integers $(x,y)$ satisfy $xy=36$?
 L: 1
@@ -7987,7 +8069,8 @@ W: 8
 W: 18
 W: 6
 W: 12
-S: One pair for each divisor of $36=2^2\cdot3^2$: $(2+1)(2+1)=9$.
+S: Each positive divisor $x$ of $36$ gives exactly one pair $(x,\frac{36}x)$.
+$36=2^2\cdot3^2$ has $(2+1)(2+1)=9$ divisors, so there are $9$ ordered pairs.
 ---
 Q: How many lattice points $(x,y)$ satisfy $x\ge0$, $y\ge0$, and $x+y\le5$?
 L: 1
@@ -7996,7 +8079,8 @@ W: 15
 W: 25
 W: 36
 W: 20
-S: $6+5+4+3+2+1=21$.
+S: Count by $x$: for $x=k$ ($k=0,\dots,5$), $y$ can be $0,1,\dots,5-k$: that's $6-k$ values.
+$6+5+4+3+2+1=21$. (A triangular number, $\frac{6\cdot7}{2}$.)
 ---
 Q: How many lattice points satisfy $x^2+y^2\lt 10$?
 L: 3
@@ -8005,8 +8089,12 @@ W: 37
 W: 21
 W: 25
 W: 33
-S: Count by $x$: $x=0$: $|y|\le3$ (7). $x=\pm1$: $|y|\le2$ (5 each). $x=\pm2$: $|y|\le2$ (5 each). $x=\pm3$: $y=0$ (1 each).
-Total $7+10+10+2=29$.
+S: Count column by column, using $y^2\lt10-x^2$:
+• $x=0$: $y^2\lt10$, $|y|\le3$: $7$ points.
+• $x=\pm1$: $y^2\lt9$, $|y|\le2$: $5$ each, $10$.
+• $x=\pm2$: $y^2\lt6$, $|y|\le2$: $5$ each, $10$.
+• $x=\pm3$: $y^2\lt1$, $y=0$: $1$ each, $2$.
+Total: $7+10+10+2=29$.
 ---
 Q: How many points with positive integer coordinates lie on the line $3x+5y=100$?
 L: 2
@@ -8015,7 +8103,9 @@ W: 7
 W: 5
 W: 20
 W: 33
-S: We need $5y\equiv100\pmod 3$, i.e. $y\equiv2\pmod3$, and $5y\lt 100$. So $y=2,5,8,11,14,17$: $6$ points.
+S: $3x=100-5y$ must be a positive multiple of $3$. Mod $3$: $5y\equiv100$, i.e. $2y\equiv1$, so $y\equiv2\pmod3$.
+Positive $x$ requires $5y\lt100$, $y\le19$: $y=2,5,8,11,14,17$, giving $x=30,25,20,15,10,5$.
+That's $6$ points.
 ---
 Q: How many ordered pairs of integers $(x,y)$ satisfy $xy=-12$?
 L: 2
@@ -8024,7 +8114,9 @@ W: 6
 W: 24
 W: 8
 W: 10
-S: $12$ has $6$ positive divisors. For each, choose which of $x,y$ is negative: $2\cdot6=12$.
+S: $12$ has $6$ positive divisors: $1,2,3,4,6,12$. Pick $|x|$ as one of them; then $|y|=\frac{12}{|x|}$.
+Since the product is negative, exactly one of $x,y$ is negative: $2$ sign choices.
+Total: $6\cdot2=12$ ordered pairs.
 ---
 Q: How many lattice points lie on the boundary of the square with vertices $(0,0)$, $(4,0)$, $(4,4)$, $(0,4)$?
 L: 1
@@ -8033,7 +8125,9 @@ W: 20
 W: 25
 W: 12
 W: 9
-S: Each side has $5$ points, and the $4$ corners are shared: $4\cdot5-4=16$.
+S: Each side runs between two corners and contains $5$ lattice points ($0,1,2,3,4$ along it).
+Four sides give $4\cdot5=20$, but each corner was counted twice (once per side), so subtract the $4$ corners: $16$.
+(Equivalently, the perimeter is $16$ unit steps.)
 ---
 @@ coord-trans
 Q: The point $(3,-5)$ is reflected over the line $y=x$. What is the $x$-coordinate of its image?
@@ -8043,7 +8137,8 @@ W: 5
 W: 3
 W: -3
 W: 0
-S: Reflecting over $y=x$ swaps the coordinates: $(-5,3)$.
+S: Reflecting over $y=x$ swaps the coordinates: $(a,b)\to(b,a)$.
+$(3,-5)\to(-5,3)$, whose $x$-coordinate is $-5$.
 ---
 Q: The point $(2,5)$ is rotated $90^\circ$ counterclockwise about the origin. Where does it land?
 L: 1
@@ -8052,7 +8147,9 @@ W: (5,-2)
 W: (-2,5)
 W: (2,-5)
 W: (5,2)
-S: $(x,y)\to(-y,x)$ gives $(-5,2)$.
+S: A $90^\circ$ counterclockwise rotation about the origin sends $(x,y)$ to $(-y,x)$.
+$(2,5)\to(-5,2)$.
+Check: the original point is in quadrant I; a quarter turn counterclockwise lands in quadrant II. ✓
 ---
 Q: A path goes from $A(0,3)$ to a point on the $x$-axis and then to $B(6,5)$. What is the shortest possible length?
 L: 2
@@ -8061,7 +8158,9 @@ W: 8
 W: 11
 W: 2\sqrt{34}
 W: 14
-S: Reflect $A$ to $A'(0,-3)$. The shortest path equals $A'B=\sqrt{36+64}=10$.
+S: Reflection trick: any path $A\to P\to B$ with $P$ on the $x$-axis has the same length as $A'\to P\to B$, where $A'=(0,-3)$ is $A$ reflected across the axis.
+The shortest path from $A'$ to $B$ is the straight segment, which crosses the axis at the optimal $P$.
+$A'B=\sqrt{(6-0)^2+(5-(-3))^2}=\sqrt{36+64}=10$.
 ---
 Q: The point $(4,1)$ is reflected across the line $y=3$. What is the sum of the image's coordinates?
 L: 1
@@ -8070,7 +8169,8 @@ W: 7
 W: 5
 W: 11
 W: 3
-S: $(x,y)\to(x,6-y)$: $(4,5)$, with sum $9$.
+S: Reflecting across the horizontal line $y=3$ keeps $x$ and sends $y$ to the same distance on the other side: $y\to2\cdot3-y=6-y$.
+$(4,1)\to(4,5)$. Sum: $9$.
 ---
 Q: What is the area of the region where $y\ge|x|$ and $y\le5$?
 L: 1
@@ -8079,7 +8179,9 @@ W: 50
 W: \frac{25}{2}
 W: 10
 W: 100
-S: A triangle with vertices $(0,0),(\pm5,5)$: base $10$, height $5$, area $25$.
+S: $y\ge|x|$ is the region above the V formed by $y=x$ and $y=-x$; $y\le5$ caps it.
+The region is a triangle with vertices $(0,0)$, $(-5,5)$, $(5,5)$.
+Base $10$ (along $y=5$), height $5$: area $\frac12\cdot10\cdot5=25$.
 ---
 Q: The point $(3,4)$ is reflected over the $x$-axis and then over the $y$-axis. How far is the final image from the original point?
 L: 1
@@ -8088,7 +8190,9 @@ W: 5
 W: 7
 W: 14
 W: 8
-S: The two reflections make a $180^\circ$ rotation: $(-3,-4)$. Distance $=2\cdot5=10$.
+S: Over the $x$-axis: $(3,4)\to(3,-4)$. Then over the $y$-axis: $(3,-4)\to(-3,-4)$.
+Two perpendicular reflections make a $180^\circ$ rotation about the origin.
+Distance from $(3,4)$ to $(-3,-4)$: $\sqrt{6^2+8^2}=10$ (twice the distance $5$ to the origin).
 ---
 Q: A path goes from $(1,1)$ to a point on the line $y=4$ and then to $(5,1)$. What is the shortest possible length?
 L: 3
@@ -8097,7 +8201,8 @@ W: 8
 W: 4
 W: 2\sqrt{10}
 W: 10
-S: Reflect $(5,1)$ over $y=4$ to get $(5,7)$. Then the distance is $\sqrt{4^2+6^2}=\sqrt{52}=2\sqrt{13}$.
+S: Reflect one endpoint across the line $y=4$: $(5,1)\to(5,7)$. Any path via the line has the same length as the path to the reflected point.
+The shortest is straight: from $(1,1)$ to $(5,7)$ is $\sqrt{4^2+6^2}=\sqrt{52}=2\sqrt{13}$.
 ---
 Q: What is the area of the region $x^2+y^2\le4$, $x\ge0$, $y\ge0$?
 L: 1
@@ -8106,7 +8211,8 @@ W: 4\pi
 W: 2\pi
 W: \frac{\pi}{2}
 W: 4
-S: A quarter of a disk of radius $2$: $\frac14\cdot4\pi=\pi$.
+S: $x^2+y^2\le4$ is a disk of radius $2$; the conditions $x\ge0$, $y\ge0$ keep the quarter in quadrant I.
+Area $=\frac14\pi(2)^2=\pi$.
 @@ solid-prism
 Q: A rectangular box has faces with areas $12$, $15$, and $20$. What is its volume?
 L: 2
@@ -8409,7 +8515,9 @@ W: 12
 W: 18
 W: 36
 W: 20
-S: $360=2^3\cdot3^2\cdot5$, so $d=4\cdot3\cdot2=24$.
+S: Factor first: $360=2^3\cdot3^2\cdot5^1$.
+A divisor is $2^a3^b5^c$ with $0\le a\le3$, $0\le b\le2$, $0\le c\le1$: $4$, $3$, and $2$ choices.
+$d(360)=(3+1)(2+1)(1+1)=24$.
 ---
 Q: What is the sum of the positive divisors of $12$?
 L: 1
@@ -8418,7 +8526,8 @@ W: 16
 W: 27
 W: 24
 W: 30
-S: $1+2+3+4+6+12=28$. (Formula: $(1+2+4)(1+3)=28$.)
+S: List the divisors of $12$: $1,2,3,4,6,12$. Their sum is $28$.
+Formula check: $12=2^2\cdot3$, and $\sigma(12)=(1+2+4)(1+3)=7\cdot4=28$ (expanding the product gives every divisor exactly once).
 ---
 Q: How many integers from $1$ to $100$ have an odd number of positive divisors?
 L: 1
@@ -8427,7 +8536,8 @@ W: 9
 W: 50
 W: 11
 W: 25
-S: Exactly the perfect squares: $1,4,\dots,100$, which is $10$.
+S: Divisors come in pairs $(d,\frac nd)$. The only way to have an odd count is for one pair to collapse, $d=\frac nd$, which happens exactly when $n$ is a perfect square.
+Squares from $1$ to $100$: $1^2,2^2,\dots,10^2$, which is $10$ numbers.
 ---
 Q: How many positive divisors of $720$ are even?
 L: 2
@@ -8436,7 +8546,9 @@ W: 30
 W: 6
 W: 20
 W: 15
-S: $720=2^4\cdot3^2\cdot5$. With the exponent of 2 from $1$ to $4$: $4\cdot3\cdot2=24$.
+S: $720=2^4\cdot3^2\cdot5$. An even divisor needs at least one factor of $2$.
+Exponent of $2$: $1,2,3,4$ ($4$ choices); of $3$: $0,1,2$ ($3$); of $5$: $0,1$ ($2$).
+$4\cdot3\cdot2=24$ even divisors. (Total divisors $5\cdot3\cdot2=30$, minus the $6$ odd ones.)
 ---
 Q: What is the product of all positive divisors of $36$?
 L: 3
@@ -8445,7 +8557,9 @@ W: 6^{18}
 W: 6^{8}
 W: 6^{10}
 W: 2^{9}3^{8}
-S: $36$ has $9$ divisors, which pair up to multiply to $36$. The product is $36^{9/2}=6^9$.
+S: $36=2^2\cdot3^2$ has $(2+1)(2+1)=9$ divisors.
+Pair each divisor $d$ with $\frac{36}{d}$; each pair multiplies to $36$. With $9$ divisors there are $\frac92$ "pairs" (the middle one, $6$, pairs with itself).
+Product $=36^{9/2}=(6^2)^{9/2}=6^9$.
 ---
 Q: What is the smallest positive integer with exactly $10$ positive divisors?
 L: 2
@@ -8454,7 +8568,10 @@ W: 512
 W: 80
 W: 36
 W: 60
-S: $10=10$ or $5\cdot2$: candidates $2^9=512$ and $2^4\cdot3=48$. The smallest is $48$.
+S: If $n=p_1^{a_1}p_2^{a_2}\cdots$, then $d(n)=(a_1+1)(a_2+1)\cdots$. We need this product to be $10$.
+$10=10$: $n=p^9$, smallest $2^9=512$.
+$10=5\cdot2$: $n=p^4q$, smallest with the bigger exponent on the smaller prime: $2^4\cdot3=48$.
+The smallest is $48$.
 ---
 Q: How many positive divisors of $2^6\cdot3^4\cdot5^3$ are perfect squares?
 L: 2
@@ -8463,7 +8580,9 @@ W: 12
 W: 140
 W: 18
 W: 36
-S: Even exponents: the power of 2 is in $\{0,2,4,6\}$ (4 choices), of 3 in $\{0,2,4\}$ (3), of 5 in $\{0,2\}$ (2). Total $24$.
+S: A divisor $2^a3^b5^c$ is a perfect square exactly when every exponent is even.
+$a\in\{0,2,4,6\}$: $4$ choices. $b\in\{0,2,4\}$: $3$. $c\in\{0,2\}$: $2$.
+$4\cdot3\cdot2=24$.
 ---
 Q: How many positive divisors does $900$ have?
 L: 2
@@ -8472,7 +8591,8 @@ W: 8
 W: 9
 W: 64
 W: 16
-S: $900=30^2=2^2\cdot3^2\cdot5^2$, so $d=3\cdot3\cdot3=27$.
+S: $900=30^2=(2\cdot3\cdot5)^2=2^2\cdot3^2\cdot5^2$.
+$d(900)=(2+1)(2+1)(2+1)=27$. (Odd, as it must be for a perfect square.)
 ---
 @@ div-gcd
 Q: What is $\gcd(84,126)$?
@@ -8482,7 +8602,9 @@ W: 21
 W: 14
 W: 252
 W: 6
-S: $84=2^2\cdot3\cdot7$ and $126=2\cdot3^2\cdot7$. The min exponents give $2\cdot3\cdot7=42$.
+S: Factor: $84=2^2\cdot3\cdot7$ and $126=2\cdot3^2\cdot7$.
+The GCD takes each prime to its <b>smaller</b> exponent: $2^1\cdot3^1\cdot7^1=42$.
+(Euclid's algorithm agrees: $126=84+42$, and $42\mid84$.)
 ---
 Q: What is $\operatorname{lcm}(12,18,30)$?
 L: 1
@@ -8491,7 +8613,8 @@ W: 360
 W: 90
 W: 6
 W: 540
-S: The max exponents: $2^2\cdot3^2\cdot5=180$.
+S: Factor: $12=2^2\cdot3$, $18=2\cdot3^2$, $30=2\cdot3\cdot5$.
+The LCM takes each prime to its <b>largest</b> exponent: $2^2\cdot3^2\cdot5=180$.
 ---
 Q: Two positive integers have GCD $6$ and LCM $180$. One of them is $36$. What is the other?
 L: 1
@@ -8500,7 +8623,9 @@ W: 5
 W: 60
 W: 18
 W: 45
-S: $ab=\gcd\cdot\operatorname{lcm}=1080$, so the other is $\frac{1080}{36}=30$.
+S: For any two positive integers, $\gcd(a,b)\cdot\operatorname{lcm}(a,b)=ab$.
+So $36\cdot b=6\cdot180=1080$, giving $b=30$.
+Check: $\gcd(36,30)=6$ and $\operatorname{lcm}(36,30)=180$. ✓
 ---
 Q: Two lights blink every $12$ and $18$ seconds, and both blink at time $0$. When do they next blink together, in seconds?
 L: 1
@@ -8509,7 +8634,8 @@ W: 6
 W: 72
 W: 216
 W: 30
-S: $\operatorname{lcm}(12,18)=36$.
+S: The first light blinks at multiples of $12$, the second at multiples of $18$. They blink together at common multiples; the first after $0$ is the least common multiple.
+$12=2^2\cdot3$, $18=2\cdot3^2$, so $\operatorname{lcm}=2^2\cdot3^2=36$ seconds.
 ---
 Q: As $n$ ranges over the positive integers, how many different values can $\gcd(n,n+6)$ take?
 L: 2
@@ -8518,7 +8644,9 @@ W: 6
 W: 2
 W: 3
 W: 1
-S: $\gcd(n,n+6)$ divides $6$, and each divisor $1,2,3,6$ occurs (e.g. $n=1,2,3,6$). That is $4$ values.
+S: Any common divisor of $n$ and $n+6$ divides their difference, $6$. So $\gcd(n,n+6)$ is $1$, $2$, $3$, or $6$.
+All four occur: $n=1$ gives $1$; $n=2$ gives $2$; $n=3$ gives $3$; $n=6$ gives $6$.
+That's $4$ values.
 ---
 Q: What is $\gcd(2^{20}-1,\ 2^{12}-1)$?
 L: 3
@@ -8527,7 +8655,8 @@ W: 1
 W: 3
 W: 255
 W: 4095
-S: $\gcd(2^a-1,2^b-1)=2^{\gcd(a,b)}-1=2^4-1=15$.
+S: Identity: $\gcd(2^a-1,2^b-1)=2^{\gcd(a,b)}-1$. (It comes from running Euclid's algorithm on the exponents, since $2^a-1\equiv2^{a-b}-1\pmod{2^b-1}$.)
+$\gcd(20,12)=4$, so the answer is $2^4-1=15$.
 ---
 Q: An $84\times144$ floor is to be covered with identical square tiles of integer side, with no cutting. What is the largest possible tile side?
 L: 1
@@ -8536,7 +8665,8 @@ W: 6
 W: 24
 W: 4
 W: 36
-S: The side must divide both dimensions: $\gcd(84,144)=12$.
+S: A square tile of side $s$ fits with no cutting exactly when $s$ divides both $84$ and $144$.
+The largest such $s$ is $\gcd(84,144)$. $84=2^2\cdot3\cdot7$, $144=2^4\cdot3^2$, so the GCD is $2^2\cdot3=12$.
 ---
 Q: How many ordered pairs of positive integers $(a,b)$ have $\operatorname{lcm}(a,b)=12$?
 L: 3
@@ -8545,7 +8675,10 @@ W: 9
 W: 12
 W: 25
 W: 6
-S: $12=2^2\cdot3$. For the prime 2, the exponent pairs with max 2 number $2\cdot2+1=5$; for 3, $2\cdot1+1=3$. Total $15$.
+S: $12=2^2\cdot3$, so $a=2^{x_1}3^{y_1}$ and $b=2^{x_2}3^{y_2}$, and the LCM condition is $\max(x_1,x_2)=2$ and $\max(y_1,y_2)=1$, handled separately.
+For $2$: pairs from $\{0,1,2\}$ with max $2$: $3\cdot3-2\cdot2=5$ (all pairs minus those using only $0,1$).
+For $3$: pairs from $\{0,1\}$ with max $1$: $2\cdot2-1=3$.
+Total: $5\cdot3=15$ ordered pairs.
 ---
 @@ div-rules
 Q: The three-digit number $5d8$ is divisible by $9$. What is the digit $d$?
@@ -8555,7 +8688,9 @@ W: 4
 W: 3
 W: 6
 W: 0
-S: The digit sum $13+d$ must be divisible by 9, so $d=5$.
+S: A number is divisible by $9$ exactly when its digit sum is. The digit sum is $5+d+8=13+d$.
+With $0\le d\le9$, $13+d$ is between $13$ and $22$; the only multiple of $9$ there is $18$, so $d=5$.
+Check: $558=9\cdot62$. ✓
 ---
 Q: What is the largest prime factor of $1001$?
 L: 1
@@ -8564,7 +8699,9 @@ W: 11
 W: 7
 W: 17
 W: 91
-S: $1001=7\cdot11\cdot13$.
+S: Trial division: $1001=7\cdot143$, and $143=11\cdot13$.
+So $1001=7\cdot11\cdot13$, and the largest prime factor is $13$.
+(Fun fact: this is why $\overline{abcabc}=\overline{abc}\cdot1001$ is divisible by $7$, $11$, and $13$.)
 ---
 Q: How many four-digit numbers of the form $\overline{3a4b}$ are divisible by $36$?
 L: 2
@@ -8573,8 +8710,10 @@ W: 2
 W: 4
 W: 5
 W: 1
-S: Divisible by 4: $\overline{4b}$, so $b\in\{0,4,8\}$. Divisible by 9: $7+a+b\in\{9,18\}$, so $a+b\in\{2,11\}$.
-$b=0$: $a=2$. $b=4$: $a=7$. $b=8$: $a=3$. That is $3$ numbers: $3240, 3744, 3348$.
+S: $36=4\cdot9$ with $\gcd(4,9)=1$, so check divisibility by $4$ and by $9$ separately.
+• By $4$: the last two digits $\overline{4b}$ must be a multiple of $4$: $40,44,48$, so $b\in\{0,4,8\}$.
+• By $9$: the digit sum $3+a+4+b=7+a+b$ must be $9$ or $18$, so $a+b=2$ or $11$.
+$b=0\Rightarrow a=2$; $b=4\Rightarrow a=7$; $b=8\Rightarrow a=3$. Numbers: $3240$, $3744$, $3348$. That's $3$.
 ---
 Q: What is the remainder when $123456789$ is divided by $9$?
 L: 1
@@ -8583,7 +8722,8 @@ W: 1
 W: 3
 W: 8
 W: 6
-S: The digit sum is $45$, which is divisible by 9.
+S: Every number is congruent to its digit sum mod $9$ (because $10\equiv1\pmod9$).
+$1+2+\cdots+9=45$, and $45$ is divisible by $9$, so the remainder is $0$.
 ---
 Q: What is the largest integer that divides $n^3-n$ for every integer $n$?
 L: 2
@@ -8592,7 +8732,9 @@ W: 3
 W: 2
 W: 12
 W: 24
-S: $n^3-n=(n-1)n(n+1)$ is a product of three consecutive integers, so it is divisible by $6$. For $n=2$ the value is exactly $6$, so nothing larger always works.
+S: Factor: $n^3-n=n(n^2-1)=(n-1)n(n+1)$, a product of three consecutive integers.
+Among three consecutive integers, one is a multiple of $3$ and at least one is even, so the product is always divisible by $6$.
+Nothing larger works for every $n$: at $n=2$, $n^3-n=6$. So the answer is $6$.
 ---
 Q: How many integers from $1$ to $100$ are divisible by $3$ or $5$?
 L: 1
@@ -8601,7 +8743,8 @@ W: 53
 W: 46
 W: 48
 W: 40
-S: $33+20-6=47$ (subtracting the multiples of 15).
+S: Inclusion-exclusion: count multiples of $3$, add multiples of $5$, and subtract those counted twice (multiples of $15$).
+$\lfloor\frac{100}{3}\rfloor+\lfloor\frac{100}{5}\rfloor-\lfloor\frac{100}{15}\rfloor=33+20-6=47$.
 ---
 Q: Every six-digit number of the form $\overline{abcabc}$ is divisible by which of these?
 L: 2
@@ -8610,7 +8753,9 @@ W: 17
 W: 19
 W: 101
 W: 37
-S: $\overline{abcabc}=\overline{abc}\cdot1001=\overline{abc}\cdot7\cdot11\cdot13$.
+S: $\overline{abcabc}=1000\cdot\overline{abc}+\overline{abc}=1001\cdot\overline{abc}$.
+$1001=7\cdot11\cdot13$, so every such number is divisible by $7$, $11$, and $13$. Of the choices, $13$.
+(The others fail for, e.g., $100100=2^2\cdot5^2\cdot7\cdot11\cdot13$.)
 ---
 Q: The eight-digit number $\overline{1234567x}$ is divisible by $11$. What is the digit $x$?
 L: 2
@@ -8619,7 +8764,9 @@ W: 3
 W: 5
 W: 0
 W: 7
-S: Alternating sum from the right: $x-7+6-5+4-3+2-1=x-4$ must be divisible by 11, so $x=4$.
+S: Divisibility by $11$: the alternating sum of the digits (starting with $+$ at the units digit) must be a multiple of $11$.
+For $1234567x$: $x-7+6-5+4-3+2-1=x-4$.
+$x-4$ is a multiple of $11$ only for $x=4$ (as $0\le x\le9$).
 ---
 @@ div-fact
 Q: How many zeros are at the end of $100!$?
@@ -8629,7 +8776,9 @@ W: 20
 W: 25
 W: 10
 W: 22
-S: $\left\lfloor\frac{100}5\right\rfloor+\left\lfloor\frac{100}{25}\right\rfloor=20+4=24$.
+S: Trailing zeros come from factors of $10=2\cdot5$, and $100!$ has far more $2$s than $5$s, so count the $5$s (Legendre's formula):
+$\lfloor\frac{100}{5}\rfloor+\lfloor\frac{100}{25}\rfloor=20+4=24$.
+(Multiples of $25$ contribute an extra $5$ each.)
 ---
 Q: What is the largest power of $2$ that divides $20!$? (Give the exponent.)
 L: 1
@@ -8638,7 +8787,9 @@ W: 10
 W: 16
 W: 19
 W: 17
-S: $10+5+2+1=18$.
+S: Legendre's formula: the exponent of a prime $p$ in $n!$ is $\lfloor\frac np\rfloor+\lfloor\frac n{p^2}\rfloor+\lfloor\frac n{p^3}\rfloor+\cdots$.
+For $p=2$, $n=20$: $10+5+2+1=18$.
+(The $10$ counts the even numbers, the $5$ the multiples of $4$ for their second factor of $2$, and so on.)
 ---
 Q: What is the largest integer $k$ such that $6^k$ divides $20!$?
 L: 2
@@ -8647,7 +8798,9 @@ W: 18
 W: 10
 W: 6
 W: 9
-S: $v_2(20!)=18$ and $v_3(20!)=6+2=8$. Each $6$ needs one of each, so $k=8$.
+S: $6^k=2^k3^k$, so $k$ is limited by whichever prime runs out first.
+$v_2(20!)=10+5+2+1=18$ and $v_3(20!)=\lfloor\frac{20}3\rfloor+\lfloor\frac{20}9\rfloor=6+2=8$.
+$k=\min(18,8)=8$: the $3$s are the bottleneck.
 ---
 Q: What is the smallest positive integer $n$ such that $n!$ is divisible by $1000$?
 L: 2
@@ -8656,7 +8809,9 @@ W: 10
 W: 25
 W: 20
 W: 13
-S: We need $5^3$ (there are plenty of 2s). $v_5(n!)\ge3$ first happens at $n=15$.
+S: $1000=2^3\cdot5^3$. Factors of $2$ are plentiful, so we need $n!$ to contain three $5$s.
+$v_5(n!)$ counts the multiples of $5$ up to $n$ (until $25$): it's $1$ at $n=5$, $2$ at $n=10$, $3$ at $n=15$.
+So the smallest $n$ is $15$.
 ---
 Q: How many zeros are at the end of $2026!$?
 L: 2
@@ -8665,7 +8820,9 @@ W: 405
 W: 506
 W: 500
 W: 486
-S: $405+81+16+3=505$.
+S: Count factors of $5$ with Legendre's formula:
+$\lfloor\frac{2026}{5}\rfloor=405$, $\lfloor\frac{2026}{25}\rfloor=81$, $\lfloor\frac{2026}{125}\rfloor=16$, $\lfloor\frac{2026}{625}\rfloor=3$.
+Total: $405+81+16+3=505$ trailing zeros.
 ---
 Q: What is the largest integer $k$ such that $12^k$ divides $30!$?
 L: 3
@@ -8674,7 +8831,10 @@ W: 14
 W: 26
 W: 10
 W: 15
-S: $v_2(30!)=15+7+3+1=26$, which supports $13$ factors of $2^2$. $v_3(30!)=10+3+1=14$. So $k=\min(13,14)=13$.
+S: $12^k=2^{2k}3^k$. Compute both prime exponents in $30!$:
+$v_2(30!)=15+7+3+1=26$, which allows $2k\le26$, i.e. $k\le13$.
+$v_3(30!)=10+3+1=14$, which allows $k\le14$.
+So $k=13$.
 ---
 Q: How many positive divisors does $10!$ have?
 L: 2
@@ -8683,7 +8843,9 @@ W: 240
 W: 128
 W: 300
 W: 180
-S: $10!=2^8\cdot3^4\cdot5^2\cdot7$, so $d=9\cdot5\cdot3\cdot2=270$.
+S: Prime factorization of $10!$ by Legendre: $v_2=5+2+1=8$, $v_3=3+1=4$, $v_5=2$, $v_7=1$.
+$10!=2^8\cdot3^4\cdot5^2\cdot7$.
+$d(10!)=(8+1)(4+1)(2+1)(1+1)=9\cdot5\cdot3\cdot2=270$.
 ---
 Q: What is the units digit of $1!+2!+3!+\cdots+100!$?
 L: 1
@@ -8692,7 +8854,8 @@ W: 1
 W: 0
 W: 9
 W: 7
-S: From $5!$ on every term ends in $0$. $1+2+6+24=33$, so the units digit is $3$.
+S: From $5!$ on, every factorial contains $2\cdot5=10$, so it ends in $0$ and doesn't affect the units digit.
+Only $1!+2!+3!+4!=1+2+6+24=33$ matters, so the units digit is $3$.
 @@ mod-basic
 Q: What is the remainder when $2026\cdot2027\cdot2028$ is divided by $7$?
 L: 1
@@ -9312,7 +9475,9 @@ W: 24
 W: 17
 W: 35
 W: 12
-S: Chicken McNugget: $5\cdot7-5-7=23$.
+S: Chicken McNugget Theorem: if $\gcd(a,b)=1$, the largest amount that cannot be written as $ax+by$ with nonnegative integers is $ab-a-b$.
+$\gcd(5,7)=1$, so the answer is $5\cdot7-5-7=35-12=23$.
+Check: $23$ minus multiples of $7$ gives $23,16,9,2$, none divisible by $5$. But $24=10+14$, $25=25$, $26=5+21$, $27=20+7$, $28=28$: five consecutive amounts, so everything above works.
 ---
 Q: How many ordered pairs of nonnegative integers satisfy $3x+5y=100$?
 L: 2
@@ -9321,7 +9486,10 @@ W: 6
 W: 8
 W: 20
 W: 34
-S: $5y\equiv100\equiv1\pmod3$, so $y\equiv2\pmod3$, with $0\le y\le20$: $y=2,5,8,11,14,17,20$. That is $7$.
+S: Reduce mod $3$: $3x+5y=100$ forces $5y\equiv100\pmod3$, i.e. $2y\equiv1$, so $y\equiv2\pmod3$.
+Also $x\ge0$ needs $5y\le100$, so $0\le y\le20$.
+The valid $y$: $2,5,8,11,14,17,20$, each giving a nonnegative integer $x=\frac{100-5y}{3}$ ($30,25,20,15,10,5,0$).
+That's $7$ pairs.
 ---
 Q: How many positive integer amounts cannot be made using only $4$s and $9$s?
 L: 2
@@ -9330,7 +9498,9 @@ W: 23
 W: 24
 W: 11
 W: 8
-S: $\frac{(4-1)(9-1)}{2}=12$.
+S: For relatively prime $a,b$, exactly $\frac{(a-1)(b-1)}{2}$ positive integers cannot be made from $a$s and $b$s (Sylvester).
+$\gcd(4,9)=1$, so the count is $\frac{3\cdot8}{2}=12$.
+(They are $1,2,3,5,6,7,10,11,14,15,19,23$; the largest is $4\cdot9-4-9=23$.)
 ---
 Q: How many ordered pairs of positive integers satisfy $2x+3y=25$?
 L: 1
@@ -9339,7 +9509,9 @@ W: 3
 W: 5
 W: 8
 W: 12
-S: $y$ must be odd, with $3y\le23$: $y=1,3,5,7$ (giving $x=11,8,5,2$).
+S: $2x=25-3y$ must be even and positive, so $3y$ must be odd (hence $y$ odd) and $3y\lt25$.
+$y=1,3,5,7$ give $x=11,8,5,2$.
+That's $4$ pairs ($y=9$ would make $x\lt0$).
 ---
 Q: How many integer solutions does $6x+9y=20$ have?
 L: 1
@@ -9348,7 +9520,9 @@ W: 1
 W: 2
 W: 3
 W: 6
-S: $\gcd(6,9)=3$ does not divide $20$, so there are no solutions.
+S: The left side $6x+9y=3(2x+3y)$ is always a multiple of $3$.
+$20$ is not a multiple of $3$, so there are no integer solutions.
+(In general $ax+by=c$ is solvable exactly when $\gcd(a,b)\mid c$.)
 ---
 Q: Using $3$-cent and $7$-cent stamps, what is the fewest number of stamps that make exactly $50$ cents?
 L: 2
@@ -9357,7 +9531,11 @@ W: 14
 W: 8
 W: 12
 W: 17
-S: $7y\equiv50\pmod3$ gives $y\equiv2\pmod3$, so $y=2$ or $5$. $y=5$ gives $x=5$ (10 stamps); $y=2$ gives $x=12$ (14 stamps). Minimum $10$.
+S: Let $x$ be the number of $3$-cent stamps and $y$ the number of $7$-cent stamps: $3x+7y=50$.
+Mod $3$: $7y\equiv50$ means $y\equiv2\pmod3$, and $7y\le50$ means $y\le7$. So $y=2$ or $y=5$.
+• $y=2$: $x=\frac{50-14}{3}=12$, total $14$ stamps.
+• $y=5$: $x=\frac{50-35}{3}=5$, total $10$ stamps.
+To minimize the count, use as many of the larger stamp as possible: $10$.
 ---
 Q: How many ordered pairs of positive integers satisfy $7x+11y=200$?
 L: 2
@@ -9366,7 +9544,9 @@ W: 2
 W: 4
 W: 5
 W: 18
-S: $11y\equiv200\pmod7$, i.e. $4y\equiv4$, so $y\equiv1\pmod7$: $y=1,8,15$ (giving $x=27,16,5$). That is $3$.
+S: Reduce mod $7$: $11y\equiv200\pmod7$. Since $11\equiv4$ and $200\equiv4$, this is $4y\equiv4$, so $y\equiv1\pmod7$.
+For positive $x$ we need $11y\lt200$, i.e. $y\le18$: $y=1,8,15$.
+These give $x=\frac{200-11y}{7}=27,\ 16,\ 5$. That's $3$ pairs.
 ---
 Q: Positive integers satisfy $13x-8y=1$. What is the smallest possible value of $x+y$?
 L: 3
@@ -9375,7 +9555,9 @@ W: 5
 W: 8
 W: 21
 W: 3
-S: $13x\equiv1\pmod8$ means $5x\equiv1$, so $x\equiv5$. The smallest is $x=5$, $y=8$: $x+y=13$.
+S: Reduce mod $8$: $13x\equiv1\pmod8$, and $13\equiv5$, so $5x\equiv1$. Since $5\cdot5=25\equiv1$, $x\equiv5\pmod8$.
+The general solution is $x=5+8t$, $y=\frac{13x-1}{8}=8+13t$.
+The smallest positive pair is $(5,8)$ ($t=0$), so the smallest $x+y$ is $13$.
 ---
 @@ dioph-sfft
 Q: How many ordered pairs of positive integers satisfy $xy+x+y=23$?
@@ -9385,7 +9567,9 @@ W: 8
 W: 4
 W: 3
 W: 7
-S: $(x+1)(y+1)=24$ with both factors at least $2$. $24$ has $8$ divisors; removing $1\cdot24$ and $24\cdot1$ leaves $6$.
+S: Simon's Favorite Factoring Trick: add $1$ to both sides so the left side factors: $xy+x+y+1=(x+1)(y+1)=24$.
+Positive $x,y$ mean both factors are at least $2$.
+$24$ has $8$ positive divisors ($1,2,3,4,6,8,12,24$), so $8$ ordered factor pairs. Remove $(1,24)$ and $(24,1)$: $6$ pairs remain.
 ---
 Q: How many ordered pairs of positive integers satisfy $\dfrac1x+\dfrac1y=\dfrac16$?
 L: 2
@@ -9394,7 +9578,9 @@ W: 5
 W: 18
 W: 8
 W: 10
-S: $(x-6)(y-6)=36$. Negative factor pairs give nonpositive values, so we count the positive divisors of 36: $9$.
+S: Clear denominators: $6y+6x=xy$, so $xy-6x-6y=0$. Add $36$: $(x-6)(y-6)=36$.
+If both factors were negative, we'd need $x\lt6$ and $y\lt6$, making $(x-6)(y-6)\le25\lt36$. So both factors are positive divisors of $36$.
+$36=2^2\cdot3^2$ has $(2+1)(2+1)=9$ divisors, giving $9$ ordered pairs.
 ---
 Q: Positive integers satisfy $xy-3x-3y=0$. What is the largest possible value of $x+y$?
 L: 2
@@ -9403,7 +9589,9 @@ W: 12
 W: 15
 W: 18
 W: 13
-S: $(x-3)(y-3)=9$: $(1,9),(3,3),(9,1)$ give $(4,12),(6,6),(12,4)$. The largest sum is $16$.
+S: Add $9$ to factor: $xy-3x-3y+9=(x-3)(y-3)=9$.
+Negative factors would need $x,y\lt3$, giving a product at most $4$. So use positive pairs: $(1,9),(3,3),(9,1)$.
+They give $(x,y)=(4,12),(6,6),(12,4)$ with sums $16,12,16$. The largest is $16$.
 ---
 Q: How many ordered pairs of positive integers satisfy $xy=2x+3y$?
 L: 2
@@ -9412,7 +9600,9 @@ W: 2
 W: 6
 W: 8
 W: 3
-S: $(x-3)(y-2)=6$. The positive factor pairs give 4 solutions; the negative pairs give nonpositive values.
+S: Rearrange: $xy-2x-3y=0$, and add $6$: $(x-3)(y-2)=6$.
+Positive factor pairs of $6$: $(1,6),(2,3),(3,2),(6,1)$, giving $(4,8),(5,5),(6,4),(9,3)$.
+Negative pairs would need $x\lt3$ and $y\lt2$, i.e. $y=1$ and $x\le2$, with product at most $2\lt6$. So there are $4$ solutions.
 ---
 Q: A rectangle has integer side lengths and its area equals its perimeter. How many non-congruent such rectangles are there?
 L: 2
@@ -9421,7 +9611,9 @@ W: 3
 W: 1
 W: 4
 W: 5
-S: $ab=2a+2b$ gives $(a-2)(b-2)=4$: $3\times6$ and $4\times4$.
+S: With sides $a\le b$: area $ab$ equals perimeter $2a+2b$. So $ab-2a-2b=0$, and adding $4$: $(a-2)(b-2)=4$.
+Positive factorizations: $1\cdot4$ and $2\cdot2$, giving $3\times6$ and $4\times4$. (Negative factors give no valid sides.)
+Check: $3\cdot6=18=2(3+6)$ and $4\cdot4=16=2(4+4)$. So there are $2$ such rectangles.
 ---
 Q: Positive integers satisfy $2xy+x+y=38$. What is $x+y$?
 L: 3
@@ -9430,7 +9622,9 @@ W: 7
 W: 10
 W: 12
 W: 9
-S: Multiply by 2 and add 1: $(2x+1)(2y+1)=77=7\cdot11$. So $\{x,y\}=\{3,5\}$ and $x+y=8$.
+S: The coefficient $2$ on $xy$ needs a modified trick: multiply by $2$ and add $1$.
+$4xy+2x+2y+1=77$, which factors as $(2x+1)(2y+1)=77=7\cdot11$.
+Both factors are odd and at least $3$, so $\{2x+1,2y+1\}=\{7,11\}$, giving $\{x,y\}=\{3,5\}$ and $x+y=8$.
 ---
 Q: How many ordered pairs of positive integers satisfy $xy=x+y+10$?
 L: 1
@@ -9439,7 +9633,9 @@ W: 1
 W: 4
 W: 11
 W: 0
-S: $(x-1)(y-1)=11$, which is prime: $(2,12)$ and $(12,2)$.
+S: Move terms and add $1$: $xy-x-y+1=11$, i.e. $(x-1)(y-1)=11$.
+$11$ is prime, so the positive factor pairs are $(1,11)$ and $(11,1)$, giving $(2,12)$ and $(12,2)$.
+(Negative pairs would need $x\le0$ or $y\le0$.) That's $2$ pairs.
 ---
 Q: How many ordered pairs of positive integers satisfy $\dfrac1a+\dfrac1b=\dfrac12$?
 L: 1
@@ -9448,7 +9644,9 @@ W: 2
 W: 4
 W: 5
 W: 6
-S: $(a-2)(b-2)=4$ has positive factor pairs $(1,4),(2,2),(4,1)$, giving $3$ solutions.
+S: Clear denominators: $2b+2a=ab$, so $ab-2a-2b+4=4$, i.e. $(a-2)(b-2)=4$.
+Positive pairs $(1,4),(2,2),(4,1)$ give $(3,6),(4,4),(6,3)$.
+Negative pairs like $(-1,-4)$ would make $a$ or $b$ nonpositive. So there are $3$ solutions.
 ---
 @@ dioph-bound
 Q: How many ordered pairs of positive integers satisfy $x^2+y^2=50$?
@@ -9458,7 +9656,9 @@ W: 2
 W: 4
 W: 6
 W: 1
-S: $50=1+49=25+25$: $(1,7),(7,1),(5,5)$.
+S: Both $x^2$ and $y^2$ are positive squares less than $50$: $1,4,9,16,25,36,49$.
+Which pairs add to $50$? $1+49$ and $25+25$.
+Ordered pairs: $(1,7),(7,1),(5,5)$, which is $3$.
 ---
 Q: How many integer solutions does $x^2-y^2=2026$ have?
 L: 2
@@ -9467,7 +9667,10 @@ W: 1
 W: 2
 W: 4
 W: 8
-S: $x^2-y^2=(x-y)(x+y)$ is odd or a multiple of 4. $2026\equiv2\pmod4$, so there are no solutions.
+S: $x^2-y^2=(x-y)(x+y)$, and the two factors $x-y$ and $x+y$ have the same parity (they differ by $2y$).
+• Both odd: the product is odd.
+• Both even: the product is a multiple of $4$.
+So $x^2-y^2$ is never $\equiv2\pmod4$. Since $2026=4\cdot506+2$, there are no solutions.
 ---
 Q: For how many positive integers $n$ is $1!+2!+\cdots+n!$ a perfect square?
 L: 2
@@ -9476,7 +9679,9 @@ W: 1
 W: 3
 W: 4
 W: 0
-S: $n=1$: $1$ ✓. $n=2$: $3$. $n=3$: $9$ ✓. For $n\ge4$ the sum ends in $3$ ($33$ plus multiples of 10), and no square ends in 3. So $2$.
+S: Compute small cases: $n=1$: $1=1^2$ ✓. $n=2$: $3$. $n=3$: $9=3^2$ ✓. $n=4$: $33$.
+For $n\ge5$, each added $n!$ is a multiple of $10$, so the sum still ends in $3$ (like $33$).
+No perfect square ends in $3$ (squares end in $0,1,4,5,6,9$). So only $n=1$ and $n=3$ work: $2$ values.
 ---
 Q: Positive integers satisfy $x^2=y^2+2y+13$. What is $x+y$?
 L: 2
@@ -9485,7 +9690,10 @@ W: 4
 W: 6
 W: 7
 W: 12
-S: $x^2-(y+1)^2=12$, so $(x-y-1)(x+y+1)=12$ with both factors the same parity: $2\cdot6$. Then $x=4$, $y=1$, and $x+y=5$.
+S: Complete the square on the right: $y^2+2y+13=(y+1)^2+12$. So $x^2-(y+1)^2=12$, i.e. $(x-y-1)(x+y+1)=12$.
+The two factors have the same parity (they differ by $2y+2$) and $x+y+1$ is the larger positive one.
+Same-parity factor pairs of $12$: only $2\cdot6$. So $x-y-1=2$ and $x+y+1=6$, giving $x=4$, $y=1$.
+$x+y=5$. Check: $16=1+2+13$. ✓
 ---
 Q: How many triples of positive integers $x\le y\le z$ satisfy $\dfrac1x+\dfrac1y+\dfrac1z=1$?
 L: 3
@@ -9494,8 +9702,10 @@ W: 2
 W: 4
 W: 6
 W: 10
-S: $x$ is the smallest, so $\frac3x\ge1$ and $x\le3$ (and $x\ge2$).
-$x=3$: $(3,3,3)$. $x=2$: $\frac1y+\frac1z=\frac12$ gives $(4,4)$ and $(3,6)$. Total $3$.
+S: Since $x$ is the smallest, $\frac1x$ is the largest term, so $1=\frac1x+\frac1y+\frac1z\le\frac3x$, giving $x\le3$. Also $x\ge2$ (if $x=1$ the other terms would have to be $0$).
+• $x=3$: then $\frac1y+\frac1z=\frac23$ with $3\le y\le z$, forcing $y=z=3$: $(3,3,3)$.
+• $x=2$: $\frac1y+\frac1z=\frac12$, i.e. $(y-2)(z-2)=4$: $(y,z)=(3,6)$ or $(4,4)$.
+Total: $3$ triples.
 ---
 Q: Positive integers satisfy $2^a-2^b=48$. What is $a+b$?
 L: 2
@@ -9504,7 +9714,9 @@ W: 8
 W: 12
 W: 9
 W: 11
-S: $2^b(2^{a-b}-1)=16\cdot3$, so $b=4$ and $2^{a-b}=4$, giving $a=6$. Then $a+b=10$.
+S: Factor out the smaller power: $2^a-2^b=2^b(2^{a-b}-1)$.
+$2^{a-b}-1$ is odd, and $48=16\cdot3=2^4\cdot3$, so matching the power of $2$ and the odd part: $2^b=16$ and $2^{a-b}-1=3$.
+So $b=4$, $a-b=2$, $a=6$, and $a+b=10$. Check: $64-16=48$. ✓
 ---
 Q: How many ordered pairs of integers satisfy $xy=x+y$?
 L: 1
@@ -9513,7 +9725,9 @@ W: 1
 W: 3
 W: 4
 W: 0
-S: $(x-1)(y-1)=1$, so both factors are $1$ or both are $-1$: $(2,2)$ and $(0,0)$.
+S: Rearrange and add $1$: $xy-x-y+1=1$, so $(x-1)(y-1)=1$.
+The only integer factorizations of $1$ are $1\cdot1$ and $(-1)(-1)$.
+These give $(x,y)=(2,2)$ and $(0,0)$: $2$ pairs.
 ---
 Q: For how many positive integers $n$ is $n^2+12$ a perfect square?
 L: 1
@@ -9522,7 +9736,9 @@ W: 2
 W: 0
 W: 3
 W: 4
-S: $m^2-n^2=12$ gives $(m-n)(m+n)=12$ with matching parity: $2\cdot6$, so $n=2$. Only one.
+S: Suppose $n^2+12=m^2$. Then $m^2-n^2=(m-n)(m+n)=12$, with both factors positive and of the same parity.
+Factor pairs of $12$: $(1,12),(2,6),(3,4)$. Only $(2,6)$ has matching parity.
+$m-n=2$, $m+n=6$ give $m=4$, $n=2$: $4+12=16$. ✓ Exactly $1$ value.
 ---
 @@ dioph-floor
 Q: What real $x$ satisfies $x+\lfloor x\rfloor=8.4$?
@@ -9532,7 +9748,9 @@ W: \frac{21}{5}
 W: 4
 W: \frac{42}{5}
 W: \frac{23}{5}
-S: With $x=n+f$: $2n+f=8.4$ and $0\le f\lt 1$, so $n=4$ and $f=0.4$. Thus $x=4.4=\frac{22}5$.
+S: Write $x=n+f$ with $n=\lfloor x\rfloor$ an integer and $0\le f\lt1$.
+Then $x+\lfloor x\rfloor=2n+f=8.4$. Since $2n$ is an integer and $0\le f\lt1$: $2n=8$ and $f=0.4$.
+So $n=4$ and $x=4.4=\frac{22}{5}$. Check: $4.4+4=8.4$. ✓
 ---
 Q: For how many integers $n$ with $1\le n\le100$ does $\left\lfloor\frac n2\right\rfloor+\left\lfloor\frac n3\right\rfloor+\left\lfloor\frac n6\right\rfloor=n$?
 L: 2
@@ -9541,7 +9759,10 @@ W: 17
 W: 33
 W: 50
 W: 15
-S: Write $n=6k+r$. The left side is $6k+\lfloor\frac r2\rfloor+\lfloor\frac r3\rfloor$, which equals $6k+r$ only for $r=0$. So $n$ is a multiple of 6: $16$ values.
+S: Write $n=6k+r$ with $0\le r\le5$. Then $\lfloor\frac n2\rfloor=3k+\lfloor\frac r2\rfloor$, $\lfloor\frac n3\rfloor=2k+\lfloor\frac r3\rfloor$, $\lfloor\frac n6\rfloor=k$.
+The sum is $6k+\lfloor\frac r2\rfloor+\lfloor\frac r3\rfloor$, which must equal $6k+r$.
+Check $r=0..5$: $\lfloor\frac r2\rfloor+\lfloor\frac r3\rfloor=0,0,1,2,3,3$ versus $r=0,1,2,3,4,5$. Only $r=0$ matches.
+So $n$ must be a multiple of $6$: $6,12,\dots,96$, which is $16$ values.
 ---
 Q: How many real numbers $x$ satisfy $x^2=2\lfloor x\rfloor+3$?
 L: 3
@@ -9550,9 +9771,10 @@ W: 2
 W: 4
 W: 1
 W: 5
-S: Let $n=\lfloor x\rfloor$, so $x=\pm\sqrt{2n+3}$, and check the floor.
-Positive: $n=2$ gives $\sqrt7\approx2.65$ ✓; $n=3$ gives $3$ ✓; others fail.
-Negative: $n=-1$ gives $x=-1$ ✓. Total $3$.
+S: Let $n=\lfloor x\rfloor$. Then $x^2=2n+3$, so $x=\pm\sqrt{2n+3}$, and we need $\lfloor x\rfloor=n$.
+Positive $x$: $n\le\sqrt{2n+3}\lt n+1$. $n=2$: $\sqrt7\approx2.65$, floor $2$ ✓. $n=3$: $\sqrt9=3$ ✓. $n=1$: $\sqrt5\approx2.24$, floor $2\ne1$ ✗. $n\ge4$: $\sqrt{2n+3}\lt n$ ✗.
+Negative $x$: $x=-\sqrt{2n+3}$ needs $n\le-1$ and $2n+3\ge0$, so $n=-1$: $x=-1$, floor $-1$ ✓.
+Total: $3$ solutions ($\sqrt7$, $3$, $-1$).
 ---
 Q: For how many integers $n$ with $1\le n\le50$ does $\lfloor\sqrt n\rfloor$ divide $n$?
 L: 3
@@ -9561,7 +9783,11 @@ W: 18
 W: 20
 W: 21
 W: 14
-S: For $m=\lfloor\sqrt n\rfloor$ from 1 to 6, the multiples of $m$ in $[m^2,m^2+2m]$ are $m^2,m^2+m,m^2+2m$ (3 each): $18$. For $m=7$, $n\in\{49,50\}$ adds only $49$. Total $19$.
+S: Group by $m=\lfloor\sqrt n\rfloor$: the $n$ with that floor are $m^2\le n\le m^2+2m$.
+In that range the multiples of $m$ are $m^2,\ m^2+m,\ m^2+2m$: exactly $3$ for each $m$.
+$m=1,\dots,6$ cover $n=1$ to $48$: $6\cdot3=18$ values.
+$m=7$: only $n=49,50$ are in range, and $7\mid49$ but $7\nmid50$: $1$ more.
+Total: $19$.
 ---
 Q: What is $\lfloor2.5\rfloor+\lceil2.5\rceil+\lfloor-2.5\rfloor+\lceil-2.5\rceil$?
 L: 1
@@ -9570,7 +9796,8 @@ W: 1
 W: -1
 W: 2
 W: 10
-S: $2+3+(-3)+(-2)=0$.
+S: $\lfloor2.5\rfloor=2$, $\lceil2.5\rceil=3$, $\lfloor-2.5\rfloor=-3$ (round down), $\lceil-2.5\rceil=-2$ (round up).
+Sum: $2+3-3-2=0$.
 ---
 Q: How many real numbers $x$ satisfy $\lfloor x\rfloor=x^2$?
 L: 2
@@ -9579,7 +9806,9 @@ W: 1
 W: 3
 W: 0
 W: 4
-S: $x^2=n$ is a nonnegative integer, so $x\ge0$ (negative $x$ would have a negative floor). $x=\sqrt n$ with $n\le\sqrt n\lt n+1$ forces $n\in\{0,1\}$: $x=0,1$.
+S: $\lfloor x\rfloor$ is an integer, so $x^2=n$ is a nonnegative integer. Negative $x$ would have a negative floor, so $x\ge0$ and $x=\sqrt n$.
+We need $\lfloor\sqrt n\rfloor=n$, i.e. $n\le\sqrt n\lt n+1$. $n\le\sqrt n$ holds only for $n=0$ or $n=1$.
+Both work: $x=0$ and $x=1$. That's $2$ solutions.
 ---
 Q: If $\lfloor x\rfloor=5$ and $x-\lfloor x\rfloor=0.3$, what is $\lfloor2x\rfloor$?
 L: 1
@@ -9588,7 +9817,9 @@ W: 11
 W: 12
 W: 6
 W: 13
-S: $x=5.3$, $2x=10.6$, so $\lfloor2x\rfloor=10$.
+S: $\lfloor x\rfloor=5$ and the fractional part is $0.3$, so $x=5.3$.
+$2x=10.6$, so $\lfloor2x\rfloor=10$.
+(Note $\lfloor2x\rfloor=2\lfloor x\rfloor$ here because the fractional part is less than $\frac12$.)
 ---
 Q: How many distinct values does $\left\lfloor\frac n3\right\rfloor$ take for $n=1,2,\dots,100$?
 L: 1
@@ -9597,7 +9828,9 @@ W: 33
 W: 100
 W: 35
 W: 67
-S: The values run through every integer from $0$ to $33$: $34$ values.
+S: As $n$ goes from $1$ to $100$, $\lfloor\frac n3\rfloor$ goes from $\lfloor\frac13\rfloor=0$ up to $\lfloor\frac{100}{3}\rfloor=33$.
+It increases by at most $1$ each step, so it takes every integer from $0$ to $33$.
+That's $34$ values.
 @@ count-basic
 Q: A license plate has $3$ letters followed by $3$ digits (repetition allowed). How many plates are possible?
 L: 1
@@ -10886,7 +11119,9 @@ W: -\frac{1}{2}
 W: \frac{\sqrt{3}}{2}
 W: -\frac{\sqrt{3}}{2}
 W: 1
-S: The reference angle is $30^\circ$, and sine is positive in QII.
+S: $150^\circ$ is in quadrant II. Its reference angle (the acute angle to the $x$-axis) is $180^\circ-150^\circ=30^\circ$.
+$\sin30^\circ=\frac12$, and sine ($y$-coordinate) is positive in quadrant II.
+So $\sin150^\circ=\frac12$.
 ---
 Q: What is $\cos225^\circ$?
 L: 1
@@ -10895,7 +11130,9 @@ W: \frac{\sqrt{2}}{2}
 W: -\frac{1}{2}
 W: \frac{1}{2}
 W: -\frac{\sqrt{3}}{2}
-S: The reference angle is $45^\circ$, and cosine is negative in QIII.
+S: $225^\circ$ is in quadrant III, with reference angle $225^\circ-180^\circ=45^\circ$.
+$\cos45^\circ=\frac{\sqrt2}2$, and cosine ($x$-coordinate) is negative in quadrant III.
+So $\cos225^\circ=-\frac{\sqrt2}2$.
 ---
 Q: What is $\tan300^\circ$?
 L: 1
@@ -10904,7 +11141,9 @@ W: \sqrt{3}
 W: -\frac{\sqrt{3}}{3}
 W: \frac{\sqrt{3}}{3}
 W: -1
-S: The reference angle is $60^\circ$, and tangent is negative in QIV.
+S: $300^\circ$ is in quadrant IV, with reference angle $360^\circ-300^\circ=60^\circ$.
+$\tan60^\circ=\sqrt3$. In quadrant IV, $x\gt0$ and $y\lt0$, so $\tan=\frac yx$ is negative.
+$\tan300^\circ=-\sqrt3$.
 ---
 Q: What is $\dfrac{5\pi}{6}$ radians in degrees?
 L: 1
@@ -10913,7 +11152,8 @@ W: 120
 W: 135
 W: 300
 W: 75
-S: $\frac56\cdot180=150$.
+S: $\pi$ radians $=180^\circ$, so multiply by $\frac{180^\circ}{\pi}$.
+$\frac{5\pi}{6}\cdot\frac{180^\circ}{\pi}=5\cdot30^\circ=150^\circ$.
 ---
 Q: What is $\sin^2 17^\circ+\sin^2 73^\circ$?
 L: 1
@@ -10922,7 +11162,8 @@ W: 0
 W: 2
 W: \frac{1}{2}
 W: \frac{\sqrt{2}}{2}
-S: $\sin73^\circ=\cos17^\circ$, so the sum is $\sin^2+\cos^2=1$.
+S: $17^\circ$ and $73^\circ$ are complementary ($17+73=90$), so $\sin73^\circ=\cos17^\circ$.
+The sum is $\sin^217^\circ+\cos^217^\circ=1$ (Pythagorean identity).
 ---
 Q: If $\cos\theta=-\frac35$ and $\theta$ is in the second quadrant, what is $\tan\theta$?
 L: 2
@@ -10931,7 +11172,8 @@ W: \frac{4}{3}
 W: -\frac{3}{4}
 W: \frac{3}{4}
 W: -\frac{4}{5}
-S: $\sin\theta=\frac45$ (positive in QII), so $\tan\theta=\frac{4/5}{-3/5}=-\frac43$.
+S: In quadrant II, sine is positive and cosine negative. From $\cos\theta=-\frac35$, use a $3$-$4$-$5$ triangle: $\sin\theta=\sqrt{1-\frac{9}{25}}=\frac45$.
+$\tan\theta=\dfrac{\sin\theta}{\cos\theta}=\dfrac{4/5}{-3/5}=-\dfrac43$.
 ---
 Q: What is $\sin1110^\circ$?
 L: 2
@@ -10940,7 +11182,8 @@ W: -\frac{1}{2}
 W: \frac{\sqrt{3}}{2}
 W: 0
 W: 1
-S: $1110=3\cdot360+30$, so $\sin1110^\circ=\sin30^\circ=\frac12$.
+S: Sine has period $360^\circ$, so subtract full turns: $1110=3\cdot360+30$.
+$\sin1110^\circ=\sin30^\circ=\frac12$.
 ---
 Q: What is $\cos20^\circ\cos40^\circ\cos80^\circ$?
 L: 3
@@ -10949,8 +11192,10 @@ W: \frac{1}{4}
 W: \frac{1}{16}
 W: \frac{\sqrt{3}}{8}
 W: \frac{1}{2}
-S: Multiply by $\sin20^\circ$ and use $2\sin\theta\cos\theta=\sin2\theta$ three times: $\sin20\cos20\cos40\cos80=\frac18\sin160=\frac18\sin20$.
-So the product is $\frac18$.
+S: Let $P=\cos20^\circ\cos40^\circ\cos80^\circ$ and multiply by $\sin20^\circ$, using $\sin\theta\cos\theta=\frac12\sin2\theta$ repeatedly:
+$\sin20\cos20=\frac12\sin40$; then $\frac12\sin40\cos40=\frac14\sin80$; then $\frac14\sin80\cos80=\frac18\sin160$.
+So $P\sin20^\circ=\frac18\sin160^\circ=\frac18\sin20^\circ$ (since $\sin160^\circ=\sin20^\circ$).
+Divide by $\sin20^\circ\ne0$: $P=\frac18$.
 ---
 @@ trig-id
 Q: If $\sin x+\cos x=\frac12$, what is $\sin2x$?
@@ -10960,7 +11205,8 @@ W: \frac{3}{4}
 W: -\frac{1}{2}
 W: \frac{1}{4}
 W: -\frac{1}{4}
-S: Square: $1+\sin2x=\frac14$, so $\sin2x=-\frac34$.
+S: Square both sides: $(\sin x+\cos x)^2=\sin^2x+2\sin x\cos x+\cos^2x=1+\sin2x$.
+So $1+\sin2x=\left(\frac12\right)^2=\frac14$, giving $\sin2x=-\frac34$.
 ---
 Q: What is $\sin15^\circ$?
 L: 2
@@ -10969,7 +11215,9 @@ W: \frac{\sqrt{6}+\sqrt{2}}{4}
 W: \frac{\sqrt{3}-1}{2}
 W: \frac{1}{4}
 W: \frac{\sqrt{2}}{4}
-S: $\sin(45-30)=\frac{\sqrt2}2\cdot\frac{\sqrt3}2-\frac{\sqrt2}2\cdot\frac12=\frac{\sqrt6-\sqrt2}{4}$.
+S: Write $15^\circ=45^\circ-30^\circ$ and use $\sin(A-B)=\sin A\cos B-\cos A\sin B$:
+$\sin15^\circ=\frac{\sqrt2}2\cdot\frac{\sqrt3}2-\frac{\sqrt2}2\cdot\frac12=\frac{\sqrt6}{4}-\frac{\sqrt2}{4}=\frac{\sqrt6-\sqrt2}{4}\approx0.259$.
+($\frac{\sqrt6+\sqrt2}{4}$ is $\cos15^\circ=\sin75^\circ$.)
 ---
 Q: If $\sin x=\frac13$, what is $\cos2x$?
 L: 1
@@ -10978,7 +11226,8 @@ W: \frac{2}{9}
 W: \frac{8}{9}
 W: -\frac{7}{9}
 W: \frac{1}{3}
-S: $1-2\sin^2x=1-\frac29=\frac79$.
+S: Use the double-angle form that involves only sine: $\cos2x=1-2\sin^2x$.
+$\cos2x=1-2\cdot\frac19=1-\frac29=\frac79$.
 ---
 Q: What is $\tan75^\circ$?
 L: 2
@@ -10987,7 +11236,8 @@ W: \sqrt{3}
 W: 1+\sqrt{3}
 W: 2-\sqrt{3}
 W: \frac{1+\sqrt{3}}{2}
-S: $\tan(45+30)=\frac{1+\frac{1}{\sqrt3}}{1-\frac1{\sqrt3}}=\frac{\sqrt3+1}{\sqrt3-1}=2+\sqrt3$.
+S: $\tan(45^\circ+30^\circ)=\dfrac{\tan45^\circ+\tan30^\circ}{1-\tan45^\circ\tan30^\circ}=\dfrac{1+\frac1{\sqrt3}}{1-\frac1{\sqrt3}}$.
+Multiply top and bottom by $\sqrt3$: $\dfrac{\sqrt3+1}{\sqrt3-1}$. Rationalize with $\sqrt3+1$: $\dfrac{(\sqrt3+1)^2}{3-1}=\dfrac{4+2\sqrt3}{2}=2+\sqrt3$.
 ---
 Q: If $\sin x\cos x=\frac14$, what is $(\sin x+\cos x)^2$?
 L: 1
@@ -10996,7 +11246,8 @@ W: \frac{1}{2}
 W: \frac{5}{4}
 W: 1
 W: 2
-S: $1+2\sin x\cos x=1+\frac12=\frac32$.
+S: Expand: $(\sin x+\cos x)^2=\sin^2x+\cos^2x+2\sin x\cos x=1+2\sin x\cos x$.
+$=1+2\cdot\frac14=\frac32$.
 ---
 Q: If $\tan x=2$, what is $\sin2x$?
 L: 2
@@ -11005,7 +11256,9 @@ W: \frac{2}{5}
 W: \frac{3}{5}
 W: -\frac{3}{5}
 W: \frac{4}{3}
-S: $\sin2x=\frac{2\tan x}{1+\tan^2x}=\frac45$.
+S: Use $\sin2x=2\sin x\cos x=\dfrac{2\tan x}{1+\tan^2x}$ (divide $2\sin x\cos x$ by $\sin^2x+\cos^2x=1$ and then divide top and bottom by $\cos^2x$).
+$\sin2x=\dfrac{2\cdot2}{1+4}=\dfrac45$.
+(Or: $\tan x=2$ gives a $1$-$2$-$\sqrt5$ triangle, $\sin x=\frac{2}{\sqrt5}$, $\cos x=\frac1{\sqrt5}$, and $2\cdot\frac2{\sqrt5}\cdot\frac1{\sqrt5}=\frac45$.)
 ---
 Q: What is $\sin75^\circ\cos15^\circ$?
 L: 3
@@ -11014,7 +11267,9 @@ W: \frac{\sqrt{3}}{4}
 W: \frac{1}{2}
 W: \frac{2-\sqrt{3}}{4}
 W: \frac{1+\sqrt{3}}{4}
-S: $\sin a\cos b=\frac12[\sin(a+b)+\sin(a-b)]=\frac12\left[1+\frac{\sqrt3}2\right]=\frac{2+\sqrt3}4$.
+S: Product-to-sum: $\sin a\cos b=\frac12[\sin(a+b)+\sin(a-b)]$.
+$\sin75^\circ\cos15^\circ=\frac12[\sin90^\circ+\sin60^\circ]=\frac12\left[1+\frac{\sqrt3}2\right]=\frac{2+\sqrt3}{4}$.
+(Also $\cos15^\circ=\sin75^\circ$, so this is $\sin^275^\circ=\frac{1-\cos150^\circ}{2}$, the same value.)
 ---
 Q: If $\cos2x=\frac13$, what is $\cos^4x-\sin^4x$?
 L: 1
@@ -11023,7 +11278,8 @@ W: \frac{1}{9}
 W: \frac{2}{3}
 W: 1
 W: \frac{\sqrt{3}}{3}
-S: $\cos^4x-\sin^4x=(\cos^2x-\sin^2x)(\cos^2x+\sin^2x)=\cos2x=\frac13$.
+S: Factor as a difference of squares: $\cos^4x-\sin^4x=(\cos^2x-\sin^2x)(\cos^2x+\sin^2x)$.
+The second factor is $1$ and the first is $\cos2x$, so the expression equals $\cos2x=\frac13$.
 ---
 @@ trig-law
 Q: A triangle has $a=7$, $b=8$, and $C=60^\circ$. What is $c$?
@@ -11033,7 +11289,8 @@ W: 13
 W: \sqrt{113}
 W: \frac{15}{2}
 W: \sqrt{65}
-S: $c^2=49+64-2\cdot56\cdot\frac12=57$.
+S: Law of Cosines: $c^2=a^2+b^2-2ab\cos C$.
+$c^2=49+64-2\cdot7\cdot8\cdot\frac12=113-56=57$, so $c=\sqrt{57}$.
 ---
 Q: A triangle has sides $5$, $7$, $8$. What is the angle opposite the side of length $7$, in degrees?
 L: 1
@@ -11042,7 +11299,8 @@ W: 30
 W: 45
 W: 90
 W: 120
-S: $\cos\theta=\frac{25+64-49}{2\cdot5\cdot8}=\frac{40}{80}=\frac12$, so $60^\circ$.
+S: Law of Cosines solved for the angle: $\cos\theta=\dfrac{(\text{adjacent})^2+(\text{adjacent})^2-(\text{opposite})^2}{2\cdot(\text{adjacent})(\text{adjacent})}$.
+$\cos\theta=\dfrac{5^2+8^2-7^2}{2\cdot5\cdot8}=\dfrac{25+64-49}{80}=\dfrac{40}{80}=\dfrac12$, so $\theta=60^\circ$.
 ---
 Q: In a triangle, $a=10$ and $A=30^\circ$. What is the circumradius?
 L: 1
@@ -11051,7 +11309,8 @@ W: 5
 W: 20
 W: 10\sqrt{3}
 W: 5\sqrt{3}
-S: $2R=\frac{a}{\sin A}=20$, so $R=10$.
+S: Extended Law of Sines: $\dfrac{a}{\sin A}=2R$.
+$2R=\dfrac{10}{\sin30^\circ}=\dfrac{10}{1/2}=20$, so $R=10$.
 ---
 Q: A triangle has sides $3$, $5$, $7$. What is its largest angle, in degrees?
 L: 1
@@ -11060,7 +11319,9 @@ W: 135
 W: 150
 W: 90
 W: 105
-S: $\cos\theta=\frac{9+25-49}{30}=-\frac12$, so $120^\circ$.
+S: The largest angle is opposite the longest side, $7$.
+$\cos\theta=\dfrac{3^2+5^2-7^2}{2\cdot3\cdot5}=\dfrac{9+25-49}{30}=\dfrac{-15}{30}=-\dfrac12$.
+So $\theta=120^\circ$ (an obtuse angle, since the cosine is negative).
 ---
 Q: In a triangle, $A=45^\circ$, $B=60^\circ$, and $a=2$. What is $b$?
 L: 2
@@ -11069,7 +11330,8 @@ W: \sqrt{3}
 W: 2\sqrt{3}
 W: \sqrt{2}
 W: 3
-S: $b=\frac{a\sin B}{\sin A}=\frac{2\cdot\frac{\sqrt3}2}{\frac{\sqrt2}2}=\frac{2\sqrt3}{\sqrt2}=\sqrt6$.
+S: Law of Sines: $\dfrac{a}{\sin A}=\dfrac{b}{\sin B}$, so $b=\dfrac{a\sin B}{\sin A}$.
+$b=\dfrac{2\cdot\frac{\sqrt3}2}{\frac{\sqrt2}2}=\dfrac{\sqrt3}{\frac{\sqrt2}{2}}=\dfrac{2\sqrt3}{\sqrt2}=\sqrt2\cdot\sqrt3=\sqrt6$.
 ---
 Q: A triangle has two sides of length $6$ with an included angle of $150^\circ$. What is its area?
 L: 1
@@ -11078,7 +11340,9 @@ W: 18
 W: 9\sqrt{3}
 W: 36
 W: 12
-S: $\frac12\cdot36\cdot\sin150^\circ=18\cdot\frac12=9$.
+S: Area of a triangle from two sides and the included angle: $\frac12ab\sin C$.
+$\frac12\cdot6\cdot6\cdot\sin150^\circ=18\cdot\frac12=9$.
+($\sin150^\circ=\sin30^\circ=\frac12$.)
 ---
 Q: A triangle has sides $4$, $5$, $6$. What is the cosine of its largest angle?
 L: 2
@@ -11087,7 +11351,9 @@ W: \frac{1}{4}
 W: -\frac{1}{8}
 W: \frac{3}{4}
 W: \frac{9}{16}
-S: $\frac{16+25-36}{40}=\frac{5}{40}=\frac18$.
+S: The largest angle is opposite the longest side, $6$.
+$\cos\theta=\dfrac{4^2+5^2-6^2}{2\cdot4\cdot5}=\dfrac{16+25-36}{40}=\dfrac5{40}=\dfrac18$.
+(Positive, so even the largest angle is acute.)
 ---
 Q: A triangle has sides $a=8$, $b=5$, $c=7$. What is $\sin C$?
 L: 2
@@ -11096,7 +11362,9 @@ W: \frac{1}{2}
 W: \frac{\sqrt{2}}{2}
 W: \sqrt{3}
 W: 1
-S: $\cos C=\frac{64+25-49}{80}=\frac12$, so $C=60^\circ$ and $\sin C=\frac{\sqrt3}2$.
+S: Angle $C$ is opposite side $c=7$, between sides $a=8$ and $b=5$.
+$\cos C=\dfrac{8^2+5^2-7^2}{2\cdot8\cdot5}=\dfrac{64+25-49}{80}=\dfrac{40}{80}=\dfrac12$, so $C=60^\circ$.
+$\sin C=\sin60^\circ=\frac{\sqrt3}2$.
 ---
 @@ trig-eq
 Q: How many solutions does $\sin x=\frac12$ have in $[0,2\pi)$?
@@ -11106,7 +11374,8 @@ W: 1
 W: 4
 W: 3
 W: 0
-S: $x=\frac\pi6,\frac{5\pi}6$.
+S: $\sin x=\frac12$ when the reference angle is $\frac\pi6$ and sine is positive: quadrants I and II.
+$x=\frac\pi6$ and $x=\pi-\frac\pi6=\frac{5\pi}6$. That's $2$ solutions.
 ---
 Q: How many solutions does $\sin3x=0$ have in $[0,2\pi)$?
 L: 2
@@ -11115,7 +11384,9 @@ W: 3
 W: 7
 W: 4
 W: 5
-S: $3x=k\pi$, so $x=\frac{k\pi}3$ for $k=0,1,\dots,5$: $6$ solutions.
+S: $\sin\theta=0$ exactly when $\theta=k\pi$. So $3x=k\pi$, i.e. $x=\frac{k\pi}{3}$.
+In $[0,2\pi)$: $k=0,1,2,3,4,5$ (at $k=6$, $x=2\pi$ is excluded). That's $6$ solutions.
+(Compressing by $3$ fits three periods of $\sin$ into $[0,2\pi)$, each with $2$ zeros.)
 ---
 Q: What is the maximum value of $3\sin x+4\cos x$?
 L: 1
@@ -11124,7 +11395,9 @@ W: 7
 W: 4
 W: 3
 W: 12
-S: $\sqrt{3^2+4^2}=5$.
+S: Write $3\sin x+4\cos x=5\left(\frac35\sin x+\frac45\cos x\right)=5\sin(x+\varphi)$ where $\cos\varphi=\frac35$, $\sin\varphi=\frac45$.
+Since $\sin$ is at most $1$, the maximum is $5=\sqrt{3^2+4^2}$.
+In general, $a\sin x+b\cos x$ ranges from $-\sqrt{a^2+b^2}$ to $\sqrt{a^2+b^2}$.
 ---
 Q: How many solutions does $2\sin^2x-\sin x-1=0$ have in $[0,2\pi)$?
 L: 2
@@ -11133,7 +11406,10 @@ W: 2
 W: 4
 W: 5
 W: 1
-S: $(2\sin x+1)(\sin x-1)=0$. $\sin x=1$ gives one solution and $\sin x=-\frac12$ gives two: $3$.
+S: Treat it as a quadratic in $s=\sin x$: $2s^2-s-1=(2s+1)(s-1)=0$, so $\sin x=1$ or $\sin x=-\frac12$.
+$\sin x=1$: $x=\frac\pi2$ (one solution).
+$\sin x=-\frac12$: $x=\frac{7\pi}6,\frac{11\pi}6$ (two solutions).
+Total: $3$.
 ---
 Q: What is the sum of the solutions of $\cos x=0$ in $[0,2\pi)$?
 L: 1
@@ -11142,7 +11418,8 @@ W: \pi
 W: 3\pi
 W: \frac{\pi}{2}
 W: 4\pi
-S: $\frac\pi2+\frac{3\pi}2=2\pi$.
+S: $\cos x=0$ in $[0,2\pi)$ at $x=\frac\pi2$ and $x=\frac{3\pi}2$ (the top and bottom of the unit circle).
+Sum: $\frac\pi2+\frac{3\pi}2=2\pi$.
 ---
 Q: What is the minimum value of $\sin x\cos x$?
 L: 1
@@ -11151,7 +11428,9 @@ W: -1
 W: 0
 W: -\frac{1}{4}
 W: -\frac{\sqrt{2}}{2}
-S: $\sin x\cos x=\frac12\sin2x\ge-\frac12$.
+S: Double-angle: $\sin x\cos x=\frac12\sin2x$.
+$\sin2x$ ranges over $[-1,1]$, so $\frac12\sin2x$ ranges over $\left[-\frac12,\frac12\right]$.
+The minimum is $-\frac12$ (at $x=\frac{3\pi}4$, for example).
 ---
 Q: How many solutions does $\sin x=\cos x$ have in $[0,2\pi)$?
 L: 1
@@ -11160,7 +11439,8 @@ W: 1
 W: 4
 W: 0
 W: 3
-S: $\tan x=1$: $x=\frac\pi4,\frac{5\pi}4$.
+S: Divide by $\cos x$ (it can't be $0$ here, since then $\sin x=\pm1\ne0$): $\tan x=1$.
+In $[0,2\pi)$: $x=\frac\pi4$ and $x=\frac{5\pi}4$ (tangent has period $\pi$). That's $2$ solutions.
 ---
 Q: How many real solutions does $\sin x=\dfrac{x}{10}$ have?
 L: 3
@@ -11169,8 +11449,12 @@ W: 5
 W: 6
 W: 8
 W: 3
-S: Solutions need $|x|\le10$. For $x>0$ the line meets each arch of $\sin x$ above the axis: once in $(0,\pi)$, twice in $(2\pi,3\pi)$, and none after $10$ (since $3\pi\lt 10\lt 4\pi$ and $\sin x\lt 0$ on $(3\pi,10]$). That is 3 positive solutions.
-By symmetry there are 3 negative ones, plus $x=0$: $7$.
+S: Since $|\sin x|\le1$, solutions need $\left|\frac{x}{10}\right|\le1$, i.e. $|x|\le10$.
+For $x\gt0$: the line $y=\frac x{10}$ (between $0$ and $1$) can meet $\sin x$ only where $\sin x\gt0$:
+• on $(0,\pi)$: once (besides $x=0$),
+• on $(2\pi,3\pi)\approx(6.28,9.42)$: twice (the arch rises above the line and comes back down),
+• on $(3\pi,10]$: $\sin x\lt0$, so none. ($4\pi\approx12.6\gt10$.)
+That's $3$ positive solutions. Both sides are odd functions, so there are also $3$ negative ones, plus $x=0$: $7$ in all.
 @@ cplx-arith
 Q: What is $(3+2i)(1-4i)$?
 L: 1
@@ -15895,100 +16179,100 @@ r=>{const rad=ri(r,2,12),th=pick(r,[30,45,60,90,120,150,180,240]);const L=F(th*r
 /* ---- polyg.txt ---- */
 GENS['polyg-quad']=[
 r=>{const [a,b,c]=pick(r,TRIPLES);const ask=r()<.5;
- return ask?{lvl:1,q:T`A rhombus has diagonals $${2*a}$ and $${2*b}$. What is its side length?`,a:c,w:[a+b,2*c,c+1,2*a*b],s:T`Half-diagonals $${a}$ and $${b}$ are perpendicular: side $=\sqrt{${a*a}+${b*b}}=${c}$.`}
- :{lvl:1,q:T`A rhombus has diagonals $${2*a}$ and $${2*b}$. What is its area?`,a:2*a*b,w:[4*a*b,a*b,c*c,2*(a+b)],s:T`$\frac{d_1d_2}2=\frac{${2*a}\cdot${2*b}}2=${2*a*b}$.`}},
+ return ask?{lvl:1,q:T`A rhombus has diagonals $${2*a}$ and $${2*b}$. What is its side length?`,a:c,w:[a+b,2*c,c+1,2*a*b],s:T`The diagonals of a rhombus are perpendicular bisectors of each other, cutting it into four congruent right triangles.<br>Each has legs equal to the half-diagonals, $${a}$ and $${b}$, and hypotenuse equal to the side.<br>Side $=\sqrt{${a}^2+${b}^2}=\sqrt{${a*a+b*b}}=${c}$.`}
+ :{lvl:1,q:T`A rhombus has diagonals $${2*a}$ and $${2*b}$. What is its area?`,a:2*a*b,w:[4*a*b,a*b,c*c,2*(a+b)],s:T`A rhombus has perpendicular diagonals, so its area is $\frac{d_1d_2}{2}$ (it's half of the rectangle with sides $d_1$ and $d_2$).<br>Area $=\frac{${2*a}\cdot${2*b}}{2}=${2*a*b}$.`}},
 r=>{const a=ri(r,2,20),b=ri(r,2,20),h=ri(r,2,15);
- return{lvl:1,q:T`A trapezoid has bases $${a}$ and $${b}$ and height $${h}$. What is its area?`,a:F((a+b)*h,2),w:[F((a+b)*h),F(a*b*h,2),F(Math.max(a,b)*h),F((a+b)*h,4)],s:T`$\frac{${a}+${b}}2\cdot${h}=${F((a+b)*h,2).tex()}$.`}},
+ return{lvl:1,q:T`A trapezoid has bases $${a}$ and $${b}$ and height $${h}$. What is its area?`,a:F((a+b)*h,2),w:[F((a+b)*h),F(a*b*h,2),F(Math.max(a,b)*h),F((a+b)*h,4)],s:T`Trapezoid area $=$ (average of the two bases) $\times$ height.<br>$\frac{${a}+${b}}{2}\cdot${h}=\frac{${a+b}}{2}\cdot${h}=${F((a+b)*h,2).tex()}$.`}},
 r=>{const [x,h,l]=pick(r,TRIPLES);const a=ri(r,2,15),b=a+2*x;
  return{lvl:2,q:T`An isosceles trapezoid has bases $${a}$ and $${b}$ and legs of length $${l}$. What is its area?`,a:(a+b)/2*h,w:[(a+b)/2*l,(a+b)*h,b*h,a*h+x*h/2],
- s:T`Each overhang is $\frac{${b}-${a}}{2}=${x}$, so $h=\sqrt{${l*l}-${x*x}}=${h}$ and the area is $\frac{${a+b}}2\cdot${h}=${(a+b)/2*h}$.`}},
+ s:T`Drop perpendiculars from the ends of the shorter base. Each cuts off a right triangle with horizontal leg ("overhang") $\frac{${b}-${a}}{2}=${x}$ and hypotenuse ${l} (a leg of the trapezoid).<br>Height: $h=\sqrt{${l}^2-${x}^2}=\sqrt{${l*l-x*x}}=${h}$.<br>Area $=\frac{${a}+${b}}{2}\cdot${h}=${(a+b)/2}\cdot${h}=${(a+b)/2*h}$.`}},
 r=>{const [a,b,c]=pick(r,TRIPLES);
  return{lvl:2,q:T`A rectangle has perimeter $${2*(a+b)}$ and diagonal $${c}$. What is its area?`,a:a*b,w:[c*c,(a+b)**2/4|0,a*b+c,2*a*b],
- s:T`$a+b=${a+b}$ and $a^2+b^2=${c*c}$, so $ab=\frac{${(a+b)**2}-${c*c}}{2}=${a*b}$.`}},
+ s:T`Let the sides be $x$ and $y$. The perimeter gives $x+y=${a+b}$; the diagonal gives $x^2+y^2=${c*c}$ (Pythagoras).<br>Since $(x+y)^2=x^2+y^2+2xy$: $${(a+b)**2}=${c*c}+2xy$, so $2xy=${(a+b)**2-c*c}$.<br>Area $=xy=${a*b}$. (The sides are $${a}$ and $${b}$.)`}},
 ];
 GENS['polyg-reg']=[
 r=>{const n=ri(r,5,30);
- return{lvl:1,q:T`How many diagonals does a convex polygon with ${n} sides have?`,a:n*(n-3)/2,w:[n*(n-1)/2,n*(n-3),n*(n-2)/2,n*(n-3)/2+n],s:T`$\frac{n(n-3)}2=\frac{${n}\cdot${n-3}}2=${n*(n-3)/2}$.`}},
+ return{lvl:1,q:T`How many diagonals does a convex polygon with ${n} sides have?`,a:n*(n-3)/2,w:[n*(n-1)/2,n*(n-3),n*(n-2)/2,n*(n-3)/2+n],s:T`From each of the ${n} vertices you can draw a diagonal to every vertex except itself and its two neighbors: $${n}-3=${n-3}$ diagonals.<br>That counts each diagonal twice (once from each end), so the total is $\frac{${n}\cdot${n-3}}{2}=${n*(n-3)/2}$.`}},
 r=>{const n=pick(r,[3,4,5,6,8,9,10,12,15,18,20,24,30,36,40,45,60,72]);const ext=360/n;const ask=r()<.5;
- return ask?{lvl:1,q:T`Each interior angle of a regular polygon is $${180-ext}^\circ$. How many sides does it have?`,a:n,w:[n+1,n-1,n+2,Math.round(360/(180-ext))||n+3],s:T`Exterior angle $${ext}^\circ$, so $n=\frac{360}{${ext}}=${n}$.`}
- :{lvl:1,q:T`Each exterior angle of a regular polygon is $${ext}^\circ$. How many sides does it have?`,a:n,w:[n+1,n-1,n+2,n*2],s:T`$n=\frac{360}{${ext}}=${n}$.`}},
+ return ask?{lvl:1,q:T`Each interior angle of a regular polygon is $${180-ext}^\circ$. How many sides does it have?`,a:n,w:[n+1,n-1,n+2,Math.round(360/(180-ext))||n+3],s:T`At each vertex, the interior and exterior angles add to $180^\circ$, so each exterior angle is $180^\circ-${180-ext}^\circ=${ext}^\circ$.<br>The exterior angles of a convex polygon always add to $360^\circ$, so $n=\frac{360}{${ext}}=${n}$.`}
+ :{lvl:1,q:T`Each exterior angle of a regular polygon is $${ext}^\circ$. How many sides does it have?`,a:n,w:[n+1,n-1,n+2,n*2],s:T`Walking around a convex polygon, you turn by the exterior angle at each vertex and make one full turn in total: the exterior angles add to $360^\circ$.<br>In a regular polygon they're equal, so $n=\frac{360}{${ext}}=${n}$.`}},
 r=>{const s_=ri(r,1,10);
- return{lvl:1,q:T`What is the area of a regular hexagon with side $${s_}$?`,a:FR(F(3*s_*s_,2),3),w:[FR(F(3*s_*s_),3),FR(F(3*s_*s_,4),3),FR(F(s_*s_,4),3),FR(F(6*s_*s_),1)],s:T`Six equilateral triangles: $6\cdot\frac{\sqrt3}{4}\cdot${s_*s_}=${FR(F(3*s_*s_,2),3).tex}$.`}},
+ return{lvl:1,q:T`What is the area of a regular hexagon with side $${s_}$?`,a:FR(F(3*s_*s_,2),3),w:[FR(F(3*s_*s_),3),FR(F(3*s_*s_,4),3),FR(F(s_*s_,4),3),FR(F(6*s_*s_),1)],s:T`A regular hexagon splits into 6 equilateral triangles meeting at its center, each with side $${s_}$.<br>Each has area $\frac{\sqrt3}{4}\cdot${s_}^2=\frac{${s_*s_}\sqrt3}{4}$.<br>Total: $6\cdot\frac{${s_*s_}\sqrt3}{4}=${FR(F(3*s_*s_,2),3).tex}$.`}},
 r=>{const n=ri(r,4,25);
- return{lvl:1,q:T`The interior angles of a convex polygon sum to $${180*(n-2)}^\circ$. How many sides does it have?`,a:n,w:[n-2,n-1,n+1,n+2],s:T`$180(n-2)=${180*(n-2)}$ gives $n=${n}$.`}},
+ return{lvl:1,q:T`The interior angles of a convex polygon sum to $${180*(n-2)}^\circ$. How many sides does it have?`,a:n,w:[n-2,n-1,n+1,n+2],s:T`Drawing diagonals from one vertex splits a convex $n$-gon into $n-2$ triangles, so the angles sum to $180(n-2)$ degrees.<br>$180(n-2)=${180*(n-2)}$ gives $n-2=${n-2}$, so $n=${n}$.`}},
 ];
 GENS['polyg-shoe']=[
 r=>{const a=ri(r,2,10),b=ri(r,1,10),c=ri(r,1,10),d=ri(r,1,10);const two=Math.abs(a*c-b*0)+Math.abs(b*d-0*c);const S=a*c+b*d;
  return{lvl:2,q:T`What is the area of the quadrilateral with vertices $(0,0)$, $(${a},0)$, $(${b},${c})$, $(0,${d})$, in that order?`,a:F(S,2),w:[F(S),F(a*d,2),F(S+2,2),F(a*c,2)],
- s:T`Shoelace: $0+(${a}\cdot${c}-${b}\cdot0)+(${b}\cdot${d}-0\cdot${c})+0=${S}$. Area $=${F(S,2).tex()}$.`}},
+ s:T`Shoelace formula: Area $=\frac12\left|\sum(x_iy_{i+1}-x_{i+1}y_i)\right|$ around the polygon.<br>• $(0,0)\to(${a},0)$: $0$<br>• $(${a},0)\to(${b},${c})$: $${a}\cdot${c}-${b}\cdot0=${a*c}$<br>• $(${b},${c})\to(0,${d})$: $${b}\cdot${d}-0\cdot${c}=${b*d}$<br>• $(0,${d})\to(0,0)$: $0$<br>Sum $${S}$, so the area is $\frac{${S}}{2}=${F(S,2).tex()}$.`}},
 r=>{const I=ri(r,0,30),B=ri(r,3,30);const A=F(2*I+B-2,2);
- return{lvl:1,q:T`A lattice polygon has ${I} interior lattice points and ${B} boundary lattice points. What is its area?`,a:A,w:[A.add(1),F(I+B),F(I).add(F(B,2)),A.sub(1)],s:T`Pick: $${I}+\frac{${B}}2-1=${A.tex()}$.`}},
+ return{lvl:1,q:T`A lattice polygon has ${I} interior lattice points and ${B} boundary lattice points. What is its area?`,a:A,w:[A.add(1),F(I+B),F(I).add(F(B,2)),A.sub(1)],s:T`Pick's Theorem: a lattice polygon with $I$ interior points and $B$ boundary points has area $A=I+\frac B2-1$.<br>$A=${I}+\frac{${B}}{2}-1=${A.tex()}$.`}},
 r=>{const x=ri(r,-10,10),y=ri(r,-10,10),dx=ri(r,1,30),dy=ri(r,0,30);const g=gcd(dx,dy);
- return{lvl:1,q:T`How many lattice points lie on the segment from $(${x},${y})$ to $(${x+dx},${y+dy})$, including endpoints?`,a:g+1,w:[g,g+2,dx+1,Math.max(dx,dy)+1],s:T`$\gcd(${dx},${dy})+1=${g+1}$.`}},
+ return{lvl:1,q:T`How many lattice points lie on the segment from $(${x},${y})$ to $(${x+dx},${y+dy})$, including endpoints?`,a:g+1,w:[g,g+2,dx+1,Math.max(dx,dy)+1],s:T`The segment moves $${dx}$ across and $${dy}$ up. With $g=\gcd(${dx},${dy})=${g}$, it can be split into $${g}$ equal steps of $\left(${dx/g},${dy/g}\right)$, each landing on a lattice point, and there are no lattice points between those.<br>So there are $g+1=${g+1}$ lattice points, counting both endpoints.`}},
 r=>{const a=ri(r,2,15),b=ri(r,2,15);const A=a*b/2;const B=a+b+gcd(a,b);const I=A-B/2+1;
  return{lvl:2,q:T`How many lattice points lie strictly inside the triangle with vertices $(0,0)$, $(${a},0)$, $(0,${b})$?`,a:I,w:[I+1,I-1>=0?I-1:I+2,A,B],
- s:T`Area $${A}$; boundary points $${a}+${b}+\gcd(${a},${b})=${B}$. Pick: $I=${A}-${B/2}+1=${I}$.`}},
+ s:T`Use Pick's Theorem, $A=I+\frac B2-1$, and solve for $I$.<br>Area: $\frac12\cdot${a}\cdot${b}=${A}$.<br>Boundary points: the legs contribute $${a}$ and $${b}$, the hypotenuse $\gcd(${a},${b})=${gcd(a,b)}$ (each edge counted without its starting vertex), so $B=${B}$.<br>$I=A-\frac B2+1=${A}-${B/2}+1=${I}$.`}},
 ];
 GENS['polyg-ratio']=[
 r=>{const p=ri(r,1,7),q=ri(r,1,7),k=ri(r,1,10);const T_=(p+q)*k;
- return{lvl:1,q:T`Point $D$ is on side $BC$ of triangle $ABC$ with $BD:DC=${p}:${q}$. If the area of $ABC$ is $${T_}$, what is the area of $ABD$?`,a:p*k,w:[q*k,T_/2,F(p*T_,q),p*k+k],s:T`Same height from $A$: $\frac{${p}}{${p+q}}\cdot${T_}=${p*k}$.`}},
+ return{lvl:1,q:T`Point $D$ is on side $BC$ of triangle $ABC$ with $BD:DC=${p}:${q}$. If the area of $ABC$ is $${T_}$, what is the area of $ABD$?`,a:p*k,w:[q*k,T_/2,F(p*T_,q),p*k+k],s:T`Triangles $ABD$ and $ABC$ have the same height from $A$ to line $BC$, so their areas are in the ratio of their bases.<br>$\frac{BD}{BC}=\frac{${p}}{${p}+${q}}=\frac{${p}}{${p+q}}$.<br>$[ABD]=\frac{${p}}{${p+q}}\cdot${T_}=${p*k}$.`}},
 r=>{const p=ri(r,1,5),q=ri(r,1,5),rr=ri(r,1,5),s_=ri(r,1,5);const v=F(rr*(p+q),p*s_);
  return{lvl:2,q:T`In triangle $ABC$, $D$ is on $BC$ with $BD:DC=${p}:${q}$ and $E$ is on $AC$ with $AE:EC=${rr}:${s_}$. Cevians $AD$ and $BE$ meet at $P$. What is $\dfrac{AP}{PD}$?`,a:v,w:[v.add(1),F(p+q,p),F(rr,s_),v.mul(2),F(p*s_,rr*(p+q))],
- s:T`Mass points: $m_B=${q}$, $m_C=${p}$ (so $m_D=${p+q}$). On $AC$: $m_A\cdot${rr}=m_C\cdot${s_}$ gives $m_A=${F(p*s_,rr).tex()}$.<br>$\frac{AP}{PD}=\frac{m_D}{m_A}=${v.tex()}$.`}},
+ s:T`Mass points: assign masses so each cevian foot balances.<br>On $BC$: $BD:DC=${p}:${q}$ means $m_B\cdot${p}=m_C\cdot${q}$; take $m_B=${q}$, $m_C=${p}$, so $m_D=${p+q}$.<br>On $AC$: $AE:EC=${rr}:${s_}$ means $m_A\cdot${rr}=m_C\cdot${s_}$, so $m_A=\frac{${p}\cdot${s_}}{${rr}}=${F(p*s_,rr).tex()}$.<br>On $AD$, $P$ divides it inversely to the end masses: $\frac{AP}{PD}=\frac{m_D}{m_A}=\frac{${p+q}}{${F(p*s_,rr).tex()}}=${v.tex()}$.`}},
 r=>{const t=pick(r,[F(1,3),F(1,4),F(1,5),F(2,5),F(1,6)]);const k=ri(r,1,4);const Tot=t.d*t.d*k*3;const v=F(1).sub(t.mul(F(1).sub(t)).mul(3)).mul(Tot);
  return{lvl:3,q:T`A triangle has area $${Tot}$. On each side, a point is chosen $${t.tex()}$ of the way along it (all in the same rotational direction), and the three points form a triangle. What is its area?`,a:v,w:[t.mul(Tot),F(Tot,4),v.add(k),F(Tot).sub(v)],
- s:T`Each corner triangle has area $t(1-t)=${t.mul(F(1).sub(t)).tex()}$ of the whole. The inner triangle is $1-3t(1-t)=${F(1).sub(t.mul(F(1).sub(t)).mul(3)).tex()}$ of $${Tot}$, i.e. $${v.tex()}$.`}},
+ s:T`Let $t=${t.tex()}$. Each corner triangle shares an angle with the big triangle, and the sides around that angle are $t$ and $1-t$ of the original sides.<br>Area scales like the product of those sides ($\frac12ab\sin C$), so each corner triangle is $t(1-t)=${t.tex()}\cdot${F(1).sub(t).tex()}=${t.mul(F(1).sub(t)).tex()}$ of the whole.<br>Inner triangle: $1-3\cdot${t.mul(F(1).sub(t)).tex()}=${F(1).sub(t.mul(F(1).sub(t)).mul(3)).tex()}$ of $${Tot}$, which is $${v.tex()}$.`}},
 r=>{const a=ri(r,1,5),b=ri(r,a+1,8),k=ri(r,1,5);const big=b*b*k,small=a*a*k;
  return{lvl:2,q:T`Trapezoid $ABCD$ has $AB\parallel CD$ with $AB:CD=${b}:${a}$. Its diagonals meet at $P$. If triangle $PAB$ has area $${big}$, what is the area of triangle $PCD$?`,a:small,w:[a*b*k,F(big*a,b),small*2,big-small],
- s:T`$\triangle PAB\sim\triangle PCD$ with ratio $\frac{${b}}{${a}}$, so the areas are in ratio $\frac{${b*b}}{${a*a}}$: $${small}$.`}},
+ s:T`$AB\parallel CD$ makes the alternate interior angles equal, so $\triangle PAB\sim\triangle PCD$ with ratio $\frac{AB}{CD}=\frac{${b}}{${a}}$.<br>Areas of similar triangles scale with the square of the ratio: $\frac{[PAB]}{[PCD]}=\frac{${b*b}}{${a*a}}$.<br>$[PCD]=${big}\cdot\frac{${a*a}}{${b*b}}=${small}$.`}},
 ];
 /* ---- coord.txt ---- */
 const PT=(x,y)=>O('('+x+','+y+')',x*1000+y);
 GENS['coord-line']=[
 r=>{const x1=ri(r,-8,8),y1=ri(r,-8,8);let x2=ri(r,-8,8);if(x2===x1)x2++;const y2=ri(r,-8,8);const m=F(y2-y1,x2-x1);
- return{lvl:1,q:T`What is the slope of the line through $(${x1},${y1})$ and $(${x2},${y2})$?`,a:m,w:[m.neg(),y2===y1?F(1):F(x2-x1,y2-y1),m.add(1),F(y2+y1,(x2+x1)||1)],s:T`$\frac{${y2}-${P(y1)}}{${x2}-${P(x1)}}=${m.tex()}$.`}},
+ return{lvl:1,q:T`What is the slope of the line through $(${x1},${y1})$ and $(${x2},${y2})$?`,a:m,w:[m.neg(),y2===y1?F(1):F(x2-x1,y2-y1),m.add(1),F(y2+y1,(x2+x1)||1)],s:T`Slope $=\dfrac{\text{change in }y}{\text{change in }x}=\dfrac{y_2-y_1}{x_2-x_1}$.<br>$\dfrac{${y2}-${P(y1)}}{${x2}-${P(x1)}}=\dfrac{${y2-y1}}{${x2-x1}}=${m.tex()}$.<br>Keep the points in the same order on top and bottom; swapping only one of them flips the sign.`}},
 r=>{const m=ri(r,-5,5)||2,x0=ri(r,-6,6),y0=ri(r,-6,6);const b=F(y0).add(F(x0,m));
  return{lvl:1,q:T`A line passes through $(${x0},${y0})$ and is perpendicular to $y=${poly([[m,1],[ri(r,-5,5),0]],'x')}$. What is its $y$-intercept?`,a:b,w:[F(y0-m*x0),F(y0).sub(F(x0,m)),b.neg(),F(y0+x0)],
- s:T`Perpendicular slope $-\frac1{${m}}$: $y-${P(y0)}=-\frac1{${m}}(x-${P(x0)})$. At $x=0$: $y=${b.tex()}$.`}},
+ s:T`The given line has slope $${m}$, so a perpendicular line has slope $${F(-1,m).tex()}$ (the negative reciprocal; the product of perpendicular slopes is $-1$).<br>Point-slope form through $(${x0},${y0})$: $y-${P(y0)}=${F(-1,m).tex()}(x-${P(x0)})$.<br>Set $x=0$: $y=${y0}+${P(F(-1,m))}\cdot${P(-x0)}=${b.tex()}$. That's the $y$-intercept.`}},
 r=>{const a=ri(r,1,9),b=ri(r,1,9),k=ri(r,1,10);const c=a*b*k;const xi=b*k,yi=a*k;
- return{lvl:1,q:T`What is the area of the triangle formed by the line $${a===1?'':a}x+${b===1?'':b}y=${c}$ and the coordinate axes?`,a:F(xi*yi,2),w:[F(xi*yi),F(xi+yi),F(xi*yi,4),F(c,2)],s:T`The intercepts are $${xi}$ and $${yi}$, so the area is $\frac12\cdot${xi}\cdot${yi}=${F(xi*yi,2).tex()}$.`}},
+ return{lvl:1,q:T`What is the area of the triangle formed by the line $${a===1?'':a}x+${b===1?'':b}y=${c}$ and the coordinate axes?`,a:F(xi*yi,2),w:[F(xi*yi),F(xi+yi),F(xi*yi,4),F(c,2)],s:T`Find the intercepts. $x$-intercept: set $y=0$, $${a}x=${c}$, $x=${xi}$. $y$-intercept: set $x=0$, $${b}y=${c}$, $y=${yi}$.<br>The line and the axes form a right triangle with legs $${xi}$ and $${yi}$.<br>Area $=\frac12\cdot${xi}\cdot${yi}=${F(xi*yi,2).tex()}$.`}},
 r=>{const x1=ri(r,-5,5),y1=ri(r,-8,8),m=ri(r,-4,4)||1,dx=ri(r,1,5),dk=ri(r,1,6);const x2=x1+dx,y2=y1+m*dx,y3=y1+m*(dx+dk),k=x1+dx+dk;
- return{lvl:1,q:T`The points $(${x1},${y1})$, $(${x2},${y2})$, and $(k,${y3})$ are collinear. What is $k$?`,a:k,w:[k+1,k-1,x2+dx,F(y3,m)],s:T`The slope is $${m}$, so $${y3}=${y1}+${m}(k-${P(x1)})$, giving $k=${k}$.`}},
+ return{lvl:1,q:T`The points $(${x1},${y1})$, $(${x2},${y2})$, and $(k,${y3})$ are collinear. What is $k$?`,a:k,w:[k+1,k-1,x2+dx,F(y3,m)],s:T`Collinear points all lie on one line, so every pair has the same slope.<br>Slope from the first two points: $\dfrac{${y2}-${P(y1)}}{${x2}-${P(x1)}}=\dfrac{${y2-y1}}{${dx}}=${m}$.<br>The third point needs $\dfrac{${y3}-${P(y1)}}{k-${P(x1)}}=${m}$, so $k-${P(x1)}=\dfrac{${y3-y1}}{${m}}=${dx+dk}$ and $k=${k}$.`}},
 ];
 GENS['coord-dist']=[
 r=>{const [a,b,c]=pick(r,TRIPLES);const x=ri(r,-9,9),y=ri(r,-9,9);const sx=pick(r,[1,-1]),sy=pick(r,[1,-1]);
- return{lvl:1,q:T`What is the distance between $(${x},${y})$ and $(${x+sx*a},${y+sy*b})$?`,a:c,w:[a+b,c+1,Math.abs(a-b)||c+2,c*c],s:T`$\sqrt{${a}^2+${b}^2}=${c}$.`}},
+ return{lvl:1,q:T`What is the distance between $(${x},${y})$ and $(${x+sx*a},${y+sy*b})$?`,a:c,w:[a+b,c+1,Math.abs(a-b)||c+2,c*c],s:T`Distance formula: $\sqrt{(\Delta x)^2+(\Delta y)^2}$.<br>$\Delta x=${sx*a}$, $\Delta y=${sy*b}$, so the distance is $\sqrt{${a*a}+${b*b}}=\sqrt{${c*c}}=${c}$.<br>(It's the hypotenuse of a ${a}-${b}-${c} right triangle.)`}},
 r=>{const h=ri(r,-8,8),k=ri(r,-8,8),rr=ri(r,1,12);const D=-2*h,E=-2*k,Fc=h*h+k*k-rr*rr;const ask=r()<.5;
  const eq=T`x^2+y^2${D<0?'-':'+'}${Math.abs(D)}x${E<0?'-':'+'}${Math.abs(E)}y${Fc<0?'-':'+'}${Math.abs(Fc)}=0`.replace('+0x','').replace('-0x','').replace('+0y','').replace('-0y','').replace('+0=','=');
- return ask?{lvl:1,q:T`What is the radius of the circle $${eq}$?`,a:rr,w:[rr*rr,2*rr,rr+1,R(1,Math.abs(Fc)||2)],s:T`Complete the square: $(x${-h<0?'-':'+'}${Math.abs(h)})^2+(y${-k<0?'-':'+'}${Math.abs(k)})^2=${rr*rr}$, so $r=${rr}$.`}
- :{lvl:1,q:T`The circle $${eq}$ has center $(h,k)$. What is $h+k$?`,a:h+k,w:[-(h+k),D+E,h-k,h+k+rr],s:T`Complete the square: center $(${h},${k})$, so $h+k=${h+k}$.`}},
+ return ask?{lvl:1,q:T`What is the radius of the circle $${eq}$?`,a:rr,w:[rr*rr,2*rr,rr+1,R(1,Math.abs(Fc)||2)],s:T`Complete the square in $x$ and in $y$: add $${h*h}$ and $${k*k}$ to both sides.<br>$(x${-h<0?'-':'+'}${Math.abs(h)})^2+(y${-k<0?'-':'+'}${Math.abs(k)})^2=${h*h}+${k*k}${Fc<0?'+':'-'}${Math.abs(Fc)}=${rr*rr}$.<br>This is a circle with center $(${h},${k})$ and radius $\sqrt{${rr*rr}}=${rr}$.`}
+ :{lvl:1,q:T`The circle $${eq}$ has center $(h,k)$. What is $h+k$?`,a:h+k,w:[-(h+k),D+E,h-k,h+k+rr],s:T`For $x^2+y^2+Dx+Ey+F=0$, completing the square gives center $\left(-\frac D2,-\frac E2\right)$.<br>Here $D=${D}$ and $E=${E}$, so the center is $(${h},${k})$: indeed $(x${-h<0?'-':'+'}${Math.abs(h)})^2+(y${-k<0?'-':'+'}${Math.abs(k)})^2=${rr*rr}$.<br>$h+k=${h}+${P(k)}=${h+k}$.`}},
 r=>{const [a,b,c]=pick(r,TRIPLES.filter(t=>t[2]<=17));const x0=ri(r,-6,6),y0=ri(r,-6,6),cc=ri(r,-20,20);const v=F(Math.abs(a*x0+b*y0+cc),c);
  return{lvl:2,q:T`What is the distance from $(${x0},${y0})$ to the line $${a}x+${b}y${cc<0?'-':'+'}${Math.abs(cc)}=0$?`,a:v,w:[F(Math.abs(a*x0+b*y0+cc)),F(Math.abs(a*x0+b*y0+cc),a+b),v.add(1),F(Math.abs(a*x0+b*y0-cc),c)],
- s:T`$\frac{|${a}\cdot${P(x0)}+${b}\cdot${P(y0)}${cc<0?'-':'+'}${Math.abs(cc)}|}{\sqrt{${a*a}+${b*b}}}=\frac{${Math.abs(a*x0+b*y0+cc)}}{${c}}=${v.tex()}$.`}},
+ s:T`Distance from $(x_0,y_0)$ to $Ax+By+C=0$: $\dfrac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}$.<br>Numerator: $|${a}\cdot${P(x0)}+${b}\cdot${P(y0)}${cc<0?'-':'+'}${Math.abs(cc)}|=|${a*x0+b*y0+cc}|=${Math.abs(a*x0+b*y0+cc)}$.<br>Denominator: $\sqrt{${a*a}+${b*b}}=${c}$.<br>Distance $=\dfrac{${Math.abs(a*x0+b*y0+cc)}}{${c}}=${v.tex()}$.`}},
 r=>{const x1=ri(r,-9,9),y1=ri(r,-9,9),x2=ri(r,-9,9),y2=ri(r,-9,9);const mx=F(x1+x2,2),my=F(y1+y2,2);
- return{lvl:1,q:T`What is the sum of the coordinates of the midpoint of the segment from $(${x1},${y1})$ to $(${x2},${y2})$?`,a:mx.add(my),w:[F(x1+x2+y1+y2),mx.sub(my),mx.add(my).add(1),F(x2-x1+y2-y1,2)],s:T`The midpoint is $(${mx.tex()},${my.tex()})$, with sum $${mx.add(my).tex()}$.`}},
+ return{lvl:1,q:T`What is the sum of the coordinates of the midpoint of the segment from $(${x1},${y1})$ to $(${x2},${y2})$?`,a:mx.add(my),w:[F(x1+x2+y1+y2),mx.sub(my),mx.add(my).add(1),F(x2-x1+y2-y1,2)],s:T`The midpoint averages the coordinates: $\left(\frac{${x1}+${P(x2)}}{2},\frac{${y1}+${P(y2)}}{2}\right)=(${mx.tex()},${my.tex()})$.<br>Sum: $${mx.tex()}+${P(my)}=${mx.add(my).tex()}$.`}},
 ];
 GENS['coord-lattice']=[
 r=>{const n=pick(r,[12,18,20,24,28,30,36,40,45,48,50,60,64,72,80,84,90,96,100,120,144]);const pos=r()<.5;const d=ndiv(n);
- return{lvl:1,q:T`How many ordered pairs of ${pos?'positive integers':'integers'} $(x,y)$ satisfy $xy=${pos?'':'-'}${n}$?`,a:pos?d:2*d,w:pos?[2*d,d-1,d+1,Math.floor(d/2)]:[d,4*d,2*d-2,2*d+2],s:T`$${n}=${factTex(n)}$ has $${d}$ positive divisors.${pos?'':' Each gives 2 sign choices: $'+2*d+'$.'}`}},
+ return{lvl:1,q:T`How many ordered pairs of ${pos?'positive integers':'integers'} $(x,y)$ satisfy $xy=${pos?'':'-'}${n}$?`,a:pos?d:2*d,w:pos?[2*d,d-1,d+1,Math.floor(d/2)]:[d,4*d,2*d-2,2*d+2],s:T`${pos?T`Each positive divisor $x$ of ${n} gives exactly one pair $(x,\frac{${n}}{x})$.`:T`Choose $|x|$ to be a positive divisor of ${n} (then $|y|=\frac{${n}}{|x|}$), and since the product is negative, exactly one of $x,y$ is negative: 2 sign choices.`}<br>$${n}=${factTex(n)}$ has $${Object.values(factorize(n)).map(e=>'('+e+'+1)').join('')}=${d}$ positive divisors.<br>${pos?T`Answer: $${d}$.`:T`Answer: $2\cdot${d}=${2*d}$.`}`}},
 r=>{const n=ri(r,2,15);const v=(n+1)*(n+2)/2;
- return{lvl:1,q:T`How many lattice points $(x,y)$ satisfy $x\ge0$, $y\ge0$, and $x+y\le${n}$?`,a:v,w:[(n+1)**2,n*(n+1)/2,v+n,v-1],s:T`$(${n}+1)+${n}+\dots+1=${v}$.`}},
+ return{lvl:1,q:T`How many lattice points $(x,y)$ satisfy $x\ge0$, $y\ge0$, and $x+y\le${n}$?`,a:v,w:[(n+1)**2,n*(n+1)/2,v+n,v-1],s:T`Count by the value of $x$: for $x=k$ ($0\le k\le${n}$), $y$ can be $0,1,\dots,${n}-k$, giving $${n}-k+1$ choices.<br>Total: $(${n}+1)+${n}+\cdots+2+1=\dfrac{(${n}+1)(${n}+2)}{2}=${v}$.`}},
 r=>{const R2=pick(r,[1,2,4,5,8,9,10,13,16,17,20,25,26,29,34,36,45,50,52,65,85,100]);let c=0;for(let x=-11;x<=11;x++)for(let y=-11;y<=11;y++)if(x*x+y*y===R2)c++;
- return{lvl:2,q:T`How many lattice points lie on the circle $x^2+y^2=${R2}$?`,a:c,w:[c+4,c-4>0?c-4:c+8,c/2,c*2].filter(x=>x!==c),s:T`List the ways to write $${R2}$ as a sum of two squares, then count every sign and order: $${c}$ points.`}},
+ return{lvl:2,q:T`How many lattice points lie on the circle $x^2+y^2=${R2}$?`,a:c,w:[c+4,c-4>0?c-4:c+8,c/2,c*2].filter(x=>x!==c),s:T`Lattice points on $x^2+y^2=${R2}$ come from writing $${R2}$ as a sum of two squares:<br>${(()=>{const reps=[];for(let x=0;x*x<=R2;x++){const y=Math.round(Math.sqrt(R2-x*x));if(y>=x&&y*y===R2-x*x)reps.push([x,y])}return reps.map(([x,y])=>{const cnt=x===0||y===0?4:x===y?4:8;return T`• $${R2}=${x*x}+${y*y}$: ${x===0?T`$(0,\pm${y}),(\pm${y},0)$`:x===y?T`$(\pm${x},\pm${y})$`:T`$(\pm${x},\pm${y}),(\pm${y},\pm${x})$`}, $${cnt}$ points`}).join('<br>')})()}<br>Total: $${c}$ points.`}},
 r=>{const a=ri(r,2,7),b=ri(r,2,9);if(gcd(a,b)>1)return GENS['coord-lattice'][3](r);const c=ri(r,a*b,a*b*5);let n=0;for(let y=1;b*y<c;y++)if((c-b*y)%a===0)n++;
- return{lvl:2,q:T`How many points with positive integer coordinates lie on the line $${a}x+${b}y=${c}$?`,a:n,w:[n+1,n-1>=0?n-1:n+2,n+2,Math.floor(c/(a*b))+2],s:T`Solutions repeat every $${b}$ in $x$ (and $${a}$ in $y$). Listing the $y$ values with $${a}\mid${c}-${b}y$ and $${b}y\lt ${c}$ gives $${n}$ points.`}},
+ return{lvl:2,q:T`How many points with positive integer coordinates lie on the line $${a}x+${b}y=${c}$?`,a:n,w:[n+1,n-1>=0?n-1:n+2,n+2,Math.floor(c/(a*b))+2],s:T`$${a}x=${c}-${b}y$ must be a positive multiple of ${a}. Since $\gcd(${a},${b})=1$, the valid $y$ form one residue class mod ${a}.<br>${(()=>{const ys=[];for(let y=1;b*y<c;y++)if((c-b*y)%a===0)ys.push(y);return ys.length?T`With $${b}y\lt${c}$ (so $x\gt0$): $y=${ys.join(',\\ ')}$, giving $x=${ys.map(y=>(c-b*y)/a).join(',\\ ')}$.`:'No positive $y$ works.'})()}<br>That's $${n}$ points.`}},
 ];
 GENS['coord-trans']=[
 r=>{let x=ri(r,1,9)*pick(r,[1,-1]),y=ri(r,1,9)*pick(r,[1,-1]);if(Math.abs(x)===Math.abs(y))y+=y>0?1:-1;const t=pick(r,[['the $x$-axis',[x,-y]],['the $y$-axis',[-x,y]],['the line $y=x$',[y,x]],['the line $y=-x$',[-y,-x]],['the origin',[-x,-y]]]);
  const ans=PT(...t[1]);const alts=[[x,-y],[-x,y],[y,x],[-y,-x],[-x,-y],[y,-x],[-y,x]].filter(p=>!(p[0]===t[1][0]&&p[1]===t[1][1])).map(p=>PT(...p));
- return{lvl:1,q:T`The point $(${x},${y})$ is reflected over ${t[0]}. What is its image?`,a:ans,w:alts,s:T`The rule gives $${ans.tex}$.`}},
+ return{lvl:1,q:T`The point $(${x},${y})$ is reflected over ${t[0]}. What is its image?`,a:ans,w:alts,s:T`Reflection rules: over the $x$-axis $(x,y)\to(x,-y)$; over the $y$-axis $(x,y)\to(-x,y)$; over $y=x$ $(x,y)\to(y,x)$; over $y=-x$ $(x,y)\to(-y,-x)$; through the origin $(x,y)\to(-x,-y)$.<br>Applying the rule for ${t[0]} to $(${x},${y})$: $${ans.tex}$.`}},
 r=>{let x=ri(r,1,9)*pick(r,[1,-1]),y=ri(r,1,9)*pick(r,[1,-1]);if(Math.abs(x)===Math.abs(y))y+=y>0?1:-1;const ccw=r()<.5;const ans=ccw?PT(-y,x):PT(y,-x);
- return{lvl:1,q:T`The point $(${x},${y})$ is rotated $90^\circ$ ${ccw?'counterclockwise':'clockwise'} about the origin. What is its image?`,a:ans,w:[PT(y,-x),PT(-y,x),PT(-x,-y),PT(y,x),PT(-x,y)],s:T`${ccw?'$(x,y)\\to(-y,x)$':'$(x,y)\\to(y,-x)$'} gives $${ans.tex}$.`}},
+ return{lvl:1,q:T`The point $(${x},${y})$ is rotated $90^\circ$ ${ccw?'counterclockwise':'clockwise'} about the origin. What is its image?`,a:ans,w:[PT(y,-x),PT(-y,x),PT(-x,-y),PT(y,x),PT(-x,y)],s:T`A $90^\circ$ ${ccw?'counterclockwise':'clockwise'} rotation about the origin sends $(x,y)$ to ${ccw?'$(-y,x)$':'$(y,-x)$'} (it's multiplication by ${ccw?'$i$':'$-i$'} in the complex plane).<br>$(${x},${y})\to${ans.tex}$.<br>Check: the distance to the origin is unchanged, $\sqrt{${x*x+y*y}}$, and the point moves one quadrant ${ccw?'counterclockwise':'clockwise'}.`}},
 r=>{const [a,b,c]=pick(r,TRIPLES.filter(t=>t[2]<=29));const y1=ri(r,1,b-1),y2=b-y1;const x1=ri(r,-5,5);
  return{lvl:2,q:T`A path goes from $A(${x1},${y1})$ to a point on the $x$-axis and then to $B(${x1+a},${y2})$. What is the shortest possible length?`,a:c,w:[a+b,R(1,a*a+(y2-y1)**2),c+1,y1+y2+a],
- s:T`Reflect $A$ to $(${x1},${-y1})$. The distance to $B$ is $\sqrt{${a}^2+${b}^2}=${c}$.`}},
+ s:T`Reflect $A$ across the $x$-axis to $A'(${x1},${-y1})$. For any point $P$ on the axis, $AP=A'P$, so the path length $AP+PB$ equals $A'P+PB$.<br>That's shortest when $P$ is on the straight segment $A'B$, so the minimum is $A'B$.<br>$A'B=\sqrt{(${x1+a}-${P(x1)})^2+(${y2}-${P(-y1)})^2}=\sqrt{${a}^2+${b}^2}=${c}$.`}},
 r=>{const x=ri(r,-8,8),y=ri(r,-8,8),c=ri(r,-6,6);const ny=2*c-y;
- return{lvl:1,q:T`The point $(${x},${y})$ is reflected across the line $y=${c}$. What is the sum of the image's coordinates?`,a:x+ny,w:[x+y,x-ny,x+ny+2,x+c],s:T`$(x,y)\to(x,${2*c}-y)=(${x},${ny})$. Sum $${x+ny}$.`}},
+ return{lvl:1,q:T`The point $(${x},${y})$ is reflected across the line $y=${c}$. What is the sum of the image's coordinates?`,a:x+ny,w:[x+y,x-ny,x+ny+2,x+c],s:T`Reflecting across the horizontal line $y=${c}$ keeps $x$ and moves $y$ to the same distance on the other side: $y\to2\cdot${P(c)}-y=${2*c}-y$.<br>$(${x},${y})\to(${x},${2*c}-${P(y)})=(${x},${ny})$.<br>Sum of the image's coordinates: $${x}+${P(ny)}=${x+ny}$.`}},
 ];
 /* ---- solid.txt ---- */
 const QUADS=[[1,2,2,3],[2,3,6,7],[1,4,8,9],[2,6,9,11],[3,4,12,13],[2,10,11,15],[4,4,7,9],[6,6,7,11],[2,5,14,15],[1,12,12,17],[8,9,12,17],[4,8,19,21]];
@@ -16048,50 +16332,50 @@ const vp=(n,p)=>{let s=0;for(let q=p;q<=n;q*=p)s+=Math.floor(n/q);return s};
 const randFact=r=>{const ps=sample(r,[2,3,5,7,11],ri(r,1,3));let n=1;for(const p of ps){const e=ri(r,1,p<4?5:2);n*=p**e}return n};
 GENS['div-pf']=[
 r=>{let n=randFact(r);if(n<6)n*=6;const d=ndiv(n);
- return{lvl:1,q:T`How many positive divisors does $${n}$ have?`,a:d,w:[d+2,d-2>0?d-2:d+4,Object.values(factorize(n)).reduce((a,e)=>a*e,1),d*2,d+1],s:T`$${n}=${factTex(n)}$, so $d=${Object.values(factorize(n)).map(e=>'('+e+'+1)').join('')}=${d}$.`}},
+ return{lvl:1,q:T`How many positive divisors does $${n}$ have?`,a:d,w:[d+2,d-2>0?d-2:d+4,Object.values(factorize(n)).reduce((a,e)=>a*e,1),d*2,d+1],s:T`Factor: $${n}=${factTex(n)}$.<br>A divisor chooses each prime's exponent independently, from $0$ up to its exponent in ${n}, giving (exponent $+1$) choices per prime.<br>$d(${n})=${Object.values(factorize(n)).map(e=>'('+e+'+1)').join('')}=${d}$.`}},
 r=>{const n=ri(r,6,60);const s_=sigmaDiv(n);
- return{lvl:1,q:T`What is the sum of the positive divisors of $${n}$?`,a:s_,w:[s_-n,s_+1,s_-1,2*n,ndiv(n)*2],s:T`The divisors of ${n} sum to $${s_}$.`}},
+ return{lvl:1,q:T`What is the sum of the positive divisors of $${n}$?`,a:s_,w:[s_-n,s_+1,s_-1,2*n,ndiv(n)*2],s:T`${(()=>{const ds=[];for(let i=1;i<=n;i++)if(n%i===0)ds.push(i);return T`The divisors of ${n} are $${ds.join(',\\ ')}$, which add to $${s_}$.`})()}<br>Formula check: with $${n}=${factTex(n)}$, $\sigma(${n})=${Object.entries(factorize(n)).map(([p,e])=>'('+Array.from({length:e+1},(_,i)=>i===0?'1':i===1?p:p+'^{'+i+'}').join('+')+')').join('')}=${s_}$.`}},
 r=>{const N=ri(r,20,1000);const k=Math.floor(Math.sqrt(N));
- return{lvl:1,q:T`How many integers from $1$ to $${N}$ have an odd number of positive divisors?`,a:k,w:[k+1,k-1,Math.floor(N/2),Math.floor(N/3)],s:T`Only perfect squares have an odd number of divisors: $1^2,\dots,${k}^2$, so $${k}$.`}},
+ return{lvl:1,q:T`How many integers from $1$ to $${N}$ have an odd number of positive divisors?`,a:k,w:[k+1,k-1,Math.floor(N/2),Math.floor(N/3)],s:T`Divisors pair up as $d$ and $\frac nd$, so the count is even unless some divisor pairs with itself, $d=\frac nd$, i.e. $n=d^2$.<br>So exactly the perfect squares have an odd number of divisors.<br>Squares up to ${N}: $1^2,2^2,\dots,${k}^2=${k*k}$ (and $${k+1}^2=${(k+1)**2}\gt${N}$). That's $${k}$.`}},
 r=>{const a=ri(r,1,6),b=ri(r,0,4),c=ri(r,0,3);const n=2**a*3**b*5**c;const ev=a*(b+1)*(c+1);const sq=(Math.floor(a/2)+1)*(Math.floor(b/2)+1)*(Math.floor(c/2)+1);const ask=r()<.5;
  return{lvl:2,q:ask?T`How many positive divisors of $${n}$ are even?`:T`How many positive divisors of $${n}$ are perfect squares?`,a:ask?ev:sq,w:ask?[(a+1)*(b+1)*(c+1),(b+1)*(c+1),ev+1,ev-1]:[(a+1)*(b+1)*(c+1),sq+1,sq*2,Math.ceil(a/2)*Math.ceil(b/2+.5)*Math.ceil(c/2+.5)],
- s:T`$${n}=${factTex(n)}$. ${ask?'Even means the exponent of 2 is from 1 to '+a+': $'+a+'\\cdot'+(b+1)+'\\cdot'+(c+1)+'='+ev+'$.':'Square means every exponent is even: $'+(Math.floor(a/2)+1)+'\\cdot'+(Math.floor(b/2)+1)+'\\cdot'+(Math.floor(c/2)+1)+'='+sq+'$.'}`}},
+ s:T`$${n}=${factTex(n)}$. A divisor is $2^x3^y5^z$ with $0\le x\le${a}$, $0\le y\le${b}$, $0\le z\le${c}$.<br>${ask?T`Even means $x\ge1$: $x$ has $${a}$ choices, $y$ has $${b+1}$, $z$ has $${c+1}$. Total: $${a}\cdot${b+1}\cdot${c+1}=${ev}$.`:T`A perfect square needs every exponent even: $x\in\{${Array.from({length:Math.floor(a/2)+1},(_,i)=>2*i).join(',')}\}$, $y\in\{${Array.from({length:Math.floor(b/2)+1},(_,i)=>2*i).join(',')}\}$, $z\in\{${Array.from({length:Math.floor(c/2)+1},(_,i)=>2*i).join(',')}\}$. Total: $${Math.floor(a/2)+1}\cdot${Math.floor(b/2)+1}\cdot${Math.floor(c/2)+1}=${sq}$.`}`}},
 ];
 GENS['div-gcd']=[
 r=>{const g=ri(r,2,30),a=ri(r,1,12),b=ri(r,1,12);if(gcd(a,b)>1||a===b)return GENS['div-gcd'][0](r);const x=g*a,y=g*b;const ask=r()<.5;
- return ask?{lvl:1,q:T`What is $\gcd(${x},${y})$?`,a:g,w:[g*a*b,g*2,Math.floor(g/2)||g+1,Math.min(x,y)],s:T`$${x}=${g}\cdot${a}$ and $${y}=${g}\cdot${b}$ with $\gcd(${a},${b})=1$, so the GCD is $${g}$.`}
- :{lvl:1,q:T`What is $\operatorname{lcm}(${x},${y})$?`,a:g*a*b,w:[x*y,g,g*a*b*2,(x*y)/2],s:T`$\operatorname{lcm}=\frac{xy}{\gcd}=\frac{${x*y}}{${g}}=${g*a*b}$.`}},
+ return ask?{lvl:1,q:T`What is $\gcd(${x},${y})$?`,a:g,w:[g*a*b,g*2,Math.floor(g/2)||g+1,Math.min(x,y)],s:T`Pull out the common factor: $${x}=${g}\cdot${a}$ and $${y}=${g}\cdot${b}$.<br>Since $\gcd(${a},${b})=1$, nothing more is shared, so $\gcd(${x},${y})=${g}$.<br>(Euclid's algorithm gives the same: repeatedly replace the larger number by its remainder mod the smaller.)`}
+ :{lvl:1,q:T`What is $\operatorname{lcm}(${x},${y})$?`,a:g*a*b,w:[x*y,g,g*a*b*2,(x*y)/2],s:T`Use $\operatorname{lcm}(x,y)=\dfrac{xy}{\gcd(x,y)}$.<br>$${x}=${g}\cdot${a}$ and $${y}=${g}\cdot${b}$ with $\gcd(${a},${b})=1$, so $\gcd=${g}$.<br>$\operatorname{lcm}=\dfrac{${x}\cdot${y}}{${g}}=${g}\cdot${a}\cdot${b}=${g*a*b}$.`}},
 r=>{const g=ri(r,2,15),a=ri(r,1,10),b=ri(r,1,10);if(gcd(a,b)>1)return GENS['div-gcd'][1](r);const x=g*a,y=g*b,L=g*a*b;
- return{lvl:1,q:T`Two positive integers have GCD $${g}$ and LCM $${L}$. One of them is $${x}$. What is the other?`,a:y,w:[F(L,x),L/g,y*2,x],s:T`$xy=\gcd\cdot\operatorname{lcm}=${g*L}$, so the other is $\frac{${g*L}}{${x}}=${y}$.`}},
+ return{lvl:1,q:T`Two positive integers have GCD $${g}$ and LCM $${L}$. One of them is $${x}$. What is the other?`,a:y,w:[F(L,x),L/g,y*2,x],s:T`For any two positive integers, $\gcd\cdot\operatorname{lcm}=$ the product of the numbers (each prime's min and max exponents together account for both numbers).<br>$${x}\cdot y=${g}\cdot${L}=${g*L}$, so $y=\frac{${g*L}}{${x}}=${y}$.<br>Check: $\gcd(${x},${y})=${g}$ and $\operatorname{lcm}(${x},${y})=${L}$. ✓`}},
 r=>{const ps=sample(r,[4,6,8,9,10,12,14,15,18,20,24,30],ri(r,2,3));const L=ps.reduce(lcm);
- return{lvl:1,q:T`Lights blink every ${ps.join(', ')} seconds, all starting together at time $0$. After how many seconds do they next all blink together?`,a:L,w:[ps.reduce((a,b)=>a*b),L*2,ps.reduce(gcd)||L+6,Math.max(...ps)],s:T`$\operatorname{lcm}(${ps.join(',')})=${L}$.`}},
+ return{lvl:1,q:T`Lights blink every ${ps.join(', ')} seconds, all starting together at time $0$. After how many seconds do they next all blink together?`,a:L,w:[ps.reduce((a,b)=>a*b),L*2,ps.reduce(gcd)||L+6,Math.max(...ps)],s:T`They blink together exactly at common multiples of ${ps.join(', ')}; the first after $0$ is the LCM.<br>Factor: ${ps.map(p=>'$'+p+'='+factTex(p)+'$').join(', ')}. Take each prime to its highest power: $\operatorname{lcm}=${factTex(L)}=${L}$.`}},
 r=>{const g=ri(r,2,24),a=ri(r,2,15),b=ri(r,2,15);if(gcd(a,b)>1)return GENS['div-gcd'][3](r);
- return{lvl:1,q:T`A $${g*a}\times${g*b}$ floor is covered by identical square tiles of integer side with no cutting. What is the largest possible tile side?`,a:g,w:[g*2,Math.floor(g/2)||1,g*a,g+1],s:T`The side must divide both: $\gcd(${g*a},${g*b})=${g}$.`}},
+ return{lvl:1,q:T`A $${g*a}\times${g*b}$ floor is covered by identical square tiles of integer side with no cutting. What is the largest possible tile side?`,a:g,w:[g*2,Math.floor(g/2)||1,g*a,g+1],s:T`A square tile of side $s$ covers a $${g*a}\times${g*b}$ floor with no cutting exactly when $s$ divides both ${g*a} and ${g*b}.<br>The largest such $s$ is $\gcd(${g*a},${g*b})$. Since $${g*a}=${g}\cdot${a}$ and $${g*b}=${g}\cdot${b}$ with $\gcd(${a},${b})=1$, it's $${g}$.<br>(That uses $${a}\cdot${b}=${a*b}$ tiles.)`}},
 ];
 GENS['div-rules']=[
 r=>{const k=pick(r,[3,9]);const len=ri(r,3,6);const digits=Array.from({length:len},(_,i)=>i===0?ri(r,1,9):ri(r,0,9));const pos=ri(r,1,len-1);
  const rest=digits.reduce((s,d,i)=>i===pos?s:s+d,0);const sols=[];for(let d=0;d<=9;d++)if((rest+d)%k===0)sols.push(d);
  const disp=digits.map((d,i)=>i===pos?'d':d).join('');const ask=sols.length===1;
- return ask?{lvl:1,q:T`The number $${disp}$ (where $d$ is a digit) is divisible by ${k}. What is $d$?`,a:sols[0],w:[0,1,2,3,4,5,6,7,8,9].filter(x=>x!==sols[0]),s:T`The digit sum $${rest}+d$ must be divisible by ${k}, so $d=${sols[0]}$.`}
- :{lvl:1,q:T`The number $${disp}$ (where $d$ is a digit) is divisible by ${k}. What is the sum of all possible values of $d$?`,a:sols.reduce((a,b)=>a+b,0),w:[sols[0],sols[sols.length-1],sols.length,sols.reduce((a,b)=>a+b,0)+k],s:T`The digit sum $${rest}+d$ must be divisible by ${k}: $d\in\{${sols.join(',')}\}$, with sum $${sols.reduce((a,b)=>a+b,0)}$.`}},
+ return ask?{lvl:1,q:T`The number $${disp}$ (where $d$ is a digit) is divisible by ${k}. What is $d$?`,a:sols[0],w:[0,1,2,3,4,5,6,7,8,9].filter(x=>x!==sols[0]),s:T`A number is divisible by ${k} exactly when its digit sum is (since $10\equiv1\pmod{${k}}$).<br>The known digits add to $${rest}$, so we need $${rest}+d$ to be a multiple of ${k}.<br>With $0\le d\le9$, only $d=${sols[0]}$ works ($${rest}+${sols[0]}=${rest+sols[0]}$).`}
+ :{lvl:1,q:T`The number $${disp}$ (where $d$ is a digit) is divisible by ${k}. What is the sum of all possible values of $d$?`,a:sols.reduce((a,b)=>a+b,0),w:[sols[0],sols[sols.length-1],sols.length,sols.reduce((a,b)=>a+b,0)+k],s:T`A number is divisible by ${k} exactly when its digit sum is (since $10\equiv1\pmod{${k}}$).<br>The known digits add to $${rest}$, so $${rest}+d$ must be a multiple of ${k}.<br>Digits that work: $d\in\{${sols.join(',')}\}$ (giving sums $${sols.map(d=>rest+d).join(',')}$). Their sum is $${sols.reduce((a,b)=>a+b,0)}$.`}},
 r=>{const a=pick(r,[2,3,4,5,6,7]),b=pick(r,[3,5,7,9,10,11]);if(a===b)return GENS['div-rules'][1](r);const N=ri(r,50,1000);const L=lcm(a,b);const v=Math.floor(N/a)+Math.floor(N/b)-Math.floor(N/L);
- return{lvl:1,q:T`How many integers from $1$ to $${N}$ are divisible by $${a}$ or $${b}$?`,a:v,w:[Math.floor(N/a)+Math.floor(N/b),v+1,v-1,N-v],s:T`$\lfloor\frac{${N}}{${a}}\rfloor+\lfloor\frac{${N}}{${b}}\rfloor-\lfloor\frac{${N}}{${L}}\rfloor=${Math.floor(N/a)}+${Math.floor(N/b)}-${Math.floor(N/L)}=${v}$.`}},
+ return{lvl:1,q:T`How many integers from $1$ to $${N}$ are divisible by $${a}$ or $${b}$?`,a:v,w:[Math.floor(N/a)+Math.floor(N/b),v+1,v-1,N-v],s:T`Inclusion-exclusion: count the multiples of ${a}, add the multiples of ${b}, then subtract the numbers counted twice, the multiples of $\operatorname{lcm}(${a},${b})=${L}$.<br>$\left\lfloor\frac{${N}}{${a}}\right\rfloor+\left\lfloor\frac{${N}}{${b}}\right\rfloor-\left\lfloor\frac{${N}}{${L}}\right\rfloor=${Math.floor(N/a)}+${Math.floor(N/b)}-${Math.floor(N/L)}=${v}$.`}},
 r=>{const len=ri(r,5,9);const digits=Array.from({length:len},(_,i)=>i===0?ri(r,1,9):ri(r,0,9));const n=digits.join('');const rem=digits.reduce((s,d)=>s+d,0)%9;
- return{lvl:1,q:T`What is the remainder when $${n}$ is divided by $9$?`,a:rem,w:[0,1,2,3,4,5,6,7,8].filter(x=>x!==rem),s:T`A number is congruent to its digit sum mod 9: $${digits.join('+')}=${digits.reduce((s,d)=>s+d,0)}\equiv${rem}$.`}},
+ return{lvl:1,q:T`What is the remainder when $${n}$ is divided by $9$?`,a:rem,w:[0,1,2,3,4,5,6,7,8].filter(x=>x!==rem),s:T`Since $10\equiv1\pmod9$, every power of $10$ is $\equiv1$, so a number is congruent to its digit sum mod $9$.<br>Digit sum: $${digits.join('+')}=${digits.reduce((s,d)=>s+d,0)}$.<br>$${digits.reduce((s,d)=>s+d,0)}=9\cdot${Math.floor(digits.reduce((s,d)=>s+d,0)/9)}+${rem}$, so the remainder is $${rem}$.`}},
 r=>{const len=ri(r,5,8);const digits=Array.from({length:len},(_,i)=>i===0?ri(r,1,9):ri(r,0,9));const pos=ri(r,0,len-1);const alt=(ds)=>ds.slice().reverse().reduce((s,d,i)=>s+(i%2?-d:d),0);
  const sols=[];for(let d=0;d<=9;d++){if(pos===0&&d===0)continue;const ds=digits.slice();ds[pos]=d;if(((alt(ds)%11)+11)%11===0)sols.push(d)}if(sols.length!==1)return GENS['div-rules'][3](r);
- return{lvl:2,q:T`The number $${digits.map((d,i)=>i===pos?'x':d).join('')}$ (where $x$ is a digit) is divisible by $11$. What is $x$?`,a:sols[0],w:[0,1,2,3,4,5,6,7,8,9].filter(x=>x!==sols[0]),s:T`The alternating digit sum (from the right) must be a multiple of 11; only $x=${sols[0]}$ works.`}},
+ return{lvl:2,q:T`The number $${digits.map((d,i)=>i===pos?'x':d).join('')}$ (where $x$ is a digit) is divisible by $11$. What is $x$?`,a:sols[0],w:[0,1,2,3,4,5,6,7,8,9].filter(x=>x!==sols[0]),s:T`Since $10\equiv-1\pmod{11}$, a number is divisible by 11 exactly when its alternating digit sum (units digit $+$, tens digit $-$, ...) is a multiple of 11.<br>${(()=>{const ds=digits.slice();ds[pos]=0;const rev=ds.slice().reverse();const signs=rev.map((_,i)=>i%2?-1:1);const known=rev.reduce((s,d,i)=>s+signs[i]*d,0);const sgn=signs[len-1-pos];return T`With $x$ in the ${ord(len-pos)} place from the right (sign ${sgn>0?'$+$':'$-$'}), the alternating sum is $${known}${sgn>0?'+':'-'}x$.<br>For this to be a multiple of 11 with $0\le x\le9$: $x=${sols[0]}$ (giving $${known+sgn*sols[0]}$).`})()}`}},
 ];
 GENS['div-fact']=[
 r=>{const n=ri(r,10,3000);const z=vp(n,5);
- return{lvl:1,q:T`How many zeros are at the end of $${n}!$?`,a:z,w:[Math.floor(n/5),Math.floor(n/10),z+1,z-1],s:T`$v_5(${n}!)=${[5,25,125,625,3125].filter(q=>q<=n).map(q=>'\\lfloor\\tfrac{'+n+'}{'+q+'}\\rfloor').join('+')}=${z}$.`}},
+ return{lvl:1,q:T`How many zeros are at the end of $${n}!$?`,a:z,w:[Math.floor(n/5),Math.floor(n/10),z+1,z-1],s:T`Each trailing zero needs a factor $10=2\cdot5$, and $${n}!$ has more $2$s than $5$s, so count the $5$s with Legendre's formula:<br>$${[5,25,125,625,3125].filter(q=>q<=n).map(q=>'\\left\\lfloor\\tfrac{'+n+'}{'+q+'}\\right\\rfloor').join('+')}=${[5,25,125,625,3125].filter(q=>q<=n).map(q=>Math.floor(n/q)).join('+')}=${z}$.<br>(Multiples of $25$ contribute a second $5$, multiples of $125$ a third, and so on.)`}},
 r=>{const p=pick(r,[2,3,5,7]),n=ri(r,10,60);const v=vp(n,p);
- return{lvl:1,q:T`What is the largest $k$ such that $${p}^k$ divides $${n}!$?`,a:v,w:[Math.floor(n/p),v+1,v-1,Math.floor(n/p)+Math.floor(n/(p*p))+1===v?v+2:Math.floor(n/p)+Math.floor(n/(p*p))+1],s:T`Legendre: $${[p,p*p,p**3,p**4,p**5].filter(q=>q<=n).map(q=>'\\lfloor\\tfrac{'+n+'}{'+q+'}\\rfloor').join('+')}=${v}$.`}},
+ return{lvl:1,q:T`What is the largest $k$ such that $${p}^k$ divides $${n}!$?`,a:v,w:[Math.floor(n/p),v+1,v-1,Math.floor(n/p)+Math.floor(n/(p*p))+1===v?v+2:Math.floor(n/p)+Math.floor(n/(p*p))+1],s:T`Legendre's formula: the exponent of $p$ in $n!$ is $\left\lfloor\frac np\right\rfloor+\left\lfloor\frac n{p^2}\right\rfloor+\cdots$ (count multiples of $p$, then the extra factor in multiples of $p^2$, ...).<br>$${[p,p*p,p**3,p**4,p**5].filter(q=>q<=n).map(q=>'\\left\\lfloor\\tfrac{'+n+'}{'+q+'}\\right\\rfloor').join('+')}=${[p,p*p,p**3,p**4,p**5].filter(q=>q<=n).map(q=>Math.floor(n/q)).join('+')}=${v}$.`}},
 r=>{const m=pick(r,[[6,{2:1,3:1}],[12,{2:2,3:1}],[10,{2:1,5:1}],[15,{3:1,5:1}],[18,{2:1,3:2}],[14,{2:1,7:1}],[24,{2:3,3:1}]]);const n=ri(r,10,50);
  const parts=Object.entries(m[1]).map(([p,e])=>Math.floor(vp(n,+p)/e));const k=Math.min(...parts);
- return{lvl:2,q:T`What is the largest integer $k$ such that $${m[0]}^k$ divides $${n}!$?`,a:k,w:[Math.max(...parts),k+1,k-1>=0?k-1:k+2,vp(n,2)],s:T`$${m[0]}=${Object.entries(m[1]).map(([p,e])=>e>1?p+'^'+e:p).join('\\cdot ')}$. ${Object.entries(m[1]).map(([p,e])=>'$\\lfloor v_{'+p+'}('+n+'!)/'+e+'\\rfloor='+Math.floor(vp(n,+p)/e)+'$').join(', ')}. The minimum is $${k}$.`}},
+ return{lvl:2,q:T`What is the largest integer $k$ such that $${m[0]}^k$ divides $${n}!$?`,a:k,w:[Math.max(...parts),k+1,k-1>=0?k-1:k+2,vp(n,2)],s:T`$${m[0]}=${Object.entries(m[1]).map(([p,e])=>e>1?p+'^'+e:p).join('\\cdot ')}$, so each factor of ${m[0]} uses ${Object.entries(m[1]).map(([p,e])=>e+' factor'+(e>1?'s':'')+' of '+p).join(' and ')}.<br>${Object.entries(m[1]).map(([p,e])=>T`$v_{${p}}(${n}!)=${vp(n,+p)}$, enough for $\left\lfloor\frac{${vp(n,+p)}}{${e}}\right\rfloor=${Math.floor(vp(n,+p)/e)}$ copies`).join('; ')}.<br>The scarcer prime limits us: $k=${k}$.`}},
 r=>{const p=pick(r,[2,3,5,7]),e=ri(r,2,p===2?10:p===3?6:4);let n=1;while(vp(n,p)<e)n++;
- return{lvl:2,q:T`What is the smallest positive integer $n$ such that $n!$ is divisible by $${p}^{${e}}$?`,a:n,w:[p*e,n+1,n-1,n+p],s:T`$v_${p}(n!)$ first reaches ${e} at $n=${n}$ (check $v_${p}(${n-1}!)=${vp(n-1,p)}$ and $v_${p}(${n}!)=${vp(n,p)}$).`}},
+ return{lvl:2,q:T`What is the smallest positive integer $n$ such that $n!$ is divisible by $${p}^{${e}}$?`,a:n,w:[p*e,n+1,n-1,n+p],s:T`By Legendre's formula, $v_{${p}}(n!)$ increases only when $n$ passes a multiple of ${p} (by the number of factors of ${p} in that multiple).<br>$v_{${p}}(${n-1}!)=${vp(n-1,p)}\lt${e}$, but $v_{${p}}(${n}!)=${vp(n,p)}\ge${e}$.<br>So the smallest $n$ is $${n}$.`}},
 ];
 /* ---- mod.txt ---- */
 GENS['mod-basic']=[
@@ -16172,40 +16456,40 @@ r=>{const D=pick(r,[12,24,30,36,48,60,72,90,120,150,180,240,360]);let m=D;while(
 /* ---- dioph.txt ---- */
 GENS['dioph-lin']=[
 r=>{let a=ri(r,2,12),b=ri(r,3,15);if(gcd(a,b)!==1||a===b)return GENS['dioph-lin'][0](r);const ask=r()<.5;
- return ask?{lvl:1,q:T`Using only ${a}-cent and ${b}-cent stamps, what is the largest amount (in cents) that cannot be made exactly?`,a:a*b-a-b,w:[a*b,a*b-a,a*b-b,a+b,a*b-a-b+1],s:T`Chicken McNugget: $${a}\cdot${b}-${a}-${b}=${a*b-a-b}$.`}
- :{lvl:2,q:T`How many positive integer amounts cannot be made using only ${a}s and ${b}s?`,a:(a-1)*(b-1)/2,w:[a*b-a-b,(a-1)*(b-1),(a-1)*(b-1)/2+1,a+b],s:T`$\frac{(${a}-1)(${b}-1)}{2}=${(a-1)*(b-1)/2}$.`}},
+ return ask?{lvl:1,q:T`Using only ${a}-cent and ${b}-cent stamps, what is the largest amount (in cents) that cannot be made exactly?`,a:a*b-a-b,w:[a*b,a*b-a,a*b-b,a+b,a*b-a-b+1],s:T`Chicken McNugget Theorem: when $\gcd(a,b)=1$, the largest amount that can't be made as $ax+by$ (with $x,y\ge0$) is $ab-a-b$.<br>Here $\gcd(${a},${b})=1$, so the answer is $${a}\cdot${b}-${a}-${b}=${a*b}-${a+b}=${a*b-a-b}$.<br>Every amount above it can be made: once you can make ${Math.min(a,b)} consecutive amounts, adding ${Math.min(a,b)}s reaches everything after.`}
+ :{lvl:2,q:T`How many positive integer amounts cannot be made using only ${a}s and ${b}s?`,a:(a-1)*(b-1)/2,w:[a*b-a-b,(a-1)*(b-1),(a-1)*(b-1)/2+1,a+b],s:T`For relatively prime $a,b$, exactly $\frac{(a-1)(b-1)}{2}$ positive integers can't be written as $ax+by$ with $x,y\ge0$ (Sylvester's theorem).<br>Here $\gcd(${a},${b})=1$, so the count is $\frac{(${a}-1)(${b}-1)}{2}=\frac{${(a-1)*(b-1)}}{2}=${(a-1)*(b-1)/2}$.<br>(Exactly half of the numbers from $1$ to $(a-1)(b-1)$ are unreachable; the largest is $${a*b-a-b}$.)`}},
 r=>{let a=ri(r,2,9),b=ri(r,2,11);if(gcd(a,b)!==1)return GENS['dioph-lin'][1](r);const c=ri(r,a*b,a*b*6);const pos=r()<.5;let n=0;
  for(let y=pos?1:0;b*y<=c;y++){const rem=c-b*y;if(rem%a===0&&(pos?rem>0:rem>=0))n++}
- return{lvl:2,q:T`How many ordered pairs of ${pos?'positive':'nonnegative'} integers satisfy $${a}x+${b}y=${c}$?`,a:n,w:[n+1,n-1>=0?n-1:n+2,Math.floor(c/(a*b)),n+2],s:T`$y$ must lie in a single residue class mod ${a}. Counting the ${pos?'positive':'nonnegative'} $y$ with $${b}y${pos?'\\lt':'\\le'}${c}$ in that class gives $${n}$.`}},
+ return{lvl:2,q:T`How many ordered pairs of ${pos?'positive':'nonnegative'} integers satisfy $${a}x+${b}y=${c}$?`,a:n,w:[n+1,n-1>=0?n-1:n+2,Math.floor(c/(a*b)),n+2],s:T`Reduce mod ${a}: $${b}y\equiv${c}\pmod{${a}}$. Since $\gcd(${a},${b})=1$, this pins $y$ to one residue class mod ${a}.<br>${(()=>{const ys=[];for(let y=pos?1:0;b*y<=c;y++){const rem=c-b*y;if(rem%a===0&&(pos?rem>0:rem>=0))ys.push(y)}return T`The ${pos?'positive':'nonnegative'} values of $y$ that work (keeping $x=\frac{${c}-${b}y}{${a}}$ ${pos?'positive':'nonnegative'}) are $${ys.join(',\\ ')||'\\text{none}'}$.`})()}<br>Each gives one pair, so there are $${n}$ pairs.`}},
 r=>{let a=ri(r,3,9),b=ri(r,a+1,13);if(gcd(a,b)!==1)return GENS['dioph-lin'][2](r);const c=ri(r,a*b-a-b+1,a*b*3);let best=1e9;for(let y=0;b*y<=c;y++){const rem=c-b*y;if(rem%a===0)best=Math.min(best,y+rem/a)}
- return{lvl:2,q:T`Using ${a}-cent and ${b}-cent stamps, what is the fewest stamps that make exactly ${c} cents?`,a:best,w:[best+1,best+2,Math.ceil(c/b),Math.floor(c/a)].filter(x=>x!==best),s:T`Use as many ${b}-cent stamps as possible while making the remainder a multiple of ${a}. The minimum is $${best}$ stamps.`}},
+ return{lvl:2,q:T`Using ${a}-cent and ${b}-cent stamps, what is the fewest stamps that make exactly ${c} cents?`,a:best,w:[best+1,best+2,Math.ceil(c/b),Math.floor(c/a)].filter(x=>x!==best),s:T`Write $${a}x+${b}y=${c}$ with $x$ ${a}-cent and $y$ ${b}-cent stamps. To use few stamps, use as many ${b}-cent stamps as possible.<br>${(()=>{const opts=[];for(let y=Math.floor(c/b);y>=0;y--){const rem=c-b*y;if(rem%a===0){opts.push([y,rem/a]);if(opts.length>=2)break}}return opts.map(([y,x])=>T`$y=${y}$: $x=\frac{${c}-${b*y}}{${a}}=${x}$, total $${x+y}$ stamps.`).join('<br>')})()}<br>Larger $y$ (which must be a multiple of ${a} apart) uses fewer stamps, so the minimum is $${best}$.`}},
 ];
 GENS['dioph-sfft']=[
 r=>{const a=ri(r,1,6),b=ri(r,1,6),N=ri(r,10,80);const c=N-a*b;let n=0;for(let d=1;d<=N;d++)if(N%d===0&&d>b&&N/d>a)n++;
  return{lvl:2,q:T`How many ordered pairs of positive integers satisfy $xy+${a===1?'':a}x+${b===1?'':b}y=${c}$?`,a:n,w:[ndiv(N),n+1,n-1>=0?n-1:n+2,ndiv(N)-2].filter(x=>x!==n),
- s:T`$(x+${b})(y+${a})=${c}+${a*b}=${N}$. Count the divisor pairs with $x+${b}>${b}$ and $y+${a}>${a}$: $${n}$.`}},
+ s:T`Simon's Favorite Factoring Trick: add $${a*b}$ to both sides so the left side factors: $xy+${a}x+${b}y+${a*b}=(x+${b})(y+${a})=${c}+${a*b}=${N}$.<br>Positive $x,y$ mean $x+${b}\ge${b+1}$ and $y+${a}\ge${a+1}$.<br>Divisors $d$ of $${N}$ with $d\gt${b}$ and $\frac{${N}}{d}\gt${a}$: $${(()=>{const o=[];for(let d=1;d<=N;d++)if(N%d===0&&d>b&&N/d>a)o.push(d+'\\cdot'+(N/d));return o.join(',\\ ')||'\\text{none}'})()}$.<br>That's $${n}$ ordered pairs.`}},
 r=>{const n=ri(r,2,30);const d=ndiv(n*n);
- return{lvl:2,q:T`How many ordered pairs of positive integers satisfy $\dfrac1x+\dfrac1y=\dfrac1{${n}}$?`,a:d,w:[ndiv(n),2*ndiv(n),d+1,d-1],s:T`$(x-${n})(y-${n})=${n*n}$, which has $d(${n*n})=${d}$ positive divisor pairs.`}},
+ return{lvl:2,q:T`How many ordered pairs of positive integers satisfy $\dfrac1x+\dfrac1y=\dfrac1{${n}}$?`,a:d,w:[ndiv(n),2*ndiv(n),d+1,d-1],s:T`Clear denominators: $${n}y+${n}x=xy$, so $xy-${n}x-${n}y=0$. Add $${n*n}$: $(x-${n})(y-${n})=${n*n}$.<br>Both factors negative would need $x,y\lt${n}$, making the product less than $${n*n}$. So both factors are positive divisors of $${n*n}$.<br>$${n*n}=${factTex(n*n)}$ has $${d}$ divisors, each giving one ordered pair. Answer: $${d}$.`}},
 r=>{const a=ri(r,1,5),b=ri(r,1,5);const N=a*b;let n=0;for(let d=1;d<=N;d++)if(N%d===0)n++;
- return{lvl:2,q:T`How many ordered pairs of positive integers satisfy $xy=${a===1?'':a}x+${b===1?'':b}y$?`,a:n,w:[n+1,n-1>0?n-1:n+2,2*n,N].filter(x=>x!==n),s:T`$(x-${b})(y-${a})=${N}$. The positive divisor pairs give $${n}$ solutions; the negative pairs make $x$ or $y$ nonpositive.`}},
+ return{lvl:2,q:T`How many ordered pairs of positive integers satisfy $xy=${a===1?'':a}x+${b===1?'':b}y$?`,a:n,w:[n+1,n-1>0?n-1:n+2,2*n,N].filter(x=>x!==n),s:T`Rearrange: $xy-${a}x-${b}y=0$, and add $${N}$: $(x-${b})(y-${a})=${N}$.<br>Positive factor pairs of $${N}$ each give a solution ($x=${b}+d$, $y=${a}+\frac{${N}}{d}$); there are $${n}$ of them.<br>Negative pairs would need $x\lt${b}$ and $y\lt${a}$, but then the product is less than $${N}$ (or $x$, $y$ is nonpositive). So the answer is $${n}$.`}},
 ];
 GENS['dioph-bound']=[
 r=>{const N=pick(r,[25,50,65,85,100,125,130,145,169,170,185,200,205,221,250,260,289,290,325]);let n=0;for(let x=1;x*x<N;x++){const y=Math.round(Math.sqrt(N-x*x));if(y>0&&y*y===N-x*x)n++}
- return{lvl:1,q:T`How many ordered pairs of positive integers satisfy $x^2+y^2=${N}$?`,a:n,w:[n+1,n-1>0?n-1:n+2,n*2,n*4].filter(x=>x!==n),s:T`List the squares below ${N} and check which pairs add to ${N}: $${n}$ ordered pairs.`}},
+ return{lvl:1,q:T`How many ordered pairs of positive integers satisfy $x^2+y^2=${N}$?`,a:n,w:[n+1,n-1>0?n-1:n+2,n*2,n*4].filter(x=>x!==n),s:T`Both squares are positive and less than ${N}. For each $x$ with $x^2\lt${N}$, check whether $${N}-x^2$ is a perfect square:<br>$${(()=>{const o=[];for(let x=1;x*x<N;x++){const y=Math.round(Math.sqrt(N-x*x));if(y>0&&y*y===N-x*x)o.push('('+x+','+y+')')}return o.join(',\\ ')})()}$.<br>That's $${n}$ ordered pairs.`}},
 r=>{const k=ri(r,3,60);let n=0,lst=[];for(let x=1;x<=k;x++){const m=Math.round(Math.sqrt(x*x+k));if(m*m===x*x+k){n++;lst.push(x)}}
- return{lvl:1,q:T`For how many positive integers $n$ is $n^2+${k}$ a perfect square?`,a:n,w:[0,1,2,3,4].filter(x=>x!==n),s:T`$(m-n)(m+n)=${k}$ with factors of the same parity. ${n?'This gives $n='+lst.join(',')+'$.':'There are none.'}`}},
+ return{lvl:1,q:T`For how many positive integers $n$ is $n^2+${k}$ a perfect square?`,a:n,w:[0,1,2,3,4].filter(x=>x!==n),s:T`Suppose $n^2+${k}=m^2$. Then $(m-n)(m+n)=${k}$ with $0\lt m-n\lt m+n$, and the two factors have the same parity (they differ by $2n$).<br>${(()=>{const o=[];for(let d=1;d*d<k;d++)if(k%d===0&&(d+k/d)%2===0)o.push(T`$${d}\cdot${k/d}$ gives $n=${(k/d-d)/2}$`);return o.length?'Same-parity factor pairs: '+o.join('; ')+'.':'No factor pair of '+k+' has matching parity (with distinct factors).'})()}<br>So there ${n===1?'is':'are'} $${n}$ such value${n===1?'':'s'}.`}},
 r=>{const b=ri(r,0,6),d=ri(r,1,5);const N=2**b*(2**d-1);
- return{lvl:2,q:T`Nonnegative integers satisfy $2^a-2^b=${N}$. What is $a+b$?`,a:2*b+d,w:[2*b+d+1,b+d,2*(b+d),2*b+d-1],s:T`$2^b(2^{a-b}-1)=${N}=2^{${b}}\cdot${2**d-1}$, so $b=${b}$, $a-b=${d}$, and $a+b=${2*b+d}$.`}},
+ return{lvl:2,q:T`Nonnegative integers satisfy $2^a-2^b=${N}$. What is $a+b$?`,a:2*b+d,w:[2*b+d+1,b+d,2*(b+d),2*b+d-1],s:T`Factor out the smaller power: $2^a-2^b=2^b(2^{a-b}-1)$, where $2^{a-b}-1$ is odd.<br>$${N}=2^{${b}}\cdot${2**d-1}$ (a power of 2 times an odd number), so $2^b=2^{${b}}$ and $2^{a-b}-1=${2**d-1}$.<br>So $b=${b}$, $a-b=${d}$, $a=${b+d}$, and $a+b=${2*b+d}$.`}},
 ];
 GENS['dioph-floor']=[
 r=>{const n=ri(r,-5,12),f=F(ri(r,1,9),10);const v=F(2*n).add(f);const x=F(n).add(f);
- return{lvl:1,q:T`What real number $x$ satisfies $x+\lfloor x\rfloor=${v.tex()}$?`,a:x,w:[v.div(2),x.sub(F(1,10)),x.add(1),F(n)],s:T`With $x=n+f$: $2n+f=${v.tex()}$ and $0\le f\lt 1$, so $n=${n}$ and $f=${f.tex()}$. Then $x=${x.tex()}$.`}},
+ return{lvl:1,q:T`What real number $x$ satisfies $x+\lfloor x\rfloor=${v.tex()}$?`,a:x,w:[v.div(2),x.sub(F(1,10)),x.add(1),F(n)],s:T`Write $x=n+f$ where $n=\lfloor x\rfloor$ is an integer and $0\le f\lt1$.<br>Then $x+\lfloor x\rfloor=2n+f=${v.tex()}$. Since $2n$ is an integer and $0\le f\lt1$, $2n$ is the integer part: $2n=${2*n}$ and $f=${f.tex()}$.<br>So $n=${n}$ and $x=${n}+${f.tex()}=${x.tex()}$.`}},
 r=>{const n=ri(r,-6,9),f=ri(r,1,9),k=ri(r,2,5);const x=n+f/10;const v=Math.floor(k*x+1e-9);
- return{lvl:1,q:T`If $\lfloor x\rfloor=${n}$ and $x-\lfloor x\rfloor=${f/10}$, what is $\lfloor${k}x\rfloor$?`,a:v,w:[v+1,v-1,k*n,k*n+k-1===v?v+2:k*n+k-1],s:T`$x=${(n+f/10).toFixed(1)}$, so $${k}x=${(k*(n+f/10)).toFixed(1)}$ and the floor is $${v}$.`}},
+ return{lvl:1,q:T`If $\lfloor x\rfloor=${n}$ and $x-\lfloor x\rfloor=${f/10}$, what is $\lfloor${k}x\rfloor$?`,a:v,w:[v+1,v-1,k*n,k*n+k-1===v?v+2:k*n+k-1],s:T`$x=\lfloor x\rfloor+(x-\lfloor x\rfloor)=${n}+${f/10}=${(n+f/10).toFixed(1)}$.<br>$${k}x=${(k*(n+f/10)).toFixed(1)}$, and the greatest integer at or below it is $${v}$.${k*(n+f/10)<0?' (For negative numbers, the floor goes down, away from zero.)':''}`}},
 r=>{const k=ri(r,2,9),N=ri(r,20,300);const v=Math.floor(N/k)+1;
- return{lvl:1,q:T`How many distinct values does $\left\lfloor\frac n{${k}}\right\rfloor$ take for $n=1,2,\dots,${N}$?`,a:v,w:[v-1,v+1,N,Math.ceil(N/k)+1===v?v+2:Math.ceil(N/k)+1],s:T`The values run from $0$ to $\lfloor\frac{${N}}{${k}}\rfloor=${v-1}$ with none skipped: $${v}$ values.`}},
+ return{lvl:1,q:T`How many distinct values does $\left\lfloor\frac n{${k}}\right\rfloor$ take for $n=1,2,\dots,${N}$?`,a:v,w:[v-1,v+1,N,Math.ceil(N/k)+1===v?v+2:Math.ceil(N/k)+1],s:T`As $n$ runs from $1$ to ${N}, $\left\lfloor\frac n{${k}}\right\rfloor$ starts at $0$ (for $n\lt${k}$) and ends at $\left\lfloor\frac{${N}}{${k}}\right\rfloor=${v-1}$.<br>It never jumps by more than $1$ when $n$ increases by $1$, so every integer from $0$ to $${v-1}$ appears.<br>That's $${v-1}+1=${v}$ distinct values.`}},
 r=>{const N=ri(r,20,200);let c=0;for(let n=1;n<=N;n++)if(n%Math.floor(Math.sqrt(n)+1e-9)===0)c++;
- return{lvl:3,q:T`For how many integers $n$ with $1\le n\le${N}$ does $\lfloor\sqrt n\rfloor$ divide $n$?`,a:c,w:[c+1,c-1,c+3,3*Math.floor(Math.sqrt(N))],s:T`For each $m=\lfloor\sqrt n\rfloor$, the multiples of $m$ in $[m^2,m^2+2m]$ are $m^2,m^2+m,m^2+2m$ (3 per full block). Adjusting for the last partial block gives $${c}$.`}},
+ return{lvl:3,q:T`For how many integers $n$ with $1\le n\le${N}$ does $\lfloor\sqrt n\rfloor$ divide $n$?`,a:c,w:[c+1,c-1,c+3,3*Math.floor(Math.sqrt(N))],s:T`Group the $n$ by $m=\lfloor\sqrt n\rfloor$: these are $m^2\le n\le m^2+2m$ (just before $(m+1)^2$).<br>In each full group, the multiples of $m$ are $m^2,\ m^2+m,\ m^2+2m$: exactly $3$.<br>${(()=>{const M=Math.floor(Math.sqrt(N));const full=(M+1)**2-1<=N?M:M-1;let last=0;for(let t=M*M;t<=N;t++)if(t%M===0)last++;return full===M?T`Groups $m=1$ to $${M}$ are all complete: $3\cdot${M}=${3*M}$.`:T`Groups $m=1$ to $${M-1}$ are complete ($3\cdot${M-1}=${3*(M-1)}$); the last group $m=${M}$ only reaches $n=${N}$ and contributes $${last}$.`})()}<br>Total: $${c}$.`}},
 ];
 /* ---- count.txt ---- */
 GENS['count-basic']=[
@@ -16399,42 +16683,42 @@ const TRIG_V={'0':0,'1':1,'-1':-1,'\\frac{1}{2}':.5,'-\\frac{1}{2}':-.5,'\\frac{
 GENS['trig-unit']=[
 r=>{const fn=pick(r,['sin','cos','tan']);const deg=pick(r,[0,30,45,60,90,120,135,150,180,210,225,240,270,300,315,330])+360*ri(r,0,2);const v=trigVal(deg,fn);if(!v)return GENS['trig-unit'][0](r);
  const ws=shuffle(r,TRIG_ALL.filter(t=>t!==v.tex&&Math.abs(TRIG_V[t]-v.v)>1e-9)).map(t=>O(t,TRIG_V[t]));
- return{lvl:1,q:T`What is $${'\\'+(fn)} ${deg}^\circ$?`,a:v,w:ws,s:T`$${deg}^\circ$ ${deg>=360?'is coterminal with $'+(deg%360)+'^\\circ$; it ':''}has reference angle $${(()=>{const d=deg%360;return d<=90?d:d<=180?180-d:d<=270?d-180:360-d})()}^\circ$. Apply the quadrant sign: $${'\\'+(fn)} ${deg}^\circ=${v.tex}$.`}},
+ return{lvl:1,q:T`What is $${'\\'+(fn)} ${deg}^\circ$?`,a:v,w:ws,s:T`${deg>=360?T`First remove full turns: $${deg}^\circ$ is coterminal with $${deg%360}^\circ$ (subtract $${deg-deg%360}^\circ$).<br>`:''}${(()=>{const d=deg%360,ref=d<=90?d:d<=180?180-d:d<=270?d-180:360-d,qd=d===0||d===90||d===180||d===270?'on an axis':d<90?'in quadrant I':d<180?'in quadrant II':d<270?'in quadrant III':'in quadrant IV';return T`$${d}^\circ$ lies ${qd}${d%90?T`, with reference angle $${ref}^\circ$`:''}.<br>`})()}Signs by quadrant: all positive in I; only $\sin$ in II; only $\tan$ in III; only $\cos$ in IV ("All Students Take Calculus").<br>So $${'\\'+(fn)} ${deg}^\circ=${v.tex}$.`}},
 r=>{const pairs=[[1,6],[1,4],[1,3],[1,2],[2,3],[3,4],[5,6],[1,1],[5,4],[4,3],[3,2],[5,3],[7,4],[11,6],[2,1],[7,6]];const [n,d]=pick(r,pairs);const deg=180*n/d;const toDeg=r()<.5;
- return toDeg?{lvl:1,q:T`What is $${n===1?'':n}\pi${d>1?'/'+d:''}$ radians in degrees?`,a:deg,w:[deg/2,deg+30,360-deg===deg?deg+45:360-deg,deg*2>720?deg-15:deg*2],s:T`Multiply by $\frac{180}{\pi}$: $${deg}^\circ$.`}
- :{lvl:1,q:T`What is $${deg}^\circ$ in radians?`,a:PI(F(n,d)),w:[PI(F(n,d).mul(2)),PI(F(n,d).div(2)),PI(F(d,n)),PI(F(n,d).add(F(1,6)))],s:T`Multiply by $\frac{\pi}{180}$: $${PI(F(n,d)).tex}$.`}},
+ return toDeg?{lvl:1,q:T`What is $${n===1?'':n}\pi${d>1?'/'+d:''}$ radians in degrees?`,a:deg,w:[deg/2,deg+30,360-deg===deg?deg+45:360-deg,deg*2>720?deg-15:deg*2],s:T`$\pi$ radians $=180^\circ$, so multiply by $\frac{180^\circ}{\pi}$:<br>$\frac{${n}\pi}{${d}}\cdot\frac{180^\circ}{\pi}=\frac{${n}\cdot180^\circ}{${d}}=${deg}^\circ$.`}
+ :{lvl:1,q:T`What is $${deg}^\circ$ in radians?`,a:PI(F(n,d)),w:[PI(F(n,d).mul(2)),PI(F(n,d).div(2)),PI(F(d,n)),PI(F(n,d).add(F(1,6)))],s:T`$180^\circ=\pi$ radians, so multiply by $\frac{\pi}{180^\circ}$:<br>$${deg}^\circ\cdot\frac{\pi}{180^\circ}=\frac{${deg}}{180}\pi=${PI(F(n,d)).tex}$ (reduce the fraction $\frac{${deg}}{180}=${F(n,d).tex()}$).`}},
 r=>{const [a,b,c]=pick(r,TRIPLES.slice(0,6));const quad=ri(r,1,4);const sx=quad===1||quad===4?1:-1,sy=quad<=2?1:-1;const given=pick(r,['cos','sin']);const want=pick(r,['tan','sin','cos'].filter(x=>x!==given));
  const cosv=F(sx*a,c),sinv=F(sy*b,c),tanv=F(sy*b,sx*a);const vals={sin:sinv,cos:cosv,tan:tanv};
  return{lvl:2,q:T`If $${'\\'+(given)}\theta=${vals[given].tex()}$ and $\theta$ is in quadrant ${['I','II','III','IV'][quad-1]}, what is $${'\\'+(want)}\theta$?`,a:vals[want],w:[vals[want].neg(),F(1).div(vals[want]).v===vals[want].v?vals[want].add(1):F(1).div(vals[want]),F(sx*a,sy*b),vals[given]],
- s:T`Use the $${a}$-$${b}$-$${c}$ triangle with quadrant ${['I','II','III','IV'][quad-1]} signs: $\cos\theta=${cosv.tex()}$, $\sin\theta=${sinv.tex()}$, $\tan\theta=${tanv.tex()}$.`}},
+ s:T`Ignoring signs, the given value fits the right triangle with legs $${a}$, $${b}$ and hypotenuse $${c}$ (a Pythagorean triple), so $|\cos\theta|=\frac{${a}}{${c}}$, $|\sin\theta|=\frac{${b}}{${c}}$, $|\tan\theta|=\frac{${b}}{${a}}$.<br>Quadrant ${['I','II','III','IV'][quad-1]} signs: $\cos\theta$ is ${sx>0?'positive':'negative'} and $\sin\theta$ is ${sy>0?'positive':'negative'}, so $\cos\theta=${cosv.tex()}$, $\sin\theta=${sinv.tex()}$, and $\tan\theta=\frac{\sin\theta}{\cos\theta}=${tanv.tex()}$.<br>Answer: $${'\\'+(want)}\theta=${vals[want].tex()}$.`}},
 ];
 GENS['trig-id']=[
 r=>{const q=ri(r,2,9),p=ri(r,1,q-1);const s=F(p,q);const v=F(1).sub(s.mul(s).mul(2));const ask=r()<.5;
- return ask?{lvl:1,q:T`If $\sin x=${s.tex()}$, what is $\cos2x$?`,a:v,w:[s.mul(s).mul(2),F(1).sub(s.mul(s)),v.neg(),s.mul(2)],s:T`$\cos2x=1-2\sin^2x=1-2\cdot${s.mul(s).tex()}=${v.tex()}$.`}
- :{lvl:1,q:T`If $\cos x=${s.tex()}$, what is $\cos2x$?`,a:s.mul(s).mul(2).sub(1),w:[F(1).sub(s.mul(s).mul(2)),s.mul(s),s.mul(2),s.mul(s).mul(2)],s:T`$\cos2x=2\cos^2x-1=${s.mul(s).mul(2).sub(1).tex()}$.`}},
+ return ask?{lvl:1,q:T`If $\sin x=${s.tex()}$, what is $\cos2x$?`,a:v,w:[s.mul(s).mul(2),F(1).sub(s.mul(s)),v.neg(),s.mul(2)],s:T`Use the version of the double-angle formula that involves only sine: $\cos2x=1-2\sin^2x$.<br>$\sin^2x=\left(${s.tex()}\right)^2=${s.mul(s).tex()}$.<br>$\cos2x=1-2\cdot${s.mul(s).tex()}=1-${s.mul(s).mul(2).tex()}=${v.tex()}$.`}
+ :{lvl:1,q:T`If $\cos x=${s.tex()}$, what is $\cos2x$?`,a:s.mul(s).mul(2).sub(1),w:[F(1).sub(s.mul(s).mul(2)),s.mul(s),s.mul(2),s.mul(s).mul(2)],s:T`Use the version of the double-angle formula that involves only cosine: $\cos2x=2\cos^2x-1$.<br>$\cos^2x=\left(${s.tex()}\right)^2=${s.mul(s).tex()}$.<br>$\cos2x=2\cdot${s.mul(s).tex()}-1=${s.mul(s).mul(2).tex()}-1=${s.mul(s).mul(2).sub(1).tex()}$.`}},
 r=>{const t=pick(r,[F(1,2),F(1,3),F(2),F(3),F(3,4),F(4,3),F(1,4),F(2,3),F(5,12)]);const t2=t.mul(t);const s2=t.mul(2).div(F(1).add(t2)),c2=F(1).sub(t2).div(F(1).add(t2));const ask=r()<.5;
- return{lvl:2,q:T`If $\tan x=${t.tex()}$, what is $${'\\'+(ask?'sin':'cos')}2x$?`,a:ask?s2:c2,w:[ask?c2:s2,(ask?s2:c2).neg(),t.mul(2),t.div(F(1).add(t2))],s:T`$\sin2x=\frac{2t}{1+t^2}=${s2.tex()}$ and $\cos2x=\frac{1-t^2}{1+t^2}=${c2.tex()}$.`}},
+ return{lvl:2,q:T`If $\tan x=${t.tex()}$, what is $${'\\'+(ask?'sin':'cos')}2x$?`,a:ask?s2:c2,w:[ask?c2:s2,(ask?s2:c2).neg(),t.mul(2),t.div(F(1).add(t2))],s:T`Express the double angles in terms of $t=\tan x$ (divide by $\sin^2x+\cos^2x=1$, then by $\cos^2x$):<br>$\sin2x=\dfrac{2\sin x\cos x}{\sin^2x+\cos^2x}=\dfrac{2t}{1+t^2}$ and $\cos2x=\dfrac{\cos^2x-\sin^2x}{\cos^2x+\sin^2x}=\dfrac{1-t^2}{1+t^2}$.<br>With $t=${t.tex()}$, $t^2=${t2.tex()}$: ${ask?T`$\sin2x=\dfrac{${t.mul(2).tex()}}{${F(1).add(t2).tex()}}=${s2.tex()}$`:T`$\cos2x=\dfrac{${F(1).sub(t2).tex()}}{${F(1).add(t2).tex()}}=${c2.tex()}$`}.`}},
 r=>{const s=pick(r,[F(1,2),F(1,3),F(2,3),F(1,4),F(3,4),F(5,4),F(4,3),F(6,5),F(7,5)]);const v=s.mul(s).sub(1);
- return{lvl:2,q:T`If $\sin x+\cos x=${s.tex()}$, what is $\sin2x$?`,a:v,w:[v.neg(),s.mul(s),F(1).sub(s.mul(s)).div(2),s.mul(2)],s:T`Square: $1+\sin2x=${s.mul(s).tex()}$, so $\sin2x=${v.tex()}$.`}},
+ return{lvl:2,q:T`If $\sin x+\cos x=${s.tex()}$, what is $\sin2x$?`,a:v,w:[v.neg(),s.mul(s),F(1).sub(s.mul(s)).div(2),s.mul(2)],s:T`Square both sides: $(\sin x+\cos x)^2=\sin^2x+\cos^2x+2\sin x\cos x=1+\sin2x$.<br>So $1+\sin2x=\left(${s.tex()}\right)^2=${s.mul(s).tex()}$.<br>$\sin2x=${s.mul(s).tex()}-1=${v.tex()}$.`}},
 r=>{const a=pick(r,[F(1,2),F(1,3),F(2),F(1,4),F(2,3),F(1,5)]),b=pick(r,[F(1,2),F(1,3),F(1,4),F(3),F(1,7),F(2,5)]);if(a.mul(b).v===1)return GENS['trig-id'][3](r);const v=a.add(b).div(F(1).sub(a.mul(b)));
- return{lvl:2,q:T`If $\tan a=${a.tex()}$ and $\tan b=${b.tex()}$, what is $\tan(a+b)$?`,a:v,w:[a.add(b),a.add(b).div(F(1).add(a.mul(b))),a.mul(b),v.neg()],s:T`$\frac{\tan a+\tan b}{1-\tan a\tan b}=\frac{${a.add(b).tex()}}{1-${a.mul(b).tex()}}=${v.tex()}$.`}},
+ return{lvl:2,q:T`If $\tan a=${a.tex()}$ and $\tan b=${b.tex()}$, what is $\tan(a+b)$?`,a:v,w:[a.add(b),a.add(b).div(F(1).add(a.mul(b))),a.mul(b),v.neg()],s:T`Tangent addition formula: $\tan(a+b)=\dfrac{\tan a+\tan b}{1-\tan a\tan b}$.<br>Numerator: $${a.tex()}+${b.tex()}=${a.add(b).tex()}$. Denominator: $1-${a.tex()}\cdot${b.tex()}=1-${a.mul(b).tex()}=${F(1).sub(a.mul(b)).tex()}$.<br>$\tan(a+b)=\dfrac{${a.add(b).tex()}}{${F(1).sub(a.mul(b)).tex()}}=${v.tex()}$.`}},
 ];
 GENS['trig-law']=[
 r=>{const a=ri(r,2,12),b=ri(r,2,12);const C=pick(r,[60,90,120]);const c2=C===60?a*a+b*b-a*b:C===90?a*a+b*b:a*a+b*b+a*b;
- return{lvl:1,q:T`A triangle has $a=${a}$, $b=${b}$, and $C=${C}^\circ$. What is $c$?`,a:R(1,c2),w:[R(1,a*a+b*b+(C===90?a*b:0)),R(1,C===120?a*a+b*b-a*b:a*a+b*b+a*b+(C===90?1:0)),O(String(a+b),a+b),R(1,Math.abs(c2-1)||2)],s:T`$c^2=a^2+b^2-2ab\cos C=${a*a}+${b*b}${C===60?'-'+a*b:C===120?'+'+a*b:''}=${c2}$, so $c=${R(1,c2).tex}$.`}},
+ return{lvl:1,q:T`A triangle has $a=${a}$, $b=${b}$, and $C=${C}^\circ$. What is $c$?`,a:R(1,c2),w:[R(1,a*a+b*b+(C===90?a*b:0)),R(1,C===120?a*a+b*b-a*b:a*a+b*b+a*b+(C===90?1:0)),O(String(a+b),a+b),R(1,Math.abs(c2-1)||2)],s:T`Law of Cosines: $c^2=a^2+b^2-2ab\cos C$, with $\cos${C}^\circ=${C===60?'\\frac12':C===90?'0':'-\\frac12'}$.<br>$c^2=${a*a}+${b*b}-2\cdot${a}\cdot${b}\cdot${C===60?'\\frac12':C===90?'0':'\\left(-\\frac12\\right)'}=${a*a+b*b}${C===60?'-'+a*b:C===120?'+'+a*b:''}=${c2}$.<br>$c=\sqrt{${c2}}${R(1,c2).tex==='\\sqrt{'+c2+'}'?'':'='+R(1,c2).tex}$.${C===90?' (With a right angle this is just the Pythagorean theorem.)':''}`}},
 r=>{const tris=[[3,5,7,120],[5,7,8,60],[3,7,8,60],[7,8,13,120],[5,16,19,120],[8,15,13,60],[7,15,13,60],[5,8,7,60]];const [a,b,c,C]=pick(r,tris);const k=ri(r,1,3);
- return{lvl:1,q:T`A triangle has sides $${a*k}$, $${b*k}$, $${c*k}$. What is the angle opposite the side of length $${c*k}$, in degrees?`,a:C,w:[180-C,90,C===60?45:135,C===60?30:150],s:T`$\cos\theta=\frac{${(a*k)**2}+${(b*k)**2}-${(c*k)**2}}{2\cdot${a*k}\cdot${b*k}}=${F(a*a+b*b-c*c,2*a*b).tex()}$, so $\theta=${C}^\circ$.`}},
+ return{lvl:1,q:T`A triangle has sides $${a*k}$, $${b*k}$, $${c*k}$. What is the angle opposite the side of length $${c*k}$, in degrees?`,a:C,w:[180-C,90,C===60?45:135,C===60?30:150],s:T`Use the Law of Cosines solved for the angle opposite side $${c*k}$:<br>$\cos\theta=\dfrac{${a*k}^2+${b*k}^2-${c*k}^2}{2\cdot${a*k}\cdot${b*k}}=\dfrac{${(a*k)**2}+${(b*k)**2}-${(c*k)**2}}{${2*a*b*k*k}}=\dfrac{${(a*a+b*b-c*c)*k*k}}{${2*a*b*k*k}}=${F(a*a+b*b-c*c,2*a*b).tex()}$.<br>The angle with that cosine is $${C}^\circ$${C>90?' (obtuse, since the cosine is negative)':''}.`}},
 r=>{const A=pick(r,[30,45,60,90,120,135,150]);const sinA={30:[F(1,2),1],150:[F(1,2),1],45:[F(1,2),2],135:[F(1,2),2],60:[F(1,2),3],120:[F(1,2),3],90:[F(1),1]}[A];const a=ri(r,2,12);
  const Rv=FR(F(a).div(sinA[0]).div(2).mul(sinA[1]===1?1:F(1,sinA[1])),sinA[1]);
- return{lvl:1,q:T`In a triangle, $a=${a}$ and $A=${A}^\circ$. What is the circumradius $R$?`,a:Rv,w:[FR(F(a,2),1),FR(F(a),1),FR(F(a).div(sinA[0]),sinA[1]===1?3:1),O('2\\left('+Rv.tex+'\\right)',2*Rv.v)],s:T`$2R=\frac{a}{\sin A}$, so $R=\frac{${a}}{2\sin${A}^\circ}=${Rv.tex}$.`}},
+ return{lvl:1,q:T`In a triangle, $a=${a}$ and $A=${A}^\circ$. What is the circumradius $R$?`,a:Rv,w:[FR(F(a,2),1),FR(F(a),1),FR(F(a).div(sinA[0]),sinA[1]===1?3:1),O('2\\left('+Rv.tex+'\\right)',2*Rv.v)],s:T`Extended Law of Sines: $\dfrac{a}{\sin A}=2R$, where $R$ is the circumradius.<br>$\sin${A}^\circ=${A===90?'1':A===30||A===150?'\\frac12':A===45||A===135?'\\frac{\\sqrt2}2':'\\frac{\\sqrt3}2'}$, so $2R=\dfrac{${a}}{\sin${A}^\circ}$ and $R=\dfrac{${a}}{2\sin${A}^\circ}=${Rv.tex}$.`}},
 ];
 GENS['trig-eq']=[
 r=>{const n=ri(r,1,6),k=pick(r,[['0',0],['\\frac12',1],['-\\frac12',1],['1',2],['-1',2],['\\frac{\\sqrt3}{2}',1],['2',3]]);const fn=pick(r,['sin','cos']);const per={0:2,1:2,2:1,3:0}[k[1]];const v=per*n;
- return{lvl:2,q:T`How many solutions does $${'\\'+(fn)}(${n===1?'':n}x)=${k[0]}$ have in $[0,2\pi)$?`,a:v,w:[v+1,v>0?v-1:v+2,n,2*v||4,v+n],s:T`On one period, $${'\\'+(fn)}\theta=${k[0]}$ has ${per} solution(s). As $x$ runs over $[0,2\pi)$, $${n===1?'':n}x$ covers ${n} period(s): $${per}\cdot${n}=${v}$.`}},
+ return{lvl:2,q:T`How many solutions does $${'\\'+(fn)}(${n===1?'':n}x)=${k[0]}$ have in $[0,2\pi)$?`,a:v,w:[v+1,v>0?v-1:v+2,n,2*v||4,v+n],s:T`First count solutions of $${'\\'+(fn)}\theta=${k[0]}$ on one period $[0,2\pi)$: ${per===0?'none, since sine and cosine never exceed 1 in absolute value':per===1?'exactly one (a maximum or minimum of the wave)':'two'}.<br>Now let $\theta=${n===1?'':n}x$. As $x$ runs over $[0,2\pi)$, $\theta$ runs over $[0,${2*n===2?'':2*n}\pi)$, which is ${n} full period${n>1?'s':''}.<br>Total: $${per}\cdot${n}=${v}$ solution${v===1?'':'s'}.`}},
 r=>{const [a,b,c]=pick(r,TRIPLES);const ask=r()<.5;
- return{lvl:1,q:T`What is the ${ask?'maximum':'minimum'} value of $${a}\sin x+${b}\cos x$?`,a:ask?c:-c,w:[ask?a+b:-(a+b),ask?-c:c,ask?b:-b,ask?c*c:-c*c],s:T`$a\sin x+b\cos x$ ranges over $\pm\sqrt{a^2+b^2}=\pm${c}$.`}},
+ return{lvl:1,q:T`What is the ${ask?'maximum':'minimum'} value of $${a}\sin x+${b}\cos x$?`,a:ask?c:-c,w:[ask?a+b:-(a+b),ask?-c:c,ask?b:-b,ask?c*c:-c*c],s:T`Write $${a}\sin x+${b}\cos x=${c}\left(\frac{${a}}{${c}}\sin x+\frac{${b}}{${c}}\cos x\right)=${c}\sin(x+\varphi)$, where $\cos\varphi=\frac{${a}}{${c}}$ and $\sin\varphi=\frac{${b}}{${c}}$ (possible because $${a}^2+${b}^2=${c}^2$).<br>$\sin(x+\varphi)$ ranges over $[-1,1]$, so the expression ranges over $[-${c},${c}]$.<br>The ${ask?'maximum':'minimum'} is $${ask?c:-c}$.`}},
 r=>{const k=pick(r,[1,2,3,4]);const v=F(1,2);
- return{lvl:1,q:T`What is the maximum value of $${2*k}\sin x\cos x$?`,a:k,w:[2*k,k/2,4*k,k+1],s:T`$\sin x\cos x=\frac12\sin2x\le\frac12$, so the maximum of $${2*k}\sin x\cos x$ is $${k}$.`}},
+ return{lvl:1,q:T`What is the maximum value of $${2*k}\sin x\cos x$?`,a:k,w:[2*k,k/2,4*k,k+1],s:T`Double-angle identity: $\sin x\cos x=\frac12\sin2x$, so $${2*k}\sin x\cos x=${k===1?'':k}\sin2x$.<br>$\sin2x$ is at most $1$ (at $x=\frac\pi4$), so the maximum is $${k}$.`}},
 ];
 /* ---- cplx.txt ---- */
 const CX=(a,b)=>{let s;if(b===0)s=String(a);else if(a===0)s=(b===1?'':b===-1?'-':b)+'i';else s=a+(b>0?'+':'-')+(Math.abs(b)===1?'':Math.abs(b))+'i';return O(s,a*1000+b+0.5)};

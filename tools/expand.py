@@ -137,7 +137,7 @@ def s_props(code):
         if c in ')]}':
             if st: st.pop()
             j += 1; continue
-        if c == 's' and code[j + 1:j + 2] == ':' and (j == 0 or not re.match(r'[\w$.]', code[j - 1])):
+        if c == 's' and code[j + 1:j + 2] == ':' and re.search(r'[,{]\s*$', code[:j]):
             e = scan_expr(code, j + 2)
             res.append((j + 2, e))
             j = e; continue

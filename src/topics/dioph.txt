@@ -54,7 +54,9 @@ W: 24
 W: 17
 W: 35
 W: 12
-S: Chicken McNugget: $5\cdot7-5-7=23$.
+S: Chicken McNugget Theorem: if $\gcd(a,b)=1$, the largest amount that cannot be written as $ax+by$ with nonnegative integers is $ab-a-b$.
+$\gcd(5,7)=1$, so the answer is $5\cdot7-5-7=35-12=23$.
+Check: $23$ minus multiples of $7$ gives $23,16,9,2$, none divisible by $5$. But $24=10+14$, $25=25$, $26=5+21$, $27=20+7$, $28=28$: five consecutive amounts, so everything above works.
 ---
 Q: How many ordered pairs of nonnegative integers satisfy $3x+5y=100$?
 L: 2
@@ -63,7 +65,10 @@ W: 6
 W: 8
 W: 20
 W: 34
-S: $5y\equiv100\equiv1\pmod3$, so $y\equiv2\pmod3$, with $0\le y\le20$: $y=2,5,8,11,14,17,20$. That is $7$.
+S: Reduce mod $3$: $3x+5y=100$ forces $5y\equiv100\pmod3$, i.e. $2y\equiv1$, so $y\equiv2\pmod3$.
+Also $x\ge0$ needs $5y\le100$, so $0\le y\le20$.
+The valid $y$: $2,5,8,11,14,17,20$, each giving a nonnegative integer $x=\frac{100-5y}{3}$ ($30,25,20,15,10,5,0$).
+That's $7$ pairs.
 ---
 Q: How many positive integer amounts cannot be made using only $4$s and $9$s?
 L: 2
@@ -72,7 +77,9 @@ W: 23
 W: 24
 W: 11
 W: 8
-S: $\frac{(4-1)(9-1)}{2}=12$.
+S: For relatively prime $a,b$, exactly $\frac{(a-1)(b-1)}{2}$ positive integers cannot be made from $a$s and $b$s (Sylvester).
+$\gcd(4,9)=1$, so the count is $\frac{3\cdot8}{2}=12$.
+(They are $1,2,3,5,6,7,10,11,14,15,19,23$; the largest is $4\cdot9-4-9=23$.)
 ---
 Q: How many ordered pairs of positive integers satisfy $2x+3y=25$?
 L: 1
@@ -81,7 +88,9 @@ W: 3
 W: 5
 W: 8
 W: 12
-S: $y$ must be odd, with $3y\le23$: $y=1,3,5,7$ (giving $x=11,8,5,2$).
+S: $2x=25-3y$ must be even and positive, so $3y$ must be odd (hence $y$ odd) and $3y\lt25$.
+$y=1,3,5,7$ give $x=11,8,5,2$.
+That's $4$ pairs ($y=9$ would make $x\lt0$).
 ---
 Q: How many integer solutions does $6x+9y=20$ have?
 L: 1
@@ -90,7 +99,9 @@ W: 1
 W: 2
 W: 3
 W: 6
-S: $\gcd(6,9)=3$ does not divide $20$, so there are no solutions.
+S: The left side $6x+9y=3(2x+3y)$ is always a multiple of $3$.
+$20$ is not a multiple of $3$, so there are no integer solutions.
+(In general $ax+by=c$ is solvable exactly when $\gcd(a,b)\mid c$.)
 ---
 Q: Using $3$-cent and $7$-cent stamps, what is the fewest number of stamps that make exactly $50$ cents?
 L: 2
@@ -99,7 +110,11 @@ W: 14
 W: 8
 W: 12
 W: 17
-S: $7y\equiv50\pmod3$ gives $y\equiv2\pmod3$, so $y=2$ or $5$. $y=5$ gives $x=5$ (10 stamps); $y=2$ gives $x=12$ (14 stamps). Minimum $10$.
+S: Let $x$ be the number of $3$-cent stamps and $y$ the number of $7$-cent stamps: $3x+7y=50$.
+Mod $3$: $7y\equiv50$ means $y\equiv2\pmod3$, and $7y\le50$ means $y\le7$. So $y=2$ or $y=5$.
+• $y=2$: $x=\frac{50-14}{3}=12$, total $14$ stamps.
+• $y=5$: $x=\frac{50-35}{3}=5$, total $10$ stamps.
+To minimize the count, use as many of the larger stamp as possible: $10$.
 ---
 Q: How many ordered pairs of positive integers satisfy $7x+11y=200$?
 L: 2
@@ -108,7 +123,9 @@ W: 2
 W: 4
 W: 5
 W: 18
-S: $11y\equiv200\pmod7$, i.e. $4y\equiv4$, so $y\equiv1\pmod7$: $y=1,8,15$ (giving $x=27,16,5$). That is $3$.
+S: Reduce mod $7$: $11y\equiv200\pmod7$. Since $11\equiv4$ and $200\equiv4$, this is $4y\equiv4$, so $y\equiv1\pmod7$.
+For positive $x$ we need $11y\lt200$, i.e. $y\le18$: $y=1,8,15$.
+These give $x=\frac{200-11y}{7}=27,\ 16,\ 5$. That's $3$ pairs.
 ---
 Q: Positive integers satisfy $13x-8y=1$. What is the smallest possible value of $x+y$?
 L: 3
@@ -117,7 +134,9 @@ W: 5
 W: 8
 W: 21
 W: 3
-S: $13x\equiv1\pmod8$ means $5x\equiv1$, so $x\equiv5$. The smallest is $x=5$, $y=8$: $x+y=13$.
+S: Reduce mod $8$: $13x\equiv1\pmod8$, and $13\equiv5$, so $5x\equiv1$. Since $5\cdot5=25\equiv1$, $x\equiv5\pmod8$.
+The general solution is $x=5+8t$, $y=\frac{13x-1}{8}=8+13t$.
+The smallest positive pair is $(5,8)$ ($t=0$), so the smallest $x+y$ is $13$.
 ---
 @@ dioph-sfft
 Q: How many ordered pairs of positive integers satisfy $xy+x+y=23$?
@@ -127,7 +146,9 @@ W: 8
 W: 4
 W: 3
 W: 7
-S: $(x+1)(y+1)=24$ with both factors at least $2$. $24$ has $8$ divisors; removing $1\cdot24$ and $24\cdot1$ leaves $6$.
+S: Simon's Favorite Factoring Trick: add $1$ to both sides so the left side factors: $xy+x+y+1=(x+1)(y+1)=24$.
+Positive $x,y$ mean both factors are at least $2$.
+$24$ has $8$ positive divisors ($1,2,3,4,6,8,12,24$), so $8$ ordered factor pairs. Remove $(1,24)$ and $(24,1)$: $6$ pairs remain.
 ---
 Q: How many ordered pairs of positive integers satisfy $\dfrac1x+\dfrac1y=\dfrac16$?
 L: 2
@@ -136,7 +157,9 @@ W: 5
 W: 18
 W: 8
 W: 10
-S: $(x-6)(y-6)=36$. Negative factor pairs give nonpositive values, so we count the positive divisors of 36: $9$.
+S: Clear denominators: $6y+6x=xy$, so $xy-6x-6y=0$. Add $36$: $(x-6)(y-6)=36$.
+If both factors were negative, we'd need $x\lt6$ and $y\lt6$, making $(x-6)(y-6)\le25\lt36$. So both factors are positive divisors of $36$.
+$36=2^2\cdot3^2$ has $(2+1)(2+1)=9$ divisors, giving $9$ ordered pairs.
 ---
 Q: Positive integers satisfy $xy-3x-3y=0$. What is the largest possible value of $x+y$?
 L: 2
@@ -145,7 +168,9 @@ W: 12
 W: 15
 W: 18
 W: 13
-S: $(x-3)(y-3)=9$: $(1,9),(3,3),(9,1)$ give $(4,12),(6,6),(12,4)$. The largest sum is $16$.
+S: Add $9$ to factor: $xy-3x-3y+9=(x-3)(y-3)=9$.
+Negative factors would need $x,y\lt3$, giving a product at most $4$. So use positive pairs: $(1,9),(3,3),(9,1)$.
+They give $(x,y)=(4,12),(6,6),(12,4)$ with sums $16,12,16$. The largest is $16$.
 ---
 Q: How many ordered pairs of positive integers satisfy $xy=2x+3y$?
 L: 2
@@ -154,7 +179,9 @@ W: 2
 W: 6
 W: 8
 W: 3
-S: $(x-3)(y-2)=6$. The positive factor pairs give 4 solutions; the negative pairs give nonpositive values.
+S: Rearrange: $xy-2x-3y=0$, and add $6$: $(x-3)(y-2)=6$.
+Positive factor pairs of $6$: $(1,6),(2,3),(3,2),(6,1)$, giving $(4,8),(5,5),(6,4),(9,3)$.
+Negative pairs would need $x\lt3$ and $y\lt2$, i.e. $y=1$ and $x\le2$, with product at most $2\lt6$. So there are $4$ solutions.
 ---
 Q: A rectangle has integer side lengths and its area equals its perimeter. How many non-congruent such rectangles are there?
 L: 2
@@ -163,7 +190,9 @@ W: 3
 W: 1
 W: 4
 W: 5
-S: $ab=2a+2b$ gives $(a-2)(b-2)=4$: $3\times6$ and $4\times4$.
+S: With sides $a\le b$: area $ab$ equals perimeter $2a+2b$. So $ab-2a-2b=0$, and adding $4$: $(a-2)(b-2)=4$.
+Positive factorizations: $1\cdot4$ and $2\cdot2$, giving $3\times6$ and $4\times4$. (Negative factors give no valid sides.)
+Check: $3\cdot6=18=2(3+6)$ and $4\cdot4=16=2(4+4)$. So there are $2$ such rectangles.
 ---
 Q: Positive integers satisfy $2xy+x+y=38$. What is $x+y$?
 L: 3
@@ -172,7 +201,9 @@ W: 7
 W: 10
 W: 12
 W: 9
-S: Multiply by 2 and add 1: $(2x+1)(2y+1)=77=7\cdot11$. So $\{x,y\}=\{3,5\}$ and $x+y=8$.
+S: The coefficient $2$ on $xy$ needs a modified trick: multiply by $2$ and add $1$.
+$4xy+2x+2y+1=77$, which factors as $(2x+1)(2y+1)=77=7\cdot11$.
+Both factors are odd and at least $3$, so $\{2x+1,2y+1\}=\{7,11\}$, giving $\{x,y\}=\{3,5\}$ and $x+y=8$.
 ---
 Q: How many ordered pairs of positive integers satisfy $xy=x+y+10$?
 L: 1
@@ -181,7 +212,9 @@ W: 1
 W: 4
 W: 11
 W: 0
-S: $(x-1)(y-1)=11$, which is prime: $(2,12)$ and $(12,2)$.
+S: Move terms and add $1$: $xy-x-y+1=11$, i.e. $(x-1)(y-1)=11$.
+$11$ is prime, so the positive factor pairs are $(1,11)$ and $(11,1)$, giving $(2,12)$ and $(12,2)$.
+(Negative pairs would need $x\le0$ or $y\le0$.) That's $2$ pairs.
 ---
 Q: How many ordered pairs of positive integers satisfy $\dfrac1a+\dfrac1b=\dfrac12$?
 L: 1
@@ -190,7 +223,9 @@ W: 2
 W: 4
 W: 5
 W: 6
-S: $(a-2)(b-2)=4$ has positive factor pairs $(1,4),(2,2),(4,1)$, giving $3$ solutions.
+S: Clear denominators: $2b+2a=ab$, so $ab-2a-2b+4=4$, i.e. $(a-2)(b-2)=4$.
+Positive pairs $(1,4),(2,2),(4,1)$ give $(3,6),(4,4),(6,3)$.
+Negative pairs like $(-1,-4)$ would make $a$ or $b$ nonpositive. So there are $3$ solutions.
 ---
 @@ dioph-bound
 Q: How many ordered pairs of positive integers satisfy $x^2+y^2=50$?
@@ -200,7 +235,9 @@ W: 2
 W: 4
 W: 6
 W: 1
-S: $50=1+49=25+25$: $(1,7),(7,1),(5,5)$.
+S: Both $x^2$ and $y^2$ are positive squares less than $50$: $1,4,9,16,25,36,49$.
+Which pairs add to $50$? $1+49$ and $25+25$.
+Ordered pairs: $(1,7),(7,1),(5,5)$, which is $3$.
 ---
 Q: How many integer solutions does $x^2-y^2=2026$ have?
 L: 2
@@ -209,7 +246,10 @@ W: 1
 W: 2
 W: 4
 W: 8
-S: $x^2-y^2=(x-y)(x+y)$ is odd or a multiple of 4. $2026\equiv2\pmod4$, so there are no solutions.
+S: $x^2-y^2=(x-y)(x+y)$, and the two factors $x-y$ and $x+y$ have the same parity (they differ by $2y$).
+• Both odd: the product is odd.
+• Both even: the product is a multiple of $4$.
+So $x^2-y^2$ is never $\equiv2\pmod4$. Since $2026=4\cdot506+2$, there are no solutions.
 ---
 Q: For how many positive integers $n$ is $1!+2!+\cdots+n!$ a perfect square?
 L: 2
@@ -218,7 +258,9 @@ W: 1
 W: 3
 W: 4
 W: 0
-S: $n=1$: $1$ ✓. $n=2$: $3$. $n=3$: $9$ ✓. For $n\ge4$ the sum ends in $3$ ($33$ plus multiples of 10), and no square ends in 3. So $2$.
+S: Compute small cases: $n=1$: $1=1^2$ ✓. $n=2$: $3$. $n=3$: $9=3^2$ ✓. $n=4$: $33$.
+For $n\ge5$, each added $n!$ is a multiple of $10$, so the sum still ends in $3$ (like $33$).
+No perfect square ends in $3$ (squares end in $0,1,4,5,6,9$). So only $n=1$ and $n=3$ work: $2$ values.
 ---
 Q: Positive integers satisfy $x^2=y^2+2y+13$. What is $x+y$?
 L: 2
@@ -227,7 +269,10 @@ W: 4
 W: 6
 W: 7
 W: 12
-S: $x^2-(y+1)^2=12$, so $(x-y-1)(x+y+1)=12$ with both factors the same parity: $2\cdot6$. Then $x=4$, $y=1$, and $x+y=5$.
+S: Complete the square on the right: $y^2+2y+13=(y+1)^2+12$. So $x^2-(y+1)^2=12$, i.e. $(x-y-1)(x+y+1)=12$.
+The two factors have the same parity (they differ by $2y+2$) and $x+y+1$ is the larger positive one.
+Same-parity factor pairs of $12$: only $2\cdot6$. So $x-y-1=2$ and $x+y+1=6$, giving $x=4$, $y=1$.
+$x+y=5$. Check: $16=1+2+13$. ✓
 ---
 Q: How many triples of positive integers $x\le y\le z$ satisfy $\dfrac1x+\dfrac1y+\dfrac1z=1$?
 L: 3
@@ -236,8 +281,10 @@ W: 2
 W: 4
 W: 6
 W: 10
-S: $x$ is the smallest, so $\frac3x\ge1$ and $x\le3$ (and $x\ge2$).
-$x=3$: $(3,3,3)$. $x=2$: $\frac1y+\frac1z=\frac12$ gives $(4,4)$ and $(3,6)$. Total $3$.
+S: Since $x$ is the smallest, $\frac1x$ is the largest term, so $1=\frac1x+\frac1y+\frac1z\le\frac3x$, giving $x\le3$. Also $x\ge2$ (if $x=1$ the other terms would have to be $0$).
+• $x=3$: then $\frac1y+\frac1z=\frac23$ with $3\le y\le z$, forcing $y=z=3$: $(3,3,3)$.
+• $x=2$: $\frac1y+\frac1z=\frac12$, i.e. $(y-2)(z-2)=4$: $(y,z)=(3,6)$ or $(4,4)$.
+Total: $3$ triples.
 ---
 Q: Positive integers satisfy $2^a-2^b=48$. What is $a+b$?
 L: 2
@@ -246,7 +293,9 @@ W: 8
 W: 12
 W: 9
 W: 11
-S: $2^b(2^{a-b}-1)=16\cdot3$, so $b=4$ and $2^{a-b}=4$, giving $a=6$. Then $a+b=10$.
+S: Factor out the smaller power: $2^a-2^b=2^b(2^{a-b}-1)$.
+$2^{a-b}-1$ is odd, and $48=16\cdot3=2^4\cdot3$, so matching the power of $2$ and the odd part: $2^b=16$ and $2^{a-b}-1=3$.
+So $b=4$, $a-b=2$, $a=6$, and $a+b=10$. Check: $64-16=48$. ✓
 ---
 Q: How many ordered pairs of integers satisfy $xy=x+y$?
 L: 1
@@ -255,7 +304,9 @@ W: 1
 W: 3
 W: 4
 W: 0
-S: $(x-1)(y-1)=1$, so both factors are $1$ or both are $-1$: $(2,2)$ and $(0,0)$.
+S: Rearrange and add $1$: $xy-x-y+1=1$, so $(x-1)(y-1)=1$.
+The only integer factorizations of $1$ are $1\cdot1$ and $(-1)(-1)$.
+These give $(x,y)=(2,2)$ and $(0,0)$: $2$ pairs.
 ---
 Q: For how many positive integers $n$ is $n^2+12$ a perfect square?
 L: 1
@@ -264,7 +315,9 @@ W: 2
 W: 0
 W: 3
 W: 4
-S: $m^2-n^2=12$ gives $(m-n)(m+n)=12$ with matching parity: $2\cdot6$, so $n=2$. Only one.
+S: Suppose $n^2+12=m^2$. Then $m^2-n^2=(m-n)(m+n)=12$, with both factors positive and of the same parity.
+Factor pairs of $12$: $(1,12),(2,6),(3,4)$. Only $(2,6)$ has matching parity.
+$m-n=2$, $m+n=6$ give $m=4$, $n=2$: $4+12=16$. ✓ Exactly $1$ value.
 ---
 @@ dioph-floor
 Q: What real $x$ satisfies $x+\lfloor x\rfloor=8.4$?
@@ -274,7 +327,9 @@ W: \frac{21}{5}
 W: 4
 W: \frac{42}{5}
 W: \frac{23}{5}
-S: With $x=n+f$: $2n+f=8.4$ and $0\le f\lt 1$, so $n=4$ and $f=0.4$. Thus $x=4.4=\frac{22}5$.
+S: Write $x=n+f$ with $n=\lfloor x\rfloor$ an integer and $0\le f\lt1$.
+Then $x+\lfloor x\rfloor=2n+f=8.4$. Since $2n$ is an integer and $0\le f\lt1$: $2n=8$ and $f=0.4$.
+So $n=4$ and $x=4.4=\frac{22}{5}$. Check: $4.4+4=8.4$. ✓
 ---
 Q: For how many integers $n$ with $1\le n\le100$ does $\left\lfloor\frac n2\right\rfloor+\left\lfloor\frac n3\right\rfloor+\left\lfloor\frac n6\right\rfloor=n$?
 L: 2
@@ -283,7 +338,10 @@ W: 17
 W: 33
 W: 50
 W: 15
-S: Write $n=6k+r$. The left side is $6k+\lfloor\frac r2\rfloor+\lfloor\frac r3\rfloor$, which equals $6k+r$ only for $r=0$. So $n$ is a multiple of 6: $16$ values.
+S: Write $n=6k+r$ with $0\le r\le5$. Then $\lfloor\frac n2\rfloor=3k+\lfloor\frac r2\rfloor$, $\lfloor\frac n3\rfloor=2k+\lfloor\frac r3\rfloor$, $\lfloor\frac n6\rfloor=k$.
+The sum is $6k+\lfloor\frac r2\rfloor+\lfloor\frac r3\rfloor$, which must equal $6k+r$.
+Check $r=0..5$: $\lfloor\frac r2\rfloor+\lfloor\frac r3\rfloor=0,0,1,2,3,3$ versus $r=0,1,2,3,4,5$. Only $r=0$ matches.
+So $n$ must be a multiple of $6$: $6,12,\dots,96$, which is $16$ values.
 ---
 Q: How many real numbers $x$ satisfy $x^2=2\lfloor x\rfloor+3$?
 L: 3
@@ -292,9 +350,10 @@ W: 2
 W: 4
 W: 1
 W: 5
-S: Let $n=\lfloor x\rfloor$, so $x=\pm\sqrt{2n+3}$, and check the floor.
-Positive: $n=2$ gives $\sqrt7\approx2.65$ ✓; $n=3$ gives $3$ ✓; others fail.
-Negative: $n=-1$ gives $x=-1$ ✓. Total $3$.
+S: Let $n=\lfloor x\rfloor$. Then $x^2=2n+3$, so $x=\pm\sqrt{2n+3}$, and we need $\lfloor x\rfloor=n$.
+Positive $x$: $n\le\sqrt{2n+3}\lt n+1$. $n=2$: $\sqrt7\approx2.65$, floor $2$ ✓. $n=3$: $\sqrt9=3$ ✓. $n=1$: $\sqrt5\approx2.24$, floor $2\ne1$ ✗. $n\ge4$: $\sqrt{2n+3}\lt n$ ✗.
+Negative $x$: $x=-\sqrt{2n+3}$ needs $n\le-1$ and $2n+3\ge0$, so $n=-1$: $x=-1$, floor $-1$ ✓.
+Total: $3$ solutions ($\sqrt7$, $3$, $-1$).
 ---
 Q: For how many integers $n$ with $1\le n\le50$ does $\lfloor\sqrt n\rfloor$ divide $n$?
 L: 3
@@ -303,7 +362,11 @@ W: 18
 W: 20
 W: 21
 W: 14
-S: For $m=\lfloor\sqrt n\rfloor$ from 1 to 6, the multiples of $m$ in $[m^2,m^2+2m]$ are $m^2,m^2+m,m^2+2m$ (3 each): $18$. For $m=7$, $n\in\{49,50\}$ adds only $49$. Total $19$.
+S: Group by $m=\lfloor\sqrt n\rfloor$: the $n$ with that floor are $m^2\le n\le m^2+2m$.
+In that range the multiples of $m$ are $m^2,\ m^2+m,\ m^2+2m$: exactly $3$ for each $m$.
+$m=1,\dots,6$ cover $n=1$ to $48$: $6\cdot3=18$ values.
+$m=7$: only $n=49,50$ are in range, and $7\mid49$ but $7\nmid50$: $1$ more.
+Total: $19$.
 ---
 Q: What is $\lfloor2.5\rfloor+\lceil2.5\rceil+\lfloor-2.5\rfloor+\lceil-2.5\rceil$?
 L: 1
@@ -312,7 +375,8 @@ W: 1
 W: -1
 W: 2
 W: 10
-S: $2+3+(-3)+(-2)=0$.
+S: $\lfloor2.5\rfloor=2$, $\lceil2.5\rceil=3$, $\lfloor-2.5\rfloor=-3$ (round down), $\lceil-2.5\rceil=-2$ (round up).
+Sum: $2+3-3-2=0$.
 ---
 Q: How many real numbers $x$ satisfy $\lfloor x\rfloor=x^2$?
 L: 2
@@ -321,7 +385,9 @@ W: 1
 W: 3
 W: 0
 W: 4
-S: $x^2=n$ is a nonnegative integer, so $x\ge0$ (negative $x$ would have a negative floor). $x=\sqrt n$ with $n\le\sqrt n\lt n+1$ forces $n\in\{0,1\}$: $x=0,1$.
+S: $\lfloor x\rfloor$ is an integer, so $x^2=n$ is a nonnegative integer. Negative $x$ would have a negative floor, so $x\ge0$ and $x=\sqrt n$.
+We need $\lfloor\sqrt n\rfloor=n$, i.e. $n\le\sqrt n\lt n+1$. $n\le\sqrt n$ holds only for $n=0$ or $n=1$.
+Both work: $x=0$ and $x=1$. That's $2$ solutions.
 ---
 Q: If $\lfloor x\rfloor=5$ and $x-\lfloor x\rfloor=0.3$, what is $\lfloor2x\rfloor$?
 L: 1
@@ -330,7 +396,9 @@ W: 11
 W: 12
 W: 6
 W: 13
-S: $x=5.3$, $2x=10.6$, so $\lfloor2x\rfloor=10$.
+S: $\lfloor x\rfloor=5$ and the fractional part is $0.3$, so $x=5.3$.
+$2x=10.6$, so $\lfloor2x\rfloor=10$.
+(Note $\lfloor2x\rfloor=2\lfloor x\rfloor$ here because the fractional part is less than $\frac12$.)
 ---
 Q: How many distinct values does $\left\lfloor\frac n3\right\rfloor$ take for $n=1,2,\dots,100$?
 L: 1
@@ -339,43 +407,44 @@ W: 33
 W: 100
 W: 35
 W: 67
-S: The values run through every integer from $0$ to $33$: $34$ values.
-
+S: As $n$ goes from $1$ to $100$, $\lfloor\frac n3\rfloor$ goes from $\lfloor\frac13\rfloor=0$ up to $\lfloor\frac{100}{3}\rfloor=33$.
+It increases by at most $1$ each step, so it takes every integer from $0$ to $33$.
+That's $34$ values.
 === GENS ===
 GENS['dioph-lin']=[
 r=>{let a=ri(r,2,12),b=ri(r,3,15);if(gcd(a,b)!==1||a===b)return GENS['dioph-lin'][0](r);const ask=r()<.5;
- return ask?{lvl:1,q:T`Using only ${a}-cent and ${b}-cent stamps, what is the largest amount (in cents) that cannot be made exactly?`,a:a*b-a-b,w:[a*b,a*b-a,a*b-b,a+b,a*b-a-b+1],s:T`Chicken McNugget: $${a}\cdot${b}-${a}-${b}=${a*b-a-b}$.`}
- :{lvl:2,q:T`How many positive integer amounts cannot be made using only ${a}s and ${b}s?`,a:(a-1)*(b-1)/2,w:[a*b-a-b,(a-1)*(b-1),(a-1)*(b-1)/2+1,a+b],s:T`$\frac{(${a}-1)(${b}-1)}{2}=${(a-1)*(b-1)/2}$.`}},
+ return ask?{lvl:1,q:T`Using only ${a}-cent and ${b}-cent stamps, what is the largest amount (in cents) that cannot be made exactly?`,a:a*b-a-b,w:[a*b,a*b-a,a*b-b,a+b,a*b-a-b+1],s:T`Chicken McNugget Theorem: when $\gcd(a,b)=1$, the largest amount that can't be made as $ax+by$ (with $x,y\ge0$) is $ab-a-b$.<br>Here $\gcd(${a},${b})=1$, so the answer is $${a}\cdot${b}-${a}-${b}=${a*b}-${a+b}=${a*b-a-b}$.<br>Every amount above it can be made: once you can make ${Math.min(a,b)} consecutive amounts, adding ${Math.min(a,b)}s reaches everything after.`}
+ :{lvl:2,q:T`How many positive integer amounts cannot be made using only ${a}s and ${b}s?`,a:(a-1)*(b-1)/2,w:[a*b-a-b,(a-1)*(b-1),(a-1)*(b-1)/2+1,a+b],s:T`For relatively prime $a,b$, exactly $\frac{(a-1)(b-1)}{2}$ positive integers can't be written as $ax+by$ with $x,y\ge0$ (Sylvester's theorem).<br>Here $\gcd(${a},${b})=1$, so the count is $\frac{(${a}-1)(${b}-1)}{2}=\frac{${(a-1)*(b-1)}}{2}=${(a-1)*(b-1)/2}$.<br>(Exactly half of the numbers from $1$ to $(a-1)(b-1)$ are unreachable; the largest is $${a*b-a-b}$.)`}},
 r=>{let a=ri(r,2,9),b=ri(r,2,11);if(gcd(a,b)!==1)return GENS['dioph-lin'][1](r);const c=ri(r,a*b,a*b*6);const pos=r()<.5;let n=0;
  for(let y=pos?1:0;b*y<=c;y++){const rem=c-b*y;if(rem%a===0&&(pos?rem>0:rem>=0))n++}
- return{lvl:2,q:T`How many ordered pairs of ${pos?'positive':'nonnegative'} integers satisfy $${a}x+${b}y=${c}$?`,a:n,w:[n+1,n-1>=0?n-1:n+2,Math.floor(c/(a*b)),n+2],s:T`$y$ must lie in a single residue class mod ${a}. Counting the ${pos?'positive':'nonnegative'} $y$ with $${b}y${pos?'\\lt':'\\le'}${c}$ in that class gives $${n}$.`}},
+ return{lvl:2,q:T`How many ordered pairs of ${pos?'positive':'nonnegative'} integers satisfy $${a}x+${b}y=${c}$?`,a:n,w:[n+1,n-1>=0?n-1:n+2,Math.floor(c/(a*b)),n+2],s:T`Reduce mod ${a}: $${b}y\equiv${c}\pmod{${a}}$. Since $\gcd(${a},${b})=1$, this pins $y$ to one residue class mod ${a}.<br>${(()=>{const ys=[];for(let y=pos?1:0;b*y<=c;y++){const rem=c-b*y;if(rem%a===0&&(pos?rem>0:rem>=0))ys.push(y)}return T`The ${pos?'positive':'nonnegative'} values of $y$ that work (keeping $x=\frac{${c}-${b}y}{${a}}$ ${pos?'positive':'nonnegative'}) are $${ys.join(',\\ ')||'\\text{none}'}$.`})()}<br>Each gives one pair, so there are $${n}$ pairs.`}},
 r=>{let a=ri(r,3,9),b=ri(r,a+1,13);if(gcd(a,b)!==1)return GENS['dioph-lin'][2](r);const c=ri(r,a*b-a-b+1,a*b*3);let best=1e9;for(let y=0;b*y<=c;y++){const rem=c-b*y;if(rem%a===0)best=Math.min(best,y+rem/a)}
- return{lvl:2,q:T`Using ${a}-cent and ${b}-cent stamps, what is the fewest stamps that make exactly ${c} cents?`,a:best,w:[best+1,best+2,Math.ceil(c/b),Math.floor(c/a)].filter(x=>x!==best),s:T`Use as many ${b}-cent stamps as possible while making the remainder a multiple of ${a}. The minimum is $${best}$ stamps.`}},
+ return{lvl:2,q:T`Using ${a}-cent and ${b}-cent stamps, what is the fewest stamps that make exactly ${c} cents?`,a:best,w:[best+1,best+2,Math.ceil(c/b),Math.floor(c/a)].filter(x=>x!==best),s:T`Write $${a}x+${b}y=${c}$ with $x$ ${a}-cent and $y$ ${b}-cent stamps. To use few stamps, use as many ${b}-cent stamps as possible.<br>${(()=>{const opts=[];for(let y=Math.floor(c/b);y>=0;y--){const rem=c-b*y;if(rem%a===0){opts.push([y,rem/a]);if(opts.length>=2)break}}return opts.map(([y,x])=>T`$y=${y}$: $x=\frac{${c}-${b*y}}{${a}}=${x}$, total $${x+y}$ stamps.`).join('<br>')})()}<br>Larger $y$ (which must be a multiple of ${a} apart) uses fewer stamps, so the minimum is $${best}$.`}},
 ];
 GENS['dioph-sfft']=[
 r=>{const a=ri(r,1,6),b=ri(r,1,6),N=ri(r,10,80);const c=N-a*b;let n=0;for(let d=1;d<=N;d++)if(N%d===0&&d>b&&N/d>a)n++;
  return{lvl:2,q:T`How many ordered pairs of positive integers satisfy $xy+${a===1?'':a}x+${b===1?'':b}y=${c}$?`,a:n,w:[ndiv(N),n+1,n-1>=0?n-1:n+2,ndiv(N)-2].filter(x=>x!==n),
- s:T`$(x+${b})(y+${a})=${c}+${a*b}=${N}$. Count the divisor pairs with $x+${b}>${b}$ and $y+${a}>${a}$: $${n}$.`}},
+ s:T`Simon's Favorite Factoring Trick: add $${a*b}$ to both sides so the left side factors: $xy+${a}x+${b}y+${a*b}=(x+${b})(y+${a})=${c}+${a*b}=${N}$.<br>Positive $x,y$ mean $x+${b}\ge${b+1}$ and $y+${a}\ge${a+1}$.<br>Divisors $d$ of $${N}$ with $d\gt${b}$ and $\frac{${N}}{d}\gt${a}$: $${(()=>{const o=[];for(let d=1;d<=N;d++)if(N%d===0&&d>b&&N/d>a)o.push(d+'\\cdot'+(N/d));return o.join(',\\ ')||'\\text{none}'})()}$.<br>That's $${n}$ ordered pairs.`}},
 r=>{const n=ri(r,2,30);const d=ndiv(n*n);
- return{lvl:2,q:T`How many ordered pairs of positive integers satisfy $\dfrac1x+\dfrac1y=\dfrac1{${n}}$?`,a:d,w:[ndiv(n),2*ndiv(n),d+1,d-1],s:T`$(x-${n})(y-${n})=${n*n}$, which has $d(${n*n})=${d}$ positive divisor pairs.`}},
+ return{lvl:2,q:T`How many ordered pairs of positive integers satisfy $\dfrac1x+\dfrac1y=\dfrac1{${n}}$?`,a:d,w:[ndiv(n),2*ndiv(n),d+1,d-1],s:T`Clear denominators: $${n}y+${n}x=xy$, so $xy-${n}x-${n}y=0$. Add $${n*n}$: $(x-${n})(y-${n})=${n*n}$.<br>Both factors negative would need $x,y\lt${n}$, making the product less than $${n*n}$. So both factors are positive divisors of $${n*n}$.<br>$${n*n}=${factTex(n*n)}$ has $${d}$ divisors, each giving one ordered pair. Answer: $${d}$.`}},
 r=>{const a=ri(r,1,5),b=ri(r,1,5);const N=a*b;let n=0;for(let d=1;d<=N;d++)if(N%d===0)n++;
- return{lvl:2,q:T`How many ordered pairs of positive integers satisfy $xy=${a===1?'':a}x+${b===1?'':b}y$?`,a:n,w:[n+1,n-1>0?n-1:n+2,2*n,N].filter(x=>x!==n),s:T`$(x-${b})(y-${a})=${N}$. The positive divisor pairs give $${n}$ solutions; the negative pairs make $x$ or $y$ nonpositive.`}},
+ return{lvl:2,q:T`How many ordered pairs of positive integers satisfy $xy=${a===1?'':a}x+${b===1?'':b}y$?`,a:n,w:[n+1,n-1>0?n-1:n+2,2*n,N].filter(x=>x!==n),s:T`Rearrange: $xy-${a}x-${b}y=0$, and add $${N}$: $(x-${b})(y-${a})=${N}$.<br>Positive factor pairs of $${N}$ each give a solution ($x=${b}+d$, $y=${a}+\frac{${N}}{d}$); there are $${n}$ of them.<br>Negative pairs would need $x\lt${b}$ and $y\lt${a}$, but then the product is less than $${N}$ (or $x$, $y$ is nonpositive). So the answer is $${n}$.`}},
 ];
 GENS['dioph-bound']=[
 r=>{const N=pick(r,[25,50,65,85,100,125,130,145,169,170,185,200,205,221,250,260,289,290,325]);let n=0;for(let x=1;x*x<N;x++){const y=Math.round(Math.sqrt(N-x*x));if(y>0&&y*y===N-x*x)n++}
- return{lvl:1,q:T`How many ordered pairs of positive integers satisfy $x^2+y^2=${N}$?`,a:n,w:[n+1,n-1>0?n-1:n+2,n*2,n*4].filter(x=>x!==n),s:T`List the squares below ${N} and check which pairs add to ${N}: $${n}$ ordered pairs.`}},
+ return{lvl:1,q:T`How many ordered pairs of positive integers satisfy $x^2+y^2=${N}$?`,a:n,w:[n+1,n-1>0?n-1:n+2,n*2,n*4].filter(x=>x!==n),s:T`Both squares are positive and less than ${N}. For each $x$ with $x^2\lt${N}$, check whether $${N}-x^2$ is a perfect square:<br>$${(()=>{const o=[];for(let x=1;x*x<N;x++){const y=Math.round(Math.sqrt(N-x*x));if(y>0&&y*y===N-x*x)o.push('('+x+','+y+')')}return o.join(',\\ ')})()}$.<br>That's $${n}$ ordered pairs.`}},
 r=>{const k=ri(r,3,60);let n=0,lst=[];for(let x=1;x<=k;x++){const m=Math.round(Math.sqrt(x*x+k));if(m*m===x*x+k){n++;lst.push(x)}}
- return{lvl:1,q:T`For how many positive integers $n$ is $n^2+${k}$ a perfect square?`,a:n,w:[0,1,2,3,4].filter(x=>x!==n),s:T`$(m-n)(m+n)=${k}$ with factors of the same parity. ${n?'This gives $n='+lst.join(',')+'$.':'There are none.'}`}},
+ return{lvl:1,q:T`For how many positive integers $n$ is $n^2+${k}$ a perfect square?`,a:n,w:[0,1,2,3,4].filter(x=>x!==n),s:T`Suppose $n^2+${k}=m^2$. Then $(m-n)(m+n)=${k}$ with $0\lt m-n\lt m+n$, and the two factors have the same parity (they differ by $2n$).<br>${(()=>{const o=[];for(let d=1;d*d<k;d++)if(k%d===0&&(d+k/d)%2===0)o.push(T`$${d}\cdot${k/d}$ gives $n=${(k/d-d)/2}$`);return o.length?'Same-parity factor pairs: '+o.join('; ')+'.':'No factor pair of '+k+' has matching parity (with distinct factors).'})()}<br>So there ${n===1?'is':'are'} $${n}$ such value${n===1?'':'s'}.`}},
 r=>{const b=ri(r,0,6),d=ri(r,1,5);const N=2**b*(2**d-1);
- return{lvl:2,q:T`Nonnegative integers satisfy $2^a-2^b=${N}$. What is $a+b$?`,a:2*b+d,w:[2*b+d+1,b+d,2*(b+d),2*b+d-1],s:T`$2^b(2^{a-b}-1)=${N}=2^{${b}}\cdot${2**d-1}$, so $b=${b}$, $a-b=${d}$, and $a+b=${2*b+d}$.`}},
+ return{lvl:2,q:T`Nonnegative integers satisfy $2^a-2^b=${N}$. What is $a+b$?`,a:2*b+d,w:[2*b+d+1,b+d,2*(b+d),2*b+d-1],s:T`Factor out the smaller power: $2^a-2^b=2^b(2^{a-b}-1)$, where $2^{a-b}-1$ is odd.<br>$${N}=2^{${b}}\cdot${2**d-1}$ (a power of 2 times an odd number), so $2^b=2^{${b}}$ and $2^{a-b}-1=${2**d-1}$.<br>So $b=${b}$, $a-b=${d}$, $a=${b+d}$, and $a+b=${2*b+d}$.`}},
 ];
 GENS['dioph-floor']=[
 r=>{const n=ri(r,-5,12),f=F(ri(r,1,9),10);const v=F(2*n).add(f);const x=F(n).add(f);
- return{lvl:1,q:T`What real number $x$ satisfies $x+\lfloor x\rfloor=${v.tex()}$?`,a:x,w:[v.div(2),x.sub(F(1,10)),x.add(1),F(n)],s:T`With $x=n+f$: $2n+f=${v.tex()}$ and $0\le f\lt 1$, so $n=${n}$ and $f=${f.tex()}$. Then $x=${x.tex()}$.`}},
+ return{lvl:1,q:T`What real number $x$ satisfies $x+\lfloor x\rfloor=${v.tex()}$?`,a:x,w:[v.div(2),x.sub(F(1,10)),x.add(1),F(n)],s:T`Write $x=n+f$ where $n=\lfloor x\rfloor$ is an integer and $0\le f\lt1$.<br>Then $x+\lfloor x\rfloor=2n+f=${v.tex()}$. Since $2n$ is an integer and $0\le f\lt1$, $2n$ is the integer part: $2n=${2*n}$ and $f=${f.tex()}$.<br>So $n=${n}$ and $x=${n}+${f.tex()}=${x.tex()}$.`}},
 r=>{const n=ri(r,-6,9),f=ri(r,1,9),k=ri(r,2,5);const x=n+f/10;const v=Math.floor(k*x+1e-9);
- return{lvl:1,q:T`If $\lfloor x\rfloor=${n}$ and $x-\lfloor x\rfloor=${f/10}$, what is $\lfloor${k}x\rfloor$?`,a:v,w:[v+1,v-1,k*n,k*n+k-1===v?v+2:k*n+k-1],s:T`$x=${(n+f/10).toFixed(1)}$, so $${k}x=${(k*(n+f/10)).toFixed(1)}$ and the floor is $${v}$.`}},
+ return{lvl:1,q:T`If $\lfloor x\rfloor=${n}$ and $x-\lfloor x\rfloor=${f/10}$, what is $\lfloor${k}x\rfloor$?`,a:v,w:[v+1,v-1,k*n,k*n+k-1===v?v+2:k*n+k-1],s:T`$x=\lfloor x\rfloor+(x-\lfloor x\rfloor)=${n}+${f/10}=${(n+f/10).toFixed(1)}$.<br>$${k}x=${(k*(n+f/10)).toFixed(1)}$, and the greatest integer at or below it is $${v}$.${k*(n+f/10)<0?' (For negative numbers, the floor goes down, away from zero.)':''}`}},
 r=>{const k=ri(r,2,9),N=ri(r,20,300);const v=Math.floor(N/k)+1;
- return{lvl:1,q:T`How many distinct values does $\left\lfloor\frac n{${k}}\right\rfloor$ take for $n=1,2,\dots,${N}$?`,a:v,w:[v-1,v+1,N,Math.ceil(N/k)+1===v?v+2:Math.ceil(N/k)+1],s:T`The values run from $0$ to $\lfloor\frac{${N}}{${k}}\rfloor=${v-1}$ with none skipped: $${v}$ values.`}},
+ return{lvl:1,q:T`How many distinct values does $\left\lfloor\frac n{${k}}\right\rfloor$ take for $n=1,2,\dots,${N}$?`,a:v,w:[v-1,v+1,N,Math.ceil(N/k)+1===v?v+2:Math.ceil(N/k)+1],s:T`As $n$ runs from $1$ to ${N}, $\left\lfloor\frac n{${k}}\right\rfloor$ starts at $0$ (for $n\lt${k}$) and ends at $\left\lfloor\frac{${N}}{${k}}\right\rfloor=${v-1}$.<br>It never jumps by more than $1$ when $n$ increases by $1$, so every integer from $0$ to $${v-1}$ appears.<br>That's $${v-1}+1=${v}$ distinct values.`}},
 r=>{const N=ri(r,20,200);let c=0;for(let n=1;n<=N;n++)if(n%Math.floor(Math.sqrt(n)+1e-9)===0)c++;
- return{lvl:3,q:T`For how many integers $n$ with $1\le n\le${N}$ does $\lfloor\sqrt n\rfloor$ divide $n$?`,a:c,w:[c+1,c-1,c+3,3*Math.floor(Math.sqrt(N))],s:T`For each $m=\lfloor\sqrt n\rfloor$, the multiples of $m$ in $[m^2,m^2+2m]$ are $m^2,m^2+m,m^2+2m$ (3 per full block). Adjusting for the last partial block gives $${c}$.`}},
+ return{lvl:3,q:T`For how many integers $n$ with $1\le n\le${N}$ does $\lfloor\sqrt n\rfloor$ divide $n$?`,a:c,w:[c+1,c-1,c+3,3*Math.floor(Math.sqrt(N))],s:T`Group the $n$ by $m=\lfloor\sqrt n\rfloor$: these are $m^2\le n\le m^2+2m$ (just before $(m+1)^2$).<br>In each full group, the multiples of $m$ are $m^2,\ m^2+m,\ m^2+2m$: exactly $3$.<br>${(()=>{const M=Math.floor(Math.sqrt(N));const full=(M+1)**2-1<=N?M:M-1;let last=0;for(let t=M*M;t<=N;t++)if(t%M===0)last++;return full===M?T`Groups $m=1$ to $${M}$ are all complete: $3\cdot${M}=${3*M}$.`:T`Groups $m=1$ to $${M-1}$ are complete ($3\cdot${M-1}=${3*(M-1)}$); the last group $m=${M}$ only reaches $n=${N}$ and contributes $${last}$.`})()}<br>Total: $${c}$.`}},
 ];
