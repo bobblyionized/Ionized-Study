@@ -1,0 +1,185 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc4-model">
+<h2>4.4.A Polynomial Models</h2>
+<p>Real data rarely follows a formula exactly, but a polynomial often fits it well enough to describe trends and make predictions. Calculators do this with <b>regression</b> (linear, quadratic, cubic, quartic), which finds the polynomial of a chosen degree that fits the data best. This lesson covers how to choose the degree, how exact fits work, and how to use and judge a model.</p>
+
+<h3>1. Choosing the degree from the shape</h3>
+<ul><li><b>Linear</b> ($ax+b$): steady increase or decrease.</li>
+<li><b>Quadratic</b> ($ax^2+bx+c$): one turn, rising then falling or falling then rising.</li>
+<li><b>Cubic</b>: up to two turns, e.g. rising, leveling or dipping, then rising again.</li>
+<li><b>Quartic</b>: up to three turns.</li></ul>
+<p>Use the lowest degree that captures the pattern. A higher degree always fits the given points at least as well, but it can wiggle wildly between and beyond them.</p>
+
+<h3>2. Finite differences</h3>
+<p>For equally spaced $x$-values, take differences of consecutive $y$-values, then differences of those, and so on.</p>
+<div class="box">If the data come from a polynomial of degree $n$, the $n$th differences are <b>constant</b> (and the $(n+1)$st differences are $0$). For $ax^n+\cdots$ with spacing $1$, the constant $n$th difference is $a\cdot n!$.</div>
+<table class="t" style="width:auto"><tr><th>$x$</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td></tr><tr><th>$y$</th><td>3</td><td>5</td><td>11</td><td>21</td><td>35</td></tr><tr><th>1st diff</th><td></td><td>2</td><td>6</td><td>10</td><td>14</td></tr><tr><th>2nd diff</th><td></td><td></td><td>4</td><td>4</td><td>4</td></tr></table>
+<p>Constant second differences: the data are quadratic, with $a\cdot2!=4$, so $a=2$. In fact $y=2x^2+3$. Differences also let you <b>extend</b> a table: the next first difference is $18$, so the next $y$ is $35+18=53$.</p>
+
+<h3>3. Exact fits through points</h3>
+<p>Through any $n+1$ points with different $x$-values there is exactly one polynomial of degree at most $n$. Two points determine a line, three a quadratic, five a quartic. To find it, substitute each point and solve the system. Through $(0,3),(1,5),(2,11)$: $c=3$, $a+b+3=5$, $4a+2b+3=11$, giving $a=2,b=0$.</p>
+
+<h3>4. Using a model</h3>
+<ul><li><b>Predicting:</b> substitute the input. If $x=0$ is 1990, then the year 2005 is $x=15$.</li>
+<li><b>Solving:</b> to find when the model reaches a value, solve $f(x)=$ value (graphically or algebraically).</li>
+<li><b>Residuals:</b> residual $=$ actual $-$ predicted. Small residuals mean a good fit for those points.</li>
+<li><b>Extrapolation is risky.</b> A model that fits 1990–2005 can give absurd values for 2050 (negative populations, infinite growth). Predictions far outside the data are guesses.</li></ul>
+
+<h3>5. Geometric models</h3>
+<p>Some polynomial models come from geometry, not data. Cutting $x\times x$ squares from the corners of a $44\times28$ sheet and folding gives a box of volume $V(x)=x(44-2x)(28-2x)$, a cubic, valid for $0\lt x\lt14$. Its maximum (about $3086$ cubic inches at $x\approx5.57$) is found with a calculator's maximum finder.</p>
+
+<h3>Worked examples</h3>
+<div class="ex"><b class="lbl">Example 1.</b> The values of a polynomial at $x=0,1,2,3,4$ are $1,2,9,28,65$. What degree is it?
+<details><summary>Solution</summary>First differences $1,7,19,37$; second $6,12,18$; third $6,6$. Third differences are constant, so it's a cubic (in fact $x^3+1$).</details></div>
+<div class="ex"><b class="lbl">Example 2.</b> A model predicts $y=0.5x^2-2x+10$. The actual value at $x=6$ was $13.2$. What is the residual?
+<details><summary>Solution</summary>Predicted: $18-12+10=16$. Residual $=13.2-16=-2.8$ (the model overestimated).</details></div>
+<div class="tip"><h4>How many points pin down a polynomial?</h4>Degree $n$ has $n+1$ coefficients, so it takes $n+1$ conditions. That's why a quartic needs $5$ data points for an exact fit.</div>
+</script>
+
+=== BANK ===
+@@ pc4-model
+Q: The table shows $y$ for $x=0,1,2,3,4$: $\;3,\ 5,\ 11,\ 21,\ 35$. What is the lowest degree of a polynomial that fits these data exactly?
+L: 1
+A: 2
+W: 1
+W: 3
+W: 4
+W: 5
+S: Take differences of consecutive values.
+First differences: $2,6,10,14$ (not constant, so not linear).
+Second differences: $4,4,4$ (constant).
+Constant second differences mean a quadratic fits exactly. (It's $y=2x^2+3$.)
+---
+Q: A quadratic model passes through $(0,3)$, $(1,5)$, and $(2,11)$. What does it predict at $x=5$?
+L: 2
+A: 53
+W: 35
+W: 43
+W: 28
+W: 63
+S: Let $y=ax^2+bx+c$.
+$(0,3)$: $c=3$.
+$(1,5)$: $a+b+3=5$, so $a+b=2$.
+$(2,11)$: $4a+2b+3=11$, so $2a+b=4$.
+Subtract: $a=2$, then $b=0$. Model: $y=2x^2+3$.
+At $x=5$: $2(25)+3=53$.
+---
+Q: The values of a polynomial at $x=0,1,2,3,4$ are $1,2,9,28,65$. What is its degree?
+L: 1
+A: 3
+W: 2
+W: 4
+W: 1
+W: 5
+S: First differences: $1,7,19,37$.
+Second differences: $6,12,18$.
+Third differences: $6,6$, constant.
+So the polynomial is a cubic. (It's $x^3+1$; the constant third difference $6=1\cdot3!$ matches leading coefficient $1$.)
+---
+Q: A box is made from a $44\times28$-inch sheet by cutting $x\times x$ squares from the corners. Its volume is $V(x)=x(44-2x)(28-2x)$. What is the volume when $x=5$?
+L: 1
+A: 3060\text{ in}^3
+W: 6160\text{ in}^3
+W: 2856\text{ in}^3
+W: 3086\text{ in}^3
+W: 1530\text{ in}^3
+S: Substitute $x=5$: the length is $44-10=34$, the width $28-10=18$, the height $5$.
+$V(5)=5\cdot34\cdot18=3060$ cubic inches.
+(The maximum, about $3086$, occurs near $x\approx5.57$.)
+---
+Q: Data on a quantity rise, then fall, then rise again. Which type of polynomial model of lowest degree is most appropriate?
+L: 1
+A: \text{cubic}
+W: \text{linear}
+W: \text{quadratic}
+W: \text{quartic}
+W: \text{constant}
+S: Rising, then falling, then rising means two turning points.
+A polynomial of degree $n$ has at most $n-1$ turning points, so we need $n\ge3$.
+A cubic is the lowest-degree model that can do this. (A quadratic has only one turn.)
+---
+Q: How many data points (with different $x$-values) are needed to determine a quartic polynomial exactly?
+L: 1
+A: 5
+W: 4
+W: 3
+W: 6
+W: 8
+S: A quartic $ax^4+bx^3+cx^2+dx+e$ has $5$ unknown coefficients.
+Each data point gives one equation, so $5$ points are needed (and with distinct $x$-values exactly one quartic or lower-degree polynomial passes through them).
+---
+Q: A model gives $y=0.5x^2-2x+10$. The actual value at $x=6$ was $13.2$. What is the residual (actual minus predicted)?
+L: 1
+A: -2.8
+W: 2.8
+W: 3.2
+W: -3.2
+W: 16
+S: Predicted: $0.5(36)-2(6)+10=18-12+10=16$.
+Residual $=$ actual $-$ predicted $=13.2-16=-2.8$.
+Negative means the model overestimated at this point.
+---
+Q: A population (in thousands) is modeled by $P(x)=-0.2x^2+4x+50$, where $x$ is years after 2000. According to the model, in what year is the population greatest?
+L: 2
+A: 2010
+W: 2020
+W: 2004
+W: 2070
+W: 2005
+S: $P$ is a downward-opening quadratic, so its maximum is at the vertex:
+$x=-\dfrac{4}{2(-0.2)}=10$.
+$x=10$ corresponds to $2000+10=2010$, with $P(10)=-20+40+50=70$ thousand.
+---
+Q: The values of $y$ at $x=1,2,3,4,5$ are $4,9,16,25,36$. Using differences, what is $y$ at $x=6$?
+L: 1
+A: 49
+W: 47
+W: 48
+W: 51
+W: 42
+S: First differences: $5,7,9,11$. Second differences: $2,2,2$ (constant), so the pattern is quadratic.
+The next first difference is $11+2=13$, so the next value is $36+13=49$.
+(Indeed $y=(x+1)^2$, and $7^2=49$.)
+---
+Q: A cubic regression model fits sales data from 2000 to 2010 very well. Why should you be cautious using it to predict sales in 2040?
+L: 1
+A: \text{Extrapolating far outside the data can give unrealistic values.}
+W: \text{Cubic models can never be used for predictions.}
+W: \text{A cubic model has no values after 2010.}
+W: \text{A good fit means the model must be wrong outside the data.}
+W: \text{Regression models only work for linear data.}
+S: A model is built to match the data that was used. Far outside that range, the polynomial's end behavior (a cubic heads to $\pm\infty$) takes over, and nothing guarantees the real quantity behaves that way.
+Predicting within or near the data (interpolation) is reasonable; far outside (extrapolation) is risky.
+=== GENS ===
+GENS['pc4-model']=[
+/* degree from finite differences */
+r=>{const n=ri(r,1,4);const cs=[pick(r,[1,2,-1,3])].concat(Array.from({length:n},()=>ri(r,-5,5)));const x0=ri(r,-2,1);
+ const ys=Array.from({length:6},(_,i)=>ev(cs,x0+i));const rows=[ys];while(rows.length<=n)rows.push(rows[rows.length-1].slice(1).map((v,i)=>v-rows[rows.length-1][i]));
+ return{lvl:1,q:T`A polynomial takes these values at $x=${x0},${x0+1},\dots,${x0+5}$: $\;${ys.join(',\\ ')}$. What is its degree?`,a:n,w:[n+1,n-1===0?5:n-1,n+2,6,0===n?3:n+3],
+ s:T`Take repeated differences until they are constant:<br>${rows.slice(1).map((row,i)=>`• ${['1st','2nd','3rd','4th','5th'][i]} differences: $${row.join(',\\ ')}$${i===n-1?' ← constant':''}`).join('<br>')}<br>The ${['1st','2nd','3rd','4th'][n-1]} differences are constant, so the degree is $${n}$.`}},
+/* quadratic through three points, predict */
+r=>{const a=ri(r,1,4)*pick(r,[1,-1]),b=ri(r,-5,5),c=ri(r,-6,9);const f=x=>a*x*x+b*x+c;const xp=ri(r,4,7);
+ return{lvl:2,q:T`A quadratic model passes through $(0,${f(0)})$, $(1,${f(1)})$, and $(2,${f(2)})$. What does it predict at $x=${xp}$?`,a:f(xp),w:[f(xp)-a,f(2)+(f(2)-f(1))*(xp-2),f(xp)+2*a,(f(1)-f(0))*xp+c,f(xp)+b],
+ s:T`Let $y=ax^2+bx+c$.<br>From $(0,${f(0)})$: $c=${c}$.<br>From $(1,${f(1)})$: $a+b=${f(1)-c}$.<br>From $(2,${f(2)})$: $4a+2b=${f(2)-c}$, i.e. $2a+b=${(f(2)-c)/2}$.<br>Subtracting: $a=${a}$, then $b=${b}$. Model: $y=${pl([a,b,c])}$.<br>At $x=${xp}$: $${a}(${xp*xp})+${P(b)}(${xp})+${P(c)}=${f(xp)}$.<br>(Extending the line through the last two points, $${f(2)+(f(2)-f(1))*(xp-2)}$, ignores the curvature.)`}},
+/* extend a table using differences */
+r=>{const cs=[ri(r,1,3),ri(r,-4,4),ri(r,-5,5)];const ys=Array.from({length:5},(_,i)=>ev(cs,i+1));const nxt=ev(cs,6);
+ const d1=ys.slice(1).map((v,i)=>v-ys[i]),d2=d1.slice(1).map((v,i)=>v-d1[i]);
+ return{lvl:1,q:T`The values of $y$ at $x=1,2,3,4,5$ are $${ys.join(',\\ ')}$, and they come from a quadratic. Using differences, what is $y$ at $x=6$?`,a:nxt,w:[ys[4]+d1[3],nxt+d2[0],nxt-1,2*ys[4]-ys[3]+1,ys[4]+d2[0]],
+ s:T`First differences: $${d1.join(',\\ ')}$. Second differences: $${d2.join(',\\ ')}$ (constant, as for any quadratic).<br>The next first difference is $${d1[3]}+${d2[0]}=${d1[3]+d2[0]}$, so the next value is $${ys[4]}+${d1[3]+d2[0]}=${nxt}$.`}},
+/* box volume */
+r=>{const L=ri(r,10,30)*2,W=ri(r,8,L/2)*2,x=ri(r,1,Math.floor(W/2)-1);const V=x*(L-2*x)*(W-2*x);const askDom=r()<.3;
+ if(askDom){const t=TXT(r,iv(0,W/2,0,0),[iv(0,L/2,0,0),iv(0,W,0,0),iv(W/2,L/2,0,0),iv(0,L,0,0)]);
+  return{lvl:1,q:T`An open box is made from a $${L}\times${W}$ sheet by cutting $x\times x$ squares from each corner and folding up the sides. For what values of $x$ does the volume model $V(x)=x(${L}-2x)(${W}-2x)$ make physical sense?`,a:t.a,w:t.w,
+  s:T`All three dimensions must be positive: $x\gt0$, $${L}-2x\gt0$ ($x\lt${L/2}$), and $${W}-2x\gt0$ ($x\lt${W/2}$).<br>The tightest condition is $x\lt${W/2}$, so the domain is $${iv(0,W/2,0,0)}$.`}}
+ return{lvl:1,q:T`An open box is made from a $${L}\times${W}$ sheet by cutting $${x}\times${x}$ squares from each corner and folding up the sides. What is its volume?`,a:V,w:[x*(L-x)*(W-x),(L-2*x)*(W-2*x),x*L*W,V+x*x,2*V],
+ s:T`After cutting, the base is $(${L}-2\cdot${x})\times(${W}-2\cdot${x})=${L-2*x}\times${W-2*x}$ and the height is $${x}$.<br>$V=${x}\cdot${L-2*x}\cdot${W-2*x}=${V}$ cubic units.<br>(Each side loses $2x$, one square at each end.)`}},
+/* residual */
+r=>{const a=pick(r,[0.5,1,1.5,2,-0.5]),b=ri(r,-4,4),c=ri(r,5,20),x=ri(r,1,8);const pred=a*x*x+b*x+c;const act=Math.round((pred+ri(r,-40,40)/10)*10)/10;const res=Math.round((act-pred)*10)/10;
+ const D=v=>{v=Math.round(v*10)/10;return O(String(v===0?0:v),v)};const cand=[-res,res+1,res-1,pred,act,res+2].map(D).filter((o,i,arr)=>o.v!==res&&arr.findIndex(z=>z.v===o.v)===i).slice(0,4);
+ return{lvl:1,q:T`A model predicts $y=${a}x^2${b<0?'-':'+'}${Math.abs(b)}x+${c}$. The actual value at $x=${x}$ was $${act}$. What is the residual (actual minus predicted)?`,a:D(res),w:cand,
+ s:T`Predicted: $${a}(${x*x})${b<0?'-':'+'}${Math.abs(b)}(${x})+${c}=${pred}$.<br>Residual $=$ actual $-$ predicted $=${act}-${pred}=${res}$.${res<0?' Negative: the model overestimated.':res>0?' Positive: the model underestimated.':' Zero: the model is exact here.'}`}},
+/* vertex of a quadratic model in context */
+r=>{const a=pick(r,[-0.5,-0.25,-1,-2]),h=ri(r,3,15),k=ri(r,40,120);const b=-2*a*h,c=a*h*h+k;const yr=pick(r,[1990,2000,2010]);
+ return{lvl:2,q:T`Sales (in thousands of units) are modeled by $S(x)=${a}x^2+${b}x${c<0?'-':'+'}${Math.abs(c)}$, where $x$ is years after ${yr}. According to the model, in what year are sales highest?`,a:yr+h,w:[yr+2*h,yr+h+1,yr+k,yr+Math.round(h/2),yr+h-1],
+ s:T`$S$ opens downward ($a=${a}\lt0$), so the maximum is at the vertex $x=-\dfrac{${b}}{2(${a})}=${h}$.<br>That's the year $${yr}+${h}=${yr+h}$, when the model gives $S(${h})=${k}$ thousand units.`}},
+];

@@ -1,0 +1,198 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc4-theory">
+<h2>4.8 Theory of Equations</h2>
+<p>We invented $i$ to solve $x^2+1=0$. Will we need to keep inventing new numbers to solve cubics, quartics, and beyond? The remarkable answer is <b>no</b>: the complex numbers are enough for every polynomial equation.</p>
+
+<h3>1. The Fundamental Theorem of Algebra</h3>
+<div class="box"><h4>Fundamental Theorem of Algebra</h4>Every nonconstant polynomial (even one with complex coefficients) has at least one complex root.</div>
+<p>Combined with the Factor Theorem (which works for complex numbers too), this peels off one linear factor at a time:</p>
+<div class="box"><h4>Factorization over the complex numbers</h4>A polynomial of degree $n\ge1$ with leading coefficient $a$ factors completely as
+$$f(x)=a(x-c_1)(x-c_2)\cdots(x-c_n)$$
+for complex numbers $c_1,\dots,c_n$ (not necessarily different). So it has <b>exactly $n$ roots, counting multiplicity</b>.</div>
+<p>Example: $x^4-16=(x-2)(x+2)(x-2i)(x+2i)$: four roots. And $x^3-1=(x-1)\left(x-\frac{-1+i\sqrt3}{2}\right)\left(x-\frac{-1-i\sqrt3}{2}\right)$.</p>
+
+<h3>2. Polynomials with real coefficients</h3>
+<div class="box"><h4>Conjugate Roots Theorem</h4>If $f(x)$ has <b>real coefficients</b> and $a+bi$ is a root, then its conjugate $a-bi$ is also a root.</div>
+<p>Reason: taking conjugates of $f(z)=0$ gives $f(\bar z)=\bar0=0$, because conjugating doesn't change real coefficients. The theorem can fail without real coefficients: $x-i$ has the root $i$ but not $-i$.</p>
+<p>Each conjugate pair combines into a real quadratic factor:</p>
+$$(x-(a+bi))(x-(a-bi))=x^2-2ax+(a^2+b^2).$$
+<p>For example, $1\pm2i$ give $x^2-2x+5$.</p>
+<div class="box"><h4>Factorization over the real numbers</h4>Every polynomial with real coefficients is a product of linear factors and <b>irreducible quadratic</b> factors (quadratics with negative discriminant), all with real coefficients.</div>
+<p>Consequences:</p>
+<ul><li>Non-real roots come in pairs, so the number of non-real roots (counted with multiplicity) is even.</li>
+<li>A real polynomial of <b>odd</b> degree always has at least one real root.</li>
+<li>$x^4-16=(x-2)(x+2)(x^2+4)$ over the reals.</li></ul>
+
+<h3>3. Building polynomials from roots</h3>
+<p>Find the polynomial of least degree with real coefficients, leading coefficient $1$, and roots $2$ and $3-i$: the conjugate $3+i$ must also be a root, so</p>
+$$f(x)=(x-2)(x^2-6x+10)=x^3-8x^2+22x-20.$$
+<p>Shortcut for products: for a monic polynomial of degree $n$, the constant term is $(-1)^n$ times the product of the roots.</p>
+
+<h3>4. Using a known complex root</h3>
+<p>If $1+2i$ is a root of $x^3-3x^2+7x-5$ (real coefficients), then so is $1-2i$, so $x^2-2x+5$ is a factor. Dividing gives $x-1$, so the third root is $1$.</p>
+
+<h3>Worked examples</h3>
+<div class="ex"><b class="lbl">Example 1.</b> A polynomial with real coefficients has degree $5$. How many real roots can it have (counting multiplicity)?
+<details><summary>Solution</summary>Non-real roots come in pairs, so there are $0$, $2$, or $4$ non-real roots, leaving $5$, $3$, or $1$ real roots. Never $0$, $2$, or $4$.</details></div>
+<div class="ex"><b class="lbl">Example 2.</b> A monic quartic with real coefficients has roots $2i$ and $1+i$. What is its constant term?
+<details><summary>Solution</summary>All four roots are $\pm2i$ and $1\pm i$. The constant term is the product of the roots: $(2i)(-2i)(1+i)(1-i)=4\cdot2=8$.</details></div>
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Forgetting the conjugate when building a real polynomial from a complex root (the degree comes out too small).</li>
+<li>Applying the Conjugate Roots Theorem when the coefficients are not real.</li>
+<li>Confusing "exactly $n$ complex roots" with "$n$ real roots."</li>
+</ul></div>
+</script>
+
+=== BANK ===
+@@ pc4-theory
+Q: A polynomial $f$ with real coefficients and leading coefficient $1$ has roots $2$ and $3-i$, and has the smallest possible degree. What is $f(x)$?
+L: 2
+A: x^3-8x^2+22x-20
+W: x^2-5x+6-i
+W: x^3-8x^2+20x-20
+W: x^3-6x^2+10x
+W: x^3+8x^2+22x+20
+S: Real coefficients force the conjugate $3+i$ to be a root too. So the roots are $2,\ 3-i,\ 3+i$ and the degree is $3$.
+The conjugate pair gives $(x-3+i)(x-3-i)=(x-3)^2-i^2=x^2-6x+10$.
+Multiply by $x-2$: $(x-2)(x^2-6x+10)=x^3-6x^2+10x-2x^2+12x-20=x^3-8x^2+22x-20$.
+---
+Q: A polynomial with real coefficients has degree $5$. Which number of real roots (counted with multiplicity) is impossible?
+L: 1
+A: 2
+W: 1
+W: 3
+W: 5
+W: \text{all of these are possible}
+S: By the Fundamental Theorem of Algebra there are $5$ roots in all, counting multiplicity.
+Non-real roots come in conjugate pairs, so there are $0$, $2$, or $4$ of them.
+That leaves $5$, $3$, or $1$ real roots. Exactly $2$ real roots would leave $3$ non-real roots, an odd number, which is impossible.
+---
+Q: Over the real numbers, $x^4-16$ factors completely as ...
+L: 1
+A: (x-2)(x+2)(x^2+4)
+W: (x-2)^2(x+2)^2
+W: (x^2-4)^2
+W: (x-2)(x+2)(x-2i)(x+2i)
+W: (x-4)(x+4)(x^2+4)
+S: Difference of squares twice: $x^4-16=(x^2-4)(x^2+4)=(x-2)(x+2)(x^2+4)$.
+$x^2+4$ has discriminant $-16\lt0$, so it's irreducible over the reals.
+(The factorization with $2i$ and $-2i$ is the complete factorization over the <i>complex</i> numbers.)
+---
+Q: What are the three roots of $x^3=1$ (in the complex numbers)?
+L: 2
+A: 1,\ \dfrac{-1\pm i\sqrt3}{2}
+W: 1,\ -1,\ i
+W: 1\text{ only}
+W: 1,\ \dfrac{1\pm i\sqrt3}{2}
+W: 1,\ \pm i
+S: $x^3-1=(x-1)(x^2+x+1)$ (difference of cubes).
+$x^2+x+1=0$ gives $x=\dfrac{-1\pm\sqrt{1-4}}{2}=\dfrac{-1\pm i\sqrt3}{2}$.
+So the cube roots of $1$ are $1$ and $\dfrac{-1\pm i\sqrt3}{2}$: three roots for a degree-$3$ polynomial, as the Fundamental Theorem predicts.
+---
+Q: Given that $1+2i$ is a root of $x^3-3x^2+7x-5$, what is the real root?
+L: 2
+A: 1
+W: -1
+W: 5
+W: -5
+W: 2
+S: The coefficients are real, so $1-2i$ is also a root.
+The pair gives the factor $(x-1)^2-(2i)^2=x^2-2x+5$.
+Divide: $x^3-3x^2+7x-5=(x^2-2x+5)(x-1)$. Check: $x^3-2x^2+5x-x^2+2x-5=x^3-3x^2+7x-5$. ✓
+The real root is $1$.
+---
+Q: How many complex roots, counted with multiplicity, does a polynomial of degree $6$ have?
+L: 1
+A: \text{exactly 6}
+W: \text{at most 6}
+W: \text{at least 6}
+W: \text{exactly 3}
+W: \text{it depends on the coefficients}
+S: By the Fundamental Theorem of Algebra, a degree-$n$ polynomial factors into exactly $n$ linear factors over the complex numbers. Counting multiplicity, that's exactly $6$ roots. (The number of <i>distinct</i> roots can be smaller, and the number of <i>real</i> roots can be anything from $0$ to $6$ with the same parity.)
+---
+Q: The polynomial $x-i$ has the root $i$, but not $-i$. Why doesn't this contradict the Conjugate Roots Theorem?
+L: 1
+A: \text{Its coefficients are not all real.}
+W: \text{Its degree is odd.}
+W: i\text{ is not a complex number.}
+W: \text{The theorem only applies to quadratics.}
+W: \text{It does contradict the theorem.}
+S: The Conjugate Roots Theorem requires <b>real coefficients</b>. The coefficient $-i$ in $x-i$ is not real, so the theorem doesn't apply.
+---
+Q: A monic quartic polynomial with real coefficients has roots $2i$ and $1+i$. What is its constant term?
+L: 2
+A: 8
+W: 4
+W: 2
+W: -8
+W: 2+2i
+S: Real coefficients force the conjugates $-2i$ and $1-i$ to be roots too, so all four roots are $\pm2i,\ 1\pm i$.
+For a monic polynomial of even degree, the constant term equals the product of the roots.
+$(2i)(-2i)=4$ and $(1+i)(1-i)=2$, so the product is $8$.
+(Equivalently, $f(x)=(x^2+4)(x^2-2x+2)$, whose constant term is $4\cdot2=8$.)
+---
+Q: Which statement must be true for every polynomial of degree $7$ with real coefficients?
+L: 1
+A: \text{It has at least one real root.}
+W: \text{It has exactly 7 real roots.}
+W: \text{It has no real roots.}
+W: \text{It has an even number of real roots.}
+W: \text{All of its roots are real.}
+S: Non-real roots of a real polynomial come in conjugate pairs, so there's an even number of them.
+$7$ total roots minus an even number leaves an odd number of real roots, so at least $1$.
+(Graphically: odd degree means the ends go in opposite directions, so the graph must cross the $x$-axis.)
+---
+Q: Which quadratic with real coefficients has the roots $3\pm4i$?
+L: 1
+A: x^2-6x+25
+W: x^2+6x+25
+W: x^2-6x+7
+W: x^2-6x-7
+W: x^2+25
+S: For roots $a\pm bi$: $(x-a)^2-(bi)^2=(x-a)^2+b^2=x^2-2ax+a^2+b^2$.
+With $a=3,b=4$: $x^2-6x+9+16=x^2-6x+25$.
+Check with Vieta: sum of roots $6$, product $(3+4i)(3-4i)=25$. ✓
+---
+Q: The polynomial $x^4+5x^2+4$ has how many real roots?
+L: 1
+A: 0
+W: 2
+W: 4
+W: 1
+W: 3
+S: Factor as a quadratic in $x^2$: $(x^2+1)(x^2+4)$.
+Both factors are always positive for real $x$, so there are no real roots.
+The four complex roots are $\pm i$ and $\pm2i$.
+=== GENS ===
+GENS['pc4-theory']=[
+/* real root of a cubic given a complex root */
+r=>{const a=ri(r,-4,4),b=ri(r,1,4),c=ri(r,-5,5)||2;/* (x^2-2ax+a^2+b^2)(x-c) */
+ const q=[1,-2*a,a*a+b*b];const cs=[1,q[1]-c,q[2]-c*q[1],-c*q[2]];const zr=`${a===0?'':a}${a===0?'':'+'}${b===1?'':b}i`;
+ return{lvl:2,q:T`Given that $${zr}$ is a root of $${pl(cs)}$, what is the real root?`,a:c,w:[-c,cs[3],a,c+1,-cs[3]],
+ s:T`The coefficients are real, so the conjugate $${a===0?'':a}-${b===1?'':b}i$ is also a root.<br>The pair gives the factor $(x${a<0?'+'+(-a):a?'-'+a:''})^2+${b*b}=${pl(q)}$.<br>Dividing, $${pl(cs)}=(${pl(q)})(${lin(1,-c)})$.<br>The real root is $${c}$.`}},
+/* quadratic from a conjugate pair */
+r=>{const a=ri(r,-6,6),b=ri(r,1,7);const ans=pl([1,-2*a,a*a+b*b]);const t=TXT(r,ans,[pl([1,2*a,a*a+b*b]),pl([1,-2*a,a*a-b*b]),pl([1,-a,a*a+b*b]),pl([1,0,a*a+b*b])]);
+ return{lvl:1,q:T`Which monic quadratic with real coefficients has roots $${a===0?'':a}\pm ${b===1?'':b}i$?`,a:t.a,w:t.w,
+ s:T`$(x-(${a}+${b}i))(x-(${a}-${b}i))=(x-${P(a)})^2-(${b}i)^2=(x-${P(a)})^2+${b*b}$.<br>Expand: $x^2${a?(a>0?'-':'+')+Math.abs(2*a)+'x':''}+${a*a}+${b*b}=${ans}$.<br>Vieta check: sum of roots $${2*a}$, product $${a*a}+${b*b}=${a*a+b*b}$. ✓`}},
+/* constant term from roots */
+r=>{const a=ri(r,-3,3),b=ri(r,1,3),c=ri(r,1,3);const real=r()<.5;const r0=ri(r,-4,4)||2;
+ if(real){/* monic cubic: roots a±bi and r0. constant = -(product) */const prod=(a*a+b*b)*r0;
+  return{lvl:2,q:T`A monic cubic polynomial with real coefficients has roots $${r0}$ and $${a===0?'':a}+${b===1?'':b}i$. What is its constant term?`,a:-prod,w:[prod,a*a+b*b,-(a*a-b*b)*r0,-prod+r0,(a*a+b*b)],
+  s:T`The conjugate $${a===0?'':a}-${b===1?'':b}i$ is also a root, so $f(x)=(x-${P(r0)})\big(x^2${a?(a>0?'-':'+')+Math.abs(2*a)+'x':''}+${a*a+b*b}\big)$.<br>The constant term is $(-${P(r0)})\cdot${a*a+b*b}=${-prod}$.<br>(For a monic cubic, the constant term is $-$(product of the roots).)`}}
+ const prod=(b*b)*(a*a+c*c);
+ return{lvl:2,q:T`A monic quartic polynomial with real coefficients has roots $${b===1?'':b}i$ and $${a===0?'':a}+${c===1?'':c}i$. What is its constant term?`,a:prod,w:[-prod,b*b+a*a+c*c,b*(a*a+c*c),b*b*(a*a-c*c)===prod?prod+1:b*b*(a*a-c*c),2*prod],
+ s:T`Conjugates are roots too: $\pm ${b===1?'':b}i$ and $${a===0?'':a}\pm ${c===1?'':c}i$.<br>Factors: $(x^2+${b*b})$ and $(x^2${a?(a>0?'-':'+')+Math.abs(2*a)+'x':''}+${a*a+c*c})$.<br>Constant term: $${b*b}\cdot${a*a+c*c}=${prod}$ (the product of all four roots, since the degree is even).`}},
+/* possible numbers of real roots */
+r=>{const n=ri(r,3,8);const poss=[];for(let k=n%2;k<=n;k+=2)poss.push(k);const imp=pick(r,Array.from({length:n+1},(_,i)=>i).filter(k=>!poss.includes(k)));
+ const others=sample(r,poss,Math.min(3,poss.length));const t=TXT(r,String(imp),others.map(String).concat([String.raw`\text{all of these are possible}`]));
+ return{lvl:1,q:T`A polynomial with real coefficients has degree $${n}$. Which number of real roots (counted with multiplicity) is impossible?`,a:t.a,w:t.w,
+ s:T`It has $${n}$ complex roots in all (Fundamental Theorem of Algebra). Non-real roots come in conjugate pairs, so their number is even.<br>So the number of real roots is $${n}$ minus an even number: $${poss.join(',\\ ')}$.<br>$${imp}$ would leave an odd number of non-real roots, which is impossible.`}},
+/* x^4 - k^4 style factoring / root counting */
+r=>{const k=ri(r,1,5);const kind=ri(r,0,1);const K=k**4;
+ if(kind===0){const ans=`(x-${k})(x+${k})(x^2+${k*k})`;const t=TXT(r,ans,[`(x-${k})^2(x+${k})^2`,`(x^2-${k*k})^2`,`(x-${k})(x+${k})(x-${k}i)(x+${k}i)`,`(x-${k*k})(x+${k*k})(x^2+${k*k})`]);
+  return{lvl:1,q:T`Over the real numbers, $x^4-${K}$ factors completely as ...`,a:t.a,w:t.w,
+  s:T`Difference of squares: $x^4-${K}=(x^2-${k*k})(x^2+${k*k})$, and again $x^2-${k*k}=(x-${k})(x+${k})$.<br>$x^2+${k*k}$ has a negative discriminant, so it's irreducible over the reals.<br>Answer: $${ans}$. (Over the complex numbers it splits further into $(x-${k}i)(x+${k}i)$.)`}}
+ const m=ri(r,1,4),p=ri(r,m+1,6);const realCount=r()<.5;
+ return{lvl:1,q:T`How many ${realCount?'real':'non-real'} roots does $x^4+${m*m+p*p}x^2+${m*m*p*p}$ have?`,a:realCount?0:4,w:realCount?[2,4,1,3]:[0,2,1,3],
+ s:T`Factor as a quadratic in $x^2$: $(x^2+${m*m})(x^2+${p*p})$.<br>Both factors are positive for every real $x$, so there are no real roots. The four roots are $\pm ${m===1?'':m}i$ and $\pm ${p}i$, all non-real.<br>Answer: $${realCount?0:4}$.`}},
+];

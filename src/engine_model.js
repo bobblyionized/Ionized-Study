@@ -19,7 +19,7 @@ function parseBank(txt){
   return bank;
 }
 const fmt=s=>(s||'').trim().split(/\r?\n/).join('<br>');
-const wrapM=s=>{s=s.trim();return s.includes('$')?s:'$'+s+'$'};
+const wrapM=s=>{s=s.trim();return s.replace(/\\\$/g,'').includes('$')?s:'$'+s+'$'};   // \$ is a literal dollar sign, not a delimiter
 
 function mkClassic(sub,f,i){
   const id=sub+'-c'+(i+1);const r=rng(hash(id));
@@ -35,7 +35,7 @@ function buildSet(sub){
   const gens=GENS[sub]||[];const out=classics.slice();const seen=new Set(out.map(x=>x.q));
   let n=0;
   while(gens.length&&out.length<Math.max(SET_SIZE,classics.length+20)&&n<3000){
-    const g=gens[n%gens.length];const it=mkGen(sub,g,hash(sub+'#'+n),sub+'-g'+n);n++;
+    const g=gens[n%gens.length];let it;try{it=mkGen(sub,g,hash(sub+'#'+n),sub+'-g'+n)}catch(e){n++;continue}n++;
     if(seen.has(it.q))continue;seen.add(it.q);out.push(it);
   }
   return out;
@@ -43,7 +43,7 @@ function buildSet(sub){
 function loadData(bankText){BANK=parseBank(bankText);for(const s of SUBS)SETS[s.id]=buildSet(s.id)}
 function freshGen(sub,count){
   const gens=GENS[sub];const out=[];const base=(Date.now()^Math.floor(Math.random()*1e9))>>>0;
-  for(let i=0;out.length<count&&i<count*5;i++){const g=gens[Math.floor(Math.random()*gens.length)];const it=mkGen(sub,g,base+i*7919,'p'+base+'-'+i);if(!out.some(o=>o.q===it.q))out.push(it)}
+  for(let i=0;out.length<count&&i<count*5;i++){const g=gens[Math.floor(Math.random()*gens.length)];let it;try{it=mkGen(sub,g,base+i*7919,'p'+base+'-'+i)}catch(e){continue}if(!out.some(o=>o.q===it.q))out.push(it)}
   return out;
 }
 

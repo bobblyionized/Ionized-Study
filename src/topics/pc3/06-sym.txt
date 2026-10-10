@@ -1,0 +1,213 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc3-sym">
+<h2>3.4.A Symmetry</h2>
+<p>A symmetric graph is determined by half of itself: draw one half, reflect it, and you're done. There are three symmetries to know, each with a geometric description and an algebraic test.</p>
+
+<h3>1. The three symmetries</h3>
+<table class="t">
+<tr><th>Symmetry</th><th>Geometric meaning</th><th>Point rule</th><th>Algebraic test</th></tr>
+<tr><td>about the <b>$y$-axis</b></td><td>the left half is the mirror image of the right half</td><td>$(x,y)$ on graph $\Rightarrow(-x,y)$ on graph</td><td>replacing $x$ by $-x$ gives an equivalent equation</td></tr>
+<tr><td>about the <b>$x$-axis</b></td><td>the bottom half mirrors the top half</td><td>$(x,y)\Rightarrow(x,-y)$</td><td>replacing $y$ by $-y$ gives an equivalent equation</td></tr>
+<tr><td>about the <b>origin</b></td><td>rotating the graph $180^\circ$ about $(0,0)$ leaves it unchanged</td><td>$(x,y)\Rightarrow(-x,-y)$</td><td>replacing $x$ by $-x$ <b>and</b> $y$ by $-y$ gives an equivalent equation</td></tr></table>
+<div class="lfigs">
+<div class="lplot" data-f="0.25*x*x*x*x-2*x*x+1" data-x="-4,4" data-y="-4,4" data-w="170" data-cap="$y$-axis symmetry"></div>
+<div class="lplot" data-par="t*t-2|t|-2.5|2.5" data-x="-4,4" data-y="-4,4" data-w="170" data-cap="$x$-axis symmetry: $x=y^2-2$"></div>
+<div class="lplot" data-f="0.25*x*x*x-1.5*x" data-x="-4,4" data-y="-4,4" data-w="170" data-cap="origin symmetry"></div>
+</div>
+
+<h3>2. Using the algebraic tests</h3>
+<ul><li>$y=x^4-3x^2$: replace $x$ by $-x$: $y=(-x)^4-3(-x)^2=x^4-3x^2$, the same equation. Symmetric about the $y$-axis.</li>
+<li>$x=y^2+1$: replace $y$ by $-y$: $x=(-y)^2+1=y^2+1$, the same. Symmetric about the $x$-axis.</li>
+<li>$y=x^3-x$: replace both: $-y=(-x)^3-(-x)=-x^3+x$, i.e. $y=x^3-x$. Symmetric about the origin.</li>
+<li>$x^2+y^2=25$: every test works. A circle centered at the origin has all three symmetries.</li>
+<li>$xy=4$: replacing both gives $(-x)(-y)=4$, the same; replacing only one gives $-xy=4$, different. Origin symmetry only.</li></ul>
+<div class="tip"><h4>Any two imply the third</h4>If a graph has two of the three symmetries, it has all three. For example, reflecting across the $x$-axis and then the $y$-axis is the same as rotating $180^\circ$ about the origin.</div>
+
+<h3>3. Even and odd functions</h3>
+<div class="box"><ul>
+<li>$f$ is <b>even</b> if $f(-x)=f(x)$ for every $x$ in its domain. Its graph is symmetric about the $y$-axis.</li>
+<li>$f$ is <b>odd</b> if $f(-x)=-f(x)$ for every $x$ in its domain. Its graph is symmetric about the origin.</li></ul></div>
+<ul><li>A polynomial with <b>only even powers</b> of $x$ (a constant counts as $x^0$) is even: $3x^4-x^2+7$.</li>
+<li>A polynomial with <b>only odd powers</b> is odd: $x^5-2x^3+x$.</li>
+<li>Mixing them usually gives <b>neither</b>: $x^3+1$ has $f(-1)=0$ but $f(1)=2$, and $0$ is neither $2$ nor $-2$.</li>
+<li>$|x|$, $\sqrt{x^2+1}$, $\frac{1}{x^2}$ are even; $\frac1x$, $\sqrt[3]{x}$, $\frac{x}{x^2+1}$ are odd.</li>
+<li>Products follow sign rules: even·even and odd·odd are even; even·odd is odd. Compositions: an even function of anything symmetric stays even.</li>
+<li>If $f$ is odd and $0$ is in its domain, then $f(0)=-f(0)$, so $f(0)=0$.</li>
+<li>The graph of a <b>function</b> can't be symmetric about the $x$-axis (unless it's $y=0$), because $(x,y)$ and $(x,-y)$ would violate the Vertical Line Test.</li></ul>
+
+<h3>4. A classic trick</h3>
+<p>Let $f(x)=ax^7+bx^3+cx-5$ and suppose $f(-7)=7$. Find $f(7)$. You can't find $a,b,c$, but $g(x)=f(x)+5=ax^7+bx^3+cx$ is odd. So $g(7)=-g(-7)=-(7+5)=-12$, and $f(7)=g(7)-5=-17$.</p>
+
+<h3>Worked examples</h3>
+<div class="ex"><b class="lbl">Example 1.</b> A graph is symmetric about the origin and contains $(3,-2)$. What other point must it contain?
+<details><summary>Solution</summary>Origin symmetry sends $(x,y)$ to $(-x,-y)$: the point $(-3,2)$.</details></div>
+<div class="ex"><b class="lbl">Example 2.</b> Is $f(x)=\dfrac{x^3}{x^2-4}$ even, odd, or neither?
+<details><summary>Solution</summary>$f(-x)=\dfrac{(-x)^3}{(-x)^2-4}=\dfrac{-x^3}{x^2-4}=-f(x)$, so $f$ is odd. (Odd numerator over even denominator.)</details></div>
+<div class="ex"><b class="lbl">Example 3.</b> Is $g(x)=x^2+x$ even, odd, or neither?
+<details><summary>Solution</summary>$g(-x)=x^2-x$. This is neither $g(x)=x^2+x$ nor $-g(x)=-x^2-x$ (test $x=1$: $g(-1)=0$, $g(1)=2$). So $g$ is <b>neither</b>.</details></div>
+<div class="warn"><h4>Common traps</h4><ul>
+<li>"Odd" and "even" are not opposites: most functions are neither.</li>
+<li>To prove a function is <i>not</i> even or odd, one numerical counterexample is enough. To prove it <i>is</i>, you must check $f(-x)$ algebraically for all $x$.</li>
+<li>A constant term spoils oddness: $x^3+1$ is not odd.</li>
+</ul></div>
+</script>
+
+=== BANK ===
+@@ pc3-sym
+Q: Which equation has a graph that is symmetric about the $x$-axis?
+L: 1
+A: x=y^2+1
+W: y=x^2+1
+W: y=x^3
+W: y=|x|-2
+W: y=\sqrt{x}
+S: Test: replace $y$ by $-y$ and see whether the equation is unchanged.
+• $x=y^2+1\ \to\ x=(-y)^2+1=y^2+1$. Unchanged, so it's symmetric about the $x$-axis. ✓
+• $y=x^2+1\ \to\ -y=x^2+1$, a different equation (and it's symmetric about the $y$-axis instead).
+• $y=x^3\to-y=x^3$: different (it has origin symmetry).
+• $y=|x|-2$ and $y=\sqrt x$: replacing $y$ by $-y$ changes them.
+Note that all four wrong answers are functions of $x$, and a function's graph can't be symmetric about the $x$-axis unless it's $y=0$.
+---
+Q: Which function is odd?
+L: 1
+A: f(x)=\dfrac{x}{x^2+1}
+W: f(x)=x^3+1
+W: f(x)=x^4-x^2
+W: f(x)=|x|
+W: f(x)=x^2+x
+S: Compute $f(-x)$ and compare with $-f(x)$.
+• $\dfrac{-x}{(-x)^2+1}=\dfrac{-x}{x^2+1}=-f(x)$. Odd. ✓
+• $x^3+1$: $f(-1)=0$ while $-f(1)=-2$. Not odd (the constant spoils it).
+• $x^4-x^2$ and $|x|$: $f(-x)=f(x)$, so they're even, not odd (unless identically zero).
+• $x^2+x$: $f(-1)=0$, $-f(1)=-2$. Not odd.
+---
+Q: The graph of an equation is symmetric about the origin and contains the point $(3,-2)$. Which point must also be on the graph?
+L: 1
+A: (-3,\,2)
+W: (-3,\,-2)
+W: (3,\,2)
+W: (-2,\,3)
+W: (2,\,-3)
+S: Symmetry about the origin means: if $(x,y)$ is on the graph, so is $(-x,-y)$ (a $180^\circ$ rotation about the origin).
+$(3,-2)\to(-3,2)$.
+($(-3,-2)$ would come from $y$-axis symmetry; $(3,2)$ from $x$-axis symmetry.)
+---
+Q: Let $f(x)=ax^7+bx^3+cx-5$, where $a,b,c$ are constants. If $f(-7)=7$, what is $f(7)$?
+L: 2
+A: -17
+W: -7
+W: 7
+W: 17
+W: -12
+S: The constants $a,b,c$ can't be found, but we don't need them.
+Let $g(x)=f(x)+5=ax^7+bx^3+cx$. Every term has an odd power, so $g$ is <b>odd</b>: $g(-x)=-g(x)$.
+$g(-7)=f(-7)+5=12$, so $g(7)=-12$.
+Then $f(7)=g(7)-5=-12-5=-17$.
+(Answering $-7$ assumes $f$ itself is odd, but the $-5$ prevents that.)
+---
+Q: The graph of $x^2+y^2=25$ is symmetric with respect to ...
+L: 1
+A: \text{the }x\text{-axis, the }y\text{-axis, and the origin}
+W: \text{the }y\text{-axis only}
+W: \text{the }x\text{-axis only}
+W: \text{the origin only}
+W: \text{none of these}
+S: Replacing $x$ by $-x$: $(-x)^2+y^2=x^2+y^2=25$. Unchanged, so $y$-axis symmetry.
+Replacing $y$ by $-y$: also unchanged, so $x$-axis symmetry.
+Replacing both: also unchanged, so origin symmetry.
+This is the circle of radius $5$ centered at the origin, which has all three symmetries (and many more).
+---
+Q: If $f$ is an odd function, $f(2)=5$, and $0$ is in the domain of $f$, what is $f(-2)+f(0)$?
+L: 1
+A: -5
+W: 5
+W: 0
+W: -10
+W: \text{cannot be determined}
+S: Odd means $f(-x)=-f(x)$ for all $x$.
+$f(-2)=-f(2)=-5$.
+For $x=0$: $f(0)=f(-0)=-f(0)$, so $2f(0)=0$ and $f(0)=0$.
+Sum: $-5+0=-5$.
+---
+Q: The graph of $xy=4$ is symmetric with respect to which of the following?
+L: 2
+A: \text{the origin only}
+W: \text{the }x\text{-axis only}
+W: \text{the }y\text{-axis only}
+W: \text{all three}
+W: \text{none of them}
+S: Run the three tests.
+• $x\to-x$: $(-x)y=4$, i.e. $xy=-4$. Different, so no $y$-axis symmetry.
+• $y\to-y$: $x(-y)=4$, also $xy=-4$. No $x$-axis symmetry.
+• Both: $(-x)(-y)=xy=4$. Same! Origin symmetry.
+Check with points: $(1,4)$ is on the graph and so is $(-1,-4)$, but $(-1,4)$ is not.
+---
+Q: If $f$ and $g$ are both odd functions, then the product $h(x)=f(x)g(x)$ is ...
+L: 2
+A: \text{always even}
+W: \text{always odd}
+W: \text{always neither}
+W: \text{even or odd depending on }f\text{ and }g
+W: \text{always zero}
+S: Compute $h(-x)=f(-x)\,g(-x)=\big(-f(x)\big)\big(-g(x)\big)=f(x)g(x)=h(x)$.
+So $h$ is even, always. Example: $x\cdot x^3=x^4$ is even.
+It works like signs: (odd)$\times$(odd)$=$even, just as $(-)\times(-)=(+)$.
+---
+Q: Is $f(x)=\dfrac{x^3}{x^2-4}$ even, odd, or neither?
+L: 1
+A: \text{odd}
+W: \text{even}
+W: \text{neither}
+W: \text{both}
+W: \text{even on its domain only}
+S: $f(-x)=\dfrac{(-x)^3}{(-x)^2-4}=\dfrac{-x^3}{x^2-4}=-\dfrac{x^3}{x^2-4}=-f(x)$.
+So $f$ is odd. Notice that the domain (all $x\ne\pm2$) is itself symmetric, which is necessary for the definition to make sense.
+---
+Q: Exactly one of these functions is <b>neither</b> even nor odd. Which one?
+L: 1
+A: f(x)=(x-1)^2
+W: f(x)=x^4+2x^2
+W: f(x)=x^5-x
+W: f(x)=|x|+x^2
+W: f(x)=\sqrt[3]{x}
+S: • $x^4+2x^2$: only even powers, so even.
+• $x^5-x$: only odd powers, so odd.
+• $|x|+x^2$: both terms are even, so even.
+• $\sqrt[3]{x}$: $\sqrt[3]{-x}=-\sqrt[3]{x}$, so odd.
+• $(x-1)^2=x^2-2x+1$ mixes the even terms $x^2,1$ with the odd term $-2x$. Test: $f(-1)=4$, $f(1)=0$. Since $4\ne0$ and $4\ne-0$, it's neither. Its graph is symmetric about the line $x=1$, not the $y$-axis.
+=== GENS ===
+GENS['pc3-sym']=[
+/* pick the even (or odd) function */
+r=>{const n=()=>ri(r,1,7);const evens=[()=>T`${n()}x^4-${n()}x^2`,()=>T`x^6+${n()}x^2-${n()}`,()=>T`|x|+${n()}`,()=>T`\dfrac{${n()}}{x^2+${n()}}`,()=>T`\sqrt{x^2+${n()}}`,()=>T`x^2|x|`];
+ const odds=[()=>T`x^5-${n()}x^3`,()=>T`${n()}x^3+x`,()=>T`\dfrac{x}{x^2+${n()}}`,()=>T`x|x|`,()=>T`\sqrt[3]{x}+${n()}x`,()=>T`\dfrac{${n()}}{x^3}`];
+ const neither=[()=>T`x^3+${n()}`,()=>T`x^2+${n()}x`,()=>T`(x-${n()})^2`,()=>T`|x-${n()}|`,()=>T`x^4+x^3`,()=>T`\sqrt{x+${n()}}`];
+ const want=r()<.5?'even':'odd';const [A,B]=want==='even'?[evens,odds]:[odds,evens];
+ const ans=pick(r,A)();const wr=sample(r,B,2).map(f=>f()).concat(sample(r,neither,2).map(f=>f()));
+ const t=TXT(r,'f(x)='+ans,wr.map(x=>'f(x)='+x));
+ return{lvl:1,q:T`Which function is ${want}?`,a:t.a,w:t.w,
+ s:T`Recall: <b>even</b> means $f(-x)=f(x)$ (symmetric about the $y$-axis) and <b>odd</b> means $f(-x)=-f(x)$ (symmetric about the origin).<br>• $${ans}$: replacing $x$ by $-x$ ${want==='even'?'leaves every piece unchanged (even powers, absolute values, and $x^2$ inside roots don\'t see the sign)':'flips the sign of every piece (odd powers, $x|x|$, cube roots)'}, so it is ${want}.<br>• The other two of the opposite type are ${want==='even'?'odd':'even'}, and the remaining two mix even and odd pieces (or are shifted), so they are neither. For example, a shifted graph like $(x-c)^2$ is symmetric about $x=c$, not about the $y$-axis.`}},
+/* point forced by symmetry */
+r=>{const a=ri(r,-7,7)||4,b=ri(r,-7,7)||-3;const kinds=[['the $y$-axis',[-a,b]],['the $x$-axis',[a,-b]],['the origin',[-a,-b]]];const k=ri(r,0,2);const [nm,ans]=kinds[k];
+ const pt=p=>'('+p[0]+',\\,'+p[1]+')';const others=kinds.filter((_,i)=>i!==k).map(x=>pt(x[1]));
+ const t=TXT(r,pt(ans),others.concat([pt([b,a]),pt([-b,-a])]).filter(x=>x!==pt(ans)).slice(0,4).concat([pt([a+1,b])]).slice(0,4));
+ return{lvl:1,q:T`A graph is symmetric about ${nm} and contains the point $(${a},${b})$. Which point must also be on the graph?`,a:t.a,w:t.w,
+ s:T`Symmetry rules:<br>• about the $y$-axis: $(x,y)\to(-x,y)$<br>• about the $x$-axis: $(x,y)\to(x,-y)$<br>• about the origin: $(x,y)\to(-x,-y)$<br>For ${nm}: $(${a},${b})\to${pt(ans)}$.`}},
+/* odd/even function values */
+r=>{const a=ri(r,1,9),b=ri(r,-9,9)||4,c=ri(r,1,9),d=ri(r,-9,9)||-2;const odd=r()<.5;
+ const v=odd?-b+ -d:b+d;
+ return{lvl:1,q:T`Suppose $f$ is an <b>${odd?'odd':'even'}</b> function with $f(${a})=${b}$ and $f(${c===a?c+1:c})=${d}$. What is $f(-${a})+f(-${c===a?c+1:c})$?`,a:v,w:[odd?b+d:-b-d,odd?-b+d:b-d,odd?b-d:-b+d,0===v?7:0,v+1],
+ s:T`${odd?'Odd':'Even'} means $f(-x)=${odd?'-':''}f(x)$.<br>$f(-${a})=${odd?'-':''}f(${a})=${odd?-b:b}$ and $f(-${c===a?c+1:c})=${odd?'-':''}f(${c===a?c+1:c})=${odd?-d:d}$.<br>Sum: $${odd?-b:b}+${P(odd?-d:d)}=${v}$.`}},
+/* the offset trick */
+r=>{const k=pick(r,[[5,3,1],[7,3,1],[5,1,0],[3,1,0],[9,5,1]]);const c=ri(r,-9,9)||6,p=ri(r,2,9),q=ri(r,-20,20);const ans=2*c-q;
+ const terms=k.filter(e=>e>0).map((e,i)=>['a','b','c'][i]+(e===1?'x':'x^{'+e+'}')).join('+');
+ return{lvl:2,q:T`Let $f(x)=${terms}${c<0?'-':'+'}${Math.abs(c)}$, where the letters other than $x$ are constants. If $f(-${p})=${q}$, what is $f(${p})$?`,a:ans,w:[-q,q,-q-c,ans+c,q-2*c],
+ s:T`Let $g(x)=f(x)${c<0?'+':'-'}${Math.abs(c)}=${terms}$. Every power of $x$ in $g$ is odd, so $g$ is an odd function.<br>$g(-${p})=f(-${p})${c<0?'+':'-'}${Math.abs(c)}=${q-c}$, so $g(${p})=${c-q}$.<br>$f(${p})=g(${p})${c<0?'-':'+'}${Math.abs(c)}=${c-q}${c<0?'-':'+'}${Math.abs(c)}=${ans}$.<br>(Answering $${-q}$ treats $f$ itself as odd, ignoring the constant.)`}},
+/* which symmetry does this equation have */
+r=>{const n=ri(r,1,9),m=ri(r,2,6);
+ const eqs=[[T`y=x^4-${n}x^2`,'y'],[T`y=|x|-${n}`,'y'],[T`y=\dfrac{1}{x^2+${n}}`,'y'],[T`x=y^2-${n}`,'x'],[T`x=|y|+${n}`,'x'],[T`x^2=y^4+${n}`,'all'],[T`y=x^3-${n}x`,'o'],[T`xy=${n}`,'o'],[T`y=\dfrac{${n}}{x}`,'o'],[T`x^2+${m}y^2=${n+m}`,'all'],[T`y=(x-${n})^2`,'none'],[T`y=x^3+${n}`,'none']];
+ const L={y:String.raw`\text{the }y\text{-axis only}`,x:String.raw`\text{the }x\text{-axis only}`,o:String.raw`\text{the origin only}`,all:String.raw`\text{all three}`,none:String.raw`\text{none of them}`};
+ const [e,k]=pick(r,eqs);const t=TXT(r,L[k],Object.keys(L).filter(x=>x!==k).map(x=>L[x]));
+ const yT=k==='y'||k==='all',xT=k==='x'||k==='all',oT=k==='o'||k==='all';
+ return{lvl:1,q:T`The graph of $${e}$ is symmetric with respect to ...`,a:t.a,w:t.w,
+ s:T`Run the three tests on $${e}$:<br>• Replace $x$ by $-x$: ${yT?'the equation is unchanged, so it has $y$-axis symmetry':'the equation changes, so no $y$-axis symmetry'}.<br>• Replace $y$ by $-y$: ${xT?'unchanged, so $x$-axis symmetry':'changes, so no $x$-axis symmetry'}.<br>• Replace both: ${oT?'unchanged, so origin symmetry':'changes, so no origin symmetry'}.<br>Answer: $${L[k]}$.`}},
+];

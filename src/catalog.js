@@ -132,7 +132,41 @@ const CATALOG=[
    {id:'conic-param',name:'Parametric Equations & Vectors',d:'eliminating the parameter, dot product, vector projections'}]},
  ]},
 ];
+/* General Precalculus: one topic per textbook chapter, one subtopic per section */
+const PC_CATALOG=[
+ {area:'Chapters',note:'Follows the textbook chapter by chapter. Each section has a full lesson, a 50+ problem set with worked solutions, and a practice mode.',items:[
+  {id:'pc3',name:'Functions and Graphs',ch:3,d:'Chapter 3: what a function is, functional notation, graphs, parametric graphing, transformations, symmetry, operations, rates of change, and inverse functions.',subs:[
+   {id:'pc3-func',sec:'3.1',name:'Functions',d:'the definition of a function; functions given by tables, graphs, words and equations'},
+   {id:'pc3-not',sec:'3.2',name:'Functional Notation',d:'evaluating f(x), difference quotients, domains, piecewise-defined functions, common mistakes'},
+   {id:'pc3-graph',sec:'3.3',name:'Graphs of Functions',d:'basic graph shapes, step and piecewise graphs, increasing/decreasing, local maxima and minima, the vertical line test'},
+   {id:'pc3-param',sec:'3.3.A',name:'Parametric Graphing',d:'parametric equations, eliminating the parameter, graphing x as a function of y'},
+   {id:'pc3-trans',sec:'3.4',name:'Graphs and Transformations',d:'vertical and horizontal shifts, reflections, stretches and compressions, combining them'},
+   {id:'pc3-sym',sec:'3.4.A',name:'Symmetry',d:'symmetry about the axes and the origin, even and odd functions'},
+   {id:'pc3-ops',sec:'3.5',name:'Operations on Functions',d:'sums, differences, products, quotients, composition, decomposing functions, domains of combinations'},
+   {id:'pc3-rate',sec:'3.6',name:'Rates of Change',d:'average rate of change, secant lines, the difference quotient, estimating instantaneous rates'},
+   {id:'pc3-inv',sec:'3.7',name:'Inverse Functions',d:'one-to-one functions, the horizontal line test, finding and graphing inverses, the round-trip properties'}]},
+  {id:'pc4',name:'Polynomial and Rational Functions',ch:4,d:'Chapter 4: quadratics, polynomial division, the Remainder and Factor Theorems, real roots, polynomial graphs, rational functions, inequalities, complex numbers, and the theory of equations.',subs:[
+   {id:'pc4-quad',sec:'4.1',name:'Quadratic Functions',d:'standard and vertex form, the vertex formula, graphs, writing a rule from the vertex, optimization'},
+   {id:'pc4-poly',sec:'4.2',name:'Polynomial Functions',d:'degree and coefficients, the Division Algorithm, the Remainder and Factor Theorems, building polynomials from roots'},
+   {id:'pc4-synth',sec:'4.2.A',name:'Synthetic Division',d:'dividing by x − c quickly, evaluating polynomials, finding factors'},
+   {id:'pc4-roots',sec:'4.3',name:'Real Roots of Polynomials',d:'the Rational Root Test, the Bounds Test, factoring higher-degree polynomials'},
+   {id:'pc4-graph',sec:'4.4',name:'Graphs of Polynomial Functions',d:'end behavior, intercepts, multiplicity, turning points, complete graphs'},
+   {id:'pc4-model',sec:'4.4.A',name:'Polynomial Models',d:'fitting polynomials to data, finite differences, volume and area optimization models'},
+   {id:'pc4-rat',sec:'4.5',name:'Rational Functions',d:'domains, vertical and horizontal asymptotes, holes, intercepts, applied problems'},
+   {id:'pc4-ratx',sec:'4.5.A',name:'Other Rational Functions',d:'slant (oblique) asymptotes, numerator degree larger than denominator, polynomial end behavior'},
+   {id:'pc4-ineq',sec:'4.6',name:'Polynomial and Rational Inequalities',d:'linear, quadratic, factorable and rational inequalities, sign charts'},
+   {id:'pc4-abs',sec:'4.6.A',name:'Absolute Value Inequalities',d:'|x − c| < r and |x − c| > r, distance interpretation, compound inequalities'},
+   {id:'pc4-cplx',sec:'4.7',name:'Complex Numbers',d:'arithmetic, powers of i, conjugates and division, square roots of negatives, complex solutions of quadratics'},
+   {id:'pc4-theory',sec:'4.8',name:'Theory of Equations',d:'the Fundamental Theorem of Algebra, conjugate roots, factoring completely, building polynomials from complex roots'}]},
+ ]},
+];
+const TRACKS=[
+ {id:'amc',name:'AMC 10/12 Prep',cat:CATALOG,d:'Everything on the AMC 10 and AMC 12: 22 topics, lessons, thousands of problems, and full mock exams.'},
+ {id:'pc',name:'General Precalculus',cat:PC_CATALOG,d:'A chapter-by-chapter precalculus course: functions and graphs, then polynomial and rational functions.'},
+];
 const TOPICS=[];const SUBS=[];
-for(const sec of CATALOG)for(const t of sec.items){t.area=sec.area;TOPICS.push(t);for(const s of t.subs){s.topic=t.id;SUBS.push(s)}}
+for(const tr of TRACKS)for(const sec of tr.cat)for(const t of sec.items){t.area=sec.area;t.track=tr.id;TOPICS.push(t);for(const s of t.subs){s.topic=t.id;SUBS.push(s)}}
+const trackOf=t=>TRACKS.find(x=>x.id===t.track);
+const amcTopics=()=>TOPICS.filter(t=>t.track==='amc');
 const findTopic=id=>TOPICS.find(t=>t.id===id);
 const subById=id=>SUBS.find(s=>s.id===id);

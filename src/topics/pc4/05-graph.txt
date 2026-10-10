@@ -1,0 +1,225 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc4-graph">
+<h2>4.4 Graphs of Polynomial Functions</h2>
+<p>You can sketch a surprisingly accurate polynomial graph with no calculator: the leading term tells you the ends, the factors tell you the $x$-intercepts and what happens at each one, and the degree limits how many bumps there can be.</p>
+
+<h3>1. Power functions $y=ax^n$</h3>
+<ul><li><b>$n$ odd:</b> shaped like $x^3$. If $a\gt0$ it falls on the left and rises on the right; if $a\lt0$, the reverse.</li>
+<li><b>$n$ even:</b> shaped like $x^2$ (flatter near $0$, steeper far out as $n$ grows). If $a\gt0$ both ends rise; if $a\lt0$ both ends fall.</li></ul>
+<div class="lfigs">
+<div class="lplot" data-f="0.3*x*x*x;-0.3*x*x*x" data-x="-3,3" data-y="-5,5" data-w="170" data-cap="odd degree: $\pm0.3x^3$"></div>
+<div class="lplot" data-f="0.3*x*x*x*x;-0.3*x*x*x*x" data-x="-3,3" data-y="-5,5" data-w="170" data-cap="even degree: $\pm0.3x^4$"></div>
+</div>
+
+<h3>2. Continuity and smoothness</h3>
+<p>Every polynomial graph is <b>continuous</b> (no jumps, gaps, or holes) and <b>smooth</b> (no sharp corners). A graph with a corner, like $|x|$, or a jump, like $\lfloor x\rfloor$, can't be a polynomial.</p>
+
+<h3>3. End behavior</h3>
+<div class="box">When $|x|$ is large, the graph of a polynomial closely resembles the graph of its <b>leading term</b>. So:
+<ul><li>odd degree: one end up, the other down;</li>
+<li>even degree: both ends up (positive leading coefficient) or both down (negative).</li></ul></div>
+<p>For $f(x)=2x^3+x^2-6x$ at $x=100$, the leading term $2{,}000{,}000$ dwarfs $x^2-6x=9400$. For a factored polynomial, multiply the leading terms of the factors: $(2x-1)^3(x+4)^2$ behaves like $8x^3\cdot x^2=8x^5$.</p>
+
+<h3>4. $x$-intercepts and multiplicity</h3>
+<p>A polynomial of degree $n$ has at most $n$ $x$-intercepts. A root $c$ has <b>multiplicity $k$</b> if $(x-c)^k$ is a factor but $(x-c)^{k+1}$ is not.</p>
+<div class="box"><h4>Multiplicity and graphs</h4><ul>
+<li>Odd multiplicity: the graph <b>crosses</b> the $x$-axis at $c$ (flattening out, like $x^3$, if $k\ge3$).</li>
+<li>Even multiplicity: the graph <b>touches</b> the $x$-axis at $c$ and turns back, without crossing.</li></ul></div>
+<div class="lfigs"><div class="lplot" data-f="0.15*(x-1)*(x-1)*(x+2)*(x+2)*(x+2)" data-x="-4,3" data-y="-4,6" data-w="230" data-cap="$(x-1)^2(x+2)^3$: touches at $1$, crosses (flattening) at $-2$"></div></div>
+<p>Irreducible quadratic factors like $x^2+1$ contribute no $x$-intercepts: $x(x^2+1)(x-3)^2$ has only the intercepts $0$ and $3$.</p>
+
+<h3>5. Bumps: local extrema and inflection points</h3>
+<div class="box">A polynomial of degree $n$ has <b>at most $n-1$</b> local extrema (peaks and valleys) and at most $n-2$ points of inflection (where the curve changes between bending up and bending down).</div>
+<p>So a cubic has at most $2$ turning points and a quartic at most $3$. A graph with $4$ turning points needs degree at least $5$. Note: odd-degree graphs have an even number of turning points ($0,2,4,\dots$), and even-degree graphs an odd number.</p>
+
+<h3>6. Sketching from factors: a sign chart</h3>
+<p>The roots split the line into intervals where $f$ keeps one sign. For $f(x)=(x+1)(x-2)^2$: to the right of $2$ all factors are positive; crossing $2$ (even multiplicity) the sign stays the same; crossing $-1$ (odd) it flips. So $f\gt0$ on $(-1,2)\cup(2,\infty)$ and $f\lt0$ on $(-\infty,-1)$.</p>
+
+<h3>7. Complete graphs and applications</h3>
+<p>A <b>complete graph</b> shows every intercept, every peak and valley, and the end behavior. If a calculator window shows $n$ $x$-intercepts and $n-1$ turning points for a degree-$n$ polynomial, nothing is hidden. Applied models (box volumes, revenue, population) usually use only the part of the graph on a realistic domain.</p>
+
+<h3>Worked examples</h3>
+<div class="ex"><b class="lbl">Example 1.</b> Find the polynomial of least degree whose graph touches the $x$-axis at $2$, crosses it at $-1$, and passes through $(0,8)$.
+<details><summary>Solution</summary>Touch at $2$ needs an even power, cross at $-1$ an odd one; least degree uses $(x-2)^2(x+1)$. Then $f(x)=a(x-2)^2(x+1)$ and $f(0)=4a=8$, so $a=2$: $f(x)=2(x-2)^2(x+1)$, degree $3$.</details></div>
+<div class="ex"><b class="lbl">Example 2.</b> Describe the end behavior of $f(x)=-2x^5+7x^2-1$.
+<details><summary>Solution</summary>Leading term $-2x^5$: odd degree, negative coefficient. The graph rises on the far left ($f\to\infty$ as $x\to-\infty$) and falls on the far right.</details></div>
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Judging the end behavior by the first term written instead of the highest power.</li>
+<li>Thinking every root crosses the axis. Even multiplicity bounces.</li>
+<li>Counting the number of turning points as exactly $n-1$. It's an upper limit.</li>
+</ul></div>
+</script>
+
+=== BANK ===
+@@ pc4-graph
+Q: Which describes the end behavior of $f(x)=-2x^5+7x^2-1$?
+L: 1
+A: \text{rises on the left, falls on the right}
+W: \text{falls on the left, rises on the right}
+W: \text{rises on both ends}
+W: \text{falls on both ends}
+W: \text{levels off to }y=-1
+S: For large $|x|$, $f$ behaves like its leading term $-2x^5$.
+Odd degree means the two ends go in opposite directions. With the negative coefficient: for large positive $x$, $-2x^5$ is hugely negative (falls on the right); for large negative $x$, $-2x^5$ is hugely positive (rises on the left).
+---
+Q: What is the greatest number of local extrema (peaks and valleys) that a polynomial of degree $6$ can have?
+L: 1
+A: 5
+W: 6
+W: 4
+W: 3
+W: 7
+S: A polynomial of degree $n$ has at most $n-1$ local extrema. For $n=6$: at most $5$.
+(Also, an even-degree polynomial always has an odd number of them, at least $1$.)
+---
+Q: At which $x$-intercepts does the graph of $f(x)=(x-1)^2(x+2)^3(x-4)$ <b>cross</b> the $x$-axis?
+L: 1
+A: x=-2\text{ and }x=4\text{ only}
+W: x=1\text{ only}
+W: x=1,\ -2,\text{ and }4
+W: x=4\text{ only}
+W: x=1\text{ and }x=4\text{ only}
+S: A root crosses the axis when its multiplicity is odd and touches (bounces) when it's even.
+• $x=1$: multiplicity $2$ (even), so it touches without crossing.
+• $x=-2$: multiplicity $3$ (odd), so it crosses (flattening as it does).
+• $x=4$: multiplicity $1$ (odd), so it crosses.
+---
+Q: How many $x$-intercepts does the graph of $f(x)=x(x^2+1)(x-3)^2$ have?
+L: 1
+A: 2
+W: 3
+W: 4
+W: 5
+W: 1
+S: $x$-intercepts are the real roots.
+• $x$ gives the root $0$.
+• $x^2+1$ is never $0$ for real $x$ (it's always at least $1$). No intercepts.
+• $(x-3)^2$ gives the root $3$ (counted once as an intercept, even though its multiplicity is $2$).
+Two intercepts: $x=0$ and $x=3$. (The degree is $5$, but intercepts count distinct real roots.)
+---
+Q: For $f(x)=(x+1)(x-2)^2$, on which set is $f(x)\gt0$?
+L: 2
+A: (-1,2)\cup(2,\infty)
+W: (2,\infty)
+W: (-\infty,-1)
+W: (-1,\infty)
+W: (-\infty,-1)\cup(2,\infty)
+S: The roots $-1$ and $2$ split the line into intervals.
+• $x\gt2$: both factors positive, $f\gt0$.
+• Crossing $2$: $(x-2)^2$ has even multiplicity, so the sign doesn't change; $f\gt0$ on $(-1,2)$ too. (Test $x=0$: $1\cdot4=4\gt0$. ✓)
+• Crossing $-1$: odd multiplicity, so the sign flips; $f\lt0$ on $(-\infty,-1)$.
+At $x=2$ itself $f=0$, which is not $\gt0$, so $2$ is excluded: $(-1,2)\cup(2,\infty)$.
+---
+Q: The polynomial $f(x)=(2x-1)^3(x+4)^2$ behaves like which power function for large $|x|$?
+L: 1
+A: 8x^5
+W: 2x^5
+W: 6x^5
+W: 8x^6
+W: 32x^5
+S: Multiply the leading terms of the factors: $(2x)^3\cdot x^2=8x^3\cdot x^2=8x^5$.
+So $f$ has degree $5$ and leading coefficient $8$: it falls on the left and rises on the right.
+---
+Q: What is the polynomial of least degree whose graph touches the $x$-axis at $2$, crosses it at $-1$, and passes through $(0,8)$?
+L: 2
+A: 2(x-2)^2(x+1)
+W: 2(x-2)(x+1)
+W: 4(x-2)^2(x+1)
+W: 2(x+2)^2(x-1)
+W: 8(x-2)^2(x+1)
+S: Touching at $2$ requires an even power of $(x-2)$; the smallest is $(x-2)^2$.
+Crossing at $-1$ requires an odd power of $(x+1)$; the smallest is $(x+1)^1$.
+So $f(x)=a(x-2)^2(x+1)$, degree $3$.
+$f(0)=a\cdot4\cdot1=4a=8$, so $a=2$: $f(x)=2(x-2)^2(x+1)$.
+---
+Q: A graph has $4$ turning points (local extrema). What is the smallest possible degree of a polynomial with this graph?
+L: 1
+A: 5
+W: 4
+W: 3
+W: 6
+W: 8
+S: A polynomial of degree $n$ has at most $n-1$ turning points.
+To have $4$ we need $n-1\ge4$, so $n\ge5$. A degree-$5$ polynomial such as $x(x^2-1)(x^2-4)$ does have $4$ turning points.
+---
+Q: Which could <b>not</b> be the graph of a polynomial function?
+L: 1
+A: \text{the graph of }y=|x|
+W: \text{a smooth curve with 3 turning points}
+W: \text{a smooth curve rising on both ends}
+W: \text{a horizontal line}
+W: \text{a smooth curve crossing the }x\text{-axis 5 times}
+S: Polynomial graphs are continuous and smooth: no breaks and no sharp corners.
+$y=|x|$ has a sharp corner at the origin, so it is not a polynomial graph.
+The others are all possible: a quartic can have $3$ turning points and rise at both ends, a constant is a polynomial, and a degree-$5$ polynomial can cross the axis $5$ times.
+---
+Q: What is the greatest number of points of inflection a polynomial of degree $4$ can have?
+L: 1
+A: 2
+W: 3
+W: 4
+W: 1
+W: 0
+S: A polynomial of degree $n$ has at most $n-2$ points of inflection. For $n=4$: at most $2$.
+Example: $x^4-6x^2$ bends up, then down (near $0$), then up again, giving $2$ inflection points.
+---
+Q: If $f$ is a polynomial of even degree with a positive leading coefficient, which must be true?
+L: 1
+A: f\text{ has a smallest value (an absolute minimum)}
+W: f\text{ has a largest value (an absolute maximum)}
+W: f\text{ has at least one real root}
+W: f\text{ has an odd number of real roots}
+W: f\text{ is increasing for }x\gt0
+S: Even degree and positive leading coefficient: both ends rise to $+\infty$. A continuous graph that goes up on both ends must reach a lowest point somewhere, so $f$ has an absolute minimum.
+It has no maximum (it grows without bound). It need not have real roots: $x^2+1$ doesn't. It need not be increasing for $x\gt0$: $x^4-8x^2$ decreases on $(0,2)$.
+=== GENS ===
+GENS['pc4-graph']=[
+/* end behavior */
+r=>{const n=ri(r,2,7),a=ri(r,1,5)*pick(r,[1,-1]);const lower=ri(r,1,n-1),bb=ri(r,-9,9)||3,cc=ri(r,-9,9);
+ const L={uu:String.raw`\text{rises on both ends}`,dd:String.raw`\text{falls on both ends}`,du:String.raw`\text{falls on the left, rises on the right}`,ud:String.raw`\text{rises on the left, falls on the right}`};
+ const k=n%2===0?(a>0?'uu':'dd'):(a>0?'du':'ud');
+ /* write the leading term last to test understanding */
+ const expr=T`${cc}${bb<0?'-':'+'}${Math.abs(bb)}x^{${lower}}${a<0?'-':'+'}${Math.abs(a)===1?'':Math.abs(a)}x^{${n}}`;
+ const t=TXT(r,L[k],Object.keys(L).filter(x=>x!==k).map(x=>L[x]).concat([String.raw`\text{levels off to a horizontal line}`]));
+ return{lvl:1,q:T`Which describes the end behavior of the graph of $f(x)=${expr}$?`,a:t.a,w:t.w,
+ s:T`For large $|x|$ the graph looks like its <b>leading term</b>, the term with the highest power: $${a===1?'':a===-1?'-':a}x^{${n}}$ (not the first term written).<br>The degree $${n}$ is ${n%2?'odd, so the ends go in opposite directions':'even, so both ends go the same way'}, and the coefficient $${a}$ is ${a>0?'positive':'negative'}.<br>So the graph $${L[k]}$.`}},
+/* which roots does the graph touch */
+r=>{const rs=sample(r,[-4,-3,-2,-1,0,1,2,3,4],3);const ms=rs.map(()=>ri(r,1,4));if(ms.every(m=>m%2===1)||ms.every(m=>m%2===0))ms[0]=ms[0]%2?2:1;
+ const f=rs.map((c,i)=>fx(c)+(ms[i]>1?'^{'+ms[i]+'}':'')).join('');const touch=rs.filter((_,i)=>ms[i]%2===0).sort((a,b)=>a-b);
+ const name=s=>s.length?String.raw`x=`+s.join(String.raw`\text{ and }x=`)+String.raw`\text{ only}`:String.raw`\text{none}`;
+ const ans=name(touch);const others=[name(rs.filter((_,i)=>ms[i]%2===1).sort((a,b)=>a-b)),name([...rs].sort((a,b)=>a-b)),String.raw`\text{none}`,name(rs.filter((_,i)=>ms[i]===1))];
+ const t=TXT(r,ans,others,k=>name([pick(r,rs)]));
+ return{lvl:1,q:T`At which $x$-intercepts does the graph of $f(x)=${f}$ touch the $x$-axis <b>without crossing</b> it?`,a:t.a,w:t.w,
+ s:T`The graph crosses at roots of odd multiplicity and touches (bounces off) at roots of even multiplicity.<br>${rs.map((c,i)=>`• $x=${c}$: multiplicity $${ms[i]}$ (${ms[i]%2?'odd, crosses':'even, touches'})`).join('<br>')}<br>Answer: $${ans}$.`}},
+/* match a plotted polynomial to its formula */
+r=>{const rs=sample(r,[-3,-2,-1,1,2,3],2);const m=pick(r,[1,2]);const s=pick(r,[1,-1]);const third=pick(r,[-3,-2,-1,0,1,2,3].filter(x=>!rs.includes(x)));
+ const roots=[[rs[0],m],[rs[1],1],[third,1]];const sc=0.25;const f=x=>s*sc*roots.reduce((p,[c,k])=>p*Math.pow(x-c,k),1);
+ const form=(S,R)=>(S<0?'-':'')+R.map(([c,k])=>fx(c)+(k>1?'^{'+k+'}':'')).join('');
+ const ans='y='+form(s,roots);
+ const wr=['y='+form(-s,roots),'y='+form(s,roots.map(([c,k])=>[-c,k])),'y='+form(s,[[rs[0],m===1?2:1],[rs[1],1],[third,1]]),'y='+form(s,[[rs[0],m],[rs[1],2],[third,1]])];
+ const t=TXT(r,ans,wr);
+ const g=plot({x:[-5,5],y:[-6,6],w:250,curves:[{f}],label:'a polynomial graph'});
+ return{lvl:2,q:T`Which equation could have this graph? (Each choice is a polynomial times a positive constant; the constant only stretches the graph vertically.)<br>${g}`,a:t.a,w:t.w,
+ s:T`Read the features of the graph:<br>• $x$-intercepts at $${[rs[0],rs[1],third].sort((a,b)=>a-b).join(',\\ ')}$, so the factors are $${fx(rs[0])}$, $${fx(rs[1])}$, $${fx(third)}$.<br>• At $x=${rs[0]}$ the graph ${m===2?'touches and turns back, so that root has even multiplicity: $'+fx(rs[0])+'^2$':'crosses, so that root has odd multiplicity'}; the others cross.<br>• End behavior: degree $${m+2}$ ${(m+2)%2?'(odd)':'(even)'}; the right end goes ${s>0?'up':'down'}, so the leading coefficient is ${s>0?'positive':'negative'}.<br>Equation: $${ans}$.`}},
+/* count x-intercepts with irreducible quadratic factors */
+r=>{const rs=sample(r,[-5,-4,-3,-2,-1,0,1,2,3,4,5],ri(r,1,3));const quads=ri(r,0,2);const mult=rs.map(()=>ri(r,1,3));
+ const qf=[];for(let i=0;i<quads;i++){const k=ri(r,1,9);qf.push(pick(r,[T`(x^2+${k})`,T`(x^2+${2*k}x+${k*k+ri(r,1,5)})`]))}
+ const f=rs.map((c,i)=>fx(c)+(mult[i]>1?'^{'+mult[i]+'}':'')).join('')+qf.join('');const deg=mult.reduce((a,b)=>a+b,0)+2*quads;
+ return{lvl:1,q:T`How many $x$-intercepts does the graph of $f(x)=${f}$ have?`,a:rs.length,w:[deg,rs.length+quads,mult.reduce((a,b)=>a+b,0),rs.length+2*quads,rs.length+1],
+ s:T`The $x$-intercepts are the distinct real roots.<br>• Linear factors give the roots $${rs.join(',\\ ')}$ (a repeated factor still gives just one intercept).<br>${quads?'• Each quadratic factor here is always positive (its discriminant is negative, e.g. $x^2+k\\ge k\\gt0$), so it has no real roots.<br>':''}Total: $${rs.length}$ intercept${rs.length===1?'':'s'}, even though the degree is $${deg}$.`}},
+/* sign of f on an interval / where negative */
+r=>{const a=ri(r,-4,0),b=a+ri(r,1,3),c=b+ri(r,1,3);const mb=pick(r,[1,2]);const s=pick(r,[1,-1]);
+ const f=x=>s*(x-a)*Math.pow(x-b,mb)*(x-c);const pts=[a-1,(a+b)/2,(b+c)/2,c+1];const signs=pts.map(x=>Math.sign(f(x)));
+ const ivs=[iv(-Infinity,a,0,0),iv(a,b,0,0),iv(b,c,0,0),iv(c,Infinity,0,0)];const neg=ivs.filter((_,i)=>signs[i]<0);
+ const ans=neg.join(String.raw`\cup`);if(!neg.length)return GENS['pc4-graph'][4](r);
+ const pos=ivs.filter((_,i)=>signs[i]>0).join(String.raw`\cup`);
+ const t=TXT(r,ans,[pos,ivs[0]+String.raw`\cup`+ivs[2],ivs[1]+String.raw`\cup`+ivs[3],iv(a,c,0,0)].filter(x=>x!==ans));
+ const expr=(s<0?'-':'')+fx(a)+fx(b)+(mb>1?'^{2}':'')+fx(c);
+ return{lvl:2,q:T`On which set is $f(x)=${expr}$ negative?`,a:t.a,w:t.w,
+ s:T`The roots $${a},${b},${c}$ split the line into four intervals; $f$ keeps one sign on each.<br>${ivs.map((I,i)=>`• $${I}$: test $x=${pts[i]}$, $f$ is ${signs[i]>0?'positive':'negative'}`).join('<br>')}<br>${mb>1?T`(The sign does not change at $x=${b}$ because that root has even multiplicity.)<br>`:''}So $f\lt0$ on $${ans}$.`}},
+/* least-degree polynomial from features */
+r=>{const t1=ri(r,-3,3),c1=pick(r,[-4,-3,-2,-1,1,2,3,4].filter(x=>x!==t1));if(t1===0||c1===0)return GENS['pc4-graph'][5](r);
+ const a=pick(r,[1,2,3,-1,-2]);const y0=a*t1*t1*(-c1);const g=x=>a*(x-t1)**2*(x-c1);let x1=ri(r,-3,4);if(x1===0||x1===t1||x1===c1)x1=5;
+ return{lvl:2,q:T`$f$ is the polynomial of least degree whose graph touches the $x$-axis at $${t1}$, crosses it at $${c1}$, has no other $x$-intercepts, and passes through $(0,${y0})$. What is $f(${x1})$?`,a:g(x1),w:[a*(x1-t1)*(x1-c1),-g(x1),g(x1)/a===g(x1)?g(x1)+y0:g(x1)/a,a*(x1+t1)**2*(x1+c1),g(x1)+a],
+ s:T`Touching needs an even multiplicity and crossing an odd one; least degree uses $${fx(t1)}^2$ and $${fx(c1)}$: $f(x)=k${fx(t1)}^2${fx(c1)}$.<br>$f(0)=k\cdot${t1*t1}\cdot${P(-c1)}=${-t1*t1*c1}k=${y0}$, so $k=${a}$.<br>$f(${x1})=${a}\cdot${P(x1-t1)}^2\cdot${P(x1-c1)}=${g(x1)}$.`}},
+];

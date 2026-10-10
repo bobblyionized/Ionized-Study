@@ -1,0 +1,231 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc4-poly">
+<h2>4.2 Polynomial Functions</h2>
+<p>A <b>polynomial</b> is an expression $a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$ where $n$ is a nonnegative integer and the $a_i$ are constants called <b>coefficients</b>. If $a_n\ne0$, then $n$ is the <b>degree</b>, $a_n$ is the <b>leading coefficient</b>, and $a_0$ is the <b>constant term</b>. Constants are degree-$0$ polynomials; the <b>zero polynomial</b> has no degree.</p>
+<ul><li>$x^3-\sqrt2x+\frac12$ is a polynomial of degree $3$. $\ x^{-2}+1$, $\sqrt x$, and $\frac1x$ are <b>not</b> polynomials (exponents must be whole numbers).</li>
+<li>The degree of a product is the <b>sum</b> of the degrees, and the leading coefficient of a product is the product of the leading coefficients: $(2x^3-1)(x^2+4x)^2$ has degree $3+4=7$ and leading coefficient $2\cdot1^2=2$.</li>
+<li>Useful values: $f(0)$ is the constant term, and $f(1)$ is the <b>sum of the coefficients</b>.</li></ul>
+
+<h3>1. Polynomial division and the Division Algorithm</h3>
+<p>Polynomial long division works just like numerical long division. Divide $3x^4-2x^3+x-5$ by $x^2+1$ (write in the missing $0x^2$):</p>
+<ul><li>$3x^4\div x^2=3x^2$. Subtract $3x^2(x^2+1)=3x^4+3x^2$: left with $-2x^3-3x^2+x-5$.</li>
+<li>$-2x^3\div x^2=-2x$. Subtract $-2x^3-2x$: left with $-3x^2+3x-5$.</li>
+<li>$-3x^2\div x^2=-3$. Subtract $-3x^2-3$: left with $3x-2$, whose degree is less than $2$, so we stop.</li></ul>
+<p>Quotient $3x^2-2x-3$, remainder $3x-2$.</p>
+<div class="box"><h4>Division Algorithm</h4>If $f(x)$ is divided by a nonzero polynomial $g(x)$, there are unique polynomials $q(x)$ (quotient) and $r(x)$ (remainder) with
+$$f(x)=g(x)\,q(x)+r(x),$$
+where $r(x)=0$ or $\deg r\lt\deg g$.</div>
+<p>Dividing by a linear $x-c$ always leaves a constant remainder; dividing by a quadratic leaves a remainder of the form $ax+b$.</p>
+
+<h3>2. The Remainder Theorem</h3>
+<div class="box">The remainder when $f(x)$ is divided by $x-c$ is $f(c)$.</div>
+<p>Proof in one line: $f(x)=(x-c)q(x)+r$; set $x=c$ to get $f(c)=r$. This turns division questions into evaluation. The remainder of $x^{100}+x^{50}+1$ divided by $x+1=x-(-1)$ is $f(-1)=1+1+1=3$, without dividing anything.</p>
+<p><b>Remainder by a quadratic:</b> if $f(1)=3$ and $f(2)=5$, the remainder on division by $(x-1)(x-2)$ is $ax+b$ with $a+b=3$ and $2a+b=5$, so it's $2x+1$.</p>
+
+<h3>3. Roots and the Factor Theorem</h3>
+<p>A number $c$ is a <b>root</b> (or <b>zero</b>) of $f$ if $f(c)=0$. Real roots are the $x$-intercepts of the graph.</p>
+<div class="box"><h4>Factor Theorem</h4>$x-c$ is a factor of $f(x)$ <b>if and only if</b> $c$ is a root of $f$, i.e. $f(c)=0$.</div>
+<ul><li>Is $x+3$ a factor of $x^3+27$? $f(-3)=-27+27=0$: yes. ($x^3+27=(x+3)(x^2-3x+9)$.)</li>
+<li>Find $k$ so $x-2$ divides $x^3+kx^2-4x+8$: $f(2)=8+4k-8+8=4k+8=0$, so $k=-2$.</li>
+<li>Knowing one root lets you factor: $x^3-2x^2-5x+6$ has root $1$ (coefficients sum to $0$), so dividing by $x-1$ gives $x^2-x-6=(x-3)(x+2)$, and $f(x)=(x-1)(x-3)(x+2)$.</li></ul>
+
+<h3>4. How many roots?</h3>
+<div class="box">A polynomial of degree $n$ has <b>at most $n$</b> distinct roots.</div>
+<p>Each root $c$ contributes a factor $x-c$, and a product of more than $n$ linear factors would have degree more than $n$. It may have fewer real roots: $x^2+1$ has none.</p>
+
+<h3>5. Building a polynomial from its roots</h3>
+<p>The polynomials of degree $n$ with roots $r_1,\dots,r_n$ are exactly $f(x)=a(x-r_1)(x-r_2)\cdots(x-r_n)$, $a\ne0$. One extra condition determines $a$. Degree $3$ with roots $1,-2,3$ and $f(0)=12$: $f(0)=a(-1)(2)(-3)=6a=12$, so $a=2$ and $f(x)=2(x-1)(x+2)(x-3)$.</p>
+
+<h3>Worked examples</h3>
+<div class="ex"><b class="lbl">Example 1.</b> Find the remainder when $2x^3-3x^2+4x-7$ is divided by $x-2$.
+<details><summary>Solution</summary>By the Remainder Theorem it's $f(2)=16-12+8-7=5$.</details></div>
+<div class="ex"><b class="lbl">Example 2.</b> When $f(x)$ is divided by $x-3$ the remainder is $7$. What is the remainder when $f(x)+x^2$ is divided by $x-3$?
+<details><summary>Solution</summary>Evaluate at $3$: $f(3)+9=7+9=16$.</details></div>
+<div class="tip"><h4>Strategy</h4>Any question about a remainder on division by $x-c$, or about whether $x-c$ is a factor, is really a question about the number $f(c)$. Evaluate instead of dividing.</div>
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Dividing by $x+3$ means $c=-3$, not $3$.</li>
+<li>Forgetting zero placeholders (like $0x^2$) in long division.</li>
+<li>Thinking a degree-$n$ polynomial always has $n$ real roots.</li>
+</ul></div>
+</script>
+
+=== BANK ===
+@@ pc4-poly
+Q: What are the degree and leading coefficient of $(2x^3-1)(x^2+4x)^2$?
+L: 1
+A: \text{degree }7,\ \text{leading coefficient }2
+W: \text{degree }5,\ \text{leading coefficient }2
+W: \text{degree }7,\ \text{leading coefficient }32
+W: \text{degree }12,\ \text{leading coefficient }2
+W: \text{degree }6,\ \text{leading coefficient }8
+S: Only the highest-degree terms matter for the degree and leading coefficient.
+$(x^2+4x)^2$ starts with $(x^2)^2=x^4$.
+$(2x^3-1)\cdot x^4\cdots$ starts with $2x^3\cdot x^4=2x^7$.
+So the degree is $3+4=7$ and the leading coefficient is $2$. (Degrees add when you multiply; they do not multiply.)
+---
+Q: What is the remainder when $x^{100}+x^{50}+1$ is divided by $x+1$?
+L: 1
+A: 3
+W: 1
+W: -1
+W: 0
+W: 151
+S: Dividing by $x+1=x-(-1)$, the Remainder Theorem says the remainder is $f(-1)$.
+$f(-1)=(-1)^{100}+(-1)^{50}+1=1+1+1=3$ (even powers of $-1$ equal $1$).
+---
+Q: When $3x^4-2x^3+x-5$ is divided by $x^2+1$, what is the remainder?
+L: 2
+A: 3x-2
+W: -2
+W: 3x-5
+W: x-2
+W: -3x+2
+S: Long division (insert $0x^2$ as a placeholder): $3x^4-2x^3+0x^2+x-5$.
+• $3x^4\div x^2=3x^2$; subtract $3x^4+3x^2$: remainder so far $-2x^3-3x^2+x-5$.
+• $-2x^3\div x^2=-2x$; subtract $-2x^3-2x$: $-3x^2+3x-5$.
+• $-3x^2\div x^2=-3$; subtract $-3x^2-3$: $3x-2$.
+The degree of $3x-2$ is less than $2$, so we stop. Quotient $3x^2-2x-3$, remainder $3x-2$.
+Check: $(x^2+1)(3x^2-2x-3)+3x-2=3x^4-2x^3+x-5$. ✓
+---
+Q: For what value of $k$ is $x-2$ a factor of $x^3+kx^2-4x+8$?
+L: 1
+A: -2
+W: 2
+W: -4
+W: 4
+W: 0
+S: By the Factor Theorem, $x-2$ is a factor exactly when $f(2)=0$.
+$f(2)=8+4k-8+8=4k+8$.
+$4k+8=0$ gives $k=-2$.
+Check: $x^3-2x^2-4x+8=x^2(x-2)-4(x-2)=(x-2)(x^2-4)$. ✓
+---
+Q: A polynomial $f$ of degree $3$ has roots $1$, $-2$, and $3$, and $f(0)=12$. What is $f(2)$?
+L: 2
+A: -8
+W: 8
+W: -4
+W: 12
+W: -16
+S: With those roots, $f(x)=a(x-1)(x+2)(x-3)$.
+$f(0)=a(-1)(2)(-3)=6a=12$, so $a=2$.
+$f(2)=2(1)(4)(-1)=-8$.
+---
+Q: When a polynomial $f(x)$ is divided by $x-1$ the remainder is $3$, and when divided by $x-2$ the remainder is $5$. What is the remainder when $f(x)$ is divided by $(x-1)(x-2)$?
+L: 2
+A: 2x+1
+W: 8
+W: 15
+W: x+2
+W: 3x+5
+S: By the Remainder Theorem, $f(1)=3$ and $f(2)=5$.
+Dividing by a quadratic leaves a remainder $ax+b$: $f(x)=(x-1)(x-2)q(x)+ax+b$.
+Set $x=1$: $a+b=3$. Set $x=2$: $2a+b=5$.
+Subtracting: $a=2$, then $b=1$. Remainder: $2x+1$.
+---
+Q: The polynomial $x^3-2x^2-5x+6$ factors completely as ...
+L: 1
+A: (x-1)(x+2)(x-3)
+W: (x+1)(x-2)(x+3)
+W: (x-1)(x-2)(x-3)
+W: (x-1)(x+2)(x+3)
+W: (x-6)(x^2+1)
+S: The coefficients add to $1-2-5+6=0$, so $f(1)=0$ and $x-1$ is a factor (Factor Theorem).
+Divide: $x^3-2x^2-5x+6=(x-1)(x^2-x-6)$.
+Factor the quadratic: $x^2-x-6=(x-3)(x+2)$.
+So $f(x)=(x-1)(x+2)(x-3)$, with roots $1,-2,3$.
+---
+Q: Which statement about a polynomial of degree $5$ with real coefficients must be true?
+L: 1
+A: \text{It has at most 5 real roots.}
+W: \text{It has exactly 5 real roots.}
+W: \text{It has no real roots.}
+W: \text{It has at most 4 real roots.}
+W: \text{It has at least 2 real roots.}
+S: A polynomial of degree $n$ has at most $n$ roots, because each root $c$ gives a factor $x-c$, and more than $5$ linear factors would make the degree more than $5$.
+It need not have $5$: $x^5+x=x(x^4+1)$ has only the real root $0$.
+(It must have at least one real root, since its graph goes from $-\infty$ to $\infty$, but "at least 2" is false.)
+---
+Q: When $f(x)$ is divided by $x-3$ the remainder is $7$. What is the remainder when $f(x)+x^2$ is divided by $x-3$?
+L: 1
+A: 16
+W: 7
+W: 10
+W: 9
+W: 49
+S: Let $g(x)=f(x)+x^2$. By the Remainder Theorem, the remainder on division by $x-3$ is $g(3)$.
+$f(3)=7$ (that's what the first remainder tells us), so $g(3)=7+9=16$.
+---
+Q: What is the sum of the coefficients of $(3x^2-2x-2)^{5}$ when it is expanded?
+L: 1
+A: -1
+W: 1
+W: 0
+W: -32
+W: 243
+S: For any polynomial $p(x)$, the sum of its coefficients is $p(1)$ (every power of $x$ becomes $1$).
+$p(1)=(3-2-2)^5=(-1)^5=-1$.
+---
+Q: Which of these is <b>not</b> a polynomial?
+L: 1
+A: 3x^2+\dfrac{2}{x}
+W: \sqrt5\,x^3-\pi
+W: \dfrac{x^4-1}{2}
+W: 7
+W: (x+1)^{10}
+S: A polynomial's terms must be constants times <b>whole-number</b> powers of $x$.
+• $\sqrt5x^3-\pi$: coefficients can be any real numbers. Polynomial.
+• $\frac{x^4-1}{2}=\frac12x^4-\frac12$. Polynomial.
+• $7$: a constant (degree $0$). Polynomial.
+• $(x+1)^{10}$: expands to a polynomial of degree $10$.
+• $\frac2x=2x^{-1}$ has a negative exponent. <b>Not</b> a polynomial.
+---
+Q: Find the quotient when $2x^3+x^2-7x+6$ is divided by $x+2$.
+L: 2
+A: 2x^2-3x-1
+W: 2x^2+5x+3
+W: 2x^2-3x+1
+W: 2x^2+3x-1
+W: x^2-3x-1
+S: Long division:
+• $2x^3\div x=2x^2$; subtract $2x^2(x+2)=2x^3+4x^2$: left $-3x^2-7x+6$.
+• $-3x^2\div x=-3x$; subtract $-3x(x+2)=-3x^2-6x$: left $-x+6$.
+• $-x\div x=-1$; subtract $-1(x+2)=-x-2$: left $8$.
+Quotient $2x^2-3x-1$, remainder $8$. Check the remainder with the Remainder Theorem: $f(-2)=-16+4+14+6=8$. ✓
+=== GENS ===
+GENS['pc4-poly']=[
+/* remainder theorem */
+r=>{const n=pick(r,[3,4]);const cs=Array.from({length:n+1},(_,i)=>i===0?pick(r,[1,2,-1,3]):ri(r,-6,6));const c=ri(r,-3,3)||2;const v=ev(cs,c);
+ return{lvl:1,q:T`What is the remainder when $${pl(cs)}$ is divided by $x${c<0?'+'+(-c):'-'+c}$?`,a:v,w:[ev(cs,-c),v+1,cs[n],v-c,ev(cs,1)],
+ s:T`By the Remainder Theorem, dividing by $x-c$ leaves remainder $f(c)$. ${c<0?T`Here $x+${-c}=x-${P(c)}$, so $c=${c}$.`:T`Here $c=${c}$.`}<br>$f(${c})=${subst(cs,c)}=${v}$.<br>${c<0?T`(Careful: dividing by $x+${-c}$ means evaluating at $${c}$, not $${-c}$.)`:''}`}},
+/* find k for a factor */
+r=>{const c=ri(r,-3,3)||1;const a=pick(r,[1,2]),b=ri(r,-6,6),d=ri(r,-9,9);const k=-(a*c**3+b*c+d);if(c*c===0)return GENS['pc4-poly'][1](r);const kv=F(k,c*c);
+ return{lvl:1,q:T`For what value of $k$ is $x${c<0?'+'+(-c):'-'+c}$ a factor of $${a===1?'':a}x^3+kx^2${b?(b<0?'-':'+')+Math.abs(b)+'x':''}${d?(d<0?'-':'+')+Math.abs(d):''}$?`,a:kv,w:[kv.neg(),F(k),F(-(a*(-c)**3-b*c+d),c*c),kv.add(1),F(d)],
+ s:T`By the Factor Theorem, $x${c<0?'+'+(-c):'-'+c}$ is a factor exactly when $f(${c})=0$.<br>$f(${c})=${a===1?'':a+'\\cdot'}${P(c)}^3+k\cdot ${P(c)}^2${b?'+'+P(b)+'\\cdot'+P(c):''}${d?'+'+P(d):''}=${c*c===1?'':c*c}k+${P(a*c**3+b*c+d)}$.<br>Setting it to $0$: $${c*c===1?'':c*c}k=${-(a*c**3+b*c+d)}$, so $k=${kv.tex()}$.`}},
+/* polynomial from roots and a condition */
+r=>{const rs=sample(r,[-4,-3,-2,-1,1,2,3,4],3);const a=pick(r,[1,2,-1,3,-2]);const f=x=>a*(x-rs[0])*(x-rs[1])*(x-rs[2]);const f0=f(0);let x1=ri(r,-3,5);if(rs.includes(x1)||x1===0)x1=5;
+ const v=f(x1);
+ return{lvl:2,q:T`A polynomial $f$ of degree $3$ has roots $${rs[0]}$, $${rs[1]}$, and $${rs[2]}$, and $f(0)=${f0}$. What is $f(${x1})$?`,a:v,w:[v/a===v?v+f0:v/a,-v,f0,v+a,(x1-rs[0])*(x1-rs[1])*(x1-rs[2])*f0],
+ s:T`By the Factor Theorem, $f(x)=a${fx(rs[0])}${fx(rs[1])}${fx(rs[2])}$ for some constant $a$.<br>$f(0)=a\cdot ${P(-rs[0])}\cdot ${P(-rs[1])}\cdot ${P(-rs[2])}=${-rs[0]*-rs[1]*-rs[2]}a=${f0}$, so $a=${a}$.<br>$f(${x1})=${a}\cdot ${P(x1-rs[0])}\cdot ${P(x1-rs[1])}\cdot ${P(x1-rs[2])}=${v}$.`}},
+/* long division by x^2+k: remainder */
+r=>{const k=pick(r,[1,2,3,-1,-2,-3]);const cs=[pick(r,[1,2,3]),ri(r,-5,5),ri(r,-5,5),ri(r,-6,6),ri(r,-6,6)];
+ /* divide a4x^4+a3x^3+a2x^2+a1x+a0 by x^2+k */
+ const [a4,a3,a2,a1,a0]=cs;const q2=a4,q1=a3,q0=a2-k*a4;const r1=a1-k*a3,r0=a0-k*q0;
+ const rem=trm([[r1,'x'],[r0,'']]),quo=trm([[q2,'x^2'],[q1,'x'],[q0,'']]);const askQ=r()<.4;
+ const ans=askQ?quo:rem;const t=TXT(r,ans,askQ?[trm([[q2,'x^2'],[q1,'x'],[a2+k*a4,'']]),trm([[q2,'x^2'],[-q1,'x'],[q0,'']]),trm([[q2,'x^2'],[q1,'x'],[a2,'']]),trm([[q2,'x^3'],[q1,'x^2'],[q0,'x']])]:[trm([[a1+k*a3,'x'],[a0+k*q0,'']]),trm([[r1,'']]),trm([[a1,'x'],[a0,'']]),trm([[r0,'x'],[r1,'']])]);
+ return{lvl:2,q:T`When $${pl(cs)}$ is divided by $x^2${k<0?'-':'+'}${Math.abs(k)}$, what is the ${askQ?'quotient':'remainder'}?`,a:t.a,w:t.w,
+ s:T`Long division by $x^2${k<0?'-':'+'}${Math.abs(k)}$:<br>• $${trm([[a4,'x^4']])}\div x^2=${trm([[q2,'x^2']])}$; subtracting $${trm([[q2,'x^2']])}(x^2${k<0?'-':'+'}${Math.abs(k)})$ leaves $${trm([[a3,'x^3'],[a2-k*a4,'x^2'],[a1,'x'],[a0,'']])}$.<br>• Next term $${trm([[q1,'x']])}$; subtracting $${trm([[q1,'x']])}(x^2${k<0?'-':'+'}${Math.abs(k)})$ leaves $${trm([[q0,'x^2'],[r1,'x'],[a0,'']])}$.<br>• Next term $${trm([[q0,'']])}$; subtracting leaves $${rem}$, of degree less than $2$.<br>Quotient $${quo}$, remainder $${rem}$.`}},
+/* remainder by (x-a)(x-b) */
+r=>{const a=ri(r,-3,3),b=a+ri(r,1,4),fa=ri(r,-9,9),fb=ri(r,-9,9);const m=F(fb-fa,b-a),c=F(fa).sub(m.mul(a));
+ const tx2=(M,C)=>{const s=(M.n===0?'':(M.isInt()?(M.n===1?'':M.n===-1?'-':M.n):M.tex())+'x');const cc=C.n===0?'':(C.n<0?' - '+C.neg().tex():(s?' + ':'')+C.tex());return(s+cc)||'0'};
+ const ans=tx2(m,c);const t=TXT(r,ans,[tx2(F(fa-fb,b-a),c),tx2(m,c.neg()),tx2(F(fb-fa),F(fa)),tx2(c,m)]);
+ return{lvl:2,q:T`When $f(x)$ is divided by $x${a<0?'+'+(-a):a?'-'+a:''}$ the remainder is $${fa}$, and when divided by $x-${b}$ the remainder is $${fb}$. What is the remainder when $f(x)$ is divided by $${a?'(x'+(a<0?'+'+(-a):'-'+a)+')':'x'}(x-${b})$?`,a:t.a,w:t.w,
+ s:T`Remainder Theorem: $f(${a})=${fa}$ and $f(${b})=${fb}$.<br>Dividing by a quadratic leaves a remainder of degree at most $1$: $f(x)=${a?'(x'+(a<0?'+'+(-a):'-'+a)+')':'x'}(x-${b})q(x)+mx+c$.<br>At $x=${a}$: $${a}m+c=${fa}$. At $x=${b}$: $${b}m+c=${fb}$.<br>Subtract: $${b-a}m=${fb-fa}$, so $m=${m.tex()}$, and $c=${fa}-${P(m.mul(a))}=${c.tex()}$.<br>Remainder: $${ans}$.`}},
+/* degree / leading coefficient of a product */
+r=>{const d1=ri(r,1,4),d2=ri(r,2,3),e=ri(r,2,3),a=ri(r,2,5)*pick(r,[1,-1]),b=ri(r,1,3);const deg=d1+d2*e,lc=a*b**e;
+ const term=(c,d)=>(c===1?'':c===-1?'-':c)+(d===1?'x':'x^{'+d+'}');
+ const ans=String.raw`\text{degree }`+deg+String.raw`,\ \text{leading coefficient }`+lc;
+ const mk=(dd,ll)=>String.raw`\text{degree }`+dd+String.raw`,\ \text{leading coefficient }`+ll;
+ const t=TXT(r,ans,[mk(d1+d2+e,lc),mk(d1*d2*e,lc),mk(deg,a*b*e),mk(d1+d2,a*b)]);
+ return{lvl:1,q:T`What are the degree and leading coefficient of $\left(${term(a,d1)}+1\right)\left(${term(b,d2)}-x+3\right)^{${e}}$?`,a:t.a,w:t.w,
+ s:T`Look only at the highest-degree term of each factor.<br>$${term(a,d1)}+1$ starts with $${term(a,d1)}$${d2===1?T` and $${term(b,d2)}-x+3=${b-1===0?'':(b-1===1?'':b-1)+'x'}+3$${b-1===0?' is just a constant, so':' starts with $'+term(b-1,1)+'$'}`:T`, and $\left(${term(b,d2)}-x+3\right)^{${e}}$ starts with $(${term(b,d2)})^{${e}}=${term(b**e,d2*e)}$`}.<br>${d2===1?'':T`The product starts with $${term(a,d1)}\cdot ${term(b**e,d2*e)}=${term(lc,deg)}$.<br>`}Degree $${deg}$ (degrees add: $${d1}+${d2}\cdot ${e}$), leading coefficient $${lc}$.`}},
+];

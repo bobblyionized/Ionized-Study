@@ -58,7 +58,12 @@ const SYNC=(()=>{
 
   /* ---------- status UI ---------- */
   function status(kind,text){const el=$('tmSync');el.className='tm-sync'+(kind?' '+kind:'');el.querySelector('b').textContent=text}
-  function showCode(){$('tmCode').textContent=fmt(st.code);$('tmCodeCur').textContent=fmt(st.code)}
+  let hidden=(()=>{try{return localStorage.getItem('amcprep.codeHidden')==='1'}catch(e){return false}})();
+  function showCode(){
+    $('tmCode').textContent=hidden?'••••-••••':fmt(st.code);$('tmCodeCur').textContent=hidden?'••••-••••':fmt(st.code);
+    $('tmCodeBox').classList.toggle('hid',hidden);$('tmCode').title=hidden?'Code hidden':'Click to copy';
+    const hb=$('tmCodeHide');hb.textContent=hidden?'Show':'Hide';hb.setAttribute('aria-pressed',String(hidden));
+  }
 
   /* ---------- reconcile: pull, merge, push the difference ---------- */
   let busy=false,again=false,debounce=null;
@@ -125,7 +130,9 @@ const SYNC=(()=>{
   }
 
   /* ---------- UI wiring ---------- */
+  $('tmCodeHide').addEventListener('click',()=>{hidden=!hidden;try{localStorage.setItem('amcprep.codeHidden',hidden?'1':'0')}catch(e){}showCode();TM.sfx.tap()});
   $('tmCode').addEventListener('click',async()=>{
+    if(hidden)return;
     try{await navigator.clipboard.writeText(fmt(st.code));const b=$('tmSync').querySelector('b'),t=b.textContent;b.textContent='Copied!';setTimeout(()=>{b.textContent=t},1200)}catch(e){}
   });
   $('tmSetCode').addEventListener('click',()=>{$('tmCodeIn').value='';$('tmCodeHint').textContent=' ';$('tmCodeHint').classList.remove('err');showCode();TM.openSheet($('tmCodeSheet'));setTimeout(()=>$('tmCodeIn').focus(),350)});

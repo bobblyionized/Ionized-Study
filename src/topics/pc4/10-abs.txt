@@ -1,0 +1,205 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc4-abs">
+<h2>4.6.A Absolute Value Inequalities</h2>
+<p>$|a-b|$ is the <b>distance</b> between $a$ and $b$ on the number line. Read this way, absolute value inequalities become pictures: $|x-5|\lt2$ says "$x$ is within $2$ of $5$," so $3\lt x\lt7$.</p>
+
+<h3>1. The two basic forms</h3>
+<div class="box">For $r\gt0$:
+<ul><li>$|x-c|\lt r\iff c-r\lt x\lt c+r$ (within $r$ of $c$: one interval)</li>
+<li>$|x-c|\gt r\iff x\lt c-r\ \text{ or }\ x\gt c+r$ (farther than $r$ from $c$: two rays)</li></ul>
+The same holds with $\le$ and $\ge$, including the endpoints.</div>
+<p>In general, $|u|\lt r$ means $-r\lt u\lt r$, and $|u|\gt r$ means $u\lt-r$ or $u\gt r$, where $u$ can be any expression.</p>
+
+<h3>2. Linear expressions inside</h3>
+<p>$|3x-2|\le7$ becomes $-7\le3x-2\le7$, so $-5\le3x\le9$ and $-\frac53\le x\le3$.</p>
+<p>$|2x+1|\gt5$ becomes $2x+1\lt-5$ <b>or</b> $2x+1\gt5$: $x\lt-3$ or $x\gt2$, i.e. $(-\infty,-3)\cup(2,\infty)$.</p>
+<p>To read off the center and radius: $|ax+b|\lt r$ is $\left|x+\frac ba\right|\lt\frac r{|a|}$, an interval centered at $-\frac ba$ with half-width $\frac r{|a|}$.</p>
+
+<h3>3. Special cases</h3>
+<ul><li>$|u|\lt r$ with $r\le0$: <b>no solutions</b> (absolute values are never negative). $|u|\le0$ only when $u=0$.</li>
+<li>$|u|\gt r$ with $r\lt0$: <b>every</b> $x$ in the domain works.</li>
+<li>$|u|\ge0$: always true.</li></ul>
+
+<h3>4. Nonlinear expressions</h3>
+<p>$|x^2-4|\lt3$ means $-3\lt x^2-4\lt3$, i.e. $1\lt x^2\lt7$. That's $1\lt|x|\lt\sqrt7$: $(-\sqrt7,-1)\cup(1,\sqrt7)$.</p>
+<p>When the right side also contains $x$, as in $|x-1|\lt2x$, split into cases ($x\ge1$ and $x\lt1$) or solve graphically by finding where the graphs cross.</p>
+<div class="lfigs"><div class="lplot" data-f="abs(x-5);2" data-x="0,9" data-y="-1,5" data-w="230" data-cap="$|x-5|\lt2$: the V is below the line $y=2$ for $3\lt x\lt7$"></div></div>
+
+<h3>5. Applications: tolerance</h3>
+<p>"A part must be $4.2$ cm long, with a tolerance of $0.05$ cm" means $|L-4.2|\le0.05$: $4.15\le L\le4.25$. Conversely, the interval $[a,b]$ is $\left|x-\frac{a+b}2\right|\le\frac{b-a}{2}$: center the midpoint, radius half the length.</p>
+
+<h3>Worked examples</h3>
+<div class="ex"><b class="lbl">Example 1.</b> Write $[-1,9]$ as an absolute value inequality.
+<details><summary>Solution</summary>Midpoint $4$, half-length $5$: $|x-4|\le5$.</details></div>
+<div class="ex"><b class="lbl">Example 2.</b> How many integers satisfy $|2x-5|\lt7$?
+<details><summary>Solution</summary>$-7\lt2x-5\lt7\Rightarrow-2\lt2x\lt12\Rightarrow-1\lt x\lt6$: the integers $0,1,2,3,4,5$, so $6$.</details></div>
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Writing $|x|\gt3$ as $-3\gt x\gt3$ (impossible). "Greater than" gives two separate pieces joined by <b>or</b>.</li>
+<li>Forgetting to flip when the coefficient of $x$ is negative: $|5-2x|\lt3$ gives $-3\lt5-2x\lt3$, then $-8\lt-2x\lt-2$, then $1\lt x\lt4$.</li>
+<li>Treating $|u|\lt-2$ as if it had solutions.</li>
+</ul></div>
+</script>
+
+=== BANK ===
+@@ pc4-abs
+Q: Solve $|x-5|\lt2$.
+L: 1
+A: (3,\,7)
+W: (-7,\,-3)
+W: (-\infty,3)\cup(7,\infty)
+W: [3,\,7]
+W: (-3,\,7)
+S: $|x-5|$ is the distance from $x$ to $5$. "Less than $2$" means $x$ is within $2$ of $5$.
+Algebraically: $-2\lt x-5\lt2$; add $5$: $3\lt x\lt7$.
+Strict inequality, so the endpoints are excluded: $(3,7)$.
+---
+Q: Solve $|3x-2|\le7$.
+L: 1
+A: \left[-\tfrac53,\,3\right]
+W: \left[-3,\,\tfrac53\right]
+W: \left(-\infty,-\tfrac53\right]\cup[3,\infty)
+W: [-5,\,9]
+W: \left[\tfrac53,\,3\right]
+S: $|u|\le7$ means $-7\le u\le7$. So $-7\le3x-2\le7$.
+Add $2$: $-5\le3x\le9$. Divide by $3$: $-\frac53\le x\le3$.
+Answer: $\left[-\frac53,3\right]$.
+---
+Q: Solve $|2x+1|\gt5$.
+L: 1
+A: (-\infty,-3)\cup(2,\infty)
+W: (-3,\,2)
+W: (-\infty,-2)\cup(3,\infty)
+W: (2,\infty)
+W: (-\infty,-3)
+S: $|u|\gt5$ means $u\lt-5$ <b>or</b> $u\gt5$.
+$2x+1\lt-5\Rightarrow2x\lt-6\Rightarrow x\lt-3$.
+$2x+1\gt5\Rightarrow2x\gt4\Rightarrow x\gt2$.
+Answer: $(-\infty,-3)\cup(2,\infty)$. (Only taking $2x+1\gt5$ misses half the solutions.)
+---
+Q: How many real numbers satisfy $|4x-1|\lt-2$?
+L: 1
+A: 0
+W: 1
+W: 2
+W: \text{infinitely many}
+W: 4
+S: An absolute value is never negative, so it can never be less than $-2$.
+There are no solutions.
+---
+Q: Solve $|x^2-4|\lt3$.
+L: 2
+A: (-\sqrt7,-1)\cup(1,\sqrt7)
+W: (-\sqrt7,\sqrt7)
+W: (1,\sqrt7)
+W: (-1,1)
+W: (-\infty,-1)\cup(1,\infty)
+S: $|u|\lt3$ means $-3\lt u\lt3$: $-3\lt x^2-4\lt3$.
+Add $4$: $1\lt x^2\lt7$.
+$x^2\gt1$ means $|x|\gt1$; $x^2\lt7$ means $|x|\lt\sqrt7$. Together $1\lt|x|\lt\sqrt7$.
+That's two intervals: $(-\sqrt7,-1)\cup(1,\sqrt7)$.
+---
+Q: Which absolute value inequality has the solution set $[-1,9]$?
+L: 1
+A: |x-4|\le5
+W: |x+4|\le5
+W: |x-5|\le4
+W: |x-4|\ge5
+W: |x-1|\le9
+S: The interval $[a,b]$ is the set of points within half its length of its midpoint.
+Midpoint: $\frac{-1+9}{2}=4$. Half-length: $\frac{9-(-1)}{2}=5$.
+So the set is $|x-4|\le5$. Check: $|{-1}-4|=5$ and $|9-4|=5$. ✓
+---
+Q: How many integers satisfy $|2x-5|\lt7$?
+L: 1
+A: 6
+W: 7
+W: 5
+W: 13
+W: 8
+S: $-7\lt2x-5\lt7$. Add $5$: $-2\lt2x\lt12$. Divide by $2$: $-1\lt x\lt6$.
+The integers strictly between $-1$ and $6$ are $0,1,2,3,4,5$: six of them.
+---
+Q: Solve $|5-2x|\lt3$.
+L: 1
+A: (1,\,4)
+W: (-4,\,-1)
+W: (-\infty,1)\cup(4,\infty)
+W: (-1,\,4)
+W: (1,\,8)
+S: $-3\lt5-2x\lt3$. Subtract $5$: $-8\lt-2x\lt-2$.
+Divide by $-2$ and <b>reverse both inequalities</b>: $4\gt x\gt1$, i.e. $1\lt x\lt4$.
+Shortcut: $|5-2x|=|2x-5|$, so this is $|x-\frac52|\lt\frac32$: center $2.5$, radius $1.5$, giving $(1,4)$.
+---
+Q: A machine part must be $4.2$ cm long with a tolerance of $0.05$ cm. Which inequality describes the acceptable lengths $L$?
+L: 1
+A: |L-4.2|\le0.05
+W: |L-0.05|\le4.2
+W: |L+4.2|\le0.05
+W: |L-4.2|\ge0.05
+W: L\le4.25
+S: "Within $0.05$ of $4.2$" means the distance from $L$ to $4.2$ is at most $0.05$: $|L-4.2|\le0.05$.
+That's $4.15\le L\le4.25$. ($L\le4.25$ alone would allow parts that are much too short.)
+---
+Q: Solve $|x+3|\ge0$.
+L: 1
+A: \text{all real numbers}
+W: x\ge-3
+W: x=-3
+W: \text{no real numbers}
+W: x\le-3
+S: An absolute value is always $\ge0$, for every real $x$. So every real number is a solution.
+($|x+3|\le0$, on the other hand, would hold only at $x=-3$.)
+---
+Q: Solve $|x-1|\lt2x$.
+L: 2
+A: \left(\tfrac13,\infty\right)
+W: (-1,\infty)
+W: \left(\tfrac13,\,1\right)
+W: (1,\infty)
+W: \left(-\infty,\tfrac13\right)
+S: The right side must be positive for a solution, so $x\gt0$. Split into cases.
+• $x\ge1$: $|x-1|=x-1$, and $x-1\lt2x$ means $x\gt-1$, always true here. So all $x\ge1$ work.
+• $0\lt x\lt1$: $|x-1|=1-x$, and $1-x\lt2x$ means $x\gt\frac13$. So $\frac13\lt x\lt1$ works.
+Together: $\left(\frac13,\infty\right)$.
+=== GENS ===
+GENS['pc4-abs']=[
+/* |x-c| < r type */
+r=>{const c=ri(r,-8,8),rr=ri(r,1,7);const less=r()<.5,cl=r()<.5;const op=less?(cl?'\\le':'\\lt'):(cl?'\\ge':'\\gt');
+ const L=cl?'[':'(',R=cl?']':')';const lo=c-rr,hi=c+rr;
+ const inside=L+lo+',\\,'+hi+R,outside='(-\\infty,'+lo+R+'\\cup'+L+hi+',\\infty)';const ans=less?inside:outside;
+ const t=TXT(r,ans,[less?outside:inside,L+(-hi)+',\\,'+(-lo)+R,(cl?'(':'[')+lo+',\\,'+hi+(cl?')':']'),L+(c-2*rr)+',\\,'+(c+2*rr)+R]);
+ return{lvl:1,q:T`Solve $|x${c<0?'+'+(-c):c?'-'+c:''}|${op}${rr}$.`,a:t.a,w:t.w,
+ s:T`$|x${c<0?'+'+(-c):c?'-'+c:''}|$ is the distance from $x$ to $${c}$.<br>${less?T`"${cl?'At most':'Less than'} $${rr}$" means within $${rr}$ of $${c}$: $${lo}${cl?'\\le':'\\lt'} x${cl?'\\le':'\\lt'} ${hi}$.`:T`"${cl?'At least':'More than'} $${rr}$" means $x${cl?'\\le':'\\lt'} ${c}-${rr}=${lo}$ or $x${cl?'\\ge':'\\gt'} ${c}+${rr}=${hi}$.`}<br>Answer: $${ans}$.`}},
+/* |ax+b| <= k with a != 1 */
+r=>{const a=ri(r,2,5)*pick(r,[1,-1]),b=ri(r,-9,9),k=ri(r,1,9);const less=r()<.5;
+ const e1=F(-k-b,a),e2=F(k-b,a);const lo=e1.v<e2.v?e1:e2,hi=e1.v<e2.v?e2:e1;
+ const inside='\\left['+lo.tex()+',\\,'+hi.tex()+'\\right]',outside='\\left(-\\infty,'+lo.tex()+'\\right)\\cup\\left('+hi.tex()+',\\infty\\right)';const ans=less?inside:outside;
+ const t=TXT(r,ans,[less?'\\left(-\\infty,'+lo.tex()+'\\right]\\cup\\left['+hi.tex()+',\\infty\\right)':'\\left('+lo.tex()+',\\,'+hi.tex()+'\\right)',less?'\\left['+F(-k+b,a).tex()+',\\,'+F(k+b,a).tex()+'\\right]':'\\left(-\\infty,'+F(-k+b,a).tex()+'\\right)\\cup\\left('+F(k+b,a).tex()+',\\infty\\right)','\\left['+(-k-b)+',\\,'+(k-b)+'\\right]',less?outside:inside]);
+ return{lvl:2,q:T`Solve $|${lin(a,b)}|${less?'\\le':'\\gt'}${k}$.`,a:t.a,w:t.w,
+ s:less?T`$|u|\le${k}$ means $-${k}\le u\le${k}$: $-${k}\le${lin(a,b)}\le${k}$.<br>Subtract $${b}$: $${-k-b}\le${a}x\le${k-b}$.<br>Divide by $${a}$${a<0?' and reverse the inequalities (negative divisor)':''}: $${lo.tex()}\le x\le${hi.tex()}$.<br>Answer: $${ans}$.`
+ :T`$|u|\gt${k}$ means $u\lt-${k}$ or $u\gt${k}$.<br>$${lin(a,b)}\lt-${k}$ gives $${a}x\lt${-k-b}$, so $x${a<0?'\\gt':'\\lt'}${e1.tex()}$.<br>$${lin(a,b)}\gt${k}$ gives $${a}x\gt${k-b}$, so $x${a<0?'\\lt':'\\gt'}${e2.tex()}$.${a<0?' (Dividing by a negative reverses each inequality.)':''}<br>Answer: $${ans}$.`}},
+/* interval -> absolute value inequality */
+r=>{const a=ri(r,-9,5),len=ri(r,1,6)*2;const b=a+len;const m=(a+b)/2,h=len/2;const open=r()<.5;
+ const sh=c=>c<0?'+'+(-c):c?'-'+c:'';const ans='|x'+sh(m)+'|'+(open?'\\lt':'\\le')+h;
+ const t=TXT(r,ans,['|x'+sh(-m)+'|'+(open?'\\lt':'\\le')+h,'|x'+sh(m)+'|'+(open?'\\gt':'\\ge')+h,'|x'+sh(m)+'|'+(open?'\\lt':'\\le')+len,'|x'+sh(a)+'|'+(open?'\\lt':'\\le')+b]);
+ return{lvl:1,q:T`Which inequality has the solution set $${open?'('+a+',\\,'+b+')':'['+a+',\\,'+b+']'}$?`,a:t.a,w:t.w,
+ s:T`An interval is the set of points within half its length of its midpoint.<br>Midpoint: $\frac{${a}+${P(b)}}{2}=${m}$. Half-length: $\frac{${b}-${P(a)}}{2}=${h}$.<br>So the set is $${ans}$ (${open?'strict, since the endpoints are excluded':'with $\\le$, since the endpoints are included'}).`}},
+/* count integers */
+r=>{const a=pick(r,[1,2,3]),b=ri(r,-9,9),k=ri(r,2,12);const lo=(-k-b)/a,hi=(k-b)/a;let cnt=0;for(let x=Math.ceil(lo-1);x<=Math.floor(hi+1);x++)if(Math.abs(a*x+b)<k)cnt++;
+ return{lvl:1,q:T`How many integers $x$ satisfy $|${lin(a,b)}|\lt${k}$?`,a:cnt,w:[cnt+1,cnt-1,cnt+2,2*k-1===cnt?cnt+3:2*k-1,Math.floor(2*k/a)+1===cnt?cnt-2:Math.floor(2*k/a)+1],
+ s:T`$-${k}\lt ${lin(a,b)}\lt ${k}$. ${b<0?'Add $'+(-b)+'$':'Subtract $'+b+'$'}: $${-k-b}\lt ${a===1?'':a}x\lt ${k-b}$.${a>1?T` Divide by $${a}$: $${F(-k-b,a).tex()}\lt x\lt ${F(k-b,a).tex()}$.`:''}<br>The integers strictly inside are $${Math.floor(lo)+1}$ through $${Math.ceil(hi)-1}$: that's $${cnt}$.`}},
+/* quadratic inside */
+r=>{const p=pick(r,[1,4,9]),q=pick(r,[2,3,5,7,10,11]);if(q<=p)return GENS['pc4-abs'][4](r);/* |x^2 - m| < d with m-d=p, m+d=q */
+ const m=(p+q)/2,d=(q-p)/2;if(!Number.isInteger(m))return GENS['pc4-abs'][4](r);
+ const rt=v=>{const s=Math.sqrt(v);return Number.isInteger(s)?String(s):'\\sqrt{'+v+'}'};
+ const ans='(-'+rt(q)+',-'+rt(p)+')\\cup('+rt(p)+','+rt(q)+')';
+ const t=TXT(r,ans,['(-'+rt(q)+','+rt(q)+')','('+rt(p)+','+rt(q)+')','(-'+rt(p)+','+rt(p)+')','(-\\infty,-'+rt(p)+')\\cup('+rt(p)+',\\infty)']);
+ return{lvl:2,q:T`Solve $|x^2-${m}|\lt${d}$.`,a:t.a,w:t.w,
+ s:T`$-${d}\lt x^2-${m}\lt${d}$. Add $${m}$: $${p}\lt x^2\lt${q}$.<br>$x^2\gt${p}$ means $|x|\gt${rt(p)}$, and $x^2\lt${q}$ means $|x|\lt${rt(q)}$.<br>So $${rt(p)}\lt|x|\lt${rt(q)}$, which is two intervals: $${ans}$.`}},
+/* impossible / always cases */
+r=>{const a=ri(r,1,5),b=ri(r,-9,9)||5,k=ri(r,1,6);const kind=ri(r,0,2);
+ const all=String.raw`\text{all real numbers}`,none=String.raw`\text{no real numbers}`;const one=F(-b,a);
+ const cases=[[`|${lin(a,b)}|\\lt-${k}`,none,'An absolute value is never negative, so it is never less than $-'+k+'$.'],[`|${lin(a,b)}|\\gt-${k}`,all,'An absolute value is always $\\ge0$, which is greater than $-'+k+'$, so every $x$ works.'],[`|${lin(a,b)}|\\le0`,'x='+one.tex(),`An absolute value is $\\le0$ only when it equals $0$: $${lin(a,b)}=0$, so $x=${one.tex()}$.`]];
+ const [ex,ans,why]=cases[kind];const t=TXT(r,ans,[all,none,'x='+one.tex(),'x='+one.neg().tex(),'x\\ge'+one.tex()].filter(x=>x!==ans));
+ return{lvl:1,q:T`Solve $${ex}$.`,a:t.a,w:t.w,s:T`${why}<br>Answer: $${ans}$.`}},
+];

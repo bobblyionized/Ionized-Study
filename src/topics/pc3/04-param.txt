@@ -1,0 +1,195 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc3-param">
+<h2>3.3.A Parametric Graphing</h2>
+<p>Many important curves fail the Vertical Line Test: loops, figure-eights, curves that turn back on themselves. They can't be written as $y=f(x)$, but they can be described as the <b>path of a moving point</b>. If at time $t$ the point is at</p>
+$$x=f(t),\qquad y=g(t),$$
+<p>these are <b>parametric equations</b> and $t$ is the <b>parameter</b>. The curve is the set of all points $(f(t),g(t))$ as $t$ runs through its allowed values.</p>
+
+<h3>1. Plotting from a table</h3>
+<p>For $x=\tfrac12t+1,\ y=t^2$:</p>
+<table class="t"><tr><th>$t$</th><td>$-3$</td><td>$-2$</td><td>$-1$</td><td>$0$</td><td>$1$</td><td>$2$</td><td>$3$</td></tr>
+<tr><th>$x$</th><td>$-0.5$</td><td>$0$</td><td>$0.5$</td><td>$1$</td><td>$1.5$</td><td>$2$</td><td>$2.5$</td></tr>
+<tr><th>$y$</th><td>$9$</td><td>$4$</td><td>$1$</td><td>$0$</td><td>$1$</td><td>$4$</td><td>$9$</td></tr></table>
+<p>Plot the points $(x,y)$ in order of increasing $t$ and connect them. The curve is a parabola, traced from left to right. The parameter $t$ itself does not appear on the graph: it only labels <i>when</i> each point is reached.</p>
+<div class="lfigs"><div class="lplot" data-f="4*(x-1)*(x-1)|-0.6|2.6|--" data-x="-2,4" data-y="-1,10" data-w="200" data-pts="-0.5,9;0,4;0.5,1;1,0;1.5,1;2,4;2.5,9" data-cap="$x=\tfrac12t+1,\ y=t^2$"></div></div>
+
+<h3>2. Eliminating the parameter</h3>
+<p>To find an ordinary equation in $x$ and $y$, solve one equation for $t$ and substitute into the other.</p>
+<ul><li>$x=\tfrac12t+1\Rightarrow t=2(x-1)$, so $y=t^2=4(x-1)^2$: the parabola above, vertex $(1,0)$.</li>
+<li>$x=2+3t,\ y=-1+4t$: $t=\frac{x-2}{3}$, so $y=-1+\frac43(x-2)=\frac43x-\frac{11}3$: a line of slope $\frac43$. In general, <b>linear</b> parametric equations give a line whose slope is $\dfrac{\text{coefficient of }t\text{ in }y}{\text{coefficient of }t\text{ in }x}$.</li></ul>
+<div class="warn"><h4>Watch the restrictions</h4>Eliminating $t$ can add points that the parametric curve never reaches. $x=t^2,\ y=t^4$ gives $y=x^2$, but since $x=t^2\ge0$ the curve is only the <b>right half</b> of that parabola. And $x=3t^2-5,\ y=t^2$ with $-4\le t\le4$ gives $x=3y-5$, but only for $0\le y\le16$: a line <b>segment</b> from $(-5,0)$ to $(43,16)$, traced twice (once for negative $t$, once for positive $t$).</div>
+
+<h3>3. Endpoints, direction, self-crossings</h3>
+<ul><li>If $t$ is restricted to $a\le t\le b$, the curve has <b>endpoints</b> $(f(a),g(a))$ and $(f(b),g(b))$. For $x=t^2-t-1,\ y=t^3-4t-6$ with $-2\le t\le3$, the endpoints are $(5,-6)$ and $(5,9)$.</li>
+<li>The <b>direction</b> of motion is the direction of increasing $t$. With $x=5-2t$, $x$ decreases as $t$ increases, so the point moves left.</li>
+<li>The curve <b>crosses itself</b> where two different parameter values give the same point. For $x=t^3-t,\ y=4-t^2$: $y(t)=y(-t)$ always, and $x(-t)=-x(t)$, so $t$ and $-t$ give the same point exactly when $x=0$, i.e. $t^3-t=0$, $t=\pm1$. The crossing point is $(0,3)$.</li></ul>
+<div class="lfigs"><div class="lplot" data-par="t*t*t-t|4-t*t|-2.35|2.35" data-pts="0,3" data-x="-7,7" data-y="-2,5" data-w="240" data-cap="$x=t^3-t,\ y=4-t^2$ crosses itself at $(0,3)$"></div></div>
+
+<h3>4. Graphing $x$ as a function of $y$</h3>
+<p>Graphing calculators graph $y$ as a function of $x$. To graph an equation like $x=y^3-3y^2-4y+7$, set $y=t$:</p>
+$$x=t^3-3t^2-4t+7,\qquad y=t.$$
+<p>The same trick graphs any $y=f(x)$ parametrically: $x=t,\ y=f(t)$.</p>
+<p>Sometimes you must solve for $x$ first: $xy^2+xy+x=y^3-2y^2+4$ factors as $x(y^2+y+1)=y^3-2y^2+4$, so $x=\dfrac{t^3-2t^2+4}{t^2+t+1},\ y=t$.</p>
+
+<h3>Worked examples</h3>
+<div class="ex"><b class="lbl">Example 1.</b> Eliminate the parameter: $x=t-3,\ y=t^2+1$.
+<details><summary>Solution</summary>$t=x+3$, so $y=(x+3)^2+1$: the parabola $y=x^2$ shifted $3$ left and $1$ up. No restriction is needed because $x=t-3$ takes every real value.</details></div>
+<div class="ex"><b class="lbl">Example 2.</b> For $x=1-t^2,\ y=t^3-t-1$ with $-4\le t\le4$, what $x$-values does the curve reach?
+<details><summary>Solution</summary>$t^2$ ranges over $[0,16]$, so $x=1-t^2$ ranges over $[-15,1]$. The largest $x$ is $1$ (at $t=0$); the smallest is $-15$ (at $t=\pm4$).</details></div>
+<div class="tip"><h4>Strategy</h4>To understand a parametric curve without a calculator: (1) make a short table, (2) eliminate $t$ if possible, (3) check the restrictions on $x$ and $y$ that come from the original equations, and (4) note the direction as $t$ increases.</div>
+</script>
+
+=== BANK ===
+@@ pc3-param
+Q: Which point lies on the curve $x=\tfrac12t+1,\ y=t^2$?
+L: 1
+A: (-0.5,\,9)
+W: (-3,\,9)
+W: (0.5,\,4)
+W: (2,\,1)
+W: (-0.5,\,-9)
+S: Try to find a value of $t$ that produces each point.
+For $(-0.5,9)$: $\tfrac12t+1=-0.5$ gives $t=-3$, and then $y=(-3)^2=9$. ✓ Both coordinates match.
+For the others: $(-3,9)$ would need $t=-8$, giving $y=64$. $(0.5,4)$ needs $t=-1$, giving $y=1$. $(2,1)$ needs $t=2$, giving $y=4$. $(-0.5,-9)$ needs $t=-3$, giving $y=9\ne-9$.
+Note: $(-3,9)$ uses the $t$-value as the $x$-coordinate, a common confusion. $t$ is not plotted.
+---
+Q: Eliminate the parameter: $x=\tfrac12t+1,\ y=t^2$.
+L: 1
+A: y=4(x-1)^2
+W: y=(x-1)^2
+W: y=\tfrac14(x-1)^2
+W: y=2(x-1)^2
+W: y=4x^2-1
+S: Solve the $x$-equation for $t$: $x-1=\tfrac12t$, so $t=2(x-1)$.
+Substitute into $y=t^2$: $y=\big(2(x-1)\big)^2=4(x-1)^2$.
+Check with $t=2$: $x=2$, $y=4$, and $4(2-1)^2=4$. ✓
+---
+Q: The curve $x=t^3-t,\ y=4-t^2$ crosses itself at exactly one point. Which point?
+L: 2
+A: (0,\,3)
+W: (0,\,4)
+W: (0,\,0)
+W: (3,\,0)
+W: (6,\,0)
+S: A self-crossing means two different values $t\ne s$ give the same point.
+Equal $y$-values: $4-t^2=4-s^2$ means $s=-t$ (since $s\ne t$).
+Equal $x$-values with $s=-t$: $x(-t)=-t^3+t=-(t^3-t)$, so we need $t^3-t=-(t^3-t)$, i.e. $t^3-t=0$: $t(t-1)(t+1)=0$.
+$t=0$ gives $s=0=t$ (not two different values). $t=\pm1$ works: both give $x=0$, $y=4-1=3$.
+The curve passes through $(0,3)$ twice, at $t=-1$ and $t=1$.
+---
+Q: What are the endpoints of the curve $x=t^2-t-1,\ y=t^3-4t-6$ for $-2\le t\le3$?
+L: 1
+A: (5,-6)\text{ and }(5,9)
+W: (-2,-6)\text{ and }(3,9)
+W: (5,-6)\text{ and }(-1,-6)
+W: (1,-6)\text{ and }(5,9)
+W: (5,2)\text{ and }(5,9)
+S: The endpoints come from the endpoints of the $t$-interval.
+$t=-2$: $x=4+2-1=5$, $y=-8+8-6=-6$. Point $(5,-6)$.
+$t=3$: $x=9-3-1=5$, $y=27-12-6=9$. Point $(5,9)$.
+(Interesting: both endpoints have $x=5$, so they lie on the same vertical line, which is fine for a parametric curve.)
+---
+Q: Which pair of parametric equations has the same graph as $x=y^3-3y^2-4y+7$?
+L: 1
+A: x=t^3-3t^2-4t+7,\ y=t
+W: x=t,\ y=t^3-3t^2-4t+7
+W: x=t^3,\ y=-3t^2-4t+7
+W: x=t,\ y=\sqrt[3]{t}
+W: x=t^3-3t^2,\ y=-4t+7
+S: To graph $x$ as a function of $y$, let the parameter be $y$ itself: $y=t$.
+Then $x$ is obtained by replacing $y$ by $t$: $x=t^3-3t^2-4t+7$.
+The option $x=t,\ y=t^3-\dots$ graphs $y=x^3-3x^2-4x+7$ instead: the same shape reflected across the line $y=x$.
+---
+Q: Describe the graph of $x=3t^2-5,\ y=t^2$ for $-4\le t\le4$.
+L: 2
+A: \text{a line segment from }(-5,0)\text{ to }(43,16)
+W: \text{the entire line }x=3y-5
+W: \text{a parabola opening to the right}
+W: \text{a line segment from }(-17,-4)\text{ to }(43,16)
+W: \text{a ray starting at }(-5,0)
+S: Both coordinates depend on $t$ only through $t^2$. Let $u=t^2$; then $x=3u-5$ and $y=u$, so $x=3y-5$: the points lie on a line.
+But $u=t^2$ only ranges over $[0,16]$ when $-4\le t\le4$. So $y$ runs from $0$ to $16$ and $x$ from $-5$ to $43$.
+The graph is the segment from $(-5,0)$ to $(43,16)$. (It's traced twice: from $(43,16)$ down to $(-5,0)$ as $t$ goes from $-4$ to $0$, then back up.)
+---
+Q: For $x=1-t^2,\ y=t^3-t-1$ with $-4\le t\le4$, what is the set of $x$-values on the curve?
+L: 1
+A: [-15,1]
+W: [-3,5]
+W: [-15,17]
+W: [1,17]
+W: (-\infty,1]
+S: Since $-4\le t\le4$, $t^2$ takes every value from $0$ (at $t=0$) to $16$ (at $t=\pm4$).
+Then $x=1-t^2$ goes from $1-0=1$ down to $1-16=-15$.
+So the $x$-values form $[-15,1]$. (The $y$-values are a separate question.)
+---
+Q: The parametric equations $x=2+3t,\ y=-1+4t$ describe a line. What is its slope?
+L: 1
+A: \tfrac43
+W: \tfrac34
+W: 4
+W: -\tfrac12
+W: \tfrac{11}{3}
+S: Solve for $t$ from $x$: $t=\dfrac{x-2}{3}$.
+Substitute: $y=-1+4\cdot\dfrac{x-2}{3}=\dfrac43x-\dfrac83-1=\dfrac43x-\dfrac{11}{3}$.
+Slope $=\dfrac43$. Shortcut: each unit of $t$ moves $x$ by $3$ and $y$ by $4$, so rise/run $=\frac43$.
+---
+Q: What is the graph of $x=t^2,\ y=t^4$ (all real $t$)?
+L: 2
+A: \text{the right half of }y=x^2\text{, including }(0,0)
+W: \text{the whole parabola }y=x^2
+W: \text{the left half of }y=x^2
+W: \text{the upper half of }x=y^2
+W: \text{the line }y=x
+S: Eliminate $t$: $y=t^4=(t^2)^2=x^2$.
+But $x=t^2$ can never be negative, so only points of $y=x^2$ with $x\ge0$ are reached.
+Every $x\ge0$ is reached (take $t=\sqrt x$), so the graph is exactly the right half of the parabola, starting at the origin.
+---
+Q: A point moves according to $x=5-2t,\ y=t+1$. As $t$ increases, in which direction does the point move?
+L: 1
+A: \text{left and up}
+W: \text{right and up}
+W: \text{left and down}
+W: \text{right and down}
+W: \text{straight up}
+S: As $t$ increases, $x=5-2t$ <b>decreases</b> (left) and $y=t+1$ <b>increases</b> (up).
+So the point moves left and up along the line $y=\frac{7-x}{2}$, which has slope $-\frac12$.
+=== GENS ===
+GENS['pc3-param']=[
+/* point at a parameter value */
+r=>{const a=ri(r,-4,4)||2,b=ri(r,-6,6),c=pick(r,[1,1,2,-1]),d=ri(r,-5,5),t=ri(r,-3,3)||2;const X=a*t+b,Y=c*t*t+d;
+ const pt=(x,y)=>'('+x+',\\,'+y+')';
+ const t0=TXT(r,pt(X,Y),[pt(t,Y),pt(X,-Y===Y?Y+1:-Y),pt(a*(-t)+b===X?X+1:a*(-t)+b,Y+c),pt(Y,X)===pt(X,Y)?pt(X+2,Y):pt(Y,X)]);
+ return{lvl:1,q:T`Where is the point described by $x=${lin(a,b,'t')},\ y=${trm([[c,'t^2'],[d,'']])}$ when $t=${t}$?`,a:t0.a,w:t0.w,
+ s:T`Substitute $t=${t}$ into both equations.<br>$x=${a}\cdot ${P(t)}+${P(b)}=${X}$.<br>$y=${c}\cdot ${P(t)}^2+${P(d)}=${c*t*t}+${P(d)}=${Y}$.<br>The point is $${pt(X,Y)}$. The parameter value itself is not a coordinate.`}},
+/* slope of a linear parametric line */
+r=>{const a=ri(r,1,6)*pick(r,[1,-1]),c=ri(r,1,6)*pick(r,[1,-1]),b=ri(r,-6,6),d=ri(r,-6,6);if(Math.abs(a)===Math.abs(c))return GENS['pc3-param'][1](r);
+ const m=F(c,a),y0=F(d).sub(F(c*b,a));const askInt=r()<.4;
+ if(askInt)return{lvl:2,q:T`The parametric equations $x=${lin(a,b,'t')},\ y=${lin(c,d,'t')}$ describe a line. What is its $y$-intercept?`,a:y0,w:[F(d),F(b),y0.neg(),F(d).add(F(c*b,a)),m],
+  s:T`Find the value of $t$ where $x=0$: $${lin(a,b,'t')}=0$ gives $t=${F(-b,a).tex()}$.<br>Then $y=${c}\cdot${P(F(-b,a))}+${P(d)}=${y0.tex()}$.<br>So the $y$-intercept is $${y0.tex()}$. (Equivalently, eliminate $t$: $y=${m.tex()}x+${P(y0)}$.)`};
+ return{lvl:1,q:T`The parametric equations $x=${lin(a,b,'t')},\ y=${lin(c,d,'t')}$ describe a line. What is its slope?`,a:m,w:[F(a,c),F(c),m.neg(),F(d-b,1),F(a)],
+ s:T`Eliminate $t$. From the first equation, $t=\dfrac{x${b<0?'+':'-'}${Math.abs(b)}}{${a}}$.<br>Substitute: $y=${c}\cdot\dfrac{x${b<0?'+':'-'}${Math.abs(b)}}{${a}}+${P(d)}$, whose $x$-coefficient is $\dfrac{${c}}{${a}}=${m.tex()}$.<br>Shortcut: when $t$ increases by $1$, $x$ changes by $${a}$ and $y$ by $${c}$, so the slope is $\dfrac{${c}}{${a}}=${m.tex()}$.`}},
+/* eliminate parameter: shifted parabola */
+r=>{const h=ri(r,-5,5),k=ri(r,-6,6),a=pick(r,[1,2,3]);
+ const sh=x=>x===0?'x':'(x'+(x<0?'+':'-')+Math.abs(x)+')';
+ const ans=T`y=${a===1?'':a}${sh(h)}^2${k<0?'-':'+'}${Math.abs(k)}`;
+ const t=TXT(r,ans,[T`y=${a===1?'':a}${sh(-h)}^2${k<0?'-':'+'}${Math.abs(k)}`,T`y=${a===1?'':a}${sh(h)}^2${k<0?'+':'-'}${Math.abs(k)}`,T`y=${a===1?'':a}x^2${(k-h)<0?'-':'+'}${Math.abs(k-h)}`,T`x=${a===1?'':a}(y${k<0?'+':'-'}${Math.abs(k)})^2${h<0?'-':'+'}${Math.abs(h)}`]);
+ return{lvl:1,q:T`Eliminate the parameter from $x=${lin(1,h,'t')},\ y=${trm([[a,'t^2'],[k,'']])}$.`,a:t.a,w:t.w,
+ s:T`Solve the $x$-equation for $t$: $t=${h===0?'x':'x'+(h<0?'+':'-')+Math.abs(h)}$.<br>Substitute into the $y$-equation: $${ans}$.<br>This is the parabola $y=${a===1?'':a}x^2$ shifted so its vertex is at $(${h},${k})$. Since $x=${lin(1,h,'t')}$ takes every real value, the whole parabola is traced.`}},
+/* endpoint of restricted curve */
+r=>{const p=ri(r,-3,3),q=ri(r,-4,4),u=ri(r,-3,3),A=ri(r,-3,-1),B=ri(r,1,3);
+ const X=t=>t*t+p*t+q,Y=t=>t*t*t+u*t;const pt=(x,y)=>'('+x+',\\,'+y+')';const which=r()<.5?A:B;
+ const t0=TXT(r,pt(X(which),Y(which)),[pt(which,Y(which)),pt(X(which),which),pt(X(which===A?B:A)+1,Y(which===A?B:A)),pt(X(0),Y(0))===pt(X(which),Y(which))?pt(X(0)+1,1):pt(X(0),Y(0))]);
+ return{lvl:1,q:T`The curve $x=${trm([[1,'t^2'],[p,'t'],[q,'']])},\ y=${trm([[1,'t^3'],[u,'t']])}$ is drawn for $${A}\le t\le ${B}$. Which point is an endpoint of the curve?`,a:t0.a,w:t0.w,
+ s:T`The endpoints come from the endpoints of the parameter interval, $t=${A}$ and $t=${B}$.<br>$t=${A}$: $x=${A*A}${p*A<0?'-':'+'}${Math.abs(p*A)}${q<0?'-':'+'}${Math.abs(q)}=${X(A)}$, $y=${A**3}${u*A<0?'-':'+'}${Math.abs(u*A)}=${Y(A)}$, giving $${pt(X(A),Y(A))}$.<br>$t=${B}$: $x=${X(B)}$, $y=${Y(B)}$, giving $${pt(X(B),Y(B))}$.<br>The offered endpoint is $${pt(X(which),Y(which))}$.`}},
+/* range of x on an interval */
+r=>{const m=ri(r,-5,5),A=-ri(r,1,5),B=ri(r,1,5),s=pick(r,[1,-1]);const hi=Math.max(A*A,B*B);
+ const lo=s>0?m:m-hi,up=s>0?m+hi:m;const ans=iv(lo,up,1,1);
+ const t=TXT(r,ans,[iv(s*A*A+m===lo?lo-1:s*A*A+m,s*B*B+m,1,1),iv(A,B,1,1),iv(Math.min(s*A*A,s*B*B)+m,Math.max(s*A*A,s*B*B)+m+(s*A*A===s*B*B?1:0),1,1)===ans?iv(lo,up+1,1,1):iv(Math.min(s*A*A,s*B*B)+m,Math.max(s*A*A,s*B*B)+m+(s*A*A===s*B*B?1:0),1,1),s>0?iv(m,Infinity,1,0):iv(-Infinity,m,0,1)]);
+ return{lvl:2,q:T`For the curve $x=${trm([[s,'t^2'],[m,'']])},\ y=t^3$ with $${A}\le t\le${B}$, what is the set of all $x$-coordinates on the curve?`,a:t.a,w:t.w,
+ s:T`$x$ depends on $t$ only through $t^2$. On $${A}\le t\le${B}$, $t^2$ takes every value from $0$ (at $t=0$) up to $\max(${A*A},${B*B})=${hi}$.<br>So $x=${trm([[s,'t^2'],[m,'']])}$ ranges ${s>0?T`from $${m}$ up to $${m}+${hi}=${up}$`:T`from $${m}$ down to $${m}-${hi}=${lo}$`}.<br>The $x$-values form $${ans}$. (Plugging in only the endpoints $t=${A}$ and $t=${B}$ misses the extreme at $t=0$.)`}},
+/* self-intersection of x=t^2+c, y=t^3-k^2 t */
+r=>{const k=ri(r,1,4),c=ri(r,-5,5),d=ri(r,-4,4);const X=k*k+c;const pt=(x,y)=>'('+x+',\\,'+y+')';
+ const t=TXT(r,pt(X,d),[pt(c,d),pt(X,-d===d?d+1:-d),pt(k,d),pt(X,d+k*k*k)]);
+ return{lvl:2,q:T`The curve $x=${trm([[1,'t^2'],[c,'']])},\ y=${trm([[1,'t^3'],[-k*k,'t'],[d,'']])}$ crosses itself at one point. Which point?`,a:t.a,w:t.w,
+ s:T`We need two different parameters $t\ne s$ giving the same point. Equal $x$-values: $t^2=s^2$, so $s=-t$.<br>Equal $y$-values with $s=-t$: $t^3-${k*k}t+${P(d)}=-t^3+${k*k}t+${P(d)}$, so $2t^3-${2*k*k}t=0$, i.e. $2t(t^2-${k*k})=0$.<br>$t=0$ gives $s=0$ (not different), so $t=\pm${k}$.<br>Both give $x=${k*k}+${P(c)}=${X}$ and $y=\pm${k**3}\mp${k**3}+${P(d)}=${d}$. The crossing point is $${pt(X,d)}$.`}},
+];

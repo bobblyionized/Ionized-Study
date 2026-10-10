@@ -1,0 +1,182 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc4-ratx">
+<h2>4.5.A Other Rational Functions</h2>
+<p>When the numerator of a rational function has <b>larger</b> degree than the denominator, there is no horizontal asymptote. Polynomial division tells us what the graph does instead.</p>
+
+<h3>1. The key idea: divide</h3>
+<p>By the Division Algorithm, $g(x)=h(x)q(x)+r(x)$ with $\deg r\lt\deg h$. Dividing by $h(x)$:</p>
+$$\frac{g(x)}{h(x)}=q(x)+\frac{r(x)}{h(x)}.$$
+<p>Since $\deg r\lt\deg h$, the fraction $\frac{r(x)}{h(x)}$ is <b>little</b> when $|x|$ is big (Big-Little Principle). So for large $|x|$ the graph gets closer and closer to the graph of the <b>quotient</b> $y=q(x)$.</p>
+<div class="box"><ul>
+<li>Numerator degree = denominator degree $+1$: the quotient is linear, so the graph has an <b>oblique (slant) asymptote</b> $y=mx+b$.</li>
+<li>Numerator degree $\ge$ denominator degree $+2$: the graph approaches the polynomial $y=q(x)$ (a parabola, a cubic, ...).</li></ul></div>
+
+<h3>2. Oblique asymptotes</h3>
+<p>$f(x)=\dfrac{x^3+3x^2+x+1}{x^2+2x-1}$. Long division gives quotient $x+1$ and remainder $2$:</p>
+$$f(x)=(x+1)+\frac{2}{x^2+2x-1}.$$
+<p>The oblique asymptote is $y=x+1$. The graph also has two vertical asymptotes, at the roots of $x^2+2x-1$, namely $x=-1\pm\sqrt2$.</p>
+<p>A quick case: $\dfrac{x^2+1}{x}=x+\dfrac1x$, so the oblique asymptote is $y=x$ (and the vertical asymptote is $x=0$).</p>
+<div class="lfigs"><div class="lplot" data-f="(x*x+1)/x;x" data-x="-6,6" data-y="-6,6" data-w="230" data-cap="$\frac{x^2+1}{x}$ approaches the line $y=x$"></div></div>
+<p>Dividing by a linear factor is fastest with synthetic division: $\dfrac{2x^2-3x+4}{x-1}$: coefficients $2,-3,4$, $c=1$, bottom row $2,-1\mid3$. So $f(x)=2x-1+\frac{3}{x-1}$, oblique asymptote $y=2x-1$.</p>
+
+<h3>3. Polynomial asymptotes of higher degree</h3>
+<p>$g(x)=\dfrac{x^3+2x^2-7x+5}{x-1}=(x^2+3x-4)+\dfrac{1}{x-1}$. For large $|x|$ the graph hugs the parabola $y=x^2+3x-4$; near $x=1$ it shoots off along the vertical asymptote.</p>
+<p>$h(x)=\dfrac{x^5-5x^3+4x+1}{x^2-1}=x^3-4x+\dfrac{1}{x^2-1}$ approaches the cubic $y=x^3-4x$.</p>
+
+<h3>4. Graphing procedure</h3>
+<ol><li>Find the domain; reduce to lowest terms; locate <b>holes</b>, <b>vertical asymptotes</b>, and <b>intercepts</b>.</li>
+<li>Divide to find the asymptote for large $|x|$ ($y=0$, $y=\frac ac$, a slanted line, or a polynomial).</li>
+<li>Decide which side of the asymptote the graph is on using the sign of $\frac{r(x)}{h(x)}$, plot a few points, and sketch.</li></ol>
+<div class="warn"><h4>Where does the graph sit relative to the slant asymptote?</h4>The difference $f(x)-q(x)=\frac{r(x)}{h(x)}$. For $x+\frac1x$: when $x\gt0$ the graph is above $y=x$; when $x\lt0$ it's below.</div>
+
+<h3>Worked examples</h3>
+<div class="ex"><b class="lbl">Example 1.</b> Find the oblique asymptote of $f(x)=\dfrac{3x^2-x+2}{x+1}$.
+<details><summary>Solution</summary>Synthetic division by $x+1$ ($c=-1$): $3,-1,2\to3,-4\mid6$. So $f(x)=3x-4+\frac{6}{x+1}$; the asymptote is $y=3x-4$.</details></div>
+<div class="ex"><b class="lbl">Example 2.</b> Does $\dfrac{x^2+4}{x^2-1}$ have an oblique asymptote?
+<details><summary>Solution</summary>No: the degrees are equal, so it has the horizontal asymptote $y=1$ instead. Oblique asymptotes require the numerator's degree to be exactly one more.</details></div>
+<div class="tip"><h4>Shortcut for the slope</h4>If $\deg g=\deg h+1$, the slope of the oblique asymptote is the ratio of leading coefficients. You still need division to get the intercept.</div>
+</script>
+
+=== BANK ===
+@@ pc4-ratx
+Q: What is the oblique asymptote of $f(x)=\dfrac{x^3+3x^2+x+1}{x^2+2x-1}$?
+L: 2
+A: y=x+1
+W: y=x+3
+W: y=x
+W: y=x-1
+W: y=2
+S: Divide: $x^3\div x^2=x$; $x(x^2+2x-1)=x^3+2x^2-x$; subtract to get $x^2+2x+1$.
+Next $x^2\div x^2=1$; subtract $x^2+2x-1$ to get $2$.
+So $f(x)=(x+1)+\dfrac{2}{x^2+2x-1}$. The fraction is little when $|x|$ is big, so the graph approaches $y=x+1$.
+---
+Q: What is the oblique asymptote of $f(x)=\dfrac{x^2+1}{x}$?
+L: 1
+A: y=x
+W: y=x+1
+W: y=1
+W: x=0
+W: y=0
+S: Split the fraction: $\dfrac{x^2+1}{x}=x+\dfrac1x$.
+For large $|x|$, $\frac1x$ is close to $0$, so the graph approaches the line $y=x$.
+($x=0$ is the vertical asymptote.)
+---
+Q: The graph of $g(x)=\dfrac{x^3+2x^2-7x+5}{x-1}$ approaches which curve when $|x|$ is large?
+L: 2
+A: y=x^2+3x-4
+W: y=x^2+2x-7
+W: y=x^2
+W: y=x+3
+W: y=x^2+3x+4
+S: Synthetic division by $x-1$: coefficients $1,2,-7,5$, $c=1$.
+Bring down $1$; $1\Rightarrow3$; $3\Rightarrow-4$; $-4\Rightarrow1$.
+So $g(x)=x^2+3x-4+\dfrac{1}{x-1}$. The last term is little for large $|x|$, so the graph approaches the parabola $y=x^2+3x-4$.
+---
+Q: What is the oblique asymptote of $f(x)=\dfrac{3x^2-x+2}{x+1}$?
+L: 1
+A: y=3x-4
+W: y=3x-1
+W: y=3x+2
+W: y=3x
+W: y=3x+4
+S: Synthetic division by $x+1$ ($c=-1$): coefficients $3,-1,2$.
+Bring down $3$; $3(-1)=-3\Rightarrow-1-3=-4$; $(-4)(-1)=4\Rightarrow2+4=6$.
+$f(x)=3x-4+\dfrac{6}{x+1}$. Oblique asymptote: $y=3x-4$.
+---
+Q: Which function has an oblique (slant) asymptote?
+L: 1
+A: \dfrac{x^3-1}{x^2+4}
+W: \dfrac{x^2+4}{x^2-1}
+W: \dfrac{x^4+1}{x^2}
+W: \dfrac{x+5}{x^2-9}
+W: \dfrac{2x-1}{x+3}
+S: An oblique asymptote occurs exactly when the numerator's degree is <b>one more</b> than the denominator's.
+• $\frac{x^3-1}{x^2+4}$: degrees $3$ and $2$. ✓ (It approaches $y=x$.)
+• $\frac{x^2+4}{x^2-1}$ and $\frac{2x-1}{x+3}$: equal degrees, horizontal asymptotes.
+• $\frac{x+5}{x^2-9}$: smaller numerator degree, asymptote $y=0$.
+• $\frac{x^4+1}{x^2}$: degrees differ by $2$; it approaches the parabola $y=x^2$, not a line.
+---
+Q: The graph of $h(x)=\dfrac{x^5-5x^3+4x+1}{x^2-1}$ approaches which polynomial for large $|x|$?
+L: 2
+A: y=x^3-4x
+W: y=x^3-5x
+W: y=x^3
+W: y=x^3-4x+1
+W: y=x^5
+S: Long division by $x^2-1$ (fill in zeros: $x^5+0x^4-5x^3+0x^2+4x+1$):
+$x^5\div x^2=x^3$; subtract $x^5-x^3$: left $-4x^3+4x+1$.
+$-4x^3\div x^2=-4x$; subtract $-4x^3+4x$: left $1$.
+So $h(x)=x^3-4x+\dfrac{1}{x^2-1}$, and the graph approaches $y=x^3-4x$.
+---
+Q: For large positive $x$, is the graph of $f(x)=x+\dfrac{1}{x}$ above or below its asymptote $y=x$?
+L: 1
+A: \text{above}
+W: \text{below}
+W: \text{on it}
+W: \text{alternately above and below}
+W: \text{it depends on how large }x\text{ is}
+S: $f(x)-x=\dfrac1x$, which is positive for every $x\gt0$.
+So for positive $x$ the graph is always slightly above the line $y=x$ (and for negative $x$ it's below).
+---
+Q: The function $f(x)=\dfrac{2x^2+5x-3}{x+3}$ has ...
+L: 2
+A: \text{a hole at }x=-3\text{ and no vertical asymptote}
+W: \text{a vertical asymptote at }x=-3
+W: \text{an oblique asymptote }y=2x-1\text{ and a vertical asymptote }x=-3
+W: \text{a horizontal asymptote }y=2
+W: \text{a hole at }x=\tfrac12
+S: Factor the numerator: $2x^2+5x-3=(2x-1)(x+3)$.
+So $f(x)=\dfrac{(2x-1)(x+3)}{x+3}=2x-1$ for $x\ne-3$.
+The factor cancels: a <b>hole</b> at $x=-3$ (height $-7$), no vertical asymptote. The graph is just the line $y=2x-1$ with a point missing, so it's not a case of a separate oblique asymptote.
+---
+Q: What is the oblique asymptote of $f(x)=\dfrac{2x^2-3x+4}{x-1}$?
+L: 1
+A: y=2x-1
+W: y=2x-3
+W: y=2x+1
+W: y=2x
+W: y=x-1
+S: Synthetic division by $x-1$: coefficients $2,-3,4$.
+Bring down $2$; $2\Rightarrow-3+2=-1$; $-1\Rightarrow4-1=3$.
+$f(x)=2x-1+\dfrac{3}{x-1}$. The asymptote is $y=2x-1$.
+---
+Q: The rational function $\dfrac{ax^2+bx+c}{x-2}$ has oblique asymptote $y=3x+1$ and passes through $(0,-1)$. What is $c$?
+L: 2
+A: 2
+W: -2
+W: 1
+W: -1
+W: 4
+S: $f(0)=\dfrac{c}{-2}=-1$, so $c=2$.
+(The asymptote tells us the quotient is $3x+1$: $ax^2+bx+c=(x-2)(3x+1)+r$, so $a=3$ and $b=-5$, and $c=-2+r$ gives $r=4$. That's consistent: $f(x)=3x+1+\frac{4}{x-2}$, and $f(0)=1-2=-1$. ✓)
+=== GENS ===
+GENS['pc4-ratx']=[
+/* oblique asymptote by synthetic division */
+r=>{const a=ri(r,1,4)*pick(r,[1,-1]),b=ri(r,-6,6),c0=ri(r,-8,8),k=ri(r,-4,4)||2;/* (a x^2 + b x + c0)/(x-k) */
+ const q1=a,q0=b+a*k,rem=c0+q0*k;if(rem===0)return GENS['pc4-ratx'][0](r);
+ const ans='y='+lin(q1,q0);const t=TXT(r,ans,['y='+lin(q1,b),'y='+lin(q1,b-a*k),'y='+lin(q1,rem),'y='+F(a).tex(),'y='+lin(-q1,q0),'y='+lin(q1,q0+1),'y='+lin(q1,q0-1)]);
+ return{lvl:1,q:T`What is the oblique asymptote of $f(x)=\dfrac{${pl([a,b,c0])}}{x${k<0?'+'+(-k):'-'+k}}$?`,a:t.a,w:t.w,
+ s:T`Divide synthetically by $x${k<0?'+'+(-k):'-'+k}$ ($c=${k}$): coefficients $${a},${b},${c0}$.<br>Bring down $${a}$; $${a}\cdot${P(k)}=${a*k}$, so $${b}+${P(a*k)}=${q0}$; $${q0}\cdot${P(k)}=${q0*k}$, so $${c0}+${P(q0*k)}=${rem}$.<br>$f(x)=${lin(q1,q0)}+\dfrac{${rem}}{x${k<0?'+'+(-k):'-'+k}}$. The fraction shrinks to $0$ for large $|x|$, so the oblique asymptote is $${ans}$.`}},
+/* which has an oblique asymptote */
+r=>{const n=()=>ri(r,1,9);const yes=[()=>T`\dfrac{x^2+${n()}}{x-${n()}}`,()=>T`\dfrac{x^3-${n()}}{x^2+${n()}}`,()=>T`\dfrac{${n()}x^2+x}{x+${n()}}`,()=>T`\dfrac{x^4+1}{x^3-${n()}x}`];
+ const no=[()=>T`\dfrac{x^2+${n()}}{x^2-${n()}}`,()=>T`\dfrac{x+${n()}}{x^2+${n()}}`,()=>T`\dfrac{x^4-${n()}}{x^2+1}`,()=>T`\dfrac{${n()}x-1}{x+${n()}}`,()=>T`\dfrac{x^3}{x^2+x}\cdot\dfrac{x}{x}`.replace(String.raw`\cdot\dfrac{x}{x}`,''),()=>T`\dfrac{x^5+1}{x^2}`];
+ const ans=pick(r,yes)();const wr=sample(r,no.slice(0,4).concat([no[5]]),4).map(f=>f());const t=TXT(r,ans,wr);
+ return{lvl:1,q:T`Which function has an oblique (slant) asymptote?`,a:t.a,w:t.w,
+ s:T`A slant asymptote occurs exactly when the numerator's degree is <b>one more</b> than the denominator's (and the fraction doesn't simplify away).<br>• $${ans}$: the degrees differ by exactly $1$, so dividing gives a linear quotient plus a fraction that shrinks to $0$. ✓<br>• Equal degrees give a horizontal asymptote $y=\frac ac$; a smaller numerator degree gives $y=0$; a numerator degree $2$ or more higher gives a curved (polynomial) asymptote instead of a line.`}},
+/* polynomial asymptote (degree difference 2) */
+r=>{const a=ri(r,-4,4),b=ri(r,-6,6),k=ri(r,-3,3)||1,rm=ri(r,-5,5)||1;/* numerator = (x-k)(x^2+ax+b)+rm */
+ const cs=[1,a-k,b-a*k,-b*k+rm];const ans='y='+pl([1,a,b]);
+ const t=TXT(r,ans,['y='+pl([1,a-k,b-a*k]),'y=x^2','y='+pl([1,a,b+rm]),'y='+pl([1,-a,b]),'y='+pl([1,a+1,b]),'y='+pl([1,a,b-1]),'y='+pl([1,a-1,b+1])]);
+ return{lvl:2,q:T`For large $|x|$, the graph of $g(x)=\dfrac{${pl(cs)}}{x${k<0?'+'+(-k):'-'+k}}$ approaches which curve?`,a:t.a,w:t.w,
+ s:T`Synthetic division by $x${k<0?'+'+(-k):'-'+k}$ with $c=${k}$: coefficients $${cs.join(',\\ ')}$, bottom row $1,\ ${a},\ ${b}\mid${rm}$.<br>So $g(x)=${pl([1,a,b])}+\dfrac{${rm}}{x${k<0?'+'+(-k):'-'+k}}$.<br>The fraction is little when $|x|$ is big, so the graph approaches the parabola $${ans}$.`}},
+/* side of the asymptote */
+r=>{const k=ri(r,1,9)*pick(r,[1,-1]),m=ri(r,1,4),pos=r()<.5;/* f = m x + k/x */
+ const above=(k>0)===pos;const t=TXT(r,above?String.raw`\text{above}`:String.raw`\text{below}`,[above?String.raw`\text{below}`:String.raw`\text{above}`,String.raw`\text{on it}`,String.raw`\text{alternately above and below}`,String.raw`\text{it depends on how large }|x|\text{ is}`]);
+ return{lvl:1,q:T`For large ${pos?'positive':'negative'} $x$, is the graph of $f(x)=\dfrac{${m===1?'':m}x^2${k<0?'-':'+'}${Math.abs(k)}}{x}$ above or below its oblique asymptote $y=${m===1?'':m}x$?`,a:t.a,w:t.w,
+ s:T`$f(x)=${m===1?'':m}x+\dfrac{${k}}{x}$, so $f(x)-${m===1?'':m}x=\dfrac{${k}}{x}$.<br>For ${pos?'positive':'negative'} $x$ this difference is ${above?'positive':'negative'}, so the graph is ${above?'above':'below'} the asymptote (getting closer as $|x|$ grows).`}},
+/* hole that removes the would-be asymptote */
+r=>{const p=ri(r,1,4)*pick(r,[1,-1]),q=ri(r,-5,5),k=ri(r,-5,5);if(F(q,p).v===k)return GENS['pc4-ratx'][4](r);/* (p x - q)(x - k)/(x - k) */
+ const cs=[p,-(q+p*k),q*k];const yh=p*k-q;const t=TXT(r,String.raw`\text{a hole at }(${k},\,${yh})`,[String.raw`\text{a vertical asymptote at }x=${k}`,String.raw`\text{an oblique asymptote }y=${lin(p,-q)}\text{ and a vertical asymptote }x=${k}`,String.raw`\text{a hole at }(${-k},\,${-p*k-q})`,String.raw`\text{a horizontal asymptote }y=${p}`]);
+ return{lvl:2,q:T`The graph of $f(x)=\dfrac{${pl(cs)}}{x${k<0?'+'+(-k):k?'-'+k:''}}$ has ...`,a:t.a,w:t.w,
+ s:T`Factor the numerator: $${pl(cs)}=(${lin(p,-q)})${fx(k)}$.<br>The factor $${fx(k)}$ cancels: $f(x)=${lin(p,-q)}$ for $x\ne${k}$.<br>So the graph is the line $y=${lin(p,-q)}$ with a single point missing at $x=${k}$, where the line's height is $${p}(${k})${q<0?'+':'-'}${Math.abs(q)}=${yh}$.<br>That is a hole at $(${k},${yh})$, with no vertical asymptote.`}},
+];

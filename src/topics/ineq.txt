@@ -441,7 +441,7 @@ S: $-(x-2)^2-(y-3)^2+4+9\le13$, at $(2,3)$.
 GENS['ineq-solve']=[
 r=>{const a=ri(r,-10,5),b=a+ri(r,2,12);const n=b-a-1;const lt=r()<.6;
  return{lvl:1,q:T`How many integers $x$ satisfy $${poly([[1,2],[-(a+b),1],[a*b,0]],'x')}${lt?'\\lt':'\\le'} 0$?`,a:lt?n:n+2,w:lt?[n+1,n+2,n-1,b-a]:[n,n+1,n+3,b-a],
- s:T`$(x${a<0?'+':'-'}${Math.abs(a)})(x${b<0?'+':'-'}${Math.abs(b)})${lt?'\\lt':'\\le'}0$ means $${a}${lt?'\\lt':'\\le'}x${lt?'\\lt':'\\le'}${b}$, which contains $${lt?n:n+2}$ integers.`}},
+ s:T`$(x${a<0?'+':'-'}${Math.abs(a)})(x${b<0?'+':'-'}${Math.abs(b)})${lt?'\\lt':'\\le'}0$ means $${a}${lt?'\\lt ':'\\le '}x${lt?'\\lt':'\\le'}${b}$, which contains $${lt?n:n+2}$ integers.`}},
 r=>{const a=ri(r,1,6),b=ri(r,-10,10),c=ri(r,1,20);const lo=(b-c)/a,hi=(b+c)/a;let n=0;for(let x=Math.ceil(lo-1);x<=Math.floor(hi+1);x++)if(Math.abs(a*x-b)<c)n++;
  return{lvl:1,q:T`How many integers $x$ satisfy $|${poly([[a,1],[-b,0]],'x')}|\lt ${c}$?`,a:n,w:[n+1,n-1,n+2,2*c],
  s:T`$-${c}\lt ${poly([[a,1],[-b,0]],'x')}\lt ${c}$ gives $${F(b-c,a).tex()}\lt x\lt ${F(b+c,a).tex()}$, which contains $${n}$ integers.`}},

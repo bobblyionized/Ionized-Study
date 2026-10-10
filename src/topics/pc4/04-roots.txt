@@ -1,0 +1,204 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc4-roots">
+<h2>4.3 Real Roots of Polynomials</h2>
+<p>Linear and quadratic equations have formulas. For higher degrees we combine three tools: the <b>Rational Root Test</b> to list candidates, the <b>Factor Theorem</b> (with synthetic division) to peel off roots we find, and the <b>Bounds Test</b> to know when we've found them all.</p>
+
+<h3>1. The Rational Root Test</h3>
+<div class="box"><h4>Rational Root Test</h4>If $f(x)=a_nx^n+\cdots+a_1x+a_0$ has <b>integer coefficients</b> and $\frac rs$ (in lowest terms) is a rational root, then
+$$r\ \text{divides the constant term } a_0\quad\text{and}\quad s\ \text{divides the leading coefficient } a_n.$$</div>
+<p>For $f(x)=2x^4+x^3-17x^2-4x+6$: $r\in\{\pm1,\pm2,\pm3,\pm6\}$ and $s\in\{1,2\}$, so the only possible rational roots are</p>
+$$\pm1,\ \pm2,\ \pm3,\ \pm6,\ \pm\tfrac12,\ \pm\tfrac32.$$
+<p>Testing them (by substitution or synthetic division) shows that $-3$ and $\frac12$ are roots. The test only lists <i>candidates</i>; most candidates fail, and irrational roots never appear on the list.</p>
+<div class="tip"><h4>Monic polynomials</h4>If the leading coefficient is $1$, every rational root is an <b>integer</b> dividing the constant term. So $x^3+x+3$ could only have rational roots $\pm1,\pm3$; none of them work, so it has no rational roots at all.</div>
+<p><b>Why it's true:</b> substitute $x=\frac rs$ and multiply by $s^n$: $a_nr^n+a_{n-1}r^{n-1}s+\cdots+a_0s^n=0$. Every term except the last is divisible by $r$, so $r\mid a_0s^n$, and since $\gcd(r,s)=1$, $r\mid a_0$. The same argument with the first term gives $s\mid a_n$.</p>
+
+<h3>2. Finding all the roots</h3>
+<ol><li>List the rational candidates and test them. (A quick graph helps you choose which to test.)</li>
+<li>Each root $c$ you find gives a factor $x-c$; divide it out with synthetic division.</li>
+<li>Keep going on the quotient. Once it's quadratic, use factoring or the quadratic formula; this also catches irrational roots.</li></ol>
+<p>Example: $2x^3-5x^2-x+6$. Candidates $\pm1,\pm2,\pm3,\pm6,\pm\frac12,\pm\frac32$. $f(2)=16-20-2+6=0$, so divide by $x-2$: $2x^2-x-3=(2x-3)(x+1)$. Roots: $2,\ \frac32,\ -1$.</p>
+<p>Example with irrational roots: $x^3-4x^2+2x+3$ has $f(3)=0$; the quotient $x^2-x-1$ gives $\frac{1\pm\sqrt5}{2}$.</p>
+<p>Biquadratics like $x^4-5x^2+4$ factor as a quadratic in $x^2$: $(x^2-1)(x^2-4)$, roots $\pm1,\pm2$.</p>
+
+<h3>3. The Bounds Test</h3>
+<p>A number $d$ is an <b>upper bound</b> for the real roots if every real root is $\le d$, and a <b>lower bound</b> if every real root is $\ge d$. Bounds tell you a graph in the window between them shows every $x$-intercept.</p>
+<div class="box"><h4>Bounds Test</h4>Let $f$ have a <b>positive leading coefficient</b>, and divide $f(x)$ by $x-d$ synthetically.
+<ul><li>If $d\gt0$ and every number in the bottom row is <b>nonnegative</b>, then $d$ is an upper bound.</li>
+<li>If $d\lt0$ and the numbers in the bottom row <b>alternate in sign</b> (zeros may count as either sign), then $d$ is a lower bound.</li></ul></div>
+<p>Why the upper bound works: if all quotient coefficients and the remainder are $\ge0$, then for any $x\gt d$, $f(x)=(x-d)q(x)+r$ is a positive number times a positive number plus a nonnegative number, so it can't be $0$.</p>
+<p>If the test fails (some negative entry), no conclusion can be drawn: try a larger $d$.</p>
+
+<h3>Worked examples</h3>
+<div class="ex"><b class="lbl">Example 1.</b> Show that $3$ is an upper bound for the roots of $x^3-2x^2-x+1$.
+<details><summary>Solution</summary>Synthetic division by $x-3$: coefficients $1,-2,-1,1$; bottom row $1,\,1,\,2,\,7$. All nonnegative, so no root exceeds $3$.</details></div>
+<div class="ex"><b class="lbl">Example 2.</b> Which of $\frac32$, $\frac23$, $4$ could be a rational root of $3x^3-x^2+5x+4$?
+<details><summary>Solution</summary>Numerators must divide $4$ and denominators must divide $3$: candidates $\pm1,\pm2,\pm4,\pm\frac13,\pm\frac23,\pm\frac43$. So $\frac23$ and $4$ are candidates, but $\frac32$ (denominator $2$) is impossible.</details></div>
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Swapping the roles: the numerator divides the <b>constant</b>, the denominator divides the <b>leading</b> coefficient.</li>
+<li>Forgetting the $\pm$ signs.</li>
+<li>Applying the test to non-integer coefficients (clear fractions first).</li>
+<li>Concluding "no upper bound" when the Bounds Test fails. It's only a sufficient condition.</li>
+</ul></div>
+</script>
+
+=== BANK ===
+@@ pc4-roots
+Q: According to the Rational Root Test, how many different numbers are possible rational roots of $2x^4+x^3-17x^2-4x+6$?
+L: 1
+A: 12
+W: 8
+W: 16
+W: 6
+W: 10
+S: Possible numerators $r$: divisors of the constant $6$: $\pm1,\pm2,\pm3,\pm6$.
+Possible denominators $s$: divisors of the leading coefficient $2$: $1,2$.
+Form all $\frac rs$: $\pm1,\pm2,\pm3,\pm6$ (using $s=1$) and $\pm\frac12,\pm1,\pm\frac32,\pm3$ (using $s=2$).
+Removing repeats ($\pm1$ and $\pm3$ appear twice): $\pm1,\pm2,\pm3,\pm6,\pm\frac12,\pm\frac32$, which is $12$ numbers.
+---
+Q: What are the rational roots of $2x^4+x^3-17x^2-4x+6$?
+L: 2
+A: -3\text{ and }\tfrac12
+W: 3\text{ and }-\tfrac12
+W: -3\text{ and }2
+W: \tfrac12\text{ and }\tfrac32
+W: -1\text{ and }3
+S: Test candidates from the list $\pm1,\pm2,\pm3,\pm6,\pm\frac12,\pm\frac32$.
+$f(-3)=2(81)+(-27)-17(9)+12+6=162-27-153+18=0$. ✓
+$f(\tfrac12)=\tfrac18+\tfrac18-\tfrac{17}4-2+6=\tfrac14-\tfrac{17}{4}+4=0$. ✓
+Dividing out $(x+3)(2x-1)=2x^2+5x-3$ leaves $x^2-2x-2$, whose roots $1\pm\sqrt3$ are irrational.
+So the rational roots are exactly $-3$ and $\frac12$.
+---
+Q: Which number can <b>not</b> be a root of $3x^3-x^2+5x+4$?
+L: 1
+A: \tfrac32
+W: \tfrac23
+W: 4
+W: -\tfrac43
+W: -1
+S: By the Rational Root Test, any rational root $\frac rs$ has $r\mid4$ and $s\mid3$.
+Candidates: $\pm1,\pm2,\pm4,\pm\frac13,\pm\frac23,\pm\frac43$.
+$\frac32$ has denominator $2$, which does not divide $3$, so it can't be a root.
+(The others are only candidates; being on the list doesn't mean they are roots.)
+---
+Q: Synthetic division of $x^3-2x^2-x+1$ by $x-3$ gives the bottom row $1,\ 1,\ 2,\ 7$. What can you conclude?
+L: 1
+A: \text{Every real root is less than or equal to }3.
+W: 3\text{ is a root.}
+W: \text{Every real root is greater than }3.
+W: \text{There are no real roots.}
+W: \text{The polynomial has exactly one real root.}
+S: The leading coefficient is positive, $d=3\gt0$, and every entry of the bottom row is nonnegative.
+By the Bounds Test, $3$ is an <b>upper bound</b>: no real root exceeds $3$.
+The remainder is $7\ne0$, so $3$ is not a root.
+---
+Q: What are all the real roots of $x^3-3x^2-4x+12$?
+L: 1
+A: -2,\ 2,\ 3
+W: 2,\ 3
+W: -3,\ 2,\ 4
+W: -2,\ 3
+W: 3,\ \pm\sqrt2
+S: Group the terms: $x^2(x-3)-4(x-3)=(x-3)(x^2-4)=(x-3)(x-2)(x+2)$.
+The roots are $-2,2,3$.
+(Without grouping: the candidates are divisors of $12$; $f(3)=27-27-12+12=0$, and synthetic division leaves $x^2-4$.)
+---
+Q: How many real roots does $x^4-5x^2+4$ have?
+L: 1
+A: 4
+W: 2
+W: 0
+W: 3
+W: 1
+S: Treat it as a quadratic in $u=x^2$: $u^2-5u+4=(u-1)(u-4)$.
+So $x^4-5x^2+4=(x^2-1)(x^2-4)=(x-1)(x+1)(x-2)(x+2)$.
+Four real roots: $\pm1,\pm2$.
+---
+Q: How many rational roots does $x^3+x+3$ have?
+L: 1
+A: 0
+W: 1
+W: 2
+W: 3
+W: \text{infinitely many}
+S: The leading coefficient is $1$, so any rational root is an integer dividing $3$: $\pm1$ or $\pm3$.
+$f(1)=5$, $f(-1)=1$, $f(3)=33$, $f(-3)=-27$. None is zero.
+So there are no rational roots. (There is one real root, between $-2$ and $-1$ since $f(-2)=-7\lt0\lt f(-1)$, but it's irrational.)
+---
+Q: What is the sum of the roots of $2x^3-5x^2-x+6$?
+L: 2
+A: \tfrac52
+W: 3
+W: -\tfrac52
+W: \tfrac72
+W: 5
+S: Find the roots. Try $x=2$: $16-20-2+6=0$. ✓
+Synthetic division by $x-2$: $2,-5,-1,6\to2,-1,-3\mid0$, so the quotient is $2x^2-x-3=(2x-3)(x+1)$.
+Roots: $2,\ \frac32,\ -1$. Sum: $2+\frac32-1=\frac52$.
+(Consistent with Vieta's formula: sum $=-\frac{-5}{2}=\frac52$.)
+---
+Q: What are the irrational roots of $x^3-4x^2+2x+3$?
+L: 2
+A: \dfrac{1\pm\sqrt5}{2}
+W: \dfrac{-1\pm\sqrt5}{2}
+W: 1\pm\sqrt5
+W: \dfrac{1\pm\sqrt3}{2}
+W: 2\pm\sqrt3
+S: Rational candidates: $\pm1,\pm3$. $f(3)=27-36+6+3=0$. ✓
+Divide by $x-3$: $1,-4,2,3\to1,-1,-1\mid0$, giving $x^2-x-1$.
+Quadratic formula: $x=\dfrac{1\pm\sqrt{1+4}}{2}=\dfrac{1\pm\sqrt5}2$.
+---
+Q: Using the Bounds Test, is $-2$ a lower bound for the real roots of $x^3+x^2-4x+1$?
+L: 2
+A: \text{No conclusion: the signs don't alternate}
+W: \text{Yes: the signs alternate}
+W: \text{Yes: all entries are nonnegative}
+W: \text{No: }-2\text{ is a root}
+W: \text{Yes: the remainder is negative}
+S: Divide by $x+2$ ($d=-2$): coefficients $1,1,-4,1$.
+Bring down $1$; $-2\Rightarrow1-2=-1$; $2\Rightarrow-4+2=-2$; $4\Rightarrow1+4=5$.
+Bottom row $1,-1,-2,5$: signs $+,-,-,+$. They do <b>not</b> alternate, so the Bounds Test gives no conclusion about $-2$.
+(In fact $f(-3)=-27+9+12+1=-5$, $f(-2)=5$, so there is a root between $-3$ and $-2$; $-2$ is not a lower bound. Trying $d=-3$: row $1,-2,2,-5$ alternates, so $-3$ is a lower bound.)
+=== GENS ===
+GENS['pc4-roots']=[
+/* count rational root candidates */
+r=>{const an=pick(r,[1,2,3,4,6]),a0=pick(r,[2,3,4,5,6,8,9,10,12]);const dv=n=>{const o=[];for(let i=1;i<=n;i++)if(n%i===0)o.push(i);return o};
+ const set=new Set();for(const p of dv(a0))for(const q of dv(an)){const f=F(p,q);set.add(f.tex())}const cnt=set.size*2;
+ const mid=ri(r,-6,6),m2=ri(r,-6,6);
+ return{lvl:1,q:T`According to the Rational Root Test, how many different numbers are possible rational roots of $${an===1?'':an}x^3${mid?(mid<0?'-':'+')+Math.abs(mid)+'x^2':''}${m2?(m2<0?'-':'+')+Math.abs(m2)+'x':''}+${a0}$?`,a:cnt,w:[dv(a0).length*dv(an).length*2,cnt/2,cnt+2,dv(a0).length*2,cnt-2],
+ s:T`Numerators $r$ must divide the constant $${a0}$: $${dv(a0).join(',')}$ (with $\pm$). Denominators $s$ must divide the leading coefficient $${an}$: $${dv(an).join(',')}$.<br>The distinct positive fractions $\frac rs$ are: $${[...set].join(',\\ ')}$, which is $${set.size}$ numbers.<br>With both signs: $${cnt}$ candidates. (Remember to remove repeats like $\frac22=1$.)`}},
+/* which cannot be a rational root */
+r=>{const an=pick(r,[2,3,4,5]),a0=pick(r,[2,3,4,5,6,7,8,9,10]);const dv=n=>{const o=[];for(let i=1;i<=n;i++)if(n%i===0)o.push(i);return o};
+ const cands=[];for(const p of dv(a0))for(const q of dv(an))cands.push(F(p,q));
+ let bad=null;for(let k=0;k<40&&!bad;k++){const p=ri(r,1,10),q=ri(r,1,6);const f=F(p,q);if(!dv(a0).includes(f.n)||!dv(an).includes(f.d))bad=f}
+ if(!bad)return GENS['pc4-roots'][1](r);
+ const goods=sample(r,cands.filter((x,i,a)=>a.findIndex(y=>y.tex()===x.tex())===i),4).map(x=>r()<.5?x:x.neg());if(goods.length<4)return GENS['pc4-roots'][1](r);
+ const t=TXT(r,bad.tex(),goods.map(x=>x.tex()));
+ return{lvl:1,q:T`Which of these can <b>not</b> be a root of $${an}x^3-x^2+x+${a0}$?`,a:t.a,w:t.w,
+ s:T`Any rational root $\frac rs$ (lowest terms) needs $r\mid${a0}$ and $s\mid${an}$.<br>$${bad.tex()}$ has numerator $${bad.n}$ and denominator $${bad.d}$: ${!dv(a0).includes(bad.n)?T`$${bad.n}$ does not divide $${a0}$`:''}${!dv(a0).includes(bad.n)&&!dv(an).includes(bad.d)?' and ':''}${!dv(an).includes(bad.d)?T`$${bad.d}$ does not divide $${an}$`:''}, so it can't be a root.<br>The other choices pass the test, so they are possible roots (though not necessarily actual roots).`}},
+/* rational root of a cubic with a fractional root */
+r=>{const q=pick(r,[2,3]),p=pick(r,[1,-1,3,-3,5].filter(x=>gcd(x,q)===1));const s1=ri(r,-4,4)||2,s2=ri(r,-4,4)||-1;
+ /* f = (q x - p)(x - s1)(x - s2) */
+ const A=q,B=-(p+q*(s1+s2)),C=q*s1*s2+p*(s1+s2),D=-p*s1*s2;const root=F(p,q);
+ const t=TXT(r,root.tex(),[root.neg().tex(),F(q,p).tex(),F(p,q*2).tex(),F(p+q,q).tex()]);
+ return{lvl:2,q:T`The polynomial $${pl([A,B,C,D])}$ has exactly one root that is not an integer. What is it?`,a:t.a,w:t.w,
+ s:T`Integer candidates divide $${Math.abs(D)}$. Test them: ${s1===s2?T`$${s1}$ is a root`:T`$${s1}$ and $${s2}$ are roots`} (e.g. $f(${s1})=0$).<br>Dividing out ${s1===s2?T`$${fx(s1)}^2$`:T`$${fx(s1)}${fx(s2)}=${pl([1,-(s1+s2),s1*s2])}$`} leaves the linear factor $${lin(q,-p)}$.<br>Setting $${lin(q,-p)}=0$ gives $x=${root.tex()}$, which is on the Rational Root Test list (numerator divides $${Math.abs(D)}$, denominator divides $${A}$).`}},
+/* smallest integer upper bound certified by the Bounds Test */
+r=>{const cs=[1,ri(r,-6,2),ri(r,-8,4),ri(r,-9,9)];let d=1,row;for(;d<20;d++){row=[cs[0]];for(let i=1;i<4;i++)row.push(cs[i]+row[i-1]*d);if(row.every(v=>v>=0))break}
+ const prevRow=[cs[0]];for(let i=1;i<4;i++)prevRow.push(cs[i]+prevRow[i-1]*(d-1));
+ return{lvl:2,q:T`What is the smallest positive integer $d$ for which the Bounds Test (synthetic division by $x-d$) shows that $d$ is an upper bound for the real roots of $${pl(cs)}$?`,a:d,w:[d+1,d-1===0?d+2:d-1,d+2,d+3,Math.abs(cs[3])+1===d?d+4:Math.abs(cs[3])+1],
+ s:T`Try $d=1,2,3,\dots$ and look for a bottom row with no negative entries.<br>${d>1?T`• $d=${d-1}$: bottom row $${prevRow.join(',\\ ')}$, which has a negative entry, so no conclusion.<br>`:''}• $d=${d}$: bottom row $${row.join(',\\ ')}$, all nonnegative. ✓<br>So $${d}$ is the smallest integer the test certifies: every real root is at most $${d}$.`}},
+/* biquadratic roots */
+r=>{const a=ri(r,1,5),b=ri(r,1,6);if(a===b)return GENS['pc4-roots'][4](r);const S=a*a+b*b,Pd=a*a*b*b;const mx=Math.max(a,b);const ask=r()<.5;
+ if(ask)return{lvl:1,q:T`What is the largest real root of $x^4-${S}x^2+${Pd}$?`,a:mx,w:[mx*mx,S,Math.min(a,b),Math.sqrt(S)%1===0?Math.sqrt(S):mx+1,-mx],
+  s:T`Let $u=x^2$: $u^2-${S}u+${Pd}=(u-${a*a})(u-${b*b})$.<br>So $x^2=${a*a}$ or $x^2=${b*b}$, giving $x=\pm${a}$ and $x=\pm${b}$.<br>The largest root is $${mx}$. ($${mx*mx}$ is a root for $u=x^2$, not for $x$.)`};
+ return{lvl:1,q:T`What is the product of the positive real roots of $x^4-${S}x^2+${Pd}$?`,a:a*b,w:[Pd,S,a+b,a*b*2,-(a*b)],
+ s:T`Factor as a quadratic in $x^2$: $(x^2-${a*a})(x^2-${b*b})$.<br>Roots: $\pm${a}$ and $\pm${b}$. Positive roots: $${a}$ and $${b}$, with product $${a*b}$.`}},
+/* cubic with one integer root and two irrational roots */
+r=>{const c=ri(r,-4,4)||3,p=ri(r,-4,4),q=-ri(r,1,6);/* (x-c)(x^2+px+q) with disc p^2-4q not a square */
+ const disc=p*p-4*q;if(Number.isInteger(Math.sqrt(disc)))return GENS['pc4-roots'][5](r);
+ const cs=[1,p-c,q-c*p,-c*q];const [k,m]=sqd(disc);
+ const rt=(sg)=>{const num=(-p)+'';return k%2===0&&p%2===0?T`${-p/2===0?'':-p/2}\pm${k/2===1?'':k/2}\sqrt{${m}}`:T`\dfrac{${p===0?'':-p}\pm${k===1?'':k}\sqrt{${m}}}{2}`};
+ const ans=rt();const t=TXT(r,ans,[k%2===0&&p%2===0?T`${p/2===0?'':p/2}\pm${k/2===1?'':k/2}\sqrt{${m}}`:T`\dfrac{${p===0?'':p}\pm${k===1?'':k}\sqrt{${m}}}{2}`,T`${-p===0?'':-p}\pm\sqrt{${disc}}`,T`\dfrac{${p===0?'':-p}\pm\sqrt{${disc+4}}}{2}`,T`\dfrac{${c}\pm\sqrt{${disc}}}{2}`]);
+ return{lvl:2,q:T`One root of $${pl(cs)}$ is an integer. What are the other two roots?`,a:t.a,w:t.w,
+ s:T`Rational candidates are the divisors of $${Math.abs(cs[3])}$. Testing: $f(${c})=0$.<br>Synthetic division by $x${c<0?'+'+(-c):'-'+c}$ leaves $${pl([1,p,q])}$.<br>Quadratic formula: $x=\dfrac{${-p}\pm\sqrt{${p*p}-4(${q})}}{2}=\dfrac{${-p}\pm\sqrt{${disc}}}{2}${k===1?'':'='+ans}$.<br>These are irrational, which is why they never appeared on the Rational Root Test list.`}},
+];

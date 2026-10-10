@@ -48,7 +48,8 @@ function build(a,ws){
     add(toOpt(typeof a==='number'?s.v:s));k++;
   }
   const mods=[[t=>String.raw`2\left(`+t+String.raw`\right)`,v=>2*v],[t=>String.raw`\tfrac{1}{2}\left(`+t+String.raw`\right)`,v=>v/2],[t=>t+'+1',v=>v+1],[t=>t+'-1',v=>v-1],[t=>String.raw`-\left(`+t+String.raw`\right)`,v=>-v],[t=>t+'+2',v=>v+2]];
-  for(const [ft,fv] of mods){if(opts.length>=5)break;add({tex:ft(c.tex),v:fv(c.v)})}
+  const textual=/=|\\text|^\s*[\[(]|\\cup/.test(c.tex);   // equations, words, intervals, points: no arithmetic variants
+  if(!textual)for(const [ft,fv] of mods){if(opts.length>=5)break;add({tex:ft(c.tex),v:fv(c.v)})}
   opts.sort((x,y)=>x.v-y.v);
   return{choices:opts.map(o=>'$'+o.tex+'$'),ans:opts.indexOf(c)};
 }

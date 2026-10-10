@@ -25,6 +25,10 @@ for (const s of A.SUBS) {
     const all = [it.A, ...it.W].map(x => x.trim());
     if (new Set(all).size !== 5) err(s.id + ' duplicate choices: ' + it.Q.slice(0, 50));
     if (!/^[123]$/.test((it.L || '').trim())) err(s.id + ' bad level: ' + it.Q.slice(0, 40));
+    const btxt = [it.Q, it.A, ...it.W, it.S].join(' ');
+    const g2 = btxt.match(/\\(?:(?:le|lt|ge|gt)(?!ft|q|floor|ss|ad)|pm(?!od)|cdot(?!s)|infty|times)[a-zA-Z]/);
+    if (g2) err(s.id + ' TeX command runs into a letter: ' + btxt.slice(Math.max(0, g2.index - 30), g2.index + 20));
+    if ((btxt.replace(/\\\$/g, '').match(/\$/g) || []).length % 2) err(s.id + ' unbalanced $ in: ' + it.Q.slice(0, 50));
   }
   const qs = new Set(); for (const it of set) { if (qs.has(it.q)) err(s.id + ' dup question'); qs.add(it.q); }
 }
@@ -42,6 +46,8 @@ for (const [sub, gens] of Object.entries(A.GENS)) {
       if (new Set(it.choices).size !== 5) { err(`${sub}[${gi}] duplicate choices`); break; }
       if (it.ans < 0 || it.ans > 4) { err(`${sub}[${gi}] answer index`); break; }
       if (/\$-?\d+\.\d{5,}/.test(it.choices.join(''))) { err(`${sub}[${gi}] float choice ${it.choices.join(' ')}`); break; }
+      const glued = txt.match(/\\(?:(?:le|lt|ge|gt)(?!ft|q|floor|ss|ad)|pm(?!od)|cdot(?!s)|infty|times)[a-zA-Z]/);
+      if (glued) { err(`${sub}[${gi}] TeX command runs into a letter: ` + txt.slice(Math.max(0, glued.index - 30), glued.index + 20)); break; }
     }
   });
 }

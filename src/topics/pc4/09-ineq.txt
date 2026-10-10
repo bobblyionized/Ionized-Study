@@ -1,0 +1,213 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc4-ineq">
+<h2>4.6 Polynomial and Rational Inequalities</h2>
+<p>An inequality like $x^3\ge4x$ asks <b>for which $x$</b> one side is bigger. The answer is usually a union of intervals. The method in every case: get $0$ on one side, find where the other side is $0$ (or undefined), and check the sign in between.</p>
+
+<h3>1. Basic principles</h3>
+<div class="box"><ul>
+<li>Adding or subtracting the same quantity on both sides keeps the inequality.</li>
+<li>Multiplying or dividing both sides by a <b>positive</b> number keeps the direction.</li>
+<li>Multiplying or dividing by a <b>negative</b> number <b>reverses</b> the direction.</li></ul></div>
+<p><b>Linear:</b> $3-2x\le7\Rightarrow-2x\le4\Rightarrow x\ge-2$ (flipped when dividing by $-2$). <b>Compound:</b> $2\lt3x-1\le8\Rightarrow3\lt3x\le9\Rightarrow1\lt x\le3$, the interval $(1,3]$; do the same thing to all three parts.</p>
+
+<h3>2. Polynomial inequalities</h3>
+<ol><li>Rewrite as $f(x)\gt0$ (or $\lt,\ \ge,\ \le$) with $0$ on the right.</li>
+<li>Find the roots of $f$ (factor). They split the number line into intervals.</li>
+<li>On each interval, $f$ has one sign (polynomials are continuous, so they can only change sign at roots). Test one point per interval, or use the factor signs.</li>
+<li>Collect the intervals with the right sign. For $\ge$ or $\le$, include the roots.</li></ol>
+<p>Example: $x^3\ge4x\Rightarrow x^3-4x\ge0\Rightarrow x(x-2)(x+2)\ge0$. Roots $-2,0,2$. Testing $x=-3,-1,1,3$ gives signs $-,+,-,+$. Answer: $[-2,0]\cup[2,\infty)$.</p>
+<div class="warn"><h4>Never divide by a variable</h4>Dividing $x^3\ge4x$ by $x$ to get $x^2\ge4$ is wrong: if $x\lt0$ the direction should flip, and you also lose the solution $x=0$. Move everything to one side and factor instead.</div>
+<p><b>Quadratics:</b> $x^2-x-6\lt0\Rightarrow(x-3)(x+2)\lt0$. An upward parabola is negative between its roots: $(-2,3)$. If there are no real roots, the quadratic has one sign everywhere: $x^2+1\gt0$ for all $x$, and $x^2+1\lt0$ has no solutions.</p>
+<p><b>Repeated roots:</b> the sign doesn't change at an even-multiplicity root. $(x-2)^2(x+1)\le0$: negative for $x\lt-1$, zero at $-1$ and $2$, positive elsewhere. Answer: $(-\infty,-1]\cup\{2\}$. Don't lose the isolated point!</p>
+
+<h3>3. Rational inequalities</h3>
+<p>The sign of $\frac{g(x)}{h(x)}$ can change only where $g=0$ or $h=0$. These are the <b>critical numbers</b>.</p>
+<ol><li>Get $0$ on one side and combine into a single fraction. (<b>Don't</b> multiply by the denominator: its sign is unknown.)</li>
+<li>Critical numbers: zeros of numerator and denominator.</li>
+<li>Test each interval.</li>
+<li>Zeros of the numerator are included for $\ge,\le$. Zeros of the denominator are <b>never</b> included.</li></ol>
+<p>Example: $\dfrac{2x+1}{x-1}\le1\Rightarrow\dfrac{2x+1}{x-1}-1\le0\Rightarrow\dfrac{x+2}{x-1}\le0$. Critical numbers $-2,1$; the fraction is $\le0$ on $[-2,1)$.</p>
+<p>Example: $\frac1x\lt2$. Multiplying by $x$ would be wrong for $x\lt0$. Instead $\frac1x-2\lt0\Rightarrow\frac{1-2x}{x}\lt0$. Critical numbers $0,\frac12$; solution $(-\infty,0)\cup\left(\frac12,\infty\right)$.</p>
+
+<h3>Worked examples</h3>
+<div class="ex"><b class="lbl">Example 1.</b> Solve $\dfrac{x-1}{x+3}\ge0$.
+<details><summary>Solution</summary>Critical numbers $1$ (numerator) and $-3$ (denominator). Signs: $x\lt-3$: $\frac{-}{-}=+$; $-3\lt x\lt1$: $\frac{-}{+}=-$; $x\gt1$: $+$. Include $1$ (makes the fraction $0$), exclude $-3$. Answer: $(-\infty,-3)\cup[1,\infty)$.</details></div>
+<div class="ex"><b class="lbl">Example 2.</b> How many integers satisfy $x^2\le10$?
+<details><summary>Solution</summary>$-\sqrt{10}\le x\le\sqrt{10}$, about $-3.16\le x\le3.16$: the integers $-3,\dots,3$, which is $7$.</details></div>
+<div class="tip"><h4>Sign-chart shortcut</h4>For a product of linear factors with positive leading coefficient, the sign is $+$ to the right of every root and flips each time you pass a root of odd multiplicity.</div>
+</script>
+
+=== BANK ===
+@@ pc4-ineq
+Q: Solve $3-2x\le7$.
+L: 1
+A: x\ge-2
+W: x\le-2
+W: x\ge2
+W: x\le2
+W: x\ge-5
+S: Subtract $3$: $-2x\le4$.
+Divide by $-2$, which is negative, so the inequality <b>reverses</b>: $x\ge-2$.
+Check: $x=0$ gives $3\le7$ ✓, and $x=-3$ gives $9\le7$ ✗, consistent with $x\ge-2$.
+---
+Q: Solve $x^2-x-6\lt0$.
+L: 1
+A: (-2,\,3)
+W: (-3,\,2)
+W: (-\infty,-2)\cup(3,\infty)
+W: [-2,\,3]
+W: (-\infty,\,3)
+S: Factor: $(x-3)(x+2)\lt0$. The roots are $-2$ and $3$.
+The graph $y=x^2-x-6$ is an upward parabola, which is below the $x$-axis only between its roots.
+Strict inequality, so the roots are excluded: $(-2,3)$.
+---
+Q: Solve $x^3\ge4x$.
+L: 2
+A: [-2,0]\cup[2,\infty)
+W: [2,\infty)
+W: (-\infty,-2]\cup[2,\infty)
+W: [-2,2]
+W: (-\infty,-2]\cup[0,2]
+S: Don't divide by $x$ (its sign is unknown). Instead: $x^3-4x\ge0$, i.e. $x(x-2)(x+2)\ge0$.
+Roots $-2,0,2$ split the line into four intervals. Test:
+$x=-3$: $(-3)(-5)(-1)\lt0$. $x=-1$: $(-1)(-3)(1)\gt0$. $x=1$: $(1)(-1)(3)\lt0$. $x=3$: $(3)(1)(5)\gt0$.
+Keep the positive intervals and include the roots ($\ge$): $[-2,0]\cup[2,\infty)$.
+(Dividing by $x$ to get $x^2\ge4$ gives the wrong answer $(-\infty,-2]\cup[2,\infty)$.)
+---
+Q: Solve $\dfrac{x-1}{x+3}\ge0$.
+L: 1
+A: (-\infty,-3)\cup[1,\infty)
+W: (-\infty,-3]\cup[1,\infty)
+W: (-3,\,1]
+W: [1,\infty)
+W: [-3,\,1]
+S: Critical numbers: $1$ (numerator zero) and $-3$ (denominator zero).
+Signs: for $x\lt-3$ both are negative, so the fraction is positive; for $-3\lt x\lt1$ it's $\frac{-}{+}\lt0$; for $x\gt1$ it's positive.
+Include $x=1$ (the fraction equals $0$); exclude $x=-3$ (undefined).
+Answer: $(-\infty,-3)\cup[1,\infty)$.
+---
+Q: Solve $\dfrac1x\lt2$.
+L: 2
+A: (-\infty,0)\cup\left(\tfrac12,\infty\right)
+W: \left(\tfrac12,\infty\right)
+W: \left(0,\tfrac12\right)
+W: (-\infty,0)
+W: \left(-\infty,\tfrac12\right)
+S: Don't multiply by $x$; its sign is unknown. Subtract $2$: $\dfrac1x-2\lt0$, i.e. $\dfrac{1-2x}{x}\lt0$.
+Critical numbers $0$ and $\frac12$.
+• $x\lt0$: numerator $+$, denominator $-$: negative ✓.
+• $0\lt x\lt\frac12$: $\frac{+}{+}$: positive ✗.
+• $x\gt\frac12$: $\frac{-}{+}$: negative ✓.
+Answer: $(-\infty,0)\cup\left(\frac12,\infty\right)$. (Multiplying by $x$ would give only $x\gt\frac12$, losing all negative $x$.)
+---
+Q: Solve $(x-2)^2(x+1)\le0$.
+L: 2
+A: (-\infty,-1]\cup\{2\}
+W: (-\infty,-1]
+W: [-1,\,2]
+W: (-\infty,\,2]
+W: [-1,\infty)
+S: The roots are $-1$ (multiplicity $1$) and $2$ (multiplicity $2$).
+$(x-2)^2\ge0$ always, so the sign of the product is the sign of $x+1$, except that the product is $0$ at $x=2$.
+The product is $\le0$ when $x+1\le0$ (i.e. $x\le-1$) <b>or</b> when $x=2$.
+Answer: $(-\infty,-1]\cup\{2\}$. The isolated point $x=2$ is easy to miss.
+---
+Q: Solve $2\lt3x-1\le8$.
+L: 1
+A: (1,\,3]
+W: [1,\,3)
+W: (1,\,3)
+W: \left(\tfrac13,\,3\right]
+W: (3,\,9]
+S: Add $1$ to all three parts: $3\lt3x\le9$.
+Divide all three parts by $3$ (positive, so no flip): $1\lt x\le3$.
+Interval: $(1,3]$.
+---
+Q: Solve $\dfrac{2x+1}{x-1}\le1$.
+L: 2
+A: [-2,\,1)
+W: [-2,\,1]
+W: (-\infty,-2]
+W: (-\infty,-2]\cup(1,\infty)
+W: (-2,\,1)
+S: Subtract $1$ and combine: $\dfrac{2x+1}{x-1}-\dfrac{x-1}{x-1}=\dfrac{x+2}{x-1}\le0$.
+Critical numbers $-2$ and $1$. The fraction is negative between them (test $x=0$: $\frac{2}{-1}\lt0$) and positive outside.
+Include $-2$ (fraction $=0$); exclude $1$ (undefined): $[-2,1)$.
+(Multiplying by $x-1$ assumes it's positive and gives $x\le-2$, the wrong answer.)
+---
+Q: How many integers $x$ satisfy $x^2\le10$?
+L: 1
+A: 7
+W: 6
+W: 3
+W: 4
+W: 21
+S: $x^2\le10$ means $-\sqrt{10}\le x\le\sqrt{10}$, and $\sqrt{10}\approx3.16$.
+The integers in $[-3.16,3.16]$ are $-3,-2,-1,0,1,2,3$: that's $7$.
+(Forgetting the negative solutions gives $4$.)
+---
+Q: Solve $x^2+4x+5\gt0$.
+L: 1
+A: \text{all real numbers}
+W: \text{no real numbers}
+W: (-\infty,-5)\cup(1,\infty)
+W: (-5,\,1)
+W: x\gt-2
+S: The discriminant is $16-20=-4\lt0$, so the quadratic has no real roots and never changes sign.
+Since it opens upward (or test $x=0$: $5\gt0$), it's positive everywhere. Equivalently, $x^2+4x+5=(x+2)^2+1\ge1$.
+Every real number is a solution.
+---
+Q: A company's profit is $P(x)=-x^2+50x-400$ thousand dollars when it makes $x$ thousand items. For which production levels is the profit at least $\$200{,}000$?
+L: 2
+A: 20\le x\le30
+W: 10\le x\le40
+W: x\ge20
+W: 25\le x\le30
+W: x\le30
+S: "At least $\$200{,}000$" means $P(x)\ge200$: $-x^2+50x-400\ge200$.
+Rearrange: $-x^2+50x-600\ge0$, or multiplying by $-1$ (flip!): $x^2-50x+600\le0$.
+Factor: $(x-20)(x-30)\le0$, true between the roots: $20\le x\le30$ thousand items.
+($10\le x\le40$ is where the profit is merely nonnegative.)
+=== GENS ===
+GENS['pc4-ineq']=[
+/* linear with a negative coefficient */
+r=>{const a=ri(r,2,7),b=ri(r,-9,9)||4,c=ri(r,-9,9);const op=pick(r,['\\le','\\lt','\\ge','\\gt']);const flip={'\\le':'\\ge','\\lt':'\\gt','\\ge':'\\le','\\gt':'\\lt'};
+ const bnd=F(c-b,-a);const ans='x'+flip[op]+bnd.tex();const t=TXT(r,ans,['x'+op+bnd.tex(),'x'+flip[op]+bnd.neg().tex(),'x'+op+bnd.neg().tex(),'x'+flip[op]+F(c+b,-a).tex()]);
+ return{lvl:1,q:T`Solve $${b}-${a}x${op}${c}$.`,a:t.a,w:t.w,
+ s:T`Subtract $${b}$: $-${a}x${op}${c-b}$.<br>Divide by $-${a}$. It's negative, so the inequality <b>reverses</b>: $x${flip[op]}\dfrac{${c-b}}{-${a}}=${bnd.tex()}$.<br>Answer: $${ans}$.`}},
+/* quadratic inequality */
+r=>{const p=ri(r,-6,4),q=p+ri(r,1,7);const op=pick(r,['\\lt','\\le','\\gt','\\ge']);const s=pick(r,[1,1,-1]);const b=-(p+q)*s,c=p*q*s;
+ const inside=(op==='\\lt'||op==='\\le')===(s>0);const cl=op==='\\le'||op==='\\ge';
+ const ans=inside?(cl?'['+p+',\\,'+q+']':'('+p+',\\,'+q+')'):(cl?'(-\\infty,'+p+']\\cup['+q+',\\infty)':'(-\\infty,'+p+')\\cup('+q+',\\infty)');
+ const other=!inside?(cl?'['+p+',\\,'+q+']':'('+p+',\\,'+q+')'):(cl?'(-\\infty,'+p+']\\cup['+q+',\\infty)':'(-\\infty,'+p+')\\cup('+q+',\\infty)');
+ const swapC=inside?(!cl?'['+p+',\\,'+q+']':'('+p+',\\,'+q+')'):(!cl?'(-\\infty,'+p+']\\cup['+q+',\\infty)':'(-\\infty,'+p+')\\cup('+q+',\\infty)');
+ const t=TXT(r,ans,[other,swapC,'('+(-q)+',\\,'+(-p)+')',inside?'(-\\infty,'+q+')':'('+p+',\\infty)']);
+ return{lvl:1,q:T`Solve $${pl([s,b,c])}${op}0$.`,a:t.a,w:t.w,
+ s:T`${s<0?T`Multiply by $-1$ and flip: $${pl([1,-(p+q),p*q])}${{'\\lt':'\\gt','\\le':'\\ge','\\gt':'\\lt','\\ge':'\\le'}[op]}0$.<br>`:''}Factor: $${fx(p)}${fx(q)}$, roots $${p}$ and $${q}$.<br>An upward parabola is negative between its roots and positive outside them.<br>We need the ${inside?'inside':'outside'} region${cl?', including the roots':', excluding the roots'}: $${ans}$.`}},
+/* factorable cubic */
+r=>{const rs=sample(r,[-5,-4,-3,-2,-1,0,1,2,3,4,5],3).sort((a,b)=>a-b);const op=pick(r,['\\ge','\\gt','\\le','\\lt']);const pos=op==='\\ge'||op==='\\gt',cl=op==='\\ge'||op==='\\le';
+ const L=cl?'[':'(',R=cl?']':')';const [a,b,c]=rs;
+ const posSet=L+a+',\\,'+b+R+'\\cup'+L+c+',\\infty)',negSet='(-\\infty,'+a+R+'\\cup'+L+b+',\\,'+c+R;
+ const ans=pos?posSet:negSet;const t=TXT(r,ans,[pos?negSet:posSet,L+a+',\\,'+c+R,pos?L+c+',\\infty)':'(-\\infty,'+a+R,(cl?'(':'[')+a+',\\,'+b+(cl?')':']')+'\\cup'+(cl?'(':'[')+c+',\\infty)']);
+ const cs=[1,-(a+b+c),a*b+a*c+b*c,-a*b*c];
+ return{lvl:2,q:T`Solve $${fx(a)}${fx(b)}${fx(c)}${op}0$.`,a:t.a,w:t.w,
+ s:T`The roots $${a},${b},${c}$ split the line into four intervals. To the right of all roots every factor is positive; the sign flips at each (single) root.<br>Signs from left to right: $-,\ +,\ -,\ +$.<br>We want ${pos?'positive':'negative'} values${cl?' or zero (include the roots)':' (exclude the roots)'}: $${ans}$.`}},
+/* rational inequality */
+r=>{const a=ri(r,-6,6),b=ri(r,-6,6);if(a===b)return GENS['pc4-ineq'][3](r);const op=pick(r,['\\ge','\\gt','\\le','\\lt']);const pos=op==='\\ge'||op==='\\gt',cl=op==='\\ge'||op==='\\le';
+ const lo=Math.min(a,b),hi=Math.max(a,b);const incl=v=>v===a&&cl;
+ const outside='(-\\infty,'+lo+(incl(lo)?']':')')+'\\cup'+(incl(hi)?'[':'(')+hi+',\\infty)',inside=(incl(lo)?'[':'(')+lo+',\\,'+hi+(incl(hi)?']':')');
+ const ans=pos?outside:inside;const both=(pos?'(-\\infty,'+lo+']\\cup['+hi+',\\infty)':'['+lo+',\\,'+hi+']');
+ const t=TXT(r,ans,[pos?inside:outside,both===ans?(pos?'(-\\infty,'+lo+')\\cup('+hi+',\\infty)':'('+lo+',\\,'+hi+')'):both,pos?'['+a+',\\infty)':'(-\\infty,'+a+']','('+(-hi)+',\\,'+(-lo)+')']);
+ return{lvl:2,q:T`Solve $\dfrac{${lin(1,-a)}}{${lin(1,-b)}}${op}0$.`,a:t.a,w:t.w,
+ s:T`Critical numbers: $${a}$ (numerator zero) and $${b}$ (denominator zero).<br>The fraction is positive when the factors have the same sign, i.e. outside $[${lo},${hi}]$, and negative between them.<br>We want the ${pos?'positive':'negative'} part${cl?'; include $x='+a+'$ (where the fraction is $0$)':''}; never include $x=${b}$ (the fraction is not defined there).<br>Answer: $${ans}$.`}},
+/* count integers in a quadratic inequality */
+r=>{const p=ri(r,-7,2),q=p+ri(r,2,9);const strict=r()<.5;const cnt=strict?q-p-1:q-p+1;
+ return{lvl:1,q:T`How many integers satisfy $${pl([1,-(p+q),p*q])}${strict?'\\lt':'\\le'}0$?`,a:cnt,w:[strict?cnt+2:cnt-2,cnt+1,q-p,cnt-1===0?cnt+3:cnt-1,p*q<0?-p*q:p*q+1],
+ s:T`Factor: $${fx(p)}${fx(q)}${strict?'\\lt':'\\le'}0$, which holds ${strict?'strictly ':''}between the roots: $${p}${strict?'\\lt ':'\\le '}x${strict?'\\lt':'\\le'}${q}$.<br>Integers from $${strict?p+1:p}$ to $${strict?q-1:q}$: $${strict?q-1:q}-${P(strict?p+1:p)}+1=${cnt}$.`}},
+/* compound linear */
+r=>{const a=ri(r,2,5),b=ri(r,-6,6),lo=ri(r,-10,4),k1=ri(r,1,5),k2=ri(r,1,5);const L1=lo,L2=lo+a*k1+a*k2;const x1=F(L1-b,a),x2=F(L2-b,a);const lc=r()<.5,rc=r()<.5;
+ const ans=(lc?'[':'(')+x1.tex()+',\\,'+x2.tex()+(rc?']':')');
+ const t=TXT(r,ans,[(lc?'(':'[')+x1.tex()+',\\,'+x2.tex()+(rc?')':']'),(lc?'[':'(')+F(L1+b,a).tex()+',\\,'+F(L2+b,a).tex()+(rc?']':')'),(lc?'[':'(')+(L1-b)+',\\,'+(L2-b)+(rc?']':')'),(lc?'[':'(')+x1.neg().tex()+',\\,'+x2.tex()+(rc?']':')')]);
+ return{lvl:1,q:T`Solve $${L1}${lc?'\\le':'\\lt'}${lin(a,b)}${rc?'\\le':'\\lt'}${L2}$.`,a:t.a,w:t.w,
+ s:T`Do the same operations to all three parts.<br>Subtract $${b}$: $${L1-b}${lc?'\\le':'\\lt'}${a}x${rc?'\\le':'\\lt'}${L2-b}$.<br>Divide by $${a}$ (positive, no flip): $${x1.tex()}${lc?'\\le ':'\\lt '}x${rc?'\\le':'\\lt'}${x2.tex()}$.<br>Interval: $${ans}$ (square brackets for $\le$, parentheses for $\lt$).`}},
+];

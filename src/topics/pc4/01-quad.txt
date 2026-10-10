@@ -1,0 +1,220 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc4-quad">
+<h2>4.1 Quadratic Functions</h2>
+<p>A <b>quadratic function</b> has a rule of the form $f(x)=ax^2+bx+c$ with $a\ne0$. Its graph is a <b>parabola</b>, the same shape as $y=x^2$ but possibly stretched, flipped and moved. Every parabola has a turning point, the <b>vertex</b>, and is symmetric about the vertical line through it, the <b>axis of symmetry</b>.</p>
+
+<h3>1. Vertex form</h3>
+<div class="box">Every quadratic can be written in <b>vertex form</b>
+$$f(x)=a(x-h)^2+k.$$
+Its graph is $y=ax^2$ shifted so that the vertex is at $(h,k)$. If $a\gt0$ it opens <b>up</b> and $k$ is the minimum value; if $a\lt0$ it opens <b>down</b> and $k$ is the maximum value. $|a|\gt1$ makes it narrower, $|a|\lt1$ wider.</div>
+<p>To get vertex form, <b>complete the square</b>: $2x^2+8x-1=2(x^2+4x)-1=2(x^2+4x+4)-8-1=2(x+2)^2-9$. Vertex $(-2,-9)$.</p>
+
+<h3>2. The vertex formula</h3>
+<div class="box">The vertex of $f(x)=ax^2+bx+c$ has $x$-coordinate $$h=-\frac{b}{2a},$$ and $y$-coordinate $k=f(h)$.</div>
+<p>Why: the two $x$-intercepts (when they exist) are $\frac{-b\pm\sqrt{b^2-4ac}}{2a}$, symmetric about their average $-\frac b{2a}$. More generally, any two points of the parabola at the same height are symmetric about the axis, so <b>the axis is halfway between them</b>. A parabola through $(-1,4)$ and $(5,4)$ has axis $x=2$.</p>
+<div class="lfigs"><div class="lplot" data-f="x*x-6*x+5;-0.5*x*x-x+3" data-x="-6,7" data-y="-5,6" data-w="240" data-pts="3,-4;-1,3.5" data-cap="$x^2-6x+5$: vertex $(3,-4)$, opens up. $-\frac12x^2-x+3$: vertex $(-1,3.5)$, opens down"></div></div>
+
+<h3>3. Reading a quadratic</h3>
+<ul><li><b>$y$-intercept:</b> $f(0)=c$.</li>
+<li><b>$x$-intercepts:</b> solve $ax^2+bx+c=0$. The discriminant $b^2-4ac$ tells how many: $2$ if positive, $1$ (vertex on the axis) if zero, none if negative.</li>
+<li><b>Range:</b> $[k,\infty)$ if $a\gt0$, $(-\infty,k]$ if $a\lt0$.</li>
+<li><b>Increasing/decreasing:</b> for $a\gt0$, decreasing on $(-\infty,h)$ and increasing on $(h,\infty)$; reversed for $a\lt0$.</li></ul>
+
+<h3>4. Writing the rule from the vertex and one point</h3>
+<p>Start from $f(x)=a(x-h)^2+k$ with the known vertex, then substitute the other point to find $a$. Vertex $(2,-3)$ through $(4,5)$: $5=a(4-2)^2-3$, so $4a=8$, $a=2$, and $f(x)=2(x-2)^2-3$.</p>
+
+<h3>5. Applications: maximum and minimum problems</h3>
+<p>Whenever a quantity is a quadratic function of a variable, its largest or smallest value is at the vertex.</p>
+<ul><li><b>Fencing:</b> $120$ ft of fence for three sides of a rectangle along a river. With width $x$, length $120-2x$, the area $A=x(120-2x)=-2x^2+120x$ peaks at $x=-\frac{120}{2(-2)}=30$: area $30\cdot60=1800$ ft$^2$.</li>
+<li><b>Projectiles:</b> $h(t)=-16t^2+v_0t+h_0$ reaches its maximum at $t=\frac{v_0}{32}$. For $h(t)=-16t^2+48t+6$: $t=1.5$, height $42$ ft.</li>
+<li><b>Revenue:</b> if $x$ items sell when the price is $p=50-0.5x$, revenue $R=xp=50x-0.5x^2$ is maximized at $x=50$, $R=1250$.</li>
+<li><b>Numbers:</b> two numbers with sum $24$ have product $x(24-x)$, maximized at $x=12$: $144$.</li></ul>
+
+<h3>Worked examples</h3>
+<div class="ex"><b class="lbl">Example 1.</b> Find the range of $f(x)=-3x^2+12x-7$.
+<details><summary>Solution</summary>$h=-\frac{12}{2(-3)}=2$, $k=f(2)=-12+24-7=5$. It opens down, so the range is $(-\infty,5]$.</details></div>
+<div class="ex"><b class="lbl">Example 2.</b> For which $c$ does the vertex of $y=x^2-10x+c$ lie on the $x$-axis?
+<details><summary>Solution</summary>$h=5$, $k=25-50+c=c-25$. Setting $k=0$ gives $c=25$; then $y=(x-5)^2$.</details></div>
+<div class="ex"><b class="lbl">Example 3.</b> A theater sells $300$ tickets at $\$8$. Each $\$1$ price increase loses $25$ customers. What price maximizes revenue?
+<details><summary>Solution</summary>With $n$ one-dollar increases, $R=(8+n)(300-25n)=-25n^2+100n+2400$, maximized at $n=2$: price $\$10$, revenue $\$2500$.</details></div>
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Sign error in the vertex formula: it's $-\frac{b}{2a}$. For $x^2-6x$, $h=+3$.</li>
+<li>In vertex form, $(x-h)$ means the vertex is at $+h$: $(x+2)^2$ has $h=-2$.</li>
+<li>Answering "where" (the $x$-value) when the question asks "what is the maximum" (the $y$-value), or vice versa.</li>
+</ul></div>
+</script>
+
+=== BANK ===
+@@ pc4-quad
+Q: What is the vertex of the graph of $f(x)=x^2-6x+5$?
+L: 1
+A: (3,\,-4)
+W: (-3,\,32)
+W: (3,\,4)
+W: (6,\,5)
+W: (-3,\,-4)
+S: Vertex $x$-coordinate: $h=-\dfrac{b}{2a}=-\dfrac{-6}{2\cdot1}=3$.
+$y$-coordinate: $k=f(3)=9-18+5=-4$.
+Vertex: $(3,-4)$. Check by completing the square: $x^2-6x+5=(x-3)^2-4$. ✓
+---
+Q: What is the vertex of $f(x)=2x^2+8x-1$?
+L: 1
+A: (-2,\,-9)
+W: (2,\,23)
+W: (-2,\,-1)
+W: (-4,\,-1)
+W: (-1,\,-7)
+S: $h=-\dfrac{8}{2\cdot2}=-2$.
+$k=f(-2)=2(4)+8(-2)-1=8-16-1=-9$.
+Or complete the square: $2(x^2+4x)-1=2(x^2+4x+4)-8-1=2(x+2)^2-9$. Vertex $(-2,-9)$.
+---
+Q: A parabola has vertex $(2,-3)$ and passes through $(4,5)$. What is its equation?
+L: 1
+A: y=2(x-2)^2-3
+W: y=2(x+2)^2-3
+W: y=4(x-2)^2-3
+W: y=(x-2)^2-3
+W: y=\tfrac12(x-2)^2-3
+S: Start with vertex form using the known vertex: $y=a(x-2)^2-3$.
+Substitute $(4,5)$: $5=a(4-2)^2-3=4a-3$, so $4a=8$ and $a=2$.
+Equation: $y=2(x-2)^2-3$.
+---
+Q: A farmer has $120$ feet of fence to enclose a rectangular field along a straight river; no fence is needed along the river. What is the largest possible area?
+L: 2
+A: 1800\text{ ft}^2
+W: 900\text{ ft}^2
+W: 3600\text{ ft}^2
+W: 1600\text{ ft}^2
+W: 2400\text{ ft}^2
+S: Let $x$ be the length of each side perpendicular to the river. The side parallel to the river uses the rest: $120-2x$.
+Area: $A(x)=x(120-2x)=-2x^2+120x$, a downward parabola.
+Maximum at $x=-\dfrac{120}{2(-2)}=30$. Then the parallel side is $60$, and $A=30\cdot60=1800$ ft$^2$.
+($900$ is the answer for a square using all four sides; the river saves fencing.)
+---
+Q: A ball's height after $t$ seconds is $h(t)=-16t^2+48t+6$ feet. What is its maximum height?
+L: 1
+A: 42\text{ ft}
+W: 38\text{ ft}
+W: 1.5\text{ ft}
+W: 48\text{ ft}
+W: 54\text{ ft}
+S: The maximum is at the vertex: $t=-\dfrac{48}{2(-16)}=1.5$ seconds.
+$h(1.5)=-16(2.25)+48(1.5)+6=-36+72+6=42$ feet.
+($1.5$ is when the maximum occurs, not its value.)
+---
+Q: When the price of an item is $p=50-0.5x$ dollars, $x$ items are sold. What is the maximum possible revenue?
+L: 2
+A: \$1250
+W: \$2500
+W: \$625
+W: \$50
+W: \$1000
+S: Revenue $=$ (number sold)$\times$(price): $R(x)=x(50-0.5x)=-0.5x^2+50x$.
+The vertex: $x=-\dfrac{50}{2(-0.5)}=50$ items, at price $50-25=\$25$.
+$R(50)=50\cdot25=\$1250$.
+---
+Q: A parabola passes through $(-1,4)$ and $(5,4)$. What is its axis of symmetry?
+L: 1
+A: x=2
+W: x=3
+W: y=4
+W: x=4
+W: x=-3
+S: The two points have the same $y$-coordinate, so they are mirror images across the axis of symmetry.
+The axis is halfway between their $x$-coordinates: $x=\dfrac{-1+5}{2}=2$.
+---
+Q: What is the range of $f(x)=-3x^2+12x-7$?
+L: 1
+A: (-\infty,\,5]
+W: [5,\,\infty)
+W: (-\infty,\,2]
+W: (-\infty,\,-7]
+W: (-\infty,\infty)
+S: Find the vertex: $h=-\dfrac{12}{2(-3)}=2$, $k=f(2)=-12+24-7=5$.
+Since $a=-3\lt0$, the parabola opens downward, so $5$ is the largest value and every smaller value is reached.
+Range: $(-\infty,5]$.
+---
+Q: For what value of $c$ does the vertex of $y=x^2-10x+c$ lie on the $x$-axis?
+L: 1
+A: 25
+W: 10
+W: 5
+W: -25
+W: 100
+S: The vertex has $h=-\dfrac{-10}{2}=5$, and $k=25-50+c=c-25$.
+On the $x$-axis means $k=0$: $c=25$.
+Then $y=x^2-10x+25=(x-5)^2$, a perfect square, touching the axis at $x=5$.
+---
+Q: A theater sells $300$ tickets per show at $\$8$ each. For each $\$1$ increase in price, $25$ fewer tickets are sold. What ticket price maximizes revenue?
+L: 2
+A: \$10
+W: \$8
+W: \$12
+W: \$14
+W: \$9
+S: Let $n$ be the number of $\$1$ increases. Price: $8+n$. Tickets: $300-25n$.
+Revenue: $R(n)=(8+n)(300-25n)=2400-200n+300n-25n^2=-25n^2+100n+2400$.
+Vertex: $n=-\dfrac{100}{2(-25)}=2$. So the price is $8+2=\$10$, selling $250$ tickets for $\$2500$.
+Check $n=1$: $9\cdot275=2475$; $n=3$: $11\cdot225=2475$. Both less. ✓
+---
+Q: How many $x$-intercepts does the graph of $f(x)=x^2+4x+5$ have?
+L: 1
+A: 0
+W: 1
+W: 2
+W: 3
+W: 4
+S: Complete the square: $x^2+4x+5=(x+2)^2+1$. The vertex is $(-2,1)$, above the $x$-axis, and the parabola opens up, so it never reaches the axis.
+Equivalently, the discriminant is $4^2-4(1)(5)=-4\lt0$: no real roots.
+---
+Q: The quadratic $f(x)=ax^2+bx+c$ has vertex $(1,8)$ and $f(3)=0$. What is $f(-1)$?
+L: 2
+A: 0
+W: 8
+W: -8
+W: 4
+W: -16
+S: The axis of symmetry is $x=1$. The points $x=3$ and $x=-1$ are both $2$ units from the axis, so they're mirror images and have the same height.
+Therefore $f(-1)=f(3)=0$.
+(Explicitly: $f(x)=a(x-1)^2+8$, and $f(3)=4a+8=0$ gives $a=-2$; then $f(-1)=-2(4)+8=0$.)
+=== GENS ===
+GENS['pc4-quad']=[
+/* vertex from standard form */
+r=>{const a=pick(r,[1,1,2,-1,-2,3,-3]),h=ri(r,-6,6),k=ri(r,-12,12);const b=-2*a*h,c=a*h*h+k;const pt=(x,y)=>'('+x+',\\,'+y+')';
+ const t=TXT(r,pt(h,k),[pt(-h,a*h*h-b*h+c),pt(h,c),pt(b,c),pt(h,-k)]);
+ return{lvl:1,q:T`What is the vertex of the graph of $f(x)=${pl([a,b,c])}$?`,a:t.a,w:t.w,
+ s:T`Vertex formula: $h=-\dfrac{b}{2a}=-\dfrac{${b}}{2\cdot${P(a)}}=${h}$.<br>Then $k=f(${h})=${a}\cdot${P(h)}^2+${P(b)}\cdot${P(h)}+${P(c)}=${a*h*h}+${P(b*h)}+${P(c)}=${k}$.<br>Vertex: $${pt(h,k)}$. In vertex form, $f(x)=${a===1?'':a===-1?'-':a}(x${h<0?'+':'-'}${Math.abs(h)})^2${k<0?'-':'+'}${Math.abs(k)}$.`}},
+/* max/min value */
+r=>{const a=pick(r,[1,2,-1,-2,-3,4,-4]),h=ri(r,-5,5),k=ri(r,-15,15);const b=-2*a*h,c=a*h*h+k;const mx=a<0;
+ return{lvl:1,q:T`What is the ${mx?'maximum':'minimum'} value of $f(x)=${pl([a,b,c])}$?`,a:k,w:[h,c,-k,k+a,k-2*a],
+ s:T`Since the leading coefficient $${a}$ is ${mx?'negative, the parabola opens down and has a maximum':'positive, the parabola opens up and has a minimum'} at its vertex.<br>$h=-\dfrac{${b}}{2(${a})}=${h}$, and the ${mx?'maximum':'minimum'} value is $f(${h})=${k}$.<br>(The value is the $y$-coordinate $${k}$; $x=${h}$ is where it occurs.)`}},
+/* equation from vertex and a point */
+r=>{const a=pick(r,[1,2,3,-1,-2,-3,F(1,2),F(-1,2)]),h=ri(r,-5,5),k=ri(r,-6,6)||3,d=pick(r,[1,2,-2,-1,3]);const af=Fr.of(a);const X=h+d,Y=af.mul(d*d).add(k);
+ const sh=v=>v===0?'x':v<0?'(x+'+(-v)+')':'(x-'+v+')';const co=f=>f.isInt()?(f.n===1?'':f.n===-1?'-':String(f.n)):f.tex();
+ const eq=(A,H,K)=>'y='+co(A)+sh(H)+'^2'+(K<0?'-'+(-K):K?'+'+K:'');
+ const ans=eq(af,h,k);const t=TXT(r,ans,[eq(af,-h,k),eq(af.neg(),h,k),eq(af.mul(d*d),h,k),eq(Y.sub(k).isInt()&&Y.sub(k).n!==0?Y.sub(k):af.add(1),h,k)]);
+ return{lvl:1,q:T`A parabola has vertex $(${h},${k})$ and passes through the point $(${X},${Y.tex()})$. What is its equation?`,a:t.a,w:t.w,
+ s:T`Use vertex form with the given vertex: $y=a${sh(h)}^2${k<0?'-'+(-k):k?'+'+k:''}$.<br>Substitute the point $(${X},${Y.tex()})$: $${Y.tex()}=a(${X}${h<0?'+'+(-h):h?'-'+h:''})^2${k<0?'-'+(-k):k?'+'+k:''}=${d*d}a${k<0?'-'+(-k):k?'+'+k:''}$.<br>So $${d*d}a=${Y.sub(k).tex()}$ and $a=${af.tex()}$.<br>Equation: $${ans}$.`}},
+/* fencing */
+r=>{const L=ri(r,6,40)*20,river=r()<.5;
+ if(river){const x=L/4,A=x*(L-2*x);return{lvl:2,q:T`A rectangular pen is built against a long wall, so fence is needed on only three sides. If $${L}$ feet of fence is available, what is the largest possible area, in square feet?`,a:A,w:[L*L/16,A/2,2*A,Math.round(L*L/9),A+L],
+  s:T`Let $x$ be each side perpendicular to the wall; the side parallel to the wall is $${L}-2x$.<br>Area $A(x)=x(${L}-2x)=-2x^2+${L}x$. Its vertex is at $x=-\dfrac{${L}}{2(-2)}=${x}$.<br>Then the parallel side is $${L-2*x}$ and the area is $${x}\cdot${L-2*x}=${A}$ ft$^2$.<br>(A square would give only $${L*L/16}$; using the wall changes the optimum shape.)`}}
+ const s=L/4;return{lvl:1,q:T`What is the largest area, in square feet, of a rectangle with perimeter $${L}$ feet?`,a:s*s,w:[s*s*2,L*L/8,s*(s+2),L,s*s/2],
+  s:T`If one side is $x$, the other is $\frac{${L}}{2}-x=${L/2}-x$. Area $A=x(${L/2}-x)=-x^2+${L/2}x$.<br>Vertex: $x=\frac{${L/2}}{2}=${s}$. So the best rectangle is a ${s}-by-${s} square, with area $${s*s}$ ft$^2$.`}},
+/* projectile maximum */
+r=>{const v0=pick(r,[32,48,64,80,96,112,128]),h0=ri(r,0,20)*5;const t=v0/32,H=-16*t*t+v0*t+h0;const askT=r()<.3;
+ if(askT)return{lvl:1,q:T`A ball is thrown so that its height after $t$ seconds is $h(t)=-16t^2+${v0}t${h0?'+'+h0:''}$ feet. After how many seconds does it reach its highest point?`,a:t,w:[t*2,H,v0/16,t+1,v0/64],
+  s:T`The highest point is the vertex: $t=-\dfrac{${v0}}{2(-16)}=\dfrac{${v0}}{32}=${t}$ seconds. (The maximum height itself is $h(${t})=${H}$ ft.)`};
+ return{lvl:1,q:T`A ball is thrown so that its height after $t$ seconds is $h(t)=-16t^2+${v0}t${h0?'+'+h0:''}$ feet. What is its maximum height, in feet?`,a:H,w:[t,H-h0,H+16,v0*t,H/2],
+ s:T`The vertex occurs at $t=-\dfrac{${v0}}{2(-16)}=${t}$ seconds.<br>$h(${t})=-16(${t*t})+${v0}(${t})${h0?'+'+h0:''}=${-16*t*t}+${v0*t}${h0?'+'+h0:''}=${H}$ feet.`}},
+/* range */
+r=>{const a=pick(r,[1,2,-1,-2,3,-3]),h=ri(r,-5,5),k=ri(r,-10,10);const b=-2*a*h,c=a*h*h+k;
+ const ans=a>0?iv(k,Infinity,1,0):iv(-Infinity,k,0,1);const t=TXT(r,ans,[a>0?iv(-Infinity,k,0,1):iv(k,Infinity,1,0),a>0?iv(h,Infinity,1,0):iv(-Infinity,h,0,1),a>0?iv(c,Infinity,1,0):iv(-Infinity,c,0,1),String.raw`(-\infty,\infty)`]);
+ return{lvl:1,q:T`What is the range of $f(x)=${pl([a,b,c])}$?`,a:t.a,w:t.w,
+ s:T`Vertex: $h=-\dfrac{${b}}{2(${a})}=${h}$ and $k=f(${h})=${k}$.<br>The parabola opens ${a>0?'up':'down'} (since $a=${a}$), so $${k}$ is its ${a>0?'smallest':'largest'} value and every value ${a>0?'above':'below'} it is reached.<br>Range: $${ans}$.`}},
+/* price-demand revenue */
+r=>{const p0=ri(r,6,20),n0=ri(r,10,40)*10,drop=pick(r,[5,10,20,25]);const best=(n0/drop-p0)/2;if(!Number.isInteger(best)||best<1)return GENS['pc4-quad'][6](r);
+ const R=(p0+best)*(n0-drop*best);
+ return{lvl:2,q:T`A club sells $${n0}$ tickets at $\$${p0}$ each. For every $\$1$ increase in price, $${drop}$ fewer tickets are sold. What ticket price, in dollars, maximizes revenue?`,a:p0+best,w:[p0,p0+best+1,p0+2*best,p0+best-1,n0/drop],
+ s:T`Let $n$ be the number of $\$1$ increases. Revenue $R(n)=(${p0}+n)(${n0}-${drop}n)=${trm([[-drop,'n^2'],[n0-drop*p0,'n'],[p0*n0,'']])}$.<br>Vertex: $n=-\dfrac{${n0-drop*p0}}{2(-${drop})}=${best}$.<br>Best price: $${p0}+${best}=\$${p0+best}$, selling $${n0-drop*best}$ tickets for revenue $\$${R}$.`}},
+];

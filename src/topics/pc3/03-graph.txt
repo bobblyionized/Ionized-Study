@@ -1,0 +1,269 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc3-graph">
+<h2>3.3 Graphs of Functions</h2>
+<p>The <b>graph of a function $f$</b> is the graph of the equation $y=f(x)$: the set of all points $(x,f(x))$ with $x$ in the domain. Every fact about a function can be read off its graph: $f(a)$ is the height of the graph above $x=a$, the domain is the graph's shadow on the $x$-axis, and the range is its shadow on the $y$-axis.</p>
+<p>Calculators draw graphs quickly, but their graphs can be incomplete or misleading (pixelation, hidden wiggles, missing endpoints). Use what you know algebraically first, and treat a calculator picture as something to be checked.</p>
+
+<h3>1. The catalog of basic functions</h3>
+<p>Memorize these shapes. Almost every graph in this course is built from them by the transformations of Section 3.4.</p>
+<div class="lfigs">
+<div class="lplot" data-f="0.5*x+1" data-x="-4,4" data-y="-3,4" data-w="170" data-cap="Linear: $f(x)=mx+b$, a line of slope $m$"></div>
+<div class="lplot" data-f="2" data-x="-4,4" data-y="-3,4" data-w="170" data-cap="Constant: $f(x)=b$"></div>
+<div class="lplot" data-f="x" data-x="-4,4" data-y="-4,4" data-w="170" data-cap="Identity: $f(x)=x$"></div>
+<div class="lplot" data-f="x*x" data-x="-3,3" data-y="-1,8" data-w="170" data-cap="Square: $f(x)=x^2$"></div>
+<div class="lplot" data-f="x*x*x" data-x="-3,3" data-y="-6,6" data-w="170" data-cap="Cube: $f(x)=x^3$"></div>
+<div class="lplot" data-f="sqrt(x)|0|9|c-" data-x="-1,9" data-y="-1,4" data-w="170" data-cap="Square root: $f(x)=\sqrt x$"></div>
+<div class="lplot" data-f="abs(x)" data-x="-4,4" data-y="-1,5" data-w="170" data-cap="Absolute value: $f(x)=|x|$"></div>
+<div class="lplot" data-f="-3|-3|-2|co;-2|-2|-1|co;-1|-1|0|co;0|0|1|co;1|1|2|co;2|2|3|co" data-x="-3,3" data-y="-4,3" data-w="170" data-cap="Greatest integer: $f(x)=\lfloor x\rfloor$"></div>
+</div>
+<p>$\sqrt x$ lies entirely in the first quadrant because its inputs and outputs are both $\ge0$. $x^2$ and $|x|$ are symmetric about the $y$-axis; $x$ and $x^3$ are symmetric about the origin.</p>
+
+<h3>2. Step functions</h3>
+<p>A <b>step function</b> has a graph made of horizontal segments. The greatest integer function is the model: on $-2\le x\lt-1$ its value is always $-2$, on $-1\le x\lt0$ it is $-1$, and so on. Each step has a <b>filled</b> dot on its left end (included) and an <b>open</b> dot on its right end (excluded). Calculators in "connected" mode draw misleading vertical segments between the steps; use "dot" mode.</p>
+<p><b>Postage</b> is a classic step function: $80$ cents for the first ounce or fraction of an ounce, plus $17$ cents for each additional ounce or fraction. A formula is $P(x)=0.80-0.17\lfloor 1-x\rfloor$. For example $P(2.5)=0.80-0.17\lfloor-1.5\rfloor=0.80-0.17(-2)=1.14$.</p>
+
+<h3>3. Graphs of piecewise-defined functions</h3>
+<p>Graph each piece only over its own interval, and mark endpoints carefully.</p>
+<div class="lfigs"><div class="lplot" data-f="x*x|-2.4|1|-c;x+2|1|4|oc" data-x="-3,5" data-y="-1,7" data-w="220" data-cap="$f(x)=x^2$ for $x\le1$, $x+2$ for $1\lt x\le4$"></div></div>
+<p>At $x=1$ the first piece gives the filled point $(1,1)$; the second piece would give $(1,3)$ but $x=1$ is excluded there, so it's an open circle. The graph has a <b>jump</b> at $x=1$.</p>
+<p>The absolute value function is piecewise too: $|x|=x$ for $x\ge0$ and $-x$ for $x\lt0$.</p>
+
+<h3>4. Increasing, decreasing, constant</h3>
+<p>$f$ is <b>increasing</b> on an interval if its graph rises as you move left to right there ($a\lt b$ implies $f(a)\lt f(b)$), <b>decreasing</b> if the graph falls, and <b>constant</b> if it is horizontal. Intervals are read along the $x$-axis, never the $y$-axis.</p>
+<ul><li>$f(x)=x^2$ decreases on $(-\infty,0)$ and increases on $(0,\infty)$.</li>
+<li>$f(x)=|x|+|x-2|$ decreases on $(-\infty,0)$, is constant ($=2$) on $[0,2]$, and increases on $(2,\infty)$. On $[0,2]$, $|x|+|x-2|=x+(2-x)=2$.</li></ul>
+
+<h3>5. Local maxima and minima</h3>
+<p>$f$ has a <b>local maximum</b> at $x=c$ if the graph has a peak at $(c,f(c))$: $f(x)\le f(c)$ for all $x$ near $c$. A <b>local minimum</b> is a valley: $f(x)\ge f(d)$ for $x$ near $d$. A peak need not be the highest point of the whole graph, only of its neighborhood.</p>
+<ul><li>The <b>location</b> is the $x$-value; the <b>value</b> is the $y$-value. "Local maximum at $x=-1$ with value $4$."</li>
+<li>Local extrema are exactly where the graph switches between increasing and decreasing.</li>
+<li>Exact locations usually require calculus (or, for parabolas, the vertex formula of Section 4.1). A calculator's maximum/minimum finder approximates them.</li></ul>
+<p>Example: $g(x)=0.5x^3-3x$ has a local maximum at $x=-\sqrt2\approx-1.414$ with value $2\sqrt2\approx2.828$ and a local minimum at $x=\sqrt2$ with value $-2\sqrt2$. So $g$ increases on $(-\infty,-\sqrt2)$ and $(\sqrt2,\infty)$ and decreases on $(-\sqrt2,\sqrt2)$.</p>
+<div class="lfigs"><div class="lplot" data-f="0.5*x*x*x-3*x" data-x="-4,4" data-y="-5,5" data-w="220" data-pts="-1.4142,2.8284;1.4142,-2.8284" data-cap="$g(x)=0.5x^3-3x$: a peak and a valley"></div></div>
+<p><b>Optimization.</b> A $44\times28$ sheet with $x\times x$ squares cut from the corners folds into a box of volume $V(x)=x(44-2x)(28-2x)$, for $0\lt x\lt14$. The maximum finder gives $x\approx5.57$ inches.</p>
+
+<h3>6. The Vertical Line Test</h3>
+<div class="box"><h4>Vertical Line Test</h4>A graph is the graph of a function exactly when <b>no vertical line meets it more than once</b>.</div>
+<p>If a vertical line $x=3$ hit the graph at $(3,2)$ and $(3,-1)$, then the input $3$ would have two outputs, which a function can't do. Circles, sideways parabolas like $x=y^2$, and vertical lines all fail. Beware calculator pictures that seem to fail because of steep, pixelated pieces; zoom in before deciding.</p>
+
+<h3>7. Reading graphs</h3>
+<ul><li><b>Solutions of $f(x)=k$:</b> draw the horizontal line $y=k$; each crossing gives one solution.</li>
+<li><b>Where $f(x)\gt k$:</b> the $x$-values where the graph is above that line.</li>
+<li><b>Composite readings:</b> to find $f(f(2))$, read $f(2)$ from the graph, then read $f$ at that value.</li>
+<li>Applied graphs: "in the 1980s" means an interval of the horizontal axis; "the biggest drop" means the steepest downward stretch.</li></ul>
+
+<h3>Worked examples</h3>
+<div class="ex"><b class="lbl">Example 1.</b> How many real solutions does $\lfloor x\rfloor=2x-3$ have?
+<details><summary>Solution</summary>The left side is an integer $n$, so $2x-3=n$ and $x=\frac{n+3}{2}$. We also need $n\le x\lt n+1$: $n\le\frac{n+3}2\lt n+1$, i.e. $2n\le n+3$ and $n+3\lt2n+2$, which give $n\le3$ and $n\gt1$. So $n=2$ or $3$, giving $x=2.5$ and $x=3$. <b>Two</b> solutions.</details></div>
+<div class="ex"><b class="lbl">Example 2.</b> Using $P(x)=0.80-0.17\lfloor1-x\rfloor$, find the postage for a $4$-ounce envelope and for a $4.1$-ounce envelope.
+<details><summary>Solution</summary>$P(4)=0.80-0.17\lfloor-3\rfloor=0.80+0.51=\$1.31$. $P(4.1)=0.80-0.17\lfloor-3.1\rfloor=0.80+0.68=\$1.48$. Crossing $4$ ounces jumps to the next step.</details></div>
+<div class="ex"><b class="lbl">Example 3.</b> On what interval is $f(x)=x^2-6x+5$ decreasing?
+<details><summary>Solution</summary>$f(x)=(x-3)^2-4$ is the parabola $x^2$ moved so its vertex is at $(3,-4)$. It falls until $x=3$ and rises after, so it decreases on $(-\infty,3)$.</details></div>
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Giving increasing/decreasing intervals in terms of $y$. They are always $x$-intervals.</li>
+<li>Confusing where a maximum occurs ($x$) with what the maximum is ($y$).</li>
+<li>Ignoring open versus filled endpoints when reading a range: an open circle's height is not attained unless another part of the graph reaches it.</li>
+</ul></div>
+</script>
+
+=== BANK ===
+@@ pc3-graph
+Q: The postage for a large envelope weighing $x$ ounces is $P(x)=0.80-0.17\lfloor 1-x\rfloor$ dollars. What is the postage for an envelope weighing $3.2$ ounces?
+L: 1
+A: 1.31
+W: 1.14
+W: 1.48
+W: 1.34
+W: 0.97
+S: Evaluate the greatest integer part first: $1-3.2=-2.2$, and $\lfloor-2.2\rfloor=-3$ (round <b>down</b> to $-3$, not toward zero to $-2$).
+$P(3.2)=0.80-0.17(-3)=0.80+0.51=1.31$ dollars.
+This matches the rule in words: $80$ cents for the first ounce plus $17$ cents for each additional ounce or fraction: $3.2$ ounces is the first ounce plus $2.2$ more, which counts as $3$ additional, so $0.80+3(0.17)=1.31$.
+---
+Q: What is the minimum value of $f(x)=|x|+|x-2|$, and on what set is it attained?
+L: 2
+A: 2,\ \text{for every }x\text{ in }[0,2]
+W: 0,\ \text{at }x=0
+W: 1,\ \text{at }x=1
+W: 2,\ \text{only at }x=1
+W: 2,\ \text{at }x=0\text{ and }x=2\text{ only}
+S: Remove the absolute values interval by interval.
+• For $x\lt0$: $f(x)=-x+(2-x)=2-2x$, which is greater than $2$ and decreasing.
+• For $0\le x\le2$: $f(x)=x+(2-x)=2$. Constant!
+• For $x\gt2$: $f(x)=x+(x-2)=2x-2$, greater than $2$ and increasing.
+So the minimum value is $2$, attained at <b>every</b> point of $[0,2]$, where the graph is a horizontal segment.
+Interpretation: $|x|+|x-2|$ is the sum of the distances from $x$ to $0$ and to $2$, which is smallest (equal to $2$) anywhere between them.
+---
+Q: A box with no top is made from a $44\times28$-inch sheet of cardboard by cutting an $x\times x$ square from each corner and folding up the sides. What is the domain of the volume function $V(x)$ in this situation?
+L: 1
+A: (0,14)
+W: (0,22)
+W: (0,28)
+W: [0,44]
+W: (14,22)
+S: The box has height $x$, length $44-2x$, and width $28-2x$, so $V(x)=x(44-2x)(28-2x)$.
+For an actual box, every dimension must be positive:
+• $x\gt0$,
+• $44-2x\gt0\Rightarrow x\lt22$,
+• $28-2x\gt0\Rightarrow x\lt14$.
+All three hold when $0\lt x\lt14$. (The width is the binding constraint: cut more than $14$ inches from each side of a $28$-inch edge and nothing is left.)
+---
+Q: Which equation's graph <b>fails</b> the Vertical Line Test?
+L: 1
+A: x=y^2-4
+W: y=x^2-4
+W: y=|x-4|
+W: y=\sqrt{x+4}
+W: y=x^3-4x
+S: The graph fails the test if some vertical line $x=c$ meets it twice, i.e. some $x$ has two $y$-values.
+• $y=x^2-4$, $y=|x-4|$, $y=\sqrt{x+4}$, $y=x^3-4x$ are all of the form "$y=$ formula in $x$," so each $x$ gives one $y$. They pass.
+• $x=y^2-4$: at $x=0$ we get $y^2=4$, so $y=\pm2$. The points $(0,2)$ and $(0,-2)$ lie on the same vertical line. This sideways parabola <b>fails</b>.
+---
+Q: The function $g(x)=\tfrac12x^3-3x$ has a local maximum at $x=-\sqrt2$. What is the local maximum <b>value</b>?
+L: 2
+A: 2\sqrt2
+W: -\sqrt2
+W: \sqrt2
+W: -2\sqrt2
+W: 3\sqrt2
+S: The value of a local maximum is the $y$-coordinate: $g(-\sqrt2)$.
+$(-\sqrt2)^3=-(\sqrt2)^3=-2\sqrt2$, so $\tfrac12(-\sqrt2)^3=-\sqrt2$.
+$-3(-\sqrt2)=3\sqrt2$.
+$g(-\sqrt2)=-\sqrt2+3\sqrt2=2\sqrt2\approx2.83$.
+($-\sqrt2$ is where the maximum occurs, not its value.)
+---
+Q: Let $f(x)=\begin{cases}x^2&x\le1\\x+2&1\lt x\le4\end{cases}$. The graph of $f$ has a jump at $x=1$. What is the vertical distance between the filled endpoint and the open endpoint there?
+L: 1
+A: 2
+W: 1
+W: 3
+W: 0
+W: 4
+S: At $x=1$ the first rule applies (because of $\le$), so the filled point is $(1,1^2)=(1,1)$.
+The second piece, $y=x+2$, approaches $(1,3)$ as $x$ decreases to $1$, but $x=1$ itself is excluded there, so $(1,3)$ is an open circle.
+The gap is $3-1=2$.
+---
+Q: How many real numbers $x$ satisfy $\lfloor x\rfloor=2x-3$?
+L: 2
+A: 2
+W: 0
+W: 1
+W: 3
+W: \text{infinitely many}
+S: The left side is an integer; call it $n$. Then $2x-3=n$, so $x=\dfrac{n+3}{2}$.
+But $\lfloor x\rfloor=n$ also requires $n\le x\lt n+1$:
+$n\le\dfrac{n+3}2$ gives $2n\le n+3$, so $n\le3$.
+$\dfrac{n+3}2\lt n+1$ gives $n+3\lt2n+2$, so $n\gt1$.
+So $n=2$ or $n=3$, giving $x=\frac52$ (check: $\lfloor2.5\rfloor=2=2(2.5)-3$ ✓) and $x=3$ (check: $\lfloor3\rfloor=3=2(3)-3$ ✓).
+Exactly $2$ solutions. Graphically, the line $y=2x-3$ crosses the staircase twice.
+---
+Q: On which interval is $f(x)=x^2-6x+5$ increasing?
+L: 1
+A: (3,\infty)
+W: (-\infty,3)
+W: (-4,\infty)
+W: (1,5)
+W: (5,\infty)
+S: Complete the square: $x^2-6x+5=(x^2-6x+9)-4=(x-3)^2-4$.
+The graph is the parabola $y=x^2$ shifted so its vertex is at $(3,-4)$. It opens upward, so it falls to the left of $x=3$ and rises to the right.
+Increasing on $(3,\infty)$. (The roots $1$ and $5$ are where it crosses the $x$-axis; they have nothing to do with where it turns.)
+---
+Q: Let $f(x)=x^3-3x$. What is the sum of its local maximum value and its local minimum value?
+L: 2
+A: 0
+W: 4
+W: -4
+W: 2
+W: -2
+S: The local extrema of $x^3-3x$ occur at $x=-1$ and $x=1$ (where the graph turns around).
+Local maximum value: $f(-1)=-1+3=2$. Local minimum value: $f(1)=1-3=-2$.
+Sum: $2+(-2)=0$.
+This is no accident: $f$ is odd ($f(-x)=-f(x)$), so its graph is symmetric about the origin, and the peak at $(-1,2)$ is the mirror image of the valley at $(1,-2)$.
+---
+Q: What is the range of $f(x)=\lfloor x\rfloor+\lfloor -x\rfloor$?
+L: 2
+A: \{-1,0\}
+W: \{0\}
+W: \{-1\}
+W: \{0,1\}
+W: \text{all integers}
+S: Split into two cases.
+• $x$ an integer: $\lfloor x\rfloor=x$ and $\lfloor-x\rfloor=-x$, so $f(x)=0$.
+• $x$ not an integer: write $x=n+t$ with $0\lt t\lt1$. Then $\lfloor x\rfloor=n$ and $-x=-n-t$ lies strictly between $-n-1$ and $-n$, so $\lfloor-x\rfloor=-n-1$. The sum is $-1$.
+Both cases occur, so the range is $\{-1,0\}$. The graph is the horizontal line $y=-1$ with isolated points lifted to height $0$ at each integer.
+---
+Q: A function $f$ is increasing on $(-\infty,-2)$, decreasing on $(-2,5)$, and increasing on $(5,\infty)$. Which statement must be true?
+L: 1
+A: f\text{ has a local maximum at }x=-2\text{ and a local minimum at }x=5
+W: f\text{ has a local minimum at }x=-2\text{ and a local maximum at }x=5
+W: f(-2)\text{ is the largest value of }f
+W: f(5)\text{ is the smallest value of }f
+W: f\text{ has local maxima at both }x=-2\text{ and }x=5
+S: A local maximum occurs where the graph switches from rising to falling; a local minimum where it switches from falling to rising.
+• At $x=-2$: increasing, then decreasing, so it's a peak: a <b>local maximum</b>.
+• At $x=5$: decreasing, then increasing, so it's a valley: a <b>local minimum</b>.
+They need not be the overall largest or smallest values: the graph keeps rising after $x=5$ forever, so $f$ eventually exceeds $f(-2)$; and it keeps falling to the left, so values below $f(5)$ occur.
+=== GENS ===
+GENS['pc3-graph']=[
+/* vertical line test with four pictures */
+r=>{const yes=[
+  ['a parabola',{curves:[{f:x=>0.5*x*x-2}]}],['a line',{curves:[{f:x=>-0.7*x+1}]}],['a cubic',{curves:[{f:x=>0.15*x*x*x-x}]}],['a V shape',{curves:[{f:x=>Math.abs(x+1)-2}]}],
+  ['a square-root curve',{curves:[{f:x=>Math.sqrt(x+3),a:-3,ends:['c','']}]}],['a staircase',{curves:[-2,-1,0,1].map(k=>({f:()=>k,a:k*1.5,b:k*1.5+1.5,ends:['c','o']}))}],['a horizontal line',{curves:[{f:()=>1.5}]}]];
+ const circ=(cx,cy,R)=>Array.from({length:61},(_,i)=>[cx+R*Math.cos(i*Math.PI/30),cy+R*Math.sin(i*Math.PI/30)]);
+ const no=[['a circle',{paths:[circ(0,0,3)]}],['a sideways parabola',{paths:[Array.from({length:41},(_,i)=>{const y=-2.6+i*0.13;return[y*y-3,y]})]}],['a vertical line',{paths:[[[2,-5],[2,5]]]}],
+  ['an S-shaped curve',{paths:[Array.from({length:41},(_,i)=>{const y=-2.4+i*0.12;return[y*y*y-3*y,y]})]}],['an ellipse',{paths:[Array.from({length:61},(_,i)=>[4*Math.cos(i*Math.PI/30),2*Math.sin(i*Math.PI/30)])]}]];
+ const k=ri(r,1,3);const ys=sample(r,yes,k),ns=sample(r,no,4-k);const items=shuffle(r,ys.map(x=>[x,1]).concat(ns.map(x=>[x,0])));
+ const R=['I','II','III','IV'];
+ const figs=items.map(([g],i)=>`<figure>${plot(Object.assign({x:[-5,5],y:[-5,5],w:130,label:g[0]},g[1]))}<figcaption>${R[i]}</figcaption></figure>`).join('');
+ const set=items.map((x,i)=>x[1]?R[i]:null).filter(Boolean);
+ const name=s=>s.length===0?String.raw`\text{none of them}`:s.length===4?String.raw`\text{all four}`:String.raw`\text{`+(s.length===1?s[0]+' only':s.slice(0,-1).join(', ')+' and '+s[s.length-1]+' only')+'}';
+ const all=[];for(let m=0;m<16;m++){const s=R.filter((_,i)=>m>>i&1);if(s.join()!==set.join())all.push(s)}
+ const wr=shuffle(r,all).slice(0,4).map(name);const t=TXT(r,name(set),wr);
+ return{lvl:1,q:T`Which of these graphs are graphs of functions (of $x$)?<div class="plots">${figs}</div>`,a:t.a,w:t.w,
+ s:T`Apply the Vertical Line Test: a graph is a function's graph exactly when no vertical line crosses it more than once.<br>${items.map(([g,ok],i)=>`• ${R[i]} (${g[0]}): `+(ok?'every vertical line meets it at most once. Function.':'some vertical line meets it twice (two $y$-values for one $x$). Not a function.')).join('<br>')}<br>So the functions are: $${name(set)}$.`}},
+/* increasing interval from a broken-line graph */
+r=>{let xs=[-5];while(xs[xs.length-1]<5)xs.push(Math.min(5,xs[xs.length-1]+ri(r,2,3)));const n=xs.length-1;
+ let ys=[ri(r,-3,3)];for(let i=1;i<=n;i++){const up=i%2===1?r()<.5:ys[i-1]<ys[i-2];let v=ys[i-1]+(up?1:-1)*ri(r,2,4);if(v>4)v=ys[i-1]-ri(r,2,3);if(v<-4)v=ys[i-1]+ri(r,2,3);ys.push(v)}
+ const f=x=>{for(let i=0;i<n;i++)if(x<=xs[i+1]+1e-9){const t=(x-xs[i])/(xs[i+1]-xs[i]);return ys[i]+t*(ys[i+1]-ys[i])}return ys[n]};
+ const runs=[];let i=0;while(i<n){const d=Math.sign(ys[i+1]-ys[i]);let j=i;while(j<n&&Math.sign(ys[j+1]-ys[j])===d)j++;runs.push([xs[i],xs[j],d]);i=j}
+ const ups=runs.filter(x=>x[2]>0),downs=runs.filter(x=>x[2]<0);if(!ups.length||!downs.length)return GENS['pc3-graph'][1](r);
+ const askUp=r()<.5;const tgt=pick(r,askUp?ups:downs),other=askUp?downs:ups;
+ const ans=iv(tgt[0],tgt[1],0,0);const pool=new Set(other.map(x=>iv(x[0],x[1],0,0)));pool.add(iv(Math.min(...ys),Math.max(...ys),0,0));pool.add(iv(tgt[0]-1,tgt[1]+1,0,0));pool.add(iv(-5,5,0,0));pool.add(iv(tgt[0]+1,tgt[1]+2,0,0));pool.delete(ans);
+ const t=TXT(r,ans,shuffle(r,[...pool]).slice(0,4));
+ const g=plot({x:[-6,6],y:[-5,5],w:250,curves:[{f,a:-5,b:5,ends:['c','c']}],label:'a broken-line graph'});
+ return{lvl:1,q:T`The graph of $f$ is shown. On which interval is $f$ ${askUp?'increasing':'decreasing'}?<br>${g}`,a:t.a,w:t.w,
+ s:T`Read the graph from left to right. $f$ is ${askUp?'increasing where the graph rises':'decreasing where the graph falls'}.<br>${runs.map(x=>`• From $x=${x[0]}$ to $x=${x[1]}$ the graph ${x[2]>0?'rises':'falls'}.`).join('<br>')}<br>So $f$ is ${askUp?'increasing':'decreasing'} on $${ans}$${(askUp?ups:downs).length>1?' (and also on the other '+(askUp?'rising':'falling')+' stretch, but only this one is offered)':''}. Intervals are always read on the $x$-axis.`}},
+/* parabola increasing/decreasing algebraically */
+r=>{const h=ri(r,-6,6),k=ri(r,-9,9),a=pick(r,[1,1,2,-1,-2,-1]);const b=-2*a*h,c=a*h*h+k;const askUp=r()<.5;
+ const up=a>0?iv(h,Infinity,0,0):iv(-Infinity,h,0,0),dn=a>0?iv(-Infinity,h,0,0):iv(h,Infinity,0,0);const ans=askUp?up:dn,oth=askUp?dn:up;
+ const t=TXT(r,ans,[oth,a>0?iv(k,Infinity,0,0):iv(-Infinity,k,0,0),iv(-h,Infinity,0,0)===ans?iv(-Infinity,-h,0,0):iv(-h,Infinity,0,0),iv(h+1,Infinity,0,0)===ans?iv(-Infinity,h-1,0,0):iv(h+1,Infinity,0,0)]);
+ return{lvl:1,q:T`On which interval is $f(x)=${pl([a,b,c])}$ ${askUp?'increasing':'decreasing'}?`,a:t.a,w:t.w,
+ s:T`Complete the square to find the turning point: $f(x)=${a===1?'':a===-1?'-':a}(x${h<0?'+':'-'}${Math.abs(h)})^2${k<0?'-':'+'}${Math.abs(k)}$. ${h===0?'(Here $h=0$.)':''}<br>The vertex is $(${h},${k})$ and the parabola opens ${a>0?'up':'down'}, so it ${a>0?'falls':'rises'} to the left of $x=${h}$ and ${a>0?'rises':'falls'} to the right.<br>${askUp?'Increasing':'Decreasing'} on $${ans}$. (Use the $x$-coordinate of the vertex, not the $y$-coordinate $${k}$.)`}},
+/* count solutions of f(x)=k from a graph */
+r=>{const xs=[-5,-3,-1,1,3,5].map((x,i)=>x+(i>0&&i<5?ri(r,-1,0):0));const ys=xs.map((_,i)=>i%2===0?ri(r,-4,0):ri(r,1,4));if(r()<.5)for(let i=0;i<ys.length;i++)ys[i]=-ys[i];
+ const n=xs.length-1;const f=x=>{for(let i=0;i<n;i++)if(x<=xs[i+1]+1e-9){const t=(x-xs[i])/(xs[i+1]-xs[i]);return ys[i]+t*(ys[i+1]-ys[i])}return ys[n]};
+ let k=ri(r,-3,3)+0.5;if(ys.includes(k))k+=1;
+ let cnt=0;for(let i=0;i<n;i++){const a=ys[i]-k,b=ys[i+1]-k;if(a===0)cnt++;else if(a*b<0)cnt++}if(ys[n]===k)cnt++;
+ const g=plot({x:[-6,6],y:[-5,5],w:250,curves:[{f,a:-5,b:5,ends:['c','c']}],label:'a zigzag graph'});
+ const kt=Fr.of(Math.round(k*2)).div(2).tex();
+ return{lvl:1,q:T`The entire graph of $f$ is shown. How many solutions does the equation $f(x)=${kt}$ have?<br>${g}`,a:cnt,w:[cnt+1,cnt-1,cnt+2,cnt+3,0===cnt?5:0],
+ s:T`Each solution of $f(x)=${kt}$ is an $x$-value where the graph has height $${kt}$. Draw the horizontal line $y=${kt}$ and count crossings.<br>Going left to right, the graph's turning heights are $${ys.join(',\\ ')}$. The line is crossed once on each straight piece that goes from below $${kt}$ to above it or vice versa.<br>${ys.slice(0,-1).map((y,i)=>`• From height $${y}$ to $${ys[i+1]}$: ${(y-k)*(ys[i+1]-k)<0?'crosses':'no crossing'}`).join('<br>')}<br>Total: $${cnt}$ solution${cnt===1?'':'s'}.`}},
+/* step function: postage-style */
+r=>{const base=ri(r,40,95),add=ri(r,15,30),w=ri(r,1,6)+pick(r,[0.2,0.5,0.7,0.9]);const extra=Math.ceil(w-1);const ans=base+add*extra;
+ return{lvl:1,q:T`A courier charges $${base}$ cents for the first ounce (or fraction of an ounce) and $${add}$ cents for each additional ounce or fraction of an ounce. In cents, this is $C(x)=${base}-${add}\lfloor 1-x\rfloor$. What does a package weighing $${w}$ ounces cost?`,
+ a:ans,w:[base+add*Math.floor(w-1),base+add*Math.ceil(w),base+add*Math.round(w),ans+add*2,add*Math.ceil(w)],
+ s:T`Evaluate the greatest integer: $1-${w}=${(1-w).toFixed(1)}$, and $\lfloor ${(1-w).toFixed(1)}\rfloor=${Math.floor(1-w)}$ (round down).<br>$C(${w})=${base}-${add}\cdot${P(Math.floor(1-w))}=${base}+${add*extra}=${ans}$ cents.<br>Check in words: the first ounce costs $${base}$; the remaining $${(w-1).toFixed(1)}$ ounces count as $${extra}$ additional ounce${extra===1?'':'s'} (any fraction counts as a whole ounce), adding $${extra}\times${add}=${add*extra}$.`}},
+/* composite reading from graph */
+r=>{const xs=[-4,-3,-2,-1,0,1,2,3,4];const ys=xs.map(()=>ri(r,-4,4));const f=x=>{const i=Math.max(0,Math.min(7,Math.floor(x+4)));const t=x+4-i;return ys[i]+t*(ys[i+1]-ys[i])};
+ const a=pick(r,xs.filter((x,i)=>ys[i]>=-4&&ys[i]<=4));const fa=ys[xs.indexOf(a)];const ffa=ys[xs.indexOf(fa)];
+ const g=plot({x:[-5,5],y:[-5,5],w:240,curves:[{f,a:-4,b:4,ends:['c','c']}],pts:xs.map((x,i)=>({x,y:ys[i]})),label:'a graph through lattice points'});
+ return{lvl:2,q:T`The graph of $f$ (domain $[-4,4]$, corners at the marked lattice points) is shown. What is $f(f(${a}))$?<br>${g}`,a:ffa,w:[fa,ffa+1,ffa-1,-ffa===ffa?ffa+2:-ffa,a],
+ s:T`Work from the inside out.<br>• Inner: $f(${a})$ is the height of the graph at $x=${a}$, which is $${fa}$.<br>• Outer: now find $f(${fa})$, the height at $x=${fa}$, which is $${ffa}$.<br>So $f(f(${a}))=${ffa}$. (A common slip is to stop after one step and answer $${fa}$.)`}},
+/* local maximum / minimum value of a vertex-form parabola or cubic */
+r=>{if(r()<.5){const h=ri(r,-5,5),k=ri(r,-8,8),a=pick(r,[-1,-2,-3,1,2,3]);const b=-2*a*h,c=a*h*h+k;const t=a<0?'maximum':'minimum';
+  return{lvl:1,q:T`The function $f(x)=${pl([a,b,c])}$ has a local ${t}. What is its local ${t} <b>value</b>?`,a:k,w:[h,-k,k+a,c,h+k],
+  s:T`Complete the square: $f(x)=${a}\left(x^2${b/a<0?'-':'+'}${Math.abs(b/a)}x\right)${c<0?'-':'+'}${Math.abs(c)}=${a}(x${h<0?'+':'-'}${Math.abs(h)})^2${k<0?'-':'+'}${Math.abs(k)}$.<br>Since $${a}${a<0?'\\lt':'\\gt'}0$, the parabola opens ${a<0?'down':'up'} and its vertex $(${h},${k})$ is the ${a<0?'peak':'valley'}.<br>The local ${t} occurs at $x=${h}$ and its <b>value</b> is the $y$-coordinate, $${k}$.`}}
+ const p=ri(r,1,3),d=ri(r,-6,6);const fmax=2*p*p*p+d,fmin=-2*p*p*p+d;const askMax=r()<.5;
+ return{lvl:2,q:T`The function $f(x)=x^3-${3*p*p}x${d<0?'-':'+'}${Math.abs(d)}$ has a local maximum at $x=-${p}$ and a local minimum at $x=${p}$. What is the local ${askMax?'maximum':'minimum'} value?`,
+  a:askMax?fmax:fmin,w:[askMax?fmin:fmax,askMax?-p:p,d,(askMax?fmax:fmin)+2*p,askMax?fmax-2*d:fmin-2*d],
+  s:T`The value is the $y$-coordinate at the given $x$.<br>$f(${askMax?-p:p})=${askMax?'(-'+p+')':p}^3-${3*p*p}${askMax?'(-'+p+')':'\\cdot '+p}${d<0?'-':'+'}${Math.abs(d)}=${askMax?-(p**3):p**3}${askMax?'+':'-'}${3*p**3}${d<0?'-':'+'}${Math.abs(d)}=${askMax?fmax:fmin}$.`}},
+];

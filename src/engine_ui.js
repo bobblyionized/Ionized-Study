@@ -1,12 +1,16 @@
 /* ---------- problem card ---------- */
+/* hand-written problems are 'AMC-style' in the AMC track and 'Worked problem' in precalculus */
+const cLabel=sub=>{const s=subById(sub);return s&&findTopic(s.topic).track==='pc'?'Worked problem':'AMC-style'};
+const ITEMS=new Map();   // id -> problem, so AI Explain can find the problem behind a card
 function cardHTML(it,num,opts={}){
-  const tag=it.src==='c'?'<span class="pill">AMC-style</span>':'<span class="pill g">Skill drill</span>';
+  ITEMS.set(it.id,it);
+  const tag=it.src==='c'?`<span class="pill">${cLabel(it.sub)}</span>`:'<span class="pill g">Skill drill</span>';
   return`<div class="prob" data-id="${it.id}">
    <div class="phead"><b>#${num}</b>${tag}<span class="lv" title="Difficulty">${stars(it.lvl)}</span>${opts.extra||''}<span class="spacer"></span><span class="status"></span></div>
    <div class="ptext">${it.q}</div>
    <div class="choices">${it.choices.map((c,i)=>`<button class="ch" data-i="${i}"><b>(${L[i]})</b><span>${c}</span></button>`).join('')}</div>
    <div class="fb"></div>
-   <div class="sol" hidden><details><summary>Show full solution</summary><div class="solbody">${it.sol}</div></details></div>
+   <div class="sol" hidden><button class="ai-btn" type="button" title="Have Claude explain this problem">✦ AI Explain</button><details><summary>Show full solution</summary><div class="solbody">${it.sol}</div></details></div>
   </div>`;
 }
 function revealCard(el,it,chosen,openSol){
@@ -24,7 +28,7 @@ function setView(sid,body){
   const set=SETS[sid];let filter='all';
   const statHTML=()=>{const st=subStats(sid);return`<div><b>${st.done}/${st.total}</b><span>attempted</span></div><div><b>${st.ok}</b><span>correct</span></div><div><b>${st.done?Math.round(st.ok/st.done*100):0}%</b><span>accuracy</span></div>`};
   body.innerHTML=`<div class="stat" id="sstat">${statHTML()}</div>
-  <div class="filters" id="flt">${[['all','All'],['c','AMC-style'],['g','Skill drills'],['1','★ Easy'],['2','★★ Medium'],['3','★★★ Hard'],['new','Unattempted'],['miss','Missed']].map(([k,n])=>`<button class="chip ${k==='all'?'on':''}" data-f="${k}">${n}</button>`).join('')}
+  <div class="filters" id="flt">${[['all','All'],['c',cLabel(sid)],['g','Skill drills'],['1','★ Easy'],['2','★★ Medium'],['3','★★★ Hard'],['new','Unattempted'],['miss','Missed']].map(([k,n])=>`<button class="chip ${k==='all'?'on':''}" data-f="${k}">${n}</button>`).join('')}
   <span class="spacer"></span><button class="chip" id="resetset">Reset this set</button></div><div id="plist"></div>`;
   const list=body.querySelector('#plist');
   function draw(){
@@ -47,9 +51,9 @@ function practiceSetup(sid,body){
   const hist=PROG.pr[sid];
   body.innerHTML=`<div class="card">
   <h3 style="margin-top:4px">Practice Mode</h3>
-  <p class="meta" style="font-size:14.5px">Each session gives you a <b>fresh, randomized</b> set of questions: hand-written AMC-style problems mixed with newly generated drills, so the numbers change every time. Answer one question at a time and get instant feedback with a full solution.</p>
+  <p class="meta" style="font-size:14.5px">Each session gives you a <b>fresh, randomized</b> set of questions: hand-written ${cLabel(sid).toLowerCase()} problems mixed with newly generated drills, so the numbers change every time. Answer one question at a time and get instant feedback with a full solution.</p>
   <div class="opt"><label class="h">Number of questions</label><div class="filters" data-o="n">${[10,15,25,50].map(n=>`<button class="chip ${n===15?'on':''}" data-v="${n}">${n}</button>`).join('')}</div></div>
-  <div class="opt"><label class="h">Question mix</label><div class="filters" data-o="mix">${[['mix','AMC-style + drills'],['c','AMC-style only'],['g','Fresh drills only']].map(([k,n],i)=>`<button class="chip ${i===0?'on':''}" data-v="${k}">${n}</button>`).join('')}</div></div>
+  <div class="opt"><label class="h">Question mix</label><div class="filters" data-o="mix">${[['mix',cLabel(sid)+' + drills'],['c',cLabel(sid)+' only'],['g','Fresh drills only']].map(([k,n],i)=>`<button class="chip ${i===0?'on':''}" data-v="${k}">${n}</button>`).join('')}</div></div>
   <div class="opt"><label class="h">Timer</label><div class="filters" data-o="timer">${[['off','Untimed'],['amc','AMC pace (3 min / question)'],['fast','Speed (90 s / question)']].map(([k,n],i)=>`<button class="chip ${i===0?'on':''}" data-v="${k}">${n}</button>`).join('')}</div></div>
   <div class="row"><button class="btn pri" id="go">Start practice</button>${hist?`<span class="meta">Lifetime practice: ${hist.c}/${hist.t} correct (${Math.round(hist.c/hist.t*100)}%) over ${hist.s} session${hist.s>1?'s':''}</span>`:''}</div></div>`;
   const cfg={n:15,mix:'mix',timer:'off'};

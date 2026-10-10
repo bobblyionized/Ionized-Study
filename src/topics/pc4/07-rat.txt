@@ -1,0 +1,219 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc4-rat">
+<h2>4.5 Rational Functions</h2>
+<p>A <b>rational function</b> is a quotient of polynomials, $f(x)=\dfrac{g(x)}{h(x)}$, such as $\dfrac1x$, $\dfrac{4x-3}{2x+1}$, or $\dfrac{2x^3+5x+2}{x^2-7x+6}$. Its domain is every $x$ with $h(x)\ne0$. Unlike polynomials, their graphs can break apart and shoot off to infinity.</p>
+
+<h3>1. The Big-Little Principle</h3>
+<div class="box">If $c$ is far from $0$, then $\frac1c$ is close to $0$; if $c$ is close to $0$, then $\frac1c$ is far from $0$:
+$$\frac{1}{\text{big}}=\text{little},\qquad \frac{1}{\text{little}}=\text{big}.$$</div>
+<p>This explains the two basic graphs. Near $x=0$, $\frac1x$ and $\frac1{x^2}$ explode (the $y$-axis is a <b>vertical asymptote</b>); far from $0$ they shrink toward $0$ (the $x$-axis is a <b>horizontal asymptote</b>). An asymptote is a line the graph gets closer and closer to.</p>
+<div class="lfigs">
+<div class="lplot" data-f="1/x" data-x="-5,5" data-y="-5,5" data-w="180" data-cap="$y=\frac1x$"></div>
+<div class="lplot" data-f="1/(x*x)" data-x="-5,5" data-y="-2,6" data-w="180" data-cap="$y=\frac1{x^2}$"></div>
+</div>
+
+<h3>2. Linear rational functions</h3>
+<p>For $f(x)=\dfrac{ax+b}{cx+d}$ (with $c\ne0$ and $ad-bc\ne0$):</p>
+<div class="box"><ul><li>vertical asymptote $x=-\frac dc$ (where the denominator is $0$);</li>
+<li>horizontal asymptote $y=\frac ac$ (the ratio of leading coefficients).</li></ul></div>
+<p>Why the horizontal asymptote: divide top and bottom by $x$: $\dfrac{a+\frac bx}{c+\frac dx}$. For big $|x|$, $\frac bx$ and $\frac dx$ are little, so $f(x)\approx\frac ac$. Example: $\dfrac{x+1}{2x-4}$ has asymptotes $x=2$ and $y=\frac12$. Every such graph is a stretched, shifted copy of $\frac1x$.</p>
+<div class="lfigs"><div class="lplot" data-f="(x+1)/(2*x-4);0.5" data-x="-6,8" data-y="-5,5" data-w="230" data-cap="$\frac{x+1}{2x-4}$: asymptotes $x=2$, $y=\frac12$"></div></div>
+
+<h3>3. Intercepts, vertical asymptotes, and holes</h3>
+<p>Write $f=\frac gh$ in <b>lowest terms</b> first (cancel common factors).</p>
+<ul><li><b>$y$-intercept:</b> $f(0)$, if $0$ is in the domain.</li>
+<li><b>$x$-intercepts:</b> the zeros of the numerator (in lowest terms).</li>
+<li><b>Vertical asymptotes:</b> the zeros of the denominator (in lowest terms).</li>
+<li><b>Holes:</b> a factor $x-c$ that cancels leaves a single missing point at $x=c$.</li></ul>
+<p>Example: $f(x)=\dfrac{x^2-4}{x^2-x-2}=\dfrac{(x-2)(x+2)}{(x-2)(x+1)}$. Cancel: $\dfrac{x+2}{x+1}$ for $x\ne2$. Vertical asymptote $x=-1$; a <b>hole</b> at $x=2$, at height $\frac{4}{3}$; $x$-intercept $-2$; $y$-intercept $2$.</p>
+
+<h3>4. Horizontal asymptotes in general</h3>
+<div class="box">Let the numerator have degree $n$ and leading coefficient $a$, and the denominator degree $k$ and leading coefficient $c$.
+<ul><li>$n\lt k$: horizontal asymptote $y=0$.</li>
+<li>$n=k$: horizontal asymptote $y=\frac ac$.</li>
+<li>$n\gt k$: no horizontal asymptote (Section 4.5.A covers what happens instead).</li></ul></div>
+<p>A graph may cross its horizontal asymptote (in the middle); it can never cross a vertical one.</p>
+
+<h3>5. Applications</h3>
+<ul><li><b>Average cost:</b> if making $x$ items costs $C(x)=5000+12x$, the average cost per item is $A(x)=\frac{5000+12x}{x}$. Its horizontal asymptote $y=12$ says the average approaches the per-item cost as production grows. For $A(x)\le14$: $5000+12x\le14x$, so $x\ge2500$.</li>
+<li><b>Mixtures:</b> adding $x$ liters of pure acid to $10$ liters of $20\%$ acid gives concentration $\frac{2+x}{10+x}$, approaching $1$ (100%). To reach $50\%$: $2+x=5+0.5x$, $x=6$.</li></ul>
+
+<h3>Worked examples</h3>
+<div class="ex"><b class="lbl">Example 1.</b> Find the asymptotes of $y=\dfrac1{x-3}+2$.
+<details><summary>Solution</summary>It is $\frac1x$ shifted right $3$ and up $2$: vertical asymptote $x=3$, horizontal asymptote $y=2$. (As one fraction: $\frac{2x-5}{x-3}$, ratio of leading coefficients $2$.)</details></div>
+<div class="ex"><b class="lbl">Example 2.</b> Solve $\dfrac{2x+1}{x-1}=3$.
+<details><summary>Solution</summary>$2x+1=3x-3$, so $x=4$ (and $4\ne1$, so it's valid).</details></div>
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Calling every zero of the original denominator a vertical asymptote. Cancel first: canceled factors are holes.</li>
+<li>Using the degree rule backwards: bigger denominator degree gives $y=0$.</li>
+<li>Forgetting to exclude values that make the original denominator $0$ when solving equations.</li>
+</ul></div>
+</script>
+
+=== BANK ===
+@@ pc4-rat
+Q: What is the domain of $f(x)=\dfrac{x+1}{x^2-4}$?
+L: 1
+A: \text{all real numbers except }2\text{ and }-2
+W: \text{all real numbers except }-1
+W: \text{all real numbers except }4
+W: \text{all real numbers except }2
+W: \text{all real numbers}
+S: A rational function is defined wherever its denominator is nonzero.
+$x^2-4=0$ when $x=\pm2$. So the domain is all reals except $2$ and $-2$.
+(The numerator being zero at $x=-1$ is fine; it just gives an $x$-intercept.)
+---
+Q: What are the asymptotes of $f(x)=\dfrac{x+1}{2x-4}$?
+L: 1
+A: x=2\text{ and }y=\tfrac12
+W: x=-1\text{ and }y=\tfrac12
+W: x=2\text{ and }y=2
+W: x=4\text{ and }y=1
+W: x=-2\text{ and }y=-\tfrac14
+S: Vertical asymptote: the denominator $2x-4=0$ at $x=2$ (the numerator is $3\ne0$ there).
+Horizontal asymptote: numerator and denominator both have degree $1$, so it's the ratio of leading coefficients, $y=\frac12$.
+Reason: $\dfrac{x+1}{2x-4}=\dfrac{1+\frac1x}{2-\frac4x}\approx\dfrac{1}{2}$ for large $|x|$.
+---
+Q: The graph of $f(x)=\dfrac{x^2-1}{x-1}$ has a hole. Where?
+L: 1
+A: (1,\,2)
+W: (1,\,0)
+W: (-1,\,0)
+W: (0,\,1)
+W: \text{there is a vertical asymptote at }x=1\text{ instead}
+S: Factor: $\dfrac{(x-1)(x+1)}{x-1}=x+1$ for $x\ne1$.
+The factor $x-1$ cancels, so instead of a vertical asymptote there's a missing point at $x=1$.
+Its height is what the simplified formula gives: $1+1=2$. The hole is at $(1,2)$; the graph is the line $y=x+1$ with that point removed.
+---
+Q: For $f(x)=\dfrac{x^2-4}{x^2-x-2}$, which statement is true?
+L: 2
+A: \text{hole at }x=2\text{, vertical asymptote }x=-1
+W: \text{vertical asymptotes at }x=2\text{ and }x=-1
+W: \text{hole at }x=-1\text{, vertical asymptote }x=2
+W: \text{holes at }x=2\text{ and }x=-1
+W: \text{vertical asymptote }x=-2\text{, hole at }x=1
+S: Factor both: $\dfrac{(x-2)(x+2)}{(x-2)(x+1)}$.
+The factor $x-2$ cancels: hole at $x=2$ (height $\frac{2+2}{2+1}=\frac43$).
+After canceling, the denominator $x+1$ is zero at $x=-1$ while the numerator isn't: vertical asymptote $x=-1$.
+Also: horizontal asymptote $y=1$, $x$-intercept $-2$.
+---
+Q: What is the horizontal asymptote of $f(x)=\dfrac{3x^2+1}{x^3-2}$?
+L: 1
+A: y=0
+W: y=3
+W: y=-\tfrac12
+W: y=1
+W: \text{none}
+S: The numerator has degree $2$ and the denominator degree $3$: the denominator wins.
+For large $|x|$, $\dfrac{3x^2}{x^3}=\dfrac3x$, which is little (Big-Little Principle). So the horizontal asymptote is $y=0$.
+---
+Q: What are the intercepts of $f(x)=\dfrac{x-3}{x+2}$?
+L: 1
+A: x\text{-intercept }3,\ y\text{-intercept }-\tfrac32
+W: x\text{-intercept }-2,\ y\text{-intercept }-\tfrac32
+W: x\text{-intercept }3,\ y\text{-intercept }\tfrac32
+W: x\text{-intercept }-3,\ y\text{-intercept }-\tfrac32
+W: x\text{-intercept }3,\ y\text{-intercept }1
+S: $x$-intercept: the numerator is zero: $x-3=0$, $x=3$.
+$y$-intercept: $f(0)=\frac{-3}{2}=-\frac32$.
+($x=-2$ is the vertical asymptote, not an intercept.)
+---
+Q: It costs $\$5000$ plus $\$12$ per item to make $x$ items. At least how many items must be made for the average cost per item to be at most $\$14$?
+L: 2
+A: 2500
+W: 417
+W: 358
+W: 5000
+W: 2000
+S: Average cost: $A(x)=\dfrac{5000+12x}{x}$.
+$A(x)\le14$: $5000+12x\le14x$ (multiplying by $x\gt0$), so $5000\le2x$, $x\ge2500$.
+Note $A(x)$ approaches $12$ (its horizontal asymptote) but never reaches it, which is why the target must be above $12$.
+---
+Q: A tank holds $10$ liters of a $20\%$ acid solution. How many liters of pure acid must be added to make a $50\%$ solution?
+L: 2
+A: 6
+W: 3
+W: 5
+W: 10
+W: 4
+S: The tank has $0.2\cdot10=2$ liters of acid. After adding $x$ liters of pure acid, the concentration is $C(x)=\dfrac{2+x}{10+x}$.
+Set $\dfrac{2+x}{10+x}=0.5$: $2+x=5+0.5x$, so $0.5x=3$ and $x=6$.
+Check: $\frac{8}{16}=50\%$. ✓
+---
+Q: Which function has <b>no</b> vertical asymptote?
+L: 1
+A: \dfrac{x^2+1}{x^2+4}
+W: \dfrac{x^2+4}{x^2-1}
+W: \dfrac{1}{x}
+W: \dfrac{x}{x^2-9}
+W: \dfrac{2x+1}{x-5}
+S: Vertical asymptotes occur where the (lowest-terms) denominator is zero.
+$x^2+4\ge4\gt0$ for every real $x$, so $\frac{x^2+1}{x^2+4}$ is defined everywhere and has no vertical asymptote. (Its horizontal asymptote is $y=1$.)
+The others have denominators with real zeros: $\pm1$, $0$, $\pm3$, $5$.
+---
+Q: What are the asymptotes of $y=\dfrac{1}{x-3}+2$?
+L: 1
+A: x=3\text{ and }y=2
+W: x=-3\text{ and }y=2
+W: x=3\text{ and }y=-2
+W: x=2\text{ and }y=3
+W: x=3\text{ and }y=0
+S: This is $y=\frac1x$ shifted right $3$ (replacing $x$ by $x-3$) and up $2$.
+The asymptotes of $\frac1x$, namely $x=0$ and $y=0$, move to $x=3$ and $y=2$.
+---
+Q: Solve $\dfrac{2x+1}{x-1}=3$.
+L: 1
+A: x=4
+W: x=-4
+W: x=2
+W: x=1
+W: \text{no solution}
+S: Multiply both sides by $x-1$ (assuming $x\ne1$): $2x+1=3(x-1)=3x-3$.
+So $x=4$, and $4\ne1$, so it's a valid solution. Check: $\frac{9}{3}=3$. ✓
+---
+Q: The graph of $f(x)=\dfrac{2x^2-8}{x^2+3x+2}$ has how many vertical asymptotes?
+L: 2
+A: 1
+W: 2
+W: 0
+W: 3
+W: 4
+S: Factor: numerator $2(x-2)(x+2)$, denominator $(x+1)(x+2)$.
+The factor $x+2$ cancels, so $x=-2$ is a hole, not an asymptote.
+The remaining denominator $x+1$ gives one vertical asymptote, $x=-1$.
+=== GENS ===
+GENS['pc4-rat']=[
+/* asymptotes of a linear rational function */
+r=>{const a=ri(r,-5,5)||2,b=ri(r,-8,8),c=ri(r,1,4)*pick(r,[1,-1]),d=ri(r,-8,8);if(a*d-b*c===0)return GENS['pc4-rat'][0](r);
+ const va=F(-d,c),ha=F(a,c);const pr=(v,h)=>'x='+v.tex()+String.raw`\text{ and }y=`+h.tex();
+ const t=TXT(r,pr(va,ha),[pr(va.neg(),ha),pr(va,F(b,d||1)),pr(F(-b,a),ha),pr(ha,va)]);
+ return{lvl:1,q:T`What are the vertical and horizontal asymptotes of $f(x)=\dfrac{${lin(a,b)}}{${lin(c,d)}}$?`,a:t.a,w:t.w,
+ s:T`<b>Vertical:</b> the denominator $${lin(c,d)}$ is zero at $x=${va.tex()}$ (and the numerator isn't zero there), so $x=${va.tex()}$.<br><b>Horizontal:</b> both degrees are $1$, so the asymptote is the ratio of leading coefficients: $y=\dfrac{${a}}{${c}}=${ha.tex()}$.<br>Reason: dividing top and bottom by $x$ gives $\dfrac{${a}${b?(b<0?'-':'+')+'\\frac{'+Math.abs(b)+'}{x}':''}}{${c}${d?(d<0?'-':'+')+'\\frac{'+Math.abs(d)+'}{x}':''}}$, and the fractions with $x$ in the denominator shrink to $0$ for large $|x|$.`}},
+/* hole location */
+r=>{const p=ri(r,-5,5),q=ri(r,-5,5),s=ri(r,-5,5);if(p===s||q===p&&false)return GENS['pc4-rat'][1](r);if(p===s)return GENS['pc4-rat'][1](r);
+ const yv=F(p-q,p-s);const num=pl([1,-(p+q),p*q]),den=pl([1,-(p+s),p*s]);const pt=(x,y)=>'('+tx(x)+',\\,'+tx(y)+')';
+ const t=TXT(r,pt(p,yv),[pt(p,0),pt(s,F(s-q,1)),pt(-p,yv),pt(q,0)]);
+ return{lvl:2,q:T`The graph of $f(x)=\dfrac{${num}}{${den}}$ has a hole. Where is it?`,a:t.a,w:t.w,
+ s:T`Factor: $\dfrac{${fx(p)}${fx(q)}}{${fx(p)}${fx(s)}}$. The common factor $${fx(p)}$ cancels, leaving $\dfrac{${lin(1,-q)}}{${lin(1,-s)}}$ for $x\ne${p}$.<br>A canceled factor leaves a hole (not an asymptote) at $x=${p}$. Its height comes from the simplified formula: $\dfrac{${p}-${P(q)}}{${p}-${P(s)}}=${yv.tex()}$.<br>Hole: $${pt(p,yv)}$. (The vertical asymptote is $x=${s}$.)`}},
+/* horizontal asymptote by degrees */
+r=>{const n=ri(r,1,4),k=ri(r,1,4),a=ri(r,1,6)*pick(r,[1,-1]),c=ri(r,1,6)*pick(r,[1,-1]);
+ const pw=e=>e===1?'x':'x^{'+e+'}';const num=T`${a===1?'':a===-1?'-':a}${pw(n)}+${ri(r,1,9)}`,den=T`${c===1?'':c===-1?'-':c}${pw(k)}-${ri(r,1,9)}`;
+ const ans=n<k?'y=0':n===k?'y='+F(a,c).tex():String.raw`\text{none}`;
+ const t=TXT(r,ans,['y=0','y='+F(a,c).tex(),'y='+F(c,a).tex(),String.raw`\text{none}`,'y='+a,'y=1','y=-1','y='+(a+c||5)].filter(x=>x!==ans));
+ return{lvl:1,q:T`What is the horizontal asymptote of $f(x)=\dfrac{${num}}{${den}}$?`,a:t.a,w:t.w,
+ s:T`Compare degrees: numerator $${n}$, denominator $${k}$.<br>${n<k?T`The denominator's degree is bigger, so for large $|x|$, $f(x)\approx\dfrac{${a}${pw(n)}}{${c}${pw(k)}}=\dfrac{${F(a,c).tex()}}{${pw(k-n)}}$, which is little. Asymptote $y=0$.`:n===k?T`Equal degrees: $f(x)\approx\dfrac{${a}${pw(n)}}{${c}${pw(k)}}=${F(a,c).tex()}$. Asymptote $y=${F(a,c).tex()}$, the ratio of leading coefficients.`:T`The numerator's degree is bigger, so $f(x)\approx${F(a,c).tex()}${pw(n-k)}$ grows without bound. There is no horizontal asymptote.`}`}},
+/* count vertical asymptotes after canceling */
+r=>{const roots=sample(r,[-4,-3,-2,-1,1,2,3,4],3);const shared=ri(r,0,2);const den=roots,numr=roots.slice(0,shared).concat(sample(r,[-5,5,0,6].filter(x=>!roots.includes(x)),1));
+ const P1=den.map(c=>fx(c)).join(''),P2=numr.map(c=>fx(c)).join('');const cnt=3-shared;
+ return{lvl:2,q:T`How many vertical asymptotes does the graph of $f(x)=\dfrac{${P2}}{${P1}}$ have?`,a:cnt,w:[3,cnt+1>3?0:cnt+1,shared,cnt===2?1:2,4].filter(x=>x!==cnt),
+ s:T`The denominator is zero at $x=${den.join(',\\ ')}$.<br>${shared?T`But $${numr.slice(0,shared).map(c=>fx(c)).join(',\\ ')}$ also appear${shared===1?'s':''} in the numerator and cancel${shared===1?'s':''}, giving hole${shared===1?'':'s'} at $x=${numr.slice(0,shared).join(',\\ ')}$ instead of asymptotes.<br>`:'No factor cancels.<br>'}The remaining denominator zeros give $${cnt}$ vertical asymptote${cnt===1?'':'s'}.`}},
+/* average cost */
+r=>{const Fc=ri(r,10,90)*100,c=ri(r,5,40),gap=pick(r,[1,2,4,5]);const tgt=c+gap;const n=Math.ceil(Fc/gap);
+ return{lvl:2,q:T`It costs $\$${cm(Fc)}$ plus $\$${c}$ per item to make $x$ items. What is the smallest number of items for which the average cost per item is at most $\$${tgt}$?`,a:n,w:[Math.ceil(Fc/tgt),Math.ceil(Fc/c),n+gap,Math.round(n/2),n-1],
+ s:T`Average cost: $A(x)=\dfrac{${Fc}+${c}x}{x}$.<br>$A(x)\le${tgt}$ means $${Fc}+${c}x\le${tgt}x$ (multiply by $x\gt0$), so $${Fc}\le${gap}x$ and $x\ge${F(Fc,gap).tex()}${Fc%gap?T`\approx${(Fc/gap).toFixed(2)}`:''}$.<br>The smallest whole number is $${n}$.<br>(As $x$ grows, $A(x)$ approaches the horizontal asymptote $y=${c}$, the cost of one more item.)`}},
+/* mixture */
+r=>{const V=ri(r,2,10)*5,p0=pick(r,[10,20,25,30,40]),pt=pick(r,[50,60,75,80].filter(x=>x>p0));const a0=V*p0/100;/* (a0+x)/(V+x)=pt/100 */
+ const x=F(pt*V-100*a0,100-pt);if(!x.isInt()||x.n<=0)return GENS['pc4-rat'][5](r);
+ return{lvl:2,q:T`A container holds $${V}$ liters of a $${p0}\%$ acid solution. How many liters of pure acid must be added to make the solution $${pt}\%$ acid?`,a:x,w:[F(V*(pt-p0),100),x.add(V),F(V*pt,100).sub(a0),x.mul(2),x.add(1)],
+ s:T`Acid now: $${p0}\%$ of $${V}$ is $${a0}$ liters. After adding $x$ liters of pure acid, the concentration is $\dfrac{${a0}+x}{${V}+x}$.<br>Set it equal to $${pt/100}$: $${a0}+x=${pt/100}(${V}+x)=${pt*V/100}+${pt/100}x$.<br>$${(100-pt)/100}x=${pt*V/100-a0}$, so $x=${x.tex()}$ liters.<br>Check: $\frac{${a0}+${x.tex()}}{${V}+${x.tex()}}=\frac{${a0+x.v}}{${V+x.v}}=${pt}\%$. ✓`}},
+];

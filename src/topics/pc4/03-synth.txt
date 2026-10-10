@@ -1,0 +1,181 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc4-synth">
+<h2>4.2.A Synthetic Division</h2>
+<p>Dividing by a linear factor $x-c$ comes up constantly (finding roots, testing factors, evaluating polynomials). <b>Synthetic division</b> is a shorthand for that long division that keeps only the coefficients.</p>
+
+<h3>1. The procedure</h3>
+<p>To divide $x^3-5x^2+3x+7$ by $x-2$:</p>
+<ol><li>Write $c=2$ in the corner and the coefficients $1,\ -5,\ 3,\ 7$ in a row. <b>Include a $0$ for every missing power.</b></li>
+<li>Bring the first coefficient down.</li>
+<li>Multiply it by $c$, write the product under the next coefficient, and add. Repeat to the end.</li></ol>
+<table class="t" style="width:auto"><tr><td>$2$</td><td>$1$</td><td>$-5$</td><td>$3$</td><td>$7$</td></tr>
+<tr><td></td><td></td><td>$2$</td><td>$-6$</td><td>$-6$</td></tr>
+<tr><td></td><td><b>$1$</b></td><td><b>$-3$</b></td><td><b>$-3$</b></td><td><b>$1$</b></td></tr></table>
+<p>The bottom row gives the <b>quotient's coefficients</b> (one degree lower than the dividend) and, in the last position, the <b>remainder</b>:</p>
+$$x^3-5x^2+3x+7=(x-2)(x^2-3x-3)+1.$$
+<div class="warn"><h4>The sign of $c$</h4>For $x-c$ use $c$; for $x+3$ use $c=-3$. In synthetic division you <b>add</b> (long division subtracts, which is why the sign of $c$ flips).</div>
+
+<h3>2. Why it works</h3>
+<p>Each bottom-row number is what long division would produce at that step: bring down the leading coefficient, multiply by $c$, and combine with the next coefficient. Synthetic division is the same arithmetic as evaluating $f(c)$ by nesting: $x^3-5x^2+3x+7=((x-5)x+3)x+7$, and with $x=2$: $((2-5)2+3)2+7=1$.</p>
+
+<h3>3. Uses</h3>
+<ul><li><b>Evaluating:</b> the remainder is $f(c)$ (Remainder Theorem). For $2x^4+5x^3-x+7$ at $c=-3$: coefficients $2,5,0,-1,7$ give the bottom row $2,-1,3,-10,37$, so $f(-3)=37$.</li>
+<li><b>Testing a root:</b> remainder $0$ means $c$ is a root and $x-c$ a factor.</li>
+<li><b>Factoring:</b> after dividing out a root, the quotient (the <b>depressed polynomial</b>) has the remaining roots. $x^3-2x^2-9x+18$ divided by $x-3$ gives $x^2+x-6=(x+3)(x-2)$, so the roots are $3,-3,2$.</li></ul>
+
+<h3>4. Dividing by $ax-b$</h3>
+<p>Write $ax-b=a\left(x-\frac ba\right)$. Divide synthetically by $x-\frac ba$; the remainder is correct, and the quotient must then be <b>divided by $a$</b>. For $2x^3+3x^2-x+1$ divided by $2x-1$: use $c=\frac12$, getting $2,4,1$ with remainder $\frac32$. So dividing by $x-\frac12$ gives quotient $2x^2+4x+1$; dividing by $2x-1$ gives quotient $x^2+2x+\frac12$, remainder $\frac32$.</p>
+
+<h3>Worked examples</h3>
+<div class="ex"><b class="lbl">Example 1.</b> Divide $x^4-16$ by $x-2$.
+<details><summary>Solution</summary>Coefficients $1,0,0,0,-16$ with $c=2$: bottom row $1,2,4,8,0$. Quotient $x^3+2x^2+4x+8$, remainder $0$, so $x-2$ is a factor.</details></div>
+<div class="ex"><b class="lbl">Example 2.</b> Find the remainder when $2x^4-3x^2+x-4$ is divided by $x+1$.
+<details><summary>Solution</summary>$c=-1$; coefficients $2,0,-3,1,-4$; bottom row $2,-2,-1,2,-6$. Remainder $-6$ (and indeed $f(-1)=2-3-1-4=-6$).</details></div>
+<div class="tip"><h4>Speed tip</h4>On contests, synthetic division is the fastest way to evaluate a high-degree polynomial at an integer and to peel off roots one at a time.</div>
+</script>
+
+=== BANK ===
+@@ pc4-synth
+Q: Use synthetic division to divide $x^3-5x^2+3x+7$ by $x-2$. What is the quotient?
+L: 1
+A: x^2-3x-3
+W: x^2-7x+17
+W: x^2-3x+1
+W: x^2+3x-3
+W: x^3-3x^2-3x
+S: Set up with $c=2$ and coefficients $1,-5,3,7$.
+• Bring down $1$.
+• $1\cdot2=2$; $-5+2=-3$.
+• $-3\cdot2=-6$; $3+(-6)=-3$.
+• $-3\cdot2=-6$; $7+(-6)=1$.
+Bottom row $1,-3,-3\mid1$: quotient $x^2-3x-3$, remainder $1$.
+($x^2-7x+17$ comes from using $c=-2$, i.e. subtracting instead of adding.)
+---
+Q: What is the remainder when $2x^4-3x^2+x-4$ is divided by $x+1$?
+L: 1
+A: -6
+W: -4
+W: 2
+W: -2
+W: 6
+S: Use $c=-1$ and coefficients $2,0,-3,1,-4$ (note the $0$ for the missing $x^3$).
+Bring down $2$; $2(-1)=-2\Rightarrow0-2=-2$; $(-2)(-1)=2\Rightarrow-3+2=-1$; $(-1)(-1)=1\Rightarrow1+1=2$; $2(-1)=-2\Rightarrow-4-2=-6$.
+Remainder $-6$. Check: $f(-1)=2-3-1-4=-6$. ✓
+---
+Q: Given that $3$ is a root of $x^3-2x^2-9x+18$, what are the other two roots?
+L: 1
+A: -3\text{ and }2
+W: 3\text{ and }-2
+W: -3\text{ and }-2
+W: 2\text{ and }6
+W: -6\text{ and }1
+S: Divide by $x-3$ synthetically: coefficients $1,-2,-9,18$, $c=3$.
+Bring down $1$; $3\Rightarrow-2+3=1$; $3\Rightarrow-9+3=-6$; $-18\Rightarrow18-18=0$.
+The remainder is $0$ (confirming $3$ is a root) and the quotient is $x^2+x-6=(x+3)(x-2)$.
+The other roots are $-3$ and $2$.
+---
+Q: Divide $x^4-16$ by $x-2$. What is the quotient?
+L: 1
+A: x^3+2x^2+4x+8
+W: x^3-2x^2+4x-8
+W: x^3+2x^2+4x
+W: x^3+8
+W: x^3+2x+8
+S: Write all five coefficients, including zeros: $1,0,0,0,-16$, with $c=2$.
+Bring down $1$; $2\Rightarrow0+2=2$; $4\Rightarrow0+4=4$; $8\Rightarrow0+8=8$; $16\Rightarrow-16+16=0$.
+Quotient $x^3+2x^2+4x+8$, remainder $0$.
+Leaving out the zeros is the classic mistake; it would treat $x^4-16$ as $x-16$.
+---
+Q: Use synthetic division to evaluate $f(-3)$ for $f(x)=2x^4+5x^3-x+7$.
+L: 1
+A: 37
+W: 25
+W: 289
+W: -23
+W: 13
+S: Coefficients $2,5,0,-1,7$ (the $x^2$ term is missing), $c=-3$.
+Bring down $2$; $2(-3)=-6\Rightarrow5-6=-1$; $(-1)(-3)=3\Rightarrow0+3=3$; $3(-3)=-9\Rightarrow-1-9=-10$; $(-10)(-3)=30\Rightarrow7+30=37$.
+By the Remainder Theorem, $f(-3)=37$. Direct check: $2(81)+5(-27)+3+7=162-135+10=37$. ✓
+---
+Q: When $2x^3+3x^2-x+1$ is divided by $2x-1$, what is the quotient?
+L: 2
+A: x^2+2x+\tfrac12
+W: 2x^2+4x+1
+W: x^2+2x+1
+W: 2x^2+2x+\tfrac12
+W: x^2+4x+1
+S: $2x-1=2\left(x-\tfrac12\right)$. First divide by $x-\tfrac12$ with $c=\tfrac12$: coefficients $2,3,-1,1$.
+Bring down $2$; $2\cdot\frac12=1\Rightarrow3+1=4$; $4\cdot\frac12=2\Rightarrow-1+2=1$; $1\cdot\frac12=\frac12\Rightarrow1+\frac12=\frac32$.
+So $f(x)=\left(x-\tfrac12\right)(2x^2+4x+1)+\tfrac32=(2x-1)\left(x^2+2x+\tfrac12\right)+\tfrac32$.
+Dividing by $2x-1$, the quotient is $x^2+2x+\frac12$ (the synthetic quotient divided by $2$) and the remainder is $\frac32$.
+---
+Q: In synthetic division of $f(x)$ by $x-c$, the bottom row is $3\quad-1\quad0\quad4\mid5$. Which statement is true?
+L: 1
+A: f(x)=(x-c)(3x^3-x^2+4)+5
+W: f(x)=(x-c)(3x^4-x^3+4x)+5
+W: f(x)=(x-c)(3x^2-x+4)+5
+W: f(c)=0
+W: f(x)\text{ has degree }3
+S: The last number of the bottom row is the remainder, $5$. The other numbers $3,-1,0,4$ are the quotient's coefficients, starting one degree below $f$.
+Four quotient coefficients means the quotient has degree $3$: $3x^3-x^2+0x+4$.
+So $f(x)=(x-c)(3x^3-x^2+4)+5$, and $f$ has degree $4$. Also $f(c)=5$, not $0$.
+---
+Q: What is the remainder when $x^5-3x^4+2x^2-x+10$ is divided by $x-3$?
+L: 1
+A: 25
+W: 10
+W: 16
+W: -14
+W: 52
+S: Coefficients $1,-3,0,2,-1,10$, $c=3$.
+Bring down $1$; $3\Rightarrow-3+3=0$; $0\Rightarrow0+0=0$; $0\Rightarrow2+0=2$; $6\Rightarrow-1+6=5$; $15\Rightarrow10+15=25$.
+Remainder $25$. (The quotient is $x^4+2x+5$.)
+---
+Q: For what value of $k$ does $x+2$ divide $x^3+4x^2+kx-6$ evenly?
+L: 2
+A: 1
+W: -1
+W: 3
+W: -7
+W: 5
+S: Divide synthetically by $x+2$ ($c=-2$): coefficients $1,4,k,-6$.
+Bring down $1$; $-2\Rightarrow4-2=2$; $-4\Rightarrow k-4$; $-2(k-4)=-2k+8\Rightarrow-6-2k+8=2-2k$.
+The remainder $2-2k$ must be $0$, so $k=1$.
+Check: $x^3+4x^2+x-6=(x+2)(x^2+2x-3)=(x+2)(x+3)(x-1)$. ✓
+=== GENS ===
+GENS['pc4-synth']=[
+/* quotient by synthetic division */
+r=>{const n=pick(r,[3,4]);const cs=[pick(r,[1,2,3,-1])].concat(Array.from({length:n},()=>ri(r,-7,7)));const c=ri(r,-3,3)||2;
+ const row=[cs[0]];for(let i=1;i<=n;i++)row.push(cs[i]+row[i-1]*c);const q=row.slice(0,n),rem=row[n];
+ const wrongRow=[cs[0]];for(let i=1;i<=n;i++)wrongRow.push(cs[i]-wrongRow[i-1]*c);
+ const ans=pl(q);const t=TXT(r,ans,[pl(wrongRow.slice(0,n)),pl(q.concat([0])),pl(q.map((v,i)=>i===q.length-1?v+1:v)),pl(row.slice(1))]);
+ const tbl=`<table class="t" style="width:auto"><tr><td>$${c}$</td>${cs.map(v=>`<td>$${v}$</td>`).join('')}</tr><tr><td></td><td></td>${row.slice(0,n).map(v=>`<td>$${v*c}$</td>`).join('')}</tr><tr><td></td>${row.map((v,i)=>`<td><b>$${v}$</b>${i===n?' (remainder)':''}</td>`).join('')}</tr></table>`;
+ return{lvl:1,q:T`Use synthetic division to divide $${pl(cs)}$ by $x${c<0?'+'+(-c):'-'+c}$. What is the quotient?`,a:t.a,w:t.w,
+ s:T`Use $c=${c}$ and the coefficients $${cs.join(',\\ ')}$. Bring down the first, then repeatedly multiply by $${c}$ and add:${tbl}The bottom row gives the quotient's coefficients (one degree lower) and the remainder $${rem}$.<br>Quotient: $${ans}$.`}},
+/* remainder / evaluation with a missing term */
+r=>{const n=pick(r,[4,5]);const cs=Array.from({length:n+1},(_,i)=>i===0?1:ri(r,-5,5));cs[ri(r,1,n-1)]=0;const c=ri(r,-3,3)||-2;const v=ev(cs,c);
+ const noZero=cs.filter((x,i)=>x!==0||i===0);const wrong=ev(noZero,c);
+ const row=[cs[0]];for(let i=1;i<=n;i++)row.push(cs[i]+row[i-1]*c);
+ return{lvl:1,q:T`What is the remainder when $${pl(cs)}$ is divided by $x${c<0?'+'+(-c):'-'+c}$?`,a:v,w:[wrong===v?v+2:wrong,ev(cs,-c),v-1,cs[n],v+c],
+ s:T`Write every coefficient, including $0$ for missing powers: $${cs.join(',\\ ')}$. Use $c=${c}$.<br>Bottom row: $${row.join(',\\ ')}$.<br>The last entry is the remainder: $${v}$. By the Remainder Theorem this also equals $f(${c})$.${wrong!==v?T`<br>(Skipping the zero placeholder gives the wrong value $${wrong}$.)`:''}`}},
+/* missing entry in a synthetic division table */
+r=>{const cs=[pick(r,[1,2,3])].concat(Array.from({length:3},()=>ri(r,-8,8)));const c=ri(r,-4,4)||3;
+ const row=[cs[0]];for(let i=1;i<=3;i++)row.push(cs[i]+row[i-1]*c);const mid=row.slice(0,3).map(v=>v*c);
+ const pos=ri(r,0,2),which=r()<.5?'mid':'row';const hidden=which==='mid'?mid[pos]:row[pos+1];
+ const box=String.raw`\boxed{\ ?\ }`;
+ const tbl=`<table class="t" style="width:auto"><tr><td>$${c}$</td>${cs.map(v=>`<td>$${v}$</td>`).join('')}</tr><tr><td></td><td></td>${mid.map((v,i)=>`<td>$${which==='mid'&&i===pos?box:v}$</td>`).join('')}</tr><tr><td></td>${row.map((v,i)=>`<td>$${which==='row'&&i===pos+1?box:v}$</td>`).join('')}</tr></table>`;
+ return{lvl:1,q:T`In this synthetic division, what number belongs in the box?${tbl}`,a:hidden,w:[-hidden===hidden?hidden+3:-hidden,hidden+c,hidden-c,which==='mid'?row[pos]:cs[pos+1]-mid[pos],hidden+1],
+ s:which==='mid'?T`The middle row holds (previous bottom entry)$\times c$. The bottom entry to the left of the box is $${row[pos]}$, and $c=${c}$, so the box is $${row[pos]}\times${P(c)}=${hidden}$.<br>Check: $${cs[pos+1]}+${P(hidden)}=${row[pos+1]}$ matches the bottom row. ✓`
+ :T`Each bottom entry is (top entry) $+$ (middle entry). In that column the top entry is $${cs[pos+1]}$ and the middle entry is $${mid[pos]}$, so the box is $${cs[pos+1]}+${P(mid[pos])}=${hidden}$.`}},
+/* factor completely given one root */
+r=>{const rs=sample(r,[-5,-4,-3,-2,-1,1,2,3,4,5],3);const cs=[1,-(rs[0]+rs[1]+rs[2]),rs[0]*rs[1]+rs[0]*rs[2]+rs[1]*rs[2],-rs[0]*rs[1]*rs[2]];
+ const other=[rs[1],rs[2]].sort((a,b)=>a-b);const ans=other[0]+String.raw`\text{ and }`+other[1];
+ const t=TXT(r,ans,[(-other[1])+String.raw`\text{ and }`+(-other[0]),other[0]+String.raw`\text{ and }`+(-other[1]),(-other[0])+String.raw`\text{ and }`+other[1],rs[0]+String.raw`\text{ and }`+(other[0]+other[1])]);
+ const q=[1,cs[1]+rs[0],cs[2]+(cs[1]+rs[0])*rs[0]];
+ return{lvl:1,q:T`Given that $${rs[0]}$ is a root of $${pl(cs)}$, what are the other two roots?`,a:t.a,w:t.w,
+ s:T`Divide by $x${rs[0]<0?'+'+(-rs[0]):'-'+rs[0]}$ synthetically with $c=${rs[0]}$: coefficients $${cs.join(',\\ ')}$, bottom row $${q.join(',\\ ')},\ 0$.<br>The remainder $0$ confirms the root. The quotient is $${pl(q)}=${fx(rs[1])}${fx(rs[2])}$.<br>So the other roots are $${other[0]}$ and $${other[1]}$.`}},
+/* find k for exact division */
+r=>{const c=ri(r,-3,3)||-1;const a=ri(r,-5,5),d=ri(r,-9,9);const k=F(-(c**3+a*c*c+d),c);if(c===0)return GENS['pc4-synth'][4](r);
+ return{lvl:2,q:T`For what value of $k$ does $x${c<0?'+'+(-c):'-'+c}$ divide $x^3${a?(a<0?'-':'+')+Math.abs(a)+'x^2':''}+kx${d<0?'-':'+'}${Math.abs(d)}$ with remainder $0$?`,a:k,w:[k.neg(),k.add(1),F(-(-(c**3)+a*c*c+d),-c),F(d,c)],
+ s:T`Synthetic division by $x-${P(c)}$ (or the Remainder Theorem): the remainder is $f(${c})=${P(c)}^3${a?'+'+P(a)+'\\cdot'+P(c)+'^2':''}+k\cdot${P(c)}${d<0?'-':'+'}${Math.abs(d)}=${c===1?'':c===-1?'-':c}k+${P(c**3+a*c*c+d)}$.<br>Setting it to $0$: $${c===1?'':c===-1?'-':c}k=${-(c**3+a*c*c+d)}$, so $k=${k.tex()}$.`}},
+];

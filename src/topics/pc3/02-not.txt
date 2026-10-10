@@ -1,0 +1,277 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc3-not">
+<h2>3.2 Functional Notation</h2>
+<p>Functional notation is a shorthand language. If a function is named $f$ and $x$ is an input, then $f(x)$ (read "$f$ of $x$") means <b>the output that $f$ produces from the input $x$</b>. The sentence "the distance the rock has fallen after $t$ seconds is $16t^2$ feet" becomes simply $d(t)=16t^2$, and "the tax on $\$25{,}000$ is $\$693.75$" becomes $T(25000)=693.75$.</p>
+<div class="box"><h4>The one rule of evaluation</h4>A formula like $f(x)=\sqrt{x^2+1}$ is a set of directions: "square the input, add $1$, take the square root." To find $f(\text{anything})$, <b>replace every $x$ in the formula by that entire thing, in parentheses</b>.
+<ul><li>$f(3)=\sqrt{3^2+1}=\sqrt{10}$, $\quad f(-5)=\sqrt{(-5)^2+1}=\sqrt{26}$</li>
+<li>$f(a+1)=\sqrt{(a+1)^2+1}=\sqrt{a^2+2a+2}$</li></ul></div>
+
+<h3>1. Evaluating at expressions</h3>
+<p>Let $h(x)=\dfrac{x^2+5}{x-1}$. Then</p>
+<ul><li>$h(-2)=\dfrac{(-2)^2+5}{-2-1}=\dfrac{9}{-3}=-3$</li>
+<li>$h(-a)=\dfrac{(-a)^2+5}{-a-1}=\dfrac{a^2+5}{-a-1}$</li>
+<li>$h(r^2+3)=\dfrac{(r^2+3)^2+5}{(r^2+3)-1}=\dfrac{r^4+6r^2+14}{r^2+2}$</li></ul>
+<p><b>$f(-x)$ is not $-f(x)$.</b> If $f(x)=x^2+x-2$, then $f(-x)=(-x)^2+(-x)-2=x^2-x-2$, while $-f(x)=-(x^2+x-2)=-x^2-x+2$. The first changes the <i>input</i>; the second negates the <i>output</i>.</p>
+
+<h3>2. Common mistakes</h3>
+<div class="warn"><h4>Functional notation is not multiplication</h4>The parentheses in $f(x)$ do not mean "times," so the distributive law does <b>not</b> apply. In general:
+<ul><li>$f(a+b)\ne f(a)+f(b)$. With $f(x)=x^2$: $f(3+2)=25$ but $f(3)+f(2)=13$.</li>
+<li>$f(a-b)\ne f(a)-f(b)$.</li>
+<li>$f(ab)\ne f(a)f(b)$. With $f(x)=x+7$: $f(3\cdot4)=19$ but $f(3)f(4)=110$.</li>
+<li>$f(ab)\ne a\,f(b)$ and $f(ab)\ne f(a)\,b$. With $f(x)=x^2+1$: $f(2\cdot3)=37$ but $f(2)\cdot3=15$.</li></ul>
+A few special functions do satisfy some of these ($f(x)=3x$ satisfies $f(a+b)=f(a)+f(b)$), but you can never assume it.</div>
+
+<h3>3. The difference quotient</h3>
+<p>For a function $f$ and a number $h\ne0$, the <b>difference quotient</b> is</p>
+$$\frac{f(x+h)-f(x)}{h}.$$
+<p>It measures the average rate of change of $f$ between $x$ and $x+h$ (Section 3.6), and it is the starting point of calculus. To compute it, work in three steps:</p>
+<ol><li>Find $f(x+h)$ by replacing $x$ with $x+h$, and expand.</li>
+<li>Subtract $f(x)$. <b>Everything without an $h$ cancels.</b> If it doesn't, you've made an error.</li>
+<li>Factor $h$ out of every remaining term and cancel it with the denominator.</li></ol>
+<div class="ex"><b class="lbl">Example.</b> Difference quotient of $f(x)=x^2-x+2$.
+<details open><summary>Solution</summary>
+$f(x+h)=(x+h)^2-(x+h)+2=x^2+2xh+h^2-x-h+2$.<br>
+$f(x+h)-f(x)=(x^2+2xh+h^2-x-h+2)-(x^2-x+2)=2xh+h^2-h$.<br>
+$\dfrac{f(x+h)-f(x)}{h}=\dfrac{h(2x+h-1)}{h}=2x+h-1.$</details></div>
+<div class="box"><h4>Difference quotients worth remembering</h4><ul>
+<li>$f(x)=mx+b$: $\;m$ (a line's rate of change is its slope)</li>
+<li>$f(x)=ax^2+bx+c$: $\;2ax+ah+b$</li>
+<li>$f(x)=x^3$: $\;3x^2+3xh+h^2$</li>
+<li>$f(x)=\dfrac1x$: $\;\dfrac{-1}{x(x+h)}$ (combine the fractions over $x(x+h)$ first)</li>
+<li>$f(x)=\sqrt x$: $\;\dfrac{1}{\sqrt{x+h}+\sqrt x}$ (multiply top and bottom by the conjugate)</li></ul></div>
+
+<h3>4. Domains: the domain convention</h3>
+<div class="box"><h4>Domain convention</h4>Unless told otherwise, the domain of $f$ is every real number for which the formula produces a real number.</div>
+<p>In practice you only have to look out for two things:</p>
+<ul><li><b>Division by zero:</b> exclude any $x$ that makes a denominator $0$. The domain of $k(x)=\frac{x^2+5}{x-1}$ is all reals except $1$.</li>
+<li><b>Even roots of negatives:</b> require what's under $\sqrt{\ }$ (or $\sqrt[4]{\ }$, ...) to be $\ge0$. The domain of $f(u)=\sqrt{u+2}$ is $u\ge-2$, that is $[-2,\infty)$.</li></ul>
+<p>When both occur, combine the conditions. For $g(t)=\dfrac{\sqrt{t-2}}{t-3}$ we need $t\ge2$ <b>and</b> $t\ne3$: the domain is $[2,3)\cup(3,\infty)$. A root in the denominator, as in $\frac{1}{\sqrt{x-4}}$, needs $x-4>0$ (strictly), since the root can't be $0$ either.</p>
+<p>Odd roots ($\sqrt[3]{\ }$) and polynomials accept every real number.</p>
+
+<h3>5. Piecewise-defined functions</h3>
+<p>A <b>piecewise-defined</b> function uses different formulas on different parts of its domain:</p>
+$$f(x)=\begin{cases}2x+3 & \text{if } x\lt 4\\ x^2-1 & \text{if } 4\le x\le10\end{cases}$$
+<p>To evaluate, first decide <b>which condition the input satisfies</b>, then use only that formula: $f(-5)=2(-5)+3=-7$ and $f(8)=8^2-1=63$. You can't find $f(k)$ until you know where $k$ lies. Here the rule says nothing for $x\gt10$, so the domain is $(-\infty,10]$.</p>
+<p>Tax schedules are piecewise functions. For the Louisiana tax of Section 3.1:</p>
+$$T(x)=\begin{cases}0.021x & 0\le x\lt 12{,}500\\ 262.50+0.0345(x-12{,}500) & 12{,}500\le x\lt 25{,}000\\ 693.75+0.048(x-25{,}000) & x\ge 25{,}000\end{cases}$$
+
+<h3>6. Applications: cost, revenue, profit</h3>
+<p>If a factory has fixed costs $F$, each item costs $c$ to make, and sells for $p$, then with $x$ items</p>
+<ul><li>Revenue $R(x)=px$, cost $C(x)=cx+F$, and profit $P(x)=R(x)-C(x)=(p-c)x-F$.</li>
+<li>The <b>break-even point</b> is where $P(x)=0$, that is, $x=\dfrac{F}{p-c}$. If this isn't a whole number, the factory loses money just below it and makes money just above it.</li>
+<li>The domain of an applied function is set by the situation: whole numbers of items, up to the factory's capacity.</li></ul>
+<p>Example: fixed costs $\$12{,}000$ a week, $\$0.80$ per cup, selling price $\$1.95$. Then $P(x)=1.15x-12000$, so $P(5000)=-6250$ (a loss), $P(14000)=4100$, and the break-even point is $\frac{12000}{1.15}\approx10{,}434.8$ cups.</p>
+
+<h3>More worked examples</h3>
+<div class="ex"><b class="lbl">Example 1.</b> If $f(x)=|3-x|\sqrt{x-3}+7$, find $f(7)-f(4)$.
+<details><summary>Solution</summary>$f(7)=|{-4}|\sqrt4+7=4\cdot2+7=15$ and $f(4)=|{-1}|\sqrt1+7=1+7=8$, so the difference is $7$.</details></div>
+<div class="ex"><b class="lbl">Example 2.</b> Find the domain of $g(r)=\sqrt{r-4}+\sqrt r-2$.
+<details><summary>Solution</summary>We need $r-4\ge0$ and $r\ge0$. Both hold exactly when $r\ge4$, so the domain is $[4,\infty)$.</details></div>
+<div class="ex"><b class="lbl">Example 3.</b> Compute the difference quotient of $f(x)=\dfrac1x$.
+<details><summary>Solution</summary>$f(x+h)-f(x)=\dfrac1{x+h}-\dfrac1x=\dfrac{x-(x+h)}{x(x+h)}=\dfrac{-h}{x(x+h)}$. Dividing by $h$ gives $\dfrac{-1}{x(x+h)}$.</details></div>
+<div class="tip"><h4>Habit that prevents most errors</h4>When you substitute, <b>always write the parentheses first</b>, then fill them in: $f(\ \ )=(\ \ )^2-(\ \ )+2$. Most sign errors come from writing $-x+h$ instead of $-(x+h)$.</div>
+</script>
+
+=== BANK ===
+@@ pc3-not
+Q: If $h(x)=\dfrac{x^2+5}{x-1}$, what is $h(-2)$?
+L: 1
+A: -3
+W: 3
+W: -1
+W: 1
+W: -\frac{1}{3}
+S: Replace every $x$ by $(-2)$:
+$h(-2)=\dfrac{(-2)^2+5}{(-2)-1}=\dfrac{4+5}{-3}=\dfrac{9}{-3}=-3$.
+Note $(-2)^2=+4$. Writing $-2^2=-4$ would give $\frac{1}{-3}$, a common slip.
+---
+Q: If $f(x)=x^2-x+2$, which expression equals the difference quotient $\dfrac{f(x+h)-f(x)}{h}$ (for $h\ne0$)?
+L: 1
+A: 2x+h-1
+W: 2x-1
+W: 2x+h+1
+W: h-1
+W: 2xh+h^2-h
+S: Step 1: $f(x+h)=(x+h)^2-(x+h)+2=x^2+2xh+h^2-x-h+2$.
+Step 2: subtract $f(x)$: $\;(x^2+2xh+h^2-x-h+2)-(x^2-x+2)=2xh+h^2-h$. All terms without $h$ cancelled, as they must.
+Step 3: divide by $h$: $\;\dfrac{2xh+h^2-h}{h}=\dfrac{h(2x+h-1)}{h}=2x+h-1$.
+($2xh+h^2-h$ is the numerator before dividing; $2x-1$ is what you get if you drop the $h$, which is the calculus limit, not the difference quotient.)
+---
+Q: What is the difference quotient of $f(x)=x^3+2x$?
+L: 2
+A: 3x^2+3xh+h^2+2
+W: 3x^2+2
+W: 3x^2+3xh+h^2
+W: x^2+xh+h^2+2
+W: 3x^2h+3xh^2+h^3+2h
+S: Expand $(x+h)^3=x^3+3x^2h+3xh^2+h^3$.
+$f(x+h)=x^3+3x^2h+3xh^2+h^3+2x+2h$.
+$f(x+h)-f(x)=3x^2h+3xh^2+h^3+2h$ (the $x^3$ and $2x$ cancel).
+Factor out $h$ and cancel: $\dfrac{h(3x^2+3xh+h^2+2)}{h}=3x^2+3xh+h^2+2$.
+---
+Q: What is the difference quotient of $f(x)=\dfrac{1}{x}$?
+L: 2
+A: \dfrac{-1}{x(x+h)}
+W: \dfrac{1}{x(x+h)}
+W: \dfrac{-1}{x^2}
+W: \dfrac{-h}{x(x+h)}
+W: \dfrac{1}{h}
+S: Combine the two fractions over the common denominator $x(x+h)$:
+$f(x+h)-f(x)=\dfrac{1}{x+h}-\dfrac1x=\dfrac{x-(x+h)}{x(x+h)}=\dfrac{-h}{x(x+h)}$.
+Now divide by $h$, which is the same as multiplying by $\frac1h$: $\dfrac{-h}{x(x+h)}\cdot\dfrac1h=\dfrac{-1}{x(x+h)}$.
+($\frac{-h}{x(x+h)}$ forgets the division by $h$; $-\frac1{x^2}$ is the calculus limit as $h\to0$.)
+---
+Q: If $f(x)=|3-x|\sqrt{x-3}+7$, what is $f(7)-f(4)$?
+L: 1
+A: 7
+W: 3
+W: 8
+W: 15
+W: 0
+S: $f(7)=|3-7|\sqrt{7-3}+7=|{-4}|\cdot\sqrt4+7=4\cdot2+7=15$.
+$f(4)=|3-4|\sqrt{4-3}+7=1\cdot1+7=8$.
+So $f(7)-f(4)=15-8=7$.
+---
+Q: What is the domain of $g(t)=\dfrac{\sqrt{t-2}}{t-3}$?
+L: 1
+A: [2,3)\cup(3,\infty)
+W: [2,\infty)
+W: (2,\infty)
+W: (3,\infty)
+W: (-\infty,3)\cup(3,\infty)
+S: Two restrictions:
+• The square root needs $t-2\ge0$, so $t\ge2$.
+• The denominator can't be zero, so $t\ne3$.
+Both must hold: every $t\ge2$ except $3$. In interval notation, $[2,3)\cup(3,\infty)$.
+($t=2$ is allowed: $g(2)=\frac{0}{-1}=0$.)
+---
+Q: What is the domain of $g(r)=\sqrt{r-4}+\sqrt{r}-2$?
+L: 1
+A: [4,\infty)
+W: [0,\infty)
+W: [0,4]
+W: (4,\infty)
+W: [2,\infty)
+S: Each square root needs a nonnegative input:
+• $\sqrt{r-4}$ needs $r\ge4$.
+• $\sqrt r$ needs $r\ge0$.
+Both hold exactly when $r\ge4$ (any $r\ge4$ is automatically $\ge0$). The "$-2$" outside the roots doesn't restrict anything.
+Domain: $[4,\infty)$.
+---
+Q: Let $f(x)=\begin{cases}2x+3&x\lt4\\x^2-1&4\le x\le10\end{cases}$. What is $f(-5)+f(4)+f(8)$?
+L: 1
+A: 71
+W: 59
+W: 74
+W: 82
+W: 63
+S: Decide which piece each input uses, then evaluate.
+• $-5\lt4$: first piece, $f(-5)=2(-5)+3=-7$.
+• $4$ satisfies $4\le x\le10$ (note the $\le$): second piece, $f(4)=16-1=15$.
+• $8$ is between $4$ and $10$: second piece, $f(8)=64-1=63$.
+Sum: $-7+15+63=71$.
+(Using the first piece for $x=4$ gives $f(4)=11$ and the wrong total $67$; "$59$" comes from $-7+3+63$.)
+---
+Q: A glassware factory has fixed costs of $\$12{,}000$ per week. Each cup costs $\$0.80$ to make and sells for $\$1.95$. What is the smallest number of cups the factory must sell in a week to make a profit?
+L: 2
+A: 10435
+W: 10434
+W: 15000
+W: 6154
+W: 10000
+S: Revenue: $R(x)=1.95x$. Cost: $C(x)=0.80x+12000$.
+Profit: $P(x)=R(x)-C(x)=1.15x-12000$.
+Break-even: $1.15x=12000$, so $x=\dfrac{12000}{1.15}\approx10434.78$.
+At $x=10434$ the profit is $1.15(10434)-12000=-0.90$, a small loss. At $x=10435$ it is $+0.25$. So the answer is $10435$ cups.
+($6154\approx12000/1.95$ ignores the cost of making the cups.)
+---
+Q: If $f(x)=x+|x|+\lfloor x\rfloor$, what is $f(-\tfrac32)+f(\tfrac12)$?
+L: 2
+A: -1
+W: 1
+W: -2
+W: 0
+W: -3
+S: Evaluate each term carefully.
+$f(-\frac32)=-\frac32+\left|-\frac32\right|+\lfloor-1.5\rfloor=-\frac32+\frac32+(-2)=-2$.
+$f(\frac12)=\frac12+\frac12+\lfloor0.5\rfloor=1+0=1$.
+Sum: $-2+1=-1$.
+($\lfloor-1.5\rfloor=-2$, not $-1$: the greatest integer function rounds down.)
+---
+Q: For which function is $f(a+b)=f(a)+f(b)$ true for <b>all</b> real numbers $a$ and $b$?
+L: 2
+A: f(x)=5x
+W: f(x)=x^2
+W: f(x)=x+5
+W: f(x)=\sqrt{x^2+1}
+W: f(x)=|x|
+S: Test each candidate with a pair of numbers, for example $a=1$, $b=-1$, or just check algebraically.
+• $f(x)=5x$: $f(a+b)=5a+5b=f(a)+f(b)$. ✓ Always true.
+• $f(x)=x^2$: $f(1+1)=4$ but $f(1)+f(1)=2$. ✗
+• $f(x)=x+5$: $f(a+b)=a+b+5$, but $f(a)+f(b)=a+b+10$. ✗
+• $\sqrt{x^2+1}$: $f(0+0)=1$ but $f(0)+f(0)=2$. ✗
+• $|x|$: $f(1+(-1))=0$ but $f(1)+f(-1)=2$. ✗
+This is the warning of this section: $f(a+b)=f(a)+f(b)$ is special, not automatic.
+---
+Q: If $f(x)=x^2+x-2$, what is $f(-x)+f(x)$?
+L: 1
+A: 2x^2-4
+W: 0
+W: 2x
+W: 2x^2+2x-4
+W: -4
+S: $f(-x)$: replace $x$ by $(-x)$: $(-x)^2+(-x)-2=x^2-x-2$.
+Add $f(x)=x^2+x-2$: $(x^2-x-2)+(x^2+x-2)=2x^2-4$.
+The odd-power term $x$ cancels; the even ones double. Note that $f(-x)$ is <b>not</b> $-f(x)=-x^2-x+2$; if it were, the sum would be $0$.
+=== GENS ===
+GENS['pc3-not']=[
+/* evaluate a quadratic at a number */
+r=>{const a=ri(r,1,4)*pick(r,[1,-1]),b=ri(r,-6,6),c=ri(r,-9,9),x=ri(r,-5,5)||-3;const v=a*x*x+b*x+c;
+ const wrongSq=a*(-(x*x))+b*x+c;
+ return{lvl:1,q:T`If $f(x)=${pl([a,b,c])}$, what is $f(${x})$?`,a:v,w:[x<0?wrongSq:a*x*x-b*x+c,a*x*x-b*x+c,v+1,-v,v-2],
+ s:T`Replace every $x$ with $(${x})$:<br>$f(${x})=${a}\cdot ${P(x)}^2+${P(b)}\cdot ${P(x)}+${P(c)}$<br>$=${a}\cdot${x*x}+${P(b*x)}+${P(c)}$<br>$=${a*x*x}+${P(b*x)}+${P(c)}=${v}$.${x<0?T`<br>Remember $(${x})^2=+${x*x}$; squaring a negative gives a positive.`:''}`}},
+/* difference quotient of a quadratic */
+r=>{const a=ri(r,1,5)*pick(r,[1,-1]),b=ri(r,-7,7),c=ri(r,-9,9);
+ const ans=trm([[2*a,'x'],[a,'h'],[b,'']]);
+ const t=TXT(r,ans,[trm([[2*a,'x'],[b,'']]),trm([[a,'x'],[a,'h'],[b,'']]),trm([[2*a,'x'],[a,'h'],[b+c,'']]),trm([[2*a,'xh'],[a,'h^2'],[b,'h']])]);
+ return{lvl:2,q:T`If $f(x)=${pl([a,b,c])}$, what is the difference quotient $\dfrac{f(x+h)-f(x)}{h}$?`,a:t.a,w:t.w,
+ s:T`<b>Step 1.</b> $f(x+h)=${a}(x+h)^2${b<0?'-':'+'}${Math.abs(b)}(x+h)${c<0?'-':'+'}${Math.abs(c)}=${trm([[a,'x^2'],[2*a,'xh'],[a,'h^2'],[b,'x'],[b,'h'],[c,'']])}$.<br><b>Step 2.</b> Subtract $f(x)=${pl([a,b,c])}$. The $x^2$, $x$ and constant terms cancel, leaving $${trm([[2*a,'xh'],[a,'h^2'],[b,'h']])}$.<br><b>Step 3.</b> Every term has a factor $h$: $\dfrac{h(${ans})}{h}=${ans}$.<br>Check with the pattern: for $ax^2+bx+c$ the difference quotient is $2ax+ah+b$. The constant $c$ never appears.`}},
+/* domain from a radical over a linear factor: count integers */
+r=>{const a=ri(r,-6,3),b=a+ri(r,1,6),hi=b+ri(r,2,8);const cnt=hi-a+1-1;
+ return{lvl:1,q:T`How many integers $x$ with $${a}\le x\le ${hi}$ are in the domain of $f(x)=\dfrac{\sqrt{${lin(1,-a)}}}{${lin(1,-b)}}$?`,a:cnt,w:[cnt+1,cnt-1,hi-b,hi-a-1,cnt+2],
+ s:T`Two conditions:<br>• The square root needs $${lin(1,-a)}\ge0$, i.e. $x\ge${a}$. Every integer in the list satisfies this.<br>• The denominator can't be $0$, so $x\ne${b}$.<br>From $${a}$ to $${hi}$ there are $${hi}-${P(a)}+1=${hi-a+1}$ integers; removing $x=${b}$ leaves $${cnt}$.`}},
+/* domain as an interval */
+r=>{const a=ri(r,-8,8)||3,k=ri(r,0,3);
+ const forms=[
+  [T`\sqrt{x${a<0?'+':'-'}${Math.abs(a)}}`,iv(a,Infinity,1,0),[iv(a,Infinity,0,0),iv(-Infinity,a,0,1),iv(-a,Infinity,1,0),String.raw`(-\infty,\infty)`],T`The radicand must be nonnegative: $x${a<0?'+':'-'}${Math.abs(a)}\ge0$, so $x\ge${a}$. The endpoint is included because $\sqrt0=0$ is fine.`],
+  [T`\dfrac{1}{\sqrt{x${a<0?'+':'-'}${Math.abs(a)}}}`,iv(a,Infinity,0,0),[iv(a,Infinity,1,0),iv(-Infinity,a,0,0),iv(-a,Infinity,0,0),String.raw`(-\infty,\infty)`],T`The radicand must be nonnegative <b>and</b> the root is in a denominator, so it can't be $0$. So $x${a<0?'+':'-'}${Math.abs(a)}\gt0$, i.e. $x\gt${a}$. The endpoint $${a}$ is excluded.`],
+  [T`\sqrt{${-a}-x}`,iv(-Infinity,-a,0,1),[iv(-a,Infinity,1,0),iv(-Infinity,-a,0,0),iv(-Infinity,a,0,1),String.raw`(-\infty,\infty)`],T`We need $${-a}-x\ge0$, i.e. $x\le${-a}$. (Moving $x$ across flips which side it's on.)`],
+  [T`\sqrt[3]{x${a<0?'+':'-'}${Math.abs(a)}}`,String.raw`(-\infty,\infty)`,[iv(a,Infinity,1,0),iv(a,Infinity,0,0),iv(-Infinity,a,0,1),String.raw`(-\infty,${a})\cup(${a},\infty)`],T`A <b>cube</b> root is defined for every real number, positive or negative: $\sqrt[3]{-8}=-2$. So there is no restriction at all.`]];
+ const [e,ans,wr,why]=forms[k];const t=TXT(r,ans,wr);
+ return{lvl:1,q:T`What is the domain of $f(x)=${e}$?`,a:t.a,w:t.w,s:T`By the domain convention, the domain is every $x$ for which the formula gives a real number.<br>${why}<br>Domain: $${ans}$.`}},
+/* piecewise evaluation */
+r=>{const c1=ri(r,-3,3),m=ri(r,-4,4)||2,b=ri(r,-6,6),p=ri(r,1,3),q=ri(r,-5,5);
+ const f=x=>x<c1?m*x+b:p*x*x+q;const x1=c1-ri(r,1,4),x2=c1,x3=c1+ri(r,1,3);const v=f(x1)+f(x2)+f(x3);
+ const alt=f(x1)+(m*x2+b)+f(x3);
+ return{lvl:1,q:T`Let $f(x)=\begin{cases}${lin(m,b)} & \text{if } x\lt ${c1}\\ ${trm([[p,'x^2'],[q,'']])} & \text{if } x\ge ${c1}\end{cases}$. What is $f(${x1})+f(${x2})+f(${x3})$?`,
+ a:v,w:[alt===v?v+3:alt,v+1,v-1,f(x1)+f(x3),v+2],
+ s:T`For each input, first decide which condition it satisfies.<br>• $${x1}\lt${c1}$: top formula, $f(${x1})=${m}\cdot ${P(x1)}+${P(b)}=${f(x1)}$.<br>• $${x2}\ge${c1}$ (equality counts): bottom formula, $f(${x2})=${p}\cdot ${P(x2)}^2${q?(q<0?'-':'+')+Math.abs(q):''}=${f(x2)}$.<br>• $${x3}\ge${c1}$: bottom formula, $f(${x3})=${p}\cdot ${P(x3)}^2${q?(q<0?'-':'+')+Math.abs(q):''}=${f(x3)}$.<br>Sum: $${f(x1)}+${P(f(x2))}+${P(f(x3))}=${v}$.`}},
+/* break-even and profit */
+r=>{const c=ri(r,2,30),p=c+ri(r,2,15),F=ri(r,20,90)*100;const be=F/(p-c);const ans=Math.floor(be)+1;
+ if(r()<.5)return{lvl:2,q:T`A company has fixed costs of $\$${cm(F)}$ per month. Each item costs $\$${c}$ to make and sells for $\$${p}$. What is the smallest number of items it must sell in a month to make a profit?`,
+  a:ans,w:[Math.ceil(F/p),Math.floor(be),ans+1,Math.ceil(F/c),Math.round(F/(p+c))+3],
+  s:T`Profit is revenue minus cost: $P(x)=${p}x-(${c}x+${F})=${p-c}x-${F}$.<br>A profit means $P(x)\gt0$: $${p-c}x\gt${F}$, so $x\gt\frac{${F}}{${p-c}}${Number.isInteger(be)?'='+be:T`\approx${be.toFixed(2)}`}$.<br>${Number.isInteger(be)?T`At exactly $${be}$ items the profit is $0$ (break-even), so the first profitable number is $${ans}$.`:T`The smallest whole number greater than $${be.toFixed(2)}$ is $${ans}$.`}<br>(Dividing $${F}$ by the price $${p}$ ignores the cost of making each item.)`};
+ const x=ri(r,1,4)*Math.round(F/(p-c)/2);const P0=(p-c)*x-F;
+ return{lvl:1,q:T`A company has fixed costs of $\$${cm(F)}$ per month. Each item costs $\$${c}$ to make and sells for $\$${p}$. What is its profit, in dollars, from selling ${x} items in a month? (A negative answer means a loss.)`,
+  a:P0,w:[p*x-F,(p-c)*x,P0+F/2,-P0,p*x-c*x+F],s:T`Revenue: $R(x)=${p}x$. Cost: $C(x)=${c}x+${F}$.<br>Profit: $P(x)=R(x)-C(x)=${p-c}x-${F}$.<br>$P(${x})=${p-c}\cdot${x}-${F}=${(p-c)*x}-${F}=${P0}$.${P0<0?' The negative value means a loss.':''}`}},
+/* f(a+b) vs f(a)+f(b) */
+r=>{const k=ri(r,1,9),a=ri(r,1,6),b=ri(r,1,6);const f=x=>x*x+k;const v=f(a+b)-(f(a)+f(b));
+ return{lvl:2,q:T`Let $f(x)=x^2+${k}$. What is $f(${a}+${b})-\big(f(${a})+f(${b})\big)$?`,a:v,w:[0,2*a*b,v+k,-k,v+2*k],
+ s:T`Functional notation does not distribute, so compute each value separately.<br>$f(${a}+${b})=f(${a+b})=${(a+b)**2}+${k}=${f(a+b)}$.<br>$f(${a})+f(${b})=(${a*a}+${k})+(${b*b}+${k})=${f(a)+f(b)}$.<br>Difference: $${f(a+b)}-${f(a)+f(b)}=${v}$.<br>In general $f(a+b)-f(a)-f(b)=(a+b)^2-a^2-b^2-${k}=2ab-${k}$, which is $${v}$ here. It is <b>not</b> $0$: $f(a+b)\ne f(a)+f(b)$.`}},
+/* f(x+1)-f(x) as expression */
+r=>{const a=ri(r,1,4)*pick(r,[1,-1]),b=ri(r,-6,6),c=ri(r,-5,5);
+ const ans=trm([[2*a,'x'],[a+b,'']]);
+ const t=TXT(r,ans,[trm([[2*a,'x'],[b,'']]),trm([[a,'x'],[a+b,'']]),trm([[2*a,'x'],[a+b+c,'']]),String(a+b)===ans?trm([[2*a,'x'],[a+b+1,'']]):String(a+b)]);
+ return{lvl:2,q:T`If $f(x)=${pl([a,b,c])}$, which expression equals $f(x+1)-f(x)$?`,a:t.a,w:t.w,
+ s:T`$f(x+1)=${a}(x+1)^2${b<0?'-':'+'}${Math.abs(b)}(x+1)${c<0?'-':'+'}${Math.abs(c)}=${trm([[a,'x^2'],[2*a+b,'x'],[a+b+c,'']])}$.<br>Subtract $f(x)=${pl([a,b,c])}$: the $x^2$ terms cancel, $${trm([[2*a+b,'x']])}-(${trm([[b,'x']])})=${trm([[2*a,'x']])}$, and $${a+b+c}-${P(c)}=${a+b}$.<br>Result: $${ans}$.`}},
+];

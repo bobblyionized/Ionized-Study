@@ -1,0 +1,66 @@
+=== LESSONS ===
+=== BANK ===
+=== GENS ===
+/* ---------- precalculus helpers ---------- */
+/* plot({x:[a,b],y:[c,d],curves:[{f,a,b,ends:['c'|'o'|'',...]}],pts:[{x,y,open}],paths:[[[x,y],...]],label})
+   -> an inline SVG graph with grid, axes and tick labels (colors follow the page theme). */
+function plot(o){
+  const W=o.w||280,H=o.h||W,[x0,x1]=o.x||[-6,6],[y0,y1]=o.y||[-6,6],pd=16;
+  const r1=v=>Math.round(v*10)/10;
+  const sx=x=>r1(pd+(x-x0)/(x1-x0)*(W-2*pd)),sy=y=>r1(H-pd-(y-y0)/(y1-y0)*(H-2*pd));
+  const stx=o.sx||((x1-x0)>14?2:1),sty=o.sy||((y1-y0)>14?2:1);
+  let g='';
+  for(let x=Math.ceil(x0);x<=x1;x++)g+=`<line class="pg" x1="${sx(x)}" y1="${sy(y0)}" x2="${sx(x)}" y2="${sy(y1)}"/>`;
+  for(let y=Math.ceil(y0);y<=y1;y++)g+=`<line class="pg" x1="${sx(x0)}" y1="${sy(y)}" x2="${sx(x1)}" y2="${sy(y)}"/>`;
+  const ax=Math.min(Math.max(0,x0),x1),ay=Math.min(Math.max(0,y0),y1);
+  g+=`<line class="pa" x1="${sx(x0)}" y1="${sy(ay)}" x2="${sx(x1)}" y2="${sy(ay)}"/><line class="pa" x1="${sx(ax)}" y1="${sy(y0)}" x2="${sx(ax)}" y2="${sy(y1)}"/>`;
+  for(let x=Math.ceil(x0/stx)*stx;x<=x1;x+=stx)if(x!==0&&x!==x0&&x!==x1)g+=`<text x="${sx(x)}" y="${r1(sy(ay)+11)}" text-anchor="middle">${x}</text>`;
+  for(let y=Math.ceil(y0/sty)*sty;y<=y1;y+=sty)if(y!==0&&y!==y0&&y!==y1)g+=`<text x="${r1(sx(ax)-4)}" y="${r1(sy(y)+3.5)}" text-anchor="end">${y}</text>`;
+  g+=`<text x="${sx(x1)-2}" y="${r1(sy(ay)-5)}" text-anchor="end" class="pl">x</text><text x="${r1(sx(ax)+5)}" y="${sy(y1)+9}" class="pl">y</text>`;
+  const inY=y=>Number.isFinite(y)&&y>=y0-0.5&&y<=y1+0.5;
+  for(const c of o.curves||[]){
+    const a=Math.max(c.a??x0,x0),b=Math.min(c.b??x1,x1),N=c.n||240;let d='',pen=false;
+    for(let i=0;i<=N;i++){const x=a+(b-a)*i/N,y=c.f(x);
+      if(!inY(y)){pen=false;continue}
+      const yy=Math.min(Math.max(y,y0-0.5),y1+0.5);d+=(pen?'L':'M')+sx(x)+' '+sy(yy);pen=true}
+    if(d)g+=`<path class="pc" d="${d}"/>`;
+    const ends=c.ends||[];[[a,ends[0]],[b,ends[1]]].forEach(([x,t])=>{if(!t)return;const y=c.f(x);if(inY(y))g+=t==='o'?`<circle class="po" cx="${sx(x)}" cy="${sy(y)}" r="3.6"/>`:`<circle class="pd" cx="${sx(x)}" cy="${sy(y)}" r="3.6"/>`});
+  }
+  for(const p of o.paths||[])g+=`<path class="pc" d="${p.map((q,i)=>(i?'L':'M')+sx(q[0])+' '+sy(q[1])).join('')}"/>`;
+  for(const p of o.pts||[])g+=p.open?`<circle class="po" cx="${sx(p.x)}" cy="${sy(p.y)}" r="3.6"/>`:`<circle class="pd" cx="${sx(p.x)}" cy="${sy(p.y)}" r="3.6"/>`;
+  return`<svg class="plot" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${(o.label||'graph').replace(/"/g,"'")}">${g}</svg>`;
+}
+/* 26000 -> 26{,}000 for use inside math */
+const cm=n=>n.toLocaleString('en-US').replace(/,/g,'{,}');
+/* text answer choices: TXT(r,'right',['w1','w2','w3','w4']) -> {a,w} with a random display order */
+function TXT(r,ans,wr,more){
+  const out=[],seen=new Set([ans]);const add=w=>{if(out.length<4&&w&&!seen.has(w)){seen.add(w);out.push(w)}};
+  wr.forEach(add);
+  for(let k=0;out.length<4&&k<60;k++)add(more?more(k):nudge(ans,k));
+  return{a:O(ans,r()),w:out.map(t=>O(t,r()))};
+}
+/* the k-th variant of a tex string with one of its integers changed (exponents and root indices are left alone) */
+function nudge(tex,k){
+  const spots=[];const re=/\d+/g;let m;
+  while((m=re.exec(tex))){const pre=tex.slice(Math.max(0,m.index-6),m.index);if(/(\^\{?-?|sqrt\[)$/.test(pre))continue;spots.push([m.index,m[0]])}
+  if(!spots.length)return null;
+  const [i,d]=spots[k%spots.length];const delta=[1,-1,2,-2,3,4][Math.floor(k/spots.length)%6];const v=+d+delta;if(v<0)return null;
+  return tex.slice(0,i)+v+tex.slice(i+d.length);
+}
+const sgn=(c,first)=>c<0?(first?'-':' - '):(first?'':' + ');
+/* linear expression mx+b as tex */
+const lin=(m,b,v='x')=>poly([[m,1],[b,0]],v);
+/* polynomial from coefficient list, highest power first: pl([1,0,-3,2]) -> x^3 - 3x + 2 */
+function pl(cs,v='x'){const n=cs.length-1;return poly(cs.map((c,i)=>[c,n-i]),v)}
+const ev=(cs,x)=>cs.reduce((a,c)=>a*x+c,0);
+/* substitution step: subst([3,4,-3,6],-2) -> 3(-2)^3 + 4(-2)^2 - 3(-2) + 6 */
+function subst(cs,x){const n=cs.length-1,xs=P(x);let s='';cs.forEach((c,i)=>{if(!c)return;const p=n-i,a=Math.abs(c);
+  const body=p===0?String(a):(a===1?'':a)+(p===1?(a===1?xs:xs.startsWith('\\left')?xs:'\\cdot '+xs):xs+'^{'+p+'}');
+  s+=(s===''?(c<0?'-':''):(c<0?' - ':' + '))+body});return s||'0'}
+/* sum of terms: trm([[6,'x'],[3,'h'],[-4,'']]) -> 6x + 3h - 4  (coefficients may be Fr) */
+function trm(list){let s='';for(const [c0,v] of list){const c=Fr.of(c0);if(c.n===0)continue;const a=c.n<0?c.neg():c;
+  const body=(a.n===1&&a.d===1&&v)?v:(a.d===1?String(a.n):a.tex())+v;s+=(s===''?(c.n<0?'-':''):(c.n<0?' - ':' + '))+body}return s||'0'}
+/* interval tex */
+const iv=(a,b,lc,rc)=>(lc?'[':'(')+(a===-Infinity?String.raw`-\infty`:tx(a))+', '+(b===Infinity?String.raw`\infty`:tx(b))+(rc?']':')');
+/* (x - r) factor tex */
+const fx=(r,v='x')=>r===0?v:'('+v+(r<0?' + '+tx(Fr.of(r).neg()):' - '+tx(r))+')';

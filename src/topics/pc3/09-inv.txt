@@ -1,0 +1,239 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc3-inv">
+<h2>3.7 Inverse Functions</h2>
+<p>A function takes inputs to outputs. Sometimes we want to go backwards: given the output, recover the input. If a temperature in Celsius is $F=\frac95C+32$ in Fahrenheit, then $C=\frac59(F-32)$ undoes it. The "undo" function is the <b>inverse</b>. Only certain functions can be undone.</p>
+
+<h3>1. One-to-one functions</h3>
+<div class="box"><h4>Definition</h4>A function $f$ is <b>one-to-one</b> if different inputs always give different outputs: $a\ne b\Rightarrow f(a)\ne f(b)$. Equivalently, $f(a)=f(b)$ forces $a=b$.</div>
+<p>$f(x)=x^2$ is <b>not</b> one-to-one, since $f(3)=f(-3)=9$: knowing the output $9$ doesn't tell you the input. $f(x)=x^3$ is one-to-one.</p>
+<div class="box"><h4>Horizontal Line Test</h4>A function is one-to-one exactly when <b>no horizontal line crosses its graph more than once</b>.</div>
+<p>Compare the Vertical Line Test (is it a function?) with the Horizontal Line Test (is it one-to-one?). Any function that is always increasing or always decreasing passes the Horizontal Line Test.</p>
+<div class="lfigs">
+<div class="lplot" data-f="x*x-2;2" data-x="-4,4" data-y="-3,6" data-w="180" data-cap="$x^2-2$ fails: $y=2$ hits twice"></div>
+<div class="lplot" data-f="0.3*x*x*x+0.5*x" data-x="-4,4" data-y="-5,5" data-w="180" data-cap="always increasing: passes"></div>
+</div>
+
+<h3>2. The inverse function</h3>
+<div class="box"><h4>Definition</h4>If $f$ is one-to-one, its <b>inverse function</b> $f^{-1}$ is defined by
+$$f^{-1}(b)=a\quad\text{exactly when}\quad f(a)=b.$$
+The domain of $f^{-1}$ is the range of $f$, and the range of $f^{-1}$ is the domain of $f$.</div>
+<p><b>Caution:</b> $f^{-1}(x)$ does <b>not</b> mean $\dfrac{1}{f(x)}$. The $-1$ is notation for "inverse," not an exponent.</p>
+<p>Shortcut: to find $f^{-1}(5)$ you don't need a formula. Just solve $f(x)=5$. For $f(x)=x^3+2x+1$, $f(1)=4$, so $f^{-1}(4)=1$.</p>
+
+<h3>3. Finding a formula for $f^{-1}$</h3>
+<ol><li>Write $y=f(x)$.</li>
+<li>Solve this equation for $x$ in terms of $y$.</li>
+<li>The result $x=f^{-1}(y)$ is the inverse; rename the variable to write $f^{-1}(x)$.</li></ol>
+<div class="ex"><b class="lbl">Example.</b> Find the inverse of $f(x)=\dfrac{2x+1}{x-3}$.
+<details open><summary>Solution</summary>$y=\dfrac{2x+1}{x-3}\Rightarrow y(x-3)=2x+1\Rightarrow xy-3y=2x+1\Rightarrow xy-2x=3y+1\Rightarrow x(y-2)=3y+1$, so $x=\dfrac{3y+1}{y-2}$. Thus $f^{-1}(x)=\dfrac{3x+1}{x-2}$.</details></div>
+<div class="tip"><h4>Pattern for linear fractions</h4>If $f(x)=\dfrac{ax+b}{cx+d}$, then $f^{-1}(x)=\dfrac{dx-b}{-cx+a}$: swap $a$ and $d$ and negate $b$ and $c$.</div>
+
+<h3>4. The Round-Trip Theorem</h3>
+<div class="box">$f$ and $g$ are inverses of each other exactly when
+$$g(f(x))=x\ \text{ for every }x\text{ in the domain of }f\quad\text{and}\quad f(g(x))=x\ \text{ for every }x\text{ in the domain of }g.$$</div>
+<p>Going there and back returns you to where you started. This is how you <b>verify</b> an inverse: $f(x)=\sqrt[3]{x-1}$ and $g(x)=x^3+1$ satisfy $g(f(x))=(x-1)+1=x$ and $f(g(x))=\sqrt[3]{x^3}=x$, so they are inverses.</p>
+
+<h3>5. Graphs of inverse functions</h3>
+<p>If $(a,b)$ is on the graph of $f$, then $(b,a)$ is on the graph of $f^{-1}$. Swapping coordinates is the same as <b>reflecting across the line $y=x$</b>.</p>
+<div class="lfigs"><div class="lplot" data-f="x*x|0|2.6|c-;sqrt(x)|0|6.5|c-;x" data-x="-1,6.5" data-y="-1,6.5" data-w="220" data-cap="$x^2$ (for $x\ge0$) and its inverse $\sqrt x$, mirror images across $y=x$"></div></div>
+
+<h3>6. Restricting the domain</h3>
+<p>A function that isn't one-to-one can be made one-to-one by restricting its domain to a piece where it's always increasing or always decreasing.</p>
+<ul><li>$f(x)=x^2$ with domain $x\ge0$ has inverse $\sqrt x$.</li>
+<li>$f(x)=x^2-4x=(x-2)^2-4$ is one-to-one on $[2,\infty)$ (right of the vertex), with inverse $f^{-1}(x)=2+\sqrt{x+4}$.</li>
+<li>$f(x)=x^2+1$ with $x\ge0$: $y=x^2+1$ gives $x=\sqrt{y-1}$, so $f^{-1}(x)=\sqrt{x-1}$ on $[1,\infty)$.</li></ul>
+
+<h3>More worked examples</h3>
+<div class="ex"><b class="lbl">Example 1.</b> $f(x)=\sqrt{x-2}+1$. What are the domain and range of $f^{-1}$?
+<details><summary>Solution</summary>$f$ has domain $[2,\infty)$ and range $[1,\infty)$ (since $\sqrt{x-2}\ge0$). Swap: $f^{-1}$ has domain $[1,\infty)$ and range $[2,\infty)$. In fact $f^{-1}(x)=(x-1)^2+2$ for $x\ge1$.</details></div>
+<div class="ex"><b class="lbl">Example 2.</b> Which functions are their own inverses?
+<details><summary>Solution</summary>$f(x)=\frac1x$, $f(x)=-x$, $f(x)=5-x$, and $f(x)=\frac{x+1}{x-1}$ all satisfy $f(f(x))=x$. Their graphs are symmetric about the line $y=x$.</details></div>
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Writing $f^{-1}(x)=\frac1{f(x)}$.</li>
+<li>Forgetting that the inverse of a restricted function inherits a restricted domain (the range of $f$).</li>
+<li>Claiming a function that fails the Horizontal Line Test has an inverse.</li>
+</ul></div>
+</script>
+
+=== BANK ===
+@@ pc3-inv
+Q: What is the inverse of $f(x)=\dfrac{2x+1}{x-3}$?
+L: 1
+A: f^{-1}(x)=\dfrac{3x+1}{x-2}
+W: f^{-1}(x)=\dfrac{x-3}{2x+1}
+W: f^{-1}(x)=\dfrac{3x-1}{x+2}
+W: f^{-1}(x)=\dfrac{x+3}{2x-1}
+W: f^{-1}(x)=\dfrac{3x+1}{2-x}
+S: Write $y=\dfrac{2x+1}{x-3}$ and solve for $x$.
+Multiply by $x-3$: $\;y(x-3)=2x+1$, so $xy-3y=2x+1$.
+Collect the $x$ terms: $\;xy-2x=3y+1$, so $x(y-2)=3y+1$.
+Divide: $\;x=\dfrac{3y+1}{y-2}$. Renaming, $f^{-1}(x)=\dfrac{3x+1}{x-2}$.
+Check with a number: $f(4)=\frac{9}{1}=9$ and $f^{-1}(9)=\frac{28}{7}=4$. ✓
+($\frac{x-3}{2x+1}$ is $\frac1{f(x)}$, the reciprocal, which is not the inverse.)
+---
+Q: Which function is one-to-one?
+L: 1
+A: f(x)=x^3+1
+W: f(x)=x^2+1
+W: f(x)=|x-1|
+W: f(x)=x^4-x
+W: f(x)=7
+S: One-to-one means no two inputs share an output (Horizontal Line Test).
+• $x^2+1$: $f(1)=f(-1)=2$. Not one-to-one.
+• $|x-1|$: $f(0)=f(2)=1$. Not one-to-one.
+• $x^4-x$: $f(0)=0=f(1)$. Not one-to-one.
+• $7$: every input gives $7$. Not one-to-one.
+• $x^3+1$: if $a^3+1=b^3+1$ then $a^3=b^3$, so $a=b$. One-to-one. ✓ (It is always increasing.)
+---
+Q: Let $f(x)=x^3+2x+1$. What is $f^{-1}(4)$?
+L: 1
+A: 1
+W: 65
+W: \tfrac14
+W: 2
+W: 0
+S: $f^{-1}(4)$ is the input that $f$ sends to $4$. Solve $x^3+2x+1=4$, i.e. $x^3+2x-3=0$.
+Try $x=1$: $1+2-3=0$. ✓ So $f(1)=4$ and $f^{-1}(4)=1$.
+(It's the only solution: $x^3+2x+1$ is always increasing, hence one-to-one.)
+$65=f(4)$ goes the wrong direction; $\frac14$ confuses $f^{-1}$ with a reciprocal.
+---
+Q: The point $(2,7)$ is on the graph of the one-to-one function $f$. Which point must be on the graph of $f^{-1}$?
+L: 1
+A: (7,\,2)
+W: (2,\,7)
+W: (-2,\,-7)
+W: (2,\,\tfrac17)
+W: (\tfrac12,\,\tfrac17)
+S: $(2,7)$ on $f$ means $f(2)=7$. By definition $f^{-1}(7)=2$, so $(7,2)$ is on the graph of $f^{-1}$.
+Graphically, $(7,2)$ is the reflection of $(2,7)$ across the line $y=x$.
+---
+Q: Let $f(x)=\sqrt{x-2}+1$. What is the domain of $f^{-1}$?
+L: 2
+A: [1,\infty)
+W: [2,\infty)
+W: (-\infty,\infty)
+W: [0,\infty)
+W: [3,\infty)
+S: The domain of $f^{-1}$ is the range of $f$.
+Since $\sqrt{x-2}$ takes every value $\ge0$ (as $x$ runs over $[2,\infty)$), $f(x)=\sqrt{x-2}+1$ takes every value $\ge1$.
+So the range of $f$, and the domain of $f^{-1}$, is $[1,\infty)$.
+(The formula is $f^{-1}(x)=(x-1)^2+2$, but only for $x\ge1$. Without the restriction, $(x-1)^2+2$ wouldn't be one-to-one.)
+---
+Q: The function $f(x)=x^2-4x$ is one-to-one on which of these domains?
+L: 1
+A: [2,\infty)
+W: [0,\infty)
+W: (-\infty,4]
+W: [-2,\infty)
+W: (-\infty,\infty)
+S: Complete the square: $x^2-4x=(x-2)^2-4$. The vertex is at $x=2$.
+The parabola decreases on $(-\infty,2]$ and increases on $[2,\infty)$. On either of those it passes the Horizontal Line Test.
+$[2,\infty)$ is offered. The other domains contain points on both sides of $x=2$ that share outputs: for example on $[0,\infty)$, $f(0)=f(4)=0$.
+---
+Q: Which pair of functions are inverses of each other?
+L: 1
+A: f(x)=\sqrt[3]{x-1},\ g(x)=x^3+1
+W: f(x)=x^3-1,\ g(x)=\sqrt[3]{x-1}
+W: f(x)=2x+3,\ g(x)=\tfrac12x-3
+W: f(x)=x^2,\ g(x)=\sqrt x\ \text{(all real }x)
+W: f(x)=\tfrac{1}{x+1},\ g(x)=x+1
+S: Use the Round-Trip Theorem: both $f(g(x))$ and $g(f(x))$ must equal $x$.
+• $\sqrt[3]{x-1}$ and $x^3+1$: $g(f(x))=(x-1)+1=x$ and $f(g(x))=\sqrt[3]{x^3}=x$. ✓
+• $x^3-1$ and $\sqrt[3]{x-1}$: $f(g(x))=(x-1)-1=x-2$. ✗ (The inverse of $x^3-1$ is $\sqrt[3]{x+1}$.)
+• $2x+3$ and $\frac12x-3$: $g(f(x))=x+\frac32-3$. ✗ (Should be $\frac{x-3}{2}$.)
+• $x^2$ on all reals isn't one-to-one: $\sqrt{(-2)^2}=2\ne-2$. ✗
+• $\frac{1}{x+1}$ and $x+1$: $f(g(x))=\frac1{x+2}$. ✗
+---
+Q: What is the inverse of $f(x)=5-2x$?
+L: 1
+A: f^{-1}(x)=\dfrac{5-x}{2}
+W: f^{-1}(x)=\dfrac{x-5}{2}
+W: f^{-1}(x)=\dfrac{1}{5-2x}
+W: f^{-1}(x)=5+2x
+W: f^{-1}(x)=2x-5
+S: $y=5-2x\Rightarrow 2x=5-y\Rightarrow x=\dfrac{5-y}{2}$.
+So $f^{-1}(x)=\dfrac{5-x}{2}$.
+Check: $f\!\left(\frac{5-x}{2}\right)=5-(5-x)=x$. ✓
+---
+Q: Let $f(x)=x^2+1$ with domain $x\ge0$. Which is $f^{-1}(x)$?
+L: 1
+A: \sqrt{x-1},\ x\ge1
+W: \sqrt{x}-1,\ x\ge0
+W: \sqrt{x+1},\ x\ge-1
+W: \pm\sqrt{x-1},\ x\ge1
+W: \dfrac{1}{x^2+1}
+S: Solve $y=x^2+1$ for $x$: $x^2=y-1$, so $x=\pm\sqrt{y-1}$.
+Because the domain of $f$ is $x\ge0$, take the nonnegative root: $x=\sqrt{y-1}$.
+The domain of $f^{-1}$ is the range of $f$, which is $[1,\infty)$.
+So $f^{-1}(x)=\sqrt{x-1}$ for $x\ge1$. (The $\pm$ version isn't a function.)
+---
+Q: Which function is its own inverse?
+L: 2
+A: f(x)=\dfrac{x+1}{x-1}
+W: f(x)=\dfrac{x+1}{x+2}
+W: f(x)=2x
+W: f(x)=x^3
+W: f(x)=x+1
+S: A function is its own inverse when $f(f(x))=x$.
+For $f(x)=\frac{x+1}{x-1}$:
+$f(f(x))=\dfrac{\frac{x+1}{x-1}+1}{\frac{x+1}{x-1}-1}=\dfrac{\frac{2x}{x-1}}{\frac{2}{x-1}}=x$. ✓
+The others: $2(2x)=4x$; $(x^3)^3=x^9$; $(x+1)+1=x+2$; and $\frac{x+1}{x+2}$ composed with itself is $\frac{2x+3}{3x+5}$.
+Using the pattern, $\frac{ax+b}{cx+d}$ has inverse $\frac{dx-b}{-cx+a}$; for $\frac{x+1}{x-1}$ that's $\frac{-x-1}{-x+1}=\frac{x+1}{x-1}$, itself.
+---
+Q: If $f(x)=2x+3$, what is $f^{-1}(f^{-1}(11))$?
+L: 1
+A: \tfrac12
+W: 4
+W: 53
+W: 25
+W: \tfrac{1}{11}
+S: The inverse: $y=2x+3\Rightarrow x=\frac{y-3}{2}$, so $f^{-1}(x)=\frac{x-3}{2}$.
+$f^{-1}(11)=\frac{8}{2}=4$.
+$f^{-1}(4)=\frac{1}{2}$.
+So the answer is $\frac12$. ($53=f(f(11))$ goes forward instead of backward.)
+---
+Q: The graphs of $f(x)=x^3$ and $f^{-1}(x)=\sqrt[3]{x}$ intersect at how many points?
+L: 2
+A: 3
+W: 1
+W: 2
+W: 0
+W: \text{infinitely many}
+S: The graph of $f^{-1}$ is the reflection of the graph of $f$ across $y=x$. For an increasing function, the two graphs meet exactly where $f$ meets the line $y=x$.
+Solve $x^3=x$: $x^3-x=x(x-1)(x+1)=0$, so $x=-1,0,1$.
+Intersection points: $(-1,-1)$, $(0,0)$, $(1,1)$. That's $3$.
+=== GENS ===
+GENS['pc3-inv']=[
+/* inverse value of a linear function */
+r=>{const a=ri(r,2,7)*pick(r,[1,-1]),b=ri(r,-9,9),x=ri(r,-8,8);const y=a*x+b;
+ return{lvl:1,q:T`If $f(x)=${lin(a,b)}$, what is $f^{-1}(${y})$?`,a:x,w:[a*y+b,F(1,y||7),F(y+b,a),x+1,-x===x?x-2:-x],
+ s:T`$f^{-1}(${y})$ is the input that $f$ sends to $${y}$. Solve $${lin(a,b)}=${y}$:<br>$${a}x=${y}-${P(b)}=${y-b}$, so $x=\dfrac{${y-b}}{${a}}=${x}$.<br>Check: $f(${x})=${a}\cdot${P(x)}+${P(b)}=${y}$. ✓<br>($f(${y})=${a*y+b}$ goes the wrong way, and $\frac1{${y}}$ confuses the inverse with a reciprocal.)`}},
+/* inverse of a linear fraction */
+r=>{let a=ri(r,-5,5),b=ri(r,-6,6),c=ri(r,1,4)*pick(r,[1,-1]),d=ri(r,-6,6);if(a*d-b*c===0||a+d===0)return GENS['pc3-inv'][1](r);
+ const fr=(p,q,s,t)=>String.raw`\dfrac{`+lin(p,q)+'}{'+lin(s,t)+'}';
+ const ans=fr(d,-b,-c,a);const t=TXT(r,'f^{-1}(x)='+ans,['f^{-1}(x)='+fr(c,d,a,b),'f^{-1}(x)='+fr(-d,b,c,-a)===('f^{-1}(x)='+ans)?'f^{-1}(x)='+fr(d,b,c,a):'f^{-1}(x)='+fr(-d,b,c,-a),'f^{-1}(x)='+fr(a,-b,-c,d),'f^{-1}(x)='+fr(d,b,-c,a)].filter(x=>x!=='f^{-1}(x)='+ans).concat(['f^{-1}(x)='+fr(d,-b,c,a)]).slice(0,4));
+ return{lvl:2,q:T`What is the inverse of $f(x)=${fr(a,b,c,d)}$?`,a:t.a,w:t.w,
+ s:T`Write $y=${fr(a,b,c,d)}$ and solve for $x$.<br>Multiply out: $y(${lin(c,d)})=${lin(a,b)}$, so $${c===1?'':c===-1?'-':c}xy${d<0?'-':'+'}${Math.abs(d)}y=${lin(a,b)}$.<br>Collect $x$ terms on one side: $x(${lin(c,-a,'y')})=${lin(-d,b,'y')}$.<br>So $x=\dfrac{${lin(-d,b,'y')}}{${lin(c,-a,'y')}}=\dfrac{${lin(d,-b,'y')}}{${lin(-c,a,'y')}}$.<br>Renaming the variable: $f^{-1}(x)=${ans}$.<br>Pattern check: for $\frac{ax+b}{cx+d}$, the inverse is $\frac{dx-b}{-cx+a}$.`}},
+/* inverse value of a monotone cubic */
+r=>{const p=ri(r,0,5),q=ri(r,-9,9),n=ri(r,-3,3);const y=n*n*n+p*n+q;
+ return{lvl:1,q:T`Let $f(x)=x^3${p?'+'+p+'x':''}${q<0?'-':'+'}${Math.abs(q)}$. What is $f^{-1}(${y})$?`,a:n,w:[y*y*y+p*y+q,n+1,n-1,-n===n?2:-n,F(1,y||9)],
+ s:T`$f^{-1}(${y})$ is the solution of $f(x)=${y}$, that is, $x^3${p?'+'+p+'x':''}=${y-q}$.<br>Try small integers: $x=${n}$ gives $${n**3}${p?'+'+P(p*n):''}=${n**3+p*n}$. ✓<br>So $f(${n})=${y}$ and $f^{-1}(${y})=${n}$. (Since $x^3${p?'+'+p+'x':''} is always increasing, this is the only solution.)`}},
+/* inverse of a shifted cube */
+r=>{const h=ri(r,-5,5)||2,k=ri(r,-6,6)||-3,a=pick(r,[1,2]);
+ const sh=(v,c)=>c<0?v+'+'+(-c):v+'-'+c;
+ const ans=a===1?T`\sqrt[3]{${sh('x',k)}}${h<0?'-':'+'}${Math.abs(h)}`:T`\sqrt[3]{\dfrac{${sh('x',k)}}{2}}${h<0?'-':'+'}${Math.abs(h)}`;
+ const t=TXT(r,ans,[a===1?T`\sqrt[3]{${sh('x',-k)}}${h<0?'+':'-'}${Math.abs(h)}`:T`\sqrt[3]{\dfrac{${sh('x',-k)}}{2}}${h<0?'+':'-'}${Math.abs(h)}`,a===1?T`\sqrt[3]{${sh('x',h)}}${k<0?'-':'+'}${Math.abs(k)}`:T`\dfrac{\sqrt[3]{${sh('x',k)}}}{2}${h<0?'-':'+'}${Math.abs(h)}`,T`\dfrac{1}{${a===1?'':'2'}(${sh('x',h)})^3${k<0?'-':'+'}${Math.abs(k)}}`,a===1?T`\sqrt[3]{x}${(h-k)<0?'-':'+'}${Math.abs(h-k)||1}`:T`2\sqrt[3]{${sh('x',k)}}${h<0?'-':'+'}${Math.abs(h)}`]);
+ return{lvl:2,q:T`What is the inverse of $f(x)=${a===1?'':'2'}(${sh('x',h)})^3${k<0?'-':'+'}${Math.abs(k)}$?`,a:t.a,w:t.w,
+ s:T`Undo the operations in reverse order. $f$ does: subtract $${h}$, cube, ${a===1?'':'multiply by $2$, '}add $${k}$.<br>Solve $y=${a===1?'':'2'}(${sh('x',h)})^3${k<0?'-':'+'}${Math.abs(k)}$:<br>$${a===1?'':'\\tfrac{'}${sh('y',k)}${a===1?'':'}{2}'}=(${sh('x',h)})^3$, so $${sh('x',h)}=\sqrt[3]{${a===1?sh('y',k):'\\frac{'+sh('y',k)+'}{2}'}}$ and $x=${ans.replace(/x/g,'y')}$.<br>So $f^{-1}(x)=${ans}$.`}},
+/* domain of inverse of a square-root function */
+r=>{const a=ri(r,1,3),b=ri(r,-6,6),c=ri(r,-6,6),s=pick(r,[1,-1]);const ans=s>0?iv(c,Infinity,1,0):iv(-Infinity,c,0,1);
+ const start=F(-b,a);const t=TXT(r,ans,[iv(start,Infinity,1,0),s>0?iv(-Infinity,c,0,1):iv(c,Infinity,1,0),String.raw`(-\infty,\infty)`,iv(0,Infinity,1,0)===ans?iv(c+1,Infinity,1,0):iv(0,Infinity,1,0)]);
+ return{lvl:2,q:T`Let $f(x)=${s<0?'-':''}\sqrt{${lin(a,b)}}${c<0?'-':'+'}${Math.abs(c)}$. What is the domain of $f^{-1}$?`,a:t.a,w:t.w,
+ s:T`The domain of $f^{-1}$ is the <b>range</b> of $f$.<br>$\sqrt{${lin(a,b)}}$ takes every value $\ge0$ as $x$ runs over $x\ge${start.tex()}$.<br>${s<0?T`Negated, $-\sqrt{${lin(a,b)}}$ takes every value $\le0$; adding $${c}$ gives every value $\le${c}$.`:T`Adding $${c}$ gives every value $\ge${c}$.`}<br>So the range of $f$, and therefore the domain of $f^{-1}$, is $${ans}$. ($${iv(start,Infinity,1,0)}$ is the domain of $f$, which becomes the <i>range</i> of $f^{-1}$.)`}},
+/* which is one-to-one */
+r=>{const n=()=>ri(r,1,6);const yes=[()=>T`x^3+${n()}x`,()=>T`${n()}-x^5`,()=>T`\sqrt{x+${n()}}`,()=>T`\dfrac{1}{x-${n()}}`,()=>T`${n()}x-${n()}`,()=>T`x|x|`];
+ const no=[()=>T`x^2+${n()}x`,()=>T`|x-${n()}|`,()=>T`x^4-${n()}`,()=>T`x^3-${n()+1}x`,()=>T`\dfrac{1}{x^2+${n()}}`,()=>T`(x-${n()})^2`];
+ const ans=pick(r,yes)();const wr=sample(r,no,4).map(f=>f());const t=TXT(r,'f(x)='+ans,wr.map(x=>'f(x)='+x));
+ return{lvl:1,q:T`Which function is one-to-one (and therefore has an inverse function)?`,a:t.a,w:t.w,
+ s:T`A function is one-to-one when it passes the Horizontal Line Test: no output is produced twice.<br>• $${ans}$ is always increasing or always decreasing on its domain, so each output comes from exactly one input. One-to-one.<br>• The others all repeat outputs. Even powers, absolute values, and parabolas are symmetric about a vertical line, so mirror-image inputs share an output; and $x^3-kx$ (with $k\gt0$) rises, falls, then rises again, so some horizontal lines cross it three times.`}},
+];

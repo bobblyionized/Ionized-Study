@@ -1,0 +1,281 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc3-func">
+<h2>3.1 Functions</h2>
+<p>Much of mathematics describes how one quantity <b>determines</b> another: income determines tax, time determines temperature, the time a rock has been falling determines how far it has fallen ($16t^2$ feet after $t$ seconds). Each situation has a set of inputs, a set of outputs, and a rule connecting them. That is exactly what a function is.</p>
+<div class="box"><h4>Definition</h4>A <b>function</b> consists of
+<ul><li>a set of inputs, called the <b>domain</b>;</li>
+<li>a <b>rule</b> by which each input determines <b>exactly one</b> output;</li>
+<li>the set of outputs, called the <b>range</b>.</li></ul>
+For each input the rule gives exactly one output. <b>Different inputs may give the same output.</b></div>
+<p>Think of a function as a calculator with one special key: enter an input, press the rule key, and exactly one answer appears. Pressing the key twice on the same input can never give two different answers, but two different inputs may well display the same answer. In a day's temperature graph, $50^\circ$ might occur at 9 A.M. and again at 7 P.M., and that is fine.</p>
+
+<h3>1. Functions given by tables</h3>
+<p>A table describes a function exactly when <b>no input appears with two different outputs</b>. A repeated input with the same output is harmless (it is just written twice). A repeated <i>output</i> is always fine.</p>
+<table class="t"><tr><th>Input</th><td>$-4$</td><td>$-2$</td><td>$0$</td><td>$2$</td><td>$4$</td></tr><tr><th>Output</th><td>$21$</td><td>$7$</td><td>$1$</td><td>$3$</td><td>$7$</td></tr></table>
+<p>This <b>is</b> a function: $-2$ and $4$ share the output $7$, but every input has only one output.</p>
+<table class="t"><tr><th>Input</th><td>$3$</td><td>$2$</td><td>$1$</td><td>$3$</td><td>$5$</td></tr><tr><th>Output</th><td>$4$</td><td>$0$</td><td>$2$</td><td>$6$</td><td>$9$</td></tr></table>
+<p>This is <b>not</b> a function: the input $3$ produces both $4$ and $6$.</p>
+
+<h3>2. Functions given by graphs</h3>
+<p>A graph defines a function by the rule "for input $x$, the output is the unique $y$ with $(x,y)$ on the graph." This only works if no input has two points above or below each other. Reading a graph:</p>
+<ul><li>The <b>domain</b> is every $x$-coordinate used by the graph: its "shadow" on the $x$-axis.</li>
+<li>The <b>range</b> is every $y$-coordinate used: its "shadow" on the $y$-axis.</li>
+<li>$f(4)=3$ means the point $(4,3)$ is on the graph.</li></ul>
+<div class="lfigs"><div class="lplot" data-f="x<-1?x+1:(x<2?-x:0.5*x*x-4)|-4|5|cc" data-x="-5,6" data-y="-4,5" data-cap="Domain $[-4,5]$; range: the lowest point is $y=-3$ and the highest is $y=4.5$, so $[-3,4.5]$"></div></div>
+<p>Open circles mean the endpoint is <b>not</b> on the graph; filled circles mean it is.</p>
+
+<h3>3. The greatest integer function</h3>
+<p>The <b>greatest integer function</b> sends each real number $x$ to the largest integer that is less than or equal to $x$. We write it $\lfloor x\rfloor$ (the textbook writes $[\![x]\!]$; calculators call it INT or FLOOR). Its domain is all real numbers and its range is the set of integers.</p>
+<ul><li>$\lfloor 5\rfloor=5,\ \lfloor 4.124\rfloor=4,\ \lfloor \tfrac53\rfloor=1,\ \lfloor\pi\rfloor=3$.</li>
+<li><b>Negative inputs round down, away from zero:</b> $\lfloor -1.5\rfloor=-2,\ \lfloor -0.01\rfloor=-1,\ \lfloor-\pi\rfloor=-4,\ \lfloor -3\rfloor=-3$.</li></ul>
+<div class="warn"><h4>Greatest integer vs. integer part</h4>The <b>integer part</b> function just deletes the decimals: it sends $-1.5$ to $-1$. The greatest integer function sends $-1.5$ to $-2$. They agree for every $x\ge 0$ and for negative integers, and they disagree for every negative non-integer.</div>
+
+<h3>4. Functions defined by equations</h3>
+<p>An equation in $x$ and $y$ is not itself a function, but it <b>defines $y$ as a function of $x$</b> when, for each $x$, there is exactly one $y$ making the equation true. The test is to solve for $y$:</p>
+<ul><li>$4x-2y^3+5=0 \Rightarrow y=\sqrt[3]{2x+\tfrac52}$. Cube roots are unique, so $y$ <b>is</b> a function of $x$. Solving for $x$ gives $x=\frac{2y^3-5}{4}$, so $x$ is also a function of $y$.</li>
+<li>$x^2-y+1=0 \Rightarrow y=x^2+1$: $y$ is a function of $x$. But $x=\pm\sqrt{y-1}$, and $y=5$ gives $x=\pm2$, two outputs. So $x$ is <b>not</b> a function of $y$.</li>
+<li>$x^2+y^2=9$: $y=\pm\sqrt{9-x^2}$, so $x=0$ gives $y=\pm3$. Neither variable is a function of the other.</li></ul>
+<div class="tip"><h4>Quick test</h4>If you have to write $\pm$ (an even root of the variable you're solving for, such as $y^2$, $y^4$, or $|y|$), then that variable is <b>not</b> a function of the other. Odd powers ($y^3$, $y^5$) and plain $y$ are fine.</div>
+
+<h3>5. Functions from real situations</h3>
+<p>Many word problems ask you to <b>express</b> one quantity as a function of another. Write the relationship in words first, then translate.</p>
+<ul><li>A trip of $2350$ miles at $52$ mph: the distance from the start after $t$ hours is $D=52t$, and the distance remaining is $K=2350-52t$.</li>
+<li>Fixed costs of $\$26{,}000$ plus $\$125$ per bicycle: $C(x)=26000+125x$.</li>
+<li>The area of a circle as a function of its diameter: $r=\frac d2$, so $A=\pi\left(\frac d2\right)^2=\frac{\pi d^2}{4}$.</li>
+<li>The area of a square as a function of its diagonal: side $=\frac{d}{\sqrt2}$, so $A=\frac{d^2}{2}$.</li>
+<li>A rock dropped from a $400$-foot building is $D=400-16t^2$ feet above the ground. It hits the ground when $16t^2=400$, at $t=5$, so the domain is $0\le t\le5$ and the range is $[0,400]$.</li></ul>
+<p>Rules given in words are often <b>piecewise</b>, like a tax law: $2.1\%$ of income under $\$12{,}500$; $\$262.50$ plus $3.45\%$ of the amount over $\$12{,}500$ up to $\$25{,}000$; and $\$693.75$ plus $4.8\%$ of the amount over $\$25{,}000$. An income of $\$30{,}000$ pays $693.75+0.048(5000)=\$933.75$.</p>
+
+<h3>Worked examples</h3>
+<div class="ex"><b class="lbl">Example 1.</b> Does $y^2=4x+1$ define $y$ as a function of $x$? Does it define $x$ as a function of $y$?
+<details><summary>Solution</summary>Solving for $y$ gives $y=\pm\sqrt{4x+1}$. For $x=2$ we get $y=\pm3$, two outputs, so $y$ is <b>not</b> a function of $x$. Solving for $x$ gives $x=\frac{y^2-1}{4}$, exactly one $x$ for each $y$, so $x$ <b>is</b> a function of $y$.</details></div>
+<div class="ex"><b class="lbl">Example 2.</b> Evaluate $\lfloor -4/3\rfloor+\lfloor 6.75\rfloor-\lfloor -16.0001\rfloor$.
+<details><summary>Solution</summary>$-\frac43\approx-1.33$, and the largest integer $\le -1.33$ is $-2$. Next, $\lfloor6.75\rfloor=6$. Finally $-16.0001$ is just below $-16$, so the greatest integer below it is $-17$. The total is $-2+6-(-17)=21$.</details></div>
+<div class="ex"><b class="lbl">Example 3.</b> A box has a square base of side $x$ and is four times as tall as it is wide. Express its volume as a function of $x$.
+<details><summary>Solution</summary>The base area is $x^2$ and the height is $4x$, so $V(x)=x^2\cdot4x=4x^3$ (for $x>0$).</details></div>
+<div class="ex"><b class="lbl">Example 4.</b> Is the postage on a letter a function of its weight? Is weight a function of postage?
+<details><summary>Solution</summary>Each weight determines exactly one postage, so postage is a function of weight. But many different weights (for example $1.2$ oz and $1.7$ oz) cost the same postage, so a postage amount does not determine a single weight: weight is <b>not</b> a function of postage.</details></div>
+
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Thinking that a repeated <b>output</b> breaks the definition. Only a repeated input with different outputs does.</li>
+<li>Rounding negative numbers toward zero in $\lfloor x\rfloor$: $\lfloor-2.3\rfloor=-3$, not $-2$.</li>
+<li>Forgetting the natural limits of an applied function: time can't be negative, a falling rock stops at the ground, you can't make $-3$ bicycles.</li>
+</ul></div>
+</script>
+
+=== BANK ===
+@@ pc3-func
+Q: Which of the following tables could <b>not</b> be a table of values of a function?
+L: 1
+A: \begin{array}{c|ccccc}x&1&-1&2&1&3\\\hline y&5&0&3&7&2\end{array}
+W: \begin{array}{c|ccccc}x&1&2&3&4&5\\\hline y&7&7&7&7&7\end{array}
+W: \begin{array}{c|ccccc}x&-2&-1&0&1&2\\\hline y&4&1&0&1&4\end{array}
+W: \begin{array}{c|ccccc}x&3&0&-3&6&9\\\hline y&1&2&3&4&5\end{array}
+W: \begin{array}{c|ccccc}x&2&4&2&6&8\\\hline y&9&3&9&1&0\end{array}
+S: A table fails to be a function only when the <b>same input</b> appears with <b>two different outputs</b>.
+Check each table:
+• Constant outputs ($7,7,7,7,7$): every input has one output. Repeated outputs are allowed, so this is a function.
+• Inputs $-2,\dots,2$ with outputs $4,1,0,1,4$: the inputs are all different, so it is a function.
+• Inputs $3,0,-3,6,9$: all different, so it is a function.
+• Inputs $2,4,2,6,8$: the input $2$ appears twice, but both times with output $9$. That is the same pair written twice, so it is still a function.
+• Inputs $1,-1,2,1,3$: the input $1$ appears with output $5$ <b>and</b> with output $7$. One input, two outputs, so this is <b>not</b> a function.
+---
+Q: What is $\lfloor -\tfrac{7}{2}\rfloor+\lfloor 1755\rfloor-\lfloor 18.7\rfloor$, where $\lfloor x\rfloor$ is the greatest integer function?
+L: 1
+A: 1733
+W: 1734
+W: 1732
+W: 1736
+W: 1740
+S: Evaluate each part separately, remembering that $\lfloor x\rfloor$ is the largest integer <b>less than or equal to</b> $x$.
+• $-\frac72=-3.5$. The integers below $-3.5$ are $-4,-5,\dots$, and the largest of them is $-4$. (Not $-3$, because $-3>-3.5$.)
+• $1755$ is already an integer, so $\lfloor1755\rfloor=1755$.
+• $\lfloor18.7\rfloor=18$.
+Total: $-4+1755-18=1733$.
+---
+Q: Which equation defines $y$ as a function of $x$?
+L: 1
+A: 5x-4y^3+64=0
+W: y^2=4x+1
+W: x^2+y^2=9
+W: y^4=x+2
+W: x=|y|-3
+S: Solve each equation for $y$ and ask whether one $x$ can give two values of $y$.
+• $y^2=4x+1$ gives $y=\pm\sqrt{4x+1}$: at $x=2$, $y=\pm3$. Not a function.
+• $x^2+y^2=9$ gives $y=\pm\sqrt{9-x^2}$: at $x=0$, $y=\pm3$. Not a function.
+• $y^4=x+2$ gives $y=\pm\sqrt[4]{x+2}$: at $x=14$, $y=\pm2$. Not a function.
+• $x=|y|-3$ gives $|y|=x+3$, so $y=\pm(x+3)$: at $x=0$, $y=\pm3$. Not a function.
+• $5x-4y^3+64=0$ gives $y^3=\frac{5x+64}{4}$, so $y=\sqrt[3]{\frac{5x+64}{4}}$. Every real number has exactly one real cube root, so each $x$ gives exactly one $y$. <b>This one is a function.</b>
+---
+Q: The equation $x^2+2xy+y^2=0$ ...
+L: 2
+A: \text{defines }y\text{ as a function of }x\text{ and }x\text{ as a function of }y
+W: \text{defines }y\text{ as a function of }x\text{ only}
+W: \text{defines }x\text{ as a function of }y\text{ only}
+W: \text{defines neither}
+W: \text{has no real solutions}
+S: Recognize the left side as a perfect square: $x^2+2xy+y^2=(x+y)^2$.
+So the equation says $(x+y)^2=0$, which happens exactly when $x+y=0$, that is, $y=-x$.
+• For each $x$ there is exactly one $y$, namely $-x$. So $y$ is a function of $x$.
+• For each $y$ there is exactly one $x$, namely $-y$. So $x$ is a function of $y$.
+The equation defines <b>both</b>. (It has infinitely many real solutions, like $(1,-1)$ and $(2,-2)$.)
+---
+Q: The surface area of a cylindrical can with radius $r$ and height $h$ is $2\pi r^2+2\pi rh$. If the can is twice as tall as the diameter of its top, which expresses the surface area $S$ as a function of $r$?
+L: 2
+A: S(r)=10\pi r^2
+W: S(r)=6\pi r^2
+W: S(r)=4\pi r^2
+W: S(r)=8\pi r^2
+W: S(r)=2\pi r^2+4\pi r
+S: The diameter of the top is $2r$. "Twice as tall as the diameter" means $h=2\cdot(2r)=4r$.
+Substitute $h=4r$ into the surface area formula:
+$S=2\pi r^2+2\pi r(4r)=2\pi r^2+8\pi r^2=10\pi r^2$.
+The common mistake is $h=2r$ (twice the <i>radius</i>), which gives $6\pi r^2$.
+---
+Q: A rock is dropped from the top of a $400$-foot building. After $t$ seconds it has fallen $16t^2$ feet. Let $D(t)$ be the distance from the rock to the ground. What is the range of $D$?
+L: 2
+A: [0,400]
+W: [0,5]
+W: [0,\infty)
+W: (-\infty,400]
+W: [16,400]
+S: The rock starts $400$ feet up and has fallen $16t^2$ feet, so its height is $D(t)=400-16t^2$.
+The rock hits the ground when $D(t)=0$: $16t^2=400$, so $t^2=25$ and $t=5$ (time is not negative). So the physical domain is $0\le t\le5$.
+Over that domain, $D$ decreases from $D(0)=400$ down to $D(5)=0$, taking every value in between.
+The range is $[0,400]$. ($[0,5]$ is the <i>domain</i>, a common mix-up.)
+---
+Q: Express the area $A$ of a square as a function of the length $d$ of its diagonal.
+L: 1
+A: A=\dfrac{d^2}{2}
+W: A=d^2
+W: A=\dfrac{d^2}{4}
+W: A=2d^2
+W: A=\dfrac{d^2}{\sqrt2}
+S: If the side is $s$, the diagonal splits the square into two $45$-$45$-$90$ triangles, so $d=s\sqrt2$ by the Pythagorean theorem ($d^2=s^2+s^2=2s^2$).
+So $s^2=\dfrac{d^2}{2}$. The area is $A=s^2=\dfrac{d^2}{2}$.
+Check: a unit square has diagonal $\sqrt2$, and $\frac{(\sqrt2)^2}{2}=1$. ✓
+---
+Q: Every even natural number can be written uniquely as (odd number) $\times$ (power of $2$); for example $36=9\cdot2^2$ and $46=23\cdot2$. Let $f(n)$ be that odd number. How many even numbers $n$ with $n\le 200$ have $f(n)=3$?
+L: 2
+A: 6
+W: 5
+W: 7
+W: 4
+W: 33
+S: $f(n)=3$ means $n=3\cdot2^k$ with $k\ge1$ (so $n$ is even).
+List them: $3\cdot2=6,\ 3\cdot4=12,\ 3\cdot8=24,\ 3\cdot16=48,\ 3\cdot32=96,\ 3\cdot64=192$. The next one, $384$, is too big.
+That is $6$ inputs, all giving the <b>same output</b> $3$. This is perfectly allowed for a function: different inputs may share an output.
+---
+Q: Which statement could be the rule of a function with domain all real numbers?
+L: 2
+A: \text{For input }x\text{, the output is the number whose cube is }x.
+W: \text{For input }x\text{, the output is the number whose square is }x.
+W: \text{For input }x\text{, the output is a number greater than }x.
+W: \text{For input }x\text{, the output is the integer nearest }x.
+W: \text{For input }x\text{, the output is a number whose absolute value is }|x|.
+S: A rule must produce <b>exactly one</b> output for <b>every</b> input in the domain.
+• "The number whose square is $x$": for $x=4$ there are two such numbers ($\pm2$), and for $x=-1$ there are none. Fails.
+• "A number greater than $x$": infinitely many choices. Not a single output. Fails.
+• "The integer nearest $x$": for $x=2.5$, both $2$ and $3$ are equally near. Fails at half-integers.
+• "A number whose absolute value is $|x|$": both $x$ and $-x$ work. Fails for $x\ne0$.
+• "The number whose cube is $x$": every real number has exactly one real cube root ($\sqrt[3]{8}=2$, $\sqrt[3]{-8}=-2$). <b>Works.</b>
+---
+Q: For which inputs do the greatest integer function $\lfloor x\rfloor$ and the integer part function (which simply deletes the digits after the decimal point) give <b>different</b> outputs?
+L: 2
+A: \text{negative numbers that are not integers}
+W: \text{all negative numbers}
+W: \text{all non-integers}
+W: \text{positive numbers that are not integers}
+W: \text{no inputs}
+S: Compare the two on each kind of input.
+• $x\ge0$: deleting decimals rounds down, which is exactly what $\lfloor x\rfloor$ does. Example: both send $3.7$ to $3$. Same.
+• $x$ a negative integer: there are no decimals to delete, and $\lfloor-4\rfloor=-4$. Same.
+• $x$ negative, not an integer: deleting decimals moves <i>toward zero</i> ($-1.5\to-1$), but $\lfloor x\rfloor$ moves <i>down</i> ($\lfloor-1.5\rfloor=-2$). Different.
+So they differ exactly for the negative non-integers.
+---
+Q: A state taxes income as follows: no tax on the first $\$12{,}500$; $5\%$ of the amount over $\$12{,}500$ for incomes from $\$12{,}500$ up to $\$100{,}000$; and $\$5000$ plus $10\%$ of the amount over $\$100{,}000$ above that. What is the tax on an income of $\$55{,}342$?
+L: 1
+A: $\$2142.10$
+W: $\$2767.10$
+W: $\$5534.20$
+W: $\$4284.20$
+W: $\$2142.00$
+S: $\$55{,}342$ is between $\$12{,}500$ and $\$100{,}000$, so the middle rule applies: $5\%$ of the amount over $\$12{,}500$.
+Amount over $\$12{,}500$: $55{,}342-12{,}500=42{,}842$.
+Tax: $0.05\times42{,}842=\$2142.10$.
+($\$2767.10$ is $5\%$ of the whole income, which ignores the tax-free first $\$12{,}500$.)
+---
+Q: A group drives $2350$ miles from Cleveland to Seattle at an average speed of $52$ mph. Which function gives their distance $K$ from <b>Seattle</b> after $t$ hours?
+L: 1
+A: K(t)=2350-52t
+W: K(t)=52t
+W: K(t)=2350+52t
+W: K(t)=52t-2350
+W: K(t)=\dfrac{2350}{52t}
+S: After $t$ hours at $52$ mph they have covered $52t$ miles. That is their distance <i>from Cleveland</i>.
+The distance still to go is the total minus what has been covered: $K(t)=2350-52t$.
+This makes sense on the domain $0\le t\le\frac{2350}{52}\approx45.2$ hours: $K$ starts at $2350$ and decreases to $0$ on arrival.
+=== GENS ===
+GENS['pc3-func']=[
+/* greatest integer arithmetic */
+r=>{const pool=[[F(-7,2),-4],[F(7,2),3],[F(-4,3),-2],[F(5,3),1],[F(-1,4),-1],[F(9,4),2],[F(-11,5),-3],[F(13,5),2]];
+ const dec=()=>{const k=ri(r,-9,9),f=pick(r,[1,2,3,5,7,9]);const v=k+(k<0?-f/10:f/10);return{tex:String(v),v,fl:Math.floor(v)}};
+ const fr=()=>{const [x,f]=pick(r,pool);return{tex:x.tex(),v:x.v,fl:f}};
+ const a=r()<.5?dec():fr(),b=dec(),c=r()<.5?fr():dec();const ans=a.fl+b.fl-c.fl;
+ const tr=t=>t.v<0?Math.ceil(t.v):Math.floor(t.v);const wrong=tr(a)+tr(b)-tr(c);
+ const why=t=>T`$\lfloor ${t.tex}\rfloor=${t.fl}$`+(t.v<0&&t.v!==Math.floor(t.v)?T` (the largest integer below ${t.tex}; rounding toward zero would wrongly give $${tr(t)}$)`:'');
+ return{lvl:1,q:T`Let $\lfloor x\rfloor$ denote the greatest integer function. What is $\lfloor ${a.tex}\rfloor+\lfloor ${b.tex}\rfloor-\lfloor ${c.tex}\rfloor$?`,
+ a:ans,w:[wrong===ans?ans+2:wrong,ans+1,ans-1,a.fl+b.fl+c.fl,ans+2],
+ s:T`$\lfloor x\rfloor$ is the largest integer that is less than or equal to $x$. For negative non-integers this means rounding <b>down</b>, away from zero.<br>• ${why(a)}<br>• ${why(b)}<br>• ${why(c)}<br>So the expression is $${a.fl}+${P(b.fl)}-${P(c.fl)}=${ans}$.`}},
+/* which equation defines y as a function of x */
+r=>{const a=ri(r,2,9),b=ri(r,1,9),c=ri(r,2,6);
+ const goods=[[T`y^3=${a}x+${b}`,T`$y=\sqrt[3]{${a}x+${b}}$, and cube roots are unique`],[T`${a}x-y=${b}`,T`$y=${a}x-${b}$, a line`],[T`y-${a}x^2=${b}`,T`$y=${a}x^2+${b}$, one value for each $x$`],[T`xy=${a}\ (x\ne0)`,T`$y=\frac{${a}}{x}$, one value for each nonzero $x$`],[T`y+|x|=${b}`,T`$y=${b}-|x|$, one value for each $x$`]];
+ const bads=[[T`y^2=${a}x+${b}`,T`$y=\pm\sqrt{${a}x+${b}}$`],[T`x^2+y^2=${c*c}`,T`$y=\pm\sqrt{${c*c}-x^2}$; at $x=0$, $y=\pm${c}$`],[T`|y|=x+${b}`,T`$y=\pm(x+${b})$`],[T`y^4=x+${a}`,T`$y=\pm\sqrt[4]{x+${a}}$`],[T`x=y^2-${b}`,T`$y=\pm\sqrt{x+${b}}$`],[T`x^2-y^2=${b}`,T`$y=\pm\sqrt{x^2-${b}}$`]];
+ const g=pick(r,goods),bs=sample(r,bads,4);
+ const t=TXT(r,g[0],bs.map(x=>x[0]));
+ return{lvl:1,q:T`Which of the following equations defines $y$ as a function of $x$?`,a:t.a,w:t.w,
+ s:T`Solve each equation for $y$. If some $x$ gives two different $y$-values (a $\pm$ appears), $y$ is <b>not</b> a function of $x$.<br>${bs.map(x=>T`• $${x[0]}$: ${x[1]}, so one $x$ gives two $y$'s. Not a function.`).join('<br>')}<br>• $${g[0]}$: ${g[1]}. <b>This is a function.</b>`}},
+/* sets of ordered pairs: which is a function */
+r=>{const xs=sample(r,[-3,-2,-1,0,1,2,3,4,5],4);const ys=()=>xs.map(()=>ri(r,-5,6));
+ const S=ps=>String.raw`\{`+ps.map(p=>'('+p[0]+','+p[1]+')').join(',')+String.raw`\}`;
+ const good=xs.map((x,i)=>[x,ys()[i]]);
+ const goodRep=good.concat([[good[1][0],good[1][1]]]);
+ const mkBad=()=>{const p=xs.map((x,i)=>[x,ri(r,-5,6)]);const k=ri(r,0,3);let y2=p[k][1]+ri(r,1,4);p.push([p[k][0],y2]);return shuffle(r,p)};
+ const useRep=r()<.5;const ans=useRep?shuffle(r,goodRep):shuffle(r,good);
+ const bads=[mkBad(),mkBad(),mkBad(),mkBad()];
+ const dupOf=ps=>{const m={};for(const [x,y] of ps){if(x in m&&m[x]!==y)return[x,m[x],y];m[x]=y}return null};
+ const t=TXT(r,S(ans),bads.map(S));
+ return{lvl:1,q:T`Each set of ordered pairs $(x,y)$ is a list of inputs and outputs. Which set defines $y$ as a function of $x$?`,a:t.a,w:t.w,
+ s:T`A set of pairs is a function when no input $x$ is paired with two <b>different</b> outputs.<br>${bads.map(b=>{const d=dupOf(b);return T`• $${S(b)}$: input $${d[0]}$ goes to both $${d[1]}$ and $${d[2]}$. Not a function.`}).join('<br>')}<br>• $${S(ans)}$: every input has just one output${useRep?' (one pair is simply listed twice, which is allowed)':''}. <b>Function.</b>`}},
+/* linear cost / revenue models */
+r=>{const F0=ri(r,8,40)*1000,c=ri(r,15,180),x=ri(r,5,60)*10;const C=F0+c*x;const ask=r()<.5;
+ const nm=pick(r,['bicycles','skateboards','desks','guitars','lamps']);
+ if(ask)return{lvl:1,q:T`A factory has weekly fixed costs of $\$${cm(F0)}$ and it costs $\$${c}$ to make each of its ${nm}. Let $C(x)$ be the total weekly cost of making $x$ ${nm}. What is $C(${x})$?`,
+  a:C,w:[c*x,F0+c,C+c,(F0+c)*x/10,F0*x/100+c],s:T`Total cost $=$ fixed cost $+$ (cost per item)$\times$(number of items), so $C(x)=${F0}+${c}x$.<br>Then $C(${x})=${F0}+${c}\cdot${x}=${F0}+${c*x}=${C}$ dollars.<br>Don't forget the fixed cost: it is paid no matter how many are made.`};
+ return{lvl:2,q:T`A factory has weekly fixed costs of $\$${cm(F0)}$ and it costs $\$${c}$ to make each of its ${nm}. If the total cost one week was $\$${cm(C)}$, how many ${nm} were made?`,
+  a:x,w:[Math.round(C/c),x+10,x-10,Math.round(F0/c),x+F0/1000],s:T`The cost function is $C(x)=${F0}+${c}x$. Set it equal to the total:<br>$${F0}+${c}x=${C}$<br>$${c}x=${C}-${F0}=${C-F0}$<br>$x=\frac{${C-F0}}{${c}}=${x}$.<br>(Dividing the whole $${C}$ by $${c}$ forgets that $${F0}$ of it is the fixed cost.)`}},
+/* reading domain or range from a graph */
+r=>{const n=ri(r,3,4);let xsP=[ri(r,-5,-3)];for(let i=0;i<n;i++)xsP.push(xsP[i]+ri(r,1,3));if(xsP[n]>5)return GENS['pc3-func'][4](r);
+ const ysP=xsP.map(()=>ri(r,-4,4));if(new Set(ysP).size<3)return GENS['pc3-func'][4](r);
+ const f=x=>{for(let i=0;i<n;i++)if(x<=xsP[i+1]+1e-9){const t=(x-xsP[i])/(xsP[i+1]-xsP[i]);return ysP[i]+t*(ysP[i+1]-ysP[i])}return ysP[n]};
+ const lo=Math.min(...ysP),hi=Math.max(...ysP),a=xsP[0],b=xsP[n];
+ const g=plot({x:[-6,6],y:[-5,5],w:240,curves:[{f,a,b,ends:['c','c']}],label:'a broken-line graph'});
+ const mode=ri(r,0,2);
+ if(mode===0){const t=TXT(r,iv(lo,hi,1,1),[iv(a,b,1,1),iv(lo,hi,0,0),iv(Math.min(ysP[0],ysP[n]),Math.max(ysP[0],ysP[n])+(Math.max(ysP[0],ysP[n])===hi?1:0),1,1),iv(lo,hi+1,1,1)]);
+  return{lvl:1,q:T`The entire graph of a function $f$ is shown. What is the range of $f$?<br>${g}`,a:t.a,w:t.w,
+  s:T`The range is the set of all <b>second coordinates</b> ($y$-values) of points on the graph, its shadow on the $y$-axis.<br>The lowest point on the graph has $y=${lo}$ and the highest has $y=${hi}$. The graph is connected, so every $y$ in between is also reached.<br>Both endpoints are filled in, so the range is $${iv(lo,hi,1,1)}$.<br>(The interval $${iv(a,b,1,1)}$ is the <i>domain</i>, the shadow on the $x$-axis.)`}}
+ if(mode===1){const t=TXT(r,iv(a,b,1,1),[iv(lo,hi,1,1),iv(a,b,0,0),iv(a+1,b,1,1),iv(a,b+1,1,1)]);
+  return{lvl:1,q:T`The entire graph of a function $f$ is shown. What is the domain of $f$?<br>${g}`,a:t.a,w:t.w,
+  s:T`The domain is the set of all <b>first coordinates</b> ($x$-values) used by the graph, its shadow on the $x$-axis.<br>The graph starts at $x=${a}$ and ends at $x=${b}$, with filled (included) endpoints and no gaps.<br>So the domain is $${iv(a,b,1,1)}$. (The interval $${iv(lo,hi,1,1)}$ is the range.)`}}
+ const k=ri(r,1,n-1),xv=xsP[k];
+ return{lvl:1,q:T`The entire graph of a function $f$ is shown. What is $f(${xv})$?<br>${g}`,a:ysP[k],w:[-ysP[k],ysP[k]+1,ysP[k]-1,xv,ysP[k]+2],
+  s:T`$f(${xv})$ is the $y$-coordinate of the point on the graph directly above or below $x=${xv}$.<br>Go to $x=${xv}$ on the horizontal axis and move vertically until you hit the graph: the point is $(${xv},${ysP[k]})$.<br>So $f(${xv})=${ysP[k]}$.`}},
+/* distance word problems */
+r=>{const v=ri(r,8,14)*5,D=v*ri(r,9,16),t=ri(r,2,8);const K=D-v*t;
+ const twoQ=r()<.5;
+ if(twoQ){const rem=ri(r,2,Math.floor(D/v)-1)*v;const tt=(D-rem)/v;
+  return{lvl:2,q:T`A car travels ${D} miles from city A to city B at a steady ${v} mph. After how many hours will it be exactly ${rem} miles from city B?`,a:tt,w:[rem/v,D/v,tt+1,tt-1,(D+rem)/v],
+  s:T`After $t$ hours the car has gone $${v}t$ miles, so its distance from B is $K(t)=${D}-${v}t$.<br>Set $K(t)=${rem}$: $${D}-${v}t=${rem}$, so $${v}t=${D-rem}$ and $t=${tt}$ hours.`}}
+ return{lvl:1,q:T`A car travels ${D} miles from city A to city B at a steady ${v} mph. Let $K(t)$ be its distance from city B after $t$ hours. What is $K(${t})$?`,a:K,w:[v*t,D+v*t,K+v,D-v,K-v],
+ s:T`In $t$ hours the car covers $${v}t$ miles, so the distance <b>remaining</b> is $K(t)=${D}-${v}t$.<br>$K(${t})=${D}-${v}\cdot${t}=${D}-${v*t}=${K}$ miles.<br>($${v*t}$ is the distance from A, not from B.)`}},
+];

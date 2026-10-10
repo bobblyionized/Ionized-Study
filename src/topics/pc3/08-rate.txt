@@ -1,0 +1,216 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc3-rate">
+<h2>3.6 Rates of Change</h2>
+<p>How fast is something changing? A rock dropped from a height falls $d(t)=16t^2$ feet in $t$ seconds. From $t=1$ to $t=3$ it falls $d(3)-d(1)=144-16=128$ feet in $2$ seconds, an average speed of $\frac{128}{2}=64$ feet per second. That calculation (change in output divided by change in input) is the idea of this whole section.</p>
+
+<h3>1. Average rate of change</h3>
+<div class="box"><h4>Definition</h4>The <b>average rate of change</b> of $f$ as $x$ changes from $a$ to $b$ is
+$$\frac{\text{change in }f(x)}{\text{change in }x}=\frac{f(b)-f(a)}{b-a}.$$
+Its units are (output units) per (input unit): feet per second, dollars per year, degrees per hour.</div>
+<ul><li><b>Speed:</b> an odometer reads $103{,}846$ at 3 P.M. and $104{,}176$ at 9 P.M. Average speed $=\frac{104176-103846}{9-3}=\frac{330}{6}=55$ mph.</li>
+<li><b>Data:</b> cell phone users grew from $16.009$ million (1993) to $69.209$ million (1998): $\frac{69.209-16.009}{5}=10.64$ million users per year.</li>
+<li><b>Graphs:</b> if the temperature is $40^\circ$ at 4 A.M. and $58^\circ$ at noon, the average rate is $\frac{58-40}{12-4}=2.25^\circ$ per hour. From 3 P.M. ($68^\circ$) to 8 P.M. ($53^\circ$) it is $\frac{53-68}{5}=-3^\circ$ per hour: <b>negative rates mean decreasing</b>.</li></ul>
+
+<h3>2. The geometric meaning: secant lines</h3>
+<p>The line through two points $P=(a,f(a))$ and $Q=(b,f(b))$ on a graph is a <b>secant line</b>. Its slope is $\frac{f(b)-f(a)}{b-a}$, exactly the average rate of change.</p>
+<div class="box">Average rate of change of $f$ from $a$ to $b$ $=$ slope of the secant line from $(a,f(a))$ to $(b,f(b))$.</div>
+<div class="lfigs"><div class="lplot" data-f="0.25*x*x;0.25*1+(0.25*25-0.25)/4*(x-1)" data-x="-1,7" data-y="-1,9" data-w="220" data-pts="1,0.25;5,6.25" data-cap="Secant line of $f(x)=\frac14x^2$ from $x=1$ to $x=5$: slope $\frac{6.25-0.25}{4}=1.5$"></div></div>
+<p>For a <b>linear</b> function $f(x)=mx+b$ every secant line is the line itself, so the average rate of change between any two inputs is the slope $m$. For example, the pressure $p(T)=0.00411T+1.1213$ always rises $0.00411$ atmospheres per degree.</p>
+
+<h3>3. Small intervals and the difference quotient</h3>
+<p>To see what's happening <i>near</i> a point, use short intervals, from $x$ to $x+h$ with $h$ small. The average rate over that interval is</p>
+$$\frac{f(x+h)-f(x)}{(x+h)-x}=\frac{f(x+h)-f(x)}{h},$$
+<p>which is the <b>difference quotient</b> from Section 3.2. One algebraic computation handles every $h$ at once. For the rock, from $t=4$ to $t=4+h$:</p>
+$$\frac{16(4+h)^2-16(16)}{h}=\frac{128h+16h^2}{h}=128+16h.$$
+<p>From $4$ to $4.1$ the average speed is $129.6$ ft/sec; from $4$ to $4.001$ it is $128.016$; from $4$ to $4.00001$ it's $128.00016$.</p>
+
+<h3>4. Instantaneous rate of change</h3>
+<p>As the interval shrinks ($h\to0$), the average rates approach a single number: the <b>instantaneous rate of change</b>. For the rock at $t=4$, $128+16h$ approaches $128$, so its speed at the instant $t=4$ is $128$ feet per second. Geometrically, the secant lines approach the <b>tangent line</b> at that point, and the instantaneous rate is the tangent line's slope.</p>
+<ul><li>Estimate numerically: compute the average rate on $[a,a+h]$ for $h=0.1,\ 0.01,\ 0.001$ (and also negative $h$) and see what the values approach.</li>
+<li>Or compute the difference quotient algebraically, simplify, and then let $h$ be $0$.</li>
+<li>For $f(x)=ax^2+bx+c$ the difference quotient is $2ax+b+ah$, so the instantaneous rate at $x$ is $2ax+b$.</li></ul>
+<p>This idea, the limit of difference quotients, is the <b>derivative</b>, the starting point of calculus.</p>
+
+<h3>Worked examples</h3>
+<div class="ex"><b class="lbl">Example 1.</b> A ball's height is $h(t)=-16t^2+64t$ feet. Find its average velocity from $t=1$ to $t=3$, and interpret it.
+<details><summary>Solution</summary>$h(1)=48$ and $h(3)=-144+192=48$, so the average velocity is $\frac{48-48}{2}=0$ ft/sec. The ball went up and came back down to the same height, so its net change in height is zero, even though it was moving the whole time.</details></div>
+<div class="ex"><b class="lbl">Example 2.</b> Find the average rate of change of $f(x)=\sqrt x$ from $4$ to $9$.
+<details><summary>Solution</summary>$\frac{\sqrt9-\sqrt4}{9-4}=\frac{3-2}{5}=\frac15$.</details></div>
+<div class="ex"><b class="lbl">Example 3.</b> Estimate the instantaneous rate of change of $f(x)=x^3$ at $x=2$.
+<details><summary>Solution</summary>The difference quotient is $\frac{(2+h)^3-8}{h}=12+6h+h^2$. As $h\to0$ this approaches $\mathbf{12}$. Numerically: $h=0.01$ gives $12.0601$.</details></div>
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Dividing by the change in <b>output</b> instead of input, or subtracting in opposite orders on top and bottom.</li>
+<li>Using the average of the two speeds instead of total change over total time.</li>
+<li>Thinking a zero average rate means nothing changed in between.</li>
+</ul></div>
+</script>
+
+=== BANK ===
+@@ pc3-rate
+Q: A rock falls $d(t)=16t^2$ feet in $t$ seconds. What is its average speed from $t=2$ to $t=4.5$ seconds?
+L: 1
+A: 104\text{ ft/sec}
+W: 52\text{ ft/sec}
+W: 130\text{ ft/sec}
+W: 260\text{ ft/sec}
+W: 72\text{ ft/sec}
+S: Average speed $=\dfrac{d(4.5)-d(2)}{4.5-2}$.
+$d(4.5)=16(20.25)=324$ and $d(2)=16(4)=64$.
+$\dfrac{324-64}{2.5}=\dfrac{260}{2.5}=104$ feet per second.
+($260$ is the distance fallen, not the speed; $130$ divides by $2$ instead of $2.5$.)
+---
+Q: Heidi starts a trip at 3 P.M. with her odometer at $103{,}846$ and finishes at 9 P.M. with it at $104{,}176$. What was her average speed?
+L: 1
+A: 55\text{ mph}
+W: 50\text{ mph}
+W: 60\text{ mph}
+W: 330\text{ mph}
+W: 66\text{ mph}
+S: Distance traveled: $104{,}176-103{,}846=330$ miles. Time elapsed: $9-3=6$ hours.
+Average speed $=\dfrac{330}{6}=55$ miles per hour.
+---
+Q: The temperature was $40^\circ$F at 4 A.M. and $58^\circ$F at noon. What was the average rate of change of the temperature over that period?
+L: 1
+A: 2.25^\circ\text{ per hour}
+W: 18^\circ\text{ per hour}
+W: 4.5^\circ\text{ per hour}
+W: 1.5^\circ\text{ per hour}
+W: 0.44^\circ\text{ per hour}
+S: Noon is $12$ hours after midnight, so the time interval is $12-4=8$ hours.
+Change in temperature: $58-40=18^\circ$.
+Average rate: $\dfrac{18}{8}=2.25^\circ$ per hour. It's positive, so the temperature was rising on average.
+($0.44$ comes from flipping the fraction: $\frac{8}{18}$.)
+---
+Q: For $d(t)=16t^2$, the average speed from $t=4$ to $t=4+h$ is $128+16h$. What is the average speed from $t=4$ to $t=4.001$?
+L: 1
+A: 128.016
+W: 128.001
+W: 128.16
+W: 144
+W: 128
+S: The interval from $4$ to $4.001$ has $h=0.001$.
+Average speed $=128+16(0.001)=128+0.016=128.016$ feet per second.
+(The formula came from $\dfrac{16(4+h)^2-16\cdot16}{h}=\dfrac{128h+16h^2}{h}=128+16h$.)
+---
+Q: Using the previous idea, what is the <b>instantaneous</b> speed of the falling rock $d(t)=16t^2$ at $t=4$?
+L: 2
+A: 128\text{ ft/sec}
+W: 64\text{ ft/sec}
+W: 256\text{ ft/sec}
+W: 144\text{ ft/sec}
+W: 32\text{ ft/sec}
+S: The average speed from $4$ to $4+h$ is $128+16h$.
+As $h$ gets closer and closer to $0$, $16h$ shrinks to $0$, so the average speeds approach $128$.
+The instantaneous speed at $t=4$ is $128$ feet per second.
+($64$ ft/sec is the average speed over the first $4$ seconds, $\frac{256-0}{4}$, which is different.)
+---
+Q: What is the average rate of change of $f(x)=x^3$ from $x=1$ to $x=3$?
+L: 1
+A: 13
+W: 26
+W: 9
+W: 14
+W: \tfrac{26}{3}
+S: $\dfrac{f(3)-f(1)}{3-1}=\dfrac{27-1}{2}=\dfrac{26}{2}=13$.
+Geometrically, $13$ is the slope of the secant line through $(1,1)$ and $(3,27)$.
+---
+Q: What is the slope of the secant line of $f(x)=\sqrt x$ through the points with $x=4$ and $x=9$?
+L: 1
+A: \tfrac15
+W: 5
+W: 1
+W: \tfrac12
+W: \tfrac{5}{13}
+S: The secant line passes through $(4,\sqrt4)=(4,2)$ and $(9,\sqrt9)=(9,3)$.
+Slope $=\dfrac{3-2}{9-4}=\dfrac15$, which equals the average rate of change of $\sqrt x$ from $4$ to $9$.
+---
+Q: What is the average rate of change of $f(x)=\dfrac1x$ from $x=1$ to $x=4$?
+L: 1
+A: -\tfrac14
+W: \tfrac14
+W: -\tfrac34
+W: -4
+W: \tfrac13
+S: $f(4)=\frac14$ and $f(1)=1$.
+$\dfrac{f(4)-f(1)}{4-1}=\dfrac{\frac14-1}{3}=\dfrac{-\frac34}{3}=-\dfrac14$.
+Negative, because $\frac1x$ decreases as $x$ increases.
+---
+Q: A ball is thrown upward; its height after $t$ seconds is $h(t)=-16t^2+64t$ feet. What is its average velocity from $t=1$ to $t=3$?
+L: 2
+A: 0\text{ ft/sec}
+W: 32\text{ ft/sec}
+W: -32\text{ ft/sec}
+W: 48\text{ ft/sec}
+W: 24\text{ ft/sec}
+S: $h(1)=-16+64=48$ and $h(3)=-144+192=48$.
+Average velocity $=\dfrac{h(3)-h(1)}{3-1}=\dfrac{0}{2}=0$ ft/sec.
+The ball rises to its peak at $t=2$ (height $64$) and comes back to $48$ feet, so its net change in height over the interval is zero. The average rate measures net change, not total distance traveled.
+---
+Q: The pressure in a sealed container is $p(T)=0.00411T+1.1213$ atmospheres at $T$ degrees Celsius. What is the average rate of change of the pressure as the temperature goes from $20^\circ$ to $80^\circ$?
+L: 1
+A: 0.00411\text{ atm per degree}
+W: 0.2466\text{ atm per degree}
+W: 1.1213\text{ atm per degree}
+W: 0.0137\text{ atm per degree}
+W: 0.00822\text{ atm per degree}
+S: $p$ is a linear function with slope $0.00411$.
+For a linear function, every secant line is the line itself, so the average rate of change between any two temperatures equals the slope: $0.00411$ atmospheres per degree.
+(Direct check: $\frac{p(80)-p(20)}{60}=\frac{0.00411\cdot60}{60}=0.00411$. The value $0.2466$ is the total change in pressure, not the rate.)
+---
+Q: For $f(x)=x^2$, the average rate of change from $x$ to $x+h$ is $2x+h$. Estimate the instantaneous rate of change of $f$ at $x=3$.
+L: 1
+A: 6
+W: 9
+W: 3
+W: 7
+W: 18
+S: At $x=3$ the average rate over $[3,3+h]$ is $2(3)+h=6+h$.
+For $h=0.1, 0.01, 0.001$ this gives $6.1, 6.01, 6.001$, approaching $6$.
+So the instantaneous rate of change at $x=3$ is $6$, the slope of the tangent line to $y=x^2$ at $(3,9)$.
+---
+Q: Cell phone subscribers in the U.S. numbered $140.767$ million in 2002 and $182.140$ million in 2004. What was the average rate of change over that period?
+L: 1
+A: 20.6865\text{ million per year}
+W: 41.373\text{ million per year}
+W: 13.791\text{ million per year}
+W: 161.4535\text{ million per year}
+W: 10.343\text{ million per year}
+S: Change in subscribers: $182.140-140.767=41.373$ million.
+Change in time: $2004-2002=2$ years.
+Average rate: $\dfrac{41.373}{2}=20.6865$ million subscribers per year (about $20{,}686{,}500$ per year).
+=== GENS ===
+GENS['pc3-rate']=[
+/* average rate of a polynomial on [a,b] */
+r=>{const k=ri(r,0,2);let cs;if(k===0)cs=[ri(r,1,4)*pick(r,[1,-1]),ri(r,-6,6),ri(r,-9,9)];else if(k===1)cs=[1,0,ri(r,-5,5),ri(r,-6,6)];else cs=[pick(r,[1,-1]),ri(r,-3,3),0,ri(r,-5,5)];
+ let a=ri(r,-3,2),b=a+ri(r,1,4);const fa=ev(cs,a),fb=ev(cs,b);const v=F(fb-fa,b-a);
+ return{lvl:1,q:T`What is the average rate of change of $f(x)=${pl(cs)}$ from $x=${a}$ to $x=${b}$?`,a:v,w:[F(fb-fa),F(b-a,fb-fa===0?1:fb-fa),F(fb+fa,b-a),v.neg(),F(fb,b||1)],
+ s:T`Average rate $=\dfrac{f(${b})-f(${a})}{${b}-${P(a)}}$.<br>$f(${b})=${fb}$ and $f(${a})=${fa}$.<br>$\dfrac{${fb}-${P(fa)}}{${b-a}}=\dfrac{${fb-fa}}{${b-a}}=${v.tex()}$.<br>This is the slope of the secant line through $(${a},${fa})$ and $(${b},${fb})$.`}},
+/* falling object average speed */
+r=>{const a=ri(r,0,5),b=a+ri(r,1,4)+pick(r,[0,0,0.5]);const v=16*(a+b);
+ return{lvl:1,q:T`An object falls $d(t)=16t^2$ feet in $t$ seconds. What is its average speed, in feet per second, from $t=${a}$ to $t=${b}$?`,a:v,w:[16*(b*b-a*a),16*b,32*b,v/2,16*(b*b+a*a)/(b-a)],
+ s:T`Average speed $=\dfrac{d(${b})-d(${a})}{${b}-${a}}=\dfrac{${16*b*b}-${16*a*a}}{${b-a}}=\dfrac{${16*(b*b-a*a)}}{${b-a}}=${v}$ ft/sec.<br>Shortcut: $\dfrac{16b^2-16a^2}{b-a}=16(a+b)=16(${a+b})=${v}$.`}},
+/* average rate from a data table */
+r=>{const yr=ri(r,1990,2015),n=5;const vals=[ri(r,20,80)];for(let i=1;i<n;i++)vals.push(vals[i-1]+ri(r,-6,15));const i=ri(r,0,2),j=ri(r,i+1,4);
+ const v=F(vals[j]-vals[i],j-i);const unit=pick(r,[['enrollment','thousand students'],['sales','million dollars'],['population','thousand people'],['subscribers','million']]);
+ return{lvl:1,q:T`The table shows ${unit[0]} (in ${unit[1]}) by year.<table class="t"><tr><th>Year</th>${vals.map((_,k)=>`<td>${yr+k}</td>`).join('')}</tr><tr><th>Value</th>${vals.map(x=>`<td>${x}</td>`).join('')}</tr></table>What was the average rate of change from ${yr+i} to ${yr+j}, in ${unit[1]} per year?`,
+ a:v,w:[F(vals[j]-vals[i]),F(vals[j]-vals[i],j-i+1),v.neg(),F(vals[j]+vals[i],2),F(vals[j],j-i)],
+ s:T`Average rate $=\dfrac{\text{change in value}}{\text{change in year}}=\dfrac{${vals[j]}-${vals[i]}}{${yr+j}-${yr+i}}=\dfrac{${vals[j]-vals[i]}}{${j-i}}=${v.tex()}$ ${unit[1]} per year.${v.n<0?' The negative sign means a decrease.':''}`}},
+/* small-interval average and instantaneous rate */
+r=>{const a=ri(r,1,4)*pick(r,[1,-1]),b=ri(r,-6,6),x0=ri(r,-3,4),inst=r()<.5;const base=2*a*x0+b;
+ if(inst)return{lvl:2,q:T`For $f(x)=${pl([a,b,0])}$, find the instantaneous rate of change at $x=${x0}$ by simplifying the average rate from $${x0}$ to $${x0}+h$ and letting $h$ approach $0$.`,a:base,w:[base+a,a*x0*x0+b*x0,2*a*x0,base-b,a*x0+b],
+  s:T`Average rate $=\dfrac{f(${x0}+h)-f(${x0})}{h}$. Expanding $${a}(${x0}+h)^2${b<0?'-':'+'}${Math.abs(b)}(${x0}+h)$ and subtracting $f(${x0})=${a*x0*x0+b*x0}$ leaves $${trm([[2*a*x0+b,'h'],[a,'h^2']])}$.<br>Dividing by $h$: $${trm([[2*a*x0+b,''],[a,'h']])}$.<br>As $h\to0$, the $${trm([[a,'h']])}$ term vanishes, so the instantaneous rate is $${base}$.<br>(Shortcut: for $ax^2+bx$, the rate at $x$ is $2ax+b=2(${a})(${x0})+${P(b)}=${base}$.)`};
+ const h=pick(r,[0.1,0.01,0.5]);const v=Math.round((base+a*h)*1000)/1000;
+ return{lvl:1,q:T`For $f(x)=${pl([a,b,0])}$, what is the average rate of change from $x=${x0}$ to $x=${x0+h}$?`,a:v,w:[base,Math.round((base-a*h)*1000)/1000,Math.round((base+2*a*h)*1000)/1000,Math.round((base*h)*1000)/1000,Math.round((base+a)*1000)/1000],
+ s:T`The difference quotient of $${pl([a,b,0])}$ is $\dfrac{f(x+h)-f(x)}{h}=${trm([[2*a,'x'],[b,''],[a,'h']])}$.<br>Here $x=${x0}$ and $h=${h}$: $${2*a}(${x0})+${P(b)}+${a}(${h})=${base}+${P(Math.round(a*h*1000)/1000)}=${v}$.<br>(As $h\to0$ these averages approach the instantaneous rate $${base}$.)`}},
+/* projectile average velocity */
+r=>{const v0=pick(r,[32,48,64,80,96]),s0=ri(r,0,10)*10,a=ri(r,0,2),b=a+ri(r,1,3);const H=t=>-16*t*t+v0*t+s0;const v=(H(b)-H(a))/(b-a);
+ return{lvl:1,q:T`A ball's height after $t$ seconds is $h(t)=-16t^2+${v0}t${s0?'+'+s0:''}$ feet. What is its average velocity, in ft/sec, from $t=${a}$ to $t=${b}$?`,a:v,w:[H(b)-H(a),v+16,-v===v?v+32:-v,v0-16*(a+b)+16,(H(b)+H(a))/2],
+ s:T`Average velocity $=\dfrac{h(${b})-h(${a})}{${b}-${a}}$.<br>$h(${b})=-16(${b*b})+${v0}(${b})${s0?'+'+s0:''}=${H(b)}$ and $h(${a})=${H(a)}$.<br>$\dfrac{${H(b)}-${P(H(a))}}{${b-a}}=${v}$ ft/sec.${v<0?' Negative: on average the ball was falling.':v===0?' Zero: it ended at the same height it started.':' Positive: on average the ball was rising.'}`}},
+/* secant slope for sqrt / reciprocal */
+r=>{if(r()<.5){const a=ri(r,1,6),b=a+ri(r,1,5);const A=a*a,B=b*b;const v=F(b-a,B-A);
+  return{lvl:1,q:T`What is the slope of the secant line to $f(x)=\sqrt x$ through the points where $x=${A}$ and $x=${B}$?`,a:v,w:[F(B-A,b-a),F(1,b-a),F(b-a),F(1,a+b+1),F(b+a,B-A)],
+  s:T`The points are $(${A},\sqrt{${A}})=(${A},${a})$ and $(${B},${b})$.<br>Slope $=\dfrac{${b}-${a}}{${B}-${A}}=\dfrac{${b-a}}{${B-A}}=${v.tex()}$.<br>(Notice $\frac{${b-a}}{${B-A}}=\frac{1}{${a}+${b}}$, since $${B}-${A}=(${b}-${a})(${b}+${a})$.)`}}
+ const a=ri(r,1,5),b=a+ri(r,1,5);const v=F(1,b).sub(F(1,a)).div(b-a);
+ return{lvl:1,q:T`What is the average rate of change of $f(x)=\dfrac1x$ from $x=${a}$ to $x=${b}$?`,a:v,w:[v.neg(),F(1,b-a),F(-1,a*b+1),F(b-a,a*b),F(-1,a+b)],
+ s:T`$\dfrac{f(${b})-f(${a})}{${b}-${a}}=\dfrac{\frac1{${b}}-\frac1{${a}}}{${b-a}}=\dfrac{\frac{${a}-${b}}{${a*b}}}{${b-a}}=-\dfrac{1}{${a*b}}$.<br>In general the average rate of $\frac1x$ from $a$ to $b$ is $-\frac{1}{ab}$: here $${v.tex()}$.`}},
+];

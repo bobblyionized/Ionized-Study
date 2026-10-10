@@ -1,0 +1,233 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc3-ops">
+<h2>3.5 Operations on Functions</h2>
+<p>Functions can be combined like numbers (added, subtracted, multiplied, divided) and they can also be <b>composed</b>, feeding the output of one into another. Composition is the genuinely new operation, and it's everywhere: a price that depends on demand, which depends on time, makes price a composite function of time.</p>
+
+<h3>1. Sums, differences, products, quotients</h3>
+<div class="box">For functions $f$ and $g$:
+<ul><li>$(f+g)(x)=f(x)+g(x)$, $\quad(f-g)(x)=f(x)-g(x)$, $\quad(fg)(x)=f(x)\,g(x)$</li>
+<li>$\left(\dfrac fg\right)(x)=\dfrac{f(x)}{g(x)}$</li></ul>
+The domain of $f+g$, $f-g$, and $fg$ is the set of $x$ in <b>both</b> domains. The domain of $\frac fg$ is the same, minus every $x$ with $g(x)=0$.</div>
+<p>Example: $f(x)=\sqrt x$ (domain $x\ge0$) and $g(x)=x-3$ (all reals). Then $(f+g)(x)=\sqrt x+x-3$ on $[0,\infty)$, and $\left(\frac fg\right)(x)=\frac{\sqrt x}{x-3}$ on $[0,3)\cup(3,\infty)$.</p>
+<div class="warn"><h4>Find the domain before simplifying</h4>$\sqrt{x+1}\cdot\sqrt{x-1}$ has domain $x\ge1$, because both factors must exist. Simplifying it to $\sqrt{x^2-1}$ would wrongly suggest that $x\le-1$ is allowed too. Likewise $\frac{x^2-1}{x-1}$ is not defined at $x=1$ even though it simplifies to $x+1$.</div>
+
+<h3>2. Composition</h3>
+<div class="box">The <b>composite function</b> $g\circ f$ ("$g$ circle $f$" or "$g$ after $f$") is
+$$(g\circ f)(x)=g\big(f(x)\big).$$
+Apply $f$ first, then apply $g$ to the result. Its domain is every $x$ in the domain of $f$ for which $f(x)$ is in the domain of $g$.</div>
+<p>With $f(x)=3x+2$ and $g(x)=x^2-1$:</p>
+<ul><li>$(g\circ f)(2)=g(f(2))=g(8)=63$, but $(f\circ g)(2)=f(g(2))=f(3)=11$.</li>
+<li>As formulas: $(g\circ f)(x)=(3x+2)^2-1=9x^2+12x+3$ and $(f\circ g)(x)=3(x^2-1)+2=3x^2-1$.</li></ul>
+<p><b>Order matters:</b> $g\circ f$ and $f\circ g$ are usually different functions. (Shifts by constants, like $x+3$ and $x-5$, are an exception: they commute.)</p>
+<p><b>Domains of composites.</b> If $f(x)=x-4$ and $g(x)=\sqrt x$, then $(g\circ f)(x)=\sqrt{x-4}$ needs $x-4\ge0$: domain $[4,\infty)$. If $f(x)=\frac1x$ and $g(x)=\frac{1}{x-2}$, then $g(f(x))=\frac{1}{\frac1x-2}$ needs $x\ne0$ (for $f$) <b>and</b> $\frac1x\ne2$, i.e. $x\ne\frac12$ (for $g$). Simplifying to $\frac{x}{1-2x}$ hides the restriction $x\ne0$, so find the domain first.</p>
+
+<h3>3. Decomposing functions</h3>
+<p>Calculus often requires the reverse: writing a complicated function as a composite of simpler ones. Look for an "inside" expression.</p>
+<ul><li>$h(x)=(3x^2+1)^5$: inside $g(x)=3x^2+1$, outside $f(x)=x^5$, so $h=f\circ g$.</li>
+<li>$k(x)=\sqrt{x^3+4}$: inside $x^3+4$, outside $\sqrt x$.</li>
+<li>$m(x)=\dfrac{1}{(x-7)^2}$: inside $x-7$, outside $\frac1{x^2}$ (or inside $(x-7)^2$, outside $\frac1x$). Decompositions are not unique.</li></ul>
+
+<h3>4. Solving for an unknown piece</h3>
+<p>If $f(x)=2x+1$ and $f(g(x))=6x-5$, then $2g(x)+1=6x-5$, so $g(x)=3x-3$. If instead the <i>outer</i> function is unknown, substitute: from $f(x+1)=x^2$, set $u=x+1$ so $x=u-1$ and $f(u)=(u-1)^2$.</p>
+
+<h3>5. Applications</h3>
+<p>An oil spill is circular with radius $r(t)=3t$ feet after $t$ minutes. Its area as a function of the radius is $A(r)=\pi r^2$. The area as a function of time is the composite</p>
+$$(A\circ r)(t)=A(3t)=\pi(3t)^2=9\pi t^2.$$
+<p>After $10$ minutes the area is $900\pi\approx2827$ square feet.</p>
+
+<h3>Worked examples</h3>
+<div class="ex"><b class="lbl">Example 1.</b> If $f(x)=\dfrac{x}{x+1}$, simplify $(f\circ f)(x)$.
+<details><summary>Solution</summary>$f(f(x))=\dfrac{\frac{x}{x+1}}{\frac{x}{x+1}+1}=\dfrac{\frac{x}{x+1}}{\frac{2x+1}{x+1}}=\dfrac{x}{2x+1}$ (for $x\ne-1,-\frac12$).</details></div>
+<div class="ex"><b class="lbl">Example 2.</b> Using the table, find $(f\circ g)(1)$ and $(g\circ f)(1)$.
+<table class="t"><tr><th>$x$</th><td>1</td><td>2</td><td>3</td><td>4</td></tr><tr><th>$f(x)$</th><td>3</td><td>1</td><td>4</td><td>2</td></tr><tr><th>$g(x)$</th><td>4</td><td>3</td><td>2</td><td>1</td></tr></table>
+<details><summary>Solution</summary>$(f\circ g)(1)=f(g(1))=f(4)=2$. $(g\circ f)(1)=g(f(1))=g(3)=2$. Equal here by coincidence; try $x=2$: $f(g(2))=f(3)=4$ but $g(f(2))=g(1)=4$. Try $x=3$: $f(g(3))=f(2)=1$, $g(f(3))=g(4)=1$. (This particular pair happens to commute!)</details></div>
+<div class="tip"><h4>Reading $f\circ g$</h4>Read right to left: in $(f\circ g)(x)$, $x$ goes into $g$ first. Writing $f(g(x))$ with the parentheses avoids every ordering mistake.</div>
+</script>
+
+=== BANK ===
+@@ pc3-ops
+Q: Let $f(x)=3x+2$ and $g(x)=x^2-1$. What is $(g\circ f)(2)-(f\circ g)(2)$?
+L: 1
+A: 52
+W: 0
+W: 74
+W: -52
+W: 44
+S: $(g\circ f)(2)=g(f(2))$. First $f(2)=3(2)+2=8$, then $g(8)=64-1=63$.
+$(f\circ g)(2)=f(g(2))$. First $g(2)=4-1=3$, then $f(3)=9+2=11$.
+Difference: $63-11=52$. The two compositions are different, which is why the order of composition matters.
+---
+Q: Let $f(x)=\sqrt x$ and $g(x)=x-3$. What is the domain of $\dfrac fg$?
+L: 1
+A: [0,3)\cup(3,\infty)
+W: [0,\infty)
+W: (3,\infty)
+W: (-\infty,3)\cup(3,\infty)
+W: [3,\infty)
+S: $\left(\frac fg\right)(x)=\dfrac{\sqrt x}{x-3}$.
+• $x$ must be in the domain of $f$: $x\ge0$.
+• $x$ must be in the domain of $g$: all reals (no restriction).
+• The denominator can't be zero: $g(x)\ne0$, so $x\ne3$.
+Together: $[0,3)\cup(3,\infty)$.
+---
+Q: Let $f(x)=\dfrac1x$ and $g(x)=\dfrac{1}{x-2}$. Which numbers are <b>not</b> in the domain of $g\circ f$?
+L: 2
+A: 0\text{ and }\tfrac12
+W: 0\text{ only}
+W: 2\text{ only}
+W: 0\text{ and }2
+W: \tfrac12\text{ only}
+S: $(g\circ f)(x)=g\!\left(\frac1x\right)=\dfrac{1}{\frac1x-2}$.
+Two requirements:
+• $x$ must be in the domain of $f$: $x\ne0$.
+• $f(x)=\frac1x$ must be in the domain of $g$, which excludes $2$: $\frac1x\ne2$, so $x\ne\frac12$.
+So $0$ and $\frac12$ are excluded. Simplifying first, $\dfrac{1}{\frac{1-2x}{x}}=\dfrac{x}{1-2x}$, only shows $x\ne\frac12$; the restriction $x\ne0$ must be remembered from the original composition.
+---
+Q: The function $h(x)=(3x^2+1)^5$ can be written as $h=f\circ g$. Which choice works?
+L: 1
+A: f(x)=x^5,\ g(x)=3x^2+1
+W: f(x)=3x^2+1,\ g(x)=x^5
+W: f(x)=x^5,\ g(x)=3x^2
+W: f(x)=(3x)^5,\ g(x)=x^2+1
+W: f(x)=3x+1,\ g(x)=x^{10}
+S: $f\circ g$ means $g$ is applied first (the inside) and $f$ second (the outside).
+In $(3x^2+1)^5$, the inside expression is $3x^2+1$ and the last operation is "raise to the 5th power."
+So $g(x)=3x^2+1$ and $f(x)=x^5$: $f(g(x))=(3x^2+1)^5$. ✓
+The reversed pair gives $g(f(x))$ instead: $3(x^5)^2+1=3x^{10}+1$.
+---
+Q: The radius of a circular oil spill is $r(t)=3t$ feet after $t$ minutes. Which function gives the area of the spill as a function of time?
+L: 1
+A: A(t)=9\pi t^2
+W: A(t)=3\pi t^2
+W: A(t)=6\pi t
+W: A(t)=9\pi t
+W: A(t)=\pi t^2+3
+S: Area in terms of radius: $A(r)=\pi r^2$.
+Compose with $r(t)=3t$: $A(r(t))=\pi(3t)^2=9\pi t^2$.
+Squaring $3t$ gives $9t^2$; forgetting to square the $3$ gives the wrong answer $3\pi t^2$.
+---
+Q: If $f(x)=\dfrac{x}{x+1}$, which expression equals $f(f(x))$ (where defined)?
+L: 2
+A: \dfrac{x}{2x+1}
+W: \dfrac{x^2}{(x+1)^2}
+W: \dfrac{x}{x+2}
+W: \dfrac{2x}{x+1}
+W: \dfrac{x+1}{2x+1}
+S: Substitute $\frac{x}{x+1}$ for every $x$ in the formula:
+$f(f(x))=\dfrac{\frac{x}{x+1}}{\frac{x}{x+1}+1}$.
+Simplify the denominator: $\frac{x}{x+1}+1=\frac{x+(x+1)}{x+1}=\frac{2x+1}{x+1}$.
+Divide: $\dfrac{x}{x+1}\cdot\dfrac{x+1}{2x+1}=\dfrac{x}{2x+1}$.
+($\frac{x^2}{(x+1)^2}$ is $f(x)\cdot f(x)$, the product, not the composition.)
+---
+Q: For which pair of functions is $f\circ g=g\circ f$?
+L: 1
+A: f(x)=x+3,\ g(x)=x-5
+W: f(x)=2x,\ g(x)=x+1
+W: f(x)=x^2,\ g(x)=x+1
+W: f(x)=x+3,\ g(x)=2x
+W: f(x)=\sqrt x,\ g(x)=x-4
+S: Compute both orders.
+• $x+3$ and $x-5$: $f(g(x))=(x-5)+3=x-2$ and $g(f(x))=(x+3)-5=x-2$. Equal. ✓
+• $2x$ and $x+1$: $2(x+1)=2x+2$ vs. $2x+1$. Different.
+• $x^2$ and $x+1$: $(x+1)^2$ vs. $x^2+1$. Different.
+• $x+3$ and $2x$: $2x+3$ vs. $2(x+3)=2x+6$. Different.
+• $\sqrt x$ and $x-4$: $\sqrt{x-4}$ vs. $\sqrt x-4$. Different.
+Composition usually does not commute; two shifts are a special exception.
+---
+Q: What is the domain of $h(x)=\sqrt{x+1}\cdot\sqrt{x-1}$?
+L: 2
+A: [1,\infty)
+W: (-\infty,-1]\cup[1,\infty)
+W: [-1,\infty)
+W: [-1,1]
+W: (-\infty,\infty)
+S: $h$ is the product of $f(x)=\sqrt{x+1}$ (domain $x\ge-1$) and $g(x)=\sqrt{x-1}$ (domain $x\ge1$).
+A product is defined only where <b>both</b> factors are defined: $x\ge-1$ and $x\ge1$, i.e. $x\ge1$.
+The trap: $\sqrt{x+1}\sqrt{x-1}$ "simplifies" to $\sqrt{x^2-1}$, whose domain $(-\infty,-1]\cup[1,\infty)$ is bigger. But for $x\le-1$, $\sqrt{x-1}$ isn't a real number, so $h$ isn't defined there.
+---
+Q: Let $f(x)=2x+1$. For which function $g$ is $f(g(x))=6x-5$?
+L: 1
+A: g(x)=3x-3
+W: g(x)=3x-5
+W: g(x)=6x-6
+W: g(x)=12x-9
+W: g(x)=3x-2
+S: $f(g(x))=2g(x)+1$, because $f$ doubles its input and adds $1$.
+Set $2g(x)+1=6x-5$. Then $2g(x)=6x-6$, so $g(x)=3x-3$.
+Check: $f(3x-3)=2(3x-3)+1=6x-5$. ✓ ($12x-9$ would be $g(f(x))$-type reasoning in the wrong order.)
+---
+Q: The table gives some values of $f$ and $g$. What is $f(g(f(2)))$?
+<table class="t"><tr><th>$x$</th><td>1</td><td>2</td><td>3</td><td>4</td></tr><tr><th>$f(x)$</th><td>3</td><td>4</td><td>1</td><td>2</td></tr><tr><th>$g(x)$</th><td>2</td><td>3</td><td>4</td><td>1</td></tr></table>
+L: 1
+A: 3
+W: 1
+W: 2
+W: 4
+W: 6
+S: Work from the inside out, one lookup at a time.
+• $f(2)=4$ (from the $f$ row, column $x=2$).
+• $g(4)=1$.
+• $f(1)=3$.
+So $f(g(f(2)))=3$.
+---
+Q: Given $f(x+1)=x^2+3x$, what is $f(x)$?
+L: 2
+A: x^2+x-2
+W: x^2+3x-1
+W: x^2+5x+4
+W: x^2+3x
+W: x^2+x
+S: Let $u=x+1$, so $x=u-1$. Then
+$f(u)=(u-1)^2+3(u-1)=u^2-2u+1+3u-3=u^2+u-2$.
+Renaming the variable: $f(x)=x^2+x-2$.
+Check: $f(x+1)=(x+1)^2+(x+1)-2=x^2+3x$. ✓ ($x^2+5x+4$ comes from substituting $x+1$ instead of $x-1$.)
+---
+Q: Let $f(x)=x^2$ and $g(x)=x+1$. For how many real $x$ is $f(g(x))=g(f(x))$?
+L: 1
+A: 1
+W: 0
+W: 2
+W: \text{infinitely many}
+W: 3
+S: $f(g(x))=(x+1)^2=x^2+2x+1$ and $g(f(x))=x^2+1$.
+Setting them equal: $x^2+2x+1=x^2+1$, so $2x=0$ and $x=0$.
+Exactly one value. (The two composite functions are different, but they can still agree at particular points.)
+=== GENS ===
+GENS['pc3-ops']=[
+/* evaluate a composition */
+r=>{const a=ri(r,-4,5)||2,b=ri(r,-6,6),c=pick(r,[1,2,-1]),d=ri(r,-5,5),x=ri(r,-4,4);const f=t=>a*t+b,g=t=>c*t*t+d;const o=r()<.5;
+ const v=o?f(g(x)):g(f(x));const other=o?g(f(x)):f(g(x));
+ return{lvl:1,q:T`If $f(x)=${lin(a,b)}$ and $g(x)=${trm([[c,'x^2'],[d,'']])}$, what is $${o?'(f\\circ g)':'(g\\circ f)'}(${x})$?`,a:v,w:[other===v?v+2:other,f(x)*g(x),v+1,f(x)+g(x),v-a],
+ s:o?T`$(f\circ g)(${x})=f(g(${x}))$: apply $g$ first.<br>$g(${x})=${c}\cdot ${P(x)}^2+${P(d)}=${g(x)}$.<br>$f(${g(x)})=${a}\cdot${P(g(x))}+${P(b)}=${v}$.<br>(Doing $f$ first gives $g(f(${x}))=${other}$, the other composition.)`
+ :T`$(g\circ f)(${x})=g(f(${x}))$: apply $f$ first.<br>$f(${x})=${a}\cdot ${P(x)}+${P(b)}=${f(x)}$.<br>$g(${f(x)})=${c}\cdot ${P(f(x))}^2+${P(d)}=${c*f(x)*f(x)}+${P(d)}=${v}$.<br>(Doing $g$ first gives $f(g(${x}))=${other}$.)`}},
+/* composition as a formula */
+r=>{const a=ri(r,1,4)*pick(r,[1,-1]),b=ri(r,-6,6)||1,c=ri(r,-5,5);const fg=r()<.5;
+ const ans=fg?trm([[a,'x^2'],[c*a+b,'']]):trm([[a*a,'x^2'],[2*a*b,'x'],[b*b+c,'']]);
+ const alt=fg?trm([[a*a,'x^2'],[2*a*b,'x'],[b*b+c,'']]):trm([[a,'x^2'],[c*a+b,'']]);
+ const t=TXT(r,ans,[alt,trm([[a,'x^2'],[b+c,'']]),trm([[a,'x^3'],[b,'x^2'],[a*c,'x'],[b*c,'']]),trm([[a*a,'x^2'],[b*b+c,'']])===ans?trm([[a*a,'x^2'],[b*b-c,'']]):trm([[a*a,'x^2'],[b*b+c,'']])]);
+ return{lvl:2,q:T`Let $f(x)=${lin(a,b)}$ and $g(x)=${trm([[1,'x^2'],[c,'']])}$. Which expression equals $${fg?'f(g(x))':'g(f(x))'}$?`,a:t.a,w:t.w,
+ s:fg?T`$f(g(x))$: put $g(x)$ into $f$ wherever $x$ appears.<br>$f(g(x))=${a}\,(${trm([[1,'x^2'],[c,'']])})${b<0?'-':'+'}${Math.abs(b)}=${trm([[a,'x^2'],[a*c,'']])}${b<0?'-':'+'}${Math.abs(b)}=${ans}$.`
+ :T`$g(f(x))$: square $f(x)$ and add $${c}$.<br>$g(f(x))=(${lin(a,b)})^2${c<0?'-':'+'}${Math.abs(c)}=${trm([[a*a,'x^2'],[2*a*b,'x'],[b*b,'']])}${c<0?'-':'+'}${Math.abs(c)}=${ans}$.<br>Remember $(${lin(a,b)})^2$ has a middle term $2\cdot${P(a)}x\cdot${P(b)}=${2*a*b}x$.`}},
+/* domain of a quotient: count integers */
+r=>{const a=ri(r,-5,2),b=a+ri(r,1,6),c=b+ri(r,1,4),hi=c+ri(r,1,6);const cnt=hi-a+1-2;
+ return{lvl:2,q:T`Let $f(x)=\sqrt{${lin(1,-a)}}$ and $g(x)=x^2-${b+c}x+${b*c}$. How many integers from $${a}$ to $${hi}$ (inclusive) are in the domain of $\dfrac fg$?`,a:cnt,w:[cnt+2,cnt+1,cnt-1,hi-a,cnt+3],
+ s:T`The domain of $\frac fg$ is every $x$ in the domain of $f$ where $g(x)\ne0$.<br>• $f$ needs $${lin(1,-a)}\ge0$, so $x\ge${a}$. All the listed integers qualify.<br>• $g(x)=x^2-${b+c}x+${b*c}=(x-${b})(x-${c})$ is zero at $x=${b}$ and $x=${c}$, which must be removed.<br>From $${a}$ to $${hi}$ there are $${hi-a+1}$ integers; removing $${b}$ and $${c}$ leaves $${cnt}$.`}},
+/* solve for the inner function */
+r=>{const m=ri(r,2,5)*pick(r,[1,-1]),b=ri(r,-6,6),p=ri(r,1,4)*pick(r,[1,-1]),q=ri(r,-6,6);const P1=m*p,Q1=m*q+b;
+ const ans=lin(p,q);const t=TXT(r,'g(x)='+ans,['g(x)='+lin(p,Q1-b===q?q+1:Q1),'g(x)='+lin(P1,q),'g(x)='+lin(p,Q1-b),'g(x)='+lin(m*P1,m*Q1+b)].filter(x=>x!=='g(x)='+ans).concat(['g(x)='+lin(p,q-1),'g(x)='+lin(-p,q)]).slice(0,4));
+ return{lvl:2,q:T`Let $f(x)=${lin(m,b)}$. For which function $g$ is $f(g(x))=${lin(P1,Q1)}$?`,a:t.a,w:t.w,
+ s:T`$f(g(x))=${m}\,g(x)${b<0?'-':'+'}${Math.abs(b)}$, because $f$ multiplies its input by $${m}$ and adds $${b}$.<br>Set $${m}\,g(x)${b<0?'-':'+'}${Math.abs(b)}=${lin(P1,Q1)}$.<br>Then $${m}\,g(x)=${lin(P1,Q1-b)}$, so $g(x)=${ans}$.<br>Check: $f(${ans})=${m}(${ans})${b<0?'-':'+'}${Math.abs(b)}=${lin(P1,Q1)}$. ✓`}},
+/* table composition */
+r=>{const xs=[1,2,3,4,5];const f=shuffle(r,xs),g=shuffle(r,xs);const x=pick(r,xs);const kind=ri(r,0,2);
+ const F_=t=>f[t-1],G_=t=>g[t-1];
+ const tbl=`<table class="t"><tr><th>$x$</th>${xs.map(v=>`<td>${v}</td>`).join('')}</tr><tr><th>$f(x)$</th>${f.map(v=>`<td>${v}</td>`).join('')}</tr><tr><th>$g(x)$</th>${g.map(v=>`<td>${v}</td>`).join('')}</tr></table>`;
+ const exprs=[['f(g('+x+'))',F_(G_(x)),[`$g(${x})=${G_(x)}$`,`$f(${G_(x)})=${F_(G_(x))}$`]],['g(f('+x+'))',G_(F_(x)),[`$f(${x})=${F_(x)}$`,`$g(${F_(x)})=${G_(F_(x))}$`]],['f(f(g('+x+')))',F_(F_(G_(x))),[`$g(${x})=${G_(x)}$`,`$f(${G_(x)})=${F_(G_(x))}$`,`$f(${F_(G_(x))})=${F_(F_(G_(x)))}$`]]];
+ const [e,v,steps]=exprs[kind];
+ return{lvl:1,q:T`Use the table to find $${e}$.${tbl}`,a:v,w:[1,2,3,4,5].filter(z=>z!==v).concat([6]),
+ s:T`Work from the innermost function outward, one table lookup at a time:<br>${steps.map(s=>'• '+s).join('<br>')}<br>So $${e}=${v}$.`}},
+/* f(f(x)) of a linear function */
+r=>{const a=ri(r,2,5)*pick(r,[1,-1]),b=ri(r,-6,6)||3;const A=a*a,B=a*b+b;
+ const ans=lin(A,B);const t=TXT(r,ans,[lin(2*a,2*b),lin(A,b),lin(a*a,b*b),lin(2*a,B)].filter(x=>x!==ans).concat([lin(A,B+1)]).slice(0,4));
+ return{lvl:1,q:T`If $f(x)=${lin(a,b)}$, which expression equals $(f\circ f)(x)$?`,a:t.a,w:t.w,
+ s:T`$(f\circ f)(x)=f(f(x))=${a}\,f(x)${b<0?'-':'+'}${Math.abs(b)}=${a}(${lin(a,b)})${b<0?'-':'+'}${Math.abs(b)}$.<br>$=${lin(A,a*b)}${b<0?'-':'+'}${Math.abs(b)}=${ans}$.<br>Note $f\circ f$ is not $2f$ and not $f(x)^2$.`}},
+];

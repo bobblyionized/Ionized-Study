@@ -1,0 +1,244 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc3-trans">
+<h2>3.4 Graphs and Transformations</h2>
+<p>Most graphs you'll meet are a catalog graph (Section 3.3) that has been <b>moved, stretched, or flipped</b>. If you know how each algebraic change to a formula changes its graph, you can sketch $y=-2\sqrt{x+3}+1$ in seconds from $y=\sqrt x$.</p>
+
+<h3>1. Vertical shifts: change the output</h3>
+<div class="box">$y=f(x)+c$ is the graph of $f$ shifted <b>up</b> $c$ units ($c\gt0$), and $y=f(x)-c$ is shifted <b>down</b> $c$ units.</div>
+<p>Every output is increased by $c$, so every point $(x,y)$ moves to $(x,y+c)$. Example: $y=x^2+3$ is the parabola raised $3$ units, vertex $(0,3)$.</p>
+
+<h3>2. Horizontal shifts: change the input (opposite direction!)</h3>
+<div class="box">$y=f(x+c)$ is the graph of $f$ shifted <b>left</b> $c$ units ($c\gt0$), and $y=f(x-c)$ is shifted <b>right</b> $c$ units.</div>
+<p>Why the "wrong" direction? On $y=f(x-3)$, the output that $f$ used to produce at input $0$ is now produced when $x-3=0$, i.e. at $x=3$. Everything happens $3$ units later, which means $3$ units to the right. Point rule: $(x,y)\to(x+3,y)$.</p>
+<div class="lfigs">
+<div class="lplot" data-f="x*x;(x-3)*(x-3)" data-x="-3,6" data-y="-1,8" data-w="190" data-cap="$y=x^2$ and $y=(x-3)^2$: right $3$"></div>
+<div class="lplot" data-f="abs(x);abs(x+2)+1" data-x="-5,4" data-y="-1,7" data-w="190" data-cap="$y=|x|$ and $y=|x+2|+1$: left $2$, up $1$"></div>
+</div>
+
+<h3>3. Stretches and compressions</h3>
+<div class="box"><ul>
+<li>$y=c\,f(x)$ with $c\gt1$: <b>vertical stretch</b> by a factor of $c$ (away from the $x$-axis). With $0\lt c\lt1$: vertical compression. Point rule: $(x,y)\to(x,cy)$.</li>
+<li>$y=f(cx)$ with $c\gt1$: <b>horizontal compression</b> by a factor of $\frac1c$ (toward the $y$-axis). With $0\lt c\lt1$: horizontal stretch. Point rule: $(x,y)\to\left(\frac xc,y\right)$.</li></ul></div>
+<p>Again the input change acts "backwards": $f(2x)$ reaches each output at <i>half</i> the $x$-value, so the graph is squeezed horizontally. Points on the $x$-axis stay put under vertical stretches; points on the $y$-axis stay put under horizontal ones.</p>
+
+<h3>4. Reflections</h3>
+<div class="box"><ul>
+<li>$y=-f(x)$: reflection across the <b>$x$-axis</b> (outputs negated): $(x,y)\to(x,-y)$.</li>
+<li>$y=f(-x)$: reflection across the <b>$y$-axis</b> (inputs negated): $(x,y)\to(-x,y)$.</li></ul></div>
+<div class="lfigs">
+<div class="lplot" data-f="sqrt(x)|0|8|c-;-sqrt(x)|0|8|c-" data-x="-8,8" data-y="-4,4" data-w="190" data-cap="$\sqrt x$ and $-\sqrt x$"></div>
+<div class="lplot" data-f="sqrt(x)|0|8|c-;sqrt(-x)|-8|0|-c" data-x="-8,8" data-y="-4,4" data-w="190" data-cap="$\sqrt x$ and $\sqrt{-x}$"></div>
+</div>
+
+<h3>5. Combining transformations</h3>
+<p>Changes to the <b>output</b> (outside $f$) happen in the usual order of operations: multiply (stretch/reflect), then add (shift). For $y=-2\sqrt{x+3}+1$ starting from $\sqrt x$:</p>
+<ol><li>$\sqrt{x+3}$: shift left $3$ (starting point $(0,0)\to(-3,0)$).</li>
+<li>$2\sqrt{x+3}$: stretch vertically by $2$.</li>
+<li>$-2\sqrt{x+3}$: reflect across the $x$-axis.</li>
+<li>$-2\sqrt{x+3}+1$: shift up $1$. The starting point ends at $(-3,1)$ and the graph heads down and to the right.</li></ol>
+<p>Changes to the <b>input</b> (inside $f$) undo themselves in reverse. To handle $y=f(-x+2)$, factor: $f(-(x-2))$, which is "reflect across the $y$-axis, then shift right $2$." Solve for the original input to map points: if $(5,4)$ is on $f$, then $-x+2=5$ gives $x=-3$, so $(-3,4)$ is on the new graph.</p>
+<div class="tip"><h4>The point-mapping method (never fails)</h4>For $y=A\,f(B(x-h))+k$, a point $(a,b)$ on $f$ moves to
+$$\left(\frac aB+h,\ Ab+k\right).$$
+Inside: solve $B(x-h)=a$ for $x$. Outside: just compute $Ab+k$.</div>
+
+<h3>6. Domains and ranges</h3>
+<ul><li>Horizontal transformations change the <b>domain</b>: if $f$ has domain $[-2,6]$, then $g(x)=f(2x-4)$ needs $-2\le2x-4\le6$, so $1\le x\le5$.</li>
+<li>Vertical transformations change the <b>range</b>: if $f$ has range $[-3,5]$, then $-2f(x)+1$ has outputs from $-2(5)+1=-9$ to $-2(-3)+1=7$, i.e. $[-9,7]$. A negative factor swaps which end is which.</li></ul>
+
+<h3>Worked examples</h3>
+<div class="ex"><b class="lbl">Example 1.</b> The point $(2,5)$ is on the graph of $f$. What point must be on the graph of $y=3f(x+1)-4$?
+<details><summary>Solution</summary>Inside: $x+1=2$ gives $x=1$. Outside: $3(5)-4=11$. The point is $(1,11)$.</details></div>
+<div class="ex"><b class="lbl">Example 2.</b> Write an equation for $y=|x|$ reflected across the $x$-axis and moved so its vertex is at $(-2,3)$.
+<details><summary>Solution</summary>Reflect: $y=-|x|$. Move the vertex from $(0,0)$ to $(-2,3)$: left $2$, up $3$: $y=-|x+2|+3$.</details></div>
+<div class="ex"><b class="lbl">Example 3.</b> Describe how $y=(x+1)^3-2$ is obtained from $y=x^3$.
+<details><summary>Solution</summary>$x\to x+1$ inside: left $1$. $-2$ outside: down $2$. The center of symmetry moves from $(0,0)$ to $(-1,-2)$.</details></div>
+<div class="warn"><h4>Common traps</h4><ul>
+<li>$f(x-3)$ moves <b>right</b>, not left.</li>
+<li>$f(2x)$ <b>compresses</b> horizontally (by $\frac12$); it does not stretch.</li>
+<li>$f(2x+6)=f(2(x+3))$ is a shift <b>left 3</b> (not 6) after the compression. Factor out the coefficient of $x$ first.</li>
+<li>$-f(x)$ and $f(-x)$ are different reflections.</li>
+</ul></div>
+</script>
+
+=== BANK ===
+@@ pc3-trans
+Q: The graph of $g(x)=f(x-3)+2$ is obtained from the graph of $f$ by shifting it ...
+L: 1
+A: \text{3 units right and 2 units up}
+W: \text{3 units left and 2 units up}
+W: \text{3 units right and 2 units down}
+W: \text{2 units right and 3 units up}
+W: \text{3 units left and 2 units down}
+S: Separate the inside change from the outside change.
+• Inside: $x\to x-3$. Input changes act in the opposite direction from the sign, so this is a shift <b>right</b> $3$. (The output $f$ used to give at $x=0$ now happens at $x=3$.)
+• Outside: $+2$ adds $2$ to every output: shift <b>up</b> $2$.
+Every point $(a,b)$ moves to $(a+3,\,b+2)$.
+---
+Q: The graph of $y=\sqrt x$ is shifted $4$ units left and then reflected across the $x$-axis. What is the new equation?
+L: 1
+A: y=-\sqrt{x+4}
+W: y=-\sqrt{x-4}
+W: y=\sqrt{-x+4}
+W: y=\sqrt{-(x+4)}
+W: y=-\sqrt{x}+4
+S: Shift left $4$: replace $x$ by $x+4$, giving $y=\sqrt{x+4}$.
+Reflect across the $x$-axis: negate the output, giving $y=-\sqrt{x+4}$.
+The graph starts at $(-4,0)$ and goes down to the right. ($\sqrt{-x+4}$ would be a reflection across the $y$-axis instead.)
+---
+Q: The point $(2,5)$ lies on the graph of $y=f(x)$. Which point must lie on the graph of $y=3f(x+1)-4$?
+L: 1
+A: (1,\,11)
+W: (3,\,11)
+W: (1,\,19)
+W: (3,\,1)
+W: (1,\,1)
+S: Use the point-mapping method.
+Inside: we need $x+1=2$ (the input $f$ is evaluated at must be $2$), so $x=1$.
+Outside: the output becomes $3\cdot f(2)-4=3\cdot5-4=11$.
+New point: $(1,11)$. Check: $3f(1+1)-4=3f(2)-4=11$. ✓
+---
+Q: The point $(6,-2)$ lies on the graph of $y=f(x)$. Which point must lie on the graph of $y=f(2x)$?
+L: 1
+A: (3,\,-2)
+W: (12,\,-2)
+W: (6,\,-4)
+W: (6,\,-1)
+W: (3,\,-4)
+S: We need $2x=6$ so that $f(2x)=f(6)=-2$. That gives $x=3$, and the output is unchanged.
+New point: $(3,-2)$. Multiplying the input by $2$ <b>compresses</b> the graph horizontally by a factor of $\frac12$: every $x$-coordinate is halved.
+---
+Q: Which equation describes $y=|x|$ reflected across the $x$-axis and then moved so that its vertex is at $(-2,3)$?
+L: 1
+A: y=-|x+2|+3
+W: y=-|x-2|+3
+W: y=|x+2|+3
+W: y=-|x+3|-2
+W: y=-|x+2|-3
+S: Reflect $y=|x|$ across the $x$-axis: $y=-|x|$ (a V opening downward, vertex at the origin).
+Move the vertex from $(0,0)$ to $(-2,3)$: left $2$ means $x\to x+2$; up $3$ means add $3$.
+Result: $y=-|x+2|+3$. Check: at $x=-2$, $y=-0+3=3$. ✓
+---
+Q: The point $(5,4)$ lies on the graph of $y=f(x)$. Which point must lie on the graph of $y=f(2-x)$?
+L: 2
+A: (-3,\,4)
+W: (3,\,4)
+W: (-5,\,4)
+W: (7,\,4)
+W: (-3,\,-4)
+S: We need the input $2-x$ to equal $5$: $2-x=5$ gives $x=-3$. The output is $f(5)=4$.
+New point: $(-3,4)$.
+In words: $f(2-x)=f(-(x-2))$ is the graph of $f$ reflected across the $y$-axis (sending $(5,4)$ to $(-5,4)$) and then shifted right $2$ (to $(-3,4)$).
+---
+Q: The function $f$ has domain $[-2,6]$. What is the domain of $g(x)=f(2x-4)$?
+L: 2
+A: [1,\,5]
+W: [-8,\,8]
+W: [-6,\,2]
+W: [-2,\,6]
+W: [2,\,10]
+S: $g(x)$ is defined exactly when its input to $f$, namely $2x-4$, is in the domain of $f$:
+$-2\le2x-4\le6$.
+Add $4$: $2\le2x\le10$. Divide by $2$: $1\le x\le5$.
+Domain of $g$: $[1,5]$. ($[-8,8]$ comes from applying the transformation forwards, $2(-2)-4$ and $2(6)-4$, which is backwards for inputs.)
+---
+Q: The function $f$ has range $[-3,5]$. What is the range of $g(x)=-2f(x)+1$?
+L: 2
+A: [-9,\,7]
+W: [-5,\,11]
+W: [-7,\,9]
+W: [-6,\,10]
+W: [7,\,-9]
+S: Every output $y$ of $f$ becomes $-2y+1$.
+The smallest output of $f$, $-3$, becomes $-2(-3)+1=7$.
+The largest output, $5$, becomes $-2(5)+1=-9$.
+Multiplying by a negative number reverses the order, so the new outputs run from $-9$ to $7$: the range is $[-9,7]$.
+---
+Q: Which sequence of transformations turns the graph of $y=x^3$ into the graph of $y=(x+1)^3-2$?
+L: 1
+A: \text{left 1, then down 2}
+W: \text{right 1, then down 2}
+W: \text{left 1, then up 2}
+W: \text{left 2, then down 1}
+W: \text{right 1, then up 2}
+S: Inside the cube, $x$ is replaced by $x+1$: shift <b>left</b> $1$.
+Outside, $-2$ is subtracted from every output: shift <b>down</b> $2$.
+The point of symmetry $(0,0)$ of $y=x^3$ moves to $(-1,-2)$.
+---
+Q: The graph of $y=\sqrt{x}$ is transformed into the graph of $y=-2\sqrt{x+3}+1$. Where does the starting point $(0,0)$ of $\sqrt x$ end up?
+L: 1
+A: (-3,\,1)
+W: (3,\,1)
+W: (-3,\,-1)
+W: (3,\,-2)
+W: (-3,\,-2)
+S: Point-mapping: inside, $x+3=0$ gives $x=-3$. Outside, the output becomes $-2\cdot\sqrt0+1=1$.
+So $(0,0)\to(-3,1)$. From there the graph goes down to the right, because of the factor $-2$.
+---
+Q: The graph of $y=f(x)$ is stretched vertically by a factor of $3$, then shifted $2$ units down. Which equation results?
+L: 1
+A: y=3f(x)-2
+W: y=3\big(f(x)-2\big)
+W: y=f(3x)-2
+W: y=3f(x-2)
+W: y=\tfrac13f(x)-2
+S: Do the operations to the <b>output</b> in the order described.
+Stretch vertically by $3$: multiply the output, $y=3f(x)$.
+Shift down $2$: subtract from the output, $y=3f(x)-2$.
+The order matters: $3\big(f(x)-2\big)=3f(x)-6$ would be shifting down $2$ first and then stretching, which moves the graph down $6$ in total.
+---
+Q: The graph of $y=x^2$ is compressed horizontally by a factor of $\tfrac13$. Which equation results, and how does it compare with a vertical stretch?
+L: 2
+A: y=9x^2\text{, the same as a vertical stretch by }9
+W: y=\tfrac13x^2\text{, a vertical compression}
+W: y=3x^2\text{, the same as a vertical stretch by }3
+W: y=\tfrac19x^2\text{, a vertical compression}
+W: y=x^2+3\text{, a vertical shift}
+S: A horizontal compression by a factor of $\frac13$ replaces $x$ with $3x$: $y=(3x)^2=9x^2$.
+So for this particular function, squeezing horizontally by $3$ is the same as stretching vertically by $3^2=9$.
+(This happens because $x^2$ is a power function: $(cx)^2=c^2x^2$. It is not true for most functions.)
+=== GENS ===
+GENS['pc3-trans']=[
+/* point mapping */
+r=>{const a=ri(r,-6,6),b=ri(r,-6,6)||3,A=pick(r,[1,2,3,-1,-2,-3]),h=ri(r,-5,5),k=ri(r,-6,6);if(!h&&!k)return GENS['pc3-trans'][0](r);
+ const X=a+h,Y=A*b+k;const pt=(x,y)=>'('+x+',\\,'+y+')';
+ const inner=h===0?'x':'x'+(h<0?'+':'-')+Math.abs(h);const outer=(A===1?'':A===-1?'-':A)+'f('+inner+')'+(k?(k<0?'-':'+')+Math.abs(k):'');
+ const t=TXT(r,pt(X,Y),[pt(a-h,Y),pt(X,A*(b+k)),pt(a-h,A*b-k),pt(X,b+k)===pt(X,Y)?pt(X+1,Y):pt(X,b+k)]);
+ return{lvl:1,q:T`The point $(${a},${b})$ is on the graph of $y=f(x)$. Which point must be on the graph of $y=${outer}$?`,a:t.a,w:t.w,
+ s:T`<b>Inside:</b> we need the input to $f$ to be $${a}$: $${inner}=${a}$, so $x=${X}$.${h?T` (Replacing $x$ by $${inner}$ shifts the graph ${h>0?'right':'left'} $${Math.abs(h)}$.)`:''}<br><b>Outside:</b> the output becomes $${A}\cdot f(${a})${k?(k<0?'-':'+')+Math.abs(k):''}=${A}\cdot${P(b)}${k?(k<0?'-':'+')+Math.abs(k):''}=${Y}$.<br>New point: $${pt(X,Y)}$.`}},
+/* horizontal scaling point mapping */
+r=>{const c=pick(r,[2,3,4,F(1,2),F(1,3)]),b=ri(r,-6,6);const cf=Fr.of(c);let a=ri(r,-6,6)*(cf.isInt()?cf.n:1);if(!a)a=cf.isInt()?cf.n*2:2;const X=F(a).div(cf);const pt=(x,y)=>'('+tx(x)+',\\,'+y+')';
+ const t=TXT(r,pt(X,b),[pt(F(a).mul(cf),b),pt(a,F(b).mul(cf).isInt()?b*cf.v:b+1),pt(X,F(b).mul(cf).isInt()&&b*cf.v!==b?b*cf.v:b-1),pt(F(a).add(cf),b)]);
+ return{lvl:1,q:T`The point $(${a},${b})$ is on the graph of $y=f(x)$. Which point must be on the graph of $y=f\!\left(${cf.isInt()?cf.n+'x':cf.tex()+'x'}\right)$?`,a:t.a,w:t.w,
+ s:T`We need $${cf.tex()}x=${a}$, so $x=${a}\div${P(cf)}=${X.tex()}$. The output is still $f(${a})=${b}$.<br>New point: $${pt(X,b)}$.<br>Multiplying the input by $${cf.tex()}$ ${cf.v>1?'compresses the graph horizontally (toward the $y$-axis)':'stretches the graph horizontally (away from the $y$-axis)'}: each $x$-coordinate is ${cf.v>1?'divided':'multiplied'} by $${cf.v>1?cf.tex():cf.neg().neg().pow(1).tex().replace(/\\frac\{1\}\{(\d+)\}/,'$1')}$.`}},
+/* equation from a description */
+r=>{const base=pick(r,[['x^2','the parabola $y=x^2$',v=>v+'^2'],['|x|','$y=|x|$',v=>'|'+v+'|'],['\\sqrt{x}','$y=\\sqrt x$',v=>'\\sqrt{'+v+'}'],['x^3','$y=x^3$',v=>v+'^3']]);
+ const h=ri(r,-5,5)||2,k=ri(r,-5,5)||-3,refl=r()<.4;
+ const inner=h<0?'x+'+(-h):'x-'+h;const wrap=v=>base[0]==='|x|'||base[0]==='\\sqrt{x}'?base[2](v):'('+v+')'+base[0].slice(1);
+ const mk=(hh,kk,rf)=>'y='+(rf?'-':'')+wrap(hh<0?'x+'+(-hh):'x-'+hh)+(kk<0?'-'+(-kk):'+'+kk);
+ const ans=mk(h,k,refl);
+ const t=TXT(r,ans,[mk(-h,k,refl),mk(h,-k,refl),mk(h,k,!refl),mk(k,h,refl)===ans?mk(-h,-k,refl):mk(k,h,refl)]);
+ return{lvl:1,q:T`The graph of ${base[1]} is ${refl?'reflected across the $x$-axis, then ':''}shifted ${Math.abs(h)} unit${Math.abs(h)===1?'':'s'} ${h>0?'right':'left'} and ${Math.abs(k)} unit${Math.abs(k)===1?'':'s'} ${k>0?'up':'down'}. What is the equation of the new graph?`,a:t.a,w:t.w,
+ s:T`${refl?'Reflecting across the $x$-axis negates the output: put a minus sign in front.<br>':''}A horizontal shift ${h>0?'right':'left'} $${Math.abs(h)}$ replaces $x$ with $${inner}$ (inside, opposite sign).<br>A vertical shift ${k>0?'up':'down'} $${Math.abs(k)}$ ${k>0?'adds':'subtracts'} $${Math.abs(k)}$ outside.<br>Result: $${ans}$.`}},
+/* domain of a transformed function */
+r=>{const p=ri(r,-6,0),q=p+ri(r,4,10),m=pick(r,[2,3,-1,-2,1]),c=ri(r,-6,6);
+ const L1=F(p-c,m),L2=F(q-c,m);const lo=L1.v<L2.v?L1:L2,hi=L1.v<L2.v?L2:L1;const ans='['+lo.tex()+',\\,'+hi.tex()+']';
+ const fw=[m*p+c,m*q+c].sort((a,b)=>a-b);
+ const t=TXT(r,ans,['['+fw[0]+',\\,'+fw[1]+']','['+(p+c)+',\\,'+(q+c)+']','['+(p-c)+',\\,'+(q-c)+']','['+p+',\\,'+q+']'].filter(x=>x!==ans).concat(['['+lo.add(1).tex()+',\\,'+hi.add(1).tex()+']']).slice(0,4));
+ return{lvl:2,q:T`The function $f$ has domain $[${p},${q}]$. What is the domain of $g(x)=f(${lin(m,c)})$?`,a:t.a,w:t.w,
+ s:T`$g(x)$ is defined exactly when the input to $f$, namely $${lin(m,c)}$, lies in $[${p},${q}]$:<br>$${p}\le ${lin(m,c)}\le ${q}$.<br>${c?T`Subtract $${c}$: $${p-c}\le ${m===1?'':m===-1?'-':m}x\le ${q-c}$.<br>`:''}${m!==1?T`Divide by $${m}$${m<0?' (and flip the inequalities, since it is negative)':''}: $${lo.tex()}\le x\le${hi.tex()}$.<br>`:''}Domain: $${ans}$. (Applying $${lin(m,c)}$ to the endpoints $${p}$ and $${q}$ would be going the wrong direction.)`}},
+/* range of a transformed function */
+r=>{const p=ri(r,-6,2),q=p+ri(r,2,8),A=pick(r,[2,3,-1,-2,-3,F(1,2)]),k=ri(r,-6,6);const Af=Fr.of(A);
+ const e1=Af.mul(p).add(k),e2=Af.mul(q).add(k);const lo=e1.v<e2.v?e1:e2,hi=e1.v<e2.v?e2:e1;const ans='['+lo.tex()+',\\,'+hi.tex()+']';
+ const t=TXT(r,ans,['['+(p+k)+',\\,'+(q+k)+']','['+Af.mul(p+k).tex()+',\\,'+Af.mul(q+k).tex()+']','['+lo.sub(2).tex()+',\\,'+hi.sub(2).tex()+']','['+p+',\\,'+q+']'].filter(x=>x!==ans).concat(['['+lo.tex()+',\\,'+hi.add(1).tex()+']']).slice(0,4));
+ return{lvl:2,q:T`The function $f$ has range $[${p},${q}]$. What is the range of $g(x)=${Af.isInt()?(A===-1?'-':Af.n):Af.tex()}f(x)${k?(k<0?'-':'+')+Math.abs(k):''}$?`,a:t.a,w:t.w,
+ s:T`Each output $y$ of $f$ becomes $${Af.tex()}y${k?(k<0?'-':'+')+Math.abs(k):''}$.<br>$y=${p}\to ${Af.tex()}\cdot${P(p)}${k?(k<0?'-':'+')+Math.abs(k):''}=${e1.tex()}$.<br>$y=${q}\to ${Af.tex()}\cdot${P(q)}${k?(k<0?'-':'+')+Math.abs(k):''}=${e2.tex()}$.<br>${Af.v<0?'Multiplying by a negative reverses the order, so the ends swap. ':''}The range is $${ans}$.`}},
+/* identify the equation of a plotted transformed graph */
+r=>{const kinds=[['|x|',x=>Math.abs(x),v=>'|'+v+'|'],['x^2',x=>x*x,v=>'('+v+')^2'],['\\sqrt{x}',x=>x>=0?Math.sqrt(x):NaN,v=>'\\sqrt{'+v+'}']];
+ const [nm,fn,wr]=pick(r,kinds);const h=ri(r,-3,3),k=ri(r,-3,3)||(h?0:2),s=pick(r,[1,-1]);const f=x=>s*fn(x-h)+k;
+ const inner=h===0?'x':h<0?'x+'+(-h):'x-'+h;const mk=(hh,kk,ss)=>'y='+(ss<0?'-':'')+wr(hh===0?'x':hh<0?'x+'+(-hh):'x-'+hh)+(kk===0?'':kk<0?'-'+(-kk):'+'+kk);
+ const ans=mk(h,k,s);const g=plot({x:[-6,6],y:[-6,6],w:240,curves:[{f,a:nm==='\\sqrt{x}'?h:-6,ends:[nm==='\\sqrt{x}'?'c':'','']}],label:'a transformed graph'});
+ const pool=[mk(-h,k,s),mk(h,-k,s),mk(h,k,-s),mk(-h,-k,s),mk(k,h,s),mk(-h,k,-s),mk(h+1,k,s),mk(h,k-1,s)].filter((x,i,a)=>x!==ans&&a.indexOf(x)===i);
+ const t=TXT(r,ans,pool.slice(0,4));
+ return{lvl:1,q:T`The graph shown is a transformation of $y=${nm}$. Which is its equation?<br>${g}`,a:t.a,w:t.w,
+ s:T`Locate the key point. For $y=${nm}$ it is the ${nm==='\\sqrt{x}'?'starting point':'vertex'} $(0,0)$; on this graph it is at $(${h},${k})$.<br>${h?T`It moved ${h>0?'right':'left'} $${Math.abs(h)}$, so $x$ is replaced by $${inner}$. `:''}${k?T`It moved ${k>0?'up':'down'} $${Math.abs(k)}$, so we ${k>0?'add':'subtract'} $${Math.abs(k)}$. `:''}<br>The graph ${nm==='\\sqrt{x}'?(s>0?'goes up':'goes down'):(s>0?'opens up':'opens down')}${s<0?', so it was reflected across the $x$-axis (a minus sign in front)':', so there is no reflection'}.<br>Equation: $${ans}$.`}},
+];

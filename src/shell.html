@@ -48,6 +48,11 @@ h4{margin:0 0 6px;font-size:15px;text-transform:uppercase;letter-spacing:.6px;co
 .tile .num{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.6px;text-transform:uppercase}
 .tile .t{font-weight:700;font-size:17px}
 .tile .d{color:var(--muted);font-size:14px;flex:1}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.tile.big{padding:24px 22px;min-height:190px}
+.tile.big .t{font-size:23px}
+.tile.big .d{font-size:15px}
+.secno{color:var(--accent);margin-right:2px}
 .bigtile{padding:26px}
 .bigtile .t{font-size:22px}
 .bar{height:6px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:4px}
@@ -97,6 +102,35 @@ table.t th{background:var(--accent-weak)}
 .fb.ok{color:var(--good)}.fb.no{color:var(--bad)}
 .sol{margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
 .sol .solbody{line-height:1.9}
+.sol{position:relative}
+.plot{display:block;max-width:100%;height:auto;margin:8px 0;font:10px system-ui,sans-serif}
+.plot .pg{stroke:var(--line);stroke-width:.7}
+.plot .pa{stroke:var(--muted);stroke-width:1.2}
+.plot .pc{stroke:var(--accent);stroke-width:2.2;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.plot text{fill:var(--muted)}
+.plot .pl{font-style:italic;font-size:11px}
+.plot .pd{fill:var(--accent)}
+.plot .po{fill:var(--card);stroke:var(--accent);stroke-width:1.8}
+.plots{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:flex-start}
+.plots figure{margin:0;text-align:center}
+.plots figcaption{font-weight:700;color:var(--muted);font-size:13px}
+.lfigs{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:flex-start;margin:10px 0}
+.lfig{margin:0;display:inline-block;text-align:center;vertical-align:top}
+.lfig figcaption{font-size:13px;color:var(--muted);margin-top:-2px;max-width:240px}
+.ai-btn{display:none;position:absolute;right:0;top:8px;align-items:center;gap:5px;border:1px solid var(--line);background:var(--card);color:var(--accent);
+  border-radius:999px;padding:3px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
+.ai-btn:hover{border-color:var(--accent)}
+.ai-btn:disabled{opacity:.6;cursor:progress}
+body.ai-on .ai-btn{display:inline-flex}
+body.ai-on .sol details summary{padding-right:130px}
+.solbody.ai{border-left:3px solid var(--accent);padding-left:12px}
+.ai-tag{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.4px;text-transform:uppercase;margin-bottom:4px}
+.solbody.ai p{margin:0 0 10px}
+.solbody.ai ul,.solbody.ai ol{margin:0 0 10px;padding-left:22px}
+.solbody.ai h3,.solbody.ai h4{margin:12px 0 6px;font-size:16px;text-transform:none;letter-spacing:0;color:var(--ink)}
+.ai-err{color:var(--bad);font-weight:600}
+.ai-cursor::after{content:'▍';color:var(--accent);animation:aiblink 1s steps(2) infinite}
+@keyframes aiblink{50%{opacity:0}}
 .filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
 .chip{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:20px;padding:4px 12px;font:inherit;font-size:13.5px;cursor:pointer}
 .chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
@@ -139,7 +173,15 @@ body.landing #land{display:flex}
 .tm-label{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--tp-muted);margin-bottom:6px}
 .tm-time{font-size:clamp(38px,7vw,52px);font-weight:200;font-variant-numeric:tabular-nums;letter-spacing:.02em;line-height:1}
 .tm-desc{font-size:14px;color:var(--tp-muted);margin-top:8px;max-width:min(90vw,460px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tm-clock{position:relative;width:min(72vw,42vh,330px);aspect-ratio:1;flex:none}
+.tm-clock{position:relative;width:min(72vw,42vh,330px);aspect-ratio:1;flex:none;cursor:pointer;border-radius:50%;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .35s}
+.tm-clock:hover,.tm-clock:focus-visible{transform:scale(1.045);filter:brightness(1.06) drop-shadow(0 0 22px rgba(255,255,255,.95)) drop-shadow(0 6px 18px rgba(0,0,0,.08));outline:none}
+.tm-clock:hover .tm-face,.tm-clock:focus-visible .tm-face{fill:#fff}
+.tm-clock .tm-face{transition:fill .35s}
+.tm-ai-dot{position:absolute;left:50%;bottom:24%;transform:translateX(-50%);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--tp-muted);
+  opacity:0;transition:opacity .35s;pointer-events:none;white-space:nowrap}
+.tm-clock:hover .tm-ai-dot{opacity:.9}
+.tm-clock.ai .tm-ai-dot{opacity:.75}
 .tm-clock svg{width:100%;height:100%;display:block;overflow:visible}
 .tm-face{fill:var(--tp-face);stroke:var(--tp-line);stroke-width:1}
 .tm-tick{stroke:var(--tp-muted);stroke-linecap:round}
@@ -177,6 +219,13 @@ body.tm-running .tm-ring,body.tm-running .tm-ring-bg{opacity:1}
 .tm-code-val{appearance:none;background:none;border:0;padding:0;font:inherit;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:22px;font-weight:600;letter-spacing:.08em;color:var(--tp-fg);cursor:copy}
 .tm-code-btn{appearance:none;font:inherit;font-size:13.5px;color:var(--tp-fg);background:var(--tp-sheet);border:1px solid var(--tp-line);border-radius:999px;padding:6px 16px;cursor:pointer}
 .tm-code-btn:hover{border-color:var(--tp-muted)}
+.tm-code-hide{appearance:none;background:none;border:0;padding:0 0 0 2px;font:inherit;font-size:11px;letter-spacing:0;text-transform:none;color:var(--tp-muted);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.tm-code-hide:hover{color:var(--tp-fg)}
+.tm-code.hid .tm-code-val{letter-spacing:.18em;color:var(--tp-muted);cursor:default}
+.tm-code.hid .tm-sync{display:none}
+.tm-sel{font:inherit;font-family:var(--tp-font);font-size:15px;width:100%;padding:11px 12px;border-radius:12px;border:1px solid var(--tp-sline);background:var(--tp-field);color:var(--tp-fg)}
+.tm-aistate{text-align:center;font-size:13.5px;min-height:20px}
+.tm-aistate.ok{color:#2f9e44}.tm-aistate.bad{color:var(--tp-warn)}
 @media (max-width:640px),(max-height:520px){.tm-code{position:static;align-items:center;text-align:center;margin-top:16px}}
 
 /* sheets */
@@ -282,8 +331,8 @@ textarea.tm-input{resize:vertical;min-height:84px;line-height:1.45}
       <div class="tm-time" id="tmTime">0:00</div>
       <div class="tm-desc" id="tmDescShow"></div>
     </div>
-    <div class="tm-clock">
-      <svg viewBox="0 0 200 200" aria-label="Clock">
+    <div class="tm-clock" id="tmClock" role="button" tabindex="0" aria-label="Claude AI settings" title="Claude AI">
+      <svg viewBox="0 0 200 200" aria-hidden="true">
         <circle class="tm-ring-bg" cx="100" cy="100" r="97"/>
         <circle class="tm-ring" id="tmRing" cx="100" cy="100" r="97"/>
         <circle class="tm-face" cx="100" cy="100" r="88"/>
@@ -293,6 +342,7 @@ textarea.tm-input{resize:vertical;min-height:84px;line-height:1.45}
         <line class="tm-hand sec" id="tmS" x1="100" y1="114" x2="100" y2="24" stroke-width="1"/>
         <circle class="tm-pin" cx="100" cy="100" r="3.2"/>
       </svg>
+      <div class="tm-ai-dot" id="tmAiDot">Claude AI</div>
     </div>
     <div class="tm-controls">
       <button class="tm-btn" id="tmSet">Set</button>
@@ -304,7 +354,7 @@ textarea.tm-input{resize:vertical;min-height:84px;line-height:1.45}
   </div>
   <button class="tm-histbtn" id="tmHistBtn"><svg viewBox="0 0 24 24"><path d="M3.5 12a8.5 8.5 0 1 0 2.5-6"/><path d="M3 4v4h4"/><path d="M12 7.5V12l3 2"/></svg>History</button>
   <div class="tm-code" id="tmCodeBox">
-    <div class="tm-code-label">Your code <span class="tm-sync" id="tmSync" title="Sync status"><i></i><b>Connecting…</b></span></div>
+    <div class="tm-code-label">Your code <button class="tm-code-hide" id="tmCodeHide" aria-pressed="false">Hide</button> <span class="tm-sync" id="tmSync" title="Sync status"><i></i><b>Connecting…</b></span></div>
     <button class="tm-code-val" id="tmCode" title="Click to copy">········</button>
     <button class="tm-code-btn" id="tmSetCode">Set Code</button>
   </div>
@@ -321,6 +371,29 @@ textarea.tm-input{resize:vertical;min-height:84px;line-height:1.45}
     <div class="tm-row">
       <button class="tm-btn" id="tmCodeCancel">Cancel</button>
       <button class="tm-btn solid" id="tmCodeGo">Set Code</button>
+    </div>
+  </div>
+</div>
+
+<!-- Claude AI key -->
+<div class="tm-sheet" id="tmAiSheet" role="dialog" aria-label="Claude AI">
+  <div class="tm-grab"><span></span></div>
+  <h2>Claude AI</h2>
+  <div class="tm-donemsg" style="margin:10px 0 14px">Add a Claude API key to get an <b>AI Explain</b> button beside every solution. Claude reads the question and its answer and writes a fresh step-by-step explanation.<br><small>The key is saved only in this browser on this device. It is never uploaded to your sync code. Explanations use your API credits.</small></div>
+  <div class="tm-sbody" style="margin-top:0">
+    <input class="tm-input" id="tmAiKey" type="password" autocomplete="off" spellcheck="false" placeholder="sk-ant-...">
+    <div>
+      <div class="tm-flabel"><span>Model</span><span></span></div>
+      <select class="tm-sel" id="tmAiModel">
+        <option value="claude-opus-5-5">Claude Opus 5.5 (best explanations)</option>
+        <option value="claude-sonnet-5-5">Claude Sonnet 5.5 (faster, cheaper)</option>
+        <option value="claude-haiku-5-5">Claude Haiku 5.5 (fastest, cheapest)</option>
+      </select>
+    </div>
+    <div class="tm-aistate" id="tmAiState">&nbsp;</div>
+    <div class="tm-row">
+      <button class="tm-btn" id="tmAiRemove">Remove key</button>
+      <button class="tm-btn solid" id="tmAiSave">Save &amp; verify</button>
     </div>
   </div>
 </div>

@@ -13,7 +13,8 @@ import os, re, sys
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, 'src')
 ORDER = ['alg', 'quad', 'func', 'polys', 'ineq', 'seq', 'tri', 'circ', 'polyg', 'coord', 'solid',
-         'div', 'mod', 'base', 'dioph', 'count', 'prob', 'binom', 'explog', 'trig', 'cplx', 'conic']
+         'div', 'mod', 'base', 'dioph', 'count', 'prob', 'binom', 'explog', 'trig', 'cplx', 'conic',
+         'pc3', 'pc4']
 
 
 def rd(*p):
@@ -22,7 +23,7 @@ def rd(*p):
 
 
 def split_topic(text, name):
-    m = re.match(r'\s*=== LESSONS ===\n(.*)\n=== BANK ===\n(.*)\n=== GENS ===\n(.*)\Z', text, re.S)
+    m = re.match(r'\s*=== LESSONS ===\n(.*?)\n?=== BANK ===\n(.*?)\n?=== GENS ===\n?(.*)\Z', text, re.S)
     if not m:
         sys.exit(f'bad topic file format: {name}')
     return m.group(1), m.group(2), m.group(3)
@@ -31,16 +32,22 @@ def split_topic(text, name):
 lessons, banks, gens = [], [], []
 for tid in ORDER:
     path = os.path.join(SRC, 'topics', tid + '.txt')
-    if not os.path.exists(path):
+    folder = os.path.join(SRC, 'topics', tid)
+    if os.path.isdir(folder):           # big topics: one file per subtopic, merged in name order
+        parts = [('topics', tid, f) for f in sorted(os.listdir(folder)) if f.endswith('.txt')]
+    elif os.path.exists(path):
+        parts = [('topics', tid + '.txt')]
+    else:
         print('  (missing topic file)', tid)
         continue
-    l, b, g = split_topic(rd('topics', tid + '.txt'), tid)
-    lessons.append(l.strip())
-    banks.append(b.strip())
-    gens.append(f'/* ---- {tid} ---- */\n' + g.strip())
+    for part in parts:
+        l, b, g = split_topic(rd(*part), '/'.join(part))
+        if l.strip(): lessons.append(l.strip())
+        if b.strip(): banks.append(b.strip())
+        if g.strip(): gens.append('/* ---- ' + '/'.join(part[1:]) + ' ---- */\n' + g.strip())
 
 js = '\n'.join([rd('engine_utils.js'), rd('catalog.js'), '\n'.join(gens), rd('engine_model.js'),
-                rd('engine_pages.js'), rd('engine_ui.js'), rd('engine_mock.js'), rd('sync.js')])
+                rd('engine_pages.js'), rd('engine_ui.js'), rd('engine_mock.js'), rd('sync.js'), rd('ai.js')])
 html = (rd('shell.html')
         + '<!-- ======================= LESSONS ======================= -->\n' + '\n'.join(lessons)
         + '\n\n<!-- ======================= PROBLEM BANK ======================= -->\n'
