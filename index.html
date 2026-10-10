@@ -5446,7 +5446,8 @@ W: 90
 W: 120
 W: 100
 S: The interior angles of a pentagon sum to $180(5-2)=540^\circ$.
-Write them as $a-2d, a-d, a, a+d, a+2d$. The sum is $5a=540$, so the middle angle is $a=108^\circ$ no matter what $d$ is.
+Center the arithmetic sequence on its middle term: $a-2d, a-d, a, a+d, a+2d$. The $d$'s cancel in the sum, so $5a=540$ and $a=108^\circ$.
+So the middle angle is $108^\circ$ no matter what $d$ is. The other choices can appear only for some values of $d$; $108$ must appear.
 ---
 Q: Eight numbers are inserted between $5$ and $50$ so that all ten numbers form an arithmetic sequence. What is the sum of the eight inserted numbers?
 L: 1
@@ -5488,8 +5489,9 @@ W: 142
 W: 144
 W: 141
 W: 140
-S: These numbers form the AP $3, 10, 17, \dots$. The largest one below $1000$: $997=3+7\cdot142$ (the next is $1004$).
-Count $=142+1=143$.
+S: Numbers with remainder $3$ mod $7$ are $3, 10, 17, \dots$, an arithmetic sequence $3+7k$ with $k=0,1,2,\dots$
+Largest one below $1000$: $3+7k\lt1000$ means $k\le\frac{996}{7}\approx142.3$, so $k\le142$, giving $997$ (the next is $1004$).
+$k$ runs from $0$ to $142$: that's $143$ values. (Don't forget $k=0$, the number $3$ itself.)
 ---
 Q: The sum of the first $20$ terms of an arithmetic sequence is $400$, and the sum of the first $40$ terms is $1600$. What is the sum of the first $60$ terms?
 L: 2
@@ -5518,9 +5520,9 @@ W: 13
 W: 12
 W: 15
 W: 16
-S: Write them as $a-d, a, a+d$. Then $3a=27$, so $a=9$.
-$(9-d)(9)(9+d)=504\Rightarrow 81-d^2=56\Rightarrow d^2=25\Rightarrow d=\pm5$.
-The numbers are $4, 9, 14$; the largest is $14$.
+S: Center the terms on the middle one: $a-d, a, a+d$. Then the sum is $3a=27$, so $a=9$.
+Product: $(9-d)\cdot9\cdot(9+d)=9(81-d^2)=504$, so $81-d^2=56$ and $d^2=25$, $d=\pm5$.
+Either sign gives the numbers $4, 9, 14$; the largest is $14$.
 ---
 Q: An infinite arithmetic sequence of positive integers has first term $1$, and one of its terms is $145$. How many such sequences are there?
 L: 2
@@ -5539,7 +5541,9 @@ W: 50
 W: -100
 W: 0
 W: -49
-S: Pair the terms: $(1-2)+(3-4)+\dots+(99-100)$ has $50$ pairs, each equal to $-1$. Total: $-50$.
+S: Group the terms in pairs: $(1-2)+(3-4)+\dots+(99-100)$.
+There are $\frac{100}{2}=50$ pairs, each equal to $-1$, so the total is $-50$.
+(Check another way: odd terms sum to $50^2=2500$ and even terms to $2+4+\dots+100=2550$; $2500-2550=-50$.)
 ---
 Q: Each term of a sequence after the first is $4$ more than the previous term. The sum of the first $15$ terms is $600$. What is the first term?
 L: 1
@@ -5548,8 +5552,10 @@ W: 10
 W: 14
 W: 16
 W: 8
-S: With $15$ terms, the middle (8th) term is the average: $a_8=\frac{600}{15}=40$.
-$a_1=a_8-7d=40-28=12$.
+S: In an arithmetic sequence with an odd number of terms, the middle term is the average. With $15$ terms, the middle one is $a_8$:
+$a_8=\frac{600}{15}=40$.
+Going back $7$ steps of $d=4$: $a_1=a_8-7\cdot4=40-28=12$.
+Check: $S_{15}=\frac{15}{2}(2\cdot12+14\cdot4)=\frac{15}{2}\cdot80=600$. ✓
 ---
 Q: An arithmetic sequence has $a_1=2$ and nonzero common difference $d$. The terms $a_1, a_3, a_7$ form a geometric sequence. What is $a_{20}$?
 L: 2
@@ -5592,8 +5598,9 @@ W: 486
 W: 1462
 W: 4374
 W: 1296
-S: $r^{5-2}=\frac{162}{6}=27$, so $r=3$.
-$a_7=a_5\cdot r^2=162\cdot9=1458$.
+S: Going from term $2$ to term $5$ multiplies by $r$ three times: $r^3=\frac{162}{6}=27$, so $r=3$.
+From term $5$ to term $7$ is two more steps: $a_7=a_5\cdot r^2=162\cdot9=1458$.
+(The sequence is $2, 6, 18, 54, 162, 486, 1458$.)
 ---
 Q: What is $1+3+9+27+\dots+3^9$?
 L: 1
@@ -5613,7 +5620,8 @@ W: 3
 W: 12
 W: 18
 W: 36
-S: Since $2+8=5+5$, we have $a_2a_8=a_5^2$. (Check: $a_1r\cdot a_1r^7=(a_1r^4)^2$.)
+S: In a geometric sequence, $a_m a_n$ depends only on $m+n$: $a_m a_n=a_1^2r^{m+n-2}$.
+Since $2+8=5+5$, $a_2a_8=a_5\cdot a_5=a_5^2$. (Directly: $a_1r\cdot a_1r^7=(a_1r^4)^2$.)
 So $a_5^2=36$, and $a_5=6$ because the terms are positive.
 ---
 Q: The numbers $x$, $2x+2$, $3x+3$ are the first three terms of a geometric sequence. What is the fourth term?
@@ -5676,9 +5684,9 @@ W: 12
 W: 9
 W: 15
 W: 4
-S: The logs form an AP exactly when $3, x, y, z, 48$ form a GP. ($\log a_n$ arithmetic means $a_n$ geometric.)
-$r^4=\frac{48}{3}=16$, so $r=2$. ($r=-2$ would make $x$ negative, and logs of negative numbers are undefined.)
-$x=3\cdot2=6$.
+S: The logs form an arithmetic sequence exactly when the numbers form a geometric one: $\log_k x-\log_k 3=\log_k\frac x3$, so equal differences of logs mean equal ratios.
+So $3, x, y, z, 48$ is geometric, and four steps multiply by $r^4=\frac{48}{3}=16$, giving $r=\pm2$.
+$r=-2$ would make $x=-6$, and the log of a negative number isn't a real number. So $r=2$ and $x=3\cdot2=6$.
 ---
 Q: A geometric sequence has $a_3=12$ and $a_6=-96$. What is the sum of the first six terms?
 L: 2
@@ -5698,7 +5706,9 @@ W: 3072
 W: 3066
 W: 1533
 W: 6141
-S: Geometric with $a=3$, $r=2$: $S_{10}=3(2^{10}-1)=3\cdot1023=3069$.
+S: Each term doubles the last, so the sequence is geometric with $a=3$, $r=2$: $3, 6, 12, \dots$
+Sum of $n$ terms: $S_n=a\cdot\frac{r^n-1}{r-1}$, so $S_{10}=3\cdot\frac{2^{10}-1}{2-1}=3\cdot1023=3069$.
+(Trap: $3\cdot2^{10}=3072$ forgets the $-1$.)
 ---
 Q: A geometric sequence of positive integers has first term $3$ and fourth term $192$. What is the third term?
 L: 1
@@ -5707,7 +5717,8 @@ W: 64
 W: 96
 W: 12
 W: 36
-S: $r^3=\frac{192}{3}=64$, so $r=4$. $a_3=3\cdot4^2=48$.
+S: Three steps from the first term to the fourth: $r^3=\frac{192}{3}=64$, so $r=4$.
+The terms are $3, 12, 48, 192$; the third is $3\cdot4^2=48$.
 ---
 Q: What is the remainder when $1+2+2^2+2^3+\cdots+2^{100}$ is divided by $7$?
 L: 2
@@ -5716,9 +5727,10 @@ W: 0
 W: 1
 W: 4
 W: 6
-S: The sum is $2^{101}-1$.
-Powers of $2$ mod $7$ cycle with period $3$: $2,4,1,2,4,1,\dots$ ($2^3=8\equiv1$).
-$101=3\cdot33+2$, so $2^{101}\equiv2^2=4$, and $2^{101}-1\equiv3 \pmod 7$.
+S: Geometric sum with $a=1$, $r=2$, and $101$ terms (exponents $0$ to $100$): $\frac{2^{101}-1}{2-1}=2^{101}-1$.
+Powers of $2$ mod $7$ cycle with period $3$: $2, 4, 1, 2, 4, 1,\dots$, because $2^3=8\equiv1$.
+$101=3\cdot33+2$, so $2^{101}=(2^3)^{33}\cdot2^2\equiv1\cdot4=4$.
+So $2^{101}-1\equiv3 \pmod 7$.
 ---
 Q: In a geometric sequence, the sum of the first three terms is $7$ and the sum of the next three terms is $56$. What is the $10$th term?
 L: 2
@@ -5759,7 +5771,9 @@ W: 24
 W: 6
 W: 9
 W: 16
-S: $a=12$, $r=-\frac12$. $S=\dfrac{12}{1-(-\frac12)}=\dfrac{12}{3/2}=8$.
+S: Each term is $-\frac12$ times the previous one, so $a=12$, $r=-\frac12$. Since $|r|\lt1$, the series converges to $\frac a{1-r}$.
+$S=\dfrac{12}{1-(-\frac12)}=\dfrac{12}{3/2}=8$.
+(The partial sums $12, 6, 9, 7.5, \dots$ bounce around $8$ and close in on it.)
 ---
 Q: The repeating decimal $0.\overline{36}$ equals $\frac mn$ in lowest terms. What is $m+n$?
 L: 1
@@ -5768,8 +5782,10 @@ W: 135
 W: 13
 W: 47
 W: 17
-S: $0.\overline{36}=\frac{36}{100}+\frac{36}{100^2}+\dots=\dfrac{36/100}{1-1/100}=\dfrac{36}{99}=\dfrac4{11}$.
+S: Each block "$36$" is worth $\frac1{100}$ of the one before it, so $0.\overline{36}=\frac{36}{100}+\frac{36}{100^2}+\cdots$, geometric with $a=\frac{36}{100}$ and $r=\frac1{100}$.
+$\dfrac{36/100}{1-1/100}=\dfrac{36/100}{99/100}=\dfrac{36}{99}=\dfrac4{11}$.
 So $m+n=4+11=15$. (Forgetting to reduce gives $135$.)
+Rule of thumb: a two-digit repeating block $\overline{ab}$ equals $\frac{ab}{99}$.
 ---
 Q: A ball is dropped from a height of $10$ feet. Each time it hits the ground, it rebounds to $\frac34$ of the height it fell. What total vertical distance does the ball travel before coming to rest?
 L: 1
@@ -5820,7 +5836,10 @@ W: \frac{5}{6}
 W: 2
 W: 1
 W: \frac{5}{2}
-S: Split: $\sum\left(\frac13\right)^n+\sum\left(\frac12\right)^n=\dfrac{1/3}{1-1/3}+\dfrac{1/2}{1-1/2}=\dfrac12+1=\dfrac32$.
+S: Split the fraction: $\frac{2^n+3^n}{6^n}=\frac{2^n}{6^n}+\frac{3^n}{6^n}=\left(\frac13\right)^n+\left(\frac12\right)^n$.
+Each piece is a geometric series starting at $n=1$, with sum $\frac{\text{first term}}{1-r}$:
+$\sum\left(\frac13\right)^n=\dfrac{1/3}{1-1/3}=\dfrac12$ and $\sum\left(\frac12\right)^n=\dfrac{1/2}{1-1/2}=1$.
+Total: $\frac12+1=\frac32$.
 ---
 Q: A square has side length $1$. A second square is formed by joining the midpoints of the sides of the first, a third by joining the midpoints of the second, and so on forever. What is the total area of all the squares?
 L: 1
@@ -5829,7 +5848,9 @@ W: \frac{3}{2}
 W: 4
 W: 3
 W: 1+\sqrt{2}
-S: Joining midpoints halves the area (the new side is $\frac{1}{\sqrt2}$ of the old). Areas: $1+\frac12+\frac14+\dots=\dfrac1{1-1/2}=2$.
+S: The new square's side is the distance between midpoints of adjacent sides: $\sqrt{\left(\frac12\right)^2+\left(\frac12\right)^2}=\frac1{\sqrt2}$ times the old side, so its area is $\frac12$ of the old area.
+(Or: the four corner triangles cut off make up exactly half the old square.)
+Areas: $1+\frac12+\frac14+\cdots=\dfrac1{1-1/2}=2$.
 ---
 Q: Alice and Bob take turns flipping a fair coin, with Alice going first. The first person to flip heads wins. What is the probability that Alice wins?
 L: 1
@@ -5858,7 +5879,9 @@ W: \frac{1}{4}
 W: \frac{4}{3}
 W: \frac{3}{5}
 W: \frac{2}{3}
-S: $\frac1{1-x}=4\Rightarrow1-x=\frac14\Rightarrow x=\frac34$. This satisfies $|x|\lt 1$.
+S: $1+x+x^2+\cdots$ is geometric with $a=1$ and $r=x$; for $|x|\lt1$ its sum is $\frac1{1-x}$.
+$\frac1{1-x}=4$ gives $1-x=\frac14$, so $x=\frac34$.
+This satisfies $|x|\lt 1$, so the series really converges. ✓
 ---
 Q: What is $0.\overline{12}+0.\overline{3}$ as a common fraction?
 L: 1
@@ -5867,7 +5890,9 @@ W: \frac{15}{99}
 W: \frac{4}{11}
 W: \frac{6}{11}
 W: \frac{5}{9}
-S: $0.\overline{12}=\frac{12}{99}$ and $0.\overline{3}=\frac13=\frac{33}{99}$. Sum: $\frac{45}{99}=\frac5{11}$.
+S: A repeating block of length $k$ over $\underbrace{99\ldots9}_{k}$: $0.\overline{12}=\frac{12}{99}$ and $0.\overline{3}=\frac39=\frac13=\frac{33}{99}$.
+Sum: $\frac{12+33}{99}=\frac{45}{99}=\frac5{11}$.
+(Check: $0.1212\ldots+0.3333\ldots=0.4545\ldots=\frac{45}{99}$.)
 ---
 Q: For some integer base $b>3$, the repeating base-$b$ fraction $0.\overline{13}_b$ equals $\frac13$. What is $b$?
 L: 2
@@ -5886,7 +5911,9 @@ W: 3
 W: 1
 W: \sqrt[3]{3}
 W: 3^{2/3}
-S: Add the exponents: $\frac13+\frac19+\dots=\dfrac{1/3}{1-1/3}=\dfrac12$. The product is $3^{1/2}=\sqrt3$.
+S: Multiplying powers of $3$ adds their exponents: the product is $3^{1/3+1/9+1/27+\cdots}$.
+The exponent is geometric with $a=\frac13$, $r=\frac13$: $\dfrac{1/3}{1-1/3}=\dfrac{1/3}{2/3}=\dfrac12$.
+So the product is $3^{1/2}=\sqrt3$.
 ---
 Q: An equilateral triangle has side length $12$. A second triangle is formed by joining the midpoints of its sides, a third by joining the midpoints of the second, and so on forever. What is the sum of the perimeters of all the triangles?
 L: 1
@@ -5895,7 +5922,9 @@ W: 54
 W: 36
 W: 108
 W: 144
-S: Each new triangle has half the side length, so perimeters are $36, 18, 9, \dots$ Sum $=\dfrac{36}{1-1/2}=72$.
+S: Joining midpoints makes a triangle with half the side length (the midsegment is half the third side), so each perimeter is half the previous one.
+Perimeters: $36, 18, 9, \dots$, geometric with $a=36$, $r=\frac12$.
+Sum $=\dfrac{36}{1-1/2}=72$.
 ---
 Q: An infinite geometric series has first term $6$ and sum $S$. Which of the following <b>cannot</b> be the value of $S$?
 L: 2
@@ -5925,8 +5954,10 @@ W: 610
 W: 570
 W: 630
 W: 600
-S: $3\sum k-\sum 2=3\cdot\frac{20\cdot21}{2}-2\cdot20=630-40=590$.
-(The constant $2$ is added $20$ times, not once.)
+S: Split the sum: $\sum_{k=1}^{20}(3k-2)=3\sum_{k=1}^{20}k-\sum_{k=1}^{20}2$.
+$\sum_{k=1}^{20}k=\frac{20\cdot21}{2}=210$, and the constant $2$ is added $20$ times: $40$.
+$3\cdot210-40=630-40=590$.
+(Or: it's arithmetic from $1$ to $58$ with $20$ terms: $20\cdot\frac{1+58}{2}=590$.)
 ---
 Q: Evaluate $11^2+12^2+13^2+\cdots+20^2$.
 L: 1
@@ -5935,7 +5966,10 @@ W: 2870
 W: 2585
 W: 2385
 W: 1925
-S: $\sum_{k=1}^{20}k^2-\sum_{k=1}^{10}k^2=\frac{20\cdot21\cdot41}{6}-\frac{10\cdot11\cdot21}{6}=2870-385=2485$.
+S: Use $\sum_{k=1}^n k^2=\frac{n(n+1)(2n+1)}{6}$ and subtract the part you don't want:
+$\sum_{k=1}^{20}k^2=\frac{20\cdot21\cdot41}{6}=2870$ and $\sum_{k=1}^{10}k^2=\frac{10\cdot11\cdot21}{6}=385$.
+$11^2+\cdots+20^2=2870-385=2485$.
+(Trap: subtracting up to $11^2$ instead of $10^2$ drops the first term.)
 ---
 Q: What is $1^3+2^3+3^3+\cdots+10^3$?
 L: 1
@@ -5944,7 +5978,8 @@ W: 3125
 W: 2025
 W: 3015
 W: 3035
-S: $\sum k^3=\left(\frac{n(n+1)}2\right)^2=55^2=3025$.
+S: The sum of the first $n$ cubes is the square of the sum of the first $n$ integers: $\sum_{k=1}^n k^3=\left(\frac{n(n+1)}2\right)^2$.
+With $n=10$: $\frac{10\cdot11}{2}=55$, and $55^2=3025$.
 ---
 Q: The sum of the first $n$ odd positive integers is $400$. What is $n$?
 L: 1
@@ -5953,7 +5988,9 @@ W: 19
 W: 21
 W: 200
 W: 40
-S: $1+3+\dots+(2n-1)=n^2=400$, so $n=20$.
+S: The sum of the first $n$ odd numbers is a perfect square: $1+3+\dots+(2n-1)=n^2$.
+(Arithmetic sum: $n$ terms with average $\frac{1+(2n-1)}{2}=n$, so the sum is $n\cdot n$.)
+$n^2=400$, so $n=20$.
 ---
 Q: Evaluate $\displaystyle\sum_{k=1}^{30}k(k+1)$.
 L: 2
@@ -5982,7 +6019,9 @@ W: 385
 W: 3850
 W: 550
 W: 1100
-S: The double sum factors: $\left(\sum_{i=1}^{10}i\right)\left(\sum_{j=1}^{10}j\right)=55\cdot55=3025$.
+S: Each term $ij$ is a product of an $i$-part and a $j$-part, so the double sum factors:
+$\sum_i\sum_j ij=\sum_i\left(i\sum_j j\right)=\left(\sum_{i=1}^{10}i\right)\left(\sum_{j=1}^{10}j\right)$.
+$=55\cdot55=3025$. (This is $(1+2+\dots+10)^2$, which also equals $1^3+\dots+10^3$.)
 ---
 Q: Evaluate the sum of $ij$ over all pairs of integers with $1\le i\lt j\le10$.
 L: 2
@@ -6001,7 +6040,10 @@ W: 2470
 W: 2870
 W: 3080
 W: 2600
-S: $\sum_{k=1}^{19}k(k+1)=\frac{19\cdot20\cdot21}{3}=2660$.
+S: The terms are $k(k+1)$ for $k=1$ to $19$.
+Formula: $\sum_{k=1}^n k(k+1)=\frac{n(n+1)(n+2)}{3}$ (from $k(k+1)=\frac{k(k+1)(k+2)-(k-1)k(k+1)}{3}$, which telescopes).
+$\frac{19\cdot20\cdot21}{3}=19\cdot20\cdot7=2660$.
+Check: $\sum k^2+\sum k=\frac{19\cdot20\cdot39}{6}+190=2470+190=2660$. ✓
 ---
 Q: Evaluate $\displaystyle\sum_{k=1}^{100}(-1)^k k$.
 L: 1
@@ -6010,7 +6052,9 @@ W: -50
 W: 0
 W: 100
 W: 5050
-S: $-1+2-3+4-\dots+100$: there are $50$ pairs $(-(2j-1)+2j)=1$. Total $50$.
+S: $(-1)^k$ is $-1$ for odd $k$ and $+1$ for even $k$, so the sum is $-1+2-3+4-\dots-99+100$.
+Pair consecutive terms: $(-1+2)+(-3+4)+\dots+(-99+100)$, which is $50$ pairs, each equal to $1$.
+Total: $50$.
 ---
 Q: Evaluate $1^2-2^2+3^2-4^2+\cdots+99^2-100^2$.
 L: 2
@@ -6050,7 +6094,8 @@ W: 44100
 W: 43900
 W: 42000
 W: 44310
-S: $\sum k^3=210^2=44100$ and $\sum k=210$. Difference: $43890$.
+S: Use the two formulas: $\sum_{k=1}^{20}k=\frac{20\cdot21}{2}=210$ and $\sum_{k=1}^{20}k^3=\left(\sum k\right)^2=210^2=44100$.
+Difference: $44100-210=43890$.
 ---
 Q: Evaluate $\displaystyle\sum_{k=2}^{10}\binom{k}{2}$.
 L: 2
@@ -6080,7 +6125,8 @@ W: 216
 W: 666
 W: 1300
 W: 1225
-S: $\sum k^3=\left(\sum k\right)^2=36^2=1296$. (Here $n=8$.)
+S: Nicomachus's theorem: $1^3+2^3+\dots+n^3=(1+2+\dots+n)^2$.
+So the sum of cubes is $36^2=1296$. You never need $n$ (which is $8$, since $\frac{8\cdot9}{2}=36$).
 ---
 @@ tele
 Q: Evaluate $\dfrac1{1\cdot2}+\dfrac1{2\cdot3}+\dfrac1{3\cdot4}+\cdots+\dfrac1{99\cdot100}$.
@@ -6140,7 +6186,8 @@ W: 2026
 W: 2028
 W: 1013
 W: \frac{4053}{2}
-S: $1+\frac1k=\frac{k+1}k$: $\frac21\cdot\frac32\cdot\frac43\cdots\frac{2027}{2026}=2027$.
+S: Each factor is $1+\frac1k=\frac{k+1}k$, so the product is $\frac21\cdot\frac32\cdot\frac43\cdots\frac{2027}{2026}$.
+Each numerator cancels with the next denominator, leaving only the last numerator over the first denominator: $\frac{2027}{1}=2027$.
 ---
 Q: Evaluate $\log_{10}\frac21+\log_{10}\frac32+\log_{10}\frac43+\cdots+\log_{10}\frac{10}{9}$.
 L: 1
@@ -6149,7 +6196,9 @@ W: 0
 W: 2
 W: \log_{10}9
 W: 9
-S: Combine: $\log_{10}\left(\frac21\cdot\frac32\cdots\frac{10}9\right)=\log_{10}10=1$.
+S: A sum of logs is the log of the product: $\log_{10}\left(\frac21\cdot\frac32\cdot\frac43\cdots\frac{10}9\right)$.
+The product telescopes (each numerator cancels the next denominator) to $\frac{10}{1}=10$.
+$\log_{10}10=1$.
 ---
 Q: Evaluate $1\cdot1!+2\cdot2!+3\cdot3!+\cdots+10\cdot10!$.
 L: 2
@@ -6188,7 +6237,9 @@ W: 5
 W: 7
 W: 32
 W: 63
-S: Change of base: $\log_k(k+1)=\frac{\ln(k+1)}{\ln k}$. The product telescopes to $\frac{\ln64}{\ln2}=\log_264=6$.
+S: Change of base: $\log_k(k+1)=\frac{\ln(k+1)}{\ln k}$.
+The product is $\frac{\ln3}{\ln2}\cdot\frac{\ln4}{\ln3}\cdot\frac{\ln5}{\ln4}\cdots\frac{\ln64}{\ln63}$. Each numerator cancels the next denominator.
+What's left is $\frac{\ln64}{\ln2}=\log_264=6$.
 ---
 Q: Evaluate $\displaystyle\sum_{k=1}^{9}\frac{2k+1}{k^2(k+1)^2}$.
 L: 2
@@ -6229,7 +6280,9 @@ W: 1
 W: \frac{3}{2}
 W: 2
 W: \frac{7}{6}
-S: Gap $3$: the first three positive terms survive: $1+\frac12+\frac13=\frac{11}6$.
+S: Write out the first few terms: $\left(1-\frac14\right)+\left(\frac12-\frac15\right)+\left(\frac13-\frac16\right)+\left(\frac14-\frac17\right)+\cdots$
+Each $-\frac1{n+3}$ is cancelled by the $+\frac1{n+3}$ three terms later. Only the first three positive terms never get cancelled, and the tail goes to $0$.
+Sum: $1+\frac12+\frac13=\frac{11}6$.
 ---
 Q: Evaluate $\left(1-\frac12\right)\left(1-\frac13\right)\left(1-\frac14\right)\cdots\left(1-\frac1{100}\right)$.
 L: 1
@@ -6238,7 +6291,8 @@ W: \frac{1}{99}
 W: \frac{99}{100}
 W: \frac{1}{101}
 W: \frac{1}{50}
-S: $\frac12\cdot\frac23\cdot\frac34\cdots\frac{99}{100}=\frac1{100}$.
+S: Each factor is $1-\frac1k=\frac{k-1}k$, so the product is $\frac12\cdot\frac23\cdot\frac34\cdots\frac{99}{100}$.
+Every numerator cancels the previous denominator, leaving the first numerator over the last denominator: $\frac1{100}$.
 ---
 Q: Evaluate $\displaystyle\sum_{k=1}^{\infty}\frac{1}{4k^2-1}$.
 L: 2
@@ -6247,7 +6301,9 @@ W: 1
 W: \frac{1}{4}
 W: \frac{1}{3}
 W: \frac{2}{3}
-S: $4k^2-1=(2k-1)(2k+1)$, so the term is $\frac12\left(\frac1{2k-1}-\frac1{2k+1}\right)$. The sum is $\frac12\cdot1=\frac12$.
+S: Factor: $4k^2-1=(2k-1)(2k+1)$. Partial fractions: $\frac1{(2k-1)(2k+1)}=\frac12\left(\frac1{2k-1}-\frac1{2k+1}\right)$ (the two denominators differ by $2$, hence the $\frac12$).
+The sum is $\frac12\left[\left(1-\frac13\right)+\left(\frac13-\frac15\right)+\cdots\right]$; everything cancels except the first $1$.
+Total: $\frac12\cdot1=\frac12$.
 ---
 @@ recur
 Q: A sequence has $a_1=2$ and $a_{n+1}=\dfrac{1}{1-a_n}$ for $n\ge1$. What is $a_{2026}$?
@@ -6347,7 +6403,9 @@ W: 38
 W: 43
 W: 41
 W: 46
-S: $a_2=2+1=3$, $a_3=6+2=8$, $a_4=16+3=19$, $a_5=38+4=42$.
+S: Just iterate carefully, using the index $n$ of the term you're starting from:
+$a_2=2a_1+1=3$, $a_3=2a_2+2=8$, $a_4=2a_3+3=19$, $a_5=2a_4+4=42$.
+(Closed form: $a_n=3\cdot2^{n-1}-n-1$; check $a_5=48-6=42$.)
 ---
 Q: A sequence has $a_1=1$, and each later term is twice the sum of all previous terms: $a_{n+1}=2(a_1+\cdots+a_n)$. What is $a_{10}$?
 L: 2
@@ -6480,7 +6538,9 @@ W: 55
 W: 144
 W: 76
 W: 99
-S: $1,2,3,5,8,13,21,34,55,89$. So $a_{10}=89$.
+S: This is the Fibonacci recurrence with starting values $1, 2$ (so $a_n=F_{n+1}$). Each term is the sum of the two before it:
+$1, 2, 3, 5, 8, 13, 21, 34, 55, 89$.
+So $a_{10}=89$.
 ---
 Q: A sequence satisfies $a_n=4a_{n-1}-4a_{n-2}$ with $a_0=1$ and $a_1=4$. What is $a_6$?
 L: 2
@@ -6511,7 +6571,8 @@ W: 12
 W: 8
 W: 21
 W: 233
-S: $\gcd(F_m,F_n)=F_{\gcd(m,n)}=F_{12}=144$.
+S: A key Fibonacci property: $\gcd(F_m,F_n)=F_{\gcd(m,n)}$. (It works because $F_{m+n}=F_mF_{n+1}+F_{m-1}F_n$, which makes the Fibonacci numbers follow the Euclidean algorithm on their indices.)
+$\gcd(24,36)=12$, so the answer is $F_{12}=144$.
 ---
 Q: What is $F_{2027}\cdot F_{2025}-F_{2026}^2$?
 L: 2
@@ -6561,8 +6622,9 @@ W: 24
 W: 21
 W: 81
 W: 64
-S: $t_n=t_{n-1}+t_{n-2}+t_{n-3}$ with $t_0=1, t_1=1, t_2=2$.
-$t_3=4, t_4=7, t_5=13, t_6=24, t_7=44$.
+S: Let $t_n$ be the number of ways to climb $n$ stairs. The last move is $1$, $2$, or $3$ steps, so $t_n=t_{n-1}+t_{n-2}+t_{n-3}$ (the "tribonacci" recurrence).
+Start with $t_0=1$ (one way to climb nothing: do nothing), $t_1=1$, $t_2=2$.
+$t_3=1+1+2=4$, $t_4=1+2+4=7$, $t_5=2+4+7=13$, $t_6=4+7+13=24$, $t_7=7+13+24=44$.
 ---
 @@ arigeo
 Q: Evaluate $\displaystyle\sum_{k=1}^{\infty}\frac{k}{2^k}=\frac12+\frac24+\frac38+\cdots$.
@@ -6582,7 +6644,9 @@ W: \frac{1}{2}
 W: 1
 W: \frac{3}{2}
 W: \frac{2}{3}
-S: $\sum kr^k=\frac{r}{(1-r)^2}$ with $r=\frac13$: $\frac{1/3}{(2/3)^2}=\frac{1/3}{4/9}=\frac34$.
+S: Use the shift-and-subtract trick. $S=\frac13+\frac29+\frac3{27}+\cdots$ and $\frac13S=\frac19+\frac2{27}+\cdots$
+Subtract: $\frac23S=\frac13+\frac19+\frac1{27}+\cdots=\dfrac{1/3}{1-1/3}=\frac12$.
+So $S=\frac12\cdot\frac32=\frac34$. (Formula: $\sum kr^k=\frac{r}{(1-r)^2}=\frac{1/3}{4/9}=\frac34$.)
 ---
 Q: Evaluate $1+2\cdot\frac14+3\cdot\frac1{16}+4\cdot\frac1{64}+\cdots$.
 L: 1
@@ -6591,7 +6655,9 @@ W: \frac{4}{3}
 W: \frac{4}{9}
 W: \frac{9}{16}
 W: 2
-S: $\sum_{k\ge0}(k+1)x^k=\frac1{(1-x)^2}$. With $x=\frac14$: $\frac1{(3/4)^2}=\frac{16}9$.
+S: The terms are $(k+1)x^k$ with $x=\frac14$, starting at $k=0$.
+Shift and subtract: $S=1+2x+3x^2+\cdots$ and $xS=x+2x^2+\cdots$, so $(1-x)S=1+x+x^2+\cdots=\frac1{1-x}$, giving $S=\frac1{(1-x)^2}$.
+With $x=\frac14$: $\frac1{(3/4)^2}=\frac{16}9$.
 ---
 Q: Evaluate the infinite product $2^{1/2}\cdot4^{1/4}\cdot8^{1/8}\cdot16^{1/16}\cdots$.
 L: 2
@@ -6600,7 +6666,9 @@ W: 2
 W: 2\sqrt{2}
 W: 8
 W: \sqrt{2}
-S: $(2^k)^{1/2^k}=2^{k/2^k}$, so the product is $2^{\sum k/2^k}=2^2=4$.
+S: Write every factor as a power of $2$: $(2^k)^{1/2^k}=2^{k/2^k}$.
+Multiplying adds the exponents: the product is $2^{\frac12+\frac24+\frac38+\cdots}=2^{\sum k/2^k}$.
+That exponent is the classic sum $\sum\frac k{2^k}=2$ (shift and subtract), so the product is $2^2=4$.
 ---
 Q: Evaluate $\displaystyle\sum_{k=1}^{\infty}\frac{k^2}{2^k}$.
 L: 3
@@ -6640,7 +6708,9 @@ W: 385
 W: 405
 W: 375
 W: 396
-S: $a_n=n^2+1$. Sum $=\sum n^2+10=385+10=395$.
+S: The first differences are $3, 5, 7, 9$ and the second differences are constant at $2$, so $a_n$ is quadratic with leading coefficient $\frac22=1$.
+Each term is one more than a square: $a_n=n^2+1$.
+$\sum_{n=1}^{10}(n^2+1)=\sum n^2+10=\frac{10\cdot11\cdot21}{6}+10=385+10=395$.
 ---
 Q: A sequence has constant second differences and begins $4, 9, 18$. What is its $10$th term?
 L: 2
@@ -6681,7 +6751,9 @@ W: 2
 W: 4
 W: \frac{5}{2}
 W: \frac{7}{2}
-S: $2\sum\frac{k}{2^k}-\sum\frac1{2^k}=2\cdot2-1=3$.
+S: Split the numerator: $\sum\frac{2k-1}{2^k}=2\sum\frac{k}{2^k}-\sum\frac1{2^k}$.
+Known sums: $\sum_{k\ge1}\frac k{2^k}=2$ and $\sum_{k\ge1}\frac1{2^k}=1$.
+So the total is $2\cdot2-1=3$.
 ---
 Q: Evaluate $\dfrac12+\dfrac24+\dfrac38+\cdots+\dfrac{10}{1024}$.
 L: 2
@@ -6700,7 +6772,9 @@ W: e-1
 W: \frac{1}{2}
 W: e-2
 W: 2
-S: $\frac n{(n+1)!}=\frac{(n+1)-1}{(n+1)!}=\frac1{n!}-\frac1{(n+1)!}$. It telescopes to $\frac1{1!}=1$.
+S: Rewrite the numerator to match the factorial: $n=(n+1)-1$, so $\frac n{(n+1)!}=\frac{n+1}{(n+1)!}-\frac1{(n+1)!}=\frac1{n!}-\frac1{(n+1)!}$.
+The sum telescopes: $\left(\frac1{1!}-\frac1{2!}\right)+\left(\frac1{2!}-\frac1{3!}\right)+\cdots$, and $\frac1{(n+1)!}\to0$.
+Only $\frac1{1!}=1$ survives.
 ---
 Q: A fair six-sided die is rolled repeatedly until a $6$ appears. What is the expected number of rolls?
 L: 2
@@ -6730,8 +6804,9 @@ W: \frac{1}{2}
 W: \frac{3}{2}
 W: \frac{6}{5}
 W: 0
-S: The reciprocals are $\frac16, \frac26, \frac36, \dots$, so the $n$th reciprocal is $\frac n6$ and the $n$th term is $\frac6n$.
-6th term: $1$.
+S: "Harmonic" means the reciprocals are arithmetic: $\frac16, \frac13, \frac12=\frac16, \frac26, \frac36$, with common difference $\frac16$.
+The $n$th reciprocal is $\frac n6$, so the $n$th term is $\frac6n$.
+6th term: $\frac66=1$. (The sequence is $6, 3, 2, \frac32, \frac65, 1$.)
 ---
 Q: Three geometric means are inserted between $2$ and $162$ to form a five-term geometric sequence of positive numbers. What is the sum of the three inserted numbers?
 L: 1
@@ -6740,7 +6815,8 @@ W: 80
 W: 72
 W: 240
 W: 81
-S: $r^4=\frac{162}{2}=81$, so $r=3$. The inserted terms are $6, 18, 54$, with sum $78$.
+S: From $2$ to $162$ is four steps of the ratio: $r^4=\frac{162}{2}=81$, so $r=3$ (positive terms).
+The sequence is $2, 6, 18, 54, 162$; the inserted terms sum to $6+18+54=78$.
 ---
 Q: The numbers $2, a, b$ form an arithmetic sequence, and $a, b, 9$ form a geometric sequence. If $a$ and $b$ are positive, what is $a+b$?
 L: 2
@@ -6769,7 +6845,9 @@ W: 3
 W: 9
 W: 10
 W: 18
-S: By AM–GM, $x+\frac9x\ge2\sqrt{x\cdot\frac9x}=6$, with equality when $x=3$.
+S: AM–GM for two positive numbers: $\frac{a+b}{2}\ge\sqrt{ab}$, i.e. $a+b\ge2\sqrt{ab}$.
+With $a=x$ and $b=\frac9x$ the product is constant: $x+\frac9x\ge2\sqrt9=6$.
+Equality holds when the two terms are equal: $x=\frac9x$, so $x=3$. The minimum is $6$.
 ---
 Q: The first, second, and fifth terms of a non-constant arithmetic sequence with first term $1$ form a geometric sequence. What is the common ratio of that geometric sequence?
 L: 2
@@ -6808,7 +6886,8 @@ W: 9
 W: 2\sqrt{10}
 W: 8\sqrt{5}
 W: 18
-S: $\text{GM}=\sqrt{\text{AM}\cdot\text{HM}}=\sqrt{80}=4\sqrt5$.
+S: For two positive numbers $a,b$: $\text{AM}\cdot\text{HM}=\frac{a+b}{2}\cdot\frac{2ab}{a+b}=ab=\text{GM}^2$.
+So $\text{GM}=\sqrt{10\cdot8}=\sqrt{80}=4\sqrt5$.
 ---
 Q: The side lengths of a right triangle form an arithmetic sequence, and its perimeter is $60$. What is the length of the hypotenuse?
 L: 1
@@ -6859,7 +6938,9 @@ W: 5
 W: 10
 W: 25
 W: 0
-S: $2b=a+c$ and $b^2=ac$ give $\left(\frac{a+c}2\right)^2=ac$, so $(a-c)^2=0$. Then $a=b=c=5$ and the sum is $15$.
+S: Arithmetic: $2b=a+c$. Geometric: $b^2=ac$.
+Substitute $b=\frac{a+c}{2}$: $\frac{(a+c)^2}{4}=ac$, so $a^2+2ac+c^2=4ac$ and $(a-c)^2=0$.
+So $a=c$, and then $b=a$: the sequence is constant, $5, 5, 5$. Sum: $15$.
 ---
 @@ mixed
 Q: What is the sum of all positive integers $n\le100$ that are divisible by neither $3$ nor $5$?
@@ -6949,7 +7030,8 @@ W: 1
 W: \frac{1}{3}
 W: \frac{3}{4}
 W: \frac{2}{3}
-S: $\frac1{(n+1)(n+2)}=\frac1{n+1}-\frac1{n+2}$. It telescopes to $\frac12$.
+S: Factor: $n^2+3n+2=(n+1)(n+2)$. Consecutive factors give $\frac1{(n+1)(n+2)}=\frac1{n+1}-\frac1{n+2}$.
+The sum is $\left(\frac12-\frac13\right)+\left(\frac13-\frac14\right)+\cdots$; everything cancels except $\frac12$.
 ---
 Q: Evaluate the infinite product $\left(1+\frac12\right)\left(1+\frac14\right)\left(1+\frac1{16}\right)\left(1+\frac1{256}\right)\cdots$, where each new exponent doubles.
 L: 3
@@ -6998,8 +7080,9 @@ W: 500
 W: 498
 W: 999
 W: 31
-S: $a_n=S_n-S_{n-1}=(n^2+2n)-((n-1)^2+2(n-1))=2n+1$.
-$2n+1\lt 1000\Rightarrow n\le499$.
+S: Recover each term from the partial sums: $a_n=S_n-S_{n-1}$.
+$(n^2+2n)-\left((n-1)^2+2(n-1)\right)=(n^2+2n)-(n^2-1)=2n+1$. (Check: $a_1=S_1=3$. ✓)
+$2n+1\lt1000$ means $n\lt499.5$, so $n=1,\dots,499$: $499$ terms.
 ---
 Q: What is the smallest positive integer $n$ such that $\dfrac1{1\cdot2}+\dfrac1{2\cdot3}+\cdots+\dfrac1{n(n+1)}>0.99$?
 L: 1
@@ -7037,7 +7120,8 @@ W: 4
 W: 16
 W: 3
 W: 21
-S: The terms pair up around the middle: $a_1a_7=a_2a_6=a_3a_5=a_4^2$. The product is $a_4^7=2^{21}$, so $a_4=2^3=8$.
+S: In a geometric sequence, terms equally far from the middle multiply to the middle term squared: $a_1a_7=a_2a_6=a_3a_5=a_4^2$.
+So the product of all seven terms is $a_4^7=2^{21}$, giving $a_4=2^3=8$.
 ---
 Q: Evaluate $\sin^2 1^\circ+\sin^2 2^\circ+\sin^2 3^\circ+\cdots+\sin^2 89^\circ$.
 L: 3
@@ -16400,7 +16484,7 @@ r=>{const a=ri(r,1,5),q=pick(r,[2,3,-2,-3]),n=ri(r,5,10);const S=a*(q**n-1)/(q-1
  const terms=[a,a*q,a*q*q];
  return{lvl:1,q:T`What is the sum of the first $${n}$ terms of the geometric sequence $${terms.join(',\\ ')},\ \dots$?`,
  a:S,w:[a*(q**(n+1)-1)/(q-1),a*(q**(n-1)-1)/(q-1),a*(q**n-1),a*q**(n-1),S+1],
- s:T`$S_n=a\dfrac{r^n-1}{r-1}=${a}\cdot\dfrac{${P(q)}^{${n}}-1}{${q}-1}=${a}\cdot\dfrac{${q**n-1}}{${q-1}}=${S}$.`}},
+ s:T`Geometric series with first term $a=${a}$ and ratio $r=\frac{${a*q}}{${a}}=${q}$.<br>Sum formula (from $S-rS=a-ar^n$): $S_n=a\dfrac{r^n-1}{r-1}$.<br>$S_{${n}}=${a}\cdot\dfrac{${P(q)}^{${n}}-1}{${P(q)}-1}=${a}\cdot\dfrac{${q**n-1}}{${q-1}}=${S}$.<br><b>Trap:</b> the $n$th power is $r^n$ (the term <i>after</i> the last one), not $r^{n-1}$.`}},
 r=>{const e=ri(r,-4,3),f=pick(r,[1,2]),n=ri(r,5,10);const E=n*e+f*n*(n-1)/2;const pw=k=>({tex:'2^{'+k+'}',v:k});
  const a1=e>=0?String(2**e):T`\frac{1}{${2**(-e)}}`;
  return{lvl:2,q:T`A geometric sequence has first term $${a1}$ and common ratio $${2**f}$. What is the product of its first $${n}$ terms?`,
@@ -16421,7 +16505,7 @@ r=>{const qd=ri(r,2,7);let pn=ri(r,1,qd-1);while(gcd(pn,qd)!==1)pn=ri(r,1,qd-1);
  const terms=[F(a),F(a).mul(rr),F(a).mul(rr).mul(rr)];
  return{lvl:1,q:T`Find the sum of the infinite geometric series $${seriesStr(terms)} + \cdots$.`,
  a:S,w:[F(a).div(F(1).add(rr)),F(a).mul(rr).div(F(1).sub(rr)),F(a).div(F(1).sub(rr.mul(rr))),S.add(a),S.mul(2)],
- s:T`First term $a=${a}$, ratio $r=${rr.tex()}$ (and $|r|\lt 1$). $S=\dfrac{a}{1-r}=\dfrac{${a}}{1-${P(rr)}}=\dfrac{${a}}{${F(1).sub(rr).tex()}}=${S.tex()}$.`}},
+ s:T`Each term is $r=${rr.tex()}$ times the previous one, and $|r|\lt 1$, so the series converges to $\dfrac{a}{1-r}$.<br>$S=\dfrac{${a}}{1-${P(rr)}}=\dfrac{${a}}{${F(1).sub(rr).tex()}}=${S.tex()}$.${rr.n<0?'<br>(With a negative ratio the partial sums alternate above and below the limit.)':''}`}},
 r=>{let x,num,den,disp;if(r()<.5){let ab=ri(r,10,98);while(ab%11===0)ab=ri(r,10,98);num=ab;den=99;disp=T`0.\overline{${ab}}`}
  else{const a=ri(r,1,9);let b=ri(r,0,9);while(b===a)b=ri(r,0,9);num=9*a+b;den=90;disp=T`0.${a}\overline{${b}}`}
  x=F(num,den);
@@ -16461,11 +16545,11 @@ r=>{const m=ri(r,2,15),n=ri(r,m+8,40);const S=sq(n)-sq(m-1);
 r=>{const n=ri(r,5,25);const S=tri(n)**2;
  return{lvl:1,q:T`Evaluate $1^3+2^3+3^3+\cdots+${n}^3$.`,
  a:S,w:[tri(n),tri(n)**2+tri(n),tri(n-1)**2,n*n*(n+1)*(n+1)/2,tri(n+1)**2],
- s:T`$\displaystyle\sum_{k=1}^{n}k^3=\left(\frac{n(n+1)}{2}\right)^2=${tri(n)}^2=${S}$.`}},
+ s:T`Nicomachus's theorem: the sum of the first $n$ cubes is the square of the sum of the first $n$ integers, $\displaystyle\sum_{k=1}^{n}k^3=\left(\frac{n(n+1)}{2}\right)^2$.<br>Here $\frac{${n}\cdot${n+1}}{2}=${tri(n)}$, so the sum is $${tri(n)}^2=${S}$.`}},
 r=>{const n=ri(r,10,80),L=2*n-1;
  return{lvl:1,q:T`Evaluate $1+3+5+\cdots+${L}$.`,
  a:n*n,w:[(n+1)**2,(n-1)**2,n*(n+1),L*L/2+0.5,2*n*n],
- s:T`The number of odd terms is $\frac{${L}+1}{2}=${n}$, and the sum of the first $n$ odd numbers is $n^2=${n*n}$.`}},
+ s:T`Count the terms: odd numbers $1,3,\dots,${L}$ are $2k-1$ for $k=1,\dots,${n}$, so there are $\frac{${L}+1}{2}=${n}$ of them.<br>Arithmetic sum: count × average $=${n}\cdot\frac{1+${L}}{2}=${n}\cdot${n}=${n*n}$.<br>(In general, the first $n$ odd numbers sum to $n^2$.)`}},
 r=>{const n=ri(r,8,30);const S=n*(n+1)*(n+2)/3;
  return{lvl:2,q:T`Evaluate $1\cdot2+2\cdot3+3\cdot4+\cdots+${n}\cdot${n+1}$.`,
  a:S,w:[sq(n),S/2,sq(n)+tri(n)+n,S+n*(n+1),S-(n)*(n+1)],
@@ -16492,7 +16576,7 @@ r=>{const [a,b]=pick(r,[[1,0],[2,-1],[3,-2],[1,1],[2,1],[3,-1]]);const n=ri(r,8,
 r=>{const m=ri(r,1,5),N=ri(r,m+3,m+15);const s0=m*m,e=N*N-1;
  return{lvl:1,q:T`Evaluate $\dfrac{1}{\sqrt{${s0}}+\sqrt{${s0+1}}}+\dfrac{1}{\sqrt{${s0+1}}+\sqrt{${s0+2}}}+\cdots+\dfrac{1}{\sqrt{${e}}+\sqrt{${e+1}}}$.`,
  a:N-m,w:[N-m+1,N-m-1,N*N-m*m,N+m,(N-m)*2],
- s:T`Rationalize: $\dfrac{1}{\sqrt k+\sqrt{k+1}}=\sqrt{k+1}-\sqrt k$. The sum telescopes to $\sqrt{${e+1}}-\sqrt{${s0}}=${N}-${m}=${N-m}$.`}},
+ s:T`Rationalize each term with the conjugate: $\dfrac{1}{\sqrt k+\sqrt{k+1}}\cdot\dfrac{\sqrt{k+1}-\sqrt k}{\sqrt{k+1}-\sqrt k}=\dfrac{\sqrt{k+1}-\sqrt k}{(k+1)-k}=\sqrt{k+1}-\sqrt k$.<br>The sum telescopes: $(\sqrt{${s0+1}}-\sqrt{${s0}})+(\sqrt{${s0+2}}-\sqrt{${s0+1}})+\cdots+(\sqrt{${e+1}}-\sqrt{${e}})$.<br>Only $\sqrt{${e+1}}-\sqrt{${s0}}=${N}-${m}=${N-m}$ survives.`}},
 r=>{const n=ri(r,5,60);const S=F(n+1,2*n);
  return{lvl:1,q:T`Evaluate $\left(1-\frac1{2^2}\right)\left(1-\frac1{3^2}\right)\cdots\left(1-\frac1{${n}^2}\right)$.`,
  a:S,w:[F(1,n),F(n-1,n),F(n+1,n),F(n-1,2*n),F(1,2)],
@@ -16500,19 +16584,19 @@ r=>{const n=ri(r,5,60);const S=F(n+1,2*n);
 r=>{const m=ri(r,1,12),n=ri(r,m+5,m+80);const S=F(n+1,m);
  return{lvl:1,q:T`Evaluate $\left(1+\frac1{${m}}\right)\left(1+\frac1{${m+1}}\right)\left(1+\frac1{${m+2}}\right)\cdots\left(1+\frac1{${n}}\right)$.`,
  a:S,w:[F(n,m),F(n+1,m+1),F(n+2,m),F(n,m+1),S.add(1)],
- s:T`$1+\frac1k=\frac{k+1}{k}$, so the product is $\frac{${m+1}}{${m}}\cdot\frac{${m+2}}{${m+1}}\cdots\frac{${n+1}}{${n}}=${S.tex()}$.`}},
+ s:T`Write each factor as one fraction: $1+\frac1k=\frac{k+1}{k}$.<br>The product is $\frac{${m+1}}{${m}}\cdot\frac{${m+2}}{${m+1}}\cdots\frac{${n+1}}{${n}}$. Each numerator cancels the next denominator.<br>What's left is the last numerator over the first denominator: $\frac{${n+1}}{${m}}=${S.tex()}$.`}},
 r=>{const a=pick(r,[2,3,4,5]);const e=ri(r,2,a===2?7:a===3?4:3);const b=a**e-1;
  return{lvl:1,q:T`Evaluate $\log_{${a}}${a+1}\cdot\log_{${a+1}}${a+2}\cdot\log_{${a+2}}${a+3}\cdots\log_{${b}}${b+1}$.`,
  a:e,w:[e+1,e-1,b-a+1,2*e,e+2],
- s:T`Change of base: $\log_k(k+1)=\frac{\ln(k+1)}{\ln k}$. The product telescopes to $\frac{\ln${b+1}}{\ln${a}}=\log_{${a}}${b+1}=${e}$.`}},
+ s:T`Change of base: $\log_k(k+1)=\frac{\ln(k+1)}{\ln k}$.<br>The product is $\frac{\ln${a+1}}{\ln${a}}\cdot\frac{\ln${a+2}}{\ln${a+1}}\cdots\frac{\ln${b+1}}{\ln${b}}$, and each numerator cancels the next denominator.<br>Left: $\frac{\ln${b+1}}{\ln${a}}=\log_{${a}}${b+1}=${e}$, since $${a}^{${e}}=${b+1}$.`}},
 r=>{const n=ri(r,5,60);const S=F(2*n,n+1);
  return{lvl:2,q:T`Evaluate $\dfrac11+\dfrac1{1+2}+\dfrac1{1+2+3}+\cdots+\dfrac1{1+2+\cdots+${n}}$.`,
  a:S,w:[F(n,n+1),F(2*(n-1),n),F(2*n+1,n+1),F(2*n,n+2),F(n+1,n)],
- s:T`$\dfrac{1}{1+\dots+k}=\dfrac{2}{k(k+1)}=2\left(\dfrac1k-\dfrac1{k+1}\right)$. Sum $=2\left(1-\dfrac1{${n+1}}\right)=${S.tex()}$.`}},
+ s:T`The $k$th denominator is a triangular number: $1+2+\dots+k=\frac{k(k+1)}{2}$, so the term is $\dfrac{2}{k(k+1)}=2\left(\dfrac1k-\dfrac1{k+1}\right)$.<br>Summing from $k=1$ to $${n}$, the middle terms cancel: $2\left(1-\dfrac1{${n+1}}\right)=2\cdot\dfrac{${n}}{${n+1}}=${S.tex()}$.`}},
 r=>{const n=ri(r,5,11);const o=(tex,v)=>({tex,v});
  return{lvl:2,q:T`Evaluate $1\cdot1!+2\cdot2!+3\cdot3!+\cdots+${n}\cdot${n}!$.`,
  a:o(T`${n+1}!-1`,fact(n+1)-1),w:[o(T`${n+1}!`,fact(n+1)),o(T`${n}!-1`,fact(n)-1),o(T`${n+1}!+1`,fact(n+1)+1),o(T`${n+2}!-1`,fact(n+2)-1)],
- s:T`$k\cdot k!=(k+1)!-k!$, so the sum telescopes to $${n+1}!-1!=${n+1}!-1$.`}},
+ s:T`Rewrite each term as a difference: $k\cdot k!=(k+1)\cdot k!-k!=(k+1)!-k!$.<br>The sum is $(2!-1!)+(3!-2!)+\cdots+(${n+1}!-${n}!)$; everything cancels except $${n+1}!-1!=${n+1}!-1$.`}},
 ];
 
 GENS.recur=[
@@ -16561,7 +16645,7 @@ r=>{const [al,be]=pick(r,[[1,2],[2,3],[1,3],[-1,2],[-1,3],[-2,3],[2,-3],[1,-2]])
 r=>{const n=ri(r,8,25);
  return{lvl:1,q:T`With $F_1=F_2=1$ and $F_n=F_{n-1}+F_{n-2}$, what is $F_1+F_2+\cdots+F_{${n}}$?`,
  a:fib[n+2]-1,w:[fib[n+2],fib[n+1]-1,fib[n+1],fib[n+3]-1],
- s:T`Identity: $\sum_{k=1}^nF_k=F_{n+2}-1$ (because $F_k=F_{k+2}-F_{k+1}$ telescopes). So the sum is $F_{${n+2}}-1=${fib[n+2]-1}$.`}},
+ s:T`Identity: $\sum_{k=1}^nF_k=F_{n+2}-1$. Why: $F_k=F_{k+2}-F_{k+1}$, so the sum telescopes to $F_{n+2}-F_2=F_{n+2}-1$.<br>So the sum is $F_{${n+2}}-1=${fib[n+2]}-1=${fib[n+2]-1}$.<br>(Check small: $F_1+F_2+F_3=1+1+2=4=F_5-1$.)`}},
 r=>{const n=ri(r,5,15);const q=r()<.5?T`How many binary strings of length $${n}$ contain no two consecutive $1$s?`:T`How many subsets of $\{1,2,\dots,${n}\}$ (including the empty set) contain no two consecutive integers?`;
  return{lvl:1,q,a:fib[n+2],w:[fib[n+1],fib[n+3],2**n-fib[n],2**(n-1),fib[n+2]-1],
  s:T`Condition on the last position: if it is "off", any valid object of size $n-1$ works; if it is "on", the previous one must be off, leaving size $n-2$. So $c_n=c_{n-1}+c_{n-2}$ with $c_1=2,\ c_2=3$, which gives $c_n=F_{n+2}$.<br>$c_{${n}}=F_{${n+2}}=${fib[n+2]}$.`}},
@@ -16577,7 +16661,7 @@ r=>{const N=ri(r,100,3000);const m=N%60;let a=0,b=1;for(let i=0;i<m;i++){[a,b]=[
 r=>{const n=ri(r,6,15);
  return{lvl:2,q:T`What is $F_1^2+F_2^2+\cdots+F_{${n}}^2$, where $F_n$ is the $n$th Fibonacci number?`,
  a:fib[n]*fib[n+1],w:[fib[n+1]**2,fib[n]**2,fib[2*n],fib[n]*fib[n+1]-1,fib[n]*fib[n+2]],
- s:T`Identity: $\sum_{k=1}^nF_k^2=F_nF_{n+1}$ (squares of side $F_k$ tile an $F_n\times F_{n+1}$ rectangle). So the sum is $${fib[n]}\cdot${fib[n+1]}=${fib[n]*fib[n+1]}$.`}},
+ s:T`Identity: $\sum_{k=1}^nF_k^2=F_nF_{n+1}$.<br>Why: $F_k^2=F_k(F_{k+1}-F_{k-1})=F_kF_{k+1}-F_{k-1}F_k$, which telescopes. Geometrically, squares of side $F_1,\dots,F_n$ tile an $F_n\times F_{n+1}$ rectangle.<br>So the sum is $F_{${n}}F_{${n+1}}=${fib[n]}\cdot${fib[n+1]}=${fib[n]*fib[n+1]}$.`}},
 ];
 
 GENS.arigeo=[
@@ -16605,11 +16689,11 @@ r=>{const a=pick(r,[1,-1,2]),b=ri(r,-3,3),c=ri(r,-3,3),d=ri(r,-5,5);const p=x=>a
 r=>{const n=ri(r,3,8);
  return{lvl:3,q:T`A polynomial $p(x)$ of degree at most $${n}$ satisfies $p(k)=2^k$ for $k=0,1,\dots,${n}$. What is $p(${n+1})$?`,
  a:2**(n+1)-1,w:[2**(n+1),2**(n+1)-2,2**(n+1)+1,2**n],
- s:T`All forward differences of $2^k$ at $k=0$ equal $1$. Newton's formula: $p(${n+1})=\sum_{j=0}^{${n}}\binom{${n+1}}{j}=2^{${n+1}}-1=${2**(n+1)-1}$.`}},
+ s:T`Use forward differences: the differences of $1,2,4,8,\dots$ are again $1,2,4,\dots$, so every leading difference at $k=0$ equals $1$.<br>Newton's forward formula: $p(x)=\sum_{j=0}^{${n}}\binom{x}{j}\Delta^j p(0)=\sum_{j=0}^{${n}}\binom xj$.<br>At $x=${n+1}$: $\sum_{j=0}^{${n}}\binom{${n+1}}{j}=2^{${n+1}}-\binom{${n+1}}{${n+1}}=2^{${n+1}}-1=${2**(n+1)-1}$.<br>(The polynomial matches $2^k$ up to $k=${n}$, then falls short by exactly $1$.)`}},
 r=>{const n=ri(r,5,12);const S=F(2).sub(F(n+2,2**n));
  return{lvl:2,q:T`Evaluate $\dfrac12+\dfrac24+\dfrac38+\cdots+\dfrac{${n}}{2^{${n}}}$.`,
  a:S,w:[F(2),F(2).sub(F(n+1,2**n)),F(2).sub(F(n+2,2**(n+1))),F(2).sub(F(1,2**n)),F(2).sub(F(n,2**n))],
- s:T`Shift and subtract with the tail kept: $\sum_{k=1}^{n}\frac k{2^k}=2-\frac{n+2}{2^n}$.<br>$=2-\frac{${n+2}}{${2**n}}=${S.tex()}$.`}},
+ s:T`Let $S=\sum_{k=1}^{${n}}\frac k{2^k}$. Then $\frac12S=\sum_{k=1}^{${n}}\frac k{2^{k+1}}$.<br>Subtract: $\frac12S=\left(\frac12+\frac14+\dots+\frac1{2^{${n}}}\right)-\frac{${n}}{2^{${n+1}}}=1-\frac1{2^{${n}}}-\frac{${n}}{2^{${n+1}}}$.<br>So $S=2-\frac{${n+2}}{2^{${n}}}=2-\frac{${n+2}}{${2**n}}=${S.tex()}$.`}},
 ];
 
 GENS.means=[
@@ -16623,11 +16707,11 @@ r=>{let g=ri(r,1,5);let u=ri(r,1,4),v=ri(r,u+1,7);let x=g*u*u,y=g*v*v;if((x+y)%2
 r=>{const k=ri(r,3,9),a=ri(r,-10,20),d=ri(r,1,9)*pick(r,[1,-1]);const b=a+(k+1)*d;const S=k*(a+b)/2;
  return{lvl:1,q:T`${k} numbers are inserted between $${a}$ and $${b}$ so that the ${k+2} numbers form an arithmetic sequence. What is the sum of the inserted numbers?`,
  a:S,w:[(k+2)*(a+b)/2,k*(a+b),S+d,(k+1)*(a+b)/2,S-a],
- s:T`The ${k} inserted numbers also form an AP with average $\frac{${a}+${P(b)}}{2}$ (by symmetry). Sum $=${k}\cdot\dfrac{${a+b}}{2}=${S}$.`}},
+ s:T`The full sequence has ${k+2} terms from $${a}$ to $${b}$. In an AP, terms equally far from the ends pair up to the same sum $${a}+${P(b)}=${a+b}$.<br>So the ${k} inserted numbers average $\frac{${a+b}}{2}$, and their sum is $${k}\cdot\frac{${a+b}}{2}=${S}$.<br>(Or: whole sum $${k+2}\cdot\frac{${a+b}}{2}$ minus the two endpoints.)`}},
 r=>{const a=ri(r,1,5),q=pick(r,[2,3]),k=ri(r,2,4);const b=a*q**(k+1);let S=0;for(let i=1;i<=k;i++)S+=a*q**i;
  return{lvl:1,q:T`${k} geometric means are inserted between $${a}$ and $${b}$ to form a geometric sequence of positive numbers. What is the sum of the inserted numbers?`,
  a:S,w:[S+a+b,S-a*q,S+a*q**(k+1)/q,a*q**k,(k)*(a+b)/2|0],
- s:T`There are $${k+2}$ terms, so $r^{${k+1}}=\frac{${b}}{${a}}=${b/a}$ and $r=${q}$. The inserted terms are $${Array.from({length:k},(_,i)=>a*q**(i+1)).join(',\\ ')}$, with sum $${S}$.`}},
+ s:T`With ${k} means inserted there are $${k+2}$ terms, so going from $${a}$ to $${b}$ takes $${k+1}$ steps: $r^{${k+1}}=\frac{${b}}{${a}}=${b/a}$, giving $r=${q}$ (positive terms).<br>The inserted terms are $${Array.from({length:k},(_,i)=>a*q**(i+1)).join(',\\ ')}$.<br>Sum: $${S}$.`}},
 r=>{const c=ri(r,1,6),d=ri(r,1,5),K=pick(r,[60,120,24,12,36,72]);const N=ri(r,8,20);const x=n=>F(K,c+(n-1)*d);
  return{lvl:2,q:T`The sequence $${x(1).tex()},\ ${x(2).tex()},\ ${x(3).tex()},\ \dots$ is harmonic (the reciprocals of its terms form an arithmetic sequence). What is its ${ord(N)} term?`,
  a:x(N),w:[x(N+1),x(N-1),F(K,c*N),F(1,c+(N-1)*d),x(N).mul(2)],
@@ -16635,7 +16719,7 @@ r=>{const c=ri(r,1,6),d=ri(r,1,5),K=pick(r,[60,120,24,12,36,72]);const N=ri(r,8,
 r=>{const g=ri(r,1,4),s=ri(r,1,5),t=ri(r,1,6);const a=g*s*s,b=g*t*t;const m=2*g*s*t;
  return{lvl:1,q:T`What is the minimum value of $${a===1?'':a}x+\dfrac{${b}}{x}$ for $x>0$?`,
  a:m,w:[g*s*t,a+b,2*(a+b),4*m/2+g,m+1],
- s:T`AM–GM: $${a===1?'':a}x+\frac{${b}}{x}\ge2\sqrt{${a}x\cdot\frac{${b}}{x}}=2\sqrt{${a*b}}=${m}$, with equality at $x=\sqrt{${F(b,a).tex()}}=${F(t,s).tex()}$.`}},
+ s:T`AM–GM for two positive numbers: $u+v\ge2\sqrt{uv}$. Choose $u=${a===1?'':a}x$ and $v=\frac{${b}}{x}$, whose product $${a*b}$ doesn't depend on $x$.<br>$${a===1?'':a}x+\frac{${b}}{x}\ge2\sqrt{${a*b}}=${m}$.<br>Equality when $u=v$: $${a===1?'':a}x=\frac{${b}}{x}$, so $x^2=${F(b,a).tex()}$ and $x=${F(t,s).tex()}$. The minimum is $${m}$.`}},
 r=>{const typ=pick(r,[[2,5,k=>2*k],[3,9,k=>k],[4,13,k=>2*k/3]]);let a1=ri(r,1,8);if(typ[0]===4)a1*=3;const d=typ[2](a1);const N=ri(r,10,40);
  return{lvl:2,q:T`A non-constant arithmetic sequence has first term $${a1}$. Its 1st, ${ord(typ[0])}, and ${ord(typ[1])} terms form a geometric sequence. What is its ${ord(N)} term?`,
  a:a1+(N-1)*d,w:[a1+N*d,a1+(N-2)*d,a1*N,a1+(N-1)*(d+a1),3**(Math.min(N,8))],
