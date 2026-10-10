@@ -1,0 +1,490 @@
+=== LESSONS ===
+<script type="text/plain" id="L-count-basic">
+<h2>Multiplication Principle &amp; Permutations</h2>
+<div class="box"><h4>Core rules</h4><ul>
+<li><b>Multiplication principle:</b> for independent stages with $m$ and $n$ options, there are $mn$ outcomes.</li>
+<li>Ordered selections of $k$ from $n$ (no repeats): $P(n,k)=\dfrac{n!}{(n-k)!}$.</li>
+<li>Arrangements of a word with repeated letters: $\dfrac{n!}{a!\,b!\,\cdots}$ (e.g. BANANA: $\frac{6!}{3!2!}=60$).</li>
+<li>With repetition allowed, each of the $k$ slots has $n$ choices: $n^k$.</li>
+</ul></div>
+<h3>Handle restrictions first</h3>
+<p>Fill the most restricted position first. For even 3-digit numbers with distinct digits, split by whether the last digit is $0$ ($9\cdot8$) or not ($4\cdot8\cdot8$): $72+256=328$.</p>
+<h3>Counting by complement</h3>
+<p>Numbers below 1000 with no digit 7: treat them as 3-digit strings with leading zeros, giving $9^3=729$ strings, then remove $000$: $728$.</p>
+</script>
+<script type="text/plain" id="L-count-comb">
+<h2>Combinations</h2>
+<div class="box"><h4>$\binom nk=\dfrac{n!}{k!(n-k)!}$: unordered choices</h4><ul>
+<li>Committees: multiply the independent choices, e.g. $\binom52\binom63$ for 2 men and 3 women.</li>
+<li>Lattice paths from $(0,0)$ to $(m,n)$ using right/up steps: $\binom{m+n}{m}$.</li>
+<li>Handshakes, or segments between $n$ points: $\binom n2$. Triangles from $n$ points with no three collinear: $\binom n3$.</li>
+<li>Rectangles in an $m\times n$ grid of squares: $\binom{m+1}{2}\binom{n+1}{2}$ (choose 2 vertical and 2 horizontal lines).</li>
+</ul></div>
+<h3>"At least" means use the complement</h3>
+<p>At least one girl $=$ all committees $-$ committees with no girls.</p>
+<h3>Paths avoiding a point</h3>
+<p>Total paths $-$ (paths to the point)·(paths from the point).</p>
+</script>
+<script type="text/plain" id="L-count-stars">
+<h2>Stars and Bars</h2>
+<div class="box"><h4>Distributing $n$ identical items into $k$ distinct boxes</h4><ul>
+<li>Empty boxes allowed (nonnegative solutions of $x_1+\dots+x_k=n$): $\dbinom{n+k-1}{k-1}$.</li>
+<li>Every box nonempty (positive solutions): $\dbinom{n-1}{k-1}$.</li>
+<li>At least $m$ per box: give $m$ to each first, then distribute the remaining $n-km$ freely.</li>
+<li>Upper bounds (each $\le c$): subtract the cases where some $x_i\ge c+1$ (inclusion–exclusion).</li>
+</ul></div>
+<h3>Recognize it</h3>
+<ul><li>Choosing $n$ items from $k$ types with repetition (donuts): $\binom{n+k-1}{k-1}$.</li>
+<li>The number of terms in $(a+b+c)^n$ is $\binom{n+2}{2}$.</li>
+<li>Digit sums: digits are boxes with a cap of 9, and the leading digit must be at least 1.</li></ul>
+</script>
+<script type="text/plain" id="L-count-pie">
+<h2>Inclusion–Exclusion &amp; Complements</h2>
+<div class="box"><h4>Formulas</h4><ul>
+<li>$|A\cup B|=|A|+|B|-|A\cap B|$.</li>
+<li>$|A\cup B\cup C|=\sum|A|-\sum|A\cap B|+|A\cap B\cap C|$.</li>
+<li>Complement: "at least one" $=$ total $-$ "none".</li>
+<li>Derangements (nobody in their own spot): $D_n=n!\left(1-\frac1{1!}+\frac1{2!}-\cdots\right)$: $D_2=1, D_3=2, D_4=9, D_5=44, D_6=265$.</li>
+</ul></div>
+<h3>Divisibility counting</h3>
+<p>Integers up to $N$ divisible by none of $2,3,5$: $N-\left(\lfloor\frac N2\rfloor+\lfloor\frac N3\rfloor+\lfloor\frac N5\rfloor\right)+\left(\lfloor\frac N6\rfloor+\lfloor\frac N{10}\rfloor+\lfloor\frac N{15}\rfloor\right)-\lfloor\frac N{30}\rfloor$.</p>
+<h3>Squares or cubes</h3>
+<p>Count the squares and the cubes, then subtract the sixth powers, which were counted twice.</p>
+</script>
+<script type="text/plain" id="L-count-arr">
+<h2>Arrangements with Restrictions</h2>
+<div class="box"><h4>Techniques</h4><ul>
+<li><b>Together:</b> glue the group into one block, arrange the blocks, then arrange inside the block.</li>
+<li><b>Apart:</b> total $-$ together, or the <b>gap method</b>: arrange the others, then place the restricted items in the gaps.</li>
+<li><b>Circular:</b> $n$ people around a table give $(n-1)!$ arrangements (rotations are the same). If reflections also count as the same (a bracelet): $\frac{(n-1)!}{2}$.</li>
+<li><b>A before B</b> (not necessarily adjacent): by symmetry, exactly half of all arrangements.</li>
+<li><b>Forbidden positions:</b> use inclusion–exclusion on the bad events.</li>
+</ul></div>
+<div class="ex"><b class="lbl">Example.</b> 4 boys and 3 girls stand in a row with no two girls adjacent.
+<details><summary>Solution</summary>Arrange the boys ($4!=24$); they create 5 gaps. Place the girls in 3 different gaps in order: $5\cdot4\cdot3=60$. Total $1440$.</details></div>
+</script>
+
+=== BANK ===
+@@ count-basic
+Q: A license plate has $3$ letters followed by $3$ digits (repetition allowed). How many plates are possible?
+L: 1
+A: 17576000
+W: 15600000
+W: 1757600
+W: 17576
+W: 12000000
+S: $26^3\cdot10^3=17576\cdot1000=17{,}576{,}000$.
+---
+Q: How many distinct arrangements of the letters of BANANA are there?
+L: 1
+A: 60
+W: 720
+W: 120
+W: 30
+W: 90
+S: $\frac{6!}{3!\,2!}=\frac{720}{12}=60$ (three A's, two N's).
+---
+Q: How many three-digit numbers have all distinct digits?
+L: 1
+A: 648
+W: 720
+W: 900
+W: 504
+W: 729
+S: First digit $1$–$9$ (9 ways), then 9 ways, then 8: $648$.
+---
+Q: In how many ways can gold, silver, and bronze medals be awarded among $8$ runners?
+L: 1
+A: 336
+W: 56
+W: 512
+W: 24
+W: 40320
+S: $8\cdot7\cdot6=336$ (order matters).
+---
+Q: How many even three-digit numbers have all distinct digits?
+L: 2
+A: 328
+W: 360
+W: 320
+W: 450
+W: 288
+S: Last digit $0$: $9\cdot8=72$. Last digit $2,4,6,8$: $4$ choices, first digit $8$ choices (not 0 and not the last digit), middle $8$: $256$. Total $328$.
+---
+Q: How many distinct arrangements of the letters of MISSISSIPPI are there?
+L: 2
+A: 34650
+W: 39916800
+W: 69300
+W: 17325
+W: 5775
+S: $\frac{11!}{4!\,4!\,2!}=34650$ (four I's, four S's, two P's).
+---
+Q: How many 4-letter strings with no repeated letters can be made from A, B, C, D, E if the first letter must be a vowel?
+L: 1
+A: 48
+W: 120
+W: 24
+W: 96
+W: 250
+S: The first letter is A or E (2 ways), then $4\cdot3\cdot2$: $48$.
+---
+Q: How many positive integers less than $1000$ contain no digit $7$?
+L: 2
+A: 728
+W: 729
+W: 648
+W: 271
+W: 700
+S: Write them as 3-digit strings with leading zeros: $9^3=729$ strings without a 7, minus $000$: $728$.
+---
+@@ count-comb
+Q: How many 3-person committees can be chosen from $10$ people?
+L: 1
+A: 120
+W: 720
+W: 30
+W: 1000
+W: 210
+S: $\binom{10}3=120$.
+---
+Q: How many shortest lattice paths go from $(0,0)$ to $(5,3)$ using unit steps right and up?
+L: 1
+A: 56
+W: 15
+W: 40
+W: 336
+W: 64
+S: Choose which 3 of the 8 steps are up: $\binom83=56$.
+---
+Q: How many committees of $2$ men and $3$ women can be chosen from $5$ men and $6$ women?
+L: 1
+A: 200
+W: 462
+W: 150
+W: 120
+W: 300
+S: $\binom52\binom63=10\cdot20=200$.
+---
+Q: How many triangles have all three vertices among $10$ points on a circle?
+L: 1
+A: 120
+W: 720
+W: 45
+W: 1000
+W: 210
+S: Any 3 points make a triangle: $\binom{10}{3}=120$.
+---
+Q: Twelve people each shake hands with everyone else once. How many handshakes are there?
+L: 1
+A: 66
+W: 132
+W: 144
+W: 78
+W: 24
+S: $\binom{12}{2}=66$.
+---
+Q: How many shortest lattice paths go from $(0,0)$ to $(4,4)$ without passing through $(2,2)$?
+L: 2
+A: 34
+W: 36
+W: 70
+W: 40
+W: 30
+S: The total is $\binom84=70$. Paths through $(2,2)$: $\binom42\binom42=36$. Avoiding it: $34$.
+---
+Q: A 4-person committee is chosen from $6$ boys and $5$ girls. How many committees include at least one girl?
+L: 2
+A: 315
+W: 330
+W: 300
+W: 225
+W: 150
+S: $\binom{11}{4}-\binom64=330-15=315$.
+---
+Q: How many rectangles (of any size) are formed by the lines of a $5\times5$ grid of unit squares?
+L: 2
+A: 225
+W: 100
+W: 55
+W: 36
+W: 625
+S: Choose 2 of the 6 vertical lines and 2 of the 6 horizontal lines: $\binom62^2=225$.
+---
+@@ count-stars
+Q: How many ordered triples of nonnegative integers satisfy $x+y+z=10$?
+L: 1
+A: 66
+W: 36
+W: 55
+W: 78
+W: 120
+S: $\binom{12}{2}=66$.
+---
+Q: How many ordered quadruples of positive integers satisfy $a+b+c+d=12$?
+L: 1
+A: 165
+W: 330
+W: 495
+W: 220
+W: 455
+S: $\binom{11}{3}=165$.
+---
+Q: In how many ways can $10$ identical candies be given to $4$ children so that each child gets at least $2$?
+L: 2
+A: 10
+W: 35
+W: 20
+W: 15
+W: 84
+S: Give each child 2 first, leaving 2 candies for 4 children: $\binom{5}{3}=10$.
+---
+Q: A shop sells $4$ kinds of donuts. How many different boxes of $6$ donuts are possible?
+L: 1
+A: 84
+W: 15
+W: 126
+W: 1296
+W: 56
+S: Stars and bars: $\binom{6+3}{3}=84$.
+---
+Q: How many ordered triples of nonnegative integers with $x+y+z=10$ have every variable at most $5$?
+L: 3
+A: 21
+W: 66
+W: 45
+W: 36
+W: 27
+S: Total $66$. If $x\ge6$: $x'+y+z=4$ gives $15$ cases; the same for $y$ and $z$. Two variables can't both be $\ge6$. So $66-45=21$.
+---
+Q: How many three-digit numbers have digits summing to $9$?
+L: 2
+A: 45
+W: 55
+W: 36
+W: 28
+W: 66
+S: $a\ge1$: with $a'=a-1$, $a'+b+c=8$ gives $\binom{10}2=45$ (no digit can exceed 9).
+---
+Q: How many distinct terms are in the expansion of $(a+b+c)^6$?
+L: 2
+A: 28
+W: 21
+W: 36
+W: 729
+W: 84
+S: The terms $a^ib^jc^k$ with $i+j+k=6$: $\binom82=28$.
+---
+Q: In how many ways can $7$ identical balls be placed into $3$ distinct boxes (empty boxes allowed)?
+L: 1
+A: 36
+W: 21
+W: 28
+W: 343
+W: 45
+S: $\binom{9}{2}=36$.
+---
+@@ count-pie
+Q: In a class of $30$, $18$ play soccer, $15$ play basketball, and $8$ play both. How many play neither?
+L: 1
+A: 5
+W: 3
+W: 13
+W: 7
+W: 0
+S: $18+15-8=25$ play at least one, so $30-25=5$ play neither.
+---
+Q: How many integers from $1$ to $1000$ are divisible by none of $2$, $3$, $5$?
+L: 2
+A: 266
+W: 267
+W: 734
+W: 200
+W: 333
+S: $1000-(500+333+200)+(166+100+66)-33=266$.
+---
+Q: How many four-digit numbers contain at least one digit $7$?
+L: 2
+A: 3168
+W: 5832
+W: 3000
+W: 2916
+W: 3600
+S: Without any 7: $8\cdot9\cdot9\cdot9=5832$. So $9000-5832=3168$.
+---
+Q: Four letters are put into their four addressed envelopes at random. How many arrangements have no letter in its correct envelope?
+L: 2
+A: 9
+W: 8
+W: 11
+W: 12
+W: 6
+S: Derangements: $D_4=4!\left(1-1+\frac12-\frac16+\frac1{24}\right)=9$.
+---
+Q: Sets have $|A|=20$, $|B|=25$, $|C|=30$, $|A\cap B|=8$, $|B\cap C|=9$, $|A\cap C|=10$, $|A\cap B\cap C|=4$. What is $|A\cup B\cup C|$?
+L: 2
+A: 52
+W: 48
+W: 56
+W: 75
+W: 44
+S: $75-27+4=52$.
+---
+Q: How many binary strings of length $8$ contain at least one $1$?
+L: 1
+A: 255
+W: 256
+W: 8
+W: 254
+W: 128
+S: $2^8-1=255$.
+---
+Q: Three standard dice are rolled. In how many of the $216$ outcomes does at least one die show a $6$?
+L: 1
+A: 91
+W: 75
+W: 108
+W: 36
+W: 125
+S: $216-5^3=91$.
+---
+Q: How many integers from $1$ to $100$ are perfect squares or perfect cubes?
+L: 2
+A: 12
+W: 14
+W: 13
+W: 10
+W: 11
+S: $10$ squares, $4$ cubes ($1,8,27,64$), and $2$ sixth powers ($1,64$) counted twice: $10+4-2=12$.
+---
+@@ count-arr
+Q: Five people stand in a row. In how many arrangements are A and B next to each other?
+L: 1
+A: 48
+W: 24
+W: 72
+W: 120
+W: 96
+S: Glue A and B into a block: $4!$ arrangements, times $2$ orders inside the block: $48$.
+---
+Q: Five people stand in a row. In how many arrangements are A and B <b>not</b> next to each other?
+L: 1
+A: 72
+W: 48
+W: 96
+W: 60
+W: 24
+S: $120-48=72$.
+---
+Q: In how many ways can $6$ people sit around a round table (rotations considered the same)?
+L: 1
+A: 120
+W: 720
+W: 60
+W: 360
+W: 24
+S: $(6-1)!=120$.
+---
+Q: Four boys and three girls stand in a row with no two girls adjacent. How many arrangements are possible?
+L: 2
+A: 1440
+W: 720
+W: 2880
+W: 144
+W: 1200
+S: Arrange the boys ($24$). Their 5 gaps hold the girls: $5\cdot4\cdot3=60$. Total $1440$.
+---
+Q: Three couples sit around a round table, with each couple sitting together. How many arrangements are possible (rotations considered the same)?
+L: 2
+A: 16
+W: 48
+W: 8
+W: 96
+W: 32
+S: Arrange the 3 couple-blocks in a circle: $2!=2$. Each couple has 2 internal orders: $2^3=8$. Total $16$.
+---
+Q: Five people stand in a row. In how many arrangements is A somewhere to the left of B?
+L: 1
+A: 60
+W: 120
+W: 48
+W: 24
+W: 30
+S: By symmetry, half of the $120$ arrangements: $60$.
+---
+Q: Eight distinct beads are put on a bracelet (rotations and flips considered the same). How many bracelets are possible?
+L: 2
+A: 2520
+W: 5040
+W: 40320
+W: 20160
+W: 1260
+S: $\frac{(8-1)!}{2}=2520$.
+---
+Q: How many permutations of $1,2,3,4,5$ have $1$ not in the first position and $5$ not in the last position?
+L: 2
+A: 78
+W: 72
+W: 96
+W: 66
+W: 84
+S: $120-24-24+6=78$ (inclusion–exclusion on the two bad events).
+
+=== GENS ===
+GENS['count-basic']=[
+r=>{const n=ri(r,4,12),k=ri(r,2,Math.min(5,n));let v=1;for(let i=0;i<k;i++)v*=n-i;
+ return{lvl:1,q:T`In how many ways can ${k} distinct prizes (first, second, ...) be awarded to ${k} of ${n} people, with no one winning twice?`,a:v,w:[comb(n,k),n**k,v/2,k**n>1e9?v*2:k**n],s:T`$${Array.from({length:k},(_,i)=>n-i).join('\\cdot ')}=${v}$ (order matters, no repeats).`}},
+r=>{const words=['BANANA','LETTER','COOKIE','PEPPER','SUCCESS','BALLOON','COFFEE','TOMATO','ALGEBRA','PARALLEL','ASSESS','GEOMETRY','BOOKKEEPER','MAMMAL','PIZZAZZ','CALCULUS','ADDRESS'];const w=pick(r,words);
+ const cnt={};for(const c of w)cnt[c]=(cnt[c]||0)+1;let v=fact(w.length);for(const c in cnt)v/=fact(cnt[c]);
+ return{lvl:1,q:T`How many distinct arrangements of the letters of ${w} are there?`,a:v,w:[fact(w.length),v*2,v/2,v*Object.values(cnt).filter(x=>x>1).length+1],s:T`$\frac{${w.length}!}{${Object.entries(cnt).filter(([c,x])=>x>1).map(([c,x])=>x+'!').join('\\,')||'1'}}=${v}$.`}},
+r=>{const L_=ri(r,1,3),D=ri(r,1,4);const v=26**L_*10**D;
+ return{lvl:1,q:T`A code has ${L_} letter${L_>1?'s':''} followed by ${D} digit${D>1?'s':''}, with repetition allowed. How many codes are possible?`,a:v,w:[26*25**(L_-1)*10**D,26**L_*10*9**(D-1),26**L_+10**D,(26*L_)*(10*D)],s:T`$26^{${L_}}\cdot10^{${D}}=${v}$.`}},
+r=>{const k=ri(r,2,5);let v=9;for(let i=1;i<k;i++)v*=10-i;
+ return{lvl:1,q:T`How many ${k}-digit numbers have all distinct digits?`,a:v,w:[9*10**(k-1),10**k,v*10/9|0,v/9*8|0],s:T`First digit 9 ways (not 0), then $9,8,\dots$: $${v}$.`}},
+r=>{const k=ri(r,2,4),d=ri(r,1,9);const v=9**k-1;
+ return{lvl:2,q:T`How many positive integers less than $${10**k}$ contain no digit ${d}?`,a:v,w:[9**k,10**k-9**k,8*9**(k-1),v-1],s:T`As ${k}-digit strings with leading zeros: $9^{${k}}=${9**k}$ avoid the digit ${d}; remove the all-zero string: $${v}$.`}},
+];
+GENS['count-comb']=[
+r=>{const n=ri(r,5,20),k=ri(r,2,Math.min(6,n-1));const v=comb(n,k);
+ return{lvl:1,q:T`How many ${k}-person committees can be chosen from ${n} people?`,a:v,w:[v*fact(k),comb(n,k-1)===v?comb(n,k+1):comb(n,k-1),n*k,comb(n+1,k)],s:T`$\binom{${n}}{${k}}=${v}$.`}},
+r=>{const m=ri(r,2,8),n=ri(r,2,8);const v=comb(m+n,m);
+ return{lvl:1,q:T`How many shortest lattice paths go from $(0,0)$ to $(${m},${n})$ using unit steps right and up?`,a:v,w:[m*n,2**(m+n),comb(m+n,m-1),v*2],s:T`Choose which ${m} of the ${m+n} steps go right: $\binom{${m+n}}{${m}}=${v}$.`}},
+r=>{const M=ri(r,3,9),W_=ri(r,3,9),a=ri(r,1,Math.min(3,M)),b=ri(r,1,Math.min(3,W_));const v=comb(M,a)*comb(W_,b);
+ return{lvl:1,q:T`How many committees of ${a} men and ${b} women can be chosen from ${M} men and ${W_} women?`,a:v,w:[comb(M+W_,a+b),comb(M,a)+comb(W_,b),v*2,comb(M,b)*comb(W_,a)],s:T`$\binom{${M}}{${a}}\binom{${W_}}{${b}}=${comb(M,a)}\cdot${comb(W_,b)}=${v}$.`}},
+r=>{const m=ri(r,2,9),n=ri(r,2,9);const v=comb(m+1,2)*comb(n+1,2);
+ return{lvl:2,q:T`How many rectangles (of any size) are formed by the lines of an $${m}\times${n}$ grid of unit squares?`,a:v,w:[m*n,comb(m,2)*comb(n,2),(m+1)*(n+1),v+m*n],s:T`Choose 2 of the ${m+1} vertical lines and 2 of the ${n+1} horizontal lines: $\binom{${m+1}}2\binom{${n+1}}2=${v}$.`}},
+r=>{const B=ri(r,3,9),G=ri(r,2,8),k=ri(r,3,5);if(B<k)return GENS['count-comb'][4](r);const v=comb(B+G,k)-comb(B,k);
+ return{lvl:2,q:T`A ${k}-person committee is chosen from ${B} boys and ${G} girls. How many committees include at least one girl?`,a:v,w:[comb(B+G,k),G*comb(B+G-1,k-1),comb(G,1)*comb(B,k-1),v-comb(G,k)],s:T`All committees minus all-boy committees: $\binom{${B+G}}{${k}}-\binom{${B}}{${k}}=${comb(B+G,k)}-${comb(B,k)}=${v}$.`}},
+];
+GENS['count-stars']=[
+r=>{const k=ri(r,2,5),n=ri(r,3,15);const pos=r()<.5;if(pos&&n<k)return GENS['count-stars'][0](r);const v=pos?comb(n-1,k-1):comb(n+k-1,k-1);
+ return{lvl:1,q:T`How many ordered ${k}-tuples of ${pos?'positive':'nonnegative'} integers have sum $${n}$?`,a:v,w:[pos?comb(n+k-1,k-1):comb(n-1,k-1),comb(n+k,k),k**n>1e7?v+k:k**n,comb(n,k)],s:T`Stars and bars: $\binom{${pos?n-1:n+k-1}}{${k-1}}=${v}$.`}},
+r=>{const k=ri(r,2,5),m=ri(r,1,3),extra=ri(r,0,8);const n=k*m+extra;const v=comb(extra+k-1,k-1);
+ return{lvl:2,q:T`In how many ways can ${n} identical candies be given to ${k} children so that each gets at least ${m}?`,a:v,w:[comb(n+k-1,k-1),comb(n-1,k-1),comb(extra+k,k),v+1],s:T`Give each child ${m} first, leaving ${extra}: $\binom{${extra+k-1}}{${k-1}}=${v}$.`}},
+r=>{const k=ri(r,2,4),n=ri(r,2,10);const v=comb(n+k-1,k-1);
+ return{lvl:1,q:T`How many distinct terms are in the expansion of $(${['a','b','c','d'].slice(0,k).join('+')})^{${n}}$?`,a:v,w:[k**n,n+1,comb(n+k,k),comb(n+k-1,k)],s:T`Terms correspond to exponent tuples summing to ${n}: $\binom{${n+k-1}}{${k-1}}=${v}$.`}},
+r=>{const k=3,c=ri(r,3,7),n=ri(r,c+1,2*c+2);let v=0;for(let x=0;x<=c;x++)for(let y=0;y<=c;y++){const z=n-x-y;if(z>=0&&z<=c)v++}
+ return{lvl:3,q:T`How many ordered triples of nonnegative integers with $x+y+z=${n}$ have every variable at most ${c}?`,a:v,w:[comb(n+2,2),comb(n+2,2)-v,v+3,v-3>0?v-3:v+6],s:T`Total $\binom{${n+2}}{2}=${comb(n+2,2)}$. Subtract the cases where some variable is $\ge${c+1}$ (and add back any double-counted overlaps): $${v}$.`}},
+];
+GENS['count-pie']=[
+r=>{const N=ri(r,20,60),a=ri(r,5,N-5),b=ri(r,5,N-5),both=ri(r,Math.max(0,a+b-N),Math.min(a,b));const v=N-(a+b-both);
+ return{lvl:1,q:T`In a group of ${N}, ${a} like tea, ${b} like coffee, and ${both} like both. How many like neither?`,a:v,w:[N-a-b+2*both,N-a-b>0?N-a-b:v+both+1,both,v+1].filter(x=>x!==v),s:T`At least one: $${a}+${b}-${both}=${a+b-both}$. Neither: $${N}-${a+b-both}=${v}$.`}},
+r=>{const ps=pick(r,[[2,3],[2,5],[3,5],[2,3,5],[2,3,7],[3,4],[4,6]]);const N=ri(r,50,1000);let v=0;for(let x=1;x<=N;x++)if(ps.every(p=>x%p))v++;
+ return{lvl:2,q:T`How many integers from $1$ to $${N}$ are divisible by none of ${ps.join(', ')}?`,a:v,w:[N-ps.reduce((s,p)=>s+Math.floor(N/p),0),N-v,v+1,v-1],s:T`Inclusion–exclusion on the multiples (use the LCMs for the overlaps). The count that avoids all of them is $${v}$.`}},
+r=>{const k=ri(r,2,5),d=ri(r,1,9);const total=9*10**(k-1),none=8*9**(k-1);
+ return{lvl:2,q:T`How many ${k}-digit numbers contain at least one digit ${d}?`,a:total-none,w:[none,10**k-9**k,total-9**k,k*10**(k-1)],s:T`Without any ${d}: first digit 8 ways (not 0 or ${d}), the rest 9 ways each: $${none}$. So $${total}-${none}=${total-none}$.`}},
+r=>{const n=ri(r,3,7);const D=[1,0,1,2,9,44,265,1854][n];
+ return{lvl:2,q:T`${n} people each bring a hat, and the hats are handed back at random. In how many ways does nobody get their own hat?`,a:D,w:[fact(n)-1,fact(n-1),D+1,fact(n)/2],s:T`Derangements: $D_{${n}}=${n}!\sum_{k=0}^{${n}}\frac{(-1)^k}{k!}=${D}$.`}},
+r=>{const n=ri(r,2,5),s_=pick(r,[4,6,8]);const v=s_**n-(s_-1)**n;
+ return{lvl:1,q:T`${n} fair ${s_}-sided dice are rolled. In how many of the $${s_**n}$ outcomes does at least one die show a ${s_}?`,a:v,w:[(s_-1)**n,n*s_**(n-1),v-1,s_**(n-1)],s:T`Complement: $${s_}^{${n}}-${s_-1}^{${n}}=${v}$.`}},
+];
+GENS['count-arr']=[
+r=>{const n=ri(r,4,8);const tog=r()<.5;const t=2*fact(n-1);const v=tog?t:fact(n)-t;
+ return{lvl:1,q:T`${n} people stand in a row. In how many arrangements are A and B ${tog?'':'<b>not</b> '}next to each other?`,a:v,w:[tog?fact(n)-t:t,fact(n-1),fact(n),v/2],s:tog?T`Glue A and B into a block: $${n-1}!\cdot2=${t}$.`:T`$${n}!-2\cdot${n-1}!=${fact(n)}-${t}=${v}$.`}},
+r=>{const n=ri(r,4,9);const brace=r()<.4;const v=brace?fact(n-1)/2:fact(n-1);
+ return{lvl:1,q:brace?T`${n} distinct beads are put on a bracelet (rotations and flips considered the same). How many bracelets are possible?`:T`In how many ways can ${n} people sit around a round table (rotations considered the same)?`,a:v,w:[fact(n),brace?fact(n-1):fact(n-1)/2,fact(n)/2,fact(n-2)],s:brace?T`$\frac{(${n}-1)!}{2}=${v}$.`:T`$(${n}-1)!=${v}$.`}},
+r=>{const b=ri(r,2,6),g=ri(r,1,b+1);let gaps=1;for(let i=0;i<g;i++)gaps*=b+1-i;const v=fact(b)*gaps;
+ return{lvl:2,q:T`${b} boys and ${g} girls stand in a row so that no two girls are adjacent. How many arrangements are possible?`,a:v,w:[fact(b+g),fact(b)*fact(g),fact(b)*comb(b+1,g),v*2],s:T`Arrange the boys ($${b}!=${fact(b)}$), then put the girls into ${g} of the ${b+1} gaps in order: $${gaps}$. Total $${v}$.`}},
+r=>{const n=ri(r,3,8);const v=fact(n)/2;
+ return{lvl:1,q:T`${n} people stand in a row. In how many arrangements is A somewhere to the left of B?`,a:v,w:[fact(n),fact(n-1),2*fact(n-1),fact(n)/4],s:T`By symmetry, exactly half of the $${n}!$ arrangements: $${v}$.`}},
+];

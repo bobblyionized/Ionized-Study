@@ -1,0 +1,392 @@
+=== LESSONS ===
+<script type="text/plain" id="L-coord-line">
+<h2>Lines &amp; Slopes</h2>
+<div class="box"><h4>Formulas</h4><ul>
+<li>Slope $m=\frac{y_2-y_1}{x_2-x_1}$. Point-slope form: $y-y_1=m(x-x_1)$.</li>
+<li>Parallel lines have equal slopes; perpendicular slopes multiply to $-1$.</li>
+<li>Intercept form $\frac xa+\frac yb=1$ crosses the axes at $(a,0)$ and $(0,b)$. With the axes it makes a right triangle of area $\frac{|ab|}{2}$.</li>
+<li>Three points are collinear exactly when the slopes between pairs are equal.</li>
+<li>For $ax+by=c$ the slope is $-\frac ab$, the $x$-intercept $\frac ca$, the $y$-intercept $\frac cb$.</li>
+</ul></div>
+<p>To intersect two lines, set the expressions for $y$ equal. To find a point on a line with some property (e.g. $x=y$), substitute the property into the line's equation.</p>
+</script>
+<script type="text/plain" id="L-coord-dist">
+<h2>Distance, Midpoints &amp; Circles</h2>
+<div class="box"><h4>Formulas</h4><ul>
+<li>Distance: $\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$. Midpoint: $\left(\frac{x_1+x_2}2,\frac{y_1+y_2}2\right)$.</li>
+<li>Circle: $(x-h)^2+(y-k)^2=r^2$. From $x^2+y^2+Dx+Ey+F=0$, complete the square: center $\left(-\frac D2,-\frac E2\right)$, $r^2=\frac{D^2+E^2}{4}-F$.</li>
+<li>Point to line $ax+by+c=0$: $\dfrac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}$.</li>
+<li>Parallel lines $ax+by=c_1$ and $ax+by=c_2$ are $\dfrac{|c_1-c_2|}{\sqrt{a^2+b^2}}$ apart.</li>
+<li>A line at distance $d$ from a circle's center cuts a chord of length $2\sqrt{r^2-d^2}$.</li>
+</ul></div>
+<p>"Equidistant from $A$ and $B$" means the point lies on the perpendicular bisector of $AB$. Set the squared distances equal; the squared terms cancel.</p>
+</script>
+<script type="text/plain" id="L-coord-lattice">
+<h2>Lattice Points</h2>
+<div class="box"><h4>Counting tools</h4><ul>
+<li>On a segment: $\gcd(|\Delta x|,|\Delta y|)+1$ points, including the endpoints.</li>
+<li>On $xy=n$: positive solutions $=d(n)$ (the number of divisors); all integer solutions $=2d(n)$.</li>
+<li>On $ax+by=c$: find one solution, then step by $\left(\frac{b}{g},-\frac{a}{g}\right)$, and count the steps that stay in range.</li>
+<li>On a circle $x^2+y^2=r^2$: list the representations as a sum of two squares, counting signs and order. For example $25=0+25=9+16$ gives $12$ points.</li>
+<li>In a region: count column by column (fix $x$, count valid $y$).</li>
+<li>$x,y\ge0$ with $x+y\le n$: $\binom{n+2}{2}$ points.</li>
+</ul></div>
+</script>
+<script type="text/plain" id="L-coord-trans">
+<h2>Reflections &amp; Transformations</h2>
+<table class="t"><tr><th>Transformation</th><th>$(x,y)\to$</th></tr>
+<tr><td>Reflect over the $x$-axis</td><td>$(x,-y)$</td></tr>
+<tr><td>Reflect over the $y$-axis</td><td>$(-x,y)$</td></tr>
+<tr><td>Reflect over $y=x$</td><td>$(y,x)$</td></tr>
+<tr><td>Reflect over $y=-x$</td><td>$(-y,-x)$</td></tr>
+<tr><td>Reflect over $y=c$</td><td>$(x,2c-y)$</td></tr>
+<tr><td>Rotate $90^\circ$ counterclockwise about the origin</td><td>$(-y,x)$</td></tr>
+<tr><td>Rotate $180^\circ$</td><td>$(-x,-y)$</td></tr></table>
+<h3>Shortest path with a reflection</h3>
+<p>To go from $A$ to a line and then to $B$ (with $A$ and $B$ on the same side), reflect $B$ across the line. The shortest path length is the straight distance from $A$ to the reflected point.</p>
+<h3>Regions</h3>
+<p>Sketch each inequality's boundary, then compute the area using triangles, rectangles, and circular sectors.</p>
+</script>
+
+=== BANK ===
+@@ coord-line
+Q: What is the slope of the line through $(2,3)$ and $(6,11)$?
+L: 1
+A: 2
+W: \frac{1}{2}
+W: 4
+W: -2
+W: 3
+S: $\frac{11-3}{6-2}=2$.
+---
+Q: A line passes through $(4,1)$ and is perpendicular to $y=2x+1$. What is its $y$-intercept?
+L: 1
+A: 3
+W: -1
+W: 1
+W: 9
+W: -7
+S: Slope $-\frac12$: $y-1=-\frac12(x-4)$, so $y=-\frac12x+3$.
+---
+Q: What is the area of the triangle formed by the line $3x+4y=24$ and the coordinate axes?
+L: 1
+A: 24
+W: 48
+W: 12
+W: 14
+W: 96
+S: The intercepts are $8$ and $6$, so the area is $\frac12\cdot8\cdot6=24$.
+---
+Q: The lines $y=2x-1$ and $y=-x+8$ intersect at $(a,b)$. What is $a+b$?
+L: 1
+A: 8
+W: 7
+W: 9
+W: 3
+W: 5
+S: $2x-1=-x+8$ gives $x=3$, $y=5$. Sum $8$.
+---
+Q: The points $(1,2)$, $(3,8)$, and $(k,14)$ are collinear. What is $k$?
+L: 1
+A: 5
+W: 4
+W: 6
+W: 7
+W: \frac{14}{3}
+S: The slope is $3$, so $14=2+3(k-1)$ and $k=5$.
+---
+Q: The line through $(0,4)$ and $(6,0)$ contains a point with equal coordinates. What is that coordinate?
+L: 2
+A: \frac{12}{5}
+W: 2
+W: \frac{5}{2}
+W: 3
+W: \frac{24}{5}
+S: The line is $\frac x6+\frac y4=1$. With $x=y$: $x\left(\frac16+\frac14\right)=1$, so $x=\frac{12}5$.
+---
+Q: Lines with slopes $2$ and $3$ both pass through $(10,15)$. What is the distance between their $x$-intercepts?
+L: 2
+A: \frac{5}{2}
+W: 5
+W: \frac{3}{2}
+W: 2
+W: 15
+S: Slope 2: the $x$-intercept is $10-\frac{15}2=\frac52$. Slope 3: $10-5=5$. The distance is $\frac52$.
+---
+Q: What is the slope of the line $2x-3y=6$?
+L: 1
+A: \frac{2}{3}
+W: -\frac{2}{3}
+W: \frac{3}{2}
+W: -\frac{3}{2}
+W: 2
+S: $y=\frac23x-2$.
+---
+@@ coord-dist
+Q: What is the distance between $(1,2)$ and $(7,10)$?
+L: 1
+A: 10
+W: 14
+W: 8
+W: 12
+W: 2\sqrt{7}
+S: $\sqrt{6^2+8^2}=10$.
+---
+Q: What is the sum of the coordinates of the midpoint of the segment from $(-3,5)$ to $(7,-1)$?
+L: 1
+A: 4
+W: 8
+W: 3
+W: 6
+W: 10
+S: The midpoint is $(2,2)$, with sum $4$.
+---
+Q: What is the radius of the circle $x^2+y^2-6x+8y=0$?
+L: 1
+A: 5
+W: 25
+W: 10
+W: 7
+W: \sqrt{7}
+S: $(x-3)^2+(y+4)^2=25$, so $r=5$.
+---
+Q: What is the distance from $(1,2)$ to the line $3x+4y-1=0$?
+L: 2
+A: 2
+W: 10
+W: 1
+W: \frac{2}{5}
+W: \frac{11}{5}
+S: $\frac{|3+8-1|}{5}=2$.
+---
+Q: What is the distance between the parallel lines $3x+4y=5$ and $3x+4y=20$?
+L: 2
+A: 3
+W: 15
+W: 5
+W: \frac{3}{5}
+W: 25
+S: $\frac{|20-5|}{\sqrt{9+16}}=3$.
+---
+Q: A circle centered at $(2,3)$ passes through $(5,7)$. What is its area?
+L: 1
+A: 25\pi
+W: 5\pi
+W: 10\pi
+W: 50\pi
+W: 25
+S: $r=\sqrt{9+16}=5$, so the area is $25\pi$.
+---
+Q: Point $P$ on the $x$-axis is equidistant from $(1,3)$ and $(5,1)$. What is its $x$-coordinate?
+L: 2
+A: 2
+W: 3
+W: 4
+W: 1
+W: \frac{5}{2}
+S: $(x-1)^2+9=(x-5)^2+1$, so $-2x+10=-10x+26$ and $x=2$.
+---
+Q: The line $y=x+1$ cuts a chord from the circle $x^2+y^2=25$. How long is the chord?
+L: 3
+A: 7\sqrt{2}
+W: 7
+W: 5\sqrt{2}
+W: 10
+W: 6\sqrt{2}
+S: The distance from the origin to $x-y+1=0$ is $\frac1{\sqrt2}$. Chord $=2\sqrt{25-\frac12}=2\sqrt{\frac{49}{2}}=7\sqrt2$.
+---
+@@ coord-lattice
+Q: How many lattice points lie on the circle $x^2+y^2=25$?
+L: 2
+A: 12
+W: 4
+W: 8
+W: 6
+W: 16
+S: $(\pm5,0),(0,\pm5)$ give 4 points; $(\pm3,\pm4),(\pm4,\pm3)$ give 8. Total $12$.
+---
+Q: How many lattice points lie on the segment from $(3,-2)$ to $(15,7)$, including endpoints?
+L: 1
+A: 4
+W: 3
+W: 13
+W: 10
+W: 5
+S: $\gcd(12,9)+1=4$.
+---
+Q: How many ordered pairs of positive integers $(x,y)$ satisfy $xy=36$?
+L: 1
+A: 9
+W: 8
+W: 18
+W: 6
+W: 12
+S: One pair for each divisor of $36=2^2\cdot3^2$: $(2+1)(2+1)=9$.
+---
+Q: How many lattice points $(x,y)$ satisfy $x\ge0$, $y\ge0$, and $x+y\le5$?
+L: 1
+A: 21
+W: 15
+W: 25
+W: 36
+W: 20
+S: $6+5+4+3+2+1=21$.
+---
+Q: How many lattice points satisfy $x^2+y^2\lt 10$?
+L: 3
+A: 29
+W: 37
+W: 21
+W: 25
+W: 33
+S: Count by $x$: $x=0$: $|y|\le3$ (7). $x=\pm1$: $|y|\le2$ (5 each). $x=\pm2$: $|y|\le2$ (5 each). $x=\pm3$: $y=0$ (1 each).
+Total $7+10+10+2=29$.
+---
+Q: How many points with positive integer coordinates lie on the line $3x+5y=100$?
+L: 2
+A: 6
+W: 7
+W: 5
+W: 20
+W: 33
+S: We need $5y\equiv100\pmod 3$, i.e. $y\equiv2\pmod3$, and $5y\lt 100$. So $y=2,5,8,11,14,17$: $6$ points.
+---
+Q: How many ordered pairs of integers $(x,y)$ satisfy $xy=-12$?
+L: 2
+A: 12
+W: 6
+W: 24
+W: 8
+W: 10
+S: $12$ has $6$ positive divisors. For each, choose which of $x,y$ is negative: $2\cdot6=12$.
+---
+Q: How many lattice points lie on the boundary of the square with vertices $(0,0)$, $(4,0)$, $(4,4)$, $(0,4)$?
+L: 1
+A: 16
+W: 20
+W: 25
+W: 12
+W: 9
+S: Each side has $5$ points, and the $4$ corners are shared: $4\cdot5-4=16$.
+---
+@@ coord-trans
+Q: The point $(3,-5)$ is reflected over the line $y=x$. What is the $x$-coordinate of its image?
+L: 1
+A: -5
+W: 5
+W: 3
+W: -3
+W: 0
+S: Reflecting over $y=x$ swaps the coordinates: $(-5,3)$.
+---
+Q: The point $(2,5)$ is rotated $90^\circ$ counterclockwise about the origin. Where does it land?
+L: 1
+A: (-5,2)
+W: (5,-2)
+W: (-2,5)
+W: (2,-5)
+W: (5,2)
+S: $(x,y)\to(-y,x)$ gives $(-5,2)$.
+---
+Q: A path goes from $A(0,3)$ to a point on the $x$-axis and then to $B(6,5)$. What is the shortest possible length?
+L: 2
+A: 10
+W: 8
+W: 11
+W: 2\sqrt{34}
+W: 14
+S: Reflect $A$ to $A'(0,-3)$. The shortest path equals $A'B=\sqrt{36+64}=10$.
+---
+Q: The point $(4,1)$ is reflected across the line $y=3$. What is the sum of the image's coordinates?
+L: 1
+A: 9
+W: 7
+W: 5
+W: 11
+W: 3
+S: $(x,y)\to(x,6-y)$: $(4,5)$, with sum $9$.
+---
+Q: What is the area of the region where $y\ge|x|$ and $y\le5$?
+L: 1
+A: 25
+W: 50
+W: \frac{25}{2}
+W: 10
+W: 100
+S: A triangle with vertices $(0,0),(\pm5,5)$: base $10$, height $5$, area $25$.
+---
+Q: The point $(3,4)$ is reflected over the $x$-axis and then over the $y$-axis. How far is the final image from the original point?
+L: 1
+A: 10
+W: 5
+W: 7
+W: 14
+W: 8
+S: The two reflections make a $180^\circ$ rotation: $(-3,-4)$. Distance $=2\cdot5=10$.
+---
+Q: A path goes from $(1,1)$ to a point on the line $y=4$ and then to $(5,1)$. What is the shortest possible length?
+L: 3
+A: 2\sqrt{13}
+W: 8
+W: 4
+W: 2\sqrt{10}
+W: 10
+S: Reflect $(5,1)$ over $y=4$ to get $(5,7)$. Then the distance is $\sqrt{4^2+6^2}=\sqrt{52}=2\sqrt{13}$.
+---
+Q: What is the area of the region $x^2+y^2\le4$, $x\ge0$, $y\ge0$?
+L: 1
+A: \pi
+W: 4\pi
+W: 2\pi
+W: \frac{\pi}{2}
+W: 4
+S: A quarter of a disk of radius $2$: $\frac14\cdot4\pi=\pi$.
+
+=== GENS ===
+const PT=(x,y)=>O('('+x+','+y+')',x*1000+y);
+GENS['coord-line']=[
+r=>{const x1=ri(r,-8,8),y1=ri(r,-8,8);let x2=ri(r,-8,8);if(x2===x1)x2++;const y2=ri(r,-8,8);const m=F(y2-y1,x2-x1);
+ return{lvl:1,q:T`What is the slope of the line through $(${x1},${y1})$ and $(${x2},${y2})$?`,a:m,w:[m.neg(),y2===y1?F(1):F(x2-x1,y2-y1),m.add(1),F(y2+y1,(x2+x1)||1)],s:T`$\frac{${y2}-${P(y1)}}{${x2}-${P(x1)}}=${m.tex()}$.`}},
+r=>{const m=ri(r,-5,5)||2,x0=ri(r,-6,6),y0=ri(r,-6,6);const b=F(y0).add(F(x0,m));
+ return{lvl:1,q:T`A line passes through $(${x0},${y0})$ and is perpendicular to $y=${poly([[m,1],[ri(r,-5,5),0]],'x')}$. What is its $y$-intercept?`,a:b,w:[F(y0-m*x0),F(y0).sub(F(x0,m)),b.neg(),F(y0+x0)],
+ s:T`Perpendicular slope $-\frac1{${m}}$: $y-${P(y0)}=-\frac1{${m}}(x-${P(x0)})$. At $x=0$: $y=${b.tex()}$.`}},
+r=>{const a=ri(r,1,9),b=ri(r,1,9),k=ri(r,1,10);const c=a*b*k;const xi=b*k,yi=a*k;
+ return{lvl:1,q:T`What is the area of the triangle formed by the line $${a===1?'':a}x+${b===1?'':b}y=${c}$ and the coordinate axes?`,a:F(xi*yi,2),w:[F(xi*yi),F(xi+yi),F(xi*yi,4),F(c,2)],s:T`The intercepts are $${xi}$ and $${yi}$, so the area is $\frac12\cdot${xi}\cdot${yi}=${F(xi*yi,2).tex()}$.`}},
+r=>{const x1=ri(r,-5,5),y1=ri(r,-8,8),m=ri(r,-4,4)||1,dx=ri(r,1,5),dk=ri(r,1,6);const x2=x1+dx,y2=y1+m*dx,y3=y1+m*(dx+dk),k=x1+dx+dk;
+ return{lvl:1,q:T`The points $(${x1},${y1})$, $(${x2},${y2})$, and $(k,${y3})$ are collinear. What is $k$?`,a:k,w:[k+1,k-1,x2+dx,F(y3,m)],s:T`The slope is $${m}$, so $${y3}=${y1}+${m}(k-${P(x1)})$, giving $k=${k}$.`}},
+];
+GENS['coord-dist']=[
+r=>{const [a,b,c]=pick(r,TRIPLES);const x=ri(r,-9,9),y=ri(r,-9,9);const sx=pick(r,[1,-1]),sy=pick(r,[1,-1]);
+ return{lvl:1,q:T`What is the distance between $(${x},${y})$ and $(${x+sx*a},${y+sy*b})$?`,a:c,w:[a+b,c+1,Math.abs(a-b)||c+2,c*c],s:T`$\sqrt{${a}^2+${b}^2}=${c}$.`}},
+r=>{const h=ri(r,-8,8),k=ri(r,-8,8),rr=ri(r,1,12);const D=-2*h,E=-2*k,Fc=h*h+k*k-rr*rr;const ask=r()<.5;
+ const eq=T`x^2+y^2${D<0?'-':'+'}${Math.abs(D)}x${E<0?'-':'+'}${Math.abs(E)}y${Fc<0?'-':'+'}${Math.abs(Fc)}=0`.replace('+0x','').replace('-0x','').replace('+0y','').replace('-0y','').replace('+0=','=');
+ return ask?{lvl:1,q:T`What is the radius of the circle $${eq}$?`,a:rr,w:[rr*rr,2*rr,rr+1,R(1,Math.abs(Fc)||2)],s:T`Complete the square: $(x${-h<0?'-':'+'}${Math.abs(h)})^2+(y${-k<0?'-':'+'}${Math.abs(k)})^2=${rr*rr}$, so $r=${rr}$.`}
+ :{lvl:1,q:T`The circle $${eq}$ has center $(h,k)$. What is $h+k$?`,a:h+k,w:[-(h+k),D+E,h-k,h+k+rr],s:T`Complete the square: center $(${h},${k})$, so $h+k=${h+k}$.`}},
+r=>{const [a,b,c]=pick(r,TRIPLES.filter(t=>t[2]<=17));const x0=ri(r,-6,6),y0=ri(r,-6,6),cc=ri(r,-20,20);const v=F(Math.abs(a*x0+b*y0+cc),c);
+ return{lvl:2,q:T`What is the distance from $(${x0},${y0})$ to the line $${a}x+${b}y${cc<0?'-':'+'}${Math.abs(cc)}=0$?`,a:v,w:[F(Math.abs(a*x0+b*y0+cc)),F(Math.abs(a*x0+b*y0+cc),a+b),v.add(1),F(Math.abs(a*x0+b*y0-cc),c)],
+ s:T`$\frac{|${a}\cdot${P(x0)}+${b}\cdot${P(y0)}${cc<0?'-':'+'}${Math.abs(cc)}|}{\sqrt{${a*a}+${b*b}}}=\frac{${Math.abs(a*x0+b*y0+cc)}}{${c}}=${v.tex()}$.`}},
+r=>{const x1=ri(r,-9,9),y1=ri(r,-9,9),x2=ri(r,-9,9),y2=ri(r,-9,9);const mx=F(x1+x2,2),my=F(y1+y2,2);
+ return{lvl:1,q:T`What is the sum of the coordinates of the midpoint of the segment from $(${x1},${y1})$ to $(${x2},${y2})$?`,a:mx.add(my),w:[F(x1+x2+y1+y2),mx.sub(my),mx.add(my).add(1),F(x2-x1+y2-y1,2)],s:T`The midpoint is $(${mx.tex()},${my.tex()})$, with sum $${mx.add(my).tex()}$.`}},
+];
+GENS['coord-lattice']=[
+r=>{const n=pick(r,[12,18,20,24,28,30,36,40,45,48,50,60,64,72,80,84,90,96,100,120,144]);const pos=r()<.5;const d=ndiv(n);
+ return{lvl:1,q:T`How many ordered pairs of ${pos?'positive integers':'integers'} $(x,y)$ satisfy $xy=${pos?'':'-'}${n}$?`,a:pos?d:2*d,w:pos?[2*d,d-1,d+1,Math.floor(d/2)]:[d,4*d,2*d-2,2*d+2],s:T`$${n}=${factTex(n)}$ has $${d}$ positive divisors.${pos?'':' Each gives 2 sign choices: $'+2*d+'$.'}`}},
+r=>{const n=ri(r,2,15);const v=(n+1)*(n+2)/2;
+ return{lvl:1,q:T`How many lattice points $(x,y)$ satisfy $x\ge0$, $y\ge0$, and $x+y\le${n}$?`,a:v,w:[(n+1)**2,n*(n+1)/2,v+n,v-1],s:T`$(${n}+1)+${n}+\dots+1=${v}$.`}},
+r=>{const R2=pick(r,[1,2,4,5,8,9,10,13,16,17,20,25,26,29,34,36,45,50,52,65,85,100]);let c=0;for(let x=-11;x<=11;x++)for(let y=-11;y<=11;y++)if(x*x+y*y===R2)c++;
+ return{lvl:2,q:T`How many lattice points lie on the circle $x^2+y^2=${R2}$?`,a:c,w:[c+4,c-4>0?c-4:c+8,c/2,c*2].filter(x=>x!==c),s:T`List the ways to write $${R2}$ as a sum of two squares, then count every sign and order: $${c}$ points.`}},
+r=>{const a=ri(r,2,7),b=ri(r,2,9);if(gcd(a,b)>1)return GENS['coord-lattice'][3](r);const c=ri(r,a*b,a*b*5);let n=0;for(let y=1;b*y<c;y++)if((c-b*y)%a===0)n++;
+ return{lvl:2,q:T`How many points with positive integer coordinates lie on the line $${a}x+${b}y=${c}$?`,a:n,w:[n+1,n-1>=0?n-1:n+2,n+2,Math.floor(c/(a*b))+2],s:T`Solutions repeat every $${b}$ in $x$ (and $${a}$ in $y$). Listing the $y$ values with $${a}\mid${c}-${b}y$ and $${b}y\lt ${c}$ gives $${n}$ points.`}},
+];
+GENS['coord-trans']=[
+r=>{let x=ri(r,1,9)*pick(r,[1,-1]),y=ri(r,1,9)*pick(r,[1,-1]);if(Math.abs(x)===Math.abs(y))y+=y>0?1:-1;const t=pick(r,[['the $x$-axis',[x,-y]],['the $y$-axis',[-x,y]],['the line $y=x$',[y,x]],['the line $y=-x$',[-y,-x]],['the origin',[-x,-y]]]);
+ const ans=PT(...t[1]);const alts=[[x,-y],[-x,y],[y,x],[-y,-x],[-x,-y],[y,-x],[-y,x]].filter(p=>!(p[0]===t[1][0]&&p[1]===t[1][1])).map(p=>PT(...p));
+ return{lvl:1,q:T`The point $(${x},${y})$ is reflected over ${t[0]}. What is its image?`,a:ans,w:alts,s:T`The rule gives $${ans.tex}$.`}},
+r=>{let x=ri(r,1,9)*pick(r,[1,-1]),y=ri(r,1,9)*pick(r,[1,-1]);if(Math.abs(x)===Math.abs(y))y+=y>0?1:-1;const ccw=r()<.5;const ans=ccw?PT(-y,x):PT(y,-x);
+ return{lvl:1,q:T`The point $(${x},${y})$ is rotated $90^\circ$ ${ccw?'counterclockwise':'clockwise'} about the origin. What is its image?`,a:ans,w:[PT(y,-x),PT(-y,x),PT(-x,-y),PT(y,x),PT(-x,y)],s:T`${ccw?'$(x,y)\\to(-y,x)$':'$(x,y)\\to(y,-x)$'} gives $${ans.tex}$.`}},
+r=>{const [a,b,c]=pick(r,TRIPLES.filter(t=>t[2]<=29));const y1=ri(r,1,b-1),y2=b-y1;const x1=ri(r,-5,5);
+ return{lvl:2,q:T`A path goes from $A(${x1},${y1})$ to a point on the $x$-axis and then to $B(${x1+a},${y2})$. What is the shortest possible length?`,a:c,w:[a+b,R(1,a*a+(y2-y1)**2),c+1,y1+y2+a],
+ s:T`Reflect $A$ to $(${x1},${-y1})$. The distance to $B$ is $\sqrt{${a}^2+${b}^2}=${c}$.`}},
+r=>{const x=ri(r,-8,8),y=ri(r,-8,8),c=ri(r,-6,6);const ny=2*c-y;
+ return{lvl:1,q:T`The point $(${x},${y})$ is reflected across the line $y=${c}$. What is the sum of the image's coordinates?`,a:x+ny,w:[x+y,x-ny,x+ny+2,x+c],s:T`$(x,y)\to(x,${2*c}-y)=(${x},${ny})$. Sum $${x+ny}$.`}},
+];

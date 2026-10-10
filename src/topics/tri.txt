@@ -1,0 +1,618 @@
+=== LESSONS ===
+<script type="text/plain" id="L-tri-angle">
+<h2>Angle Chasing</h2>
+<div class="box"><h4>Facts</h4><ul>
+<li>Angles of a triangle sum to $180^\circ$; an $n$-gon's interior angles sum to $180(n-2)^\circ$.</li>
+<li><b>Exterior angle</b> $=$ sum of the two remote interior angles.</li>
+<li>Isosceles: equal sides face equal angles.</li>
+<li>Parallel lines with a transversal: alternate interior and corresponding angles are equal, and same-side interior angles are supplementary.</li>
+<li>Angle bisectors of $B$ and $C$ meet at the incenter $I$, with $\angle BIC=90^\circ+\frac A2$.</li>
+</ul></div>
+<h3>Technique</h3>
+<p>Label one unknown angle $x$ and express everything else in terms of it. Isosceles triangles, especially ones created by equal segments like $BD=BC$, give the equations. Write every angle you know on the diagram.</p>
+<div class="ex"><b class="lbl">Example.</b> What is the sum of the five tip angles of a five-pointed star?
+<details><summary>Solution</summary>Each tip angle plus two exterior-angle relations lets you collapse the five angles into one triangle, so the sum is $180^\circ$.</details></div>
+</script>
+<script type="text/plain" id="L-tri-sim">
+<h2>Similar Triangles</h2>
+<div class="box"><h4>Key facts</h4><ul>
+<li><b>AA:</b> two equal angles make triangles similar. Parallel lines and shared angles create them.</li>
+<li>With scale factor $k$: lengths scale by $k$, areas by $k^2$, volumes by $k^3$.</li>
+<li>If $DE\parallel BC$ with $D$ on $AB$ and $E$ on $AC$: $\frac{AD}{AB}=\frac{AE}{AC}=\frac{DE}{BC}$.</li>
+<li>Right triangle with altitude $h$ to the hypotenuse, which splits it into $p$ and $q$: $h^2=pq$, $a^2=pc$, $b^2=qc$, and $h=\frac{ab}{c}$.</li>
+</ul></div>
+<h3>Classics</h3>
+<ul><li>Shadows: $\frac{\text{height}}{\text{shadow}}$ is the same for all objects at the same moment.</li>
+<li>A line parallel to the base that halves the area cuts the sides at ratio $\frac1{\sqrt2}$ from the apex.</li>
+<li>A square in the right angle of a right triangle with legs $a,b$ has side $\frac{ab}{a+b}$.</li>
+<li>Trapezoid diagonals cut each other in the ratio of the bases.</li></ul>
+</script>
+<script type="text/plain" id="L-tri-pyth">
+<h2>Pythagorean Theorem &amp; Special Triangles</h2>
+<div class="box"><h4>Know these</h4><ul>
+<li>Triples: $3\text{-}4\text{-}5$, $5\text{-}12\text{-}13$, $8\text{-}15\text{-}17$, $7\text{-}24\text{-}25$, $20\text{-}21\text{-}29$, $9\text{-}40\text{-}41$, and their multiples.</li>
+<li>$45$-$45$-$90$: sides $1:1:\sqrt2$. $\quad30$-$60$-$90$: sides $1:\sqrt3:2$.</li>
+<li>Equilateral triangle of side $s$: height $\frac{\sqrt3}{2}s$, area $\frac{\sqrt3}{4}s^2$.</li>
+<li>Square of side $s$: diagonal $s\sqrt2$. Box: space diagonal $\sqrt{a^2+b^2+c^2}$.</li>
+</ul></div>
+<h3>Acute, right, or obtuse?</h3>
+<p>With longest side $c$: $a^2+b^2>c^2$ means acute, $=$ means right, $\lt$ means obtuse.</p>
+<h3>Counting integer right triangles with a given leg</h3>
+<p>$c^2-b^2=a^2$ means $(c-b)(c+b)=a^2$. Count factor pairs of $a^2$ of equal parity with $c-b\lt c+b$.</p>
+</script>
+<script type="text/plain" id="L-tri-area">
+<h2>Triangle Area Formulas</h2>
+<table class="t"><tr><th>Formula</th><th>Use when</th></tr>
+<tr><td>$\frac12bh$</td><td>a base and its height are known</td></tr>
+<tr><td>$\frac12ab\sin C$</td><td>two sides and the included angle</td></tr>
+<tr><td>Heron: $\sqrt{s(s-a)(s-b)(s-c)}$, $s=\frac{a+b+c}2$</td><td>all three sides</td></tr>
+<tr><td>$rs$</td><td>inradius and semiperimeter</td></tr>
+<tr><td>$\frac{abc}{4R}$</td><td>circumradius</td></tr>
+<tr><td>Shoelace</td><td>vertex coordinates</td></tr></table>
+<h3>Memorize</h3>
+<p>The $13$-$14$-$15$ triangle has area $84$ (it is a $5$-$12$-$13$ and a $9$-$12$-$15$ glued along the height $12$). Other integer-area triangles: $5$-$5$-$6$ (12), $5$-$5$-$8$ (12), $10$-$13$-$13$ (60).</p>
+<h3>Viviani's theorem</h3>
+<p>From any interior point of an equilateral triangle, the distances to the three sides add up to the height.</p>
+<h3>Maximum area</h3>
+<p>Two sides $a,b$ give area at most $\frac12ab$, reached when they are perpendicular.</p>
+</script>
+<script type="text/plain" id="L-tri-cev">
+<h2>Angle Bisectors, Medians &amp; Cevians</h2>
+<div class="box"><h4>Theorems</h4><ul>
+<li><b>Angle bisector theorem:</b> the bisector from $A$ hits $BC$ at $D$ with $\frac{BD}{DC}=\frac{AB}{AC}$.</li>
+<li><b>Bisector length:</b> $AD^2=bc\left[1-\left(\frac{a}{b+c}\right)^2\right]$.</li>
+<li><b>Median length:</b> $m_a=\frac12\sqrt{2b^2+2c^2-a^2}$.</li>
+<li><b>Stewart's theorem:</b> for a cevian $AD=d$ with $BD=m$ and $DC=n$ ($m+n=a$): $b^2m+c^2n=a(d^2+mn)$.</li>
+<li><b>Centroid</b> $G$: divides each median $2:1$ from the vertex, and is the average of the vertex coordinates.</li>
+<li>The three medians cut a triangle into six triangles of equal area.</li>
+<li>In a right triangle, the median to the hypotenuse is half the hypotenuse.</li>
+</ul></div>
+<p>Mnemonic for Stewart: "a man and his dad put a bomb in the sink" gives $man+dad=bmb+cnc$.</p>
+</script>
+<script type="text/plain" id="L-tri-center">
+<h2>Inradius, Circumradius &amp; Centers</h2>
+<div class="box"><h4>Formulas</h4><ul>
+<li>Inradius $r=\dfrac{\text{Area}}{s}$; circumradius $R=\dfrac{abc}{4\cdot\text{Area}}=\dfrac{a}{2\sin A}$.</li>
+<li>Right triangle (legs $a,b$, hypotenuse $c$): $R=\frac c2$ and $r=\frac{a+b-c}{2}$.</li>
+<li>Equilateral (side $s$): $R=\frac{s}{\sqrt3}$ and $r=\frac{s}{2\sqrt3}$, so $R=2r$.</li>
+<li>Tangent lengths: the incircle touches the side opposite $A$, splitting it into $s-b$ and $s-c$. The tangent length from $A$ is $s-a$.</li>
+</ul></div>
+<h3>The four classic centers</h3>
+<ul><li><b>Centroid</b> (medians), <b>incenter</b> (angle bisectors), <b>circumcenter</b> (perpendicular bisectors), <b>orthocenter</b> (altitudes).</li>
+<li>In a right triangle the circumcenter is the midpoint of the hypotenuse and the orthocenter is the right-angle vertex.</li></ul>
+</script>
+
+=== BANK ===
+@@ tri-angle
+Q: The angles of a triangle are in the ratio $2:3:4$. What is the largest angle, in degrees?
+L: 1
+A: 80
+W: 60
+W: 90
+W: 40
+W: 100
+S: $9k=180$, so $k=20$ and the largest angle is $4\cdot20=80^\circ$.
+---
+Q: An isosceles triangle has a vertex angle of $40^\circ$. What is each base angle?
+L: 1
+A: 70
+W: 40
+W: 140
+W: 50
+W: 80
+S: $\frac{180-40}{2}=70^\circ$.
+---
+Q: In triangle $ABC$, the exterior angle at $C$ is $120^\circ$ and $\angle A=50^\circ$. What is $\angle B$, in degrees?
+L: 1
+A: 70
+W: 60
+W: 50
+W: 130
+W: 10
+S: The exterior angle equals the sum of the remote interior angles: $120=50+\angle B$, so $\angle B=70^\circ$.
+---
+Q: In triangle $ABC$, $\angle A=70^\circ$. The bisectors of angles $B$ and $C$ meet at $I$. What is $\angle BIC$, in degrees?
+L: 2
+A: 125
+W: 110
+W: 140
+W: 135
+W: 105
+S: $\angle IBC+\angle ICB=\frac{B+C}{2}=\frac{110}{2}=55$, so $\angle BIC=180-55=125^\circ$. (In general $90+\frac A2$.)
+---
+Q: In triangle $ABC$, $AB=AC$ and $\angle A=36^\circ$. Point $D$ on $AC$ satisfies $BD=BC$. What is $\angle ABD$, in degrees?
+L: 2
+A: 36
+W: 18
+W: 72
+W: 24
+W: 54
+S: The base angles are $72^\circ$. In isosceles triangle $BDC$, $\angle BDC=\angle BCD=72^\circ$, so $\angle DBC=36^\circ$.
+Then $\angle ABD=72-36=36^\circ$.
+---
+Q: Two parallel lines are cut by a transversal. Two same-side interior angles measure $x^\circ$ and $(2x+30)^\circ$. What is $x$?
+L: 1
+A: 50
+W: 30
+W: 60
+W: 75
+W: 40
+S: Same-side interior angles are supplementary: $3x+30=180$, so $x=50$.
+---
+Q: What is the sum of the five "tip" angles of a regular-or-irregular five-pointed star (pentagram)?
+L: 2
+A: 180
+W: 360
+W: 540
+W: 108
+W: 270
+S: Using exterior angles, two of the tip angles add up to an exterior angle of the triangle containing a third tip. So the five tips equal the angles of one triangle: $180^\circ$.
+---
+Q: The angles of a triangle are $x^\circ$, $(x+10)^\circ$, and $(2x-10)^\circ$. What is the largest angle?
+L: 1
+A: 80
+W: 55
+W: 45
+W: 90
+W: 70
+S: $4x=180$, so $x=45$ and the angles are $45,55,80$. The largest is $80^\circ$.
+---
+@@ tri-sim
+Q: In triangle $ABC$, $D$ is on $AB$ and $E$ is on $AC$ with $DE\parallel BC$. If $AD=3$, $DB=6$, and $DE=4$, what is $BC$?
+L: 1
+A: 12
+W: 8
+W: 6
+W: 9
+W: 18
+S: $\frac{AD}{AB}=\frac39=\frac13=\frac{DE}{BC}$, so $BC=12$.
+---
+Q: Two similar triangles have corresponding sides in the ratio $2:5$. The smaller has area $12$. What is the area of the larger?
+L: 1
+A: 75
+W: 30
+W: 60
+W: 48
+W: 150
+S: Areas scale by $\left(\frac52\right)^2=\frac{25}4$: $12\cdot\frac{25}4=75$.
+---
+Q: A $6$-foot person casts a $4$-foot shadow at the same moment a tree casts a $30$-foot shadow. How tall is the tree, in feet?
+L: 1
+A: 45
+W: 20
+W: 36
+W: 40
+W: 50
+S: $\frac{6}{4}=\frac{h}{30}$, so $h=45$.
+---
+Q: A right triangle has legs $6$ and $8$. What is the length of the altitude to the hypotenuse?
+L: 2
+A: \frac{24}{5}
+W: 5
+W: 4
+W: \frac{12}{5}
+W: \frac{48}{5}
+S: The hypotenuse is $10$. Twice the area is $6\cdot8=10h$, so $h=\frac{24}{5}$.
+---
+Q: A line parallel to side $BC$ of triangle $ABC$ meets $AB$ at $D$ and divides the triangle into two regions of equal area. What is $\dfrac{AD}{AB}$?
+L: 2
+A: \frac{\sqrt{2}}{2}
+W: \frac{1}{2}
+W: \frac{1}{4}
+W: \frac{\sqrt{3}}{2}
+W: \frac{2}{3}
+S: The small triangle has half the area, so the ratio of lengths is $\sqrt{\frac12}=\frac{\sqrt2}2$.
+---
+Q: A square is placed in a right triangle with legs $3$ and $4$ so that two sides of the square lie along the legs and one vertex lies on the hypotenuse. What is the side of the square?
+L: 3
+A: \frac{12}{7}
+W: 2
+W: \frac{7}{4}
+W: \frac{60}{37}
+W: \frac{12}{5}
+S: Put the right angle at the origin with the hypotenuse $\frac x3+\frac y4=1$. The corner $(s,s)$ lies on it: $\frac s3+\frac s4=1$, so $s=\frac{12}7$.
+---
+Q: A trapezoid has bases $6$ and $10$. Its diagonals meet at $P$. What is the ratio of the area of the triangle formed by $P$ and the shorter base to the area of the triangle formed by $P$ and the longer base?
+L: 2
+A: \frac{9}{25}
+W: \frac{3}{5}
+W: \frac{3}{8}
+W: \frac{9}{16}
+W: \frac{5}{3}
+S: The two triangles are similar with ratio $\frac6{10}=\frac35$, so their areas are in ratio $\frac9{25}$.
+---
+Q: The altitude to the hypotenuse of a right triangle divides the hypotenuse into segments of length $4$ and $9$. How long is the altitude?
+L: 1
+A: 6
+W: 13
+W: 36
+W: 5
+W: \frac{13}{2}
+S: $h^2=4\cdot9=36$, so $h=6$.
+---
+@@ tri-pyth
+Q: A right triangle has hypotenuse $13$ and one leg $5$. What is the other leg?
+L: 1
+A: 12
+W: 8
+W: 18
+W: 10
+W: 11
+S: $\sqrt{169-25}=\sqrt{144}=12$.
+---
+Q: A $30$-$60$-$90$ triangle has hypotenuse $10$. What is the length of the longer leg?
+L: 1
+A: 5\sqrt{3}
+W: 5
+W: 10\sqrt{3}
+W: 5\sqrt{2}
+W: \frac{10\sqrt{3}}{3}
+S: The sides are $x, x\sqrt3, 2x$ with $2x=10$, so the longer leg is $5\sqrt3$.
+---
+Q: What is the length of the diagonal of a square with side $7$?
+L: 1
+A: 7\sqrt{2}
+W: 14
+W: 7
+W: 49
+W: 7\sqrt{3}
+S: $\sqrt{49+49}=7\sqrt2$.
+---
+Q: What is the area of an equilateral triangle with side $6$?
+L: 1
+A: 9\sqrt{3}
+W: 18
+W: 9
+W: 18\sqrt{3}
+W: 6\sqrt{3}
+S: $\frac{\sqrt3}{4}\cdot36=9\sqrt3$.
+---
+Q: A triangle has sides $7$, $8$, and $12$. What kind of triangle is it?
+L: 1
+A: $\text{obtuse}$
+W: $\text{acute}$
+W: $\text{right}$
+W: $\text{equilateral}$
+W: $\text{isosceles}$
+S: $7^2+8^2=113\lt 144=12^2$, so the angle opposite the longest side is obtuse.
+---
+Q: A $25$-foot ladder leans against a wall with its foot $7$ feet from the wall. If the foot slides $8$ feet farther from the wall, how many feet does the top slide down?
+L: 2
+A: 4
+W: 8
+W: 5
+W: 3
+W: 6
+S: Initially the top is at $\sqrt{625-49}=24$. With the foot at $15$, the top is at $\sqrt{625-225}=20$. It drops $4$ feet.
+---
+Q: What is the length of the diagonal of a $20\times21$ rectangle?
+L: 1
+A: 29
+W: 41
+W: 30
+W: 28
+W: 27
+S: $\sqrt{400+441}=\sqrt{841}=29$, the $20$-$21$-$29$ triple.
+---
+Q: How many right triangles with integer side lengths have a leg of length $12$?
+L: 3
+A: 4
+W: 3
+W: 5
+W: 6
+W: 2
+S: $(c-b)(c+b)=144$ with both factors even and $c-b\lt c+b$: $(2,72),(4,36),(6,24),(8,18)$.
+These give $(b,c)=(35,37),(16,20),(9,15),(5,13)$, so there are $4$ triangles.
+---
+@@ tri-area
+Q: What is the area of a triangle with sides $13$, $14$, and $15$?
+L: 1
+A: 84
+W: 42
+W: 168
+W: 90
+W: 80
+S: Heron: $s=21$, area $=\sqrt{21\cdot8\cdot7\cdot6}=\sqrt{7056}=84$.
+---
+Q: A triangle has sides $8$ and $10$ with an included angle of $30^\circ$. What is its area?
+L: 1
+A: 20
+W: 40
+W: 20\sqrt{3}
+W: 80
+W: 10
+S: $\frac12\cdot8\cdot10\cdot\sin30^\circ=40\cdot\frac12=20$.
+---
+Q: What is the area of the triangle with vertices $(0,0)$, $(6,0)$, and $(2,5)$?
+L: 1
+A: 15
+W: 30
+W: 12
+W: 10
+W: 18
+S: Base $6$ along the $x$-axis and height $5$: $\frac12\cdot6\cdot5=15$.
+---
+Q: What is the area of a triangle with sides $5$, $5$, and $6$?
+L: 1
+A: 12
+W: 15
+W: 24
+W: 30
+W: 10
+S: The altitude to the base $6$ splits it into $3$ and $3$, so the height is $4$ and the area is $\frac12\cdot6\cdot4=12$.
+---
+Q: What is the area of a triangle with sides $7$, $8$, and $9$?
+L: 2
+A: 12\sqrt{5}
+W: 24
+W: 6\sqrt{5}
+W: 12\sqrt{6}
+W: 20
+S: $s=12$; area $=\sqrt{12\cdot5\cdot4\cdot3}=\sqrt{720}=12\sqrt5$.
+---
+Q: A triangle has sides $13$, $14$, and $15$. What is the length of the altitude to the side of length $14$?
+L: 1
+A: 12
+W: 13
+W: 6
+W: 11
+W: \frac{56}{5}
+S: The area is $84=\frac12\cdot14\cdot h$, so $h=12$.
+---
+Q: A triangle has two sides of lengths $6$ and $8$. What is its largest possible area?
+L: 1
+A: 24
+W: 48
+W: 12
+W: 14
+W: 28
+S: $\frac12\cdot6\cdot8\sin C\le24$, with equality when the sides are perpendicular.
+---
+Q: A point inside an equilateral triangle is at distances $1$, $2$, and $3$ from the three sides. What is the side length of the triangle?
+L: 3
+A: 4\sqrt{3}
+W: 6
+W: 2\sqrt{3}
+W: 12
+W: 6\sqrt{3}
+S: Viviani: the distances sum to the height, $6$. The height is $\frac{\sqrt3}2s=6$, so $s=\frac{12}{\sqrt3}=4\sqrt3$.
+---
+@@ tri-cev
+Q: In triangle $ABC$, $AB=6$, $AC=9$, and $BC=10$. The bisector of angle $A$ meets $BC$ at $D$. What is $BD$?
+L: 1
+A: 4
+W: 6
+W: 5
+W: 3
+W: \frac{9}{2}
+S: $\frac{BD}{DC}=\frac{6}{9}=\frac23$, so $BD=\frac25\cdot10=4$.
+---
+Q: A right triangle has legs $6$ and $8$. How long is the median to the hypotenuse?
+L: 1
+A: 5
+W: 10
+W: 4
+W: 7
+W: \frac{24}{5}
+S: The median to the hypotenuse is half the hypotenuse: $\frac{10}2=5$.
+---
+Q: Triangle $ABC$ has $AB=7$, $AC=9$, and $BC=8$. How long is the median from $A$?
+L: 2
+A: 7
+W: 8
+W: \sqrt{65}
+W: 6
+W: \frac{15}{2}
+S: $m_a=\frac12\sqrt{2\cdot49+2\cdot81-64}=\frac12\sqrt{196}=7$.
+---
+Q: A median of a triangle has length $12$. How far is the centroid from the vertex at the end of this median?
+L: 1
+A: 8
+W: 6
+W: 4
+W: 9
+W: 10
+S: The centroid divides each median $2:1$ from the vertex: $\frac23\cdot12=8$.
+---
+Q: A triangle has area $36$. Its three medians divide it into six smaller triangles. What is the area of each?
+L: 1
+A: 6
+W: 12
+W: 9
+W: 4
+W: 18
+S: The six triangles have equal area: $\frac{36}6=6$.
+---
+Q: Triangle $ABC$ has $AB=5$, $AC=7$, $BC=8$. Point $D$ on $BC$ has $BD=3$. What is $AD$?
+L: 3
+A: \sqrt{19}
+W: \sqrt{21}
+W: 4
+W: \sqrt{17}
+W: 5
+S: Stewart with $m=BD=3$, $n=DC=5$: $AC^2\cdot3+AB^2\cdot5=8(AD^2+15)$.
+$147+125=272=8AD^2+120$, so $AD^2=19$ and $AD=\sqrt{19}$.
+---
+Q: Triangle $ABC$ has $AB=4$, $AC=6$, $BC=5$. How long is the bisector of angle $A$, from $A$ to side $BC$?
+L: 3
+A: 3\sqrt{2}
+W: 2\sqrt{5}
+W: 4
+W: 3\sqrt{3}
+W: \sqrt{15}
+S: $AD^2=bc\left[1-\left(\frac{a}{b+c}\right)^2\right]=24\left(1-\frac{25}{100}\right)=18$, so $AD=3\sqrt2$.
+---
+Q: What is the sum of the coordinates of the centroid of the triangle with vertices $(0,0)$, $(6,0)$, $(0,9)$?
+L: 1
+A: 5
+W: \frac{15}{2}
+W: 3
+W: 4
+W: 15
+S: The centroid is the average of the vertices: $(2,3)$. Sum $5$.
+---
+@@ tri-center
+Q: What is the inradius of a $3$-$4$-$5$ right triangle?
+L: 1
+A: 1
+W: 2
+W: \frac{5}{2}
+W: \frac{1}{2}
+W: \frac{12}{5}
+S: $r=\frac{a+b-c}{2}=\frac{3+4-5}{2}=1$ (or $\frac{\text{Area}}{s}=\frac66$).
+---
+Q: What is the circumradius of a $5$-$12$-$13$ right triangle?
+L: 1
+A: \frac{13}{2}
+W: 13
+W: 2
+W: 6
+W: \frac{60}{13}
+S: For a right triangle the hypotenuse is a diameter: $R=\frac{13}{2}$.
+---
+Q: What is the inradius of a triangle with sides $13$, $14$, $15$?
+L: 1
+A: 4
+W: 6
+W: \frac{65}{8}
+W: 3
+W: 7
+S: $r=\frac{84}{21}=4$.
+---
+Q: What is the circumradius of a triangle with sides $13$, $14$, $15$?
+L: 2
+A: \frac{65}{8}
+W: 4
+W: 7
+W: \frac{15}{2}
+W: 8
+S: $R=\frac{abc}{4K}=\frac{13\cdot14\cdot15}{4\cdot84}=\frac{2730}{336}=\frac{65}{8}$.
+---
+Q: What is the circumradius of an equilateral triangle with side $6$?
+L: 1
+A: 2\sqrt{3}
+W: 3\sqrt{3}
+W: \sqrt{3}
+W: 3
+W: 6
+S: $R=\frac{s}{\sqrt3}=\frac6{\sqrt3}=2\sqrt3$ (two-thirds of the height $3\sqrt3$).
+---
+Q: The incircle of a triangle with sides $7$, $8$, and $9$ touches the side of length $9$. Into what segments does it divide that side? Give the longer one.
+L: 2
+A: 5
+W: \frac{9}{2}
+W: 6
+W: 4
+W: 3
+S: $s=12$. The side opposite $A$ (length 9) is split into $s-b$ and $s-c$, i.e. $12-7=5$ and $12-8=4$. The longer is $5$.
+---
+Q: A right triangle has hypotenuse $10$ and inradius $2$. What is its area?
+L: 3
+A: 24
+W: 20
+W: 28
+W: 48
+W: 30
+S: $r=\frac{a+b-c}2$ gives $a+b=14$. With $a^2+b^2=100$: $2ab=196-100=96$, so the area is $\frac{ab}2=24$.
+---
+Q: What is the circumradius of a right triangle with legs $7$ and $24$?
+L: 1
+A: \frac{25}{2}
+W: 25
+W: 12
+W: \frac{168}{25}
+W: 3
+S: The hypotenuse is $25$, so $R=\frac{25}2$.
+
+=== GENS ===
+const TRIPLES=[[3,4,5],[5,12,13],[8,15,17],[7,24,25],[20,21,29],[9,40,41],[6,8,10],[9,12,15],[12,16,20],[15,20,25],[10,24,26],[12,35,37]];
+const HERON=[[5,5,6,12],[5,5,8,12],[13,14,15,84],[10,13,13,60],[9,10,17,36],[6,25,29,60],[7,15,20,42],[13,20,21,126],[11,13,20,66],[10,17,21,84],[17,25,28,210],[13,13,24,60],[15,15,24,108],[3,4,5,6],[5,12,13,30],[8,15,17,60]];
+GENS['tri-angle']=[
+r=>{let a=ri(r,1,6),b=ri(r,1,6),c=ri(r,1,8);const s_=a+b+c;if(180%s_)return GENS['tri-angle'][0](r);const k=180/s_;const big=Math.max(a,b,c)*k;
+ return{lvl:1,q:T`The angles of a triangle are in the ratio $${a}:${b}:${c}$. What is the largest angle, in degrees?`,a:big,w:[Math.min(a,b,c)*k,k*(a+b+c-Math.max(a,b,c)-Math.min(a,b,c)),180-big,big+k,90],
+ s:T`$${s_}k=180$, so $k=${k}$ and the largest angle is $${Math.max(a,b,c)}\cdot${k}=${big}^\circ$.`}},
+r=>{const base=r()<.5;const v=ri(r,10,160);if(base){if(v%2)return GENS['tri-angle'][1](r);return{lvl:1,q:T`An isosceles triangle has a vertex angle of $${v}^\circ$. What is each base angle, in degrees?`,a:(180-v)/2,w:[v,180-v,v/2,90-v/2+10],s:T`$\frac{180-${v}}{2}=${(180-v)/2}^\circ$.`}}
+ const b=ri(r,10,85);return{lvl:1,q:T`An isosceles triangle has base angles of $${b}^\circ$. What is its vertex angle, in degrees?`,a:180-2*b,w:[b,180-b,90-b,2*b],s:T`$180-2\cdot${b}=${180-2*b}^\circ$.`}},
+r=>{const A=ri(r,20,80),Bn=ri(r,20,80);
+ return{lvl:1,q:T`In triangle $ABC$, $\angle A=${A}^\circ$ and the exterior angle at $C$ is $${A+Bn}^\circ$. What is $\angle B$, in degrees?`,a:Bn,w:[180-A-Bn,A,180-(A+Bn),Bn+10],
+ s:T`The exterior angle at $C$ equals $\angle A+\angle B$: $\angle B=${A+Bn}-${A}=${Bn}^\circ$.`}},
+r=>{const A=2*ri(r,10,80);
+ return{lvl:2,q:T`In triangle $ABC$, $\angle A=${A}^\circ$. The bisectors of angles $B$ and $C$ meet at $I$. What is $\angle BIC$, in degrees?`,a:90+A/2,w:[180-A,90-A/2,180-A/2,A+45,2*A],
+ s:T`$\angle IBC+\angle ICB=\frac{180-${A}}{2}=${(180-A)/2}$, so $\angle BIC=180-${(180-A)/2}=${90+A/2}^\circ$.`}},
+r=>{const n=ri(r,5,20);const ask=r()<.5;
+ return{lvl:1,q:ask?T`What is the sum of the interior angles of a convex ${n}-gon, in degrees?`:T`What is each interior angle of a regular ${n}-gon, in degrees?`,a:ask?180*(n-2):F(180*(n-2),n),w:ask?[180*n,180*(n-1),360*(n-2),180*(n-3)]:[F(360,n),F(180*n,n-2),F(180*(n-1),n),F(180*(n-2),n).add(10)],
+ s:ask?T`$180(n-2)=180\cdot${n-2}=${180*(n-2)}^\circ$.`:T`$\frac{180(n-2)}{n}=\frac{${180*(n-2)}}{${n}}=${F(180*(n-2),n).tex()}^\circ$.`}},
+];
+GENS['tri-sim']=[
+r=>{const a=ri(r,1,8),b=ri(r,1,10),k=ri(r,1,6);const DE=a*k,BC=(a+b)*k;
+ return{lvl:1,q:T`In triangle $ABC$, $D$ is on $AB$ and $E$ on $AC$ with $DE\parallel BC$. If $AD=${a}$, $DB=${b}$, and $DE=${DE}$, what is $BC$?`,a:BC,w:[F(DE*b,a),F(DE*(a+b),b),BC+k,DE+b,F(BC*2)],
+ s:T`$\frac{AD}{AB}=\frac{${a}}{${a+b}}=\frac{DE}{BC}$, so $BC=${DE}\cdot\frac{${a+b}}{${a}}=${BC}$.`}},
+r=>{const p=ri(r,1,5),q=ri(r,p+1,9),k=ri(r,1,6);const A1=p*p*k,A2=q*q*k;
+ return{lvl:1,q:T`Two similar triangles have corresponding sides in ratio $${p}:${q}$. The smaller has area $${A1}$. What is the area of the larger?`,a:A2,w:[F(A1*q,p),A2/2|0||A2+1,A1*q*q,A2+A1],
+ s:T`Areas scale by $\left(\frac{${q}}{${p}}\right)^2$: $${A1}\cdot\frac{${q*q}}{${p*p}}=${A2}$.`}},
+r=>{const [a,b,c]=pick(r,TRIPLES);const h=F(a*b,c);
+ return{lvl:2,q:T`A right triangle has legs $${a}$ and $${b}$. What is the length of the altitude to the hypotenuse?`,a:h,w:[F(c,2),F(a*b,2*c),F(a*b,a+b),F(c),h.mul(2)],
+ s:T`The hypotenuse is $${c}$. Twice the area is $${a}\cdot${b}=${c}h$, so $h=${h.tex()}$.`}},
+r=>{const p=ri(r,1,9),q=ri(r,1,9),k=ri(r,1,4);const P_=p*p*k*k,Q=q*q;const h=p*q*k;
+ return{lvl:1,q:T`The altitude to the hypotenuse of a right triangle divides the hypotenuse into segments of lengths $${P_}$ and $${Q}$. How long is the altitude?`,a:h,w:[P_+Q,F(P_+Q,2),P_*Q,h+1,Math.abs(P_-Q)||h+2],
+ s:T`$h^2=${P_}\cdot${Q}=${P_*Q}$, so $h=${h}$.`}},
+r=>{const a=ri(r,2,12),b=ri(r,2,12);const s_=F(a*b,a+b);
+ return{lvl:3,q:T`A square sits in the right angle of a right triangle with legs $${a}$ and $${b}$, with one vertex on the hypotenuse. What is the side length of the square?`,a:s_,w:[F(a+b,2),F(a*b,2*(a+b)),F(Math.min(a,b),2),s_.add(1),F(a*b,a+b+1)],
+ s:T`The corner $(s,s)$ lies on $\frac x{${a}}+\frac y{${b}}=1$: $s\left(\frac1{${a}}+\frac1{${b}}\right)=1$, so $s=\frac{${a*b}}{${a+b}}=${s_.tex()}$.`}},
+];
+GENS['tri-pyth']=[
+r=>{const [a,b,c]=pick(r,TRIPLES);const k=ri(r,1,4);const which=pick(r,['c','a','b']);const v={c:c*k,a:a*k,b:b*k};
+ const q=which==='c'?T`A right triangle has legs $${a*k}$ and $${b*k}$. What is the hypotenuse?`:which==='a'?T`A right triangle has hypotenuse $${c*k}$ and one leg $${b*k}$. What is the other leg?`:T`A right triangle has hypotenuse $${c*k}$ and one leg $${a*k}$. What is the other leg?`;
+ return{lvl:1,q,a:v[which],w:[v.c+k,(a+b)*k,(c-a)*k,(c-b)*k,v[which]+1,v[which]-1],
+ s:T`This is a scaled $${a}$-$${b}$-$${c}$ triple (times ${k}): the sides are $${a*k},${b*k},${c*k}$.`}},
+r=>{const s_=ri(r,1,12);const kind=pick(r,['hyp','short','long']);
+ if(kind==='hyp')return{lvl:1,q:T`A $30$-$60$-$90$ triangle has hypotenuse $${2*s_}$. What is its longer leg?`,a:R(s_,3),w:[R(s_,1),R(2*s_,3),R(s_,2),FR(F(2*s_,3),3)],s:T`Sides $x:x\sqrt3:2x$ with $2x=${2*s_}$: the longer leg is $${R(s_,3).tex}$.`};
+ if(kind==='short')return{lvl:1,q:T`A $30$-$60$-$90$ triangle has shorter leg $${s_}$. What is its hypotenuse plus longer leg?`,a:O(2*s_+'+'+R(s_,3).tex,2*s_+s_*Math.sqrt(3)),w:[O(String(3*s_),3*s_),O(s_+'+'+R(2*s_,3).tex,s_+2*s_*Math.sqrt(3)),O(R(3*s_,3).tex,3*s_*Math.sqrt(3)),O(2*s_+'+'+R(s_,2).tex,2*s_+s_*Math.sqrt(2))],s:T`Hypotenuse $${2*s_}$, longer leg $${R(s_,3).tex}$.`};
+ return{lvl:1,q:T`A $45$-$45$-$90$ triangle has legs of length $${s_}$. What is its hypotenuse?`,a:R(s_,2),w:[R(2*s_,1),R(s_,3),R(2*s_,2),R(s_,1)],s:T`The hypotenuse is $${s_}\sqrt2$.`}},
+r=>{const s_=ri(r,1,12);const ask=r()<.5;
+ return ask?{lvl:1,q:T`What is the area of an equilateral triangle with side $${s_}$?`,a:FR(F(s_*s_,4),3),w:[FR(F(s_*s_,2),3),FR(F(s_*s_,4),1),FR(F(s_,2),3),FR(F(s_*s_,4),2)],s:T`$\frac{\sqrt3}{4}s^2=\frac{${s_*s_}\sqrt3}{4}$.`}
+ :{lvl:1,q:T`What is the height of an equilateral triangle with side $${s_}$?`,a:FR(F(s_,2),3),w:[FR(F(s_,1),3),FR(F(s_,2),2),FR(F(s_,3),3),FR(F(s_,4),3)],s:T`The height is $\frac{\sqrt3}{2}s=${FR(F(s_,2),3).tex}$.`}},
+r=>{let a=ri(r,2,15),b=ri(r,a,18),c=ri(r,b,a+b-1);const d=a*a+b*b-c*c;const t=d>0?'acute':d===0?'right':'obtuse';const X=x=>O('\\text{'+x+'}',{acute:1,right:2,obtuse:3,equilateral:4,degenerate:5}[x]);
+ return{lvl:1,q:T`A triangle has sides $${a}$, $${b}$, and $${c}$. Is it acute, right, or obtuse?`,a:X(t),w:['acute','right','obtuse','equilateral','degenerate'].filter(x=>x!==t).map(X),
+ s:T`Compare $${a}^2+${b}^2=${a*a+b*b}$ with $${c}^2=${c*c}$: ${d>0?'greater, so acute':d===0?'equal, so right':'less, so obtuse'}.`}},
+];
+GENS['tri-area']=[
+r=>{const [a,b,c,A]=pick(r,HERON);const k=ri(r,1,3);
+ return{lvl:1,q:T`What is the area of a triangle with sides $${a*k}$, $${b*k}$, and $${c*k}$?`,a:A*k*k,w:[A*k,2*A*k*k,A*k*k+k,a*b*k*k/2],
+ s:T`Heron: $s=${(a+b+c)*k/2}$, area $=\sqrt{s(s-a)(s-b)(s-c)}=${A*k*k}$.`}},
+r=>{const a=ri(r,2,12),b=ri(r,2,12);const ang=pick(r,[30,45,60,90,120,135,150]);const sinv={30:[F(1,2),1],150:[F(1,2),1],45:[F(1,2),2],135:[F(1,2),2],60:[F(1,2),3],120:[F(1,2),3],90:[F(1),1]}[ang];
+ const ar=FR(F(a*b,2).mul(sinv[0]),sinv[1]);
+ return{lvl:1,q:T`A triangle has sides $${a}$ and $${b}$ with an included angle of $${ang}^\circ$. What is its area?`,a:ar,w:[FR(F(a*b),sinv[1]),FR(F(a*b,2),1).v===ar.v?FR(F(a*b,4),1):FR(F(a*b,2),1),FR(F(a*b,4),sinv[1]===1?3:sinv[1]),FR(F(a*b,2).mul(sinv[0]),sinv[1]===3?2:3)],
+ s:T`Area $=\frac12ab\sin C=\frac12\cdot${a}\cdot${b}\cdot\sin${ang}^\circ=${ar.tex}$.`}},
+r=>{const x1=ri(r,-5,5),y1=ri(r,-5,5),x2=ri(r,-5,8),y2=ri(r,-5,8),x3=ri(r,-5,8),y3=ri(r,-5,8);const D=Math.abs(x1*(y2-y3)+x2*(y3-y1)+x3*(y1-y2));if(!D)return GENS['tri-area'][2](r);
+ return{lvl:1,q:T`What is the area of the triangle with vertices $(${x1},${y1})$, $(${x2},${y2})$, and $(${x3},${y3})$?`,a:F(D,2),w:[F(D),F(D,4),F(D+2,2),F(D,2).add(1)],
+ s:T`Shoelace: $\frac12|x_1(y_2-y_3)+x_2(y_3-y_1)+x_3(y_1-y_2)|=\frac12\cdot${D}=${F(D,2).tex()}$.`}},
+r=>{const [a,b,c,A]=pick(r,HERON);const side=pick(r,[a,b,c]);const h=F(2*A,side);
+ return{lvl:1,q:T`A triangle has sides $${a}$, $${b}$, $${c}$. What is the length of the altitude to the side of length $${side}$?`,a:h,w:[F(A,side),F(2*A,side).add(1),F(side),F(A,side*2),h.mul(2)],
+ s:T`The area is $${A}$ (Heron). $\frac12\cdot${side}\cdot h=${A}$ gives $h=${h.tex()}$.`}},
+];
+GENS['tri-cev']=[
+r=>{const b=ri(r,2,12),c=ri(r,2,12),a=ri(r,Math.abs(b-c)+1,b+c-1);const BD=F(a*c,b+c);
+ return{lvl:1,q:T`In triangle $ABC$, $AB=${c}$, $AC=${b}$, and $BC=${a}$. The bisector of angle $A$ meets $BC$ at $D$. What is $BD$?`,a:BD,w:[F(a*b,b+c),F(a,2),BD.add(1),F(c*b,a)],
+ s:T`$\frac{BD}{DC}=\frac{AB}{AC}=\frac{${c}}{${b}}$, so $BD=\frac{${c}}{${b+c}}\cdot${a}=${BD.tex()}$.`}},
+r=>{const b=ri(r,3,12),c=ri(r,3,12),a=ri(r,Math.abs(b-c)+1,b+c-1);const N=2*b*b+2*c*c-a*a;const [k,m]=sqd(N);const med=FR(F(k,2),m);
+ return{lvl:2,q:T`Triangle $ABC$ has $AB=${c}$, $AC=${b}$, and $BC=${a}$. How long is the median from $A$?`,a:med,w:[FR(F(k),m),FR(F(k,4),m),O(F(b+c,2).tex(),(b+c)/2),FR(F(1,2),N+4),R(1,b*b+c*c)],
+ s:T`$m_a=\frac12\sqrt{2b^2+2c^2-a^2}=\frac12\sqrt{${2*b*b}+${2*c*c}-${a*a}}=\frac12\sqrt{${N}}=${med.tex}$.`}},
+r=>{const m=ri(r,3,30)*3;
+ return{lvl:1,q:T`A median of a triangle has length $${m}$. How far is the centroid from the midpoint of the side (the short part of the median)?`,a:m/3,w:[2*m/3,m/2,m/4,m/6],
+ s:T`The centroid divides the median $2:1$, so the short part is $\frac13\cdot${m}=${m/3}$.`}},
+r=>{const [a,b,c]=pick(r,TRIPLES);const k=ri(r,1,3);const ask=r()<.5;
+ return{lvl:1,q:T`A right triangle has legs $${a*k}$ and $${b*k}$. How long is the median to the hypotenuse?`,a:F(c*k,2),w:[F(c*k),F(a*b*k,c),F((a+b)*k,2),F(c*k,3)],
+ s:T`The median to the hypotenuse is half the hypotenuse: $\frac{${c*k}}{2}=${F(c*k,2).tex()}$.`}},
+];
+GENS['tri-center']=[
+r=>{const [a,b,c]=pick(r,TRIPLES);const k=ri(r,1,3);const ask=r()<.5;
+ return ask?{lvl:1,q:T`What is the inradius of a right triangle with legs $${a*k}$ and $${b*k}$?`,a:F((a+b-c)*k,2),w:[F(c*k,2),F(a*b*k,c),F((a+b-c)*k),F((a+b-c)*k,4)],s:T`$r=\frac{a+b-c}{2}=\frac{${a*k}+${b*k}-${c*k}}{2}=${F((a+b-c)*k,2).tex()}$.`}
+ :{lvl:1,q:T`What is the circumradius of a right triangle with legs $${a*k}$ and $${b*k}$?`,a:F(c*k,2),w:[F(c*k),F((a+b-c)*k,2),F(a*b*k,c),F((a+b)*k,2)],s:T`The hypotenuse $${c*k}$ is a diameter, so $R=${F(c*k,2).tex()}$.`}},
+r=>{const [a,b,c,A]=pick(r,HERON);const s_=F(a+b+c,2);const ask=r()<.5;const rr=F(A).div(s_),RR=F(a*b*c,4*A);
+ return{lvl:2,q:T`What is the ${ask?'inradius':'circumradius'} of a triangle with sides $${a}$, $${b}$, $${c}$?`,a:ask?rr:RR,w:ask?[RR,rr.mul(2),F(A,a+b+c),rr.add(1)]:[rr,RR.mul(2),F(Math.max(a,b,c),2),RR.add(1)],
+ s:ask?T`Area $${A}$ (Heron), $s=${s_.tex()}$, so $r=\frac{${A}}{${s_.tex()}}=${rr.tex()}$.`:T`Area $${A}$, so $R=\frac{abc}{4K}=\frac{${a*b*c}}{${4*A}}=${RR.tex()}$.`}},
+r=>{const s_=ri(r,1,12)*pick(r,[1,3]);const ask=r()<.5;
+ return{lvl:1,q:T`What is the ${ask?'circumradius':'inradius'} of an equilateral triangle with side $${s_}$?`,a:ask?FR(F(s_,3),3):FR(F(s_,6),3),w:ask?[FR(F(s_,6),3),FR(F(s_,2),3),FR(F(s_,2),1),FR(F(s_,3),2)]:[FR(F(s_,3),3),FR(F(s_,2),3),FR(F(s_,4),1),FR(F(s_,6),2)],
+ s:ask?T`$R=\frac{s}{\sqrt3}=\frac{${s_}\sqrt3}{3}=${FR(F(s_,3),3).tex}$.`:T`$r=\frac{s}{2\sqrt3}=\frac{${s_}\sqrt3}{6}=${FR(F(s_,6),3).tex}$.`}},
+];

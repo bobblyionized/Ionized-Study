@@ -1,0 +1,534 @@
+=== LESSONS ===
+<script type="text/plain" id="L-quad-solve">
+<h2>Solving Quadratics</h2>
+<div class="box"><h4>Three methods</h4><ul>
+<li><b>Factoring:</b> find two numbers with product $ac$ and sum $b$. Use this whenever the roots are rational.</li>
+<li><b>Completing the square:</b> $x^2+bx=\left(x+\frac b2\right)^2-\frac{b^2}4$.</li>
+<li><b>Quadratic formula:</b> $x=\dfrac{-b\pm\sqrt{b^2-4ac}}{2a}$.</li>
+</ul></div>
+<h3>Equations that hide a quadratic</h3>
+<ul><li><b>Quadratic in $x^2$:</b> $x^4-13x^2+36=0$; set $u=x^2$, so $u=4,9$ and $x=\pm2,\pm3$.</li>
+<li><b>$x+\frac1x$:</b> multiply through by $x$.</li>
+<li><b>Radical equations:</b> isolate the root and square, then <b>check every answer</b>. Squaring creates extraneous roots.</li>
+<li><b>Never divide by an expression that could be $0$:</b> $(x-3)^2=2(x-3)$ has the solutions $3$ <i>and</i> $5$.</li></ul>
+<h3>Integer-root counting</h3>
+<p>If $x^2+bx+c$ has integer roots $r,s$, then $rs=c$ and $b=-(r+s)$. Count factor pairs of $c$, including negative pairs.</p>
+<div class="ex"><b class="lbl">Example.</b> Find the sum of all real $x$ with $(x^2-5x+5)^{x^2-9x+20}=1$.
+<details><summary>Solution</summary>A power equals 1 in three ways. Base $1$: $x=1,4$. Exponent $0$ with base $\ne0$: $x=4,5$. Base $-1$ with an even exponent: $x=2,3$ (the exponents are 6 and 2). The set $\{1,2,3,4,5\}$ sums to $15$.</details></div>
+</script>
+<script type="text/plain" id="L-quad-disc">
+<h2>Discriminant &amp; Nature of Roots</h2>
+<div class="box"><h4>$\Delta=b^2-4ac$ for $ax^2+bx+c=0$</h4><ul>
+<li>$\Delta>0$: two distinct real roots.</li>
+<li>$\Delta=0$: one repeated real root, so the parabola touches the $x$-axis (tangency).</li>
+<li>$\Delta\lt 0$: no real roots (two complex conjugate roots).</li>
+<li>With integer coefficients, the roots are rational exactly when $\Delta$ is a perfect square.</li>
+</ul></div>
+<h3>Tangency</h3>
+<p>A line and a parabola are tangent exactly when substituting one into the other gives a quadratic with $\Delta=0$.</p>
+<h3>Watch the leading coefficient</h3>
+<p>"Exactly one solution" for $kx^2+4x+1=0$ includes $k=0$ (the equation becomes linear) as well as $\Delta=0$.</p>
+<div class="ex"><b class="lbl">Example.</b> For how many positive integers $n\le50$ does $x^2+x-n=0$ have integer roots?
+<details><summary>Solution</summary>We need $1+4n$ to be an odd perfect square $(2k+1)^2$, so $n=k(k+1)$: $2,6,12,20,30,42$. That is $6$ values.</details></div>
+</script>
+<script type="text/plain" id="L-quad-vertex">
+<h2>Vertex Form &amp; Optimization</h2>
+<div class="box"><h4>Vertex</h4><ul>
+<li>$y=ax^2+bx+c$ has its vertex at $x=-\dfrac{b}{2a}$, and its extreme value is $c-\dfrac{b^2}{4a}$.</li>
+<li>Vertex form: $y=a(x-h)^2+k$ with vertex $(h,k)$. If $a>0$, $k$ is the minimum; if $a\lt 0$, the maximum.</li>
+<li>The axis of symmetry is $x=h$, and the roots are symmetric about it.</li>
+</ul></div>
+<h3>Classic optimizations</h3>
+<ul><li>Fixed sum $S$: the product $x(S-x)$ is largest at $x=\frac S2$, giving $\frac{S^2}{4}$.</li>
+<li>Rectangle with fixed perimeter: a square maximizes the area.</li>
+<li>Fence on three sides (a wall or river on the fourth): maximize $x(L-2x)$, so $x=\frac L4$.</li>
+<li>Projectile $h=-16t^2+vt+h_0$: the peak is at $t=\frac{v}{32}$.</li>
+<li><b>Products of four factors:</b> $(x-1)(x-3)(x-5)(x-7)$. Pair the outer and inner factors to get a common quadratic $u$, then the product is $(u-4)(u+4)=u^2-16$.</li></ul>
+</script>
+<script type="text/plain" id="L-quad-vieta">
+<h2>Vieta for Quadratics</h2>
+<div class="box"><h4>For $ax^2+bx+c=0$ with roots $r,s$</h4>
+$r+s=-\dfrac ba,\qquad rs=\dfrac ca$</div>
+<h3>Symmetric expressions</h3>
+<ul><li>$r^2+s^2=(r+s)^2-2rs$</li>
+<li>$\frac1r+\frac1s=\frac{r+s}{rs}$</li>
+<li>$(r-s)^2=(r+s)^2-4rs$, so $|r-s|=\frac{\sqrt\Delta}{|a|}$</li>
+<li>$r^3+s^3=(r+s)^3-3rs(r+s)$</li>
+<li>Power sums $p_n=r^n+s^n$ satisfy $p_n=(r+s)p_{n-1}-rs\,p_{n-2}$.</li></ul>
+<h3>Building new equations</h3>
+<p>For roots $r+k, s+k$: the new sum is $(r+s)+2k$ and the new product is $rs+k(r+s)+k^2$. The new monic equation is $x^2-(\text{sum})x+\text{product}=0$.</p>
+<div class="tip"><h4>AMC tip</h4>You almost never need to find the roots themselves. If the roots are ugly (irrational), Vieta is definitely the intended path.</div>
+</script>
+<script type="text/plain" id="L-quad-sys">
+<h2>Quadratic Systems &amp; Intersections</h2>
+<div class="box"><h4>Strategies</h4><ul>
+<li><b>Substitute</b> a linear equation into a quadratic and solve the resulting quadratic. Its discriminant counts the intersection points (0, 1 or 2).</li>
+<li><b>Symmetric systems:</b> use $s=x+y$, $p=xy$. Then $x,y$ are the roots of $t^2-st+p=0$.</li>
+<li><b>Add or subtract equations</b> to create a factorable expression: $x^2+xy=15,\ y^2+xy=10$ adds to $(x+y)^2=25$.</li>
+<li><b>Difference of squares:</b> $x^2-y^2=24$ with $x-y=4$ gives $x+y=6$.</li>
+<li>Curve–curve intersections: eliminate one variable, then count the valid solutions of the other. Each $y$ may give 0, 1 or 2 values of $x$.</li>
+</ul></div>
+<div class="ex"><b class="lbl">Example.</b> How many points do $y=x^2-4$ and $x^2+y^2=16$ share?
+<details><summary>Solution</summary>$x^2=y+4$, so $y^2+y-12=0$ and $y=3$ or $-4$. $y=3$ gives $x=\pm\sqrt7$ (2 points); $y=-4$ gives $x=0$ (1 point). Total $3$.</details></div>
+</script>
+
+=== BANK ===
+@@ quad-solve
+Q: What is the larger root of $x^2-5x-14=0$?
+L: 1
+A: 7
+W: 2
+W: -7
+W: 14
+W: 5
+S: $x^2-5x-14=(x-7)(x+2)$, so the roots are $7$ and $-2$.
+---
+Q: What is the positive solution of $x^2+6x=16$?
+L: 1
+A: 2
+W: 8
+W: 4
+W: 16
+W: -2
+S: Complete the square: $x^2+6x+9=25$, so $(x+3)^2=25$ and $x=2$ or $-8$. The positive solution is $2$.
+---
+Q: What is the negative root of $2x^2-3x-2=0$?
+L: 1
+A: -\frac{1}{2}
+W: -2
+W: \frac{1}{2}
+W: -1
+W: -\frac{3}{2}
+S: $2x^2-3x-2=(2x+1)(x-2)$, so the roots are $2$ and $-\frac12$.
+---
+Q: What is the sum of the positive solutions of $x^4-13x^2+36=0$?
+L: 2
+A: 5
+W: 13
+W: 6
+W: 0
+W: 10
+S: Let $u=x^2$: $u^2-13u+36=(u-4)(u-9)=0$, so $x^2=4$ or $9$ and $x=\pm2,\pm3$. The positive ones sum to $5$.
+---
+Q: What is the sum of the squares of all solutions of $x+\dfrac1x=\dfrac52$?
+L: 2
+A: \frac{17}{4}
+W: \frac{25}{4}
+W: 4
+W: \frac{17}{2}
+W: \frac{21}{4}
+S: Multiply by $2x$: $2x^2-5x+2=0$, so $(2x-1)(x-2)=0$ and $x=2$ or $\frac12$. Then $4+\frac14=\frac{17}4$.
+---
+Q: What is the solution of $\sqrt{x+7}=x-5$?
+L: 2
+A: 9
+W: 2
+W: 11
+W: 7
+W: 18
+S: Squaring: $x+7=x^2-10x+25$, so $x^2-11x+18=0$ and $x=9$ or $2$.
+Check: $x=9$ gives $\sqrt{16}=4=9-5$ ✓. $x=2$ gives $\sqrt9=3\ne-3$, which is extraneous. So $x=9$.
+---
+Q: What is the sum of all solutions of $(x-3)^2=2(x-3)$?
+L: 1
+A: 8
+W: 5
+W: 3
+W: 2
+W: 10
+S: Do not divide by $x-3$. Instead: $(x-3)(x-3-2)=0$, so $x=3$ or $x=5$. Sum: $8$.
+---
+Q: For how many integers $b$ does $x^2+bx+36=0$ have two integer roots (possibly equal)?
+L: 2
+A: 10
+W: 5
+W: 9
+W: 18
+W: 8
+S: The roots $r,s$ satisfy $rs=36$ and $b=-(r+s)$. The positive pairs are $\{1,36\},\{2,18\},\{3,12\},\{4,9\},\{6,6\}$, with sums $37,20,15,13,12$.
+Negative pairs give the negatives of these, so there are $10$ values of $b$.
+---
+Q: What is the sum of all real numbers $x$ satisfying $(x^2-5x+5)^{x^2-9x+20}=1$?
+L: 3
+A: 15
+W: 13
+W: 10
+W: 9
+W: 14
+S: Base $=1$: $x^2-5x+4=0$ gives $x=1,4$.
+Exponent $=0$ (base nonzero): $x^2-9x+20=0$ gives $x=4,5$.
+Base $=-1$ with an even exponent: $x^2-5x+6=0$ gives $x=2,3$, with exponents $6$ and $2$ (even) ✓.
+The solutions are $\{1,2,3,4,5\}$, with sum $15$.
+---
+@@ quad-disc
+Q: For what positive value of $k$ does $x^2+kx+9=0$ have exactly one (repeated) real root?
+L: 1
+A: 6
+W: 3
+W: 9
+W: 12
+W: 18
+S: $\Delta=k^2-36=0$, so $k=6$ (the root is $x=-3$).
+---
+Q: How many real roots does $2x^2+3x+5=0$ have?
+L: 1
+A: 0
+W: 1
+W: 2
+W: 3
+W: 4
+S: $\Delta=9-40=-31\lt 0$, so there are no real roots.
+---
+Q: What is the largest integer $c$ for which $x^2-6x+c=0$ has two distinct real roots?
+L: 1
+A: 8
+W: 9
+W: 36
+W: 7
+W: 10
+S: $\Delta=36-4c>0$ means $c\lt 9$, so the largest integer is $8$.
+---
+Q: The line $y=mx$, with $m>0$, is tangent to the parabola $y=x^2+4$. What is $m$?
+L: 2
+A: 4
+W: 2
+W: 8
+W: 16
+W: 1
+S: $x^2-mx+4=0$ must have a double root: $m^2-16=0$, so $m=4$.
+---
+Q: For how many integers $k$ does $x^2+kx+16=0$ have no real roots?
+L: 2
+A: 15
+W: 16
+W: 14
+W: 17
+W: 7
+S: We need $k^2-64\lt 0$, i.e. $-8\lt k\lt 8$. That is $k=-7,\dots,7$, which is $15$ integers.
+---
+Q: What is the sum of all real numbers $k$ for which $kx^2+4x+1=0$ has exactly one real solution?
+L: 3
+A: 4
+W: 0
+W: 8
+W: -4
+W: 2
+S: If $k=0$ the equation is $4x+1=0$, which has one solution. If $k\ne0$ we need $\Delta=16-4k=0$, so $k=4$.
+The sum is $0+4=4$.
+---
+Q: The quadratic $(m-1)x^2-2mx+m+3=0$ has real roots. What is the largest possible value of $m$?
+L: 2
+A: \frac{3}{2}
+W: 1
+W: 3
+W: 2
+W: \frac{2}{3}
+S: $\Delta=4m^2-4(m-1)(m+3)=4(3-2m)\ge0$, so $m\le\frac32$. At $m=\frac32$ the leading coefficient is $\frac12\ne0$, so it is still a quadratic.
+---
+Q: For how many positive integers $n\le50$ does $x^2+x-n=0$ have integer roots?
+L: 2
+A: 6
+W: 7
+W: 5
+W: 4
+W: 8
+S: We need $1+4n$ to be a perfect square, necessarily odd: $(2k+1)^2=4k^2+4k+1$, so $n=k(k+1)$.
+The values $2,6,12,20,30,42$ give $6$.
+---
+@@ quad-vertex
+Q: What is the minimum value of $x^2-8x+21$?
+L: 1
+A: 5
+W: 4
+W: 21
+W: 13
+W: -11
+S: $x^2-8x+21=(x-4)^2+5$, so the minimum is $5$, at $x=4$.
+---
+Q: What is the maximum value of $-2x^2+12x-7$?
+L: 1
+A: 11
+W: 3
+W: 25
+W: -7
+W: 18
+S: The vertex is at $x=-\frac{12}{2(-2)}=3$, where the value is $-18+36-7=11$.
+---
+Q: What is the largest possible area of a rectangle with perimeter $40$?
+L: 1
+A: 100
+W: 400
+W: 96
+W: 80
+W: 200
+S: Sides $x$ and $20-x$: the area $x(20-x)$ is largest at $x=10$ (a square), giving $100$.
+---
+Q: A farmer has $120$ meters of fence to enclose a rectangle along a straight river; no fence is needed along the river. What is the largest area he can enclose, in square meters?
+L: 2
+A: 1800
+W: 3600
+W: 900
+W: 1600
+W: 2400
+S: With two sides $x$ perpendicular to the river, the area is $x(120-2x)$, maximized at $x=30$: $30\cdot60=1800$.
+---
+Q: Two real numbers have sum $14$. What is the largest possible value of their product?
+L: 1
+A: 49
+W: 48
+W: 196
+W: 40
+W: 98
+S: $x(14-x)$ is largest at $x=7$: $49$.
+---
+Q: The parabola $y=x^2+bx+c$ has vertex $(3,-2)$. What is $b+c$?
+L: 2
+A: 1
+W: 13
+W: -1
+W: -8
+W: 5
+S: $y=(x-3)^2-2=x^2-6x+7$, so $b=-6$, $c=7$, and $b+c=1$.
+---
+Q: What is the minimum value of $(x-1)(x-3)(x-5)(x-7)$ over all real $x$?
+L: 3
+A: -16
+W: -15
+W: -9
+W: 0
+W: -25
+S: Pair the outer and inner factors: $(x^2-8x+7)(x^2-8x+15)$. Let $u=x^2-8x+11$; the product is $(u-4)(u+4)=u^2-16$.
+Since $u=(x-4)^2-5$ can equal $0$, the minimum is $-16$.
+---
+Q: A ball's height in feet after $t$ seconds is $h=-16t^2+64t+5$. What is its maximum height?
+L: 1
+A: 69
+W: 64
+W: 133
+W: 37
+W: 85
+S: The peak is at $t=\frac{64}{32}=2$: $h=-64+128+5=69$.
+---
+@@ quad-vieta
+Q: Let $r$ and $s$ be the roots of $x^2-7x+3=0$. What is $r^2+s^2$?
+L: 1
+A: 43
+W: 49
+W: 40
+W: 46
+W: 55
+S: $r+s=7$, $rs=3$, so $r^2+s^2=49-6=43$.
+---
+Q: Let $r$ and $s$ be the roots of $2x^2+5x-3=0$. What is $\dfrac1r+\dfrac1s$?
+L: 1
+A: \frac{5}{3}
+W: -\frac{5}{3}
+W: \frac{3}{5}
+W: -\frac{3}{5}
+W: \frac{5}{2}
+S: $r+s=-\frac52$, $rs=-\frac32$, so $\frac1r+\frac1s=\frac{r+s}{rs}=\frac{-5/2}{-3/2}=\frac53$.
+---
+Q: What is the positive difference between the roots of $x^2-6x+4=0$?
+L: 2
+A: 2\sqrt{5}
+W: 4
+W: 2\sqrt{3}
+W: \sqrt{5}
+W: 10
+S: $(r-s)^2=(r+s)^2-4rs=36-16=20$, so $|r-s|=2\sqrt5$.
+---
+Q: One root of $x^2+bx+12=0$ is three times the other, and both roots are positive. What is $b$?
+L: 2
+A: -8
+W: 8
+W: -6
+W: -7
+W: 12
+S: Roots $r$ and $3r$: $3r^2=12$, so $r=2$ and the roots are $2,6$. Then $b=-(2+6)=-8$.
+---
+Q: Let $r$ and $s$ be the roots of $x^2-3x-5=0$. The monic quadratic with roots $r+2$ and $s+2$ is $x^2+px+q$. What is $q$?
+L: 2
+A: 5
+W: 1
+W: -1
+W: 9
+W: 7
+S: $q=(r+2)(s+2)=rs+2(r+s)+4=-5+6+4=5$.
+---
+Q: Let $r$ and $s$ be the roots of $x^2-4x+1=0$. What is $r^3+s^3$?
+L: 2
+A: 52
+W: 64
+W: 60
+W: 48
+W: 56
+S: $r^3+s^3=(r+s)^3-3rs(r+s)=64-12=52$.
+---
+Q: Let $r$ and $s$ be the roots of $x^2-x-1=0$. What is $r^5+s^5$?
+L: 3
+A: 11
+W: 5
+W: 7
+W: 18
+W: 10
+S: The power sums $p_n=r^n+s^n$ satisfy $p_n=p_{n-1}+p_{n-2}$ (from $x^2=x+1$), with $p_0=2$ and $p_1=1$.
+$p_2=3, p_3=4, p_4=7, p_5=11$.
+---
+Q: The roots of $x^2+px+q=0$ are $p$ and $q$, where $p$ and $q$ are nonzero. What is $p+q$?
+L: 2
+A: -1
+W: 1
+W: -2
+W: 0
+W: -3
+S: Vieta: $p+q=-p$ and $pq=q$. Since $q\ne0$, $p=1$, and then $q=-2p=-2$. So $p+q=-1$.
+---
+@@ quad-sys
+Q: The graphs of $y=x^2$ and $y=x+6$ intersect at two points. What is the distance between them?
+L: 2
+A: 5\sqrt{2}
+W: 5
+W: 10
+W: 2\sqrt{5}
+W: 5\sqrt{3}
+S: $x^2=x+6$ gives $x=3$ or $-2$, so the points are $(3,9)$ and $(-2,4)$.
+The distance is $\sqrt{5^2+5^2}=5\sqrt2$.
+---
+Q: If $x+y=5$ and $x^2+y^2=13$, what is $xy$?
+L: 1
+A: 6
+W: 12
+W: 13
+W: 25
+W: 4
+S: $2xy=(x+y)^2-(x^2+y^2)=25-13=12$, so $xy=6$.
+---
+Q: If $x+y=10$ and $xy=21$, what is $|x-y|$?
+L: 1
+A: 4
+W: 2
+W: 8
+W: 6
+W: \sqrt{58}
+S: $(x-y)^2=(x+y)^2-4xy=100-84=16$, so $|x-y|=4$. (The numbers are $7$ and $3$.)
+---
+Q: How many points of intersection do the graphs of $y=x^2-4$ and $x^2+y^2=16$ have?
+L: 2
+A: 3
+W: 2
+W: 4
+W: 1
+W: 0
+S: $x^2=y+4$, so $y+4+y^2=16$, i.e. $y^2+y-12=0$ and $y=3$ or $-4$.
+$y=3$ gives $x=\pm\sqrt7$ (2 points); $y=-4$ gives $x=0$ (1 point). Total $3$.
+---
+Q: If $x^2-y^2=24$ and $x-y=4$, what is $xy$?
+L: 1
+A: 5
+W: 6
+W: 10
+W: 24
+W: 4
+S: $x+y=\frac{24}{4}=6$. With $x-y=4$: $x=5$, $y=1$, so $xy=5$.
+---
+Q: For what value of $k$ does the line $y=2x+k$ meet the parabola $y=x^2$ at exactly one point?
+L: 1
+A: -1
+W: 1
+W: -2
+W: 0
+W: 2
+S: $x^2-2x-k=0$ needs $\Delta=4+4k=0$, so $k=-1$.
+---
+Q: Real numbers satisfy $x+y+xy=11$ and $x^2y+xy^2=30$. What is the greatest possible value of $x^2+y^2$?
+L: 3
+A: 26
+W: 13
+W: 25
+W: 36
+W: 39
+S: Let $s=x+y$ and $p=xy$. Then $s+p=11$ and $sp=30$, so $\{s,p\}=\{5,6\}$.
+$(s,p)=(5,6)$: $x^2+y^2=25-12=13$. $(s,p)=(6,5)$: $36-10=26$ (with $x,y=1,5$). The greatest value is $26$.
+---
+Q: Positive reals satisfy $x^2+xy=15$ and $y^2+xy=10$. What is $x-y$?
+L: 2
+A: 1
+W: 5
+W: 3
+W: 2
+W: -1
+S: Adding gives $(x+y)^2=25$, so $x+y=5$. Then $x(x+y)=15$ gives $x=3$ and $y(x+y)=10$ gives $y=2$. So $x-y=1$.
+
+=== GENS ===
+GENS['quad-solve']=[
+r=>{let a=ri(r,-12,12),b=ri(r,-12,12);if(a===b)b++;const s_=a+b,p=a*b;const ask=r()<.5;
+ return{lvl:1,q:ask?T`What is the larger root of $${poly([[1,2],[-s_,1],[p,0]],'x')}=0$?`:T`What is the sum of the squares of the roots of $${poly([[1,2],[-s_,1],[p,0]],'x')}=0$?`,
+ a:ask?Math.max(a,b):a*a+b*b,w:ask?[Math.min(a,b),-Math.max(a,b),s_,p,-Math.min(a,b)]:[s_*s_,s_*s_+2*p,p*p,a*a+b*b+1,2*p],
+ s:T`Factor: $(x${a<0?'+':'-'}${Math.abs(a)})(x${b<0?'+':'-'}${Math.abs(b)})=0$, so the roots are $${a}$ and $${b}$.${ask?'':' Then $'+a*a+'+'+b*b+'='+(a*a+b*b)+'$.'}`}},
+r=>{const a=ri(r,2,5),b=ri(r,-7,7)||1,c=ri(r,1,4),d=ri(r,-7,7)||-1;const r1=F(b,a),r2=F(d,c);const A=a*c,B=-(a*d+b*c),C=b*d;
+ const g=gcd(gcd(A,B),C);const ask=r()<.5;
+ return{lvl:1,q:ask?T`What is the product of the roots of $${poly([[A/g,2],[B/g,1],[C/g,0]],'x')}=0$?`:T`What is the sum of the roots of $${poly([[A/g,2],[B/g,1],[C/g,0]],'x')}=0$?`,
+ a:ask?r1.mul(r2):r1.add(r2),w:ask?[r1.mul(r2).neg(),r1.add(r2),F(C/g),F(A/g,C/g||1)]:[r1.add(r2).neg(),r1.mul(r2),F(B/g),F(-B/g)],
+ s:T`It factors as $(${a}x-${P(b)})(${c}x-${P(d)})$, with roots $${r1.tex()}$ and $${r2.tex()}$. By Vieta, the ${ask?'product is $\\frac{c}{a}':'sum is $-\\frac{b}{a}'}=${(ask?r1.mul(r2):r1.add(r2)).tex()}$.`}},
+r=>{let p=ri(r,1,9),q=ri(r,1,12);if(p===q)q++;const A=p*p+q*q,B=p*p*q*q;
+ return{lvl:2,q:T`What is the sum of the positive real solutions of $x^4-${A}x^2+${B}=0$?`,a:p+q,w:[A,p*q,0,p+q+1,Math.abs(p-q)],
+ s:T`Let $u=x^2$: $u^2-${A}u+${B}=(u-${p*p})(u-${q*q})=0$. So $x=\pm${p},\pm${q}$, and the positive ones sum to $${p+q}$.`}},
+r=>{const k=ri(r,1,8),rr=k+ri(r,2,9);const c=(rr-k)**2-rr;const r2=2*k+1-rr;
+ return{lvl:2,q:T`What is the sum of all real solutions of $\sqrt{x${c<0?'-':'+'}${Math.abs(c)}}=x-${k}$?`,a:rr,w:[rr+r2,r2,rr+1,2*k+1,k],
+ s:T`Squaring: $x${c<0?'-':'+'}${Math.abs(c)}=x^2-${2*k}x+${k*k}$, i.e. $x^2-${2*k+1}x+${k*k-c}=0$, with roots $${rr}$ and $${r2}$.<br>Check: $x=${r2}$ makes the right side $${r2-k}\lt 0$, which is extraneous. Only $x=${rr}$ works.`}},
+];
+GENS['quad-disc']=[
+r=>{const a=ri(r,2,15);const c=a*a;const lead=pick(r,[1,1,4,9]);
+ return{lvl:1,q:T`For what positive value of $k$ does $${lead===1?'':lead}x^2+kx+${c}=0$ have a repeated root?`,a:2*a*Math.sqrt(lead),w:[a,c,4*a,a*Math.sqrt(lead),2*c],
+ s:T`Need $\Delta=k^2-4\cdot${lead}\cdot${c}=0$, so $k^2=${4*lead*c}$ and $k=${2*a*Math.sqrt(lead)}$.`}},
+r=>{const c=ri(r,2,60);const m=Math.floor(Math.sqrt(4*c-1));const n=2*m+1;
+ return{lvl:2,q:T`For how many integers $k$ does $x^2+kx+${c}=0$ have no real roots?`,a:n,w:[n+1,n-1,n+2,m],
+ s:T`Need $k^2\lt ${4*c}$. The integers with $|k|\le${m}$ work (since $${m}^2=${m*m}\lt ${4*c}\le${(m+1)**2}$), giving $2\cdot${m}+1=${n}$.`}},
+r=>{const a=ri(r,1,5)*pick(r,[1,-1]),b=ri(r,-10,10),c=ri(r,-10,10);const D=b*b-4*a*c;const n=D>0?2:D===0?1:0;
+ return{lvl:1,q:T`How many distinct real roots does $${poly([[a,2],[b,1],[c,0]],'x')}=0$ have?`,a:n,w:[0,1,2,3,4].filter(x=>x!==n),
+ s:T`$\Delta=b^2-4ac=${b*b}-4\cdot${P(a)}\cdot${P(c)}=${D}$, which is ${D>0?'positive: two real roots':D===0?'zero: one repeated root':'negative: no real roots'}.`}},
+r=>{const m=ri(r,1,8)*2,b=ri(r,-6,6);const c=b+m*m/4;
+ return{lvl:2,q:T`The line $y=mx${b<0?'-':'+'}${Math.abs(b)}$ with $m>0$ is tangent to the parabola $y=x^2${c<0?'-':'+'}${Math.abs(c)}$. What is $m$?`,a:m,w:[m/2,m*m,2*m,m+1,Math.abs(c-b)],
+ s:T`Setting them equal: $x^2-mx+${c-b}=0$ must have $\Delta=m^2-${4*(c-b)}=0$, so $m=${m}$.`}},
+];
+GENS['quad-vertex']=[
+r=>{const a=ri(r,1,5)*pick(r,[1,-1]),h=ri(r,-8,8),k=ri(r,-20,20);const b=-2*a*h,c=a*h*h+k;
+ return{lvl:1,q:T`What is the ${a>0?'minimum':'maximum'} value of $${poly([[a,2],[b,1],[c,0]],'x')}$?`,a:k,w:[c,h,k+a,-k,a*h*h-k],
+ s:T`The vertex is at $x=-\frac{${b}}{2\cdot${P(a)}}=${h}$, and the value there is $${k}$. Equivalently, $${a===1?'':a===-1?'-':a}(x${h<0?'+':'-'}${Math.abs(h)})^2${k<0?'-':'+'}${Math.abs(k)}$.`}},
+r=>{const L=ri(r,5,40)*4;const x=L/4;
+ return{lvl:2,q:T`A rectangle is fenced on three sides with ${L} meters of fence; the fourth side is a wall. What is the largest possible area, in square meters?`,a:x*(L-2*x),w:[(L/4)**2,(L/3)**2|0,x*(L-2*x)/2,(L/2)**2,x*(L-x)],
+ s:T`With two sides $x$ perpendicular to the wall, the area is $x(${L}-2x)$, maximized at $x=${x}$: $${x}\cdot${L-2*x}=${x*(L-2*x)}$.`}},
+r=>{const S=ri(r,4,60);const v=F(S*S,4);
+ return{lvl:1,q:T`Two real numbers have sum ${S}. What is the largest possible value of their product?`,a:v,w:[F(S*S,2),F(S*S),v.sub(1),F(Math.floor(S/2)*Math.floor(S/2-1)),v.add(1)],
+ s:T`$x(${S}-x)$ is maximized at $x=${F(S,2).tex()}$, giving $${v.tex()}$.`}},
+r=>{const h=ri(r,-8,8),k=ri(r,-15,15);const b=-2*h,c=h*h+k;
+ return{lvl:2,q:T`The parabola $y=x^2+bx+c$ has vertex $(${h},${k})$. What is $b+c$?`,a:b+c,w:[b-c,c-b,h+k,b*c,-(b+c)],
+ s:T`$y=(x-${P(h)})^2+${P(k)}=x^2${b<0?'-':'+'}${Math.abs(b)}x+${c}$, so $b=${b}$, $c=${c}$, and $b+c=${b+c}$.`}},
+];
+GENS['quad-vieta']=[
+r=>{const s_=ri(r,-12,12),p=ri(r,-15,15)||2;const kind=pick(r,['sq','rec','cube','diff']);
+ const val=kind==='sq'?F(s_*s_-2*p):kind==='rec'?F(s_,p):kind==='cube'?F(s_**3-3*p*s_):F(s_*s_-4*p);
+ const ex={sq:'r^2+s^2',rec:'\\frac1r+\\frac1s',cube:'r^3+s^3',diff:'(r-s)^2'}[kind];
+ return{lvl:kind==='cube'?2:1,q:T`Let $r$ and $s$ be the roots of $${poly([[1,2],[-s_,1],[p,0]],'x')}=0$. What is $${ex}$?`,
+ a:val,w:[F(s_*s_),F(s_*s_+2*p),F(p,s_||1),F(s_**3),val.neg(),val.add(1),F(s_*s_-p)],
+ s:T`Vieta: $r+s=${s_}$, $rs=${p}$. ${{sq:'$r^2+s^2=(r+s)^2-2rs$',rec:'$\\frac1r+\\frac1s=\\frac{r+s}{rs}$',cube:'$r^3+s^3=(r+s)^3-3rs(r+s)$',diff:'$(r-s)^2=(r+s)^2-4rs$'}[kind]}$=${val.tex()}$.`}},
+r=>{const s_=ri(r,-8,8),p=ri(r,-10,10)||1,k=ri(r,-4,4)||1;const q=p+k*s_+k*k,np=s_+2*k;
+ return{lvl:2,q:T`Let $r,s$ be the roots of $${poly([[1,2],[-s_,1],[p,0]],'x')}=0$. The monic quadratic with roots $r${k<0?'-':'+'}${Math.abs(k)}$ and $s${k<0?'-':'+'}${Math.abs(k)}$ is $x^2+bx+c$. What is $c$?`,
+ a:q,w:[p,p+k,q+k*k,p-k*s_+k*k,-np],
+ s:T`$c=(r+${P(k)})(s+${P(k)})=rs+${P(k)}(r+s)+${k*k}=${p}+${P(k)}\cdot${P(s_)}+${k*k}=${q}$.`}},
+r=>{const m=ri(r,2,5),a=ri(r,1,5);const r1=a,r2=m*a;const pr=r1*r2;
+ return{lvl:2,q:T`One root of $x^2+bx+${pr}=0$ is ${m} times the other, and both roots are positive. What is $b$?`,a:-(r1+r2),w:[r1+r2,-(r1*m),-pr,-(r2),-(r1+r2)+1],
+ s:T`Roots $t$ and $${m}t$: $${m}t^2=${pr}$, so $t=${a}$ and the roots are $${r1},${r2}$. Then $b=-(${r1}+${r2})=${-(r1+r2)}$.`}},
+];
+GENS['quad-sys']=[
+r=>{const x=ri(r,-9,12),y=ri(r,-9,12);const s_=x+y,p=x*y;const ask=pick(r,['sq','diff','xy']);
+ if(ask==='xy')return{lvl:1,q:T`If $x+y=${s_}$ and $x^2+y^2=${x*x+y*y}$, what is $xy$?`,a:p,w:[2*p,s_*s_,x*x+y*y-s_,-p,p+1],s:T`$2xy=(x+y)^2-(x^2+y^2)=${s_*s_}-${x*x+y*y}=${2*p}$, so $xy=${p}$.`};
+ if(ask==='sq')return{lvl:1,q:T`If $x+y=${s_}$ and $xy=${p}$, what is $x^2+y^2$?`,a:x*x+y*y,w:[s_*s_,s_*s_+2*p,s_*s_-p,2*p,x*x+y*y+2],s:T`$x^2+y^2=(x+y)^2-2xy=${s_*s_}-${P(2*p)}=${x*x+y*y}$.`};
+ return{lvl:1,q:T`If $x+y=${s_}$ and $xy=${p}$, what is $|x-y|$?`,a:Math.abs(x-y),w:[Math.abs(x-y)+2,Math.abs(s_),R(1,Math.abs(s_*s_-2*p)||3),Math.abs(x-y)*2||5,Math.abs(x-y)+1],s:T`$(x-y)^2=(x+y)^2-4xy=${s_*s_}-${4*p}=${(x-y)**2}$, so $|x-y|=${Math.abs(x-y)}$.`}},
+r=>{const d=ri(r,1,8),s_=ri(r,d+2,20);if((s_+d)%2)return GENS['quad-sys'][1](r);const x=(s_+d)/2,y=(s_-d)/2;
+ return{lvl:1,q:T`If $x^2-y^2=${s_*d}$ and $x-y=${d}$, what is $xy$?`,a:x*y,w:[s_,s_*d,x*y+d,x+y+d,x*x],
+ s:T`$x+y=\frac{${s_*d}}{${d}}=${s_}$. With $x-y=${d}$: $x=${x}$, $y=${y}$, so $xy=${x*y}$.`}},
+r=>{const a=ri(r,-6,6),b=ri(r,-6,6);if(a===b)return GENS['quad-sys'][2](r);const m=a+b,k=-a*b;
+ return{lvl:2,q:T`The line $y=${poly([[m,1],[k,0]],'x')}$ meets the parabola $y=x^2$ at two points. What is the sum of their $y$-coordinates?`,a:a*a+b*b,w:[m,a*a+b*b+1,m*m,k,2*k],
+ s:T`$x^2=${poly([[m,1],[k,0]],'x')}$ gives $x=${a}$ and $x=${b}$, so the $y$-coordinates are $${a*a}$ and $${b*b}$, with sum $${a*a+b*b}$.`}},
+];

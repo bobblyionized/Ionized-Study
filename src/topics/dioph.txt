@@ -1,0 +1,381 @@
+=== LESSONS ===
+<script type="text/plain" id="L-dioph-lin">
+<h2>Linear Diophantine Equations</h2>
+<div class="box"><h4>Facts for $ax+by=c$</h4><ul>
+<li>It has integer solutions exactly when $g=\gcd(a,b)$ divides $c$.</li>
+<li>From one solution $(x_0,y_0)$, all solutions are $x=x_0+\frac bg t$, $y=y_0-\frac ag t$.</li>
+<li>To count nonnegative or positive solutions, find the range of $t$, or list the values of one variable in the right residue class.</li>
+</ul></div>
+<div class="box"><h4>Chicken McNugget theorem</h4>
+For coprime $a,b$: the largest amount that <b>cannot</b> be made from $a$'s and $b$'s is $ab-a-b$, and there are $\frac{(a-1)(b-1)}{2}$ unreachable amounts.</div>
+<h3>Technique: use residues</h3>
+<p>For $3x+5y=100$: $5y\equiv100\pmod3$ gives $y\equiv2\pmod3$. List $y=2,5,8,\dots$ while $5y\le100$.</p>
+</script>
+<script type="text/plain" id="L-dioph-sfft">
+<h2>Simon's Favorite Factoring Trick</h2>
+<div class="box"><h4>The trick</h4>
+$xy+ax+by=c\iff(x+b)(y+a)=c+ab$. Add the constant that completes the rectangle, then count factor pairs.</div>
+<h3>Variants</h3>
+<ul><li>$xy=2x+3y$ becomes $(x-3)(y-2)=6$.</li>
+<li>$2xy+x+y=c$: multiply by 2 and add 1 to get $(2x+1)(2y+1)=2c+1$.</li>
+<li>$\frac1x+\frac1y=\frac1n$ becomes $(x-n)(y-n)=n^2$, with $d(n^2)$ positive solutions.</li>
+<li>Area $=$ perimeter for a rectangle: $ab=2a+2b$ gives $(a-2)(b-2)=4$.</li></ul>
+<h3>Checking negative factors</h3>
+<p>Both factors could be negative. Check whether that gives positive $x,y$ (it usually does not). Count ordered pairs unless the problem says otherwise.</p>
+</script>
+<script type="text/plain" id="L-dioph-bound">
+<h2>Bounding &amp; Case Analysis</h2>
+<div class="box"><h4>Tools</h4><ul>
+<li><b>Parity and mod arguments:</b> $x^2-y^2$ is never $\equiv2\pmod4$; squares are $0,1\pmod4$; sums of factorials eventually end in a fixed digit.</li>
+<li><b>Complete the square</b> to reach a difference of squares: $x^2=y^2+2y+13$ becomes $x^2-(y+1)^2=12$.</li>
+<li><b>Order the variables</b> ($x\le y\le z$) to bound the smallest one. For $\frac1x+\frac1y+\frac1z=1$ this gives $x\le3$.</li>
+<li><b>Factor powers:</b> $2^a-2^b=2^b(2^{a-b}-1)$; match the power of 2 against the odd part.</li>
+<li>Growth: exponentials and factorials outgrow polynomials, so only small cases need checking.</li>
+</ul></div>
+<p>Sums of two squares: list the squares below $N$ and check. $50=1+49=25+25$.</p>
+</script>
+<script type="text/plain" id="L-dioph-floor">
+<h2>Floor Function Equations</h2>
+<div class="box"><h4>Method</h4><ul>
+<li>Write $x=n+f$ with $n=\lfloor x\rfloor$ an integer and $0\le f\lt 1$.</li>
+<li>Equations like $x+\lfloor x\rfloor=v$ become $2n+f=v$, which forces $n=\lfloor v/2\rfloor$ (and requires $v-2n\lt 1$).</li>
+<li>For $x^2=g(\lfloor x\rfloor)$: try each integer $n$, compute the candidate $x$, then check that $\lfloor x\rfloor=n$.</li>
+<li>Periodic behavior: $\lfloor\frac n2\rfloor+\lfloor\frac n3\rfloor+\dots$ depends on $n$ modulo the lcm. Check one period.</li>
+</ul></div>
+<p>Helpful identities: $\lfloor x+k\rfloor=\lfloor x\rfloor+k$ for integer $k$; $\lceil x\rceil=-\lfloor-x\rfloor$; $\lfloor x\rfloor+\lfloor-x\rfloor=-1$ for non-integers.</p>
+</script>
+
+=== BANK ===
+@@ dioph-lin
+Q: Using only $5$-cent and $7$-cent stamps, what is the largest amount (in cents) that cannot be made exactly?
+L: 1
+A: 23
+W: 24
+W: 17
+W: 35
+W: 12
+S: Chicken McNugget: $5\cdot7-5-7=23$.
+---
+Q: How many ordered pairs of nonnegative integers satisfy $3x+5y=100$?
+L: 2
+A: 7
+W: 6
+W: 8
+W: 20
+W: 34
+S: $5y\equiv100\equiv1\pmod3$, so $y\equiv2\pmod3$, with $0\le y\le20$: $y=2,5,8,11,14,17,20$. That is $7$.
+---
+Q: How many positive integer amounts cannot be made using only $4$s and $9$s?
+L: 2
+A: 12
+W: 23
+W: 24
+W: 11
+W: 8
+S: $\frac{(4-1)(9-1)}{2}=12$.
+---
+Q: How many ordered pairs of positive integers satisfy $2x+3y=25$?
+L: 1
+A: 4
+W: 3
+W: 5
+W: 8
+W: 12
+S: $y$ must be odd, with $3y\le23$: $y=1,3,5,7$ (giving $x=11,8,5,2$).
+---
+Q: How many integer solutions does $6x+9y=20$ have?
+L: 1
+A: 0
+W: 1
+W: 2
+W: 3
+W: 6
+S: $\gcd(6,9)=3$ does not divide $20$, so there are no solutions.
+---
+Q: Using $3$-cent and $7$-cent stamps, what is the fewest number of stamps that make exactly $50$ cents?
+L: 2
+A: 10
+W: 14
+W: 8
+W: 12
+W: 17
+S: $7y\equiv50\pmod3$ gives $y\equiv2\pmod3$, so $y=2$ or $5$. $y=5$ gives $x=5$ (10 stamps); $y=2$ gives $x=12$ (14 stamps). Minimum $10$.
+---
+Q: How many ordered pairs of positive integers satisfy $7x+11y=200$?
+L: 2
+A: 3
+W: 2
+W: 4
+W: 5
+W: 18
+S: $11y\equiv200\pmod7$, i.e. $4y\equiv4$, so $y\equiv1\pmod7$: $y=1,8,15$ (giving $x=27,16,5$). That is $3$.
+---
+Q: Positive integers satisfy $13x-8y=1$. What is the smallest possible value of $x+y$?
+L: 3
+A: 13
+W: 5
+W: 8
+W: 21
+W: 3
+S: $13x\equiv1\pmod8$ means $5x\equiv1$, so $x\equiv5$. The smallest is $x=5$, $y=8$: $x+y=13$.
+---
+@@ dioph-sfft
+Q: How many ordered pairs of positive integers satisfy $xy+x+y=23$?
+L: 2
+A: 6
+W: 8
+W: 4
+W: 3
+W: 7
+S: $(x+1)(y+1)=24$ with both factors at least $2$. $24$ has $8$ divisors; removing $1\cdot24$ and $24\cdot1$ leaves $6$.
+---
+Q: How many ordered pairs of positive integers satisfy $\dfrac1x+\dfrac1y=\dfrac16$?
+L: 2
+A: 9
+W: 5
+W: 18
+W: 8
+W: 10
+S: $(x-6)(y-6)=36$. Negative factor pairs give nonpositive values, so we count the positive divisors of 36: $9$.
+---
+Q: Positive integers satisfy $xy-3x-3y=0$. What is the largest possible value of $x+y$?
+L: 2
+A: 16
+W: 12
+W: 15
+W: 18
+W: 13
+S: $(x-3)(y-3)=9$: $(1,9),(3,3),(9,1)$ give $(4,12),(6,6),(12,4)$. The largest sum is $16$.
+---
+Q: How many ordered pairs of positive integers satisfy $xy=2x+3y$?
+L: 2
+A: 4
+W: 2
+W: 6
+W: 8
+W: 3
+S: $(x-3)(y-2)=6$. The positive factor pairs give 4 solutions; the negative pairs give nonpositive values.
+---
+Q: A rectangle has integer side lengths and its area equals its perimeter. How many non-congruent such rectangles are there?
+L: 2
+A: 2
+W: 3
+W: 1
+W: 4
+W: 5
+S: $ab=2a+2b$ gives $(a-2)(b-2)=4$: $3\times6$ and $4\times4$.
+---
+Q: Positive integers satisfy $2xy+x+y=38$. What is $x+y$?
+L: 3
+A: 8
+W: 7
+W: 10
+W: 12
+W: 9
+S: Multiply by 2 and add 1: $(2x+1)(2y+1)=77=7\cdot11$. So $\{x,y\}=\{3,5\}$ and $x+y=8$.
+---
+Q: How many ordered pairs of positive integers satisfy $xy=x+y+10$?
+L: 1
+A: 2
+W: 1
+W: 4
+W: 11
+W: 0
+S: $(x-1)(y-1)=11$, which is prime: $(2,12)$ and $(12,2)$.
+---
+Q: How many ordered pairs of positive integers satisfy $\dfrac1a+\dfrac1b=\dfrac12$?
+L: 1
+A: 3
+W: 2
+W: 4
+W: 5
+W: 6
+S: $(a-2)(b-2)=4$ has positive factor pairs $(1,4),(2,2),(4,1)$, giving $3$ solutions.
+---
+@@ dioph-bound
+Q: How many ordered pairs of positive integers satisfy $x^2+y^2=50$?
+L: 1
+A: 3
+W: 2
+W: 4
+W: 6
+W: 1
+S: $50=1+49=25+25$: $(1,7),(7,1),(5,5)$.
+---
+Q: How many integer solutions does $x^2-y^2=2026$ have?
+L: 2
+A: 0
+W: 1
+W: 2
+W: 4
+W: 8
+S: $x^2-y^2=(x-y)(x+y)$ is odd or a multiple of 4. $2026\equiv2\pmod4$, so there are no solutions.
+---
+Q: For how many positive integers $n$ is $1!+2!+\cdots+n!$ a perfect square?
+L: 2
+A: 2
+W: 1
+W: 3
+W: 4
+W: 0
+S: $n=1$: $1$ ✓. $n=2$: $3$. $n=3$: $9$ ✓. For $n\ge4$ the sum ends in $3$ ($33$ plus multiples of 10), and no square ends in 3. So $2$.
+---
+Q: Positive integers satisfy $x^2=y^2+2y+13$. What is $x+y$?
+L: 2
+A: 5
+W: 4
+W: 6
+W: 7
+W: 12
+S: $x^2-(y+1)^2=12$, so $(x-y-1)(x+y+1)=12$ with both factors the same parity: $2\cdot6$. Then $x=4$, $y=1$, and $x+y=5$.
+---
+Q: How many triples of positive integers $x\le y\le z$ satisfy $\dfrac1x+\dfrac1y+\dfrac1z=1$?
+L: 3
+A: 3
+W: 2
+W: 4
+W: 6
+W: 10
+S: $x$ is the smallest, so $\frac3x\ge1$ and $x\le3$ (and $x\ge2$).
+$x=3$: $(3,3,3)$. $x=2$: $\frac1y+\frac1z=\frac12$ gives $(4,4)$ and $(3,6)$. Total $3$.
+---
+Q: Positive integers satisfy $2^a-2^b=48$. What is $a+b$?
+L: 2
+A: 10
+W: 8
+W: 12
+W: 9
+W: 11
+S: $2^b(2^{a-b}-1)=16\cdot3$, so $b=4$ and $2^{a-b}=4$, giving $a=6$. Then $a+b=10$.
+---
+Q: How many ordered pairs of integers satisfy $xy=x+y$?
+L: 1
+A: 2
+W: 1
+W: 3
+W: 4
+W: 0
+S: $(x-1)(y-1)=1$, so both factors are $1$ or both are $-1$: $(2,2)$ and $(0,0)$.
+---
+Q: For how many positive integers $n$ is $n^2+12$ a perfect square?
+L: 1
+A: 1
+W: 2
+W: 0
+W: 3
+W: 4
+S: $m^2-n^2=12$ gives $(m-n)(m+n)=12$ with matching parity: $2\cdot6$, so $n=2$. Only one.
+---
+@@ dioph-floor
+Q: What real $x$ satisfies $x+\lfloor x\rfloor=8.4$?
+L: 1
+A: \frac{22}{5}
+W: \frac{21}{5}
+W: 4
+W: \frac{42}{5}
+W: \frac{23}{5}
+S: With $x=n+f$: $2n+f=8.4$ and $0\le f\lt 1$, so $n=4$ and $f=0.4$. Thus $x=4.4=\frac{22}5$.
+---
+Q: For how many integers $n$ with $1\le n\le100$ does $\left\lfloor\frac n2\right\rfloor+\left\lfloor\frac n3\right\rfloor+\left\lfloor\frac n6\right\rfloor=n$?
+L: 2
+A: 16
+W: 17
+W: 33
+W: 50
+W: 15
+S: Write $n=6k+r$. The left side is $6k+\lfloor\frac r2\rfloor+\lfloor\frac r3\rfloor$, which equals $6k+r$ only for $r=0$. So $n$ is a multiple of 6: $16$ values.
+---
+Q: How many real numbers $x$ satisfy $x^2=2\lfloor x\rfloor+3$?
+L: 3
+A: 3
+W: 2
+W: 4
+W: 1
+W: 5
+S: Let $n=\lfloor x\rfloor$, so $x=\pm\sqrt{2n+3}$, and check the floor.
+Positive: $n=2$ gives $\sqrt7\approx2.65$ ✓; $n=3$ gives $3$ ✓; others fail.
+Negative: $n=-1$ gives $x=-1$ ✓. Total $3$.
+---
+Q: For how many integers $n$ with $1\le n\le50$ does $\lfloor\sqrt n\rfloor$ divide $n$?
+L: 3
+A: 19
+W: 18
+W: 20
+W: 21
+W: 14
+S: For $m=\lfloor\sqrt n\rfloor$ from 1 to 6, the multiples of $m$ in $[m^2,m^2+2m]$ are $m^2,m^2+m,m^2+2m$ (3 each): $18$. For $m=7$, $n\in\{49,50\}$ adds only $49$. Total $19$.
+---
+Q: What is $\lfloor2.5\rfloor+\lceil2.5\rceil+\lfloor-2.5\rfloor+\lceil-2.5\rceil$?
+L: 1
+A: 0
+W: 1
+W: -1
+W: 2
+W: 10
+S: $2+3+(-3)+(-2)=0$.
+---
+Q: How many real numbers $x$ satisfy $\lfloor x\rfloor=x^2$?
+L: 2
+A: 2
+W: 1
+W: 3
+W: 0
+W: 4
+S: $x^2=n$ is a nonnegative integer, so $x\ge0$ (negative $x$ would have a negative floor). $x=\sqrt n$ with $n\le\sqrt n\lt n+1$ forces $n\in\{0,1\}$: $x=0,1$.
+---
+Q: If $\lfloor x\rfloor=5$ and $x-\lfloor x\rfloor=0.3$, what is $\lfloor2x\rfloor$?
+L: 1
+A: 10
+W: 11
+W: 12
+W: 6
+W: 13
+S: $x=5.3$, $2x=10.6$, so $\lfloor2x\rfloor=10$.
+---
+Q: How many distinct values does $\left\lfloor\frac n3\right\rfloor$ take for $n=1,2,\dots,100$?
+L: 1
+A: 34
+W: 33
+W: 100
+W: 35
+W: 67
+S: The values run through every integer from $0$ to $33$: $34$ values.
+
+=== GENS ===
+GENS['dioph-lin']=[
+r=>{let a=ri(r,2,12),b=ri(r,3,15);if(gcd(a,b)!==1||a===b)return GENS['dioph-lin'][0](r);const ask=r()<.5;
+ return ask?{lvl:1,q:T`Using only ${a}-cent and ${b}-cent stamps, what is the largest amount (in cents) that cannot be made exactly?`,a:a*b-a-b,w:[a*b,a*b-a,a*b-b,a+b,a*b-a-b+1],s:T`Chicken McNugget: $${a}\cdot${b}-${a}-${b}=${a*b-a-b}$.`}
+ :{lvl:2,q:T`How many positive integer amounts cannot be made using only ${a}s and ${b}s?`,a:(a-1)*(b-1)/2,w:[a*b-a-b,(a-1)*(b-1),(a-1)*(b-1)/2+1,a+b],s:T`$\frac{(${a}-1)(${b}-1)}{2}=${(a-1)*(b-1)/2}$.`}},
+r=>{let a=ri(r,2,9),b=ri(r,2,11);if(gcd(a,b)!==1)return GENS['dioph-lin'][1](r);const c=ri(r,a*b,a*b*6);const pos=r()<.5;let n=0;
+ for(let y=pos?1:0;b*y<=c;y++){const rem=c-b*y;if(rem%a===0&&(pos?rem>0:rem>=0))n++}
+ return{lvl:2,q:T`How many ordered pairs of ${pos?'positive':'nonnegative'} integers satisfy $${a}x+${b}y=${c}$?`,a:n,w:[n+1,n-1>=0?n-1:n+2,Math.floor(c/(a*b)),n+2],s:T`$y$ must lie in a single residue class mod ${a}. Counting the ${pos?'positive':'nonnegative'} $y$ with $${b}y${pos?'\\lt':'\\le'}${c}$ in that class gives $${n}$.`}},
+r=>{let a=ri(r,3,9),b=ri(r,a+1,13);if(gcd(a,b)!==1)return GENS['dioph-lin'][2](r);const c=ri(r,a*b-a-b+1,a*b*3);let best=1e9;for(let y=0;b*y<=c;y++){const rem=c-b*y;if(rem%a===0)best=Math.min(best,y+rem/a)}
+ return{lvl:2,q:T`Using ${a}-cent and ${b}-cent stamps, what is the fewest stamps that make exactly ${c} cents?`,a:best,w:[best+1,best+2,Math.ceil(c/b),Math.floor(c/a)].filter(x=>x!==best),s:T`Use as many ${b}-cent stamps as possible while making the remainder a multiple of ${a}. The minimum is $${best}$ stamps.`}},
+];
+GENS['dioph-sfft']=[
+r=>{const a=ri(r,1,6),b=ri(r,1,6),N=ri(r,10,80);const c=N-a*b;let n=0;for(let d=1;d<=N;d++)if(N%d===0&&d>b&&N/d>a)n++;
+ return{lvl:2,q:T`How many ordered pairs of positive integers satisfy $xy+${a===1?'':a}x+${b===1?'':b}y=${c}$?`,a:n,w:[ndiv(N),n+1,n-1>=0?n-1:n+2,ndiv(N)-2].filter(x=>x!==n),
+ s:T`$(x+${b})(y+${a})=${c}+${a*b}=${N}$. Count the divisor pairs with $x+${b}>${b}$ and $y+${a}>${a}$: $${n}$.`}},
+r=>{const n=ri(r,2,30);const d=ndiv(n*n);
+ return{lvl:2,q:T`How many ordered pairs of positive integers satisfy $\dfrac1x+\dfrac1y=\dfrac1{${n}}$?`,a:d,w:[ndiv(n),2*ndiv(n),d+1,d-1],s:T`$(x-${n})(y-${n})=${n*n}$, which has $d(${n*n})=${d}$ positive divisor pairs.`}},
+r=>{const a=ri(r,1,5),b=ri(r,1,5);const N=a*b;let n=0;for(let d=1;d<=N;d++)if(N%d===0)n++;
+ return{lvl:2,q:T`How many ordered pairs of positive integers satisfy $xy=${a===1?'':a}x+${b===1?'':b}y$?`,a:n,w:[n+1,n-1>0?n-1:n+2,2*n,N].filter(x=>x!==n),s:T`$(x-${b})(y-${a})=${N}$. The positive divisor pairs give $${n}$ solutions; the negative pairs make $x$ or $y$ nonpositive.`}},
+];
+GENS['dioph-bound']=[
+r=>{const N=pick(r,[25,50,65,85,100,125,130,145,169,170,185,200,205,221,250,260,289,290,325]);let n=0;for(let x=1;x*x<N;x++){const y=Math.round(Math.sqrt(N-x*x));if(y>0&&y*y===N-x*x)n++}
+ return{lvl:1,q:T`How many ordered pairs of positive integers satisfy $x^2+y^2=${N}$?`,a:n,w:[n+1,n-1>0?n-1:n+2,n*2,n*4].filter(x=>x!==n),s:T`List the squares below ${N} and check which pairs add to ${N}: $${n}$ ordered pairs.`}},
+r=>{const k=ri(r,3,60);let n=0,lst=[];for(let x=1;x<=k;x++){const m=Math.round(Math.sqrt(x*x+k));if(m*m===x*x+k){n++;lst.push(x)}}
+ return{lvl:1,q:T`For how many positive integers $n$ is $n^2+${k}$ a perfect square?`,a:n,w:[0,1,2,3,4].filter(x=>x!==n),s:T`$(m-n)(m+n)=${k}$ with factors of the same parity. ${n?'This gives $n='+lst.join(',')+'$.':'There are none.'}`}},
+r=>{const b=ri(r,0,6),d=ri(r,1,5);const N=2**b*(2**d-1);
+ return{lvl:2,q:T`Nonnegative integers satisfy $2^a-2^b=${N}$. What is $a+b$?`,a:2*b+d,w:[2*b+d+1,b+d,2*(b+d),2*b+d-1],s:T`$2^b(2^{a-b}-1)=${N}=2^{${b}}\cdot${2**d-1}$, so $b=${b}$, $a-b=${d}$, and $a+b=${2*b+d}$.`}},
+];
+GENS['dioph-floor']=[
+r=>{const n=ri(r,-5,12),f=F(ri(r,1,9),10);const v=F(2*n).add(f);const x=F(n).add(f);
+ return{lvl:1,q:T`What real number $x$ satisfies $x+\lfloor x\rfloor=${v.tex()}$?`,a:x,w:[v.div(2),x.sub(F(1,10)),x.add(1),F(n)],s:T`With $x=n+f$: $2n+f=${v.tex()}$ and $0\le f\lt 1$, so $n=${n}$ and $f=${f.tex()}$. Then $x=${x.tex()}$.`}},
+r=>{const n=ri(r,-6,9),f=ri(r,1,9),k=ri(r,2,5);const x=n+f/10;const v=Math.floor(k*x+1e-9);
+ return{lvl:1,q:T`If $\lfloor x\rfloor=${n}$ and $x-\lfloor x\rfloor=${f/10}$, what is $\lfloor${k}x\rfloor$?`,a:v,w:[v+1,v-1,k*n,k*n+k-1===v?v+2:k*n+k-1],s:T`$x=${(n+f/10).toFixed(1)}$, so $${k}x=${(k*(n+f/10)).toFixed(1)}$ and the floor is $${v}$.`}},
+r=>{const k=ri(r,2,9),N=ri(r,20,300);const v=Math.floor(N/k)+1;
+ return{lvl:1,q:T`How many distinct values does $\left\lfloor\frac n{${k}}\right\rfloor$ take for $n=1,2,\dots,${N}$?`,a:v,w:[v-1,v+1,N,Math.ceil(N/k)+1===v?v+2:Math.ceil(N/k)+1],s:T`The values run from $0$ to $\lfloor\frac{${N}}{${k}}\rfloor=${v-1}$ with none skipped: $${v}$ values.`}},
+r=>{const N=ri(r,20,200);let c=0;for(let n=1;n<=N;n++)if(n%Math.floor(Math.sqrt(n)+1e-9)===0)c++;
+ return{lvl:3,q:T`For how many integers $n$ with $1\le n\le${N}$ does $\lfloor\sqrt n\rfloor$ divide $n$?`,a:c,w:[c+1,c-1,c+3,3*Math.floor(Math.sqrt(N))],s:T`For each $m=\lfloor\sqrt n\rfloor$, the multiples of $m$ in $[m^2,m^2+2m]$ are $m^2,m^2+m,m^2+2m$ (3 per full block). Adjusting for the last partial block gives $${c}$.`}},
+];

@@ -1,0 +1,295 @@
+=== LESSONS ===
+<script type="text/plain" id="L-cplx-arith">
+<h2>Arithmetic, Conjugates &amp; Modulus</h2>
+<div class="box"><h4>Basics</h4><ul>
+<li>$i^2=-1$; the powers of $i$ cycle $i,-1,-i,1$, so reduce the exponent mod 4.</li>
+<li>$(a+bi)(c+di)=(ac-bd)+(ad+bc)i$.</li>
+<li>Conjugate $\overline{a+bi}=a-bi$, and $z\bar z=|z|^2=a^2+b^2$.</li>
+<li>Division: multiply the top and bottom by the conjugate of the denominator.</li>
+<li>$|zw|=|z||w|$ and $\left|\frac zw\right|=\frac{|z|}{|w|}$.</li>
+</ul></div>
+<h3>Solving for $z$</h3>
+<p>Write $z=a+bi$ and match the real and imaginary parts. For example, $z+2\bar z=9+4i$ gives $3a=9$ and $-b=4$.</p>
+<p>Useful powers: $(1+i)^2=2i$ and $(1-i)^2=-2i$.</p>
+</script>
+<script type="text/plain" id="L-cplx-polar">
+<h2>Polar Form &amp; De Moivre's Theorem</h2>
+<div class="box"><h4>Polar form</h4><ul>
+<li>$z=r(\cos\theta+i\sin\theta)=r\operatorname{cis}\theta$, with $r=|z|$ and $\theta=\arg z$.</li>
+<li>Multiplying multiplies the moduli and <b>adds</b> the angles. Multiplying by $i$ rotates by $90^\circ$.</li>
+<li><b>De Moivre:</b> $(r\operatorname{cis}\theta)^n=r^n\operatorname{cis}(n\theta)$.</li>
+</ul></div>
+<h3>Common forms</h3>
+<ul><li>$1+i=\sqrt2\operatorname{cis}45^\circ$, $\quad1+\sqrt3i=2\operatorname{cis}60^\circ$, $\quad-1=\operatorname{cis}180^\circ$.</li>
+<li>$z^n$ is real exactly when $n\theta$ is a multiple of $180^\circ$.</li>
+<li>$|z^n|=|z|^n$; for example $|(3+4i)^3|=125$ without expanding anything.</li></ul>
+</script>
+<script type="text/plain" id="L-cplx-roots">
+<h2>Roots of Unity</h2>
+<div class="box"><h4>The $n$th roots of unity</h4><ul>
+<li>The solutions of $z^n=1$ are $\omega^k$ for $k=0,\dots,n-1$, where $\omega=\operatorname{cis}\frac{360^\circ}{n}$. They form a regular $n$-gon on the unit circle.</li>
+<li>They sum to $0$ (for $n>1$), and their product is $(-1)^{n+1}$.</li>
+<li>$\sum_{j=0}^{n-1}\omega^{jk}$ equals $n$ if $n\mid k$ and $0$ otherwise.</li>
+<li>Cube roots: $\omega^3=1$ and $1+\omega+\omega^2=0$, so $\omega^2=\bar\omega$.</li>
+</ul></div>
+<h3>More</h3>
+<ul><li>$z^n=c$: the roots have modulus $|c|^{1/n}$ and are evenly spaced. Vieta gives their sum ($0$) and product.</li>
+<li>The regular $n$-gon inscribed in the unit circle has area $\frac n2\sin\frac{360^\circ}{n}$.</li>
+<li>$\omega+\omega^2+\dots+\omega^{n-1}=-1$.</li></ul>
+</script>
+
+=== BANK ===
+@@ cplx-arith
+Q: What is $(3+2i)(1-4i)$?
+L: 1
+A: 11-10i
+W: 11+10i
+W: -5-10i
+W: 3-8i
+W: -5+14i
+S: $3-12i+2i-8i^2=3-10i+8=11-10i$.
+---
+Q: What is $i^{2027}$?
+L: 1
+A: -i
+W: i
+W: -1
+W: 1
+W: 0
+S: $2027\equiv3\pmod4$, and $i^3=-i$.
+---
+Q: What is $\dfrac{1+i}{1-i}$?
+L: 1
+A: i
+W: -i
+W: 1
+W: 0
+W: 1+i
+S: $\frac{(1+i)^2}{(1-i)(1+i)}=\frac{2i}{2}=i$.
+---
+Q: What is $|3-4i|$?
+L: 1
+A: 5
+W: 7
+W: 1
+W: 25
+W: \sqrt{7}
+S: $\sqrt{9+16}=5$.
+---
+Q: What is $(1+i)^{10}$?
+L: 2
+A: 32i
+W: -32i
+W: 32
+W: 1024i
+W: -32
+S: $(1+i)^2=2i$, so $(1+i)^{10}=(2i)^5=32i^5=32i$.
+---
+Q: A complex number $z$ satisfies $z+2\bar z=9+4i$. What is $|z|$?
+L: 2
+A: 5
+W: 4
+W: 3
+W: 7
+W: \sqrt{97}
+S: With $z=a+bi$: $3a-bi=9+4i$, so $a=3$, $b=-4$, and $|z|=5$.
+---
+Q: The complex number $z=3+bi$ with $b>0$ has $|z|=5$. What is the real part of $z^2$?
+L: 2
+A: -7
+W: 7
+W: 25
+W: -16
+W: 9
+S: $b=4$, so $z^2=9-16+24i$, with real part $-7$.
+---
+Q: How many complex numbers $z$ satisfy $z^2=\bar z$?
+L: 3
+A: 4
+W: 3
+W: 2
+W: 5
+W: 6
+S: Taking moduli: $|z|^2=|z|$, so $|z|=0$ or $1$. If $|z|=1$, multiply by $z$: $z^3=z\bar z=1$, which gives 3 cube roots of unity. Adding $z=0$: $4$.
+---
+@@ cplx-polar
+Q: What is $(1+\sqrt3\,i)^6$?
+L: 2
+A: 64
+W: -64
+W: 64i
+W: 32
+W: 6
+S: $1+\sqrt3i=2\operatorname{cis}60^\circ$, so the power is $64\operatorname{cis}360^\circ=64$.
+---
+Q: What is the argument of $-1+i$, in degrees (between $0$ and $360$)?
+L: 1
+A: 135
+W: 45
+W: 225
+W: 315
+W: 90
+S: The point $(-1,1)$ lies in quadrant II, on the line $y=-x$: $135^\circ$.
+---
+Q: What is $(\cos20^\circ+i\sin20^\circ)^9$?
+L: 1
+A: -1
+W: 1
+W: i
+W: -i
+W: 9
+S: De Moivre: $\operatorname{cis}180^\circ=-1$.
+---
+Q: What is $|(3+4i)^3|$?
+L: 1
+A: 125
+W: 25
+W: 5
+W: 343
+W: 75
+S: $|z|^3=5^3=125$.
+---
+Q: The point $2+3i$ is rotated $90^\circ$ counterclockwise about the origin. What is the result?
+L: 1
+A: -3+2i
+W: 3-2i
+W: -2+3i
+W: 2-3i
+W: -3-2i
+S: Multiply by $i$: $2i+3i^2=-3+2i$.
+---
+Q: What is the smallest positive integer $n$ such that $(1+i)^n$ is a real number?
+L: 2
+A: 4
+W: 2
+W: 8
+W: 1
+W: 3
+S: $\arg(1+i)^n=45n^\circ$ must be a multiple of $180^\circ$, so $n=4$. (Indeed $(1+i)^4=-4$.)
+---
+Q: What is $\left(\dfrac{1+i}{\sqrt2}\right)^{2026}$?
+L: 2
+A: i
+W: 1
+W: -1
+W: -i
+W: \frac{1+i}{\sqrt{2}}
+S: $\frac{1+i}{\sqrt2}=\operatorname{cis}45^\circ$, which has period 8. $2026\equiv2\pmod8$, so the value is $\operatorname{cis}90^\circ=i$.
+---
+Q: What is $|1+\operatorname{cis}60^\circ|$?
+L: 2
+A: \sqrt{3}
+W: 2
+W: 1
+W: \sqrt{2}
+W: \frac{\sqrt{3}}{2}
+S: $1+\frac12+\frac{\sqrt3}2i$ has modulus $\sqrt{\frac94+\frac34}=\sqrt3$.
+---
+@@ cplx-roots
+Q: Let $\omega\ne1$ satisfy $\omega^3=1$. What is $(1+\omega)(1+\omega^2)$?
+L: 2
+A: 1
+W: 0
+W: -1
+W: 2
+W: \omega
+S: $1+\omega+\omega^2+\omega^3=0+1=1$.
+---
+Q: What is the sum of all sixth roots of unity?
+L: 1
+A: 0
+W: 1
+W: 6
+W: -1
+W: i
+S: They are the roots of $z^6-1$, whose $z^5$ coefficient is $0$.
+---
+Q: What is the product of all fifth roots of unity?
+L: 2
+A: 1
+W: -1
+W: 0
+W: 5
+W: i
+S: For $z^5-1$, the product of the roots is $(-1)^5\cdot(-1)=1$.
+---
+Q: What is the area of the polygon whose vertices are the sixth roots of unity?
+L: 2
+A: \frac{3\sqrt{3}}{2}
+W: \frac{3\sqrt{3}}{4}
+W: 6
+W: \sqrt{3}
+W: \frac{\sqrt{3}}{2}
+S: It is a regular hexagon with side $1$: $6\cdot\frac{\sqrt3}4=\frac{3\sqrt3}2$.
+---
+Q: Let $\omega\ne1$ satisfy $\omega^3=1$. What is $\omega^{2026}+\omega^{2027}$?
+L: 2
+A: -1
+W: 1
+W: 0
+W: 2
+W: \omega
+S: $2026\equiv1$ and $2027\equiv2\pmod3$, so the sum is $\omega+\omega^2=-1$.
+---
+Q: How many of the sixth roots of unity are real?
+L: 1
+A: 2
+W: 1
+W: 6
+W: 3
+W: 0
+S: Only $1$ and $-1$.
+---
+Q: What is the product of the four complex solutions of $z^4=-16$?
+L: 2
+A: 16
+W: -16
+W: 0
+W: 2
+W: 4
+S: For $z^4+16=0$, Vieta gives a product of $(+1)\cdot16=16$.
+---
+Q: Let $\omega=\operatorname{cis}\frac{360^\circ}{7}$. What is $\omega+\omega^2+\cdots+\omega^6$?
+L: 2
+A: -1
+W: 0
+W: 1
+W: 6
+W: 7
+S: All seven roots sum to $0$, and $\omega^0=1$ is missing: $-1$.
+
+=== GENS ===
+const CX=(a,b)=>{let s;if(b===0)s=String(a);else if(a===0)s=(b===1?'':b===-1?'-':b)+'i';else s=a+(b>0?'+':'-')+(Math.abs(b)===1?'':Math.abs(b))+'i';return O(s,a*1000+b+0.5)};
+GENS['cplx-arith']=[
+r=>{const a=ri(r,-6,6),b=ri(r,-6,6)||1,c=ri(r,-6,6),d=ri(r,-6,6)||1;const re=a*c-b*d,im=a*d+b*c;
+ return{lvl:1,q:T`What is $(${CX(a,b).tex})(${CX(c,d).tex})$?`,a:CX(re,im),w:[CX(a*c+b*d,im),CX(re,-im),CX(a*c,b*d),CX(re,a*d-b*c),CX(-re,im)],s:T`$(ac-bd)+(ad+bc)i=(${a*c}-${P(b*d)})+(${a*d}+${P(b*c)})i=${CX(re,im).tex}$.`}},
+r=>{const n=ri(r,10,5000);const v=[CX(1,0),CX(0,1),CX(-1,0),CX(0,-1)][n%4];
+ return{lvl:1,q:T`What is $i^{${n}}$?`,a:v,w:[CX(1,0),CX(0,1),CX(-1,0),CX(0,-1),CX(0,0)].filter(x=>x.tex!==v.tex),s:T`$${n}\equiv${n%4}\pmod4$, so $i^{${n}}=${v.tex}$.`}},
+r=>{const qa=ri(r,-5,5),qb=ri(r,-5,5),c=ri(r,-4,4)||1,d=ri(r,-4,4)||1;const na=qa*c-qb*d,nb=qa*d+qb*c;if(na===0&&nb===0)return GENS['cplx-arith'][2](r);
+ return{lvl:2,q:T`What is $\dfrac{${CX(na,nb).tex}}{${CX(c,d).tex}}$?`,a:CX(qa,qb),w:[CX(qb,qa),CX(qa,-qb),CX(-qa,qb),CX(na,nb),CX(qa+1,qb)],s:T`Multiply by the conjugate $${CX(c,-d).tex}$: the denominator becomes $${c*c+d*d}$, and the quotient is $${CX(qa,qb).tex}$. (Check: $(${CX(qa,qb).tex})(${CX(c,d).tex})=${CX(na,nb).tex}$.)`}},
+r=>{const [a,b,c]=pick(r,TRIPLES);const k=pick(r,[1,2,3]);const sa=pick(r,[1,-1]),sb=pick(r,[1,-1]);
+ return{lvl:1,q:k>1?T`What is $\left|\left(${CX(sa*a,sb*b).tex}\right)^{${k}}\right|$?`:T`What is $|${CX(sa*a,sb*b).tex}|$?`,a:c**k,w:[(a+b)**k,c**k*2,c**(k+1),c*k,a*b],s:T`$|z|=\sqrt{${a*a}+${b*b}}=${c}$${k>1?', so the answer is $'+c+'^'+k+'='+c**k+'$':''}.`}},
+r=>{const k=ri(r,1,8);const pw=2*k;const m=2**k;const v=[CX(m,0),CX(0,m),CX(-m,0),CX(0,-m)][k%4];
+ return{lvl:2,q:T`What is $(1+i)^{${pw}}$?`,a:v,w:[CX(m,0),CX(0,m),CX(-m,0),CX(0,-m),CX(2**pw,0)].filter(x=>x.tex!==v.tex),s:T`$(1+i)^2=2i$, so $(1+i)^{${pw}}=(2i)^{${k}}=${m}i^{${k}}=${v.tex}$.`}},
+];
+GENS['cplx-polar']=[
+r=>{const k=ri(r,1,4);const n=3*k;const m=2**n;const v=CX(k%2?-m:m,0);
+ return{lvl:2,q:T`What is $(1+\sqrt3\,i)^{${n}}$?`,a:v,w:[CX(k%2?m:-m,0),CX(0,m),CX(0,-m),CX(2**(n-1)*(k%2?-1:1),0)],s:T`$1+\sqrt3i=2\operatorname{cis}60^\circ$, so the power is $${m}\operatorname{cis}${60*n}^\circ=${v.tex}$.`}},
+r=>{const pts=[[1,0,0],[1,1,45],[0,1,90],[-1,1,135],[-1,0,180],[-1,-1,225],[0,-1,270],[1,-1,315]];const [x,y,ang]=pick(r,pts);const k=ri(r,1,5);
+ return{lvl:1,q:T`What is the argument of $${CX(k*x,k*y).tex}$, in degrees (from $0$ up to but not including $360$)?`,a:ang,w:[(ang+90)%360,(ang+180)%360,(ang+270)%360,(360-ang)%360===ang?(ang+45)%360:(360-ang)%360],s:T`The point $(${k*x},${k*y})$ makes an angle of $${ang}^\circ$ with the positive real axis.`}},
+r=>{const t=pick(r,[10,15,18,20,30,36,40,45,60,72]);const n=ri(r,2,30);const tot=(t*n)%360;const map={0:CX(1,0),90:CX(0,1),180:CX(-1,0),270:CX(0,-1)};if(!(tot in map))return GENS['cplx-polar'][2](r);
+ return{lvl:1,q:T`What is $(\cos${t}^\circ+i\sin${t}^\circ)^{${n}}$?`,a:map[tot],w:Object.values(map).filter(x=>x.tex!==map[tot].tex).concat([CX(n,0)]),s:T`De Moivre: $\operatorname{cis}${t*n}^\circ=\operatorname{cis}${tot}^\circ=${map[tot].tex}$.`}},
+r=>{const x=ri(r,-7,7),y=ri(r,-7,7)||2;const ccw=r()<.5;const v=ccw?CX(-y,x):CX(y,-x);
+ return{lvl:1,q:T`The point $${CX(x,y).tex}$ is rotated $90^\circ$ ${ccw?'counterclockwise':'clockwise'} about the origin. What is the result?`,a:v,w:[ccw?CX(y,-x):CX(-y,x),CX(-x,-y),CX(y,x),CX(-x,y)],s:T`Multiply by $${ccw?'i':'-i'}$: $${v.tex}$.`}},
+];
+GENS['cplx-roots']=[
+r=>{const n=ri(r,2,12),k=ri(r,1,30);const v=k%n===0?n:0;
+ return{lvl:2,q:T`Let $z_1,\dots,z_{${n}}$ be the ${n}th roots of unity. What is $z_1^{${k}}+z_2^{${k}}+\cdots+z_{${n}}^{${k}}$?`,a:v,w:[v===0?n:0,1,-1,k],s:T`$\sum\omega^{jk}$ is $n$ if $n\mid k$ and $0$ otherwise. Here ${n}${k%n===0?' divides':' does not divide'} ${k}: $${v}$.`}},
+r=>{const n=ri(r,2,15);const v=n%2?1:-1;
+ return{lvl:2,q:T`What is the product of all ${n}th roots of unity?`,a:v,w:[-v,0,n,(-1)**n===v?n+1:(-1)**n],s:T`For $z^{${n}}-1$, the product of the roots is $(-1)^{${n}}\cdot(-1)=${v}$.`}},
+r=>{const a=ri(r,10,3000),b=ri(r,10,3000);const s=[a%3,b%3].sort();const val=(e)=>e===0?'1':e===1?'\\omega':'\\omega^2';
+ const tbl={'0,0':O('2',2),'0,1':O('1+\\omega',1.1),'0,2':O('1+\\omega^2',1.2),'1,1':O('2\\omega',2.1),'1,2':O('-1',-1),'2,2':O('2\\omega^2',2.2)};const v=tbl[s.join(',')];
+ return{lvl:2,q:T`Let $\omega\ne1$ satisfy $\omega^3=1$. What is $\omega^{${a}}+\omega^{${b}}$?`,a:v,w:Object.values(tbl).filter(x=>x.tex!==v.tex).concat([O('0',0)]),s:T`Reduce the exponents mod 3: $${val(a%3)}+${val(b%3)}$${s.join(',')==='1,2'?', and $\\omega+\\omega^2=-1$':''}.`}},
+r=>{const n=pick(r,[3,4,6,8,12]);const areas={3:O('\\frac{3\\sqrt{3}}{4}',3*Math.sqrt(3)/4),4:O('2',2),6:O('\\frac{3\\sqrt{3}}{2}',3*Math.sqrt(3)/2),8:O('2\\sqrt{2}',2*Math.SQRT2),12:O('3',3)};
+ return{lvl:2,q:T`What is the area of the polygon whose vertices are the ${n}th roots of unity?`,a:areas[n],w:Object.values(areas).filter(x=>x.tex!==areas[n].tex).concat([O('\\pi',Math.PI)]),s:T`A regular ${n}-gon with circumradius 1 has area $\frac{${n}}{2}\sin\frac{360^\circ}{${n}}=${areas[n].tex}$.`}},
+];

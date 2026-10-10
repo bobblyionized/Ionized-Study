@@ -1,0 +1,521 @@
+=== LESSONS ===
+<script type="text/plain" id="L-func-eval">
+<h2>Evaluation, Domain &amp; Range</h2>
+<div class="box"><h4>Key ideas</h4><ul>
+<li><b>Evaluate carefully:</b> substitute with parentheses, e.g. $f(-2)$ for $f(x)=2x^2-3x+1$ is $2(4)+6+1$.</li>
+<li><b>Custom operations</b> ($a\star b$, $a\nabla b$) are just functions of two variables. Work from the innermost parentheses outward, and remember they are usually <i>not</i> commutative or associative.</li>
+<li><b>Domain:</b> denominators $\ne0$, even roots need radicand $\ge0$, logs need argument $>0$.</li>
+<li><b>Range:</b> find the extreme values (complete the square, or bound a fraction like $\frac{6}{x^2+2}\in(0,3]$).</li>
+<li>A linear function is determined by two values: slope $=\frac{f(b)-f(a)}{b-a}$.</li>
+</ul></div>
+<h3>Odd-function trick</h3>
+<p>For $f(x)=ax^7+bx^3+cx-5$, the part $g(x)=f(x)+5$ is odd. So $f(-7)=7$ means $g(-7)=12$, $g(7)=-12$, and $f(7)=-17$. You never need $a,b,c$.</p>
+<div class="ex"><b class="lbl">Example.</b> Find the minimum of $f(f(x))$ for $f(x)=x^2+6x+7$.
+<details><summary>Solution</summary>$f(x)=(x+3)^2-2\ge-2$. On $[-2,\infty)$, $f$ is increasing, so the minimum of $f(y)$ with $y\ge-2$ is $f(-2)=-1$.</details></div>
+</script>
+<script type="text/plain" id="L-func-comp">
+<h2>Composition &amp; Inverses</h2>
+<div class="box"><h4>Key ideas</h4><ul>
+<li>$(f\circ g)(x)=f(g(x))$: apply $g$ first. In general $f(g(x))\ne g(f(x))$.</li>
+<li><b>Inverse:</b> swap $x$ and $y$ and solve for $y$. Shortcut: $f^{-1}(a)=b$ exactly when $f(b)=a$, so to find $f^{-1}(5)$ solve $f(x)=5$.</li>
+<li>For $f(x)=\frac{ax+b}{cx+d}$: $f^{-1}(x)=\frac{dx-b}{-cx+a}$.</li>
+<li><b>Recovering $f$:</b> if $f(2x-1)=6x+5$, set $t=2x-1$, so $x=\frac{t+1}2$ and $f(t)=3t+8$. Or just pick the $x$ that makes the input what you need.</li>
+<li><b>Iteration:</b> compute $f(x), f(f(x)), \dots$ and look for a cycle. $\frac{1}{1-x}$ has period 3; $\frac{x+1}{x-1}$ is its own inverse (period 2).</li>
+<li>Iterating $f(x)=ax+b$: $f^{(n)}(x)=a^nx+b\frac{a^n-1}{a-1}$.</li>
+</ul></div>
+</script>
+<script type="text/plain" id="L-func-trans">
+<h2>Transformations &amp; Graphs</h2>
+<table class="t"><tr><th>New graph</th><th>Effect</th></tr>
+<tr><td>$y=f(x-h)+k$</td><td>shift right $h$, up $k$</td></tr>
+<tr><td>$y=-f(x)$</td><td>reflect over the $x$-axis</td></tr>
+<tr><td>$y=f(-x)$</td><td>reflect over the $y$-axis</td></tr>
+<tr><td>$y=af(x)$</td><td>vertical stretch by $a$</td></tr>
+<tr><td>$y=f(bx)$</td><td>horizontal compression by $b$ (zeros divide by $b$)</td></tr>
+<tr><td>$y=|f(x)|$</td><td>reflect the parts below the axis upward</td></tr></table>
+<h3>Even and odd</h3>
+<p>Even: $f(-x)=f(x)$ (symmetric about the $y$-axis). Odd: $f(-x)=-f(x)$ (symmetric about the origin, and $f(0)=0$ if defined).</p>
+<h3>Absolute value graphs</h3>
+<p>$y=a-|x-h|$ is a tent with peak $(h,a)$ and slopes $\pm1$. It meets the $x$-axis at $h\pm a$, so it encloses a triangle of area $a^2$.</p>
+<h3>Counting solutions</h3>
+<p>For $|g(x)|=c$, solve $g(x)=c$ and $g(x)=-c$ separately. For nested absolute values, peel one layer at a time.</p>
+</script>
+<script type="text/plain" id="L-func-floor">
+<h2>Piecewise, Floor &amp; Ceiling</h2>
+<div class="box"><h4>Definitions</h4><ul>
+<li>$\lfloor x\rfloor$ is the greatest integer $\le x$; $\lceil x\rceil$ is the least integer $\ge x$; $\{x\}=x-\lfloor x\rfloor\in[0,1)$.</li>
+<li>$\lfloor x\rfloor=n \iff n\le x\lt n+1$. Turn floor equations into inequalities.</li>
+<li>$\lfloor-x\rfloor=-\lceil x\rceil$, and $\lfloor x\rfloor+\lfloor-x\rfloor=-1$ for non-integers.</li>
+<li>$\lfloor\frac{n}{k}\rfloor$ is the number of multiples of $k$ in $\{1,\dots,n\}$.</li>
+</ul></div>
+<h3>Solving $x\lfloor x\rfloor=N$</h3>
+<p>Let $n=\lfloor x\rfloor$, so $x=\frac Nn$, and require $n\le\frac Nn\lt n+1$, i.e. $n^2\le N\lt n^2+n$.</p>
+<h3>Sums of floors</h3>
+<p>Group equal values. $\lfloor\frac k3\rfloor=m$ for exactly three consecutive $k$, so $\sum_{k=1}^{100}\lfloor k/3\rfloor$ is $3(1+\dots+32)+2\cdot33$.</p>
+<h3>Piecewise functions</h3>
+<p>Evaluate by first checking which rule applies. For compositions, find the inner value first, then pick the rule for <i>that</i> value.</p>
+</script>
+<script type="text/plain" id="L-func-feq">
+<h2>Functional Equations</h2>
+<div class="box"><h4>Toolkit</h4><ul>
+<li><b>Plug in special values:</b> $x=0$, $y=0$, $x=y$, $y=1$, $y=-x$.</li>
+<li><b>Pair up substitutions:</b> for $f(x)+2f\!\left(\frac1x\right)=3x$, also write it at $\frac1x$, then solve the $2\times2$ system for $f(x)$. Likewise $x\to-x$ or $x\to1-x$.</li>
+<li><b>Additive</b> $f(x+y)=f(x)+f(y)$: $f(n)=nf(1)$ for integers (and rationals).</li>
+<li><b>Log-like</b> $f(xy)=f(x)+f(y)$: $f(2^a3^b)=af(2)+bf(3)$.</li>
+<li><b>Shift relations:</b> $f(x+2)=-f(x)$ means $f(x+4)=f(x)$, i.e. period 4.</li>
+<li><b>Pairing sums:</b> if $f(x)+f(1-x)=1$, sums over $\frac kn$ pair up neatly.</li>
+</ul></div>
+<div class="ex"><b class="lbl">Example.</b> $f(x)f(y)-f(xy)=x+y$ for all $x,y$. Find $f(2026)$.
+<details><summary>Solution</summary>$x=y=0$: $f(0)^2=f(0)$. With $y=0$: $f(0)(f(x)-1)=x$, which forces $f(0)=1$ and $f(x)=x+1$. So $f(2026)=2027$.</details></div>
+</script>
+
+=== BANK ===
+@@ func-eval
+Q: If $f(x)=2x^2-3x+1$, what is $f(-2)$?
+L: 1
+A: 15
+W: 3
+W: 11
+W: 9
+W: -1
+S: $f(-2)=2(4)-3(-2)+1=8+6+1=15$.
+---
+Q: Define $a\star b=\dfrac{a+b}{a-b}$. What is $(1\star2)\star3$?
+L: 1
+A: 0
+W: -3
+W: 1
+W: -\frac{1}{2}
+W: 3
+S: $1\star2=\frac{3}{-1}=-3$. Then $(-3)\star3=\frac{0}{-6}=0$.
+---
+Q: How many integers $x$ with $0\le x\le10$ are in the domain of $f(x)=\dfrac{\sqrt{x-2}}{x-5}$?
+L: 1
+A: 8
+W: 9
+W: 7
+W: 6
+W: 10
+S: We need $x\ge2$ and $x\ne5$: $2,3,4,6,7,8,9,10$, which is $8$ integers.
+---
+Q: How many integers are in the range of $f(x)=\dfrac{6}{x^2+2}$?
+L: 2
+A: 3
+W: 2
+W: 4
+W: 6
+W: 1
+S: $x^2+2\ge2$, so $0\lt f(x)\le3$, and every value in $(0,3]$ is attained. The integers in the range are $1,2,3$.
+---
+Q: A linear function satisfies $f(1)=5$ and $f(3)=11$. What is $f(10)$?
+L: 1
+A: 32
+W: 30
+W: 35
+W: 29
+W: 33
+S: The slope is $\frac{11-5}{3-1}=3$, so $f(x)=3x+2$ and $f(10)=32$.
+---
+Q: Let $f(x)=ax^7+bx^3+cx-5$. If $f(-7)=7$, what is $f(7)$?
+L: 2
+A: -17
+W: 17
+W: -7
+W: 7
+W: -12
+S: $g(x)=f(x)+5=ax^7+bx^3+cx$ is odd. $g(-7)=12$, so $g(7)=-12$ and $f(7)=-17$.
+---
+Q: Define $a\nabla b=a^b-b^a$. What is $2\nabla(3\nabla2)$?
+L: 1
+A: 1
+W: -1
+W: 0
+W: 2
+W: 3
+S: $3\nabla2=9-8=1$. Then $2\nabla1=2^1-1^2=1$.
+---
+Q: Let $f(x)=x^2+6x+7$. What is the minimum value of $f(f(x))$ over all real $x$?
+L: 3
+A: -1
+W: -2
+W: 2
+W: 7
+W: -5
+S: $f(x)=(x+3)^2-2$, so $y=f(x)$ takes every value $\ge-2$.
+$f(y)$ is increasing for $y\ge-3$, so on $y\ge-2$ its minimum is $f(-2)=4-12+7=-1$.
+---
+@@ func-comp
+Q: If $f(x)=2x+3$ and $g(x)=x^2-1$, what is $f(g(3))$?
+L: 1
+A: 19
+W: 80
+W: 17
+W: 18
+W: 21
+S: $g(3)=8$, then $f(8)=19$. (Doing it in the other order, $g(f(3))=g(9)=80$.)
+---
+Q: If $f(x)=3x-7$, what is $f^{-1}(5)$?
+L: 1
+A: 4
+W: 8
+W: -4
+W: \frac{1}{8}
+W: 3
+S: $f^{-1}(5)$ is the $x$ with $f(x)=5$: $3x-7=5$, so $x=4$.
+---
+Q: Let $f(x)=\dfrac{x+1}{x-1}$. What is $f(f(f(5)))$?
+L: 2
+A: \frac{3}{2}
+W: 5
+W: \frac{2}{3}
+W: 3
+W: -\frac{3}{2}
+S: $f(f(x))=\frac{\frac{x+1}{x-1}+1}{\frac{x+1}{x-1}-1}=\frac{2x}{2}=x$, so $f$ undoes itself.
+Then $f(f(f(5)))=f(5)=\frac64=\frac32$.
+---
+Q: Let $f(x)=\dfrac{2x+3}{x-4}$. What is $f^{-1}(3)$?
+L: 2
+A: 15
+W: 1
+W: 9
+W: \frac{3}{2}
+W: -15
+S: Solve $\frac{2x+3}{x-4}=3$: $2x+3=3x-12$, so $x=15$.
+---
+Q: Functions satisfy $g(x)=2x-1$ and $f(g(x))=4x+1$ for all $x$. What is $f(5)$?
+L: 2
+A: 13
+W: 21
+W: 9
+W: 11
+W: 19
+S: $g(x)=5$ when $x=3$, so $f(5)=f(g(3))=4\cdot3+1=13$.
+---
+Q: Let $f(x)=x^2-2$. What is $f(f(f(1)))$?
+L: 1
+A: -1
+W: 1
+W: 7
+W: -2
+W: 2
+S: $f(1)=-1$, $f(-1)=-1$, $f(-1)=-1$. Here $-1$ is a fixed point.
+---
+Q: Let $f(x)=\dfrac{1}{1-x}$. What is $f$ applied $2026$ times to $2$?
+L: 2
+A: -1
+W: 2
+W: \frac{1}{2}
+W: 1
+W: -2
+S: $2\to-1\to\frac12\to2$: a cycle of length 3. Since $2026\equiv1\pmod3$, the result is $f(2)=-1$.
+---
+Q: A function satisfies $f(2x-1)=6x+5$ for all $x$. What is $f(3)$?
+L: 1
+A: 17
+W: 23
+W: 14
+W: 11
+W: 20
+S: $2x-1=3$ when $x=2$, so $f(3)=6\cdot2+5=17$.
+---
+@@ func-trans
+Q: The graph of $y=x^2$ is shifted $3$ units right and $2$ units up. What is the $y$-intercept of the new graph?
+L: 1
+A: 11
+W: 7
+W: 13
+W: 5
+W: -7
+S: The new graph is $y=(x-3)^2+2$. At $x=0$: $9+2=11$.
+---
+Q: A function $f$ has zeros exactly at $x=2$ and $x=5$. What is the sum of the zeros of $y=f(2x)$?
+L: 2
+A: \frac{7}{2}
+W: 14
+W: 7
+W: \frac{7}{4}
+W: 3
+S: $f(2x)=0$ when $2x=2$ or $2x=5$, so $x=1$ or $\frac52$. Sum: $\frac72$.
+---
+Q: What is the area of the region bounded by $y=|x|$ and $y=4$?
+L: 1
+A: 16
+W: 8
+W: 32
+W: 4
+W: 12
+S: A triangle with vertices $(0,0)$, $(-4,4)$, $(4,4)$: base $8$, height $4$, area $16$.
+---
+Q: What is the area of the region enclosed by $y=6-|x-2|$ and the $x$-axis?
+L: 2
+A: 36
+W: 72
+W: 18
+W: 24
+W: 48
+S: A tent with peak $(2,6)$ meeting the axis at $x=-4$ and $x=8$: base $12$, height $6$, area $36$.
+---
+Q: Let $f$ be an odd function with $f(3)=7$, and let $g(x)=f(x)+2$. What is $g(-3)$?
+L: 1
+A: -5
+W: 5
+W: 9
+W: -7
+W: -9
+S: $f(-3)=-7$, so $g(-3)=-5$.
+---
+Q: The graph of $y=x^2$ is reflected across the $y$-axis and then shifted $4$ units to the right, giving $y=h(x)$. What is $h(1)$?
+L: 2
+A: 9
+W: 25
+W: 1
+W: 16
+W: 4
+S: The reflection gives $(-x)^2$. Shifting right replaces $x$ by $x-4$: $h(x)=(-(x-4))^2=(4-x)^2$. So $h(1)=9$.
+---
+Q: How many real solutions does $|x^2-4|=3$ have?
+L: 2
+A: 4
+W: 2
+W: 3
+W: 6
+W: 0
+S: $x^2-4=3$ gives $x=\pm\sqrt7$; $x^2-4=-3$ gives $x=\pm1$. Total $4$.
+---
+Q: How many real solutions does $\big||x|-2\big|=1$ have?
+L: 2
+A: 4
+W: 2
+W: 3
+W: 6
+W: 8
+S: $|x|-2=\pm1$, so $|x|=3$ or $1$, giving $x=\pm3,\pm1$. That is $4$ solutions.
+---
+@@ func-floor
+Q: What is $\lfloor3.7\rfloor+\lfloor-3.7\rfloor$?
+L: 1
+A: -1
+W: 0
+W: -7
+W: 1
+W: 7
+S: $\lfloor3.7\rfloor=3$ and $\lfloor-3.7\rfloor=-4$ (the greatest integer below $-3.7$). Sum: $-1$.
+---
+Q: The positive real number $x$ satisfies $x\lfloor x\rfloor=27$. What is $x$?
+L: 2
+A: \frac{27}{5}
+W: 5
+W: \frac{9}{2}
+W: 6
+W: \frac{11}{2}
+S: Let $n=\lfloor x\rfloor$, so $x=\frac{27}{n}$ and $n\le\frac{27}n\lt n+1$, i.e. $n^2\le27\lt n^2+n$.
+$n=5$: $25\le27\lt30$ ✓. So $x=\frac{27}{5}=5.4$, and indeed $\lfloor5.4\rfloor=5$.
+---
+Q: What is $\displaystyle\sum_{k=1}^{100}\left\lfloor\frac k3\right\rfloor$?
+L: 3
+A: 1650
+W: 1683
+W: 1617
+W: 1700
+W: 1584
+S: For $m=1,\dots,32$, $\lfloor k/3\rfloor=m$ for $k=3m,3m+1,3m+2$ (three values), contributing $3(1+\dots+32)=3\cdot528=1584$.
+$k=99,100$ give $33$ each: $66$. Total $1650$.
+---
+Q: Let $f(x)=x+3$ if $x\lt 1$ and $f(x)=x^2$ if $x\ge1$. What is $f(f(-1))$?
+L: 1
+A: 4
+W: 5
+W: 1
+W: 9
+W: 2
+S: $f(-1)=-1+3=2$. Since $2\ge1$, $f(2)=4$.
+---
+Q: How many positive integers $n$ satisfy $\lfloor\sqrt n\rfloor=7$?
+L: 1
+A: 15
+W: 14
+W: 16
+W: 7
+W: 13
+S: We need $49\le n\lt 64$: $n=49,\dots,63$, which is $15$ integers.
+---
+Q: The set of real $x$ with $\lfloor2x\rfloor=7$ is an interval. What is its length?
+L: 1
+A: \frac{1}{2}
+W: 1
+W: \frac{7}{2}
+W: 4
+W: \frac{1}{4}
+S: $7\le2x\lt 8$, so $3.5\le x\lt 4$, an interval of length $\frac12$.
+---
+Q: How many nonnegative integers $x$ satisfy $\left\lfloor\frac x5\right\rfloor=\left\lfloor\frac x6\right\rfloor$?
+L: 3
+A: 15
+W: 10
+W: 20
+W: 14
+W: 30
+S: Let both equal $q$. We need $6q\le x\le5q+4$, which has $5-q$ integers when $q\le4$ and none after.
+Total $5+4+3+2+1=15$.
+---
+Q: How many integers $x$ satisfy $\lfloor x\rfloor^2-5\lfloor x\rfloor+6=0$?
+L: 2
+A: 2
+W: 1
+W: 3
+W: 4
+W: 0
+S: $\lfloor x\rfloor=2$ or $3$, so $x\in[2,4)$. The integers are $2$ and $3$.
+---
+@@ func-feq
+Q: A function satisfies $f(x)+2f\!\left(\dfrac1x\right)=3x$ for all $x\ne0$. What is $f(2)$?
+L: 2
+A: -1
+W: 1
+W: 2
+W: -2
+W: \frac{3}{2}
+S: $x=2$: $f(2)+2f(\frac12)=6$. $x=\frac12$: $f(\frac12)+2f(2)=\frac32$.
+From the second, $f(\frac12)=\frac32-2f(2)$. Substituting: $f(2)+3-4f(2)=6$, so $f(2)=-1$.
+---
+Q: A function satisfies $f(x+y)=f(x)+f(y)$ for all real $x,y$, and $f(1)=3$. What is $f(5)$?
+L: 1
+A: 15
+W: 8
+W: 243
+W: 125
+W: 5
+S: $f(5)=f(1)+f(1)+f(1)+f(1)+f(1)=15$.
+---
+Q: A function satisfies $f(xy)=f(x)+f(y)$ for all positive $x,y$, with $f(2)=3$ and $f(3)=5$. What is $f(12)$?
+L: 1
+A: 11
+W: 15
+W: 13
+W: 36
+W: 8
+S: $f(12)=f(2)+f(2)+f(3)=3+3+5=11$.
+---
+Q: A function satisfies $f(x)+f(1-x)=1$ for all $x$. What is $\displaystyle\sum_{k=1}^{2026}f\!\left(\frac{k}{2027}\right)$?
+L: 2
+A: 1013
+W: 2026
+W: 1014
+W: \frac{2027}{2}
+W: 1012
+S: Pair $\frac k{2027}$ with $\frac{2027-k}{2027}$; each pair sums to $1$. The $2026$ terms form $1013$ pairs, so the sum is $1013$.
+---
+Q: A function satisfies $f(x+2)=-f(x)$ for all $x$, and $f(1)=5$. What is $f(2027)$?
+L: 2
+A: -5
+W: 5
+W: 0
+W: -2027
+W: 10
+S: $f(x+4)=-f(x+2)=f(x)$, so the period is 4. $2027=1+4\cdot506+2$, so $f(2027)=f(3)=-f(1)=-5$.
+---
+Q: A function satisfies $f(x)-2f(-x)=x$ for all $x$. What is $f(9)$?
+L: 2
+A: 3
+W: 9
+W: -3
+W: -9
+W: 1
+S: Replace $x$ by $-x$: $f(-x)-2f(x)=-x$. Let $a=f(x)$, $b=f(-x)$: $a-2b=x$ and $b-2a=-x$.
+Then $b=2a-x$, so $a-4a+2x=x$ and $a=\frac x3$. So $f(9)=3$.
+---
+Q: A function satisfies $f(x)f(y)-f(xy)=x+y$ for all real $x,y$. What is $f(2026)$?
+L: 3
+A: 2027
+W: 2026
+W: 2028
+W: 1
+W: 4053
+S: $x=y=0$: $f(0)^2-f(0)=0$. With $y=0$: $f(x)f(0)-f(0)=x$ for all $x$. If $f(0)=0$ this says $0=x$, which is impossible, so $f(0)=1$ and $f(x)=x+1$.
+(Check: $(x+1)(y+1)-(xy+1)=x+y$ ✓.) So $f(2026)=2027$.
+---
+Q: A function satisfies $f(2x)=2f(x)+1$ for all $x$, and $f(1)=1$. What is $f(8)$?
+L: 1
+A: 15
+W: 8
+W: 16
+W: 17
+W: 9
+S: $f(2)=3$, $f(4)=7$, $f(8)=15$.
+
+=== GENS ===
+GENS['func-eval']=[
+r=>{const a=ri(r,1,4)*pick(r,[1,-1]),b=ri(r,-6,6),c=ri(r,-9,9),x=ri(r,-5,5);const v=a*x*x+b*x+c;
+ return{lvl:1,q:T`If $f(x)=${poly([[a,2],[b,1],[c,0]],'x')}$, what is $f(${x})$?`,a:v,w:[a*x*x-b*x+c,-a*x*x+b*x+c,a*x+b*x+c,v+1,v-2*c],
+ s:T`$f(${x})=${a}\cdot${P(x*x)}+${P(b)}\cdot${P(x)}+${P(c)}=${a*x*x}+${P(b*x)}+${P(c)}=${v}$.`}},
+r=>{let x1=ri(r,-5,5),x2=x1+ri(r,1,5);const m=ri(r,-6,6)||2,b=ri(r,-10,10),x3=ri(r,6,20);const f=x=>m*x+b;
+ return{lvl:1,q:T`A linear function satisfies $f(${x1})=${f(x1)}$ and $f(${x2})=${f(x2)}$. What is $f(${x3})$?`,a:f(x3),w:[f(x3)+m,f(x3)-m,m*x3,f(x3)+b,f(x2)*2],
+ s:T`Slope $=\frac{${f(x2)}-${P(f(x1))}}{${x2}-${P(x1)}}=${m}$, so $f(x)=${poly([[m,1],[b,0]],'x')}$ and $f(${x3})=${f(x3)}$.`}},
+r=>{const ops=[['\\frac{a+b}{a-b}',(a,b)=>a===b?null:F(a+b,a-b)],['ab+a+b',(a,b)=>F(a*b+a+b)],['a^2-b',(a,b)=>F(a*a-b)],['2a-3b',(a,b)=>F(2*a-3*b)],['\\frac{ab}{a+b}',(a,b)=>a+b===0?null:F(a*b,a+b)]];
+ const [tex,f]=pick(r,ops);const x=ri(r,1,6),y=ri(r,1,6),z=ri(r,1,6);const in1=f(x,y);if(!in1||!in1.isInt())return GENS['func-eval'][2](r);const out=f(in1.n,z);if(!out)return GENS['func-eval'][2](r);
+ const alt=f(x,f(y,z)&&f(y,z).isInt()?f(y,z).n:y);
+ return{lvl:1,q:T`Define $a\star b=${tex}$. What is $(${x}\star${y})\star${z}$?`,a:out,w:[alt||out.add(2),out.add(1),out.neg(),in1,out.sub(1)],
+ s:T`Work inside out: $${x}\star${y}=${in1.tex()}$. Then $${in1.tex()}\star${z}=${out.tex()}$.`}},
+r=>{const k=pick(r,[3,5,7]),a=ri(r,2,9),c=ri(r,-5,5);const g=k*a+c;const t=-k*a+c;
+ return{lvl:2,q:T`Let $f(x)=ax^${k}+bx^3+cx${c<0?'-':'+'}${Math.abs(c)}$. If $f(-${a})=${t+0}$, what is $f(${a})$?`,a:2*c-t,w:[-t,t,-t-c,t+2*c,-(2*c-t)],
+ s:T`$g(x)=f(x)${c<0?'+':'-'}${Math.abs(c)}$ is odd. $g(-${a})=${t}-${P(c)}=${t-c}$, so $g(${a})=${c-t}$ and $f(${a})=${c-t}+${P(c)}=${2*c-t}$.`}},
+];
+GENS['func-comp']=[
+r=>{const a=ri(r,-4,5)||2,b=ri(r,-6,6),c=ri(r,1,3),d=ri(r,-5,5),x=ri(r,-4,4);const f=t=>a*t+b,g=t=>c*t*t+d;const o=r()<.5;
+ const v=o?f(g(x)):g(f(x));
+ return{lvl:1,q:T`If $f(x)=${poly([[a,1],[b,0]],'x')}$ and $g(x)=${poly([[c,2],[d,0]],'x')}$, what is $${o?'f(g('+x+'))':'g(f('+x+'))'}$?`,a:v,w:[o?g(f(x)):f(g(x)),f(x)*g(x),v+1,f(x)+g(x),v-a],
+ s:o?T`$g(${x})=${g(x)}$, then $f(${g(x)})=${v}$.`:T`$f(${x})=${f(x)}$, then $g(${f(x)})=${v}$.`}},
+r=>{const a=ri(r,2,9)*pick(r,[1,-1]),b=ri(r,-12,12),x=ri(r,-8,8);const y=a*x+b;
+ return{lvl:1,q:T`If $f(x)=${poly([[a,1],[b,0]],'x')}$, what is $f^{-1}(${y})$?`,a:x,w:[a*y+b,-x,F(1,y||7),x+1,F(y+b,a)],
+ s:T`$f^{-1}(${y})$ is the $x$ with $${poly([[a,1],[b,0]],'x')}=${y}$, so $x=${x}$.`}},
+r=>{const a=ri(r,2,4),b=ri(r,-5,5),c=ri(r,1,6),d=ri(r,-8,8),t=ri(r,-10,12);if((t-b)%a)return GENS['func-comp'][2](r);const x=(t-b)/a;
+ return{lvl:2,q:T`A function satisfies $f(${poly([[a,1],[b,0]],'x')})=${poly([[c,1],[d,0]],'x')}$ for all $x$. What is $f(${t})$?`,a:c*x+d,w:[c*t+d,c*x,c*x+d+c,a*t+b,c*(x+1)+d],
+ s:T`$${poly([[a,1],[b,0]],'x')}=${t}$ when $x=${x}$, so $f(${t})=${c}\cdot${P(x)}+${P(d)}=${c*x+d}$.`}},
+r=>{const a=pick(r,[2,3]),b=ri(r,1,3),n=ri(r,3,6),x0=ri(r,0,2);let v=x0;for(let i=0;i<n;i++)v=a*v+b;
+ return{lvl:2,q:T`Let $f(x)=${a}x+${b}$. What is $f$ applied ${n} times to $${x0}$, i.e. $f(f(\cdots f(${x0})\cdots))$?`,a:v,w:[a**n*x0+b*n,(v-b)/a,v*a+b,a**n+b,v+1],
+ s:T`Iterate: ${(()=>{let t=x0,s=[];for(let i=0;i<n;i++){t=a*t+b;s.push(t)}return '$'+x0+'\\to '+s.join('\\to ')+'$'})()}. The answer is $${v}$.`}},
+];
+GENS['func-trans']=[
+r=>{const h=ri(r,-6,6),k=ri(r,-8,8),x=ri(r,-4,4);const v=(x-h)**2+k;
+ return{lvl:1,q:T`The graph of $y=x^2$ is shifted ${Math.abs(h)} unit${Math.abs(h)===1?'':'s'} ${h>=0?'right':'left'} and ${Math.abs(k)} unit${Math.abs(k)===1?'':'s'} ${k>=0?'up':'down'}. What is the value of the new function at $x=${x}$?`,
+ a:v,w:[(x+h)**2+k,(x-h)**2-k,x*x+h+k,(x+h)**2-k,v+1],
+ s:T`The new function is $y=(x-${P(h)})^2+${P(k)}$. At $x=${x}$: $${(x-h)**2}+${P(k)}=${v}$.`}},
+r=>{const a=ri(r,2,12),h=ri(r,-6,6),c=ri(r,-3,3);const area=a*a;
+ return{lvl:1,q:T`What is the area of the region enclosed by the graph of $y=${a}-|x${h<0?'+':'-'}${Math.abs(h)}|$ and the $x$-axis?`,a:area,w:[2*area,area/2,a*a+a,4*area,2*a],
+ s:T`A tent with peak $(${h},${a})$ meeting the $x$-axis at $x=${h-a}$ and $${h+a}$: base $${2*a}$, height $${a}$, area $\frac12\cdot${2*a}\cdot${a}=${area}$.`}},
+r=>{const p=ri(r,-8,8),q=ri(r,-8,8),a=pick(r,[2,3,4]),b=ri(r,-4,4);if(p===q)return GENS['func-trans'][2](r);const s_=F(p-b,a).add(F(q-b,a));
+ return{lvl:2,q:T`A function $f$ has zeros exactly at $x=${p}$ and $x=${q}$. What is the sum of the zeros of $y=f(${poly([[a,1],[b,0]],'x')})$?`,a:s_,w:[F(p+q),F(a*(p+q)+b),F(p+q,a),F(p+q-b,a),s_.neg()],
+ s:T`$${poly([[a,1],[b,0]],'x')}=${p}$ gives $x=${F(p-b,a).tex()}$, and $=${q}$ gives $x=${F(q-b,a).tex()}$. Sum $=${s_.tex()}$.`}},
+r=>{const a=ri(r,1,20),b=ri(r,1,25);let n,str;const hi=a+b,lo=a-b;
+ const cnt=v=>v>0?2:v===0?1:0;n=cnt(hi)+cnt(lo);
+ return{lvl:2,q:T`How many real solutions does $|x^2-${a}|=${b}$ have?`,a:n,w:[0,1,2,3,4,6].filter(x=>x!==n),
+ s:T`$x^2=${a}+${b}=${hi}$ gives ${cnt(hi)} solution(s); $x^2=${a}-${b}=${lo}$ gives ${cnt(lo)} solution(s). Total $${n}$.`}},
+];
+GENS['func-floor']=[
+r=>{const n=ri(r,2,12),N=ri(r,n*n,n*n+n-1);const x=F(N,n);
+ return{lvl:2,q:T`The positive real number $x$ satisfies $x\lfloor x\rfloor=${N}$. What is $x$?`,a:x,w:[F(n),F(N,n+1),F(n+1),F(N,n-1||1).add(1),x.add(1)],
+ s:T`Let $n=\lfloor x\rfloor$. Then $x=\frac{${N}}{n}$ and $n^2\le${N}\lt n^2+n$, which forces $n=${n}$ ($${n*n}\le${N}\lt ${n*n+n}$). So $x=${x.tex()}$.`}},
+r=>{const k=ri(r,2,30);
+ return{lvl:1,q:T`How many positive integers $n$ satisfy $\lfloor\sqrt n\rfloor=${k}$?`,a:2*k+1,w:[2*k,2*k+2,k,k*k,2*k-1],
+ s:T`We need $${k*k}\le n\lt ${(k+1)**2}$, which contains $${(k+1)**2}-${k*k}=${2*k+1}$ integers.`}},
+r=>{const m=ri(r,2,7),N=ri(r,20,120);let s_=0;for(let k=1;k<=N;k++)s_+=Math.floor(k/m);
+ return{lvl:3,q:T`What is $\displaystyle\sum_{k=1}^{${N}}\left\lfloor\frac{k}{${m}}\right\rfloor$?`,a:s_,w:[s_+Math.floor(N/m),s_-Math.floor(N/m),Math.floor(N*(N+1)/(2*m)),s_+m,s_-m],
+ s:T`Each value $j=\lfloor k/${m}\rfloor$ occurs for ${m} consecutive $k$ (the last value may be cut short). Adding by groups gives $${s_}$.<br>(Here $\lfloor ${N}/${m}\rfloor=${Math.floor(N/m)}$, and the last group has $${N-m*Math.floor(N/m)+1}$ term(s).)`}},
+r=>{const a=ri(r,-5,5),c=ri(r,a+1,a+6);const x0=ri(r,-6,8);const f=x=>x<a?x+c:x*x;const v=f(f(x0));
+ return{lvl:1,q:T`Let $f(x)=x${c<0?'-':'+'}${Math.abs(c)}$ for $x\lt ${a}$ and $f(x)=x^2$ for $x\ge${a}$. What is $f(f(${x0}))$?`,a:v,w:[f(x0),f(x0)+c,f(x0)**2+1,x0*x0+c,v+c],
+ s:T`$f(${x0})=${f(x0)}$ (using the ${x0<a?'first':'second'} rule). Then $f(${f(x0)})=${v}$ (using the ${f(x0)<a?'first':'second'} rule).`}},
+];
+GENS['func-feq']=[
+r=>{const c=ri(r,2,4)*pick(r,[1,-1]),k=ri(r,1,6),a=ri(r,2,5);const v=F(k).mul(F(a).sub(F(c,a))).div(F(1-c*c));
+ return{lvl:2,q:T`A function satisfies $f(x)${c<0?'-':'+'}${Math.abs(c)}f\!\left(\frac1x\right)=${k===1?'':k}x$ for all $x\ne0$. What is $f(${a})$?`,a:v,w:[v.neg(),F(k*a),F(k*a,1+c),v.add(1),F(k,a)],
+ s:T`At $x=${a}$: $f(${a})+${P(c)}f(\tfrac1{${a}})=${k*a}$. At $x=\frac1{${a}}$: $f(\tfrac1{${a}})+${P(c)}f(${a})=${F(k,a).tex()}$.<br>Eliminating $f(\frac1{${a}})$: $(1-${c*c})f(${a})=${k*a}-${P(c)}\cdot${F(k,a).tex()}$, so $f(${a})=${v.tex()}$.`}},
+r=>{const a=ri(r,1,9),b=ri(r,1,9),x=ri(r,1,4),y=ri(r,0,3);const n=2**x*3**y;
+ return{lvl:1,q:T`A function on positive reals satisfies $f(xy)=f(x)+f(y)$, with $f(2)=${a}$ and $f(3)=${b}$. What is $f(${n})$?`,a:x*a+y*b,w:[a**x*b**y,(x+y)*(a+b),x*a*y*b||a+b+1,x*b+y*a,x*a+y*b+1],
+ s:T`$${n}=2^{${x}}\cdot3^{${y}}$, so $f(${n})=${x}f(2)+${y}f(3)=${x*a}+${y*b}=${x*a+y*b}$.`}},
+r=>{const c=ri(r,2,9),n=ri(r,3,40);
+ return{lvl:1,q:T`A function satisfies $f(x+y)=f(x)+f(y)$ for all real $x,y$, and $f(1)=${c}$. What is $f(${n})$?`,a:c*n,w:[c**2*n,c+n,n,c*n+c,c**n>1e6?c*n-c:c**n],
+ s:T`$f(${n})=${n}f(1)=${c*n}$.`}},
+r=>{const d=ri(r,-3,4),f1=ri(r,1,5),k=ri(r,3,6);let v=f1;for(let i=0;i<k;i++)v=2*v+d;
+ return{lvl:1,q:T`A function satisfies $f(2x)=2f(x)${d<0?'-':'+'}${Math.abs(d)}$ for all $x$, and $f(1)=${f1}$. What is $f(${2**k})$?`,a:v,w:[2**k*f1,v+d,(v-d)/2,2**k*f1+k*d,v-1],
+ s:T`Apply the rule repeatedly: $f(1)=${f1}$${(()=>{let t=f1,s='';for(let i=1;i<=k;i++){t=2*t+d;s+=', f('+2**i+')='+t}return s.replace(/f\(/g,'$f(').replace(/=(-?\d+)/g,'=$1$')})()}.`}},
+];

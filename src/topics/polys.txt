@@ -1,0 +1,517 @@
+=== LESSONS ===
+<script type="text/plain" id="L-poly-vieta">
+<h2>Vieta's Formulas</h2>
+<div class="box"><h4>Cubic $ax^3+bx^2+cx+d$ with roots $r,s,t$</h4>
+$r+s+t=-\dfrac ba,\qquad rs+st+tr=\dfrac ca,\qquad rst=-\dfrac da$<br>
+The signs alternate $-,+,-,+,\dots$; the same pattern continues for quartics: $\sum r=-\frac ba$, $\sum rs=\frac ca$, $\sum rst=-\frac da$, $rstu=\frac ea$.</div>
+<h3>Useful consequences</h3>
+<ul><li>$r^2+s^2+t^2=(r+s+t)^2-2(rs+st+tr)$</li>
+<li>$\frac1r+\frac1s+\frac1t=\frac{rs+st+tr}{rst}$</li>
+<li>$(k-r)(k-s)(k-t)=\frac{p(k)}{a}$. For example $(1+r)(1+s)(1+t)=-\frac{p(-1)}{a}$ for a cubic.</li>
+<li>If $1,2,3$ are roots of $x^3+ax^2+bx+c$, then $1+a+b+c=p(1)=0$.</li>
+<li><b>Roots in arithmetic progression</b> $m-d, m, m+d$: the sum $3m$ gives the middle root. <b>Geometric progression</b> $\frac mq, m, mq$: the product $m^3$ gives the middle root.</li></ul>
+<div class="tip"><h4>AMC tip</h4>If a root satisfies $r^3=r+1$, you can reduce high powers: $\sum r^3=\sum r+3$.</div>
+</script>
+<script type="text/plain" id="L-poly-rem">
+<h2>Remainder &amp; Factor Theorems</h2>
+<div class="box"><h4>Theorems</h4><ul>
+<li><b>Remainder theorem:</b> dividing $p(x)$ by $x-a$ leaves remainder $p(a)$.</li>
+<li><b>Factor theorem:</b> $x-a$ divides $p(x)$ exactly when $p(a)=0$.</li>
+<li>Dividing by a degree-$n$ divisor leaves a remainder of degree $\lt n$. For $(x-a)(x-b)$ the remainder is $mx+c$ with $ma+c=p(a)$ and $mb+c=p(b)$.</li>
+</ul></div>
+<h3>Common moves</h3>
+<ul><li>Plug in the roots of the divisor: for $x^2-1$, use $x=\pm1$; for $x^3-x$, use $x=0,\pm1$.</li>
+<li>Unknown coefficients: set $p(a)=0$ for each known factor and solve the system.</li>
+<li><b>"$p(k)=k$" trick:</b> if a monic cubic has $p(1)=1, p(2)=2, p(3)=3$, then $p(x)-x=(x-1)(x-2)(x-3)$.</li></ul>
+<div class="ex"><b class="lbl">Example.</b> Find the remainder of $x^{81}+x^{49}+x^{25}+x^9+x$ divided by $x^3-x$.
+<details><summary>Solution</summary>The remainder $r(x)=ax^2+bx+c$ agrees with $p$ at $0,1,-1$: $r(0)=0$, $r(1)=5$, $r(-1)=-5$. So $c=0$, $a+b=5$, $a-b=-5$, giving $r(x)=5x$.</details></div>
+</script>
+<script type="text/plain" id="L-poly-roots">
+<h2>Rational &amp; Integer Roots</h2>
+<div class="box"><h4>Rational root theorem</h4>
+If $p(x)=a_nx^n+\dots+a_0$ has integer coefficients and $\frac pq$ (in lowest terms) is a root, then $p\mid a_0$ and $q\mid a_n$. For a monic polynomial, every rational root is an integer dividing $a_0$.</div>
+<h3>Conjugate roots</h3>
+<ul><li>Real coefficients: complex roots come in pairs $a\pm bi$, and $(x-(a+bi))(x-(a-bi))=x^2-2ax+a^2+b^2$.</li>
+<li>Rational coefficients: $a+\sqrt b$ comes with $a-\sqrt b$, and the pair gives $x^2-2ax+a^2-b$.</li>
+<li>$\sqrt2+\sqrt3$ has minimal polynomial $x^4-10x^2+1$: square, isolate the radical, square again.</li></ul>
+<h3>Strategy</h3>
+<p>Guess an easy root ($\pm1,\pm2$, or a factor of the constant over a factor of the leading coefficient), divide it out, and solve the remaining quadratic. Count distinct versus repeated roots carefully.</p>
+</script>
+<script type="text/plain" id="L-poly-sym">
+<h2>Symmetric Sums &amp; Newton Sums</h2>
+<p>Let $e_1=\sum r$, $e_2=\sum rs$, $e_3=\sum rst$, and $p_k=\sum r^k$ (the power sums).</p>
+<div class="box"><h4>Newton's identities (first few)</h4>
+$p_1=e_1,\quad p_2=e_1^2-2e_2,\quad p_3=e_1^3-3e_1e_2+3e_3$<br>
+For a cubic $x^3+ax^2+bx+c$: $p_k=-ap_{k-1}-bp_{k-2}-cp_{k-3}$ for $k\ge4$. The same idea for a quadratic $x^2-sx+q$: $p_k=sp_{k-1}-qp_{k-2}$.</div>
+<h3>Transforming roots</h3>
+<table class="t"><tr><th>New roots</th><th>New polynomial</th></tr>
+<tr><td>$r+k$</td><td>$p(x-k)$; the sum of roots increases by $nk$</td></tr>
+<tr><td>$kr$</td><td>$p(x/k)$</td></tr>
+<tr><td>$\frac1r$</td><td>reverse the coefficients</td></tr></table>
+<h3>Sum of coefficients</h3>
+<p>The sum of the coefficients of $p$ is $p(1)$. So the coefficients of $(3x-2)^{10}$ add up to $1^{10}=1$.</p>
+</script>
+<script type="text/plain" id="L-poly-coef">
+<h2>Coefficients &amp; Polynomial Tricks</h2>
+<div class="box"><h4>Plug in special values</h4><ul>
+<li>$p(1)$ is the sum of the coefficients; $p(-1)$ is the alternating sum.</li>
+<li>Even-power coefficients sum to $\frac{p(1)+p(-1)}2$; odd-power coefficients to $\frac{p(1)-p(-1)}2$.</li>
+<li>$p(0)$ is the constant term.</li>
+</ul></div>
+<h3>Degrees</h3>
+<p>$\deg(pq)=\deg p+\deg q$ and $\deg p(q(x))=\deg p\cdot\deg q$. A degree-$n$ polynomial is determined by $n+1$ values.</p>
+<h3>Coefficients of products</h3>
+<p>In $(1+ax)(1+bx)(1+cx)$, the coefficient of $x^k$ is the sum of all products of $k$ of the numbers $a,b,c$ (the elementary symmetric sums).</p>
+<h3>Construct a helper polynomial</h3>
+<p>If $p(k)=\frac1k$ for $k=1,\dots,4$ and $\deg p=3$, then $xp(x)-1$ has roots $1,2,3,4$, so $xp(x)-1=c(x-1)(x-2)(x-3)(x-4)$. Plug in $x=0$ to find $c$.</p>
+<h3>Difference equations</h3>
+<p>If $p(x+1)-p(x)=2x+1$, then $p$ is a quadratic with leading coefficient $1$: here $p(x)=x^2+p(0)$.</p>
+</script>
+
+=== BANK ===
+@@ poly-vieta
+Q: Let $r,s,t$ be the roots of $x^3-6x^2+11x-6=0$. What is $r^2+s^2+t^2$?
+L: 1
+A: 14
+W: 36
+W: 22
+W: 12
+W: 16
+S: $\sum r=6$ and $\sum rs=11$, so $\sum r^2=36-22=14$. (The roots are $1,2,3$: $1+4+9=14$.)
+---
+Q: What is the product of the roots of $2x^3-3x^2+4x-5=0$?
+L: 1
+A: \frac{5}{2}
+W: -\frac{5}{2}
+W: \frac{2}{5}
+W: 5
+W: -5
+S: $rst=-\frac da=-\frac{-5}{2}=\frac52$.
+---
+Q: Let $r,s,t$ be the roots of $x^3-2x^2-5x+6=0$. What is $\dfrac1r+\dfrac1s+\dfrac1t$?
+L: 2
+A: \frac{5}{6}
+W: -\frac{5}{6}
+W: \frac{6}{5}
+W: -\frac{6}{5}
+W: \frac{1}{3}
+S: $\frac{rs+st+tr}{rst}=\frac{-5}{-6}=\frac56$. (The roots are $1,-2,3$: $1-\frac12+\frac13=\frac56$.)
+---
+Q: Let $r,s,t$ be the roots of $x^3-4x^2+3x-7=0$. What is $(1+r)(1+s)(1+t)$?
+L: 2
+A: 15
+W: 7
+W: 14
+W: -15
+W: 8
+S: Expand: $1+\sum r+\sum rs+rst=1+4+3+7=15$.
+Or: $p(x)=(x-r)(x-s)(x-t)$, so $(1+r)(1+s)(1+t)=-p(-1)=-(-1-4-3-7)=15$.
+---
+Q: The roots of $x^3+ax^2+bx+c=0$ are $1$, $2$, and $3$. What is $a+b+c$?
+L: 2
+A: -1
+W: 0
+W: 6
+W: -6
+W: 1
+S: $p(1)=1+a+b+c=0$ because $1$ is a root, so $a+b+c=-1$.
+---
+Q: The roots of $x^4-10x^3+35x^2-50x+24=0$ are $1,2,3,4$. What is the sum of their reciprocals?
+L: 2
+A: \frac{25}{12}
+W: \frac{12}{25}
+W: \frac{35}{24}
+W: \frac{5}{12}
+W: 2
+S: $\sum\frac1r=\frac{\sum rst}{rstu}=\frac{50}{24}=\frac{25}{12}$. (Check: $1+\frac12+\frac13+\frac14=\frac{25}{12}$.)
+---
+Q: The roots of $x^3-12x^2+39x-28=0$ form an arithmetic progression. What is the largest root?
+L: 3
+A: 7
+W: 6
+W: 4
+W: 9
+W: 8
+S: Roots $m-d, m, m+d$: the sum $3m=12$ gives $m=4$.
+Product: $(16-d^2)\cdot4=28$, so $d^2=9$ and the roots are $1,4,7$. (Check: $4+28+7=39$ ✓.)
+---
+Q: Let $r,s,t$ be the roots of $x^3-x-1=0$. What is $r^3+s^3+t^3$?
+L: 3
+A: 3
+W: 0
+W: 1
+W: -3
+W: 6
+S: Each root satisfies $r^3=r+1$, so $\sum r^3=\sum r+3=0+3=3$.
+---
+@@ poly-rem
+Q: What is the remainder when $x^3-4x^2+2x+7$ is divided by $x-3$?
+L: 1
+A: 4
+W: -4
+W: 7
+W: 2
+W: 10
+S: Remainder theorem: $p(3)=27-36+6+7=4$.
+---
+Q: For what value of $k$ is $x^3+kx^2-5x+6$ divisible by $x-2$?
+L: 1
+A: -1
+W: 1
+W: -2
+W: 2
+W: -4
+S: $p(2)=8+4k-10+6=4k+4=0$, so $k=-1$.
+---
+Q: A polynomial leaves remainder $5$ when divided by $x-1$ and remainder $7$ when divided by $x-3$. What is its remainder when divided by $(x-1)(x-3)$?
+L: 2
+A: x+4
+W: x-4
+W: 2x+3
+W: x+5
+W: 4x+1
+S: The remainder is $ax+b$ with $a+b=p(1)=5$ and $3a+b=p(3)=7$. So $a=1$, $b=4$: the remainder is $x+4$.
+---
+Q: What is the remainder when $x^{100}$ is divided by $x^2-1$?
+L: 2
+A: 1
+W: x
+W: 0
+W: x+1
+W: -1
+S: The remainder $ax+b$ must match $x^{100}$ at $x=\pm1$: $a+b=1$ and $-a+b=1$. So $a=0$, $b=1$.
+---
+Q: What is the remainder when $x^{2026}+x+1$ is divided by $x+1$?
+L: 1
+A: 1
+W: 3
+W: -1
+W: 0
+W: 2
+S: $p(-1)=1-1+1=1$.
+---
+Q: A monic cubic polynomial satisfies $p(1)=1$, $p(2)=2$, and $p(3)=3$. What is $p(4)$?
+L: 2
+A: 10
+W: 4
+W: 6
+W: 24
+W: 11
+S: $p(x)-x$ is monic cubic with roots $1,2,3$, so $p(x)=x+(x-1)(x-2)(x-3)$ and $p(4)=4+6=10$.
+---
+Q: What is the remainder when $x^{81}+x^{49}+x^{25}+x^9+x$ is divided by $x^3-x$?
+L: 3
+A: 5x
+W: 5
+W: x
+W: 5x^2
+W: 0
+S: The remainder $r(x)=ax^2+bx+c$ agrees with $p$ at the roots $0,1,-1$ of $x^3-x$.
+$r(0)=0$, $r(1)=5$, $r(-1)=-5$, so $c=0$, $a+b=5$, $a-b=-5$. Thus $a=0$, $b=5$, and $r(x)=5x$.
+---
+Q: The polynomial $x^3+2x^2+ax+b$ is divisible by $x^2-1$. What is $ab$?
+L: 2
+A: 2
+W: -2
+W: 1
+W: 3
+W: -3
+S: $p(1)=3+a+b=0$ and $p(-1)=1-a+b=0$. Subtracting: $2+2a=0$, so $a=-1$ and $b=-2$. Then $ab=2$.
+---
+@@ poly-roots
+Q: What is the sum of the rational roots of $2x^3-3x^2-3x+2=0$?
+L: 1
+A: \frac{3}{2}
+W: 2
+W: -\frac{3}{2}
+W: 1
+W: 3
+S: Try $x=2$: $16-12-6+2=0$ ✓. Dividing gives $2x^2+x-1=(2x-1)(x+1)$, so the roots are $2,\frac12,-1$, all rational. Sum: $\frac32$.
+---
+Q: A quadratic with rational coefficients has $2+\sqrt3$ as a root. What is its other root?
+L: 1
+A: 2-\sqrt{3}
+W: -2-\sqrt{3}
+W: \sqrt{3}-2
+W: 2+\sqrt{2}
+W: 4-\sqrt{3}
+S: Irrational roots of rational polynomials come in conjugate pairs $a\pm\sqrt b$. The other root is $2-\sqrt3$.
+---
+Q: A monic cubic with real coefficients has roots $1+i$ and $2$. What is its constant term?
+L: 2
+A: -4
+W: 4
+W: -2
+W: 2
+W: -8
+S: $1-i$ is also a root. $p(x)=(x^2-2x+2)(x-2)$, with constant term $2\cdot(-2)=-4$.
+---
+Q: According to the rational root theorem, how many distinct rational numbers are possible roots of $6x^3+ax^2+bx+4$ (for integers $a,b$)?
+L: 2
+A: 16
+W: 24
+W: 12
+W: 8
+W: 20
+S: Candidates are $\pm\frac pq$ with $p\mid4$ and $q\mid6$. The distinct positive values are $1,2,4,\frac12,\frac13,\frac23,\frac43,\frac16$ (8 of them). With signs: $16$.
+---
+Q: How many distinct real roots does $x^3-3x^2+4=0$ have?
+L: 1
+A: 2
+W: 3
+W: 1
+W: 0
+W: 4
+S: $x=-1$ is a root: $-1-3+4=0$. Dividing: $x^2-4x+4=(x-2)^2$. The roots are $-1,2,2$, so there are $2$ distinct real roots.
+---
+Q: The equation $x^3+ax+10=0$ has $x=2$ as a root. What is the product of the other two roots?
+L: 2
+A: -5
+W: 5
+W: -10
+W: 10
+W: 2
+S: $8+2a+10=0$ gives $a=-9$. The product of all three roots is $-10$, so the other two multiply to $\frac{-10}{2}=-5$.
+---
+Q: Let $p(x)$ be the monic polynomial of least degree with rational coefficients that has $\sqrt2+\sqrt3$ as a root. What is $p(1)$?
+L: 3
+A: -8
+W: 8
+W: -10
+W: 2
+W: 0
+S: Let $x=\sqrt2+\sqrt3$. Then $x^2=5+2\sqrt6$, so $(x^2-5)^2=24$ and $x^4-10x^2+1=0$.
+$p(1)=1-10+1=-8$.
+---
+Q: How many real roots does $x^4-4x^2+3=0$ have?
+L: 1
+A: 4
+W: 2
+W: 0
+W: 3
+W: 1
+S: $(x^2-1)(x^2-3)=0$ gives $x=\pm1,\pm\sqrt3$, so there are $4$ real roots.
+---
+@@ poly-sym
+Q: Let $r,s,t$ be the roots of $x^3-2x^2+3x-4=0$. What is $r^2+s^2+t^2$?
+L: 2
+A: -2
+W: 2
+W: 10
+W: -10
+W: 4
+S: $e_1^2-2e_2=4-6=-2$. (Negative, so some roots are not real.)
+---
+Q: Let $r,s,t$ be the roots of $x^3-2x^2+3x-4=0$. What is $r^3+s^3+t^3$?
+L: 3
+A: 2
+W: -2
+W: 12
+W: 8
+W: 26
+S: $p_3=e_1^3-3e_1e_2+3e_3=8-3\cdot2\cdot3+3\cdot4=8-18+12=2$.
+---
+Q: What is the sum of the coefficients of the expansion of $(3x-2)^{10}$?
+L: 1
+A: 1
+W: 3^{10}
+W: 1024
+W: 0
+W: -1
+S: The sum of coefficients is $p(1)=(3-2)^{10}=1$.
+---
+Q: Let $r,s,t$ be the roots of $x^3-5x+1=0$. What is $\dfrac1r+\dfrac1s+\dfrac1t$?
+L: 2
+A: 5
+W: -5
+W: \frac{1}{5}
+W: 0
+W: 1
+S: $\frac{e_2}{e_3}=\frac{-5}{-1}=5$.
+---
+Q: Let $p(x)=x^3-7x^2+2$. What is the sum of the roots of $p(x-3)$?
+L: 2
+A: 16
+W: 7
+W: 4
+W: -2
+W: 10
+S: The roots of $p(x-3)$ are the roots of $p$ shifted by $+3$. The original sum is $7$; adding $3$ to each of the three roots gives $7+9=16$.
+---
+Q: What is the sum of the coefficients of $(x^2-x+1)^5(x+2)$?
+L: 1
+A: 3
+W: 0
+W: 1
+W: 32
+W: 6
+S: Plug in $x=1$: $1^5\cdot3=3$.
+---
+Q: What is the sum of the squares of the roots of $x^4-3x^3+x^2-7x+2=0$?
+L: 2
+A: 7
+W: 9
+W: 11
+W: 5
+W: -7
+S: $e_1=3$, $e_2=1$, so $\sum r^2=9-2=7$.
+---
+Q: Let $r,s$ be the roots of $x^2-3x+1=0$. What is $r^4+s^4$?
+L: 3
+A: 47
+W: 49
+W: 45
+W: 81
+W: 21
+S: $r^2+s^2=9-2=7$, and $r^4+s^4=(r^2+s^2)^2-2(rs)^2=49-2=47$.
+---
+@@ poly-coef
+Q: What is the sum of the coefficients of the even powers of $x$ in $(x+1)^{10}$?
+L: 2
+A: 512
+W: 1024
+W: 256
+W: 511
+W: 513
+S: $\frac{p(1)+p(-1)}2=\frac{1024+0}{2}=512$.
+---
+Q: What is the coefficient of $x$ in $(2x-1)^5$?
+L: 2
+A: 10
+W: -10
+W: 32
+W: 5
+W: -5
+S: The term is $\binom51(2x)(-1)^4=10x$.
+---
+Q: If $\deg p=3$ and $\deg q=4$, what is the degree of $p(q(x))$?
+L: 1
+A: 12
+W: 7
+W: 81
+W: 64
+W: 34
+S: The leading term is $a(bx^4)^3$, of degree $12$.
+---
+Q: A polynomial satisfies $p(x+1)-p(x)=2x+1$ for all $x$, and $p(0)=3$. What is $p(5)$?
+L: 2
+A: 28
+W: 25
+W: 31
+W: 30
+W: 26
+S: $p(5)=p(0)+\sum_{x=0}^{4}(2x+1)=3+(1+3+5+7+9)=3+25=28$. (So $p(x)=x^2+3$.)
+---
+Q: What is the coefficient of $x^2$ in $(1+x)(1+2x)(1+3x)$?
+L: 1
+A: 11
+W: 6
+W: 14
+W: 36
+W: 12
+S: Sum of the pairwise products of $1,2,3$: $2+3+6=11$.
+---
+Q: A quadratic polynomial satisfies $p(0)=2$, $p(1)=3$, and $p(2)=6$. What is $p(3)$?
+L: 1
+A: 11
+W: 9
+W: 10
+W: 12
+W: 13
+S: The differences are $1, 3$, so the second difference is $2$. The next difference is $5$, and $p(3)=6+5=11$. (So $p(x)=x^2+2$.)
+---
+Q: A cubic polynomial satisfies $p(k)=\dfrac1k$ for $k=1,2,3,4$. What is $p(5)$?
+L: 3
+A: 0
+W: \frac{1}{5}
+W: \frac{1}{6}
+W: -\frac{1}{5}
+W: 1
+S: $q(x)=xp(x)-1$ is a quartic with roots $1,2,3,4$: $q(x)=c(x-1)(x-2)(x-3)(x-4)$.
+$q(0)=-1=24c$, so $c=-\frac1{24}$. Then $5p(5)-1=q(5)=-\frac{24}{24}=-1$, so $p(5)=0$.
+---
+Q: What is the sum of the coefficients of $(x-2y)^5$ when it is expanded?
+L: 1
+A: -1
+W: 1
+W: 243
+W: -243
+W: 32
+S: Set $x=y=1$: $(1-2)^5=-1$.
+
+=== GENS ===
+const cubicFromRoots=(a,b,c)=>[-(a+b+c),a*b+b*c+c*a,-a*b*c];
+const cubicTex=(B,C,D)=>poly([[1,3],[B,2],[C,1],[D,0]],'x');
+GENS['poly-vieta']=[
+r=>{const a=ri(r,-6,6),b=ri(r,-6,6),c=ri(r,-6,6);const [B,C,D]=cubicFromRoots(a,b,c);const kind=pick(r,['sum','prod','pair','sq']);
+ const val={sum:a+b+c,prod:a*b*c,pair:C,sq:a*a+b*b+c*c}[kind];const ex={sum:'r+s+t',prod:'rst',pair:'rs+st+tr',sq:'r^2+s^2+t^2'}[kind];
+ return{lvl:1,q:T`Let $r,s,t$ be the roots of $${cubicTex(B,C,D)}=0$. What is $${ex}$?`,a:val,w:[-val,B,D,C,(a+b+c)**2,val+1],
+ s:T`Vieta: $r+s+t=${-B}$, $rs+st+tr=${C}$, $rst=${-D}$.${kind==='sq'?' Then $r^2+s^2+t^2=('+(-B)+')^2-2('+C+')='+val+'$.':''} So $${ex}=${val}$.`}},
+r=>{const a=ri(r,-6,6)||1,b=ri(r,-6,6)||2,c=ri(r,-6,6)||3;const [B,C,D]=cubicFromRoots(a,b,c);const k=ri(r,-3,3);const v=(k-a)*(k-b)*(k-c);
+ return{lvl:2,q:T`Let $r,s,t$ be the roots of $p(x)=${cubicTex(B,C,D)}$. What is $(${k}-r)(${k}-s)(${k}-t)$?`,a:v,w:[-v,v+1,(k+a)*(k+b)*(k+c),D,k**3],
+ s:T`$(x-r)(x-s)(x-t)=p(x)$, so the product is $p(${k})=${v}$.`}},
+r=>{const m=ri(r,2,8),d=ri(r,1,5);const rts=[m-d,m,m+d];const [B,C,D]=cubicFromRoots(...rts);
+ return{lvl:3,q:T`The roots of $${cubicTex(B,C,D)}=0$ form an arithmetic progression. What is the largest root?`,a:m+d,w:[m,m+d+1,m-d,2*m,-B],
+ s:T`Roots $m-d,m,m+d$ sum to $3m=${-B}$, so $m=${m}$. From $m(m^2-d^2)=${-D}$, $d=${d}$. The largest root is $${m+d}$.`}},
+];
+GENS['poly-rem']=[
+r=>{const B=ri(r,-6,6),C=ri(r,-9,9),D=ri(r,-9,9),a=ri(r,-4,4);const v=a**3+B*a*a+C*a+D;
+ return{lvl:1,q:T`What is the remainder when $${cubicTex(B,C,D)}$ is divided by $x${a<0?'+':'-'}${Math.abs(a)}$?`,a:v,w:[-v,(-a)**3+B*a*a-C*a+D,D,v+1,v-a],
+ s:T`Remainder theorem: the remainder is $p(${a})=${a**3}+${P(B*a*a)}+${P(C*a)}+${P(D)}=${v}$.`}},
+r=>{const a=ri(r,-3,3)||2,B=ri(r,-5,5),D=ri(r,-9,9);const k=-(a**3+B*a*a+D);if(k%a)return GENS['poly-rem'][1](r);const C=k/a;
+ return{lvl:1,q:T`For what value of $k$ is $${poly([[1,3],[B,2]],'x')}+kx${D<0?'-':'+'}${Math.abs(D)}$ divisible by $x${a<0?'+':'-'}${Math.abs(a)}$?`,a:C,w:[-C,C+1,C-1,D,2*C],
+ s:T`Need $p(${a})=0$: $${a**3}+${P(B*a*a)}+${P(a)}k+${P(D)}=0$, so $k=${C}$.`}},
+r=>{const a=ri(r,-4,3),b=a+ri(r,1,4),pa=ri(r,-9,9),pb=ri(r,-9,9);const m=F(pb-pa,b-a),c=F(pa).sub(m.mul(a));if(!m.isInt()||!c.isInt())return GENS['poly-rem'][2](r);
+ const rt=(mm,cc)=>O(poly([[mm,1],[cc,0]],'x'),mm*10+cc*0.01+0.5);
+ return{lvl:2,q:T`A polynomial leaves remainder $${pa}$ when divided by $x${a<0?'+':'-'}${Math.abs(a)}$ and remainder $${pb}$ when divided by $x${b<0?'+':'-'}${Math.abs(b)}$. What is its remainder when divided by $(x${a<0?'+':'-'}${Math.abs(a)})(x${b<0?'+':'-'}${Math.abs(b)})$?`,
+ a:rt(m.n,c.n),w:[rt(-m.n,c.n),rt(m.n,-c.n),rt(m.n+1,c.n-a),rt(c.n||1,m.n),rt(m.n,c.n+1)],
+ s:T`The remainder is $mx+c$ with $${a===0?'':a+'m+'}c=${pa}$ and $${b}m+c=${pb}$. Solving: $m=${m.n}$, $c=${c.n}$.`}},
+r=>{const a=ri(r,-3,3),m=ri(r,a+4,a+8);const v=m+(m-a)*(m-a-1)*(m-a-2);
+ return{lvl:2,q:T`A monic cubic polynomial satisfies $p(${a})=${a}$, $p(${a+1})=${a+1}$, and $p(${a+2})=${a+2}$. What is $p(${m})$?`,a:v,w:[m,(m-a)*(m-a-1)*(m-a-2),v+m,v-1,m*m],
+ s:T`$p(x)-x$ is monic with roots $${a},${a+1},${a+2}$, so $p(${m})=${m}+(${m-a})(${m-a-1})(${m-a-2})=${v}$.`}},
+];
+GENS['poly-roots']=[
+r=>{const q=ri(r,2,4),p=ri(r,-5,5)||1,b=ri(r,-4,4),c=ri(r,-4,4);const rr=F(p,q);if(rr.d===1||b===c)return GENS['poly-roots'][0](r);
+ const A=q,B=-(p+q*(b+c)),C=q*b*c+p*(b+c),D=-p*b*c;const s_=rr.add(b+c);
+ return{lvl:1,q:T`What is the sum of the roots of $${poly([[A,3],[B,2],[C,1],[D,0]],'x')}=0$?`,a:s_,w:[s_.neg(),F(b+c),rr,F(-D,A),s_.add(1)],
+ s:T`Vieta: $-\frac{${B}}{${A}}=${s_.tex()}$. (The roots are $${rr.tex()}$, $${b}$, $${c}$.)`}},
+r=>{const a=ri(r,-6,6),b=pick(r,[2,3,5,6,7,10,11]);const C=a*a-b;
+ return{lvl:1,q:T`A monic quadratic with rational coefficients has $${a}+\sqrt{${b}}$ as a root. What is its constant term?`,a:C,w:[a*a+b,-C,2*a,b-a*a+1,a*a],
+ s:T`The other root is $${a}-\sqrt{${b}}$. The product of the roots is $${a*a}-${b}=${C}$.`}},
+r=>{const a=ri(r,-4,4),b=ri(r,1,4),c=ri(r,-5,5)||1;const q=a*a+b*b;const D=-c*q;
+ return{lvl:2,q:T`A monic cubic with real coefficients has roots $${a}${b===1?'+':'+'+b}i$ and $${c}$. What is its constant term?`,a:D,w:[-D,c*q,-(a*a-b*b)*c,q,D+c],
+ s:T`$${a}-${b===1?'':b}i$ is also a root. $p(x)=(x^2-${2*a}x+${q})(x-${P(c)})$, with constant term $${q}\cdot${P(-c)}=${D}$.`}},
+r=>{const lead=pick(r,[2,3,4,6,8,9,10,12]),cst=pick(r,[1,2,3,4,5,6,8,9,10,12]);const set=new Set();
+ for(let p=1;p<=cst;p++)if(cst%p===0)for(let q=1;q<=lead;q++)if(lead%q===0){const f=F(p,q);set.add(f.n+'/'+f.d)}
+ const n=2*set.size;let nd=0;for(let p=1;p<=cst;p++)if(cst%p===0)nd++;let nq=0;for(let q=1;q<=lead;q++)if(lead%q===0)nq++;
+ return{lvl:2,q:T`According to the rational root theorem, how many distinct rational numbers could be roots of $${lead}x^3+ax^2+bx+${cst}$ (for integers $a,b$)?`,a:n,w:[2*nd*nq,nd*nq,n/2,n+2],
+ s:T`Candidates are $\pm\frac pq$ with $p\mid${cst}$ and $q\mid${lead}$. After removing duplicates there are ${set.size} positive values, so $${n}$ in all.`}},
+];
+GENS['poly-sym']=[
+r=>{const a=ri(r,-5,5),b=ri(r,-5,5),c=ri(r,-5,5);const [B,C,D]=cubicFromRoots(a,b,c);const cube=r()<.5;const v=cube?a**3+b**3+c**3:a*a+b*b+c*c;
+ return{lvl:cube?3:2,q:T`Let $r,s,t$ be the roots of $${cubicTex(B,C,D)}=0$. What is $${cube?'r^3+s^3+t^3':'r^2+s^2+t^2'}$?`,a:v,w:cube?[B**3,-(B**3),v+3*D,v-3*D,(a+b+c)**2]:[B*B,B*B+2*C,C,v+2,-v],
+ s:cube?T`$p_3=e_1^3-3e_1e_2+3e_3$ with $e_1=${-B},e_2=${C},e_3=${-D}$: $${(-B)**3}-${P(3*(-B)*C)}+${P(3*(-D))}=${v}$.`:T`$p_2=e_1^2-2e_2=${B*B}-${P(2*C)}=${v}$.`}},
+r=>{const a=ri(r,1,5),b=ri(r,-4,4)||1,n=ri(r,3,12);const v=(a+b)**n;if(Math.abs(v)>1e7)return GENS['poly-sym'][1](r);
+ return{lvl:1,q:T`What is the sum of the coefficients of $(${poly([[a,1],[b,0]],'x')})^{${n}}$?`,a:v,w:[a**n,(a-b)**n,2**n,v+1,-v],
+ s:T`Plug in $x=1$: $(${a}${b<0?'-':'+'}${Math.abs(b)})^{${n}}=${v}$.`}},
+r=>{const B=ri(r,-9,9),C=ri(r,-9,9),D=ri(r,-9,9),k=ri(r,-4,5)||1;
+ return{lvl:2,q:T`Let $p(x)=${cubicTex(B,C,D)}$. What is the sum of the roots of $p(x${k<0?'+':'-'}${Math.abs(k)})$?`,a:-B+3*k,w:[-B,-B+k,-B-3*k,B+3*k,3*k],
+ s:T`The roots of $p(x-${P(k)})$ are the roots of $p$ plus $${k}$. The original sum is $${-B}$, so the new sum is $${-B}+3\cdot${P(k)}=${-B+3*k}$.`}},
+r=>{const s_=ri(r,1,6),q=ri(r,-3,3)||1;let p=[2,s_];for(let i=2;i<=4;i++)p.push(s_*p[i-1]-q*p[i-2]);const n=pick(r,[3,4]);
+ return{lvl:3,q:T`Let $r,s$ be the roots of $${poly([[1,2],[-s_,1],[q,0]],'x')}=0$. What is $r^${n}+s^${n}$?`,a:p[n],w:[s_**n,p[n]+2*q,p[n-1],p[n]-q,s_**n-q],
+ s:T`Power sums satisfy $p_k=${s_}p_{k-1}-${P(q)}p_{k-2}$ with $p_0=2,p_1=${s_}$: $${p.slice(0,n+1).join(',\\ ')}$.`}},
+];
+GENS['poly-coef']=[
+r=>{const a=ri(r,1,5),b=ri(r,1,5),c=ri(r,1,6);const v=a*b+b*c+c*a;
+ return{lvl:1,q:T`What is the coefficient of $x^2$ in $(1+${a===1?'':a}x)(1+${b===1?'':b}x)(1+${c===1?'':c}x)$?`,a:v,w:[a+b+c,a*b*c,v+1,(a+b+c)**2,v-1],
+ s:T`Choose $x$ from two factors and $1$ from the third: $${a}\cdot${b}+${b}\cdot${c}+${c}\cdot${a}=${v}$.`}},
+r=>{const m=ri(r,2,5),n=ri(r,2,6);
+ return{lvl:1,q:T`If $\deg p=${m}$ and $\deg q=${n}$, what is the degree of $p(q(x))\cdot q(x)$?`,a:m*n+n,w:[m+n,m*n,m*n+m,n**m],
+ s:T`$\deg p(q(x))=${m}\cdot${n}=${m*n}$; multiplying by $q$ adds ${n}: $${m*n+n}$.`}},
+r=>{const a=ri(r,1,3),b=ri(r,-5,5),c=ri(r,-5,9);const f=x=>a*x*x+b*x+c;
+ return{lvl:1,q:T`A quadratic polynomial satisfies $p(0)=${f(0)}$, $p(1)=${f(1)}$, and $p(2)=${f(2)}$. What is $p(4)$?`,a:f(4),w:[f(3),f(4)+2*a,2*f(2)-f(0),f(4)-1,f(2)+2*(f(2)-f(1))],
+ s:T`The second difference is $2a=${2*a}$. Differences: $${f(1)-f(0)}, ${f(2)-f(1)}, ${f(3)-f(2)}, ${f(4)-f(3)}$, so $p(3)=${f(3)}$ and $p(4)=${f(4)}$.`}},
+r=>{const n=ri(r,4,12);const even=r()<.5;const v=2**(n-1);
+ return{lvl:2,q:T`What is the sum of the coefficients of the ${even?'even':'odd'} powers of $x$ in $(x+1)^{${n}}$?`,a:v,w:[2**n,2**(n-2),v-1,v+1],
+ s:T`$\frac{p(1)${even?'+':'-'}p(-1)}{2}=\frac{2^{${n}}${even?'+':'-'}0}{2}=${v}$.`}},
+];

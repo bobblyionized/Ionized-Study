@@ -1,0 +1,400 @@
+=== LESSONS ===
+<script type="text/plain" id="L-polyg-quad">
+<h2>Quadrilaterals</h2>
+<table class="t"><tr><th>Shape</th><th>Key facts</th><th>Area</th></tr>
+<tr><td>Parallelogram</td><td>opposite sides equal and parallel; diagonals bisect each other</td><td>$bh=ab\sin\theta$</td></tr>
+<tr><td>Rectangle</td><td>diagonals equal: $d^2=a^2+b^2$</td><td>$ab$</td></tr>
+<tr><td>Rhombus</td><td>diagonals perpendicular bisectors: side$^2=\left(\frac{d_1}2\right)^2+\left(\frac{d_2}2\right)^2$</td><td>$\frac{d_1d_2}{2}$</td></tr>
+<tr><td>Kite</td><td>one diagonal is the perpendicular bisector of the other</td><td>$\frac{d_1d_2}{2}$</td></tr>
+<tr><td>Trapezoid</td><td>midsegment $=\frac{a+b}2$</td><td>$\frac{a+b}{2}h$</td></tr></table>
+<h3>Tricks</h3>
+<ul><li><b>Isosceles trapezoid:</b> drop heights from the short base. Each overhang is $\frac{b-a}2$, and Pythagoras with the leg gives $h$.</li>
+<li><b>Rectangle from perimeter and diagonal:</b> $a+b=\frac P2$ and $a^2+b^2=d^2$, so $ab=\frac{(a+b)^2-d^2}{2}$.</li>
+<li><b>Varignon:</b> the midpoints of any quadrilateral form a parallelogram with half the area.</li>
+<li>Any triangle with a base on one side of a parallelogram and its apex on the opposite side has half the parallelogram's area.</li></ul>
+</script>
+<script type="text/plain" id="L-polyg-reg">
+<h2>Regular Polygons</h2>
+<div class="box"><h4>For a regular $n$-gon</h4><ul>
+<li>Interior angle sum $180(n-2)$; each interior angle $\frac{180(n-2)}{n}$; each exterior angle $\frac{360}{n}$.</li>
+<li>Number of diagonals $\frac{n(n-3)}{2}$.</li>
+<li>Hexagon of side $s$: six equilateral triangles, area $\frac{3\sqrt3}{2}s^2$. The long diagonal is $2s$ and the short diagonal is $s\sqrt3$.</li>
+<li>Octagon of side $s$: area $2(1+\sqrt2)s^2$ (a square with its corners cut off).</li>
+<li>Area $=\frac12\cdot$perimeter$\cdot$apothem.</li>
+</ul></div>
+<p>To find $n$ from an angle, use the exterior angle: $n=\frac{360}{\text{exterior}}$. An interior angle of $150^\circ$ means an exterior of $30^\circ$, so $n=12$.</p>
+</script>
+<script type="text/plain" id="L-polyg-shoe">
+<h2>Shoelace Formula &amp; Pick's Theorem</h2>
+<div class="box"><h4>Shoelace</h4>
+For vertices $(x_1,y_1),\dots,(x_n,y_n)$ in order around the polygon:
+$$\text{Area}=\frac12\left|\sum_{i=1}^{n}(x_iy_{i+1}-x_{i+1}y_i)\right|$$ (indices wrap around).</div>
+<div class="box"><h4>Pick's theorem</h4>
+A lattice polygon with $I$ interior and $B$ boundary lattice points has area $A=I+\frac B2-1$.</div>
+<h3>Lattice points on a segment</h3>
+<p>The segment from $(x_1,y_1)$ to $(x_2,y_2)$ contains $\gcd(|\Delta x|,|\Delta y|)+1$ lattice points, including both endpoints.</p>
+<h3>Typical use</h3>
+<p>To count interior points: find the area by shoelace, count $B$ with gcds, then $I=A-\frac B2+1$.</p>
+</script>
+<script type="text/plain" id="L-polyg-ratio">
+<h2>Area Ratios &amp; Mass Points</h2>
+<div class="box"><h4>Same height, so area ratio equals base ratio</h4>
+If $D$ is on $BC$, then $\frac{[ABD]}{[ADC]}=\frac{BD}{DC}$. Chain these: each cevian splits areas in the ratio of the segments it creates.</div>
+<h3>Mass points</h3>
+<ol><li>On segment $BC$ with $BD:DC=p:q$, put mass $q$ at $B$ and $p$ at $C$ (masses are inversely proportional to the lengths).</li>
+<li>Mass at $D$ $=$ the sum, $p+q$.</li>
+<li>Where two cevians cross, the ratio along a cevian from vertex $A$ is $AP:PD=m_D:m_A$.</li>
+<li>Scale the masses so the shared vertex has the same mass in both cevians.</li></ol>
+<h3>Other ratio facts</h3>
+<ul><li>A trapezoid's diagonals create triangles at the two bases whose areas are in ratio $\left(\frac ab\right)^2$.</li>
+<li>Points at fraction $t$ along each side (in the same direction) form a triangle with $1-3t(1-t)$ of the area.</li>
+<li>Midpoint constructions often cut areas in half repeatedly.</li></ul>
+</script>
+
+=== BANK ===
+@@ polyg-quad
+Q: A rhombus has diagonals $10$ and $24$. What is its side length?
+L: 1
+A: 13
+W: 17
+W: 26
+W: 120
+W: 14
+S: The diagonals bisect each other at right angles: $\sqrt{5^2+12^2}=13$.
+---
+Q: A rhombus has diagonals $10$ and $24$. What is its area?
+L: 1
+A: 120
+W: 240
+W: 60
+W: 34
+W: 169
+S: $\frac{10\cdot24}{2}=120$.
+---
+Q: A trapezoid has bases $8$ and $14$ and height $5$. What is its area?
+L: 1
+A: 55
+W: 110
+W: 70
+W: 40
+W: 60
+S: $\frac{8+14}{2}\cdot5=55$.
+---
+Q: An isosceles trapezoid has bases $10$ and $22$ and legs of length $10$. What is its area?
+L: 2
+A: 128
+W: 160
+W: 96
+W: 136
+W: 112
+S: Each overhang is $\frac{22-10}{2}=6$, so $h=\sqrt{100-36}=8$ and the area is $\frac{10+22}2\cdot8=128$.
+---
+Q: A parallelogram has sides $6$ and $10$ with an included angle of $30^\circ$. What is its area?
+L: 1
+A: 30
+W: 60
+W: 15
+W: 30\sqrt{3}
+W: 16
+S: $ab\sin\theta=60\cdot\frac12=30$.
+---
+Q: A quadrilateral has area $40$. What is the area of the quadrilateral formed by joining the midpoints of its sides?
+L: 2
+A: 20
+W: 10
+W: 40
+W: 30
+W: 15
+S: Varignon's parallelogram always has half the area: $20$.
+---
+Q: A rectangle has perimeter $34$ and diagonal $13$. What is its area?
+L: 2
+A: 60
+W: 65
+W: 72
+W: 30
+W: 56
+S: $a+b=17$ and $a^2+b^2=169$, so $2ab=289-169=120$ and $ab=60$ (sides $5$ and $12$).
+---
+Q: A trapezoid has a midsegment of length $15$ and a height of $8$. What is its area?
+L: 1
+A: 120
+W: 60
+W: 240
+W: 23
+W: 135
+S: Area $=$ midsegment × height $=15\cdot8=120$.
+---
+@@ polyg-reg
+Q: How many diagonals does a decagon have?
+L: 1
+A: 35
+W: 45
+W: 70
+W: 40
+W: 30
+S: $\frac{10\cdot7}{2}=35$.
+---
+Q: Each interior angle of a regular polygon is $150^\circ$. How many sides does it have?
+L: 1
+A: 12
+W: 10
+W: 15
+W: 8
+W: 6
+S: Each exterior angle is $30^\circ$, so $n=\frac{360}{30}=12$.
+---
+Q: What is the area of a regular hexagon with side $4$?
+L: 1
+A: 24\sqrt{3}
+W: 48\sqrt{3}
+W: 12\sqrt{3}
+W: 96
+W: 16\sqrt{3}
+S: Six equilateral triangles of side $4$: $6\cdot\frac{\sqrt3}{4}\cdot16=24\sqrt3$.
+---
+Q: Each exterior angle of a regular polygon is $24^\circ$. How many sides does it have?
+L: 1
+A: 15
+W: 12
+W: 24
+W: 18
+W: 20
+S: $\frac{360}{24}=15$.
+---
+Q: What is the length of the longest diagonal of a regular hexagon with side $6$?
+L: 1
+A: 12
+W: 6\sqrt{3}
+W: 6\sqrt{2}
+W: 18
+W: 9
+S: The long diagonal passes through the center: $2s=12$.
+---
+Q: What is the area of a regular octagon with side length $1$?
+L: 3
+A: 2+2\sqrt{2}
+W: 4
+W: 2+\sqrt{2}
+W: 1+2\sqrt{2}
+W: 3\sqrt{2}
+S: The octagon is a square of side $1+\sqrt2$ with four corner triangles (legs $\frac{\sqrt2}2$, area $\frac14$ each) removed.
+$(1+\sqrt2)^2-1=3+2\sqrt2-1=2+2\sqrt2$.
+---
+Q: What is the length of a shorter diagonal of a regular hexagon with side $6$?
+L: 1
+A: 6\sqrt{3}
+W: 12
+W: 6
+W: 3\sqrt{3}
+W: 6\sqrt{2}
+S: It spans two sides with a $120^\circ$ angle between them: $s\sqrt3=6\sqrt3$.
+---
+Q: The interior angles of a convex polygon sum to $1980^\circ$. How many sides does it have?
+L: 1
+A: 13
+W: 11
+W: 12
+W: 14
+W: 15
+S: $180(n-2)=1980$, so $n-2=11$ and $n=13$.
+---
+@@ polyg-shoe
+Q: What is the area of the quadrilateral with vertices $(0,0)$, $(4,0)$, $(5,3)$, $(1,4)$ (in that order)?
+L: 2
+A: \frac{29}{2}
+W: 29
+W: 14
+W: 15
+W: \frac{27}{2}
+S: Shoelace terms: $0\cdot0-4\cdot0=0$; $4\cdot3-5\cdot0=12$; $5\cdot4-1\cdot3=17$; $1\cdot0-0\cdot4=0$. Total $29$, area $\frac{29}2$.
+---
+Q: A lattice polygon has $10$ interior lattice points and $8$ boundary lattice points. What is its area?
+L: 1
+A: 13
+W: 14
+W: 18
+W: 12
+W: 17
+S: Pick: $10+\frac82-1=13$.
+---
+Q: How many lattice points lie on the segment from $(0,0)$ to $(12,18)$, including the endpoints?
+L: 1
+A: 7
+W: 6
+W: 13
+W: 31
+W: 19
+S: $\gcd(12,18)+1=7$.
+---
+Q: What is the area of the triangle with vertices $(1,1)$, $(5,2)$, $(3,6)$?
+L: 1
+A: 9
+W: 18
+W: 12
+W: 8
+W: 10
+S: $\frac12|1(2-6)+5(6-1)+3(1-2)|=\frac12|{-4}+25-3|=9$.
+---
+Q: A square has vertices $(0,0)$, $(3,4)$, $(-1,7)$, $(-4,3)$. What is its area?
+L: 1
+A: 25
+W: 49
+W: 20
+W: 24
+W: 50
+S: The side is $\sqrt{3^2+4^2}=5$, so the area is $25$.
+---
+Q: How many lattice points lie strictly inside the triangle with vertices $(0,0)$, $(6,0)$, $(0,4)$?
+L: 2
+A: 7
+W: 6
+W: 8
+W: 12
+W: 9
+S: Area $12$. Boundary points: $\gcd(6,0)+\gcd(6,4)+\gcd(0,4)=6+2+4=12$.
+Pick: $I=12-6+1=7$.
+---
+Q: What is the area of the pentagon with vertices $(0,0)$, $(2,0)$, $(3,2)$, $(1,4)$, $(-1,2)$?
+L: 2
+A: 10
+W: 12
+W: 20
+W: 8
+W: 9
+S: Shoelace terms: $0$, $4$, $10$, $6$, $0$. Total $20$, area $10$.
+---
+Q: How many lattice points lie strictly inside the triangle with vertices $(0,0)$, $(10,0)$, $(0,10)$?
+L: 3
+A: 36
+W: 45
+W: 55
+W: 35
+W: 40
+S: Area $50$; boundary $10+10+10=30$. Pick: $I=50-15+1=36$. (Check: points with $x,y\ge1$ and $x+y\le9$: $8+7+\dots+1=36$.)
+---
+@@ polyg-ratio
+Q: Point $D$ is on side $BC$ of triangle $ABC$ with $BD:DC=2:3$. If the area of $ABC$ is $50$, what is the area of $ABD$?
+L: 1
+A: 20
+W: 30
+W: 25
+W: 40
+W: 10
+S: Same height from $A$, so the areas follow the bases: $\frac25\cdot50=20$.
+---
+Q: In triangle $ABC$, $D$ is the midpoint of $BC$ and $E$ is the midpoint of $AD$. What fraction of the area of $ABC$ is triangle $ABE$?
+L: 1
+A: \frac{1}{4}
+W: \frac{1}{2}
+W: \frac{1}{3}
+W: \frac{1}{8}
+W: \frac{1}{6}
+S: $[ABD]=\frac12[ABC]$ and $[ABE]=\frac12[ABD]$, so the fraction is $\frac14$.
+---
+Q: In triangle $ABC$, $D$ is on $BC$ with $BD:DC=1:2$, and $E$ is the midpoint of $AC$. Cevians $AD$ and $BE$ meet at $P$. What is $\dfrac{AP}{PD}$?
+L: 2
+A: 3
+W: 2
+W: \frac{3}{2}
+W: 4
+W: \frac{3}{4}
+S: Mass points: $BD:DC=1:2$ gives $m_B=2$, $m_C=1$, so $m_D=3$. $E$ is the midpoint of $AC$, so $m_A=m_C=1$.
+$\frac{AP}{PD}=\frac{m_D}{m_A}=3$.
+---
+Q: Parallelogram $ABCD$ has area $60$, and $P$ is any point on side $CD$. What is the area of triangle $ABP$?
+L: 1
+A: 30
+W: 20
+W: 15
+W: 60
+W: 40
+S: Base $AB$ and height equal to the parallelogram's height: half the area, $30$.
+---
+Q: A triangle has area $36$. Points are chosen one-third of the way along each side (all in the same rotational direction), forming an inner triangle. What is its area?
+L: 3
+A: 12
+W: 9
+W: 18
+W: 4
+W: 16
+S: Each corner triangle has area $\frac13\cdot\frac23=\frac29$ of the whole. The inner one is $1-3\cdot\frac29=\frac13$ of $36$, i.e. $12$.
+---
+Q: Square $ABCD$ has side $6$, and $E$ is the midpoint of $BC$. What is the area of triangle $AED$?
+L: 1
+A: 18
+W: 9
+W: 12
+W: 24
+W: 36
+S: Base $AD=6$ and height $6$ (the distance from $E$ to $AD$): area $18$, half the square.
+---
+Q: In trapezoid $ABCD$ with $AB\parallel CD$ and $AB=2CD$, the diagonals meet at $P$. If triangle $PAB$ has area $20$, what is the area of triangle $PCD$?
+L: 2
+A: 5
+W: 10
+W: 40
+W: 8
+W: 4
+S: Triangles $PAB$ and $PCD$ are similar with ratio $2$, so their areas are in ratio $4$: $\frac{20}4=5$.
+---
+Q: In triangle $ABC$, $D$ is on $BC$ with $BD:DC=3:2$ and $E$ is on $AB$ with $AE:EB=1:2$. Cevians $AD$ and $CE$ meet at $P$. What is $\dfrac{CP}{PE}$?
+L: 3
+A: 2
+W: 3
+W: \frac{3}{2}
+W: \frac{5}{2}
+W: 4
+S: $BD:DC=3:2$ gives $m_B=2$, $m_C=3$. $AE:EB=1:2$ needs $m_A\cdot1=m_B\cdot2$, so $m_A=4$ and $m_E=6$.
+$\frac{CP}{PE}=\frac{m_E}{m_C}=\frac63=2$.
+
+=== GENS ===
+GENS['polyg-quad']=[
+r=>{const [a,b,c]=pick(r,TRIPLES);const ask=r()<.5;
+ return ask?{lvl:1,q:T`A rhombus has diagonals $${2*a}$ and $${2*b}$. What is its side length?`,a:c,w:[a+b,2*c,c+1,2*a*b],s:T`Half-diagonals $${a}$ and $${b}$ are perpendicular: side $=\sqrt{${a*a}+${b*b}}=${c}$.`}
+ :{lvl:1,q:T`A rhombus has diagonals $${2*a}$ and $${2*b}$. What is its area?`,a:2*a*b,w:[4*a*b,a*b,c*c,2*(a+b)],s:T`$\frac{d_1d_2}2=\frac{${2*a}\cdot${2*b}}2=${2*a*b}$.`}},
+r=>{const a=ri(r,2,20),b=ri(r,2,20),h=ri(r,2,15);
+ return{lvl:1,q:T`A trapezoid has bases $${a}$ and $${b}$ and height $${h}$. What is its area?`,a:F((a+b)*h,2),w:[F((a+b)*h),F(a*b*h,2),F(Math.max(a,b)*h),F((a+b)*h,4)],s:T`$\frac{${a}+${b}}2\cdot${h}=${F((a+b)*h,2).tex()}$.`}},
+r=>{const [x,h,l]=pick(r,TRIPLES);const a=ri(r,2,15),b=a+2*x;
+ return{lvl:2,q:T`An isosceles trapezoid has bases $${a}$ and $${b}$ and legs of length $${l}$. What is its area?`,a:(a+b)/2*h,w:[(a+b)/2*l,(a+b)*h,b*h,a*h+x*h/2],
+ s:T`Each overhang is $\frac{${b}-${a}}{2}=${x}$, so $h=\sqrt{${l*l}-${x*x}}=${h}$ and the area is $\frac{${a+b}}2\cdot${h}=${(a+b)/2*h}$.`}},
+r=>{const [a,b,c]=pick(r,TRIPLES);
+ return{lvl:2,q:T`A rectangle has perimeter $${2*(a+b)}$ and diagonal $${c}$. What is its area?`,a:a*b,w:[c*c,(a+b)**2/4|0,a*b+c,2*a*b],
+ s:T`$a+b=${a+b}$ and $a^2+b^2=${c*c}$, so $ab=\frac{${(a+b)**2}-${c*c}}{2}=${a*b}$.`}},
+];
+GENS['polyg-reg']=[
+r=>{const n=ri(r,5,30);
+ return{lvl:1,q:T`How many diagonals does a convex polygon with ${n} sides have?`,a:n*(n-3)/2,w:[n*(n-1)/2,n*(n-3),n*(n-2)/2,n*(n-3)/2+n],s:T`$\frac{n(n-3)}2=\frac{${n}\cdot${n-3}}2=${n*(n-3)/2}$.`}},
+r=>{const n=pick(r,[3,4,5,6,8,9,10,12,15,18,20,24,30,36,40,45,60,72]);const ext=360/n;const ask=r()<.5;
+ return ask?{lvl:1,q:T`Each interior angle of a regular polygon is $${180-ext}^\circ$. How many sides does it have?`,a:n,w:[n+1,n-1,n+2,Math.round(360/(180-ext))||n+3],s:T`Exterior angle $${ext}^\circ$, so $n=\frac{360}{${ext}}=${n}$.`}
+ :{lvl:1,q:T`Each exterior angle of a regular polygon is $${ext}^\circ$. How many sides does it have?`,a:n,w:[n+1,n-1,n+2,n*2],s:T`$n=\frac{360}{${ext}}=${n}$.`}},
+r=>{const s_=ri(r,1,10);
+ return{lvl:1,q:T`What is the area of a regular hexagon with side $${s_}$?`,a:FR(F(3*s_*s_,2),3),w:[FR(F(3*s_*s_),3),FR(F(3*s_*s_,4),3),FR(F(s_*s_,4),3),FR(F(6*s_*s_),1)],s:T`Six equilateral triangles: $6\cdot\frac{\sqrt3}{4}\cdot${s_*s_}=${FR(F(3*s_*s_,2),3).tex}$.`}},
+r=>{const n=ri(r,4,25);
+ return{lvl:1,q:T`The interior angles of a convex polygon sum to $${180*(n-2)}^\circ$. How many sides does it have?`,a:n,w:[n-2,n-1,n+1,n+2],s:T`$180(n-2)=${180*(n-2)}$ gives $n=${n}$.`}},
+];
+GENS['polyg-shoe']=[
+r=>{const a=ri(r,2,10),b=ri(r,1,10),c=ri(r,1,10),d=ri(r,1,10);const two=Math.abs(a*c-b*0)+Math.abs(b*d-0*c);const S=a*c+b*d;
+ return{lvl:2,q:T`What is the area of the quadrilateral with vertices $(0,0)$, $(${a},0)$, $(${b},${c})$, $(0,${d})$, in that order?`,a:F(S,2),w:[F(S),F(a*d,2),F(S+2,2),F(a*c,2)],
+ s:T`Shoelace: $0+(${a}\cdot${c}-${b}\cdot0)+(${b}\cdot${d}-0\cdot${c})+0=${S}$. Area $=${F(S,2).tex()}$.`}},
+r=>{const I=ri(r,0,30),B=ri(r,3,30);const A=F(2*I+B-2,2);
+ return{lvl:1,q:T`A lattice polygon has ${I} interior lattice points and ${B} boundary lattice points. What is its area?`,a:A,w:[A.add(1),F(I+B),F(I).add(F(B,2)),A.sub(1)],s:T`Pick: $${I}+\frac{${B}}2-1=${A.tex()}$.`}},
+r=>{const x=ri(r,-10,10),y=ri(r,-10,10),dx=ri(r,1,30),dy=ri(r,0,30);const g=gcd(dx,dy);
+ return{lvl:1,q:T`How many lattice points lie on the segment from $(${x},${y})$ to $(${x+dx},${y+dy})$, including endpoints?`,a:g+1,w:[g,g+2,dx+1,Math.max(dx,dy)+1],s:T`$\gcd(${dx},${dy})+1=${g+1}$.`}},
+r=>{const a=ri(r,2,15),b=ri(r,2,15);const A=a*b/2;const B=a+b+gcd(a,b);const I=A-B/2+1;
+ return{lvl:2,q:T`How many lattice points lie strictly inside the triangle with vertices $(0,0)$, $(${a},0)$, $(0,${b})$?`,a:I,w:[I+1,I-1>=0?I-1:I+2,A,B],
+ s:T`Area $${A}$; boundary points $${a}+${b}+\gcd(${a},${b})=${B}$. Pick: $I=${A}-${B/2}+1=${I}$.`}},
+];
+GENS['polyg-ratio']=[
+r=>{const p=ri(r,1,7),q=ri(r,1,7),k=ri(r,1,10);const T_=(p+q)*k;
+ return{lvl:1,q:T`Point $D$ is on side $BC$ of triangle $ABC$ with $BD:DC=${p}:${q}$. If the area of $ABC$ is $${T_}$, what is the area of $ABD$?`,a:p*k,w:[q*k,T_/2,F(p*T_,q),p*k+k],s:T`Same height from $A$: $\frac{${p}}{${p+q}}\cdot${T_}=${p*k}$.`}},
+r=>{const p=ri(r,1,5),q=ri(r,1,5),rr=ri(r,1,5),s_=ri(r,1,5);const v=F(rr*(p+q),p*s_);
+ return{lvl:2,q:T`In triangle $ABC$, $D$ is on $BC$ with $BD:DC=${p}:${q}$ and $E$ is on $AC$ with $AE:EC=${rr}:${s_}$. Cevians $AD$ and $BE$ meet at $P$. What is $\dfrac{AP}{PD}$?`,a:v,w:[v.add(1),F(p+q,p),F(rr,s_),v.mul(2),F(p*s_,rr*(p+q))],
+ s:T`Mass points: $m_B=${q}$, $m_C=${p}$ (so $m_D=${p+q}$). On $AC$: $m_A\cdot${rr}=m_C\cdot${s_}$ gives $m_A=${F(p*s_,rr).tex()}$.<br>$\frac{AP}{PD}=\frac{m_D}{m_A}=${v.tex()}$.`}},
+r=>{const t=pick(r,[F(1,3),F(1,4),F(1,5),F(2,5),F(1,6)]);const k=ri(r,1,4);const Tot=t.d*t.d*k*3;const v=F(1).sub(t.mul(F(1).sub(t)).mul(3)).mul(Tot);
+ return{lvl:3,q:T`A triangle has area $${Tot}$. On each side, a point is chosen $${t.tex()}$ of the way along it (all in the same rotational direction), and the three points form a triangle. What is its area?`,a:v,w:[t.mul(Tot),F(Tot,4),v.add(k),F(Tot).sub(v)],
+ s:T`Each corner triangle has area $t(1-t)=${t.mul(F(1).sub(t)).tex()}$ of the whole. The inner triangle is $1-3t(1-t)=${F(1).sub(t.mul(F(1).sub(t)).mul(3)).tex()}$ of $${Tot}$, i.e. $${v.tex()}$.`}},
+r=>{const a=ri(r,1,5),b=ri(r,a+1,8),k=ri(r,1,5);const big=b*b*k,small=a*a*k;
+ return{lvl:2,q:T`Trapezoid $ABCD$ has $AB\parallel CD$ with $AB:CD=${b}:${a}$. Its diagonals meet at $P$. If triangle $PAB$ has area $${big}$, what is the area of triangle $PCD$?`,a:small,w:[a*b*k,F(big*a,b),small*2,big-small],
+ s:T`$\triangle PAB\sim\triangle PCD$ with ratio $\frac{${b}}{${a}}$, so the areas are in ratio $\frac{${b*b}}{${a*a}}$: $${small}$.`}},
+];

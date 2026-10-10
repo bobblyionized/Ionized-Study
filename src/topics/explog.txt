@@ -1,0 +1,297 @@
+=== LESSONS ===
+<script type="text/plain" id="L-exp-rules">
+<h2>Exponent Rules &amp; Equations</h2>
+<div class="box"><h4>Laws</h4><ul>
+<li>$a^ma^n=a^{m+n}$, $\quad\frac{a^m}{a^n}=a^{m-n}$, $\quad(a^m)^n=a^{mn}$, $\quad(ab)^n=a^nb^n$.</li>
+<li>$a^{-n}=\frac1{a^n}$, $\quad a^{m/n}=\left(\sqrt[n]a\right)^m$, $\quad a^0=1$.</li>
+</ul></div>
+<h3>Solving</h3>
+<ul><li><b>Match the bases:</b> $4^x=8^{x-1}$ becomes $2^{2x}=2^{3x-3}$.</li>
+<li><b>Factor out the smallest power:</b> $2^{x+2}-2^x=2^x(4-1)$.</li>
+<li><b>Quadratic in disguise:</b> $4^x-3\cdot2^x-4=0$ with $u=2^x$. Remember $u>0$.</li>
+<li><b>Swapping roles:</b> if $3^a=5$ and $5^b=9$, then $3^{ab}=9$, so $ab=2$.</li></ul>
+<h3>Comparing powers</h3>
+<p>Rewrite with a common exponent: $2^{100}=(2^5)^{20}=32^{20}$ and $3^{60}=27^{20}$, so $2^{100}$ is larger.</p>
+</script>
+<script type="text/plain" id="L-log-prop">
+<h2>Logarithm Properties &amp; Change of Base</h2>
+<div class="box"><h4>Rules</h4><ul>
+<li>$\log_b x=y\iff b^y=x$.</li>
+<li>$\log_b(xy)=\log_bx+\log_by$, $\quad\log_b\frac xy=\log_bx-\log_by$, $\quad\log_bx^k=k\log_bx$.</li>
+<li>Change of base: $\log_ab=\frac{\log b}{\log a}$. So $\log_ab\cdot\log_bc=\log_ac$ and $\log_ab=\frac1{\log_ba}$.</li>
+<li>$\log_{a^m}b^n=\frac nm\log_ab$; for example $\log_432=\log_{2^2}2^5=\frac52$.</li>
+</ul></div>
+<h3>Patterns</h3>
+<ul><li>Sums of logs become logs of products, which often telescope: $\sum\log_2\frac{k+1}{k}=\log_2\frac{n+1}{1}$.</li>
+<li>$\frac1{\log_a N}+\frac1{\log_b N}=\log_N a+\log_N b=\log_N(ab)$.</li>
+<li>Express everything in terms of $\log 2$ and $\log 3$ (or given values $x, y$): $\log 12=2\log2+\log3$.</li></ul>
+</script>
+<script type="text/plain" id="L-log-eq">
+<h2>Log Equations &amp; Number of Digits</h2>
+<div class="box"><h4>Solving log equations</h4><ul>
+<li>Combine the logs into one, rewrite in exponential form, and solve.</li>
+<li><b>Check the domain:</b> every log argument must be positive (and bases positive and $\ne1$). Discard extraneous roots.</li>
+<li>Quadratic in $\log x$: substitute $t=\log x$.</li>
+<li>Nested logs: peel from the outside in: $\log_2(\cdots)=0$ means the inside is $1$.</li>
+</ul></div>
+<div class="box"><h4>Counting digits</h4>
+A positive integer $N$ has $\lfloor\log_{10}N\rfloor+1$ digits. Useful values: $\log_{10}2\approx0.30103$, $\log_{10}3\approx0.47712$.<br>
+For products like $2^a5^b$, pair up $10$s first: $2^{30}5^{20}=2^{10}\cdot10^{20}$.</div>
+</script>
+
+=== BANK ===
+@@ exp-rules
+Q: If $4^x=8^{x-1}$, what is $x$?
+L: 1
+A: 3
+W: 1
+W: -3
+W: 2
+W: 6
+S: $2^{2x}=2^{3x-3}$, so $2x=3x-3$ and $x=3$.
+---
+Q: What is $27^{2/3}$?
+L: 1
+A: 9
+W: 18
+W: 3
+W: 6
+W: 81
+S: $\left(\sqrt[3]{27}\right)^2=3^2=9$.
+---
+Q: If $2^{x+2}-2^x=48$, what is $x$?
+L: 1
+A: 4
+W: 3
+W: 5
+W: 6
+W: 8
+S: $2^x(4-1)=48$, so $2^x=16$ and $x=4$.
+---
+Q: Which of these is largest?
+L: 2
+A: 2^{100}
+W: 3^{60}
+W: 5^{40}
+W: 6^{30}
+W: 7^{20}
+S: Write each as a 20th power: $2^{100}=32^{20}$, $3^{60}=27^{20}$, $5^{40}=25^{20}$, $6^{30}=(6^{1.5})^{20}\approx14.7^{20}$, $7^{20}$. The largest is $2^{100}$.
+---
+Q: What real $x$ satisfies $4^x-3\cdot2^x-4=0$?
+L: 2
+A: 2
+W: 1
+W: 4
+W: -1
+W: 0
+S: Let $u=2^x>0$: $u^2-3u-4=(u-4)(u+1)=0$, so $u=4$ and $x=2$.
+---
+Q: What is $\dfrac{2^{10}+2^{10}}{2^9}$?
+L: 1
+A: 4
+W: 2
+W: 8
+W: 2^{11}
+W: 1
+S: $\frac{2\cdot2^{10}}{2^9}=\frac{2^{11}}{2^9}=4$.
+---
+Q: If $3^a=5$ and $5^b=9$, what is $ab$?
+L: 2
+A: 2
+W: 1
+W: 3
+W: 45
+W: \frac{9}{5}
+S: $3^{ab}=(3^a)^b=5^b=9=3^2$, so $ab=2$.
+---
+Q: How many real solutions does $2^x=x^2$ have?
+L: 3
+A: 3
+W: 2
+W: 1
+W: 4
+W: 0
+S: $x=2$ and $x=4$ work. For negative $x$, $2^x$ increases from near $0$ to $1$ while $x^2$ decreases from large values to $0$, so they cross once more. Total $3$.
+---
+@@ log-prop
+Q: What is $\log_2 8+\log_3 81$?
+L: 1
+A: 7
+W: 12
+W: 5
+W: 6
+W: 24
+S: $3+4=7$.
+---
+Q: What is $\log_4 32$?
+L: 1
+A: \frac{5}{2}
+W: 8
+W: 2
+W: \frac{2}{5}
+W: 3
+S: $4^x=32$ means $2^{2x}=2^5$, so $x=\frac52$.
+---
+Q: What is $\log_2 3\cdot\log_3 4\cdot\log_4 8$?
+L: 1
+A: 3
+W: 24
+W: 1
+W: 6
+W: 9
+S: The chain telescopes: $\log_28=3$.
+---
+Q: If $\log_a 2=x$ and $\log_a 3=y$, what is $\log_a 12$?
+L: 1
+A: 2x+y
+W: x+y
+W: 2xy
+W: x^2y
+W: x+2y
+S: $12=2^2\cdot3$, so $\log_a12=2x+y$.
+---
+Q: What is $\log_{10}2+\log_{10}50$?
+L: 1
+A: 2
+W: 1
+W: 52
+W: \log_{10}52
+W: 100
+S: $\log_{10}100=2$.
+---
+Q: What is $\dfrac{1}{\log_2 36}+\dfrac{1}{\log_3 36}$?
+L: 2
+A: \frac{1}{2}
+W: 1
+W: 2
+W: \frac{1}{36}
+W: \frac{5}{36}
+S: $\log_{36}2+\log_{36}3=\log_{36}6=\frac12$.
+---
+Q: What is $\log_9 27$?
+L: 1
+A: \frac{3}{2}
+W: \frac{2}{3}
+W: 3
+W: 2
+W: \frac{1}{3}
+S: $9^x=27$ means $3^{2x}=3^3$, so $x=\frac32$.
+---
+Q: What is $\log_2\!\left(1+\frac11\right)+\log_2\!\left(1+\frac12\right)+\cdots+\log_2\!\left(1+\frac1{31}\right)$?
+L: 2
+A: 5
+W: 4
+W: 6
+W: 31
+W: 32
+S: The product $\frac21\cdot\frac32\cdots\frac{32}{31}=32$, so the sum is $\log_232=5$.
+---
+@@ log-eq
+Q: What real $x$ satisfies $\log_2 x+\log_2(x-2)=3$?
+L: 1
+A: 4
+W: -2
+W: 2
+W: 8
+W: 6
+S: $x(x-2)=8$, so $x=4$ or $-2$. The domain requires $x>2$, so $x=4$.
+---
+Q: Using $\log_{10}2\approx0.30103$, how many digits does $2^{100}$ have?
+L: 2
+A: 31
+W: 30
+W: 100
+W: 32
+W: 29
+S: $\log_{10}2^{100}\approx30.103$, so $\lfloor30.103\rfloor+1=31$ digits.
+---
+Q: If $\log_x 81=4$, what is $x$?
+L: 1
+A: 3
+W: 9
+W: 27
+W: 81
+W: \frac{81}{4}
+S: $x^4=81$, so $x=3$.
+---
+Q: What real $x$ satisfies $\log_3(x+1)-\log_3(x-1)=1$?
+L: 1
+A: 2
+W: 3
+W: 1
+W: 4
+W: \frac{1}{2}
+S: $\frac{x+1}{x-1}=3$, so $x+1=3x-3$ and $x=2$.
+---
+Q: What is the product of all real solutions of $(\log_2 x)^2-5\log_2 x+6=0$?
+L: 2
+A: 32
+W: 12
+W: 6
+W: 24
+W: 64
+S: $\log_2x=2$ or $3$, so $x=4,8$. Product $32$. (Equivalently $2^{2+3}$.)
+---
+Q: If $2^x=10$, what is $\lfloor x\rfloor$?
+L: 1
+A: 3
+W: 4
+W: 2
+W: 5
+W: 10
+S: $2^3=8\lt 10\lt 16=2^4$, so $3\lt x\lt 4$.
+---
+Q: How many digits does $5^{20}\cdot2^{30}$ have?
+L: 2
+A: 24
+W: 20
+W: 23
+W: 30
+W: 50
+S: $5^{20}2^{30}=10^{20}\cdot2^{10}=1024\cdot10^{20}$: $4+20=24$ digits.
+---
+Q: What real $x$ satisfies $\log_2(\log_3(\log_4 x))=0$?
+L: 2
+A: 64
+W: 12
+W: 81
+W: 16
+W: 256
+S: $\log_3(\log_4x)=1$, so $\log_4x=3$ and $x=64$.
+
+=== GENS ===
+GENS['exp-rules']=[
+r=>{const base=pick(r,[2,3]);const p=ri(r,1,4),q=ri(r,1,4);if(p===q)return GENS['exp-rules'][0](r);const s_=ri(r,-3,3),t=ri(r,-3,3);
+ const x=F(q*t-p*s_,p-q);// base^p (x+s) = base^q (x+t) -> p(x+s)=q(x+t)
+ return{lvl:1,q:T`If $${base**p}^{x${s_<0?'-':'+'}${Math.abs(s_)}}=${base**q}^{x${t<0?'-':'+'}${Math.abs(t)}}$, what is $x$?`,a:x,w:[x.neg(),x.add(1),F(t-s_),F(q*t+p*s_,p+q)],s:T`Write both as powers of ${base}: $${p}(x${s_<0?'-':'+'}${Math.abs(s_)})=${q}(x${t<0?'-':'+'}${Math.abs(t)})$, so $x=${x.tex()}$.`}},
+r=>{const t=ri(r,2,6),n=pick(r,[2,3]),m=ri(r,1,4);if(gcd(m,n)!==1)return GENS['exp-rules'][1](r);const sg=r()<.3?-1:1;const k=t**n;const v=sg>0?F(t**m):F(1,t**m);
+ return{lvl:1,q:T`What is $${k}^{${sg<0?'-':''}${m}/${n}}$?`,a:v,w:[F(k*m,n),sg>0?F(1,t**m):F(t**m),F(t**(m+1)),F(t*m)],s:T`$\sqrt[${n}]{${k}}=${t}$, so the value is $${t}^{${sg*m}}=${v.tex()}$.`}},
+r=>{const k=ri(r,1,4),x=ri(r,1,8);const N=2**x*(2**k-1);
+ return{lvl:1,q:T`If $2^{x+${k}}-2^x=${N}$, what is $x$?`,a:x,w:[x+1,x-1,x+k,N/2>20?x+2:N/2],s:T`$2^x(2^{${k}}-1)=${N}$, so $2^x=${2**x}$ and $x=${x}$.`}},
+r=>{const a=ri(r,1,5),b=ri(r,1,6);const u=2**a;// u^2 - (u - b) u - u b ... build (u - 2^a)(u + b)=0
+ const B=b-u,C=-u*b;
+ const mid=B===0?'':(B<0?'-':'+')+(Math.abs(B)===1?'':Math.abs(B)+'\\cdot ')+'2^x';
+ return{lvl:2,q:T`What real $x$ satisfies $4^x${mid}${C<0?'-':'+'}${Math.abs(C)}=0$?`,a:a,w:[a+1,a-1,u,-b],s:T`Let $u=2^x>0$: $(u-${u})(u+${b})=0$, so $u=${u}$ and $x=${a}$.`}},
+];
+GENS['log-prop']=[
+r=>{const b=pick(r,[2,3,4,5,8,9,16,25,27]);const root={2:[2,1],3:[3,1],4:[2,2],5:[5,1],8:[2,3],9:[3,2],16:[2,4],25:[5,2],27:[3,3]}[b];const e=ri(r,1,8);const arg=root[0]**e;const v=F(e,root[1]);if(arg>1e7)return GENS['log-prop'][0](r);
+ return{lvl:1,q:T`What is $\log_{${b}}${arg}$?`,a:v,w:[F(root[1],e),F(e),v.add(1),F(arg,b)],s:T`$${b}=${root[0]}^{${root[1]}}$ and $${arg}=${root[0]}^{${e}}$, so the log is $\frac{${e}}{${root[1]}}=${v.tex()}$.`}},
+r=>{const a=ri(r,2,5),n=ri(r,3,7);const terms=Array.from({length:n},(_,i)=>a+i);const end=a+n;const isP=(()=>{let p=a;let e=0;while(p<end){p*=a;e++}return p===end?e:0})();
+ if(!isP)return GENS['log-prop'][1](r);
+ return{lvl:1,q:T`What is $${terms.map(k=>'\\log_{'+k+'}'+(k+1)).join('\\cdot ')}$?`,a:isP,w:[isP+1,isP-1||isP+2,n,end],s:T`Change of base telescopes the product to $\log_{${a}}${end}=${isP}$.`}},
+r=>{const b=pick(r,[2,3,5,10]),x=ri(r,1,6),y=ri(r,1,6);const ask=pick(r,[[b**x*b**y,'+'],[b**(x+y),'+']]);const p_=ri(r,2,30);const N=b**(x+y);if(N>1e7)return GENS['log-prop'][2](r);
+ let q_=N/p_;if(!Number.isInteger(q_))return GENS['log-prop'][2](r);
+ return{lvl:1,q:T`What is $\log_{${b}}${p_}+\log_{${b}}${q_}$?`,a:x+y,w:[x+y+1,x+y-1,p_+q_,x*y],s:T`$\log_{${b}}(${p_}\cdot${q_})=\log_{${b}}${N}=${x+y}$.`}},
+r=>{const n=ri(r,3,40),b=pick(r,[2,3]);let N=n+1;let e=0,t=1;while(t<N){t*=b;e++}if(t!==N)return GENS['log-prop'][3](r);
+ return{lvl:2,q:T`What is $\displaystyle\sum_{k=1}^{${n}}\log_{${b}}\!\left(1+\frac1k\right)$?`,a:e,w:[e+1,e-1,n,N],s:T`The product $\prod\frac{k+1}{k}=${N}$, so the sum is $\log_{${b}}${N}=${e}$.`}},
+];
+GENS['log-eq']=[
+r=>{const b=pick(r,[2,3,10]);const x=ri(r,2,12),d=ri(r,1,x-1);const P_=x*(x-d);let k=0,t=1;while(t<P_){t*=b;k++}if(t!==P_)return GENS['log-eq'][0](r);const other=d-x;
+ return{lvl:1,q:T`What real $x$ satisfies $\log_{${b}}x+\log_{${b}}(x-${d})=${k}$?`,a:x,w:[other,x+d,d,P_],s:T`$x(x-${d})=${P_}$ gives $x=${x}$ or $${other}$. The domain needs $x>${d}$, so $x=${x}$.`}},
+r=>{const a=ri(r,1,40),b=ri(r,1,40);const N=BigInt(2)**BigInt(a)*BigInt(5)**BigInt(b);const v=N.toString().length;
+ return{lvl:2,q:T`How many digits does $2^{${a}}\cdot5^{${b}}$ have?`,a:v,w:[Math.max(a,b),a+b,Math.min(a,b),v+1],s:T`Pair up factors of 10: $10^{${Math.min(a,b)}}\cdot${a>b?'2^{'+(a-b)+'}':a<b?'5^{'+(b-a)+'}':'1'}$. The leftover has $${v-Math.min(a,b)}$ digit(s), so the total is $${v}$.`}},
+r=>{const x=ri(r,2,7),k=ri(r,2,5);
+ return{lvl:1,q:T`If $\log_x ${x**k}=${k}$ and $x>0$, what is $x$?`,a:x,w:[x*x,x**k,F(x**k,k),x+1],s:T`$x^{${k}}=${x**k}$, so $x=${x}$.`}},
+r=>{const b=pick(r,[2,3]),p=ri(r,1,4),q=ri(r,p+1,6);
+ return{lvl:2,q:T`What is the product of all real solutions of $(\log_{${b}}x)^2-${p+q}\log_{${b}}x+${p*q}=0$?`,a:b**(p+q),w:[p*q,b**(p*q)>1e6?b**p+b**q:b**(p*q),b**p+b**q,p+q],s:T`$\log_{${b}}x=${p}$ or $${q}$, so the product is $${b}^{${p}}\cdot${b}^{${q}}=${b**(p+q)}$.`}},
+];

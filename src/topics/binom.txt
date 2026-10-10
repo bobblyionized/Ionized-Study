@@ -1,0 +1,288 @@
+=== LESSONS ===
+<script type="text/plain" id="L-binom-coef">
+<h2>Binomial Coefficients &amp; Pascal's Triangle</h2>
+<div class="box"><h4>Facts</h4><ul>
+<li>$\binom nk=\frac{n!}{k!(n-k)!}=\binom n{n-k}$ (symmetry). So $\binom na=\binom nb$ with $a\ne b$ means $n=a+b$.</li>
+<li><b>Pascal:</b> $\binom nk=\binom{n-1}{k-1}+\binom{n-1}{k}$, so neighbors in a row add to the entry below.</li>
+<li>Row $n$ sums to $2^n$. The even-position entries and the odd-position entries each sum to $2^{n-1}$.</li>
+<li>The largest entry in row $n$ is in the middle: $\binom{n}{\lfloor n/2\rfloor}$.</li>
+<li><b>Parity (Lucas):</b> the number of odd entries in row $n$ is $2^{s}$, where $s$ is the number of 1s in $n$'s binary expansion.</li>
+</ul></div>
+<p>Small values to know: $\binom{n}{2}=\frac{n(n-1)}2$, $\binom{10}{3}=120$, $\binom{8}{4}=70$, $\binom{12}6=924$.</p>
+</script>
+<script type="text/plain" id="L-binom-exp">
+<h2>Binomial Expansion</h2>
+<div class="box"><h4>Binomial theorem</h4>
+$(x+y)^n=\sum_{k=0}^n\binom nk x^{n-k}y^k$. The general term is $\binom nk x^{n-k}y^k$.</div>
+<h3>Finding one coefficient</h3>
+<ul><li>In $(ax+b)^n$ the coefficient of $x^m$ is $\binom nm a^mb^{n-m}$. Keep track of negative signs.</li>
+<li><b>Constant term</b> of $\left(x^p+\frac{c}{x^q}\right)^n$: write the general term's exponent as $p(n-k)-qk$ and set it to $0$.</li>
+<li>$(1+x)^a(1+x)^b=(1+x)^{a+b}$.</li>
+<li>Sum of all coefficients: plug in $x=1$.</li>
+<li>Trinomials such as $(1+x+x^2)^n$: count the ways to pick exponents that add up to the target.</li></ul>
+</script>
+<script type="text/plain" id="L-binom-id">
+<h2>Identities &amp; Multinomials</h2>
+<div class="box"><h4>Identities</h4><ul>
+<li>$\sum_k\binom nk=2^n$ and $\sum_k(-1)^k\binom nk=0$ (for $n\ge1$).</li>
+<li>$\sum_k k\binom nk=n2^{n-1}$ (choose a committee and then its leader).</li>
+<li><b>Vandermonde:</b> $\sum_k\binom mk\binom n{r-k}=\binom{m+n}{r}$. In particular $\sum_k\binom nk^2=\binom{2n}{n}$.</li>
+<li>Hockey stick: $\sum_{k=r}^n\binom kr=\binom{n+1}{r+1}$.</li>
+<li>$\sum_k\frac{1}{k+1}\binom nk=\frac{2^{n+1}-1}{n+1}$ (integrate $(1+x)^n$).</li>
+</ul></div>
+<div class="box"><h4>Multinomial</h4>
+The coefficient of $a^ib^jc^k$ in $(a+b+c)^n$ (with $i+j+k=n$) is $\dfrac{n!}{i!\,j!\,k!}$.</div>
+<p>Subsets with an even number of elements: $2^{n-1}$ (exactly half of all subsets, for $n\ge1$).</p>
+</script>
+
+=== BANK ===
+@@ binom-coef
+Q: What is $\dbinom{10}{3}$?
+L: 1
+A: 120
+W: 720
+W: 30
+W: 210
+W: 1000
+S: $\frac{10\cdot9\cdot8}{6}=120$.
+---
+Q: If $\dbinom n2=45$, what is $n$?
+L: 1
+A: 10
+W: 9
+W: 15
+W: 45
+W: 90
+S: $\frac{n(n-1)}2=45$, so $n(n-1)=90$ and $n=10$.
+---
+Q: If $\dbinom n4=\dbinom n6$ and $n>6$, what is $n$?
+L: 1
+A: 10
+W: 24
+W: 2
+W: 5
+W: 12
+S: By symmetry $\binom nk=\binom n{n-k}$, so $4+6=n$.
+---
+Q: What is the sum of all entries in row $8$ of Pascal's triangle ($\binom80$ through $\binom88$)?
+L: 1
+A: 256
+W: 128
+W: 512
+W: 70
+W: 255
+S: $2^8=256$.
+---
+Q: How many entries in row $10$ of Pascal's triangle ($\binom{10}{0}$ through $\binom{10}{10}$) are odd?
+L: 3
+A: 4
+W: 6
+W: 2
+W: 8
+W: 11
+S: $10=1010_2$ has two 1s, so there are $2^2=4$ odd entries ($\binom{10}{0},\binom{10}{2},\binom{10}{8},\binom{10}{10}$).
+---
+Q: What is $\dbinom73+\dbinom74$?
+L: 1
+A: 70
+W: 35
+W: 140
+W: 56
+W: 128
+S: Pascal's rule: $\binom84=70$.
+---
+Q: What is the largest of the numbers $\dbinom{12}{0},\dbinom{12}{1},\dots,\dbinom{12}{12}$?
+L: 2
+A: 924
+W: 792
+W: 495
+W: 1024
+W: 462
+S: The middle entry: $\binom{12}6=924$.
+---
+Q: What is $\dbinom90+\dbinom92+\dbinom94+\dbinom96+\dbinom98$?
+L: 2
+A: 256
+W: 512
+W: 128
+W: 255
+W: 126
+S: The even-position entries make up half the row sum: $\frac{2^9}2=256$.
+---
+@@ binom-exp
+Q: What is the coefficient of $x^3$ in the expansion of $(x+2)^5$?
+L: 1
+A: 40
+W: 10
+W: 80
+W: 20
+W: 32
+S: $\binom53x^3\cdot2^2=10\cdot4x^3$.
+---
+Q: What is the constant term in the expansion of $\left(x+\dfrac1x\right)^6$?
+L: 1
+A: 20
+W: 15
+W: 6
+W: 1
+W: 30
+S: We need equal numbers of $x$ and $\frac1x$: $\binom63=20$.
+---
+Q: What is the coefficient of $x^2$ in $(1-2x)^6$?
+L: 1
+A: 60
+W: -60
+W: 15
+W: 30
+W: 240
+S: $\binom62(-2)^2=15\cdot4=60$.
+---
+Q: What is the constant term in the expansion of $\left(x^2-\dfrac2x\right)^6$?
+L: 2
+A: 240
+W: -240
+W: 60
+W: 160
+W: 15
+S: The general term is $\binom6k(x^2)^{6-k}\left(-\frac2x\right)^k=\binom6k(-2)^kx^{12-3k}$. The exponent is 0 at $k=4$: $15\cdot16=240$.
+---
+Q: What is the sum of the coefficients of $(2x-1)^7$?
+L: 1
+A: 1
+W: -1
+W: 128
+W: 0
+W: 2187
+S: Plug in $x=1$: $1^7=1$.
+---
+Q: What is the coefficient of $x^5$ in $(1+x)^4(1+x)^3$?
+L: 1
+A: 21
+W: 35
+W: 12
+W: 7
+W: 10
+S: The product is $(1+x)^7$, so the coefficient is $\binom75=21$.
+---
+Q: What is the coefficient of the middle term in the expansion of $(a+b)^8$?
+L: 1
+A: 70
+W: 56
+W: 28
+W: 256
+W: 8
+S: $\binom84=70$.
+---
+Q: What is the coefficient of $x^4$ in $(1+x+x^2)^3$?
+L: 3
+A: 6
+W: 7
+W: 3
+W: 10
+W: 15
+S: Choose exponents from $\{0,1,2\}$ in the three factors that sum to 4: arrangements of $(2,2,0)$ give 3 and of $(2,1,1)$ give 3. Total $6$.
+---
+@@ binom-id
+Q: What is $\displaystyle\sum_{k=0}^{10}\binom{10}{k}$?
+L: 1
+A: 1024
+W: 512
+W: 100
+W: 2048
+W: 1023
+S: $2^{10}=1024$.
+---
+Q: What is $\displaystyle\sum_{k=0}^{6}\binom6k^2$?
+L: 2
+A: 924
+W: 64
+W: 4096
+W: 462
+W: 720
+S: Vandermonde: $\sum\binom nk^2=\binom{2n}n=\binom{12}6=924$.
+---
+Q: What is $\displaystyle\sum_{k=0}^{8}k\binom8k$?
+L: 2
+A: 1024
+W: 256
+W: 512
+W: 2048
+W: 36
+S: $n2^{n-1}=8\cdot128=1024$.
+---
+Q: What is the coefficient of $a^2b^3c$ in $(a+b+c)^6$?
+L: 2
+A: 60
+W: 120
+W: 30
+W: 20
+W: 720
+S: $\frac{6!}{2!\,3!\,1!}=60$.
+---
+Q: What is $\binom30\binom43+\binom31\binom42+\binom32\binom41+\binom33\binom40$?
+L: 2
+A: 35
+W: 21
+W: 70
+W: 12
+W: 64
+S: Vandermonde: $\binom{3+4}{3}=35$.
+---
+Q: What is $\displaystyle\sum_{k=0}^{20}(-1)^k\binom{20}{k}$?
+L: 1
+A: 0
+W: 1
+W: -1
+W: 2^{20}
+W: 20
+S: It is $(1-1)^{20}=0$.
+---
+Q: How many subsets of $\{1,2,\dots,10\}$ have an even number of elements?
+L: 1
+A: 512
+W: 1024
+W: 256
+W: 511
+W: 252
+S: Exactly half of the $2^{10}$ subsets: $512$.
+---
+Q: What is $\displaystyle\sum_{k=0}^{9}\frac{1}{k+1}\binom9k$?
+L: 3
+A: \frac{1023}{10}
+W: \frac{1023}{9}
+W: \frac{511}{5}
+W: 103
+W: 1023
+S: $\frac1{k+1}\binom9k=\frac1{10}\binom{10}{k+1}$, so the sum is $\frac{1}{10}\left(2^{10}-1\right)=\frac{1023}{10}$.
+
+=== GENS ===
+const popc=n=>n.toString(2).split('').filter(c=>c==='1').length;
+GENS['binom-coef']=[
+r=>{const n=ri(r,5,20),k=ri(r,2,Math.min(6,n-2));
+ return{lvl:1,q:T`What is $\dbinom{${n}}{${k}}$?`,a:comb(n,k),w:[comb(n,k)*fact(k),comb(n,k-1),comb(n,k+1),n*k],s:T`$\frac{${Array.from({length:k},(_,i)=>n-i).join('\\cdot ')}}{${k}!}=${comb(n,k)}$.`}},
+r=>{const n=ri(r,4,40);const v=comb(n,2);
+ return{lvl:1,q:T`If $\dbinom n2=${v}$, what is $n$?`,a:n,w:[n-1,n+1,2*n,Math.round(Math.sqrt(v))],s:T`$\frac{n(n-1)}2=${v}$ gives $n(n-1)=${2*v}=${n}\cdot${n-1}$, so $n=${n}$.`}},
+r=>{const n=ri(r,1,63);const v=2**popc(n);
+ return{lvl:3,q:T`How many entries in row ${n} of Pascal's triangle ($\binom{${n}}{0}$ through $\binom{${n}}{${n}}$) are odd?`,a:v,w:[n+1,v*2,v/2>=1?v/2:v+3,Math.ceil((n+1)/2)].filter(x=>x!==v),s:T`$${n}=${n.toString(2)}_2$ has ${popc(n)} ones, so there are $2^{${popc(n)}}=${v}$ odd entries.`}},
+r=>{const n=ri(r,4,16);const ask=r()<.5;
+ return ask?{lvl:1,q:T`What is the sum of all entries in row ${n} of Pascal's triangle?`,a:2**n,w:[2**(n-1),2**n-1,comb(n,Math.floor(n/2)),2**(n+1)],s:T`$2^{${n}}=${2**n}$.`}
+ :{lvl:2,q:T`What is the largest of $\binom{${n}}{0},\binom{${n}}{1},\dots,\binom{${n}}{${n}}$?`,a:comb(n,Math.floor(n/2)),w:[comb(n,Math.floor(n/2)-1),2**(n-1),comb(n,2),comb(n+1,Math.floor(n/2))],s:T`The middle entry: $\binom{${n}}{${Math.floor(n/2)}}=${comb(n,Math.floor(n/2))}$.`}},
+];
+GENS['binom-exp']=[
+r=>{const n=ri(r,3,8),a=pick(r,[1,2,3,-1,-2]),b=pick(r,[1,2,3,-1,-2,-3]),m=ri(r,1,n-1);const v=comb(n,m)*a**m*b**(n-m);
+ return{lvl:1,q:T`What is the coefficient of $x^{${m}}$ in $(${poly([[a,1],[b,0]],'x')})^{${n}}$?`,a:v,w:[comb(n,m),-v,comb(n,m)*a**(n-m)*b**m===v?v+comb(n,m):comb(n,m)*a**(n-m)*b**m,comb(n,m)*a*b],s:T`$\binom{${n}}{${m}}(${a})^{${m}}(${b})^{${n-m}}=${comb(n,m)}\cdot${P(a**m)}\cdot${P(b**(n-m))}=${v}$.`}},
+r=>{const p=ri(r,1,3),q=ri(r,1,3),n=ri(r,3,9),c=pick(r,[1,2,-1,-2,3]);if((p*n)%(p+q))return GENS['binom-exp'][1](r);const k=p*n/(p+q);const v=comb(n,k)*c**k;
+ return{lvl:2,q:T`What is the constant term in the expansion of $\left(x${p>1?'^'+p:''}${c<0?'-':'+'}\dfrac{${Math.abs(c)}}{x${q>1?'^'+q:''}}\right)^{${n}}$?`,a:v,w:[comb(n,k),-v,comb(n,k)*Math.abs(c)**(n-k),v*2],s:T`The general term has exponent $${p}(${n}-k)-${q}k$, which is $0$ at $k=${k}$: $\binom{${n}}{${k}}(${c})^{${k}}=${v}$.`}},
+r=>{const a=ri(r,2,7),b=ri(r,2,7),m=ri(r,1,a+b-1);
+ return{lvl:1,q:T`What is the coefficient of $x^{${m}}$ in $(1+x)^{${a}}(1+x)^{${b}}$?`,a:comb(a+b,m),w:[comb(a,Math.min(m,a))*comb(b,Math.min(m,b)),comb(a+b,m-1),comb(a*b,m)>1e6?m:comb(a*b,m),comb(a,m%(a+1))+comb(b,m%(b+1))],s:T`$(1+x)^{${a+b}}$ has $x^{${m}}$ coefficient $\binom{${a+b}}{${m}}=${comb(a+b,m)}$.`}},
+];
+GENS['binom-id']=[
+r=>{const n=ri(r,3,10);
+ return{lvl:2,q:T`What is $\displaystyle\sum_{k=0}^{${n}}\binom{${n}}{k}^2$?`,a:comb(2*n,n),w:[4**n,2**n,comb(2*n,n-1),comb(2*n,n)/2],s:T`Vandermonde: $\binom{${2*n}}{${n}}=${comb(2*n,n)}$.`}},
+r=>{const n=ri(r,3,12);
+ return{lvl:2,q:T`What is $\displaystyle\sum_{k=0}^{${n}}k\binom{${n}}{k}$?`,a:n*2**(n-1),w:[2**n,n*2**n,(n-1)*2**(n-1),n*(n+1)/2],s:T`$n2^{n-1}=${n}\cdot${2**(n-1)}=${n*2**(n-1)}$.`}},
+r=>{const i=ri(r,1,4),j=ri(r,1,4),k=ri(r,0,3);const n=i+j+k;const v=fact(n)/(fact(i)*fact(j)*fact(k));
+ return{lvl:2,q:T`What is the coefficient of $a^{${i}}b^{${j}}${k?'c^{'+k+'}':''}$ in $(a+b+c)^{${n}}$?`,a:v,w:[comb(n,i),comb(n,i)*comb(n,j),fact(n),v*2],s:T`$\frac{${n}!}{${i}!\,${j}!\,${k}!}=${v}$.`}},
+r=>{const m=ri(r,2,7),n=ri(r,2,7),rr=ri(r,1,Math.min(m,n));
+ return{lvl:2,q:T`What is $\displaystyle\sum_{k=0}^{${rr}}\binom{${m}}{k}\binom{${n}}{${rr}-k}$?`,a:comb(m+n,rr),w:[comb(m,rr)*comb(n,rr),comb(m+n,rr+1),2**rr,comb(m*n,rr)>1e6?rr:comb(m*n,rr)],s:T`Vandermonde: choose ${rr} from ${m}+${n} items: $\binom{${m+n}}{${rr}}=${comb(m+n,rr)}$.`}},
+];

@@ -1,0 +1,654 @@
+=== LESSONS ===
+<script type="text/plain" id="L-alg-lin">
+<h2>Linear Equations &amp; Systems</h2>
+<div class="box"><h4>Core methods</h4><ul>
+<li><b>Isolate:</b> move all $x$ terms to one side, constants to the other, divide.</li>
+<li><b>Substitution:</b> solve one equation for a variable and plug it into the other.</li>
+<li><b>Elimination:</b> scale equations so one variable cancels when you add or subtract.</li>
+<li>A $2\times2$ system $a_1x+b_1y=c_1,\ a_2x+b_2y=c_2$ has <b>no solution</b> when $\frac{a_1}{a_2}=\frac{b_1}{b_2}\ne\frac{c_1}{c_2}$ (parallel lines) and <b>infinitely many</b> when all three ratios are equal.</li>
+</ul></div>
+<h3>1. Answer the question that is asked</h3>
+<p>AMC problems often ask for a combination like $a+b$ or $3x+2y$, not each variable. Look for a way to get it directly: adding $2a+3b=12$ and $3a+2b=13$ gives $5(a+b)=25$, so $a+b=5$ immediately.</p>
+<h3>2. Symmetric systems: add everything</h3>
+<p>For $x+y=10,\ y+z=14,\ z+x=18$, adding gives $2(x+y+z)=42$. Then each variable is the total minus one equation: $x=21-14=7$, etc. Cyclic systems like $x+2y+3z,\ 2x+3y+z,\ 3x+y+2z$ also collapse when added.</p>
+<h3>3. Products instead of sums</h3>
+<p>If $xy=24,\ xz=48,\ yz=72$, multiply all three: $(xyz)^2=24\cdot48\cdot72$. Then divide by each equation. Reciprocal systems ($\frac1x+\frac1y=5$) become linear with $u=\frac1x, v=\frac1y$.</p>
+<h3>4. Translating word problems</h3>
+<ul><li>Ages: "in $n$ years" adds $n$ to <i>every</i> person's age.</li>
+<li>Coins: count equation and value equation (work in cents).</li>
+<li>Digits: a two-digit number with digits $a,b$ is $10a+b$; reversed it is $10b+a$.</li></ul>
+<div class="ex"><b class="lbl">Example.</b> Mary is 3 times as old as her son. In 12 years she will be twice as old. How old is Mary?
+<details><summary>Solution</summary>Son $s$, Mary $3s$: $3s+12=2(s+12)\Rightarrow s=12$, so Mary is $36$.</details></div>
+<div class="tip"><h4>AMC tip</h4>Before solving for every variable, add, subtract, or multiply the given equations and see if the requested expression appears.</div>
+</script>
+<script type="text/plain" id="L-alg-rate">
+<h2>Ratios, Rates &amp; Percents</h2>
+<div class="box"><h4>Key ideas</h4><ul>
+<li>A ratio $a:b=2:3$ means $a=2k,\ b=3k$ for some $k$. Introduce $k$.</li>
+<li>Chaining ratios: from $a:b$ and $b:c$, rescale so the $b$ values match, then read off $a:c$.</li>
+<li>Percent change uses a <b>multiplier</b>: $+20\%$ is $\times1.2$, $-25\%$ is $\times0.75$. Successive changes multiply.</li>
+<li>Reverse percent: if the price after a $25\%$ discount is $36$, the original is $36/0.75=48$.</li>
+<li>$x\%$ of $y$ equals $y\%$ of $x$.</li>
+<li>Direct variation $y=kx$; inverse variation $xy=k$ (e.g. workers × time = constant job).</li>
+</ul></div>
+<h3>Common traps</h3>
+<ul><li>$+20\%$ then $-20\%$ is <b>not</b> zero change: $1.2\times0.8=0.96$, a $4\%$ loss.</li>
+<li>"Percent of what?" A markup is a percent of cost; a discount is a percent of the marked price.</li>
+<li>Two years of $10\%$ growth is $1.1^2=1.21$, i.e. $21\%$, not $20\%$.</li></ul>
+<div class="ex"><b class="lbl">Example.</b> Boys : girls $=4:5$. After 6 boys leave and 6 girls join, the ratio is $2:3$. How many students were there originally?
+<details><summary>Solution</summary>$\frac{4k-6}{5k+6}=\frac23\Rightarrow12k-18=10k+12\Rightarrow k=15$. Total $9k=135$.</details></div>
+</script>
+<script type="text/plain" id="L-alg-word">
+<h2>Work, Distance &amp; Mixtures</h2>
+<div class="box"><h4>Formulas</h4><ul>
+<li>Distance $=$ rate × time.</li>
+<li><b>Average speed</b> $=\dfrac{\text{total distance}}{\text{total time}}$. For two equal distances at speeds $a$ and $b$: $\dfrac{2ab}{a+b}$ (the harmonic mean, not $\frac{a+b}2$).</li>
+<li>Moving toward each other: closing speed $=$ sum of speeds. Same direction: difference.</li>
+<li>Work: if A finishes a job in $a$ hours, A's rate is $\frac1a$ job per hour. Rates add: together time $=\dfrac{1}{\frac1a+\frac1b}=\dfrac{ab}{a+b}$. A drain contributes a negative rate.</li>
+<li>Mixtures: amount of pure substance $=$ concentration × volume. Set up one equation for the pure substance.</li>
+<li>Currents and wind: downstream speed $b+c$, upstream $b-c$.</li>
+</ul></div>
+<div class="ex"><b class="lbl">Example.</b> How many liters of pure acid must be added to $20$ L of $30\%$ acid to make $50\%$ acid?
+<details><summary>Solution</summary>$6+x=0.5(20+x)\Rightarrow x=8$ L.</details></div>
+<div class="ex"><b class="lbl">Example.</b> Walking on a stopped escalator takes 90 s; standing on the moving escalator takes 60 s. How long does walking on the moving escalator take?
+<details><summary>Solution</summary>Rates add: $\frac1{90}+\frac1{60}=\frac1{36}$, so 36 s.</details></div>
+<div class="tip"><h4>AMC tip</h4>Write everything as a rate (per hour, per minute) and convert minutes to hours carefully: 5 minutes is $\frac1{12}$ hour.</div>
+</script>
+<script type="text/plain" id="L-alg-fact">
+<h2>Factoring &amp; Special Products</h2>
+<div class="box"><h4>Identities to know cold</h4><ul>
+<li>$a^2-b^2=(a-b)(a+b)$</li>
+<li>$a^3-b^3=(a-b)(a^2+ab+b^2)$, $\quad a^3+b^3=(a+b)(a^2-ab+b^2)$</li>
+<li>$(a\pm b)^2=a^2\pm2ab+b^2$, $\quad a^2+b^2=(a+b)^2-2ab$</li>
+<li>$a^3+b^3=(a+b)^3-3ab(a+b)$</li>
+<li>$x^2+\frac1{x^2}=\left(x+\frac1x\right)^2-2$, $\quad x^3+\frac1{x^3}=\left(x+\frac1x\right)^3-3\left(x+\frac1x\right)$</li>
+<li>Sophie Germain: $a^4+4b^4=(a^2+2ab+2b^2)(a^2-2ab+2b^2)$</li>
+<li>Simon's trick: $xy+ax+by=(x+b)(y+a)-ab$</li>
+</ul></div>
+<h3>Uses on the AMC</h3>
+<ul><li><b>Arithmetic shortcuts:</b> $2027^2-2026^2=4053$; $\;99\cdot101=100^2-1$.</li>
+<li><b>Prime factors of $2^n-1$:</b> factor repeatedly, e.g. $2^{12}-1=(2^6-1)(2^6+1)=63\cdot65$.</li>
+<li><b>Counting integer solutions:</b> $a^2-b^2=N$ means $(a-b)(a+b)=N$. Count factor pairs of the same parity.</li>
+<li><b>Symmetric expressions:</b> rewrite $x^2+y^2$ or $x^3+y^3$ in terms of $x+y$ and $xy$.</li></ul>
+<div class="ex"><b class="lbl">Example.</b> Find the largest prime factor of $5^4+4$.
+<details><summary>Solution</summary>$5^4+4\cdot1^4=(25+10+2)(25-10+2)=37\cdot17$, so the answer is $37$.</details></div>
+</script>
+<script type="text/plain" id="L-alg-rad">
+<h2>Radicals &amp; Absolute Value</h2>
+<div class="box"><h4>Radicals</h4><ul>
+<li>Simplify by pulling out square factors: $\sqrt{72}=\sqrt{36\cdot2}=6\sqrt2$.</li>
+<li>Rationalize with the conjugate: $\dfrac{1}{\sqrt a-\sqrt b}=\dfrac{\sqrt a+\sqrt b}{a-b}$.</li>
+<li>Denesting: $\sqrt{a+2\sqrt b}=\sqrt x+\sqrt y$ where $x+y=a,\ xy=b$. Example: $\sqrt{7+4\sqrt3}=\sqrt{7+2\sqrt{12}}=2+\sqrt3$.</li>
+<li>Infinite nesting: $x=\sqrt{c+\sqrt{c+\cdots}}$ satisfies $x^2=c+x$; take the positive root.</li>
+</ul></div>
+<div class="box"><h4>Absolute value</h4><ul>
+<li>$|x-a|$ is the distance from $x$ to $a$ on the number line.</li>
+<li>$|E|=k$ (with $k>0$) splits into $E=k$ or $E=-k$.</li>
+<li>$|x-a|+|x-b|$ is at least $|a-b|$, with equality for every $x$ between $a$ and $b$. If it equals something larger, there are exactly two solutions, symmetric about $\frac{a+b}{2}$.</li>
+<li>For mixed expressions, split into cases at the points where each expression inside is $0$.</li>
+</ul></div>
+<div class="ex"><b class="lbl">Example.</b> Solve $\sqrt{x+3-4\sqrt{x-1}}+\sqrt{x+8-6\sqrt{x-1}}=1$.
+<details><summary>Solution</summary>With $t=\sqrt{x-1}$ the radicands are $(t-2)^2$ and $(t-3)^2$, so the equation is $|t-2|+|t-3|=1$, true for all $2\le t\le3$, i.e. every $x\in[5,10]$: infinitely many solutions.</details></div>
+</script>
+
+=== BANK ===
+@@ alg-lin
+Q: If $3x+7=5x-9$, what is $x$?
+L: 1
+A: 8
+W: 4
+W: -8
+W: 1
+W: 16
+S: Subtract $3x$ from both sides: $7=2x-9$. Add 9: $2x=16$, so $x=8$.
+---
+Q: Real numbers satisfy $x+y=10$, $y+z=14$, and $z+x=18$. What is $xyz$?
+L: 2
+A: 231
+W: 210
+W: 252
+W: 189
+W: 243
+S: Adding all three: $2(x+y+z)=42$, so $x+y+z=21$.
+Then $x=21-14=7$, $y=21-18=3$, $z=21-10=11$, and $xyz=7\cdot3\cdot11=231$.
+---
+Q: If $2a+3b=12$ and $3a+2b=13$, what is $a+b$?
+L: 1
+A: 5
+W: 4
+W: 6
+W: 25
+W: 7
+S: Add the equations: $5a+5b=25$, so $a+b=5$. No need to find $a$ and $b$ separately.
+---
+Q: For what value of $k$ does the system $2x+3y=5$, $4x+ky=7$ have no solution?
+L: 1
+A: 6
+W: 3
+W: -6
+W: 12
+W: 2
+S: No solution means parallel lines: the coefficients are proportional but the constants are not.
+$\frac42=\frac k3$ gives $k=6$. Then the second equation is $4x+6y=7$, while doubling the first gives $4x+6y=10$. These contradict, so there is no solution.
+---
+Q: Mary is three times as old as her son. In $12$ years she will be twice as old as her son. How old is Mary now?
+L: 1
+A: 36
+W: 24
+W: 48
+W: 30
+W: 12
+S: Let the son be $s$, so Mary is $3s$. In 12 years: $3s+12=2(s+12)$, so $s=12$. Mary is $36$.
+---
+Q: A jar contains $30$ coins, all nickels and dimes, worth a total of $240$ cents. How many dimes are in the jar?
+L: 1
+A: 18
+W: 12
+W: 15
+W: 20
+W: 16
+S: $n+d=30$ and $5n+10d=240$. Substituting $n=30-d$: $150+5d=240$, so $d=18$.
+---
+Q: Real numbers satisfy $x+2y+3z=14$, $2x+3y+z=11$, and $3x+y+2z=11$. What is $x+y+z$?
+L: 2
+A: 6
+W: 12
+W: 36
+W: 7
+W: 5
+S: Adding all three equations, every variable gets coefficient $1+2+3=6$: $6(x+y+z)=36$, so $x+y+z=6$.
+---
+Q: If $\dfrac1x+\dfrac1y=5$ and $\dfrac1x-\dfrac1y=1$, what is $x+y$?
+L: 2
+A: \frac{5}{6}
+W: \frac{1}{6}
+W: \frac{6}{5}
+W: 5
+W: 1
+S: Treat $u=\frac1x$ and $v=\frac1y$ as unknowns: $u+v=5$, $u-v=1$, so $u=3$, $v=2$.
+Then $x=\frac13$, $y=\frac12$, and $x+y=\frac56$.
+---
+Q: Positive real numbers $x$, $y$, $z$ satisfy $xy=24$, $xz=48$, and $yz=72$. What is $x+y+z$?
+L: 2
+A: 22
+W: 20
+W: 24
+W: 26
+W: 18
+S: Multiply all three: $(xyz)^2=24\cdot48\cdot72=82944$, so $xyz=288$.
+Then $x=\frac{288}{72}=4$, $y=\frac{288}{48}=6$, $z=\frac{288}{24}=12$. Sum: $22$.
+---
+Q: A two-digit number is $4$ times the sum of its digits. When the digits are reversed, the number increases by $27$. What is the original number?
+L: 3
+A: 36
+W: 24
+W: 48
+W: 12
+W: 63
+S: Write the number as $10a+b$. Then $10a+b=4(a+b)$ gives $6a=3b$, so $b=2a$.
+Reversing: $(10b+a)-(10a+b)=9(b-a)=27$, so $b-a=3$. With $b=2a$: $a=3$, $b=6$. The number is $36$.
+---
+@@ alg-rate
+Q: If $a:b=3:4$ and $b:c=6:7$, what is $a:c$?
+L: 1
+A: 9:14
+W: 3:7
+W: 1:2
+W: 7:9
+W: 4:7
+S: Rescale so $b$ matches: $a:b=9:12$ and $b:c=12:14$. So $a:c=9:14$.
+---
+Q: A price is increased by $20\%$ and then the new price is decreased by $20\%$. The final price is what percent of the original price?
+L: 1
+A: 96\%
+W: 100\%
+W: 104\%
+W: 80\%
+W: 98\%
+S: Multipliers multiply: $1.2\times0.8=0.96$. The final price is $96\%$ of the original, a $4\%$ loss overall.
+---
+Q: After a $25\%$ discount, a shirt costs $36$ dollars. What was the original price, in dollars?
+L: 1
+A: 48
+W: 45
+W: 27
+W: 50
+W: 46
+S: The sale price is $75\%$ of the original: $0.75p=36$, so $p=48$. (A common error is adding $25\%$ of 36 to get 45.)
+---
+Q: If $40\%$ of $x$ equals $30\%$ of $y$, then $x$ is what percent of $y$?
+L: 1
+A: 75\%
+W: 70\%
+W: 120\%
+W: \frac{400}{3}\%
+W: 80\%
+S: $0.4x=0.3y\Rightarrow x=\frac34y$, so $x$ is $75\%$ of $y$.
+---
+Q: Six painters can paint a house in $10$ hours. Working at the same rate, how many hours would $15$ painters take?
+L: 1
+A: 4
+W: 25
+W: 5
+W: 6
+W: 3
+S: The job takes $6\cdot10=60$ painter-hours. With 15 painters: $60/15=4$ hours.
+---
+Q: A bag holds red and blue marbles in the ratio $3:5$. After $10$ red marbles are added, the ratio becomes $1:1$. How many marbles were in the bag originally?
+L: 2
+A: 40
+W: 30
+W: 50
+W: 45
+W: 25
+S: Red $=3k$, blue $=5k$. Then $3k+10=5k$, so $k=5$, and there were $8k=40$ marbles.
+---
+Q: A town's population grows by $10\%$ each year. By what percent does it grow over two years?
+L: 1
+A: 21\%
+W: 20\%
+W: 22\%
+W: 11\%
+W: 10\%
+S: $1.1^2=1.21$, a $21\%$ increase. The second year's $10\%$ is applied to an already larger population.
+---
+Q: The ratio of boys to girls in a class is $4:5$. After $6$ boys leave and $6$ girls join, the ratio becomes $2:3$. How many students were in the class originally?
+L: 2
+A: 135
+W: 90
+W: 120
+W: 150
+W: 108
+S: Boys $4k$, girls $5k$: $\frac{4k-6}{5k+6}=\frac23\Rightarrow12k-18=10k+12\Rightarrow k=15$.
+Originally $9k=135$ students (60 boys, 75 girls; afterwards 54 and 81, which is $2:3$).
+---
+Q: A store marks up the cost of an item by $50\%$, then sells it at a $20\%$ discount off the marked price. What is the store's profit, as a percent of cost?
+L: 1
+A: 20\%
+W: 30\%
+W: 25\%
+W: 10\%
+W: 35\%
+S: Selling price $=1.5\times0.8=1.2$ times cost, so the profit is $20\%$ of cost.
+---
+Q: The price of an item is raised by $p\%$ and later lowered by $p\%$, ending at $84\%$ of the original price. What is $p$?
+L: 3
+A: 40
+W: 16
+W: 20
+W: 30
+W: 42
+S: $(1+\frac p{100})(1-\frac p{100})=1-\frac{p^2}{10000}=0.84$, so $p^2=1600$ and $p=40$.
+---
+@@ alg-word
+Q: A driver goes to a town at $40$ mph and returns along the same road at $60$ mph. What is the average speed for the round trip, in mph?
+L: 1
+A: 48
+W: 50
+W: 45
+W: 52
+W: 24
+S: Use the harmonic mean for equal distances: $\frac{2\cdot40\cdot60}{40+60}=\frac{4800}{100}=48$.
+(Check with 120 miles each way: 3 h + 2 h = 5 h for 240 miles, which is 48 mph.)
+---
+Q: Ann can paint a room in $6$ hours and Ben can paint it in $3$ hours. How many hours do they take working together?
+L: 1
+A: 2
+W: \frac{9}{2}
+W: 9
+W: 3
+W: \frac{3}{2}
+S: Rates: $\frac16+\frac13=\frac12$ room per hour, so together they take $2$ hours.
+---
+Q: Two trains $300$ miles apart travel toward each other on parallel tracks at $70$ mph and $80$ mph. After how many hours do they meet?
+L: 1
+A: 2
+W: 3
+W: \frac{3}{2}
+W: 4
+W: \frac{5}{2}
+S: The gap closes at $70+80=150$ mph, so they meet after $300/150=2$ hours.
+---
+Q: How many liters of pure acid must be added to $20$ liters of a $30\%$ acid solution to obtain a $50\%$ acid solution?
+L: 2
+A: 8
+W: 10
+W: 4
+W: 6
+W: 12
+S: Track the pure acid: $0.3\cdot20+x=0.5(20+x)$, so $6+x=10+0.5x$ and $x=8$.
+---
+Q: Pipe A fills a tank in $4$ hours. Drain B empties the full tank in $6$ hours. If both are open, how many hours does it take to fill the empty tank?
+L: 1
+A: 12
+W: 10
+W: \frac{12}{5}
+W: 5
+W: 24
+S: Net rate $\frac14-\frac16=\frac1{12}$ tank per hour, so it takes $12$ hours.
+---
+Q: Jack walks to school. At $4$ mph he arrives $5$ minutes late; at $5$ mph he arrives $5$ minutes early. How far is school, in miles?
+L: 2
+A: \frac{10}{3}
+W: 3
+W: 4
+W: \frac{5}{2}
+W: 5
+S: The two travel times differ by 10 minutes $=\frac16$ hour: $\frac d4-\frac d5=\frac16\Rightarrow\frac d{20}=\frac16\Rightarrow d=\frac{10}3$.
+---
+Q: Walking up a stopped escalator takes $90$ seconds. Standing still on the moving escalator takes $60$ seconds. How many seconds does it take to walk up the moving escalator?
+L: 2
+A: 36
+W: 30
+W: 45
+W: 75
+W: 40
+S: Rates add: $\frac1{90}+\frac1{60}=\frac{2+3}{180}=\frac1{36}$ escalator per second, so 36 seconds.
+---
+Q: A boat travels $24$ miles downstream in $2$ hours and returns upstream in $3$ hours. What is the speed of the current, in mph?
+L: 2
+A: 2
+W: 4
+W: 10
+W: 1
+W: 3
+S: Downstream $b+c=12$ and upstream $b-c=8$. Subtracting: $2c=4$, so $c=2$ (and $b=10$).
+---
+Q: Two candles of the same height are lit at the same time. The first burns down completely in $4$ hours and the second in $5$ hours, each at a constant rate. After how many hours is the second candle twice as tall as the first?
+L: 3
+A: \frac{10}{3}
+W: 2
+W: 3
+W: \frac{5}{2}
+W: \frac{20}{9}
+S: As fractions of the original height, the candles are $1-\frac t4$ and $1-\frac t5$.
+$1-\frac t5=2\left(1-\frac t4\right)\Rightarrow1-\frac t5=2-\frac t2\Rightarrow\frac{3t}{10}=1\Rightarrow t=\frac{10}3$.
+---
+@@ alg-fact
+Q: What is $2027^2-2026^2$?
+L: 1
+A: 4053
+W: 1
+W: 2027
+W: 4052
+W: 4054
+S: Difference of squares: $(2027-2026)(2027+2026)=1\cdot4053=4053$.
+---
+Q: If $x+y=7$ and $xy=10$, what is $x^2+y^2$?
+L: 1
+A: 29
+W: 39
+W: 49
+W: 69
+W: 19
+S: $x^2+y^2=(x+y)^2-2xy=49-20=29$.
+---
+Q: If $x-\dfrac1x=3$, what is $x^2+\dfrac1{x^2}$?
+L: 1
+A: 11
+W: 9
+W: 7
+W: 10
+W: 13
+S: Square: $x^2-2+\frac1{x^2}=9$, so $x^2+\frac1{x^2}=11$.
+---
+Q: If $x+\dfrac1x=3$, what is $x^3+\dfrac1{x^3}$?
+L: 2
+A: 18
+W: 27
+W: 24
+W: 21
+W: 9
+S: $\left(x+\frac1x\right)^3=x^3+\frac1{x^3}+3\left(x+\frac1x\right)$, so $27=x^3+\frac1{x^3}+9$, giving $18$.
+---
+Q: If $a+b=5$ and $ab=4$, what is $a^3+b^3$?
+L: 2
+A: 65
+W: 125
+W: 61
+W: 85
+W: 45
+S: $a^3+b^3=(a+b)^3-3ab(a+b)=125-60=65$. (Indeed $a,b$ are $1$ and $4$: $1+64=65$.)
+---
+Q: What is the largest prime factor of $2^{12}-1$?
+L: 2
+A: 13
+W: 7
+W: 17
+W: 31
+W: 63
+S: $2^{12}-1=(2^6-1)(2^6+1)=63\cdot65=3^2\cdot7\cdot5\cdot13$. The largest prime factor is $13$.
+---
+Q: What is $\dfrac{2^{16}-1}{(2^8+1)(2^4+1)}$?
+L: 1
+A: 15
+W: 255
+W: 17
+W: 31
+W: 16
+S: $2^{16}-1=(2^8-1)(2^8+1)=(2^4-1)(2^4+1)(2^8+1)$. After cancelling, $2^4-1=15$ remains.
+---
+Q: How many ordered pairs of positive integers $(a,b)$ satisfy $a^2-b^2=33$?
+L: 2
+A: 2
+W: 1
+W: 3
+W: 4
+W: 0
+S: $(a-b)(a+b)=33$ with $0\lt a-b\lt a+b$: the factor pairs are $1\cdot33$ and $3\cdot11$.
+They give $(a,b)=(17,16)$ and $(7,4)$, so there are $2$ pairs.
+---
+Q: What is the largest prime factor of $5^4+4$?
+L: 3
+A: 37
+W: 17
+W: 29
+W: 41
+W: 13
+S: Sophie Germain: $a^4+4b^4=(a^2+2ab+2b^2)(a^2-2ab+2b^2)$. With $a=5, b=1$: $5^4+4=37\cdot17=629$. The answer is $37$.
+---
+Q: If $x^2+y^2=13$ and $xy=6$, what is the largest possible value of $x+y$?
+L: 1
+A: 5
+W: 25
+W: \sqrt{13}
+W: 7
+W: 6
+S: $(x+y)^2=x^2+y^2+2xy=13+12=25$, so $x+y=\pm5$. The largest value is $5$.
+---
+@@ alg-rad
+Q: What is $\sqrt{50}+\sqrt{18}$?
+L: 1
+A: 8\sqrt{2}
+W: 2\sqrt{17}
+W: \sqrt{68}
+W: 4\sqrt{2}
+W: 8
+S: $\sqrt{50}=5\sqrt2$ and $\sqrt{18}=3\sqrt2$, so the sum is $8\sqrt2$.
+---
+Q: Which expression equals $\dfrac{1}{\sqrt3-\sqrt2}$?
+L: 1
+A: \sqrt{3}+\sqrt{2}
+W: \sqrt{3}-\sqrt{2}
+W: 1
+W: \sqrt{6}
+W: \frac{\sqrt{3}+\sqrt{2}}{5}
+S: Multiply by the conjugate: $\frac{\sqrt3+\sqrt2}{(\sqrt3)^2-(\sqrt2)^2}=\frac{\sqrt3+\sqrt2}{1}$.
+---
+Q: What is $\sqrt{7+4\sqrt3}$?
+L: 2
+A: 2+\sqrt{3}
+W: 1+\sqrt{3}
+W: 2+2\sqrt{3}
+W: \sqrt{7}+2
+W: 3+\sqrt{3}
+S: Write $7+4\sqrt3=7+2\sqrt{12}$ and look for $x+y=7,\ xy=12$: $x=4, y=3$.
+So the value is $\sqrt4+\sqrt3=2+\sqrt3$. Check: $(2+\sqrt3)^2=7+4\sqrt3$.
+---
+Q: What is the value of $\sqrt{6+\sqrt{6+\sqrt{6+\cdots}}}$?
+L: 1
+A: 3
+W: 2
+W: \sqrt{6}
+W: 6
+W: 4
+S: Call it $x$. Then $x=\sqrt{6+x}$, so $x^2-x-6=0$ and $(x-3)(x+2)=0$. Since $x>0$, $x=3$.
+---
+Q: What is the sum of all solutions of $|2x-5|=9$?
+L: 1
+A: 5
+W: 7
+W: 9
+W: 14
+W: -2
+S: $2x-5=9$ gives $x=7$; $2x-5=-9$ gives $x=-2$. Sum: $5$.
+---
+Q: How many real numbers $x$ satisfy $|x-1|+|x-5|=4$?
+L: 2
+A: $\text{infinitely many}$
+W: 0
+W: 1
+W: 2
+W: 4
+S: $|x-1|+|x-5|$ is the sum of distances from $x$ to $1$ and to $5$. That sum is at least $4$, with equality for <b>every</b> $x$ in $[1,5]$. So there are infinitely many solutions.
+---
+Q: What is the sum of all real solutions of $|x-1|+|x-5|=10$?
+L: 2
+A: 6
+W: 4
+W: 10
+W: -6
+W: 8
+S: Outside $[1,5]$: for $x>5$, $2x-6=10$ gives $x=8$; for $x\lt 1$, $6-2x=10$ gives $x=-2$. Sum: $6$.
+(The solutions are symmetric about the midpoint $3$, so the sum is $2\cdot3$.)
+---
+Q: What is $\dfrac{\sqrt5+\sqrt3}{\sqrt5-\sqrt3}$?
+L: 2
+A: 4+\sqrt{15}
+W: 8+\sqrt{15}
+W: 4+2\sqrt{15}
+W: \frac{4+\sqrt{15}}{2}
+W: 1
+S: Multiply top and bottom by $\sqrt5+\sqrt3$: $\frac{(\sqrt5+\sqrt3)^2}{5-3}=\frac{8+2\sqrt{15}}{2}=4+\sqrt{15}$.
+---
+Q: How many real numbers $x$ satisfy $\sqrt{x+3-4\sqrt{x-1}}+\sqrt{x+8-6\sqrt{x-1}}=1$?
+L: 3
+A: $\text{infinitely many}$
+W: 0
+W: 1
+W: 2
+W: 5
+S: Let $t=\sqrt{x-1}\ge0$, so $x=t^2+1$. Then $x+3-4t=(t-2)^2$ and $x+8-6t=(t-3)^2$.
+The equation becomes $|t-2|+|t-3|=1$, which holds for all $2\le t\le3$, i.e. all $5\le x\le10$. Infinitely many.
+---
+Q: If $\sqrt{x}+\dfrac{1}{\sqrt{x}}=3$, what is $x+\dfrac1x$?
+L: 2
+A: 7
+W: 9
+W: 8
+W: 11
+W: 6
+S: Square: $x+2+\frac1x=9$, so $x+\frac1x=7$.
+
+=== GENS ===
+GENS['alg-lin']=[
+r=>{const x=ri(r,-12,15);let a=ri(r,2,9),c=ri(r,1,9);while(c===a)c=ri(r,1,9);const b=ri(r,-20,20),d=(a-c)*x+b;
+ return{lvl:1,q:T`If $${poly([[a,1],[b,0]],'x')}=${poly([[c,1],[d,0]],'x')}$, what is $x$?`,a:x,w:[x+1,x-1,-x,x+2,Math.round((d+b)/(a+c))],
+ s:T`Collect $x$ terms: $${a}x-${c}x=${d}-${P(b)}$, so $${a-c}x=${d-b}$ and $x=${x}$.`}},
+r=>{const x=ri(r,-8,10),y=ri(r,-8,10);let a1=ri(r,1,6),b1=ri(r,-5,6)||1,a2=ri(r,1,6),b2=ri(r,-5,6)||2;if(a1*b2===a2*b1){b2+=1;if(a1*b2===a2*b1)b2+=1}
+ const c1=a1*x+b1*y,c2=a2*x+b2*y;const ask=pick(r,['x+y','x-y','xy']);const val=ask==='x+y'?x+y:ask==='x-y'?x-y:x*y;
+ return{lvl:1,q:T`Real numbers $x,y$ satisfy $${poly([[a1,1]],'x')}${b1<0?'-':'+'}${Math.abs(b1)===1?'':Math.abs(b1)}y=${c1}$ and $${poly([[a2,1]],'x')}${b2<0?'-':'+'}${Math.abs(b2)===1?'':Math.abs(b2)}y=${c2}$. What is $${ask}$?`,
+ a:val,w:[x+y,x-y,x*y,y-x,val+1,val-1],
+ s:T`Eliminate one variable (e.g. multiply the first equation by ${a2} and the second by ${a1} and subtract) to get $y=${y}$; then $x=${x}$.<br>So $${ask}=${val}$.`}},
+r=>{const x=ri(r,1,15),y=ri(r,1,15),z=ri(r,1,15);const p=x+y,q=y+z,s_=z+x;const ask=pick(r,['x','y','z','xyz','x+y+z']);const val={x,y,z,xyz:x*y*z,'x+y+z':x+y+z}[ask];
+ return{lvl:1,q:T`Numbers $x,y,z$ satisfy $x+y=${p}$, $y+z=${q}$, and $z+x=${s_}$. What is $${ask}$?`,a:val,w:[x+y+z,x*y*z,x,y,z,p+q+s_,val+1],
+ s:T`Add all three: $2(x+y+z)=${p+q+s_}$, so $x+y+z=${x+y+z}$. Then $x=${x+y+z}-${q}=${x}$, $y=${x+y+z}-${s_}=${y}$, $z=${x+y+z}-${p}=${z}$.<br>So $${ask}=${val}$.`}},
+r=>{const c=ri(r,4,15),k=ri(r,3,5);const n=c*(k-2);const P_=k*c;
+ return{lvl:1,q:T`A parent is ${k} times as old as their child. In ${n} years, the parent will be twice as old as the child. How old is the parent now?`,
+ a:P_,w:[c,P_+n,2*c,P_-k,(k-1)*c],
+ s:T`Child $c$, parent ${k}$c$: $${k}c+${n}=2(c+${n})\Rightarrow${k-2}c=${n}\Rightarrow c=${c}$. The parent is $${P_}$.`}},
+r=>{const [v1,v2,n1,n2]=pick(r,[[5,10],[5,25],[10,25],[1,5],[1,10]]).concat([ri(r,3,25),ri(r,3,25)]);const N=n1+n2,Tt=v1*n1+v2*n2;
+ const nm={1:'pennies',5:'nickels',10:'dimes',25:'quarters'};
+ return{lvl:1,q:T`A jar holds ${N} coins, all ${nm[v1]} and ${nm[v2]}, worth ${Tt} cents in total. How many ${nm[v2]} are there?`,
+ a:n2,w:[n1,n2+1,n2-1,Math.floor(Tt/v2),N-n2+1],
+ s:T`Let $d$ be the number of ${nm[v2]}. Then $${v1}(${N}-d)+${v2}d=${Tt}$, so $${v2-v1}d=${Tt-v1*N}$ and $d=${n2}$.`}},
+];
+GENS['alg-rate']=[
+r=>{let p=ri(r,1,9),q=ri(r,1,9),s_=ri(r,1,9),t=ri(r,1,9);const A_=F(p*s_,q*t);const rt=(f)=>O(f.n+':'+f.d,f.v);
+ return{lvl:1,q:T`If $a:b=${p}:${q}$ and $b:c=${s_}:${t}$, what is $a:c$?`,a:rt(A_),w:[rt(F(p,t)),rt(F(p*t,q*s_)),rt(F(q*s_,p*t)),rt(F(p+s_,q+t)),rt(A_.mul(F(2,3)))],
+ s:T`Rescale so $b$ matches: $a:b=${p*s_}:${q*s_}$ and $b:c=${q*s_}:${q*t}$. So $a:c=${p*s_}:${q*t}=${A_.n}:${A_.d}$.`}},
+r=>{const a=ri(r,1,6)*10,b=ri(r,1,6)*10;const up=r()<.5;const fin=up?(100+a)*(100-b)/100:(100-b)*(100+a)/100;const pc=v=>O(v+'\\%',v);
+ return{lvl:1,q:up?T`A price is increased by $${a}\%$, and then the new price is decreased by $${b}\%$. The final price is what percent of the original?`:T`A price is decreased by $${b}\%$, and then the new price is increased by $${a}\%$. The final price is what percent of the original?`,
+ a:pc(fin),w:[pc(100+a-b),pc(100),pc(fin+5),pc(fin-5),pc(100+a-b+a*b/100)],
+ s:T`Multiply the multipliers: $${(100+a)/100}\times${(100-b)/100}=${fin/100}$, so the final price is $${fin}\%$ of the original. Order does not matter, but the changes do not simply add.`}},
+r=>{const p=pick(r,[10,20,25,40,50]),k=ri(r,2,15),orig=20*k;const up=r()<.5;const P_=up?orig*(100+p)/100:orig*(100-p)/100;
+ return{lvl:1,q:up?T`After a $${p}\%$ increase, an item costs ${P_} dollars. What was the price before the increase?`:T`After a $${p}\%$ discount, an item costs ${P_} dollars. What was the original price?`,
+ a:orig,w:[up?P_-P_*p/100:P_+P_*p/100,P_,orig+10,orig-10,up?Math.round(P_*(100-p)/100):Math.round(P_*(100+p)/100)],
+ s:T`The new price is $${up?100+p:100-p}\%$ of the original: $${(up?100+p:100-p)/100}\,x=${P_}$, so $x=${orig}$.<br><b>Trap:</b> taking $${p}\%$ of the <i>new</i> price uses the wrong base.`}},
+r=>{const w1=ri(r,2,12),t1=ri(r,2,12);const tot=w1*t1;const divs=[];for(let d=1;d<=tot;d++)if(tot%d===0&&d!==w1&&d<=60)divs.push(d);const w2=pick(r,divs);const t2=tot/w2;
+ return{lvl:1,q:T`${w1} workers can finish a job in ${t1} hours. Working at the same rate, how many hours would ${w2} workers need?`,a:t2,w:[t1*w2/w1|0||t1+1,t1,t2+1,w2,t2*2],
+ s:T`The job is $${w1}\times${t1}=${tot}$ worker-hours. With ${w2} workers: $${tot}/${w2}=${t2}$ hours.`}},
+r=>{const a=ri(r,1,9),b=ri(r,1,9);if(a===b)return GENS['alg-rate'][4](r);const k=ri(r,2,20),N=(a+b)*k;
+ return{lvl:1,q:T`${N} marbles are split between Al and Bo in the ratio $${a}:${b}$. How many marbles does ${a>b?'Al':'Bo'} get?`,a:Math.max(a,b)*k,w:[Math.min(a,b)*k,Math.max(a,b)*k+k,N/2,Math.max(a,b)*(k+1),N-k],
+ s:T`There are $${a}+${b}=${a+b}$ equal parts of $${N}/${a+b}=${k}$ each. The larger share is $${Math.max(a,b)}\cdot${k}=${Math.max(a,b)*k}$.`}},
+];
+GENS['alg-word']=[
+r=>{const [a,b]=pick(r,[[30,60],[40,60],[20,30],[30,50],[40,70],[45,90],[24,40],[36,60],[20,80],[50,75],[10,15],[12,18]]);const v=F(2*a*b,a+b);
+ return{lvl:1,q:T`A cyclist rides to a lake at ${a} mph and returns along the same path at ${b} mph. What is the average speed for the whole trip, in mph?`,
+ a:v,w:[F(a+b,2),F(a*b,a+b),v.add(2),F(Math.round((a+b)/2)+5),F(b-a)],
+ s:T`Average speed $=\frac{\text{total distance}}{\text{total time}}=\dfrac{2ab}{a+b}=\dfrac{2\cdot${a}\cdot${b}}{${a+b}}=${v.tex()}$.<br><b>Trap:</b> the plain average $${F(a+b,2).tex()}$ is wrong, because more time is spent at the slower speed.`}},
+r=>{const a=ri(r,2,12);let b=ri(r,2,15);if(b===a)b++;const drain=r()<.3&&b>a;const v=drain?F(a*b,b-a):F(a*b,a+b);
+ return{lvl:1,q:drain?T`An inlet pipe fills a tank in ${a} hours, and a drain empties the full tank in ${b} hours. With both open, how many hours does it take to fill the empty tank?`:T`Ann can do a job alone in ${a} hours and Ben can do it alone in ${b} hours. How many hours do they take working together?`,
+ a:v,w:drain?[F(a*b,a+b),F(b-a),F(a+b,2),v.add(1),F(a*b)]:[F(a+b,2),F(Math.abs(a-b)||1),F(a*b,Math.abs(b-a)||1).add(1),v.add(1),F(Math.min(a,b),2)],
+ s:drain?T`Net rate $=\frac1{${a}}-\frac1{${b}}=${F(1,a).sub(F(1,b)).tex()}$ tank per hour, so the time is $${v.tex()}$ hours.`:T`Rates add: $\frac1{${a}}+\frac1{${b}}=${F(1,a).add(F(1,b)).tex()}$ job per hour, so together they need $${v.tex()}$ hours.`}},
+r=>{const v1=ri(r,3,12)*5,v2=ri(r,3,12)*5,t=pick(r,[F(1),F(2),F(3),F(3,2),F(5,2),F(1,2)]);const D=t.mul(v1+v2);if(!D.isInt())return GENS['alg-word'][2](r);
+ return{lvl:1,q:T`Two cars start ${D.n} miles apart and drive toward each other at ${v1} mph and ${v2} mph. After how many hours do they meet?`,
+ a:t,w:[t.add(1),F(D.n,Math.abs(v1-v2)||1),t.mul(2),t.add(F(1,2)),F(D.n,v1)],
+ s:T`The distance closes at $${v1}+${v2}=${v1+v2}$ mph, so they meet after $${D.n}/${v1+v2}=${t.tex()}$ hours.`}},
+r=>{const V=ri(r,2,10)*5,c1=pick(r,[10,20,25,30,40]),c2=c1+pick(r,[10,20,25,30]);const x=F(V*(c2-c1),100-c2);if(c2>=100||!x.isInt())return GENS['alg-word'][3](r);
+ return{lvl:2,q:T`How many liters of pure alcohol must be added to ${V} liters of a $${c1}\%$ alcohol solution to make a $${c2}\%$ alcohol solution?`,
+ a:x,w:[x.add(V/5),F(V*(c2-c1),100),x.mul(2),x.sub(1),F(V*(c2-c1),c2)],
+ s:T`Track the pure alcohol: $${c1/100}\cdot${V}+x=${c2/100}(${V}+x)$, so $${(100-c2)/100}x=${(c2-c1)*V/100}$ and $x=${x.tex()}$.`}},
+r=>{const b=ri(r,5,20),c=ri(r,1,b-1),t1=ri(r,1,4),t2=ri(r,t1+1,t1+4);const D1=(b+c)*t1,D2=(b-c)*t2;const ask=r()<.5;
+ return{lvl:2,q:T`A boat travels ${D1} miles downstream in ${t1} hour${t1>1?'s':''} and ${D2} miles upstream in ${t2} hours, at constant speed relative to the water. What is the speed of the ${ask?'current':'boat in still water'}, in mph?`,
+ a:ask?c:b,w:ask?[b,2*c,c+1,(b+c)/2|0,b-c]:[c,b+c,b-c,b+1,2*b],
+ s:T`Downstream: $b+c=${D1}/${t1}=${b+c}$. Upstream: $b-c=${D2}/${t2}=${b-c}$.<br>Adding and subtracting: $b=${b}$, $c=${c}$.`}},
+];
+GENS['alg-fact']=[
+r=>{const a=ri(r,100,3000),d=ri(r,1,9),b=a-d;
+ return{lvl:1,q:T`What is $${a}^2-${b}^2$?`,a:d*(a+b),w:[d*d,a+b,d*(a+b)+d,(d)*(a+b)-1,2*a*d],
+ s:T`Difference of squares: $(${a}-${b})(${a}+${b})=${d}\cdot${a+b}=${d*(a+b)}$.`}},
+r=>{const x=ri(r,-6,9),y=ri(r,-6,9);const s_=x+y,p=x*y;const cube=r()<.4;const val=cube?x**3+y**3:x*x+y*y;
+ return{lvl:cube?2:1,q:T`If $x+y=${s_}$ and $xy=${p}$, what is $${cube?'x^3+y^3':'x^2+y^2'}$?`,
+ a:val,w:cube?[s_**3,s_**3-p*s_,s_**3+3*p*s_,s_*s_-2*p]:[s_*s_,s_*s_+2*p,s_*s_-p,2*p],
+ s:cube?T`$x^3+y^3=(x+y)^3-3xy(x+y)=${s_**3}-3\cdot${P(p)}\cdot${P(s_)}=${val}$.`:T`$x^2+y^2=(x+y)^2-2xy=${s_*s_}-${P(2*p)}=${val}$.`}},
+r=>{const k=ri(r,2,9);const minus=r()<.4;const cube=!minus&&r()<.5;const val=minus?k*k+2:cube?k**3-3*k:k*k-2;
+ return{lvl:cube?2:1,q:T`If $x${minus?'-':'+'}\dfrac1x=${k}$, what is $${cube?'x^3+\\dfrac1{x^3}':'x^2+\\dfrac1{x^2}'}$?`,
+ a:val,w:cube?[k**3,k**3-k,k*k-2,k**3+3*k]:[k*k,minus?k*k-2:k*k+2,k*k+1,2*k],
+ s:cube?T`$\left(x+\frac1x\right)^3=x^3+\frac1{x^3}+3\left(x+\frac1x\right)$, so $x^3+\frac1{x^3}=${k**3}-${3*k}=${val}$.`:T`Square both sides: $x^2${minus?'-':'+'}2+\frac1{x^2}=${k*k}$, so $x^2+\frac1{x^2}=${val}$.`}},
+r=>{const N=pick(r,[15,21,24,32,33,35,39,40,45,48,51,55,57,60,63,64,65,72,75,77,80,85,91,96,99,105,120,135]);let c=0;const pairs=[];
+ for(let d=1;d*d<N;d++)if(N%d===0&&(N/d-d)%2===0){c++;pairs.push([(d+N/d)/2,(N/d-d)/2])}
+ return{lvl:2,q:T`How many ordered pairs of positive integers $(a,b)$ satisfy $a^2-b^2=${N}$?`,a:c,w:[c+1,c-1<0?c+2:c-1,c+2,ndiv(N)],
+ s:T`Write $(a-b)(a+b)=${N}$ with $0\lt a-b\lt a+b$ and both factors the same parity (so $a,b$ are integers).<br>${c?'Valid pairs give '+pairs.map(p=>'$('+p[0]+','+p[1]+')$').join(', ')+', so the count is '+c+'.':'No factor pair works, so the count is 0.'}`}},
+r=>{const n=pick(r,[3,5,7,9,11]);const a=n*n+2*n+2,b=n*n-2*n+2;const v=n**4+4;
+ return{lvl:3,q:T`What is the largest prime factor of $${n}^4+4$?`,a:Math.max(...Object.keys(factorize(v)).map(Number)),w:[a,b,a+2,v%10===0?7:Math.min(...Object.keys(factorize(v)).map(Number))+0,a-2,b+2],
+ s:T`Sophie Germain: $n^4+4=(n^2+2n+2)(n^2-2n+2)=${a}\cdot${b}$. Factoring further: $${v}=${factTex(v)}$.`}},
+];
+GENS['alg-rad']=[
+r=>{const m=pick(r,[2,3,5,6,7]);const a=ri(r,1,6),b=ri(r,1,6);const s_=a+b;
+ return{lvl:1,q:T`What is $\sqrt{${a*a*m}}+\sqrt{${b*b*m}}$?`,a:R(s_,m),w:[R(1,(a*a+b*b)*m),R(s_+1,m),R(Math.abs(a-b)||s_+2,m),R(s_,m*2),R(s_*2,m)],
+ s:T`$\sqrt{${a*a*m}}=${a===1?'':a}\sqrt{${m}}$ and $\sqrt{${b*b*m}}=${b===1?'':b}\sqrt{${m}}$, so the sum is $${s_}\sqrt{${m}}$.`}},
+r=>{let x=ri(r,2,12),y=ri(r,1,x-1);const a=x+y,b=x*y;const sx=R(1,x),sy=R(1,y);if(Number.isInteger(Math.sqrt(b))&&Number.isInteger(Math.sqrt(x))&&Number.isInteger(Math.sqrt(y)))return GENS['alg-rad'][1](r);
+ const ans=O(sx.tex+'+'+sy.tex,sx.v+sy.v);
+ return{lvl:2,q:T`What is $\sqrt{${a}+2\sqrt{${b}}}$?`,a:ans,w:[O(sx.tex+'-'+sy.tex,sx.v-sy.v),O('\\sqrt{'+a+'}+\\sqrt{'+b+'}',Math.sqrt(a)+Math.sqrt(b)),O('\\sqrt{'+(a+1)+'}+1',Math.sqrt(a+1)+1),O(R(1,b).tex+'+1',Math.sqrt(b)+1),O('\\sqrt{'+(2*a)+'}',Math.sqrt(2*a))],
+ s:T`Look for $\sqrt x+\sqrt y$ with $x+y=${a}$ and $xy=${b}$: that is $x=${x}$, $y=${y}$.<br>Check: $(\sqrt{${x}}+\sqrt{${y}})^2=${a}+2\sqrt{${b}}$. So the answer is $${ans.tex}$.`}},
+r=>{const x=ri(r,2,15);const c=x*x-x;
+ return{lvl:1,q:T`What is $\sqrt{${c}+\sqrt{${c}+\sqrt{${c}+\cdots}}}$?`,a:x,w:[x-1,x+1,R(1,c),c,2*x],
+ s:T`Call the value $x$. Then $x=\sqrt{${c}+x}$, so $x^2-x-${c}=0$, i.e. $(x-${x})(x+${x-1})=0$. Since $x>0$, $x=${x}$.`}},
+r=>{const a=ri(r,1,6)*pick(r,[1,-1]),b=ri(r,-10,10),k=ri(r,1,20);const x1=F(k-b,a),x2=F(-k-b,a);const s_=x1.add(x2);
+ return{lvl:1,q:T`What is the sum of all real solutions of $|${poly([[a,1],[b,0]],'x')}|=${k}$?`,a:s_,w:[x1,x2,s_.neg(),F(2*k,Math.abs(a)),s_.add(1)],
+ s:T`Either $${poly([[a,1],[b,0]],'x')}=${k}$, giving $x=${x1.tex()}$, or $${poly([[a,1],[b,0]],'x')}=-${k}$, giving $x=${x2.tex()}$. Sum: $${s_.tex()}$.`}},
+r=>{const a=ri(r,-8,6),b=a+ri(r,2,10),k=b-a+2*ri(r,1,8);const x1=F(a+b+k,2),x2=F(a+b-k,2);
+ return{lvl:2,q:T`What is the product of all real solutions of $|x${a<0?'+':'-'}${Math.abs(a)}|+|x${b<0?'+':'-'}${Math.abs(b)}|=${k}$?`,a:x1.mul(x2),w:[x1.add(x2),x1.mul(x2).neg(),x1.mul(x2).add(k),F(a*b),x1],
+ s:T`For $x>${b}$: $2x-${a+b}=${k}$ gives $x=${x1.tex()}$. For $x\lt ${a}$: $${a+b}-2x=${k}$ gives $x=${x2.tex()}$. Between ${a} and ${b} the sum is the constant $${b-a}\ne${k}$.<br>Product: $${x1.mul(x2).tex()}$.`}},
+];

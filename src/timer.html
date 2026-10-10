@@ -1,0 +1,374 @@
+<script id="timer">
+/* ====================== FOCUS TIMER ====================== */
+const TM = (() => {
+  if (typeof document === 'undefined' || !document.getElementById('land')) return { show(){} };
+  const $ = id => document.getElementById(id);
+  const K = 'amcprep.timer.';
+  const MIN = 10, MAX = 360, STEP = 5, BREAK = 5, RING_C = 2 * Math.PI * 97, TZ = 'America/New_York';
+  const store = {
+    get(k, d){ try{ const v = localStorage.getItem(K + k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
+    set(k, v){ try{ localStorage.setItem(K + k, JSON.stringify(v)); }catch(e){} }
+  };
+  const clampSel = v => Math.min(MAX, Math.max(MIN, Math.round(v)));
+  let state = store.get('state', { mode:'idle' });
+  let hist = store.get('history', []);
+  let pos = store.get('pos', { fx:1, fy:0 });          // widget position as fractions of free space
+  let selected = clampSel(store.get('last', 25));
+  let onLanding = false;
+  const save = () => store.set('state', state);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+  // ---------- sound effects (synthesized, no files) ----------
+  const sfx = (() => {
+    let ctx = null, master = null, muted = store.get('muted', false);
+    function ensure(){
+      try{
+        if (!ctx){ ctx = new (window.AudioContext || window.webkitAudioContext)(); master = ctx.createGain(); master.gain.value = .9; master.connect(ctx.destination); }
+        if (ctx.state === 'suspended') ctx.resume();
+      }catch(e){}
+      return ctx;
+    }
+    function tone(f, dur, o = {}){
+      if (muted || !ensure()) return;
+      const t = ctx.currentTime + (o.delay || 0);
+      const osc = ctx.createOscillator(), g = ctx.createGain();
+      osc.type = o.type || 'sine';
+      osc.frequency.setValueAtTime(f, t);
+      if (o.to) osc.frequency.exponentialRampToValueAtTime(o.to, t + dur);
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(o.gain ?? .12, t + (o.attack || .008));
+      g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+      osc.connect(g).connect(master); osc.start(t); osc.stop(t + dur + .05);
+    }
+    function whoosh(dur, o = {}){
+      if (muted || !ensure()) return;
+      const t = ctx.currentTime + (o.delay || 0);
+      const len = Math.floor(ctx.sampleRate * dur);
+      const buf = ctx.createBuffer(1, len, ctx.sampleRate), d = buf.getChannelData(0);
+      for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+      const src = ctx.createBufferSource(); src.buffer = buf;
+      const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 1.2;
+      bp.frequency.setValueAtTime(o.from || 400, t);
+      bp.frequency.exponentialRampToValueAtTime(o.to || 3000, t + dur);
+      const g = ctx.createGain();
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(o.gain ?? .06, t + dur * .35);
+      g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+      src.connect(bp).connect(g).connect(master); src.start(t); src.stop(t + dur + .05);
+    }
+    return {
+      unlock: ensure,
+      get muted(){ return muted; },
+      setMuted(v){ muted = v; store.set('muted', v); },
+      tap(){ tone(1400, .05, {type:'triangle', gain:.05}); },
+      key(){ tone(1800, .025, {type:'triangle', gain:.025}); },
+      tick(){ tone(2400, .02, {type:'triangle', gain:.03}); },
+      open(){ tone(520, .18, {gain:.08}); tone(780, .22, {gain:.07, delay:.07}); },
+      close(){ tone(780, .16, {gain:.06}); tone(520, .2, {gain:.06, delay:.06}); },
+      invalid(){ tone(200, .16, {type:'triangle', gain:.1}); tone(170, .2, {type:'triangle', gain:.09, delay:.1}); },
+      start(){ whoosh(1.4, {from:300, to:4000, gain:.06}); tone(392, 1.6, {gain:.07, to:196, attack:.05}); tone(784, .9, {gain:.035, delay:.35, attack:.02}); },
+      pause(){ tone(660, .14, {gain:.08}); tone(494, .22, {gain:.08, delay:.1}); },
+      resume(){ tone(494, .14, {gain:.08}); tone(660, .22, {gain:.08, delay:.1}); },
+      arm(){ tone(330, .22, {type:'triangle', gain:.09}); },
+      end(){ [523.25, 440, 329.63].forEach((f, i) => tone(f, .4, {gain:.08, delay:i*.12})); },
+      complete(){ [659.25, 783.99, 1046.5].forEach((f, i) => tone(f, 1.4, {gain:.14, delay:i*.28, attack:.02})); if (navigator.vibrate) navigator.vibrate([120, 80, 120]); },
+      breakStart(){ tone(587.33, .2, {gain:.07}); tone(880, .35, {gain:.06, delay:.1}); },
+      breakEnd(){ [880, 659.25].forEach((f, i) => tone(f, .9, {gain:.1, delay:i*.25, attack:.02})); },
+      unmute(){ tone(880, .12, {gain:.06}); tone(1175, .16, {gain:.05, delay:.06}); }
+    };
+  })();
+  document.addEventListener('pointerdown', () => sfx.unlock(), {once:true});
+
+  // ---------- formatting ----------
+  function fmtDur(min){ const h = Math.floor(min/60), m = min % 60; if (!h) return m + ' min'; return m ? `${h} hr ${m} min` : `${h} hr`; }
+  function fmtClock(ms){
+    const t = Math.max(0, Math.ceil(ms/1000)), h = Math.floor(t/3600), m = Math.floor(t%3600/60), s = t%60;
+    return h ? `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}` : `${m}:${String(s).padStart(2,'0')}`;
+  }
+  function fmtExact(ms){ const t = Math.round(ms/1000), h = Math.floor(t/3600), m = Math.floor(t%3600/60), s = t%60;
+    return (h ? h + ' hr ' : '') + (h || m ? m + ' min ' : '') + s + ' s'; }
+  const minutes = ms => ms < 60000 ? '<1 min' : Math.round(ms/60000) + ' min';
+  function parseTyped(str){
+    str = str.trim().toLowerCase(); if (!str) return null;
+    let m = str.match(/^(\d{1,2}):(\d{1,2})$/); if (m) return (+m[1])*60 + (+m[2]);
+    m = str.match(/^(?:(\d+(?:\.\d+)?)\s*h(?:r|rs|ours?)?)?\s*(?:(\d+)\s*(?:m(?:in(?:ute)?s?)?)?)?$/);
+    if (m && (m[1] || m[2])) return Math.round((+(m[1]||0))*60 + (+(m[2]||0)));
+    return NaN;
+  }
+  const etTime = (ms, sec) => new Intl.DateTimeFormat('en-US', {timeZone:TZ, hour:'numeric', minute:'2-digit', second: sec ? '2-digit' : undefined}).format(ms);
+  const etZone = ms => (new Intl.DateTimeFormat('en-US', {timeZone:TZ, timeZoneName:'short'}).formatToParts(ms).find(p => p.type === 'timeZoneName') || {}).value || 'ET';
+  const etDate = (ms, long) => new Intl.DateTimeFormat('en-US', long ? {timeZone:TZ, weekday:'long', month:'long', day:'numeric', year:'numeric'} : {timeZone:TZ, weekday:'short', month:'short', day:'numeric', year:'numeric'}).format(ms);
+  function oneSentence(s){
+    s = (s || '').replace(/\s+/g, ' ').trim(); if (!s) return '';
+    const m = s.match(/^.*?[.!?](?=\s|$)/); const first = m ? m[0] : s;
+    return first.length < s.length ? first.replace(/[.!?]$/, '') + '…' : first;
+  }
+
+  // ---------- analog clock ----------
+  const ticksG = $('tmTicks');
+  for (let i = 0; i < 60; i++){
+    const major = i % 5 === 0, quarter = i % 15 === 0, a = i * 6 * Math.PI / 180;
+    const r1 = quarter ? 74 : major ? 77 : 82, r2 = 85;
+    const l = document.createElementNS('http://www.w3.org/2000/svg','line');
+    l.setAttribute('x1', 100 + r1*Math.sin(a)); l.setAttribute('y1', 100 - r1*Math.cos(a));
+    l.setAttribute('x2', 100 + r2*Math.sin(a)); l.setAttribute('y2', 100 - r2*Math.cos(a));
+    l.setAttribute('class','tm-tick'); l.setAttribute('stroke-width', quarter ? 2.4 : major ? 1.6 : .6);
+    if (!major) l.style.opacity = .5;
+    ticksG.appendChild(l);
+  }
+  const ring = $('tmRing'); ring.style.strokeDasharray = RING_C;
+  function drawClock(){
+    const n = new Date(), s = n.getSeconds(), m = n.getMinutes() + s/60, h = (n.getHours()%12) + m/60;
+    $('tmH').setAttribute('transform', `rotate(${h*30} 100 100)`);
+    $('tmM').setAttribute('transform', `rotate(${m*6} 100 100)`);
+    $('tmS').setAttribute('transform', `rotate(${s*6} 100 100)`);
+  }
+
+  // ---------- timer logic ----------
+  const remaining = () => state.paused ? state.remaining : state.endAt - Date.now();
+  function tick(){
+    if (onLanding) drawClock();
+    if (state.mode === 'idle') return;
+    const r = remaining(), frac = Math.max(0, r) / state.total, txt = fmtClock(r);
+    $('tmTime').textContent = txt; $('tmwTime').textContent = txt;
+    ring.style.strokeDashoffset = RING_C * (1 - frac);
+    $('tmwBar').style.width = ((1 - frac) * 100) + '%';
+    if (r <= 0) finish();
+  }
+  function startSession(mode, mins, desc){
+    state = { mode, total: mins*60000, endAt: Date.now() + mins*60000, paused:false, leaves:0, startedAt: Date.now(), desc: desc || '' };
+    save();
+    mode === 'focus' ? sfx.start() : sfx.breakStart();
+    wake(true); render(); tick();
+  }
+  function togglePause(){
+    if (state.mode === 'idle') return;
+    if (state.paused){ state.endAt = Date.now() + state.remaining; state.paused = false; wake(true); sfx.resume(); }
+    else { state.remaining = state.endAt - Date.now(); state.paused = true; wake(false); sfx.pause(); }
+    save(); render(); tick();
+  }
+  function record(was, end, focusedMs, completed){
+    if (focusedMs < 1000) return;
+    hist.push({ start: was.startedAt, end, focused: focusedMs, planned: Math.round(was.total/60000), desc: was.desc || '', done: completed, leaves: was.leaves || 0 });
+    store.set('history', hist);
+  }
+  function finish(){
+    const was = state;
+    const end = was.paused ? Date.now() : Math.min(Date.now(), was.endAt);
+    state = { mode:'idle' }; save(); wake(false); disarm();
+    if (was.mode === 'focus'){
+      sfx.complete(); record(was, end, was.total, true);
+      $('tmDoneTitle').textContent = 'Session complete';
+      $('tmDoneMsg').innerHTML = `You studied for ${fmtDur(Math.round(was.total/60000))}.` + (was.desc ? `<br><i>${esc(oneSentence(was.desc))}</i>` : '') +
+        (was.leaves ? `<br>You left the page ${was.leaves} time${was.leaves > 1 ? 's' : ''}.` : '<br>No interruptions.');
+      $('tmBreak').classList.remove('hidden');
+    } else {
+      sfx.breakEnd();
+      $('tmDoneTitle').textContent = 'Break is over';
+      $('tmDoneMsg').textContent = 'Ready for another focus session?';
+      $('tmBreak').classList.add('hidden');
+    }
+    render(); openSheet($('tmDone'), true);
+  }
+  let endArmed = null;
+  const endBtns = () => [$('tmEnd'), $('tmwEnd')];
+  function endEarly(){
+    if (!endArmed){
+      endBtns().forEach(b => { b.textContent = b.id === 'tmEnd' ? 'Tap to confirm' : 'Confirm'; b.classList.add('warn'); });
+      endArmed = setTimeout(disarm, 3000); sfx.arm(); return;
+    }
+    disarm(); sfx.end();
+    if (state.mode === 'focus') record(state, Date.now(), state.total - Math.max(0, remaining()), false);
+    state = { mode:'idle' }; save(); wake(false); render();
+  }
+  function disarm(){ clearTimeout(endArmed); endArmed = null; endBtns().forEach(b => { b.textContent = 'End'; b.classList.remove('warn'); }); }
+
+  // ---------- view ----------
+  function render(){
+    const active = state.mode !== 'idle', focus = state.mode === 'focus';
+    const label = !active ? '' : state.paused ? 'Paused' : focus ? 'Focus' : 'Break';
+    document.body.classList.toggle('tm-running', active);
+    $('tmTimer').classList.toggle('show', active);
+    $('tmLabel').textContent = label;
+    $('tmDescShow').textContent = active && focus ? oneSentence(state.desc) : '';
+    $('tmSet').classList.toggle('hidden', active);
+    $('tmPause').classList.toggle('hidden', !active);
+    $('tmEnd').classList.toggle('hidden', !active);
+    $('tmPause').textContent = $('tmwPause').textContent = state.paused ? 'Resume' : 'Pause';
+    const go = $('tmGo'); go.textContent = active ? 'Back to studying →' : 'Browse topics without a timer'; go.classList.toggle('primary', active);
+    const w = $('tmw');
+    w.hidden = !active || onLanding;
+    w.classList.toggle('focus', focus && !state.paused);
+    $('tmwLabel').textContent = label;
+    $('tmwDesc').textContent = focus ? (oneSentence(state.desc) || 'Focus session') : 'Take a breather';
+    if (!active){ ring.style.strokeDashoffset = 0; }
+    if (!w.hidden) placeWidget();
+    renderStats();
+  }
+  function renderStats(){
+    const today = new Date().toDateString();
+    const t = hist.filter(h => new Date(h.start).toDateString() === today);
+    const mins = Math.round(t.reduce((a, h) => a + h.focused, 0) / 60000);
+    $('tmStats').textContent = t.length ? `Today ${fmtDur(mins)}  ·  ${t.length} session${t.length > 1 ? 's' : ''}` : 'Nothing studied yet today';
+  }
+  const MUTE_ON = '<svg viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18 6.5a7.5 7.5 0 0 1 0 11"/></svg>';
+  const MUTE_OFF = '<svg viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>';
+  function renderMute(){ document.querySelectorAll('.tm-mute').forEach(b => { b.innerHTML = sfx.muted ? MUTE_OFF : MUTE_ON; b.setAttribute('aria-label', sfx.muted ? 'Unmute sounds' : 'Mute sounds'); }); }
+  document.querySelectorAll('.tm-mute').forEach(b => b.addEventListener('click', () => { sfx.setMuted(!sfx.muted); if (!sfx.muted) sfx.unmute(); renderMute(); }));
+
+  // ---------- draggable widget ----------
+  const w = $('tmw'), M = 10;
+  function bounds(){ const r = w.getBoundingClientRect(); return { mx: Math.max(0, innerWidth - r.width - 2*M), my: Math.max(0, innerHeight - r.height - 2*M) }; }
+  function placeWidget(){ const b = bounds(); w.style.left = (M + b.mx * pos.fx) + 'px'; w.style.top = (M + b.my * pos.fy) + 'px'; }
+  let drag = null;
+  w.addEventListener('pointerdown', e => {
+    if (e.target.closest('button') || e.button > 0) return;
+    const r = w.getBoundingClientRect();
+    drag = { dx: e.clientX - r.left, dy: e.clientY - r.top };
+    w.setPointerCapture(e.pointerId); w.classList.add('drag');
+  });
+  w.addEventListener('pointermove', e => {
+    if (!drag) return;
+    const b = bounds();
+    const x = Math.min(M + b.mx, Math.max(M, e.clientX - drag.dx)), y = Math.min(M + b.my, Math.max(M, e.clientY - drag.dy));
+    w.style.left = x + 'px'; w.style.top = y + 'px';
+    pos = { fx: b.mx ? (x - M) / b.mx : 0, fy: b.my ? (y - M) / b.my : 0 };
+  });
+  const endDrag = () => { if (!drag) return; drag = null; w.classList.remove('drag'); store.set('pos', pos); };
+  w.addEventListener('pointerup', endDrag); w.addEventListener('pointercancel', endDrag);
+  window.addEventListener('resize', () => { if (!w.hidden) placeWidget(); });
+  $('tmwPause').addEventListener('click', togglePause);
+  $('tmwEnd').addEventListener('click', endEarly);
+  $('tmwOpen').addEventListener('click', () => { location.hash = '#/'; });
+
+  // ---------- sheets ----------
+  let openEl = null;
+  function openSheet(el, silent){
+    if (openEl && openEl !== el) closeSheet(true);
+    openEl = el; if (!silent) sfx.open();
+    $('tmBackdrop').classList.add('open'); el.style.transform = ''; el.classList.add('open');
+  }
+  function closeSheet(silent){
+    if (!openEl) return;
+    if (silent !== true) sfx.close();
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    const el = openEl; openEl = null; el.style.transform = ''; el.classList.remove('open');
+    $('tmBackdrop').classList.remove('open');
+  }
+  document.querySelectorAll('.tm-sheet').forEach(sheet => {     // drag a sheet down by its handle to dismiss
+    let y0 = null, dy = 0;
+    sheet.querySelectorAll('.tm-grab, .tm-head').forEach(h => {
+      h.addEventListener('touchstart', e => { if (e.target.closest('button')) return; y0 = e.touches[0].clientY; dy = 0; sheet.style.transition = 'none'; }, {passive:true});
+      h.addEventListener('touchmove', e => { if (y0 === null) return; dy = Math.max(0, e.touches[0].clientY - y0); sheet.style.transform = `translateY(${dy}px)`; }, {passive:true});
+      h.addEventListener('touchend', () => { if (y0 === null) return; sheet.style.transition = ''; if (dy > 80) closeSheet(); else sheet.style.transform = ''; y0 = null; });
+    });
+  });
+  $('tmBackdrop').addEventListener('click', closeSheet);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && openEl) closeSheet(); });
+
+  // ---------- Focus Time menu ----------
+  const slider = $('tmSlider'), typed = $('tmTyped'), hint = $('tmHint'), startBtn = $('tmStart'), descEl = $('tmDesc');
+  const vals = [MIN]; for (let x = MIN + STEP; x < MAX; x += STEP) vals.push(x); vals.push(MAX);
+  slider.max = vals.length - 1; $('tmEndMin').textContent = fmtDur(MIN); $('tmEndMax').textContent = fmtDur(MAX);
+  const nearest = v => { let b = 0; for (let i = 1; i < vals.length; i++) if (Math.abs(vals[i]-v) < Math.abs(vals[b]-v)) b = i; return b; };
+  function setSelected(v, fromSlider){
+    selected = v; $('tmReadout').textContent = fmtDur(v);
+    slider.value = nearest(v); slider.style.setProperty('--p', (slider.value / (vals.length - 1) * 100) + '%');
+    if (fromSlider) typed.value = '';
+    hint.textContent = ' '; hint.classList.remove('err'); startBtn.disabled = false;
+  }
+  let lastStep = -1, wasInvalid = false;
+  slider.addEventListener('input', () => { if (+slider.value !== lastStep){ lastStep = +slider.value; sfx.tick(); } wasInvalid = false; setSelected(vals[+slider.value], true); });
+  typed.addEventListener('input', () => {
+    sfx.key();
+    const v = parseTyped(typed.value);
+    if (v === null){ wasInvalid = false; setSelected(vals[+slider.value], false); return; }
+    if (isNaN(v) || v < MIN || v > MAX){
+      if (!wasInvalid) sfx.invalid(); wasInvalid = true;
+      hint.textContent = `Choose between ${fmtDur(MIN)} and ${fmtDur(MAX)}`; hint.classList.add('err'); startBtn.disabled = true; return;
+    }
+    wasInvalid = false; setSelected(v, false); lastStep = +slider.value;
+  });
+  typed.addEventListener('keydown', e => { if (e.key === 'Enter'){ e.preventDefault(); descEl.focus(); } });
+  descEl.addEventListener('input', () => { sfx.key(); $('tmCount').textContent = descEl.value.length + ' / 500'; });
+  $('tmSet').addEventListener('click', () => { lastStep = -1; setSelected(selected, true); $('tmCount').textContent = descEl.value.length + ' / 500'; openSheet($('tmSheet')); });
+  $('tmCancel').addEventListener('click', closeSheet);
+  startBtn.addEventListener('click', () => {
+    sfx.unlock(); store.set('last', selected);
+    const desc = descEl.value.trim();
+    closeSheet(true); descEl.value = '';
+    startSession('focus', selected, desc);
+    setTimeout(() => { location.hash = '#/home'; }, 450);
+  });
+  $('tmPause').addEventListener('click', togglePause);
+  $('tmEnd').addEventListener('click', endEarly);
+  $('tmGo').addEventListener('click', () => { location.hash = '#/home'; });
+  $('tmDoneOk').addEventListener('click', closeSheet);
+  $('tmNew').addEventListener('click', () => { closeSheet(true); location.hash = '#/'; setTimeout(() => $('tmSet').click(), 350); });
+  $('tmBreak').addEventListener('click', () => { sfx.unlock(); closeSheet(true); startSession('break', BREAK, ''); });
+
+  // ---------- history ----------
+  const hb = $('tmHistBody');
+  function histList(){
+    $('tmHistTitle').textContent = 'Study History'; $('tmHistBack').style.visibility = 'hidden';
+    if (!hist.length){ hb.innerHTML = '<div class="tm-empty">No study sessions yet.<br>Set a focus time and press Start. Each session will appear here.</div>'; return; }
+    const total = hist.reduce((a, h) => a + h.focused, 0);
+    let html = `<div class="tm-sum"><div><b>${hist.length}</b><span>sessions</span></div><div><b>${fmtDur(Math.round(total/60000))}</b><span>total studied</span></div></div>`;
+    let day = '';
+    hist.map((h, i) => [h, i]).reverse().forEach(([h, i]) => {
+      const d = etDate(h.start);
+      if (d !== day){ day = d; html += `<div class="tm-day">${esc(d)}</div>`; }
+      const desc = oneSentence(h.desc);
+      html += `<button class="tm-hrow" data-i="${i}"><div class="tm-hmain"><span class="tm-htime">${etTime(h.start)} – ${etTime(h.end)}<small>${etZone(h.start)}</small></span><span class="tm-hdur">${minutes(h.focused)}</span></div>
+        <div class="tm-hdesc">${desc ? esc(desc) : '<i>No description</i>'}</div></button>`;
+    });
+    hb.innerHTML = html; hb.scrollTop = 0;
+  }
+  function histDetail(i){
+    const h = hist[i]; if (!h) return histList();
+    $('tmHistTitle').textContent = 'Session Details'; $('tmHistBack').style.visibility = 'visible';
+    const z = etZone(h.start), z2 = etZone(h.end);
+    hb.innerHTML = `<div class="tm-dbig">${minutes(h.focused)}</div><div class="tm-dsub">studied · ${h.done ? 'completed' : 'ended early'}</div>
+      <dl class="tm-dl">
+        <dt>Date</dt><dd>${esc(etDate(h.start, true))}</dd>
+        <dt>Started</dt><dd>${etTime(h.start, true)} ${z}</dd>
+        <dt>Ended</dt><dd>${etTime(h.end, true)} ${z2}${etDate(h.end) !== etDate(h.start) ? ' (' + esc(etDate(h.end)) + ')' : ''}</dd>
+        <dt>Time studied</dt><dd>${fmtExact(h.focused)}</dd>
+        <dt>Start to end</dt><dd>${fmtExact(h.end - h.start)}${h.end - h.start - h.focused > 1500 ? ' (includes pauses)' : ''}</dd>
+        <dt>Planned</dt><dd>${fmtDur(h.planned)}</dd>
+        <dt>Time zone</dt><dd>Eastern Time (${z})</dd>
+      </dl>
+      <div class="tm-dh">Description</div><p class="tm-dfull">${h.desc ? esc(h.desc) : '<i>No description was written for this session.</i>'}</p>
+      <button class="tm-btn tm-del" id="tmDel">Delete this session</button>`;
+    hb.scrollTop = 0;
+    let armed = false;
+    $('tmDel').addEventListener('click', e => {
+      if (!armed){ armed = true; e.target.textContent = 'Tap again to delete'; e.target.classList.add('warn'); sfx.arm(); return; }
+      hist.splice(i, 1); store.set('history', hist); sfx.end(); renderStats(); histList();
+    });
+  }
+  hb.addEventListener('click', e => { const r = e.target.closest('.tm-hrow'); if (r){ sfx.tap(); histDetail(+r.dataset.i); } });
+  $('tmHistBtn').addEventListener('click', () => { histList(); openSheet($('tmHist')); });
+  $('tmHistBack').addEventListener('click', () => { sfx.tap(); histList(); });
+  $('tmHistClose').addEventListener('click', closeSheet);
+
+  // ---------- keep screen awake / leaving the page ----------
+  let lock = null;
+  async function wake(on){
+    try{
+      if (on && !lock && 'wakeLock' in navigator){ lock = await navigator.wakeLock.request('screen'); lock.addEventListener('release', () => { lock = null; }); }
+      else if (!on && lock){ await lock.release(); lock = null; }
+    }catch(e){}
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden){ if (state.mode === 'focus' && !state.paused){ state.leaves = (state.leaves || 0) + 1; save(); } }
+    else { if (state.mode !== 'idle' && !state.paused) wake(true); tick(); }
+  });
+
+  // ---------- boot ----------
+  renderMute(); render(); tick(); setInterval(tick, 250);
+  return {
+    show(landing){ onLanding = landing; if (landing) drawClock(); render(); tick(); }
+  };
+})();
+</script>
