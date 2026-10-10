@@ -194,7 +194,15 @@ body.landing #land{display:flex}
 .tm-label{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--tp-muted);margin-bottom:6px}
 .tm-time{font-size:clamp(38px,7vw,52px);font-weight:200;font-variant-numeric:tabular-nums;letter-spacing:.02em;line-height:1}
 .tm-desc{font-size:14px;color:var(--tp-muted);margin-top:8px;max-width:min(90vw,460px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tm-clock{position:relative;width:min(72vw,42vh,330px);aspect-ratio:1;flex:none}
+.tm-clock{position:relative;width:min(72vw,42vh,330px);aspect-ratio:1;flex:none;cursor:pointer;border-radius:50%;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.tm-clock:hover,.tm-clock:focus-visible{transform:scale(1.02);outline:none}
+.tm-times{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0 6px}
+.tm-tz{background:var(--tp-field);border:1px solid var(--tp-sline);border-radius:14px;padding:14px 12px;text-align:center}
+.tm-tz-h{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tp-muted)}
+.tm-tz-t{font-size:clamp(24px,6vw,32px);font-weight:300;font-variant-numeric:tabular-nums;margin:6px 0 4px;white-space:nowrap}
+.tm-tz-d{font-size:13px;color:var(--tp-fg)}
+.tm-tz-z{font-size:12px;color:var(--tp-muted);margin-top:3px}
+@media (max-width:420px){.tm-times{grid-template-columns:1fr}}
 .tm-clock svg{width:100%;height:100%;display:block;overflow:visible}
 .tm-face{fill:var(--tp-face);stroke:var(--tp-line);stroke-width:1}
 .tm-tick{stroke:var(--tp-muted);stroke-linecap:round}
@@ -341,7 +349,7 @@ textarea.tm-input{resize:vertical;min-height:84px;line-height:1.45}
       <div class="tm-time" id="tmTime">0:00</div>
       <div class="tm-desc" id="tmDescShow"></div>
     </div>
-    <div class="tm-clock" id="tmClock">
+    <div class="tm-clock" id="tmClock" role="button" tabindex="0" aria-label="Show the current local and universal time" title="Current time">
       <svg viewBox="0 0 200 200" aria-hidden="true">
         <circle class="tm-ring-bg" cx="100" cy="100" r="97"/>
         <circle class="tm-ring" id="tmRing" cx="100" cy="100" r="97"/>
@@ -367,6 +375,17 @@ textarea.tm-input{resize:vertical;min-height:84px;line-height:1.45}
     <button class="tm-code-val" id="tmCode" title="Click to copy">········</button>
     <button class="tm-code-btn" id="tmSetCode">Set Code</button>
   </div>
+</div>
+
+<!-- current time -->
+<div class="tm-sheet" id="tmTimeSheet" role="dialog" aria-label="Current time">
+  <div class="tm-grab"><span></span></div>
+  <h2>Current Time</h2>
+  <div class="tm-times">
+    <div class="tm-tz"><div class="tm-tz-h">Your local time</div><div class="tm-tz-t" id="tmLocT"></div><div class="tm-tz-d" id="tmLocD"></div><div class="tm-tz-z" id="tmLocZ"></div></div>
+    <div class="tm-tz"><div class="tm-tz-h">Universal time</div><div class="tm-tz-t" id="tmUtcT"></div><div class="tm-tz-d" id="tmUtcD"></div><div class="tm-tz-z">UTC · Coordinated Universal Time</div></div>
+  </div>
+  <div class="tm-row"><button class="tm-btn solid" id="tmTimeClose">Done</button></div>
 </div>
 
 <!-- Set Code -->

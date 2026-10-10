@@ -47,7 +47,7 @@ for tid in ORDER:
         if g.strip(): gens.append('/* ---- ' + '/'.join(part[1:]) + ' ---- */\n' + g.strip())
 
 js = '\n'.join([rd('engine_utils.js'), rd('catalog.js'), '\n'.join(gens), rd('engine_model.js'),
-                rd('engine_pages.js'), rd('engine_ui.js'), rd('engine_mock.js'), rd('sync.js'), rd('ai.js')])
+                rd('engine_pages.js'), rd('engine_ui.js'), rd('engine_mock.js'), rd('sync.js'), rd('ai.js'), rd('clock.js')])
 html = (rd('shell.html')
         + '<!-- ======================= LESSONS ======================= -->\n' + '\n'.join(lessons)
         + '\n\n<!-- ======================= PROBLEM BANK ======================= -->\n'

@@ -23,7 +23,8 @@ const MOCKS={
 const mockKey=t=>t.track==='pc'?'Chapter test':'Mock test';
 const trackCrumb=t=>t.track==='pc'?['Precalculus','#/pc']:['AMC Prep','#/amc'];
 
-function route(){
+function route(){routeTo();if(typeof restoreScroll==='function'&&location.hash)restoreScroll()}
+function routeTo(){
   cleanup();const h=location.hash.replace(/^#\/?/,'').split('/').filter(Boolean);
   window.scrollTo(0,0);
   const landing=h.length===0;document.body.classList.toggle('landing',landing);if(typeof TM!=='undefined')TM.show(landing);
