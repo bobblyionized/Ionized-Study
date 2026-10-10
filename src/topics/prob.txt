@@ -67,7 +67,9 @@ W: \frac{1}{12}
 W: \frac{7}{36}
 W: \frac{5}{36}
 W: \frac{1}{36}
-S: There are $6$ ways out of $36$: $\frac16$.
+S: There are $6\cdot6=36$ equally likely ordered outcomes.
+Sum $7$: $(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)$, which is $6$ outcomes.
+Probability $\frac{6}{36}=\frac16$. ($7$ is the most likely sum.)
 ---
 Q: Three fair coins are flipped. What is the probability of at least two heads?
 L: 1
@@ -76,7 +78,9 @@ W: \frac{3}{8}
 W: \frac{1}{4}
 W: \frac{3}{4}
 W: \frac{5}{8}
-S: Exactly 2: $3$ outcomes; exactly 3: $1$ outcome. $\frac48=\frac12$.
+S: There are $2^3=8$ equally likely outcomes.
+Exactly $2$ heads: $\binom32=3$ outcomes (HHT, HTH, THH). Exactly $3$: $1$ (HHH).
+$\frac{3+1}{8}=\frac12$. (By symmetry, "at least 2 heads" and "at least 2 tails" are equally likely and can't both happen.)
 ---
 Q: Two cards are drawn from a standard deck without replacement. What is the probability both are aces?
 L: 2
@@ -85,7 +89,9 @@ W: \frac{1}{169}
 W: \frac{1}{26}
 W: \frac{2}{221}
 W: \frac{1}{13}
-S: $\frac4{52}\cdot\frac3{51}=\frac{12}{2652}=\frac1{221}$.
+S: Multiply step by step: the first card is an ace with probability $\frac4{52}$; given that, the second is an ace with probability $\frac3{51}$ (one ace and one card are gone).
+$\frac4{52}\cdot\frac3{51}=\frac{12}{2652}=\frac1{221}$.
+(Or count: $\frac{\binom42}{\binom{52}2}=\frac{6}{1326}=\frac1{221}$.)
 ---
 Q: An integer from $1$ to $100$ is chosen at random. What is the probability it is divisible by $3$ or $5$?
 L: 1
@@ -94,7 +100,8 @@ W: \frac{53}{100}
 W: \frac{1}{2}
 W: \frac{33}{100}
 W: \frac{2}{5}
-S: $33+20-6=47$ favorable numbers.
+S: Inclusion–exclusion: multiples of $3$: $33$; of $5$: $20$; of both (i.e. of $15$): $6$.
+Favorable: $33+20-6=47$. Probability $\frac{47}{100}$.
 ---
 Q: Two fair dice are rolled. What is the probability that the product of the numbers is even?
 L: 1
@@ -103,7 +110,8 @@ W: \frac{1}{2}
 W: \frac{1}{4}
 W: \frac{2}{3}
 W: \frac{5}{6}
-S: The product is odd only if both are odd: $\frac14$. So $1-\frac14=\frac34$.
+S: Complement: the product is odd only when both dice are odd, probability $\frac12\cdot\frac12=\frac14$.
+So the product is even with probability $1-\frac14=\frac34$.
 ---
 Q: A bag has $4$ red and $6$ blue marbles. Two are drawn without replacement. What is the probability they are the same color?
 L: 2
@@ -112,7 +120,9 @@ W: \frac{8}{15}
 W: \frac{1}{2}
 W: \frac{13}{25}
 W: \frac{2}{5}
-S: $\frac{\binom42+\binom62}{\binom{10}2}=\frac{6+15}{45}=\frac7{15}$.
+S: Total pairs: $\binom{10}{2}=45$.
+Both red: $\binom42=6$. Both blue: $\binom62=15$.
+$\frac{6+15}{45}=\frac{21}{45}=\frac7{15}$.
 ---
 Q: Four fair dice are rolled. What is the probability that all four show different numbers?
 L: 2
@@ -121,7 +131,8 @@ W: \frac{1}{6}
 W: \frac{5}{12}
 W: \frac{13}{18}
 W: \frac{1}{3}
-S: $\frac{6\cdot5\cdot4\cdot3}{6^4}=\frac{360}{1296}=\frac5{18}$.
+S: Total outcomes: $6^4=1296$. All different: the first die can be anything ($6$), the second must differ ($5$), then $4$, then $3$: $360$.
+$\frac{360}{1296}=\frac{5}{18}$.
 ---
 Q: A three-digit number is chosen at random. What is the probability that its digits are strictly increasing from left to right?
 L: 3
@@ -130,7 +141,9 @@ W: \frac{1}{10}
 W: \frac{21}{250}
 W: \frac{1}{6}
 W: \frac{2}{25}
-S: The digit 0 can't appear (it would have to come first). Any 3 of the digits $1$–$9$ in increasing order work: $\binom93=84$. So $\frac{84}{900}=\frac7{75}$.
+S: A three-digit number has $900$ possibilities ($100$–$999$).
+Strictly increasing digits can't include $0$: it would have to be the first digit. So pick any $3$ distinct digits from $1$–$9$; there's exactly one increasing order: $\binom93=84$.
+$\frac{84}{900}=\frac{7}{75}$.
 ---
 @@ prob-cond
 Q: A fair die is rolled and shows an even number. What is the probability it is greater than $3$?
@@ -140,7 +153,8 @@ W: \frac{1}{2}
 W: \frac{1}{3}
 W: \frac{1}{6}
 W: \frac{3}{4}
-S: Given $\{2,4,6\}$, the favorable outcomes are $4,6$: $\frac23$.
+S: Conditioning on "even" shrinks the sample space to $\{2,4,6\}$, each equally likely.
+Of these, $4$ and $6$ are greater than $3$: $\frac23$.
 ---
 Q: A family has two children, and at least one is a boy. What is the probability both are boys?
 L: 2
@@ -149,7 +163,9 @@ W: \frac{1}{2}
 W: \frac{1}{4}
 W: \frac{2}{3}
 W: \frac{3}{4}
-S: The remaining outcomes are BB, BG, GB (equally likely), and only BB works: $\frac13$.
+S: The four equally likely families are BB, BG, GB, GG. Knowing "at least one boy" removes GG, leaving three equally likely cases.
+Only BB has two boys: $\frac13$.
+(It's not $\frac12$ because we don't know which child is the boy.)
 ---
 Q: Two dice are rolled and their sum is $8$. What is the probability that one of them shows a $6$?
 L: 2
@@ -158,7 +174,8 @@ W: \frac{1}{3}
 W: \frac{1}{5}
 W: \frac{1}{6}
 W: \frac{1}{18}
-S: Sum 8: $(2,6),(3,5),(4,4),(5,3),(6,2)$. Two of the five contain a 6.
+S: Restrict to the outcomes with sum $8$: $(2,6),(3,5),(4,4),(5,3),(6,2)$, five equally likely ordered pairs.
+Two of them contain a $6$: $\frac25$.
 ---
 Q: Independent events have $P(A)=0.3$ and $P(B)=0.5$. What is $P(A\cup B)$?
 L: 1
@@ -167,7 +184,8 @@ W: \frac{4}{5}
 W: \frac{3}{20}
 W: \frac{7}{20}
 W: \frac{1}{2}
-S: $0.3+0.5-0.15=0.65=\frac{13}{20}$.
+S: For any events, $P(A\cup B)=P(A)+P(B)-P(A\cap B)$, and independence gives $P(A\cap B)=P(A)P(B)=0.15$.
+$0.3+0.5-0.15=0.65=\frac{13}{20}$.
 ---
 Q: A disease affects $1\%$ of people. A test is positive for $90\%$ of sick people and for $10\%$ of healthy people. Given a positive test, what is the probability the person is sick?
 L: 3
@@ -176,8 +194,9 @@ W: \frac{9}{10}
 W: \frac{1}{10}
 W: \frac{1}{11}
 W: \frac{1}{9}
-S: Out of 1000 people: 10 are sick, 9 of whom test positive; 990 are healthy, 99 of whom test positive.
-$P=\frac{9}{9+99}=\frac{9}{108}=\frac1{12}$.
+S: Imagine $1000$ people. $10$ are sick, and $90\%$ of them, $9$, test positive. $990$ are healthy, and $10\%$ of them, $99$, also test positive.
+Among the $9+99=108$ positives, $9$ are sick: $\frac{9}{108}=\frac{1}{12}$.
+(The disease is so rare that false positives vastly outnumber true ones.)
 ---
 Q: Urn A has $3$ red and $1$ blue ball; urn B has $1$ red and $3$ blue. An urn is chosen at random and a red ball is drawn. What is the probability it came from urn A?
 L: 2
@@ -186,7 +205,9 @@ W: \frac{1}{2}
 W: \frac{3}{8}
 W: \frac{2}{3}
 W: \frac{1}{4}
-S: $\frac{\frac12\cdot\frac34}{\frac12\cdot\frac34+\frac12\cdot\frac14}=\frac{3/8}{1/2}=\frac34$.
+S: Bayes: $P(A\mid\text{red})=\dfrac{P(A)P(\text{red}\mid A)}{P(\text{red})}$.
+$P(\text{red})=\frac12\cdot\frac34+\frac12\cdot\frac14=\frac38+\frac18=\frac12$.
+$P(A\mid\text{red})=\dfrac{3/8}{1/2}=\dfrac34$.
 ---
 Q: Two cards are drawn without replacement, and the first is an ace. What is the probability the second is also an ace?
 L: 1
@@ -195,7 +216,8 @@ W: \frac{1}{13}
 W: \frac{4}{51}
 W: \frac{3}{52}
 W: \frac{1}{221}
-S: There are 3 aces left among 51 cards: $\frac3{51}=\frac1{17}$.
+S: After an ace is drawn, $51$ cards remain and $3$ of them are aces.
+$P=\frac3{51}=\frac1{17}$.
 ---
 Q: A fair die is rolled $4$ times. What is the probability that at least one roll is a $6$?
 L: 2
@@ -204,7 +226,8 @@ W: \frac{2}{3}
 W: \frac{625}{1296}
 W: \frac{1}{2}
 W: \frac{125}{216}
-S: $1-\left(\frac56\right)^4=1-\frac{625}{1296}=\frac{671}{1296}$.
+S: Complement: no $6$ in four rolls has probability $\left(\frac56\right)^4=\frac{625}{1296}$.
+At least one $6$: $1-\frac{625}{1296}=\frac{671}{1296}$ (just over $\frac12$).
 ---
 @@ prob-geo
 Q: A point is chosen at random on the segment $[0,10]$. What is the probability it is within $2$ of the number $5$?
@@ -214,7 +237,9 @@ W: \frac{1}{5}
 W: \frac{1}{2}
 W: \frac{3}{5}
 W: \frac{4}{5}
-S: The favorable interval is $[3,7]$, of length $4$: $\frac4{10}=\frac25$.
+S: For a uniform point on $[0,10]$, probability $=$ favorable length $\div$ total length.
+Within $2$ of $5$ means $3\le x\le7$, length $4$.
+$\frac{4}{10}=\frac25$.
 ---
 Q: Numbers $x$ and $y$ are chosen independently and uniformly from $[0,1]$. What is the probability that $x+y\lt 1$?
 L: 1
@@ -223,7 +248,9 @@ W: \frac{1}{4}
 W: \frac{1}{3}
 W: \frac{2}{3}
 W: \frac{3}{4}
-S: The region below $x+y=1$ is half of the unit square.
+S: The pair $(x,y)$ is a uniform point in the unit square (area $1$).
+$x+y\lt1$ is the triangle below the diagonal from $(1,0)$ to $(0,1)$, with area $\frac12$.
+Probability $\frac12$.
 ---
 Q: Two friends arrive at independent random times between 1:00 and 2:00. Each waits $15$ minutes for the other. What is the probability they meet?
 L: 2
@@ -232,7 +259,9 @@ W: \frac{1}{4}
 W: \frac{9}{16}
 W: \frac{1}{2}
 W: \frac{3}{8}
-S: They miss when $|x-y|>\frac14$: two corner triangles with total area $\left(\frac34\right)^2=\frac9{16}$. So $P=\frac7{16}$.
+S: Measure time in hours after 1:00: $(x,y)$ is uniform in the unit square. They meet when $|x-y|\le\frac14$.
+They miss in two corner triangles ($y\gt x+\frac14$ and $x\gt y+\frac14$), each a right triangle with legs $\frac34$: total area $2\cdot\frac12\cdot\left(\frac34\right)^2=\frac{9}{16}$.
+Meet: $1-\frac{9}{16}=\frac{7}{16}$.
 ---
 Q: A point is chosen at random inside a square of side $2$. What is the probability it is within distance $1$ of the center?
 L: 1
@@ -241,7 +270,8 @@ W: \frac{\pi}{2}
 W: \frac{1}{4}
 W: \frac{\pi}{8}
 W: \frac{1}{\pi}
-S: The disk of radius 1 has area $\pi$; the square has area 4.
+S: The favorable region is a disk of radius $1$ centered at the square's center; it fits inside the square (side $2$).
+$P=\frac{\pi\cdot1^2}{2^2}=\frac\pi4$.
 ---
 Q: A dart lands uniformly on a circular board of radius $10$. What is the probability it lands within the inner circle of radius $4$?
 L: 1
@@ -250,7 +280,8 @@ W: \frac{2}{5}
 W: \frac{1}{5}
 W: \frac{4}{5}
 W: \frac{1}{25}
-S: $\frac{16\pi}{100\pi}=\frac4{25}$.
+S: For a uniformly random point, probabilities are area ratios.
+$\frac{\pi\cdot4^2}{\pi\cdot10^2}=\frac{16}{100}=\frac{4}{25}$.
 ---
 Q: Numbers $x$ and $y$ are chosen uniformly from $[0,2]$. What is the probability that $xy\lt 1$?
 L: 3
@@ -259,8 +290,10 @@ W: \frac{1}{2}
 W: \frac{\ln 2}{2}
 W: \frac{1+\ln 2}{4}
 W: \frac{1}{4}
-S: Favorable area: for $x\le\frac12$ all $y$ work (area $1$); for $\frac12\lt x\le2$, $y\lt \frac1x$ (area $\int_{1/2}^2\frac{dx}x=\ln4$).
-Total $\frac{1+2\ln2}{4}$.
+S: $(x,y)$ is uniform in the $2\times2$ square (area $4$); find the area where $xy\lt1$.
+For $0\le x\le\frac12$, every $y\le2$ works ($xy\le1$): area $\frac12\cdot2=1$.
+For $\frac12\lt x\le2$, we need $y\lt\frac1x$: area $\int_{1/2}^{2}\frac{dx}{x}=\ln2-\ln\frac12=2\ln2$.
+$P=\frac{1+2\ln2}{4}$.
 ---
 Q: Three points are chosen at random on a circle. What is the probability that the triangle they form contains the center?
 L: 2
@@ -269,7 +302,9 @@ W: \frac{1}{2}
 W: \frac{1}{3}
 W: \frac{1}{8}
 W: \frac{3}{4}
-S: The center is outside exactly when all three points lie in some semicircle, which has probability $\frac34$. So the answer is $\frac14$.
+S: The triangle misses the center exactly when all three points lie in some semicircle.
+For each point, the other two land in the semicircle starting at it (going clockwise) with probability $\frac14$; these three events are disjoint, so $P(\text{same semicircle})=3\cdot\frac14=\frac34$.
+Contains the center: $1-\frac34=\frac14$.
 ---
 Q: A stick is broken at two uniformly random points. What is the probability the three pieces can form a triangle?
 L: 2
@@ -278,7 +313,9 @@ W: \frac{1}{2}
 W: \frac{1}{3}
 W: \frac{3}{4}
 W: \frac{1}{8}
-S: Every piece must be shorter than half the stick. That region is the middle triangle of the four congruent triangles in the sample space: $\frac14$.
+S: Let the breaks be at $x$ and $y$ in a stick of length $1$: $(x,y)$ is uniform in the unit square. The pieces form a triangle exactly when each piece is less than $\frac12$ (triangle inequality).
+For $x\lt y$ that means $x\lt\frac12$, $y\gt\frac12$, $y-x\lt\frac12$: a triangle of area $\frac18$. By symmetry the case $y\lt x$ adds another $\frac18$.
+Probability $\frac14$.
 ---
 @@ prob-ev
 Q: What is the expected value of a single roll of a fair six-sided die?
@@ -288,7 +325,8 @@ W: 3
 W: 4
 W: \frac{5}{2}
 W: 6
-S: $\frac{1+2+\cdots+6}{6}=\frac{21}6=\frac72$.
+S: Expected value $=$ average of the equally likely outcomes.
+$\frac{1+2+3+4+5+6}{6}=\frac{21}{6}=\frac72$.
 ---
 Q: What is the expected sum of two fair dice?
 L: 1
@@ -297,7 +335,8 @@ W: 6
 W: 12
 W: \frac{7}{2}
 W: 8
-S: By linearity: $\frac72+\frac72=7$.
+S: Linearity of expectation: the expected sum is the sum of the expectations.
+$\frac72+\frac72=7$.
 ---
 Q: A fair coin is flipped $10$ times. What is the expected number of heads?
 L: 1
@@ -306,7 +345,8 @@ W: 10
 W: 4
 W: 6
 W: \frac{5}{2}
-S: $10\cdot\frac12=5$.
+S: Each flip contributes $1$ head with probability $\frac12$, so its expected contribution is $\frac12$.
+By linearity, $10$ flips give $10\cdot\frac12=5$.
 ---
 Q: A random permutation of $1,2,\dots,10$ is chosen. What is the expected number of numbers in their original positions?
 L: 2
@@ -315,7 +355,8 @@ W: 0
 W: 10
 W: \frac{1}{10}
 W: 2
-S: Each number is fixed with probability $\frac1{10}$, and linearity gives $10\cdot\frac1{10}=1$.
+S: Let $X_i=1$ if number $i$ is in its original position. $P(X_i=1)=\frac{1}{10}$ (position $i$ is equally likely to hold any of the $10$ numbers).
+By linearity, the expected number of fixed points is $10\cdot\frac{1}{10}=1$ (for any length, in fact).
 ---
 Q: You roll a fair die. If the result is even, you win that many dollars; if it is odd, you lose $3$ dollars. What is your expected winnings, in dollars?
 L: 2
@@ -324,7 +365,9 @@ W: 0
 W: 1
 W: \frac{3}{2}
 W: -\frac{1}{2}
-S: $\frac{2+4+6}{6}-3\cdot\frac36=2-\frac32=\frac12$.
+S: Average the payoffs over the six equally likely outcomes:
+Even rolls pay $2$, $4$, $6$; odd rolls pay $-3$ each.
+$E=\frac{2+4+6-3-3-3}{6}=\frac{3}{6}=\frac12$ dollar.
 ---
 Q: A fair die is rolled until a $6$ appears. What is the expected number of rolls?
 L: 1
@@ -333,7 +376,9 @@ W: 5
 W: \frac{7}{2}
 W: 36
 W: 3
-S: For success probability $p$ the expected wait is $\frac1p=6$.
+S: The number of trials until the first success, with success probability $p$, has expected value $\frac1p$.
+(Reason: $E=1+(1-p)E$, since after a failure you start over.)
+$p=\frac16$, so $E=6$.
 ---
 Q: A fair die is rolled twice. What is the expected number of different faces that appear?
 L: 2
@@ -342,7 +387,9 @@ W: 2
 W: \frac{5}{3}
 W: \frac{7}{6}
 W: \frac{3}{2}
-S: There is always at least 1, and the second roll differs with probability $\frac56$: $1+\frac56=\frac{11}6$.
+S: Count the distinct faces as $1$ (the first roll always shows a new face) plus $1$ more if the second roll differs from the first.
+The second differs with probability $\frac56$.
+$E=1+\frac56=\frac{11}{6}$.
 ---
 Q: Ten people stand in a line and each flips a fair coin. What is the expected number of adjacent pairs of people with matching results?
 L: 2
@@ -351,7 +398,8 @@ W: 5
 W: 9
 W: 4
 W: \frac{5}{2}
-S: There are $9$ adjacent pairs, each matching with probability $\frac12$: $\frac92$.
+S: Ten people make $9$ adjacent pairs. Each pair matches (HH or TT) with probability $\frac12$, whatever the first person got.
+By linearity: $9\cdot\frac12=\frac92$.
 ---
 @@ prob-states
 Q: A fair coin is flipped until two heads appear in a row. What is the expected number of flips?
@@ -361,7 +409,10 @@ W: 4
 W: 3
 W: 8
 W: 5
-S: $E=1+\frac12E_H+\frac12E$ and $E_H=1+\frac12E$. Solving: $E=6$.
+S: Use states: $E$ = expected flips from scratch, $E_H$ = expected flips when the last flip was H.
+From scratch: one flip, then H (go to state H) or T (start over): $E=1+\frac12E_H+\frac12E$.
+From H: one flip, then H (done) or T (start over): $E_H=1+\frac12\cdot0+\frac12E$.
+Substitute: $E=1+\frac12\left(1+\frac12E\right)+\frac12E=\frac32+\frac34E$, so $\frac14E=\frac32$ and $E=6$.
 ---
 Q: A fair coin is flipped until the pattern HT (heads then tails) appears. What is the expected number of flips?
 L: 2
@@ -370,7 +421,9 @@ W: 6
 W: 3
 W: 8
 W: 5
-S: Wait for the first H (expected 2 flips), then for the first T after it (expected 2 more). Total $4$.
+S: HT is easier than HH because a wrong flip never sets you back.
+Wait for the first H: expected $2$ flips. After that, any H keeps you in the "last flip was H" state, and the first T finishes: expected $2$ more.
+Total: $4$.
 ---
 Q: A gambler with $3$ dollars bets $1$ dollar at a time on fair coin flips until reaching $0$ or $10$ dollars. What is the probability of reaching $10$?
 L: 2
@@ -379,7 +432,8 @@ W: \frac{1}{2}
 W: \frac{3}{7}
 W: \frac{7}{10}
 W: \frac{1}{3}
-S: Fair gambler's ruin: $\frac iN=\frac3{10}$.
+S: In a fair game, the expected fortune never changes (it's a martingale). If $p$ is the chance of reaching $10$, then the expected final fortune is $10p+0(1-p)=3$, the starting amount.
+$p=\frac{3}{10}$.
 ---
 Q: Ann, Ben, and Cal take turns flipping a fair coin in that order; the first to flip heads wins. What is the probability Ann wins?
 L: 1
@@ -388,7 +442,8 @@ W: \frac{1}{3}
 W: \frac{1}{2}
 W: \frac{2}{7}
 W: \frac{3}{7}
-S: $\frac{1/2}{1-(1/2)^3}=\frac{1/2}{7/8}=\frac47$.
+S: Ann wins on her first turn with probability $\frac12$. If all three miss (probability $\frac18$), the game restarts with Ann to move.
+So $P=\frac12+\frac18P$, giving $\frac78P=\frac12$ and $P=\frac47$.
 ---
 Q: A frog starts at $2$ on the number line and jumps $+1$ or $-1$ with equal probability, stopping when it reaches $0$ or $4$. What is the expected number of jumps?
 L: 2
@@ -397,7 +452,9 @@ W: 2
 W: 3
 W: 6
 W: 8
-S: For a fair walk from $i$ between $0$ and $N$, the expected number of steps is $i(N-i)=2\cdot2=4$.
+S: Let $E_i$ be the expected jumps from $i$, with $E_0=E_4=0$ and $E_i=1+\frac12(E_{i-1}+E_{i+1})$.
+The solution is $E_i=i(N-i)$ with $N=4$: from $2$, $E=2\cdot2=4$.
+(Check: $E_1=3$, $E_2=4$, $E_3=3$; indeed $4=1+\frac12(3+3)$.)
 ---
 Q: A team wins each game independently with probability $\frac23$. What is the probability it wins a best-of-three series?
 L: 2
@@ -406,7 +463,10 @@ W: \frac{2}{3}
 W: \frac{8}{9}
 W: \frac{16}{27}
 W: \frac{4}{9}
-S: Win in 2 games: $\frac49$. Win in 3 (one loss in the first two): $2\cdot\frac23\cdot\frac13\cdot\frac23=\frac8{27}$. Total $\frac{20}{27}$.
+S: The team needs $2$ wins before $2$ losses.
+Win in $2$ games (WW): $\left(\frac23\right)^2=\frac49$.
+Win in $3$ games (exactly one loss in the first two, then a win): $2\cdot\frac23\cdot\frac13\cdot\frac23=\frac{8}{27}$.
+Total: $\frac{12}{27}+\frac{8}{27}=\frac{20}{27}$.
 ---
 Q: A fair die is rolled until a $6$ appears. What is the probability that the number of rolls is even?
 L: 3
@@ -415,7 +475,9 @@ W: \frac{1}{2}
 W: \frac{6}{11}
 W: \frac{5}{6}
 W: \frac{1}{6}
-S: $P(\text{odd})=\frac{1/6}{1-25/36}=\frac{6}{11}$, so $P(\text{even})=\frac5{11}$.
+S: The first $6$ comes on roll $k$ with probability $\left(\frac56\right)^{k-1}\frac16$.
+$P(\text{odd})=\frac16\left(1+\left(\frac56\right)^2+\left(\frac56\right)^4+\cdots\right)=\dfrac{1/6}{1-25/36}=\dfrac{1/6}{11/36}=\dfrac{6}{11}$.
+$P(\text{even})=1-\frac6{11}=\frac{5}{11}$.
 ---
 Q: A fair coin is flipped repeatedly until either HH or TH appears (as consecutive flips). What is the probability HH appears first?
 L: 3
@@ -424,59 +486,60 @@ W: \frac{1}{2}
 W: \frac{1}{3}
 W: \frac{3}{4}
 W: \frac{1}{8}
-S: If a T appears anywhere before HH is complete, the next H completes TH first. So HH wins only if the first two flips are HH: $\frac14$.
-
+S: Key observation: once a T has appeared, the next H completes TH, so HH can no longer come first.
+So HH wins only if the very first two flips are HH (no T ever appears before HH).
+Probability $\frac12\cdot\frac12=\frac14$.
 === GENS ===
 GENS['prob-basic']=[
 r=>{const s_=ri(r,2,12);const w=6-Math.abs(s_-7);const v=F(w,36);
- return{lvl:1,q:T`Two fair dice are rolled. What is the probability that the sum is $${s_}$?`,a:v,w:[F(1,6),F(s_,36),F(w+1,36),F(1,11),F(w,6)],s:T`There are $${w}$ ways out of $36$: $${v.tex()}$.`}},
+ return{lvl:1,q:T`Two fair dice are rolled. What is the probability that the sum is $${s_}$?`,a:v,w:[F(1,6),F(s_,36),F(w+1,36),F(1,11),F(w,6)],s:T`There are $6\cdot6=36$ equally likely ordered outcomes.<br>Ordered pairs with sum ${s_}: $${(()=>{const o=[];for(let a=1;a<=6;a++){const b=s_-a;if(b>=1&&b<=6)o.push('('+a+','+b+')')}return o.join(',')})()}$, which is $${w}$ outcomes.<br>Probability: $\frac{${w}}{36}=${v.tex()}$.`}},
 r=>{const n=ri(r,2,7),k=ri(r,1,n);let c=0;for(let j=k;j<=n;j++)c+=comb(n,j);const v=F(c,2**n);
- return{lvl:1,q:T`${n} fair coins are flipped. What is the probability of at least ${k} head${k>1?'s':''}?`,a:v,w:[F(comb(n,k),2**n),F(1,2),F(2**n-c,2**n),v.add(F(1,2**n))],s:T`$\sum_{j=${k}}^{${n}}\binom{${n}}{j}=${c}$ of $2^{${n}}=${2**n}$ outcomes: $${v.tex()}$.`}},
+ return{lvl:1,q:T`${n} fair coins are flipped. What is the probability of at least ${k} head${k>1?'s':''}?`,a:v,w:[F(comb(n,k),2**n),F(1,2),F(2**n-c,2**n),v.add(F(1,2**n))],s:T`Each of the $2^{${n}}=${2**n}$ head/tail sequences is equally likely, and exactly $j$ heads happens in $\binom{${n}}{j}$ of them.<br>At least ${k} heads: $${Array.from({length:n-k+1},(_,i)=>'\\binom{'+n+'}{'+(k+i)+'}').join('+')}=${Array.from({length:n-k+1},(_,i)=>comb(n,k+i)).join('+')}=${c}$.<br>Probability: $\frac{${c}}{${2**n}}=${v.tex()}$.`}},
 r=>{const a=ri(r,2,8),b=ri(r,2,8);const v=F(comb(a,2)+comb(b,2),comb(a+b,2));
- return{lvl:2,q:T`A bag has ${a} red and ${b} blue marbles. Two are drawn without replacement. What is the probability they are the same color?`,a:v,w:[F(1).sub(v),F(a*a+b*b,(a+b)**2),F(comb(a,2),comb(a+b,2)),F(1,2)],s:T`$\frac{\binom{${a}}2+\binom{${b}}2}{\binom{${a+b}}2}=\frac{${comb(a,2)+comb(b,2)}}{${comb(a+b,2)}}=${v.tex()}$.`}},
+ return{lvl:2,q:T`A bag has ${a} red and ${b} blue marbles. Two are drawn without replacement. What is the probability they are the same color?`,a:v,w:[F(1).sub(v),F(a*a+b*b,(a+b)**2),F(comb(a,2),comb(a+b,2)),F(1,2)],s:T`Count unordered pairs. Total: $\binom{${a+b}}{2}=${comb(a+b,2)}$.<br>Same color: both red $\binom{${a}}{2}=${comb(a,2)}$ or both blue $\binom{${b}}{2}=${comb(b,2)}$, total $${comb(a,2)+comb(b,2)}$.<br>Probability: $\frac{${comb(a,2)+comb(b,2)}}{${comb(a+b,2)}}=${v.tex()}$.`}},
 r=>{const n=ri(r,2,4);const odd=r()<.5;const v=odd?F(1,2**n):F(2**n-1,2**n);
- return{lvl:1,q:T`${n} fair dice are rolled. What is the probability that the product of the numbers is ${odd?'odd':'even'}?`,a:v,w:[F(1).sub(v),F(1,2),F(n,2**n),F(1,n+1)],s:T`The product is odd only if every die is odd: $\left(\frac12\right)^{${n}}$. ${odd?'':'So the probability of even is $1-\\frac1{'+2**n+'}$.'}`}},
+ return{lvl:1,q:T`${n} fair dice are rolled. What is the probability that the product of the numbers is ${odd?'odd':'even'}?`,a:v,w:[F(1).sub(v),F(1,2),F(n,2**n),F(1,n+1)],s:T`A product of integers is odd only when every factor is odd. Each die is odd with probability $\frac12$, independently.<br>$P(\text{odd})=\left(\frac12\right)^{${n}}=\frac{1}{${2**n}}$.${odd?'':T`<br>$P(\text{even})=1-\frac{1}{${2**n}}=${v.tex()}$.`}`}},
 ];
 GENS['prob-cond']=[
 r=>{const s_=ri(r,3,11),t=ri(r,1,6);let tot=0,fav=0;for(let a=1;a<=6;a++)for(let b=1;b<=6;b++)if(a+b===s_){tot++;if(a===t||b===t)fav++}if(!fav)return GENS['prob-cond'][0](r);const v=F(fav,tot);
- return{lvl:2,q:T`Two dice are rolled and their sum is ${s_}. What is the probability that at least one die shows a ${t}?`,a:v,w:[F(1,6),F(11,36),F(fav,36),F(1,tot)],s:T`There are ${tot} ordered outcomes with sum ${s_}, and ${fav} of them include a ${t}: $${v.tex()}$.`}},
+ return{lvl:2,q:T`Two dice are rolled and their sum is ${s_}. What is the probability that at least one die shows a ${t}?`,a:v,w:[F(1,6),F(11,36),F(fav,36),F(1,tot)],s:T`Given that the sum is ${s_}, restrict to those outcomes; they're equally likely.<br>Ordered pairs with sum ${s_}: $${(()=>{const o=[];for(let a=1;a<=6;a++){const b=s_-a;if(b>=1&&b<=6)o.push('('+a+','+b+')')}return o.join(',')})()}$ (${tot} outcomes).<br>Those containing a ${t}: ${fav}. Probability $\frac{${fav}}{${tot}}=${v.tex()}$.`}},
 r=>{const a=F(ri(r,1,9),10),b=F(ri(r,1,9),10);const v=a.add(b).sub(a.mul(b));
- return{lvl:1,q:T`Independent events have $P(A)=${a.tex()}$ and $P(B)=${b.tex()}$. What is $P(A\cup B)$?`,a:v,w:[a.add(b).v>1?a.mul(b).add(F(1,2)):a.add(b),a.mul(b),F(1).sub(a.mul(b)),v.sub(F(1,10))],s:T`$P(A)+P(B)-P(A)P(B)=${a.tex()}+${b.tex()}-${a.mul(b).tex()}=${v.tex()}$.`}},
+ return{lvl:1,q:T`Independent events have $P(A)=${a.tex()}$ and $P(B)=${b.tex()}$. What is $P(A\cup B)$?`,a:v,w:[a.add(b).v>1?a.mul(b).add(F(1,2)):a.add(b),a.mul(b),F(1).sub(a.mul(b)),v.sub(F(1,10))],s:T`Inclusion–exclusion: $P(A\cup B)=P(A)+P(B)-P(A\cap B)$, and independence gives $P(A\cap B)=P(A)P(B)=${a.mul(b).tex()}$.<br>$${a.tex()}+${b.tex()}-${a.mul(b).tex()}=${v.tex()}$.<br>(Alternatively: $1-P(\text{neither})=1-${F(1).sub(a).tex()}\cdot${F(1).sub(b).tex()}$.)`}},
 r=>{const ra=ri(r,1,4),ba=ri(r,1,4),rb=ri(r,1,4),bb=ri(r,1,4);const pa=F(ra,ra+ba),pb=F(rb,rb+bb);const v=pa.div(pa.add(pb));
- return{lvl:2,q:T`Urn A has ${ra} red and ${ba} blue balls; urn B has ${rb} red and ${bb} blue. An urn is chosen at random and a red ball is drawn. What is the probability it came from urn A?`,a:v,w:[F(1,2),pa,F(ra,ra+rb),F(1).sub(v)],s:T`$\frac{\frac12\cdot${pa.tex()}}{\frac12\cdot${pa.tex()}+\frac12\cdot${pb.tex()}}=${v.tex()}$.`}},
+ return{lvl:2,q:T`Urn A has ${ra} red and ${ba} blue balls; urn B has ${rb} red and ${bb} blue. An urn is chosen at random and a red ball is drawn. What is the probability it came from urn A?`,a:v,w:[F(1,2),pa,F(ra,ra+rb),F(1).sub(v)],s:T`Bayes' Theorem: $P(A\mid\text{red})=\dfrac{P(A)\,P(\text{red}\mid A)}{P(\text{red})}$.<br>$P(\text{red}\mid A)=${pa.tex()}$ and $P(\text{red}\mid B)=${pb.tex()}$, each urn chosen with probability $\frac12$.<br>$P(\text{red})=\frac12\cdot${pa.tex()}+\frac12\cdot${pb.tex()}=${pa.add(pb).div(2).tex()}$.<br>$P(A\mid\text{red})=\dfrac{${pa.div(2).tex()}}{${pa.add(pb).div(2).tex()}}=${v.tex()}$.`}},
 r=>{const n=ri(r,2,5),s_=pick(r,[4,6]);const v=F(1).sub(F(s_-1,s_).pow(n));
- return{lvl:2,q:T`A fair ${s_}-sided die is rolled ${n} times. What is the probability that at least one roll shows a ${s_}?`,a:v,w:[F(n,s_),F(s_-1,s_).pow(n),F(1).sub(F(1,s_).pow(n)),F(1,s_)],s:T`$1-\left(\frac{${s_-1}}{${s_}}\right)^{${n}}=${v.tex()}$.`}},
+ return{lvl:2,q:T`A fair ${s_}-sided die is rolled ${n} times. What is the probability that at least one roll shows a ${s_}?`,a:v,w:[F(n,s_),F(s_-1,s_).pow(n),F(1).sub(F(1,s_).pow(n)),F(1,s_)],s:T`Use the complement: "at least one" is everything except "none."<br>No ${s_} on a single roll: $\frac{${s_-1}}{${s_}}$; on all ${n} independent rolls: $\left(\frac{${s_-1}}{${s_}}\right)^{${n}}=${F(s_-1,s_).pow(n).tex()}$.<br>At least one ${s_}: $1-${F(s_-1,s_).pow(n).tex()}=${v.tex()}$.`}},
 ];
 GENS['prob-geo']=[
 r=>{const L_=ri(r,6,20),c=ri(r,2,L_-2),d=ri(r,1,Math.min(c,L_-c));const v=F(2*d,L_);
- return{lvl:1,q:T`A point is chosen at random on $[0,${L_}]$. What is the probability it is within ${d} of ${c}?`,a:v,w:[F(d,L_),F(2*d+1,L_),F(1).sub(v),F(d,c)],s:T`The favorable interval $[${c-d},${c+d}]$ has length $${2*d}$: $${v.tex()}$.`}},
+ return{lvl:1,q:T`A point is chosen at random on $[0,${L_}]$. What is the probability it is within ${d} of ${c}?`,a:v,w:[F(d,L_),F(2*d+1,L_),F(1).sub(v),F(d,c)],s:T`For a uniform point on an interval, probability $=$ favorable length $\div$ total length.<br>Within ${d} of ${c} means $${c-d}\le x\le${c+d}$, which lies inside $[0,${L_}]$ and has length $${2*d}$.<br>$\frac{${2*d}}{${L_}}=${v.tex()}$.`}},
 r=>{const T_=pick(r,[60,30,120]),w=pick(r,[5,10,15,20,30].filter(x=>x<T_));const v=F(1).sub(F(T_-w,T_).pow(2));
- return{lvl:2,q:T`Two people arrive at independent uniformly random times during a ${T_}-minute window, and each waits ${w} minutes for the other. What is the probability they meet?`,a:v,w:[F(w,T_),F(T_-w,T_).pow(2),F(2*w,T_),v.div(2)],s:T`They miss when $|x-y|>${w}$: two corner triangles with combined area fraction $\left(\frac{${T_-w}}{${T_}}\right)^2$. So $P=1-${F(T_-w,T_).pow(2).tex()}=${v.tex()}$.`}},
+ return{lvl:2,q:T`Two people arrive at independent uniformly random times during a ${T_}-minute window, and each waits ${w} minutes for the other. What is the probability they meet?`,a:v,w:[F(w,T_),F(T_-w,T_).pow(2),F(2*w,T_),v.div(2)],s:T`Let $x$ and $y$ be the arrival times; $(x,y)$ is uniform on a ${T_}-by-${T_} square. They meet when $|x-y|\le${w}$.<br>They miss in two corner triangles, each a right triangle with legs $${T_-w}$: total area $(${T_-w})^2$, i.e. a fraction $\left(\frac{${T_-w}}{${T_}}\right)^2=${F(T_-w,T_).pow(2).tex()}$ of the square.<br>Meet: $1-${F(T_-w,T_).pow(2).tex()}=${v.tex()}$.`}},
 r=>{const R_=ri(r,3,12),r_=ri(r,1,R_-1);const v=F(r_*r_,R_*R_);
- return{lvl:1,q:T`A dart lands uniformly on a circular board of radius ${R_}. What is the probability it lands within the inner circle of radius ${r_}?`,a:v,w:[F(r_,R_),F(1).sub(v),F(r_*r_,R_),F(r_,R_*R_)],s:T`Ratio of areas: $\frac{${r_}^2}{${R_}^2}=${v.tex()}$.`}},
+ return{lvl:1,q:T`A dart lands uniformly on a circular board of radius ${R_}. What is the probability it lands within the inner circle of radius ${r_}?`,a:v,w:[F(r_,R_),F(1).sub(v),F(r_*r_,R_),F(r_,R_*R_)],s:T`For a uniformly random point, the probability of a region is (its area) $\div$ (total area).<br>$\dfrac{\pi\cdot${r_}^2}{\pi\cdot${R_}^2}=\dfrac{${r_*r_}}{${R_*R_}}=${v.tex()}$. (The ratio of the radii gets squared.)`}},
 r=>{const c=pick(r,[F(1,2),F(1,3),F(2,3),F(3,4),F(1,4),F(3,2),F(5,4),F(4,3),F(5,3)]);const v=c.v<=1?c.mul(c).div(2):F(1).sub(F(2).sub(c).pow(2).div(2));
- return{lvl:2,q:T`Numbers $x$ and $y$ are chosen independently and uniformly from $[0,1]$. What is the probability that $x+y\lt ${c.tex()}$?`,a:v,w:[c.v<=1?c:F(1).sub(v),c.div(2),c.mul(c),F(1).sub(v).v===v.v?v.add(F(1,8)):F(1).sub(v)],s:c.v<=1?T`The region is a triangle with legs $${c.tex()}$: area $\frac12\cdot${c.mul(c).tex()}=${v.tex()}$.`:T`The complement is a triangle with legs $2-${c.tex()}=${F(2).sub(c).tex()}$: $1-\frac12\cdot${F(2).sub(c).pow(2).tex()}=${v.tex()}$.`}},
+ return{lvl:2,q:T`Numbers $x$ and $y$ are chosen independently and uniformly from $[0,1]$. What is the probability that $x+y\lt ${c.tex()}$?`,a:v,w:[c.v<=1?c:F(1).sub(v),c.div(2),c.mul(c),F(1).sub(v).v===v.v?v.add(F(1,8)):F(1).sub(v)],s:T`$(x,y)$ is a uniform point in the unit square (area $1$), so the probability is the area of $\{x+y\lt${c.tex()}\}$.<br>${c.v<=1?T`That region is the right triangle at the origin with legs $${c.tex()}$: area $\frac12\cdot\left(${c.tex()}\right)^2=${v.tex()}$.`:T`Its complement, $x+y\ge${c.tex()}$, is the right triangle at the corner $(1,1)$ with legs $2-${c.tex()}=${F(2).sub(c).tex()}$, area $\frac12\cdot${F(2).sub(c).pow(2).tex()}$.<br>So the probability is $1-${F(2).sub(c).pow(2).div(2).tex()}=${v.tex()}$.`}`}},
 ];
 GENS['prob-ev']=[
 r=>{const n=pick(r,[4,6,8,10,12,20]),k=ri(r,1,4);const v=F(k*(n+1),2);
- return{lvl:1,q:T`What is the expected sum of ${k} roll${k>1?'s':''} of a fair ${n}-sided die (faces $1$ to ${n})?`,a:v,w:[F(k*n,2),F(k*(n+1)),F(n+1,2),v.add(1)],s:T`Each roll averages $\frac{${n}+1}{2}$; by linearity the sum averages $${k}\cdot${F(n+1,2).tex()}=${v.tex()}$.`}},
+ return{lvl:1,q:T`What is the expected sum of ${k} roll${k>1?'s':''} of a fair ${n}-sided die (faces $1$ to ${n})?`,a:v,w:[F(k*n,2),F(k*(n+1)),F(n+1,2),v.add(1)],s:T`One roll of a fair ${n}-sided die averages $\frac{1+2+\cdots+${n}}{${n}}=\frac{${n}+1}{2}=${F(n+1,2).tex()}$.<br>Linearity of expectation: the expected sum of ${k} rolls is $${k}\cdot${F(n+1,2).tex()}=${v.tex()}$.`}},
 r=>{const n=ri(r,4,40),p=pick(r,[F(1,2),F(1,3),F(1,4),F(1,6),F(2,3)]);const v=p.mul(n);
- return{lvl:1,q:T`An event has probability $${p.tex()}$ on each of ${n} independent trials. What is the expected number of times it occurs?`,a:v,w:[F(n),F(n).div(p),v.add(1),F(1).div(p)],s:T`Linearity: $${n}\cdot${p.tex()}=${v.tex()}$.`}},
+ return{lvl:1,q:T`An event has probability $${p.tex()}$ on each of ${n} independent trials. What is the expected number of times it occurs?`,a:v,w:[F(n),F(n).div(p),v.add(1),F(1).div(p)],s:T`Let $X_i=1$ if the event happens on trial $i$ (else $0$); $E[X_i]=${p.tex()}$.<br>The count is $X_1+\cdots+X_{${n}}$, and linearity of expectation gives $${n}\cdot${p.tex()}=${v.tex()}$.`}},
 r=>{const p=pick(r,[F(1,2),F(1,3),F(1,4),F(1,6),F(1,8),F(2,5),F(1,10),F(1,12)]);const v=F(1).div(p);
- return{lvl:1,q:T`Each trial succeeds with probability $${p.tex()}$, independently. What is the expected number of trials up to and including the first success?`,a:v,w:[v.sub(1),p,v.add(1),v.mul(2)],s:T`Geometric waiting time: $\frac1p=${v.tex()}$.`}},
+ return{lvl:1,q:T`Each trial succeeds with probability $${p.tex()}$, independently. What is the expected number of trials up to and including the first success?`,a:v,w:[v.sub(1),p,v.add(1),v.mul(2)],s:T`Let $E$ be the expected number of trials. The first trial succeeds with probability $p$; otherwise we've used one trial and are back where we started: $E=1+(1-p)E$.<br>So $pE=1$ and $E=\frac1p=${v.tex()}$.`}},
 r=>{const n=ri(r,3,30);const v=F(n-1,2);
- return{lvl:2,q:T`${n} people stand in a line and each flips a fair coin. What is the expected number of adjacent pairs with matching results?`,a:v,w:[F(n,2),F(n-1),F(n-1,4),v.add(1)],s:T`There are $${n-1}$ adjacent pairs, each matching with probability $\frac12$: $${v.tex()}$.`}},
+ return{lvl:2,q:T`${n} people stand in a line and each flips a fair coin. What is the expected number of adjacent pairs with matching results?`,a:v,w:[F(n,2),F(n-1),F(n-1,4),v.add(1)],s:T`${n} people form $${n-1}$ adjacent pairs. A pair matches (HH or TT) with probability $\frac12$: whatever the first person got, the second matches it half the time.<br>Linearity of expectation (overlapping pairs don't matter): $${n-1}\cdot\frac12=${v.tex()}$.`}},
 ];
 GENS['prob-states']=[
 r=>{const N=ri(r,4,20),i=ri(r,1,N-1);const ask=r()<.5;
- return ask?{lvl:2,q:T`A gambler with ${i} dollars bets 1 dollar at a time on fair coin flips until reaching $0$ or ${N} dollars. What is the probability of reaching ${N}?`,a:F(i,N),w:[F(N-i,N),F(1,2),F(i,N-i),F(i+1,N)],s:T`Fair gambler's ruin: $\frac{i}{N}=${F(i,N).tex()}$.`}
- :{lvl:2,q:T`A token starts at ${i} on the number line and moves $\pm1$ with equal probability, stopping at $0$ or ${N}. What is the expected number of moves?`,a:i*(N-i),w:[N,i*N,(N-i)*(N-i),i*(N-i)+1],s:T`For a fair walk, the expected number of steps is $i(N-i)=${i}\cdot${N-i}=${i*(N-i)}$.`}},
+ return ask?{lvl:2,q:T`A gambler with ${i} dollars bets 1 dollar at a time on fair coin flips until reaching $0$ or ${N} dollars. What is the probability of reaching ${N}?`,a:F(i,N),w:[F(N-i,N),F(1,2),F(i,N-i),F(i+1,N)],s:T`A fair game keeps the expected fortune constant. If $p$ is the chance of reaching ${N}, the expected final fortune is $${N}p+0\cdot(1-p)$, which must equal the starting ${i}.<br>$p=\frac{${i}}{${N}}${gcd(i,N)>1?'='+F(i,N).tex():''}$.`}
+ :{lvl:2,q:T`A token starts at ${i} on the number line and moves $\pm1$ with equal probability, stopping at $0$ or ${N}. What is the expected number of moves?`,a:i*(N-i),w:[N,i*N,(N-i)*(N-i),i*(N-i)+1],s:T`Let $E_j$ be the expected moves from position $j$, with $E_0=E_{${N}}=0$ and $E_j=1+\frac12(E_{j-1}+E_{j+1})$.<br>The solution is $E_j=j(${N}-j)$ (it satisfies both the recursion and the boundary values).<br>From ${i}: $${i}\cdot${N-i}=${i*(N-i)}$.`}},
 r=>{const k=ri(r,2,4),p=pick(r,[F(1,2),F(1,3),F(1,6),F(1,4)]);const q=F(1).sub(p);const v=p.div(F(1).sub(q.pow(k)));
- return{lvl:1,q:T`${k} players take turns in a fixed order; on each turn the player succeeds with probability $${p.tex()}$. The first success wins. What is the probability the first player wins?`,a:v,w:[F(1,k),p,v.mul(q),F(1).sub(v)],s:T`$\frac{p}{1-q^{${k}}}=\frac{${p.tex()}}{1-${q.pow(k).tex()}}=${v.tex()}$.`}},
+ return{lvl:1,q:T`${k} players take turns in a fixed order; on each turn the player succeeds with probability $${p.tex()}$. The first success wins. What is the probability the first player wins?`,a:v,w:[F(1,k),p,v.mul(q),F(1).sub(v)],s:T`The first player wins on turn 1 with probability $p=${p.tex()}$. If all ${k} players miss (probability $q^{${k}}=${q.pow(k).tex()}$), the game restarts with the first player again.<br>So $P=p+q^{${k}}P$, giving $P=\frac{p}{1-q^{${k}}}=\frac{${p.tex()}}{${F(1).sub(q.pow(k)).tex()}}=${v.tex()}$.`}},
 r=>{const p=pick(r,[F(1,2),F(2,3),F(3,4),F(3,5),F(1,3),F(2,5)]);const q=F(1).sub(p);const five=r()<.4;
  const v=five?p.pow(3).mul(F(1).add(q.mul(3)).add(q.mul(q).mul(6))):p.pow(2).mul(F(1).add(q.mul(2)));
  return{lvl:2,q:T`A team wins each game independently with probability $${p.tex()}$. What is the probability it wins a best-of-${five?5:3} series?`,a:v,w:[p,p.pow(five?3:2),v.sub(p.pow(five?3:2)).v>0?v.sub(p.pow(five?3:2)):p.mul(p),F(1).sub(v)],
- s:five?T`Win in 3, 4, or 5 games: $p^3\left(1+3q+6q^2\right)=${v.tex()}$.`:T`Win in 2 games or in 3: $p^2+2p^2q=p^2(1+2q)=${v.tex()}$.`}},
+ s:T`Let $p=${p.tex()}$ and $q=${q.tex()}$. ${five?T`The team needs 3 wins before 3 losses: the last game played must be a win.<br>In 3 games: $p^3$. In 4: $\binom31p^3q$. In 5: $\binom42p^3q^2$.<br>Total $p^3(1+3q+6q^2)=${v.tex()}$.`:T`The team needs 2 wins before 2 losses.<br>Win in 2 (WW): $p^2$. Win in 3 (one loss in the first two, then a win): $2p^2q$.<br>Total $p^2(1+2q)=${v.tex()}$.`}`}},
 r=>{const s_=pick(r,[4,6,8,10]);const p=F(1,s_),q=F(s_-1,s_);const odd=p.div(F(1).sub(q.mul(q)));const even=F(1).sub(odd);const ask=r()<.5;
- return{lvl:3,q:T`A fair ${s_}-sided die is rolled until it shows ${s_}. What is the probability that the number of rolls is ${ask?'odd':'even'}?`,a:ask?odd:even,w:[F(1,2),ask?even:odd,p,q],s:T`$P(\text{odd})=\frac{p}{1-q^2}=${odd.tex()}$, so $P(\text{even})=${even.tex()}$.`}},
+ return{lvl:3,q:T`A fair ${s_}-sided die is rolled until it shows ${s_}. What is the probability that the number of rolls is ${ask?'odd':'even'}?`,a:ask?odd:even,w:[F(1,2),ask?even:odd,p,q],s:T`Let $p=\frac1{${s_}}$, $q=\frac{${s_-1}}{${s_}}$. The first ${s_} comes on roll $k$ with probability $q^{k-1}p$.<br>$P(\text{odd})=p(1+q^2+q^4+\cdots)=\frac{p}{1-q^2}=${odd.tex()}$ (a geometric series).<br>$P(\text{even})=1-${odd.tex()}=${even.tex()}$. So the answer is $${(ask?odd:even).tex()}$.`}},
 ];
