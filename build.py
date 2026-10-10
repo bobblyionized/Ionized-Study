@@ -40,7 +40,7 @@ for tid in ORDER:
     gens.append(f'/* ---- {tid} ---- */\n' + g.strip())
 
 js = '\n'.join([rd('engine_utils.js'), rd('catalog.js'), '\n'.join(gens), rd('engine_model.js'),
-                rd('engine_pages.js'), rd('engine_ui.js'), rd('engine_mock.js')])
+                rd('engine_pages.js'), rd('engine_ui.js'), rd('engine_mock.js'), rd('sync.js')])
 html = (rd('shell.html')
         + '<!-- ======================= LESSONS ======================= -->\n' + '\n'.join(lessons)
         + '\n\n<!-- ======================= PROBLEM BANK ======================= -->\n'

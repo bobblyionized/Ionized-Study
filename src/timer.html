@@ -150,8 +150,9 @@ const TM = (() => {
   function record(was, end, focusedMs, completed){
     if (focusedMs < 1000) return;
     hist.push({ start: was.startedAt, end, focused: focusedMs, planned: Math.round(was.total/60000), desc: was.desc || '', done: completed, leaves: was.leaves || 0 });
-    store.set('history', hist);
+    store.set('history', hist); syncNow();
   }
+  const syncNow = () => { if (typeof SYNC !== 'undefined' && SYNC) SYNC.changed(); };
   function finish(){
     const was = state;
     const end = was.paused ? Date.now() : Math.min(Date.now(), was.endAt);
@@ -344,7 +345,7 @@ const TM = (() => {
     let armed = false;
     $('tmDel').addEventListener('click', e => {
       if (!armed){ armed = true; e.target.textContent = 'Tap again to delete'; e.target.classList.add('warn'); sfx.arm(); return; }
-      hist.splice(i, 1); store.set('history', hist); sfx.end(); renderStats(); histList();
+      hist.splice(i, 1); store.set('history', hist); syncNow(); sfx.end(); renderStats(); histList();
     });
   }
   hb.addEventListener('click', e => { const r = e.target.closest('.tm-hrow'); if (r){ sfx.tap(); histDetail(+r.dataset.i); } });
@@ -368,7 +369,13 @@ const TM = (() => {
   // ---------- boot ----------
   renderMute(); render(); tick(); setInterval(tick, 250);
   return {
-    show(landing){ onLanding = landing; if (landing) drawClock(); render(); tick(); }
+    show(landing){ onLanding = landing; if (landing) drawClock(); render(); tick(); },
+    getHist: () => hist,
+    setHist(arr){                       // replaced by a sync from the server
+      hist = arr; store.set('history', hist); renderStats();
+      if (openEl === $('tmHist') && $('tmHistBack').style.visibility !== 'visible') histList();
+    },
+    openSheet, closeSheet, sfx
   };
 })();
 </script>

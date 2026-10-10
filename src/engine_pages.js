@@ -1,7 +1,7 @@
 /* ====================== progress storage ====================== */
 let PROG={q:{},pr:{},mock:[]};
 function loadProg(){try{const v=JSON.parse(localStorage.getItem(KEY));if(v&&typeof v==='object')PROG=Object.assign({q:{},pr:{},mock:[]},v)}catch(e){}}
-function saveProg(){try{localStorage.setItem(KEY,JSON.stringify(PROG))}catch(e){}}
+function saveProg(){try{localStorage.setItem(KEY,JSON.stringify(PROG))}catch(e){}if(typeof SYNC!=='undefined'&&SYNC)SYNC.changed()}
 function subStats(sub){const set=SETS[sub]||[];let done=0,ok=0;for(const it of set){const p=PROG.q[it.id];if(p){done++;if(p.ok)ok++}}return{total:set.length,done,ok}}
 function topicStats(t){let done=0,ok=0,total=0;for(const s of t.subs){const st=subStats(s.id);done+=st.done;ok+=st.ok;total+=st.total}return{done,ok,total}}
 
