@@ -63,6 +63,23 @@ h4{margin:0 0 6px;font-size:15px;text-transform:uppercase;letter-spacing:.6px;co
 .tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin:14px 0 18px;flex-wrap:wrap}
 .tab{border:none;background:none;padding:10px 14px;font:inherit;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px}
 .tab.on{color:var(--accent);border-bottom-color:var(--accent)}
+.h1row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.h1row h1{margin-right:auto}
+.gear{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;
+  padding:6px 14px 6px 10px;font:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:color .2s,border-color .2s}
+.gear svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .45s}
+.gear:hover,.gear.on{color:var(--accent);border-color:var(--accent)}
+.gear:hover svg,.gear.on svg{transform:rotate(60deg)}
+.setpanel{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:14px;margin:4px 0 14px}
+.setpanel[hidden]{display:none}
+.setpanel .h{font-weight:700;margin-bottom:10px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.seg button{display:flex;flex-direction:column;gap:3px;text-align:left;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:10px 12px;font:inherit;cursor:pointer}
+.seg button span{font-size:13px;color:var(--muted);line-height:1.4}
+.seg button:hover{border-color:var(--accent)}
+.seg button.on{border-color:var(--accent);background:var(--accent-weak)}
+.seg button.on b{color:var(--accent)}
+@media (max-width:560px){.seg{grid-template-columns:1fr}}
 .tab-arrow{position:fixed;top:50%;z-index:5;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;
   width:56px;padding:14px 0;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--muted);cursor:pointer;font:inherit;
   box-shadow:var(--shadow);opacity:.75;transition:opacity .2s,color .2s,border-color .2s,transform .2s}
@@ -139,9 +156,9 @@ table.t th{background:var(--accent-weak)}
 .lfig{margin:0;display:inline-block;text-align:center;vertical-align:top}
 .lfig figcaption{font-size:13px;color:var(--muted);margin-top:-2px;max-width:240px}
 .sol-acts{position:absolute;right:0;top:8px;display:flex;gap:6px}
-.ai-btn,.hist-btn,.retry-btn,.show-btn{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:var(--card);color:var(--accent);
+.ai-btn,.hist-btn,.retry-btn,.show-btn,.giveup-btn{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:var(--card);color:var(--accent);
   border-radius:999px;padding:3px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
-.ai-btn:hover,.hist-btn:hover,.retry-btn:hover,.show-btn:hover{border-color:var(--accent)}
+.ai-btn:hover,.hist-btn:hover,.retry-btn:hover,.show-btn:hover,.giveup-btn:hover{border-color:var(--accent)}
 .hist-btn[hidden]{display:none}
 .hist-btn.on{background:var(--accent-weak);border-color:var(--accent)}
 .sol.has-hist details summary{padding-right:190px}
@@ -150,7 +167,9 @@ table.t th{background:var(--accent-weak)}
 .hist-h{font-size:12px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--warn);margin-bottom:2px}
 .hist-box ol{margin:0;padding-left:22px;line-height:1.9}
 .fb-acts{display:inline-flex;gap:6px;margin-left:8px;vertical-align:middle;flex-wrap:wrap}
-.retry-btn{color:var(--accent)}.show-btn{color:var(--muted);font-weight:600}
+.retry-btn{color:var(--accent)}.show-btn,.giveup-btn{color:var(--muted);font-weight:600}
+.fb-acts.first{margin-left:0}
+.fb:empty{display:none}
 .sol details summary{padding-right:96px}
 .filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
 .chip{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:20px;padding:4px 12px;font:inherit;font-size:13.5px;cursor:pointer}
@@ -18566,18 +18585,38 @@ function hub(){
    <p class="meta" style="margin-top:26px"><a href="#" onclick="if(confirm('Reset all saved problem progress in both tracks?')){PROG={q:{},pr:{},mock:[]};saveProg();route()}return false">Reset all problem progress</a></p>`;
 }
 
+/* which contest the AMC Prep page is set up for: '10', '12' or 'both' (kept on this device) */
+const AMC_LEVELS={'10':{name:'AMC 10',d:'Only AMC 10 topics. The AMC 12 precalculus topics are hidden.',mocks:['amc10']},
+  '12':{name:'AMC 12',d:'Every topic, including AMC 12 precalculus, with the AMC 12 mock exam.',mocks:['amc12']},
+  both:{name:'Both',d:'Everything for the AMC 10 and AMC 12, with all three mock exams.',mocks:['amc10','amc12','all']}};
+function amcLevel(){let v='both';try{v=localStorage.getItem('amcprep.level')||'both'}catch(e){}return AMC_LEVELS[v]?v:'both'}
+const amcShown=t=>amcLevel()!=='10'||t.amc!=='12';
+const GEAR='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>';
 function amcHome(){
   setCrumbs([['Home','#/home'],['AMC Prep']]);
-  let all=0,allDone=0;for(const t of amcTopics()){const st=topicStats(t);all+=st.total;allDone+=st.done}
+  const lv=amcLevel(),L_=AMC_LEVELS[lv],shown=amcTopics().filter(amcShown);
+  let all=0,allDone=0;for(const t of shown){const st=topicStats(t);all+=st.total;allDone+=st.done}
+  const tag=t=>lv==='both'?'AMC '+t.amc:L_.name;
   const tile=t=>{const st=topicStats(t);return`<button class="card tile" onclick="location.hash='#/t/${t.id}'">
-    <span class="num">AMC ${t.amc}</span><span class="t">${esc(t.name)}</span><span class="d">${esc(t.d)}</span>
+    <span class="num">${tag(t)}</span><span class="t">${esc(t.name)}</span><span class="d">${esc(t.d)}</span>
     <span class="meta">${t.subs.length} subtopics · ${st.total} problems · ${st.done} attempted</span><span class="bar"><i style="width:${st.total?st.done/st.total*100:0}%"></i></span></button>`};
   const mockTile=k=>{const m=MOCKS[k];const last=PROG.mock.filter(x=>x.topic===k).pop();
     return`<button class="card tile" style="border-color:var(--accent)" onclick="location.hash='#/mock/${k}'"><span class="num">Full mock exam</span><span class="t">${esc(m.name)}</span>
     <span class="d">${esc(m.d)} Real AMC scoring (6 / 1.5 / 0).</span><span class="meta">${last?'Last score: '+last.score+' / 150':'Not taken yet'}</span></button>`};
-  app.innerHTML=`<h1>AMC 10/12 Prep</h1><p class="sub">${amcTopics().length} topics and ${all.toLocaleString()} problems covering everything on the AMC 10 and AMC 12 (${allDone} attempted so far). Topics marked <b>AMC 12</b> are mainly precalculus material for the AMC 12.</p>
-   <h2>Mock exams</h2><div class="grid">${['amc10','amc12','all'].map(mockTile).join('')}</div>`+
-   CATALOG.map(sec=>`<h2>${esc(sec.area)}</h2><p class="meta" style="margin:0 0 12px">${esc(sec.note)}</p><div class="grid">${sec.items.map(tile).join('')}</div>`).join('');
+  const sub=lv==='10'?`${shown.length} topics and ${all.toLocaleString()} problems for the AMC 10 (${allDone} attempted so far). AMC 12-only topics are hidden; change this with the gear.`
+    :lv==='12'?`${shown.length} topics and ${all.toLocaleString()} problems for the AMC 12, including its precalculus topics (${allDone} attempted so far).`
+    :`${shown.length} topics and ${all.toLocaleString()} problems covering everything on the AMC 10 and AMC 12 (${allDone} attempted so far). Topics marked <b>AMC 12</b> are mainly precalculus material for the AMC 12.`;
+  app.innerHTML=`<div class="h1row"><h1>${lv==='both'?'AMC 10/12 Prep':L_.name+' Prep'}</h1>
+     <button class="gear" id="amcGear" type="button" aria-expanded="false" aria-label="AMC settings" title="Settings">${GEAR}<span>${L_.name}</span></button></div>
+   <div class="setpanel" id="amcSet" hidden><div class="h">Which contest are you preparing for?</div>
+     <div class="seg">${Object.entries(AMC_LEVELS).map(([k,v])=>`<button class="${k===lv?'on':''}" data-lv="${k}" type="button"><b>${v.name}</b><span>${v.d}</span></button>`).join('')}</div></div>
+   <p class="sub">${sub}</p>
+   <h2>Mock exam${L_.mocks.length>1?'s':''}</h2><div class="grid">${L_.mocks.map(mockTile).join('')}</div>`+
+   CATALOG.map(sec=>{const its=sec.items.filter(amcShown);return its.length?`<h2>${esc(sec.area)}</h2><p class="meta" style="margin:0 0 12px">${esc(sec.note)}</p><div class="grid">${its.map(tile).join('')}</div>`:''}).join('');
+  const g=document.getElementById('amcGear'),pn=document.getElementById('amcSet');
+  g.addEventListener('click',()=>{pn.hidden=!pn.hidden;g.setAttribute('aria-expanded',String(!pn.hidden));g.classList.toggle('on',!pn.hidden)});
+  pn.addEventListener('click',e=>{const b=e.target.closest('[data-lv]');if(!b)return;try{localStorage.setItem('amcprep.level',b.dataset.lv)}catch(err){}
+    amcHome();const g2=document.getElementById('amcGear'),p2=document.getElementById('amcSet');p2.hidden=false;g2.classList.add('on');g2.setAttribute('aria-expanded','true')});
 }
 
 function pcHome(){
@@ -18691,6 +18730,7 @@ function drawLessonPlots(root){
 /* ---------- problem card ---------- */
 /* hand-written problems are 'AMC-style' in the AMC track and 'Worked problem' in precalculus */
 const cLabel=sub=>{const s=subById(sub);return s&&findTopic(s.topic).track==='pc'?'Worked problem':'AMC-style'};
+const GIVEUP='<span class="fb-acts first"><button class="giveup-btn" type="button">Give up</button></span>';
 const ITEMS=new Map();   // id -> problem, so Ask AI can find the problem behind a card
 function cardHTML(it,num,opts={}){
   ITEMS.set(it.id,it);
@@ -18699,7 +18739,7 @@ function cardHTML(it,num,opts={}){
    <div class="phead"><b>#${num}</b>${tag}<span class="lv" title="Difficulty">${stars(it.lvl)}</span>${opts.extra||''}<span class="spacer"></span><span class="status"></span></div>
    <div class="ptext">${it.q}</div>
    <div class="choices${it.choices.some(c=>/\\begin|<table|<svg/.test(c)||c.length>70)?' wide':''}">${it.choices.map((c,i)=>`<button class="ch" data-i="${i}"><b>(${L[i]})</b><span>${c}</span></button>`).join('')}</div>
-   <div class="fb"></div>
+   <div class="fb">${opts.giveUp?GIVEUP:''}</div>
    <div class="sol" hidden><div class="sol-acts"><button class="hist-btn" type="button" hidden title="Show the wrong answers you picked before">History</button><button class="ai-btn" type="button" title="Open Google AI Mode in a new tab to explain this problem">✦ Ask AI</button></div><details><summary>Show full solution</summary><div class="solbody">${it.sol}</div></details><div class="hist-box" hidden></div></div>
   </div>`;
 }
@@ -18715,19 +18755,19 @@ function revealCard(el,it,chosen,openSol,hist){
   const sol=el.querySelector('.sol');sol.hidden=false;sol.querySelector('details').open=!!openSol;
   const hb=el.querySelector('.hist-btn'),box=el.querySelector('.hist-box');
   const showHist=chosen===it.ans&&tries>0;hb.hidden=!showHist;box.hidden=true;hb.classList.remove('on');sol.classList.toggle('has-hist',showHist);
-  if(showHist)box.innerHTML='<div class="hist-h">Your earlier wrong answers</div><ol>'+hist.map(i=>'<li><b>('+L[i]+')</b> '+it.choices[i]+'</li>').join('')+'</ol>';
+  if(showHist)box.innerHTML='<div class="hist-h">Your earlier attempts</div><ol>'+hist.map(i=>i<0?'<li><i>Gave up</i></li>':'<li><b>('+L[i]+')</b> '+it.choices[i]+'</li>').join('')+'</ol>';
 }
 /* a wrong pick in a problem set: keep the answer hidden and offer another try */
 function wrongCard(el,it,p){
   el.querySelectorAll('.ch').forEach(b=>{const i=+b.dataset.i;b.disabled=true;b.classList.remove('sel','right','wrong');if(i===p.c)b.classList.add('wrong')});
   const fb=el.querySelector('.fb');fb.className='fb no';
-  fb.innerHTML='Not quite. <span class="fb-acts"><button class="retry-btn" type="button">↻ Try again</button><button class="show-btn" type="button">Show answer</button></span>';
+  fb.innerHTML=(p.c<0?'You gave up.':'Not quite.')+' <span class="fb-acts"><button class="retry-btn" type="button">↻ Try again</button><button class="show-btn" type="button">Show answer</button></span>';
   el.querySelector('.status').innerHTML='<span class="pill no">Missed'+(p.w.length>1?' ×'+p.w.length:'')+'</span>';
   el.querySelector('.sol').hidden=true;
 }
 function retryCard(el){
   el.querySelectorAll('.ch').forEach(b=>{b.disabled=false;b.classList.remove('sel','right','wrong')});
-  const fb=el.querySelector('.fb');fb.className='fb';fb.textContent='';el.querySelector('.sol').hidden=true;
+  const fb=el.querySelector('.fb');fb.className='fb';fb.innerHTML=GIVEUP;el.querySelector('.sol').hidden=true;
 }
 
 /* ---------- problem set ---------- */
@@ -18741,14 +18781,15 @@ function setView(sid,body){
   function draw(){
     const items=set.map((it,i)=>[it,i+1]).filter(([it])=>{const p=PROG.q[it.id];
       if(filter==='all')return true;if(filter==='c'||filter==='g')return it.src===filter;if(filter==='new')return!p;if(filter==='miss')return p&&!p.ok;return String(it.lvl)===filter});
-    list.innerHTML=items.length?items.map(([it,n])=>cardHTML(it,n)).join(''):'<div class="empty">No problems match this filter.</div>';
+    list.innerHTML=items.length?items.map(([it,n])=>cardHTML(it,n,{giveUp:true})).join(''):'<div class="empty">No problems match this filter.</div>';
     for(const [it] of items){if(PROG.q[it.id])paint(list.querySelector(`[data-id="${it.id}"]`),it,false)}
     renderMath(list);
   }
   /* PROG.q[id] = {c: latest pick, ok: right on the first try, w: wrong picks in order, show: answer revealed after a miss} */
   function paint(card,it,fresh){const p=PROG.q[it.id];const w=p.w||(p.ok?[]:[p.c]);
     if(p.c===it.ans)revealCard(card,it,p.c,false,w);
-    else if(p.show){revealCard(card,it,p.c,fresh,w);const fb=card.querySelector('.fb');
+    else if(p.show){revealCard(card,it,p.c<0?-1:p.c,fresh,w);const fb=card.querySelector('.fb');
+      if(p.c<0){fb.textContent='You gave up. The answer is ('+L[it.ans]+').';card.querySelector('.status').innerHTML='<span class="pill no">Gave up</span>'}
       fb.insertAdjacentHTML('beforeend',' <span class="fb-acts"><button class="retry-btn" type="button">↻ Try again</button></span>')}
     else wrongCard(card,it,{...p,w});
   }
@@ -18756,6 +18797,8 @@ function setView(sid,body){
     const card=e.target.closest('.prob');if(!card)return;const it=set.find(x=>x.id===card.dataset.id);if(!it)return;
     const hb=e.target.closest('.hist-btn');
     if(hb){const box=card.querySelector('.hist-box');box.hidden=!box.hidden;hb.classList.toggle('on',!box.hidden);if(!box.hidden)renderMath(box);return}
+    if(e.target.closest('.giveup-btn')){const prev=PROG.q[it.id];const w=prev?(prev.w||(prev.ok?[]:[prev.c])).slice():[];w.push(-1);   // counts as a miss
+      PROG.q[it.id]={c:-1,ok:false,w,show:true};saveProg();paint(card,it,true);renderMath(card);body.querySelector('#sstat').innerHTML=statHTML();return}
     if(e.target.closest('.retry-btn')){const p=PROG.q[it.id];if(p&&p.show){delete p.show;saveProg()}retryCard(card);return}
     if(e.target.closest('.show-btn')){const p=PROG.q[it.id];p.show=true;saveProg();paint(card,it,true);renderMath(card);return}
     const b=e.target.closest('.ch');if(!b||b.disabled)return;
@@ -18923,7 +18966,15 @@ const SYNC=(()=>{
   const persist=()=>{try{localStorage.setItem(LK,JSON.stringify(st))}catch(e){}};
   const fmt=c=>c?c.slice(0,4)+'-'+c.slice(4):'········';
   const norm=s=>String(s||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
-  const J=x=>x===undefined||x===null?undefined:JSON.stringify(x);
+  /* Firebase sorts keys and drops nulls / empty lists, so compare data in that same canonical form;
+     otherwise every save looks like a remote change and the page gets redrawn */
+  const canon=x=>{
+    if(x===null||x===undefined)return undefined;
+    if(Array.isArray(x)){const a=x.map(canon).filter(v=>v!==undefined);return a.length?a:undefined}
+    if(typeof x==='object'){const o={};for(const k of Object.keys(x).sort()){const v=canon(x[k]);if(v!==undefined)o[k]=v}return Object.keys(o).length?o:undefined}
+    return x;
+  };
+  const J=x=>{const c=canon(x);return c===undefined?undefined:JSON.stringify(c)};
 
   async function api(path,method,body){
     const r=await fetch(DB+'/codes/'+path+'.json',{method:method||'GET',cache:'no-store',
@@ -19013,7 +19064,13 @@ const SYNC=(()=>{
   /* re-render the current page so new data shows, without interrupting a practice session or mock test */
   function refreshView(){
     const h=location.hash;
-    if(/^#\/(home|t\/[^/]+|s\/[^/]+\/(lesson|set))?$/.test(h)&&h!==''&&h!=='#/'){const y=window.scrollY;route();window.scrollTo(0,y)}
+    if(/^#\/(home|t\/[^/]+|s\/[^/]+\/(lesson|set))?$/.test(h)&&h!==''&&h!=='#/'){
+      const y=window.scrollY,open=[...document.querySelectorAll('.prob')].map(c=>[c.dataset.id,c.querySelector('.sol details')?.open,!c.querySelector('.hist-box')?.hidden]);
+      route();window.scrollTo(0,y);
+      for(const [id,d,hb] of open){const c=document.querySelector(`.prob[data-id="${id}"]`);if(!c)continue;     // keep open solutions open
+        if(d){const det=c.querySelector('.sol details');if(det)det.open=true}
+        if(hb){const b=c.querySelector('.hist-btn');if(b&&!b.hidden)b.click()}}
+    }
   }
 
   /* ---------- codes ---------- */

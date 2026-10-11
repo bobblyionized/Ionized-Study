@@ -63,6 +63,23 @@ h4{margin:0 0 6px;font-size:15px;text-transform:uppercase;letter-spacing:.6px;co
 .tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin:14px 0 18px;flex-wrap:wrap}
 .tab{border:none;background:none;padding:10px 14px;font:inherit;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px}
 .tab.on{color:var(--accent);border-bottom-color:var(--accent)}
+.h1row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.h1row h1{margin-right:auto}
+.gear{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;
+  padding:6px 14px 6px 10px;font:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:color .2s,border-color .2s}
+.gear svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .45s}
+.gear:hover,.gear.on{color:var(--accent);border-color:var(--accent)}
+.gear:hover svg,.gear.on svg{transform:rotate(60deg)}
+.setpanel{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:14px;margin:4px 0 14px}
+.setpanel[hidden]{display:none}
+.setpanel .h{font-weight:700;margin-bottom:10px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.seg button{display:flex;flex-direction:column;gap:3px;text-align:left;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:10px 12px;font:inherit;cursor:pointer}
+.seg button span{font-size:13px;color:var(--muted);line-height:1.4}
+.seg button:hover{border-color:var(--accent)}
+.seg button.on{border-color:var(--accent);background:var(--accent-weak)}
+.seg button.on b{color:var(--accent)}
+@media (max-width:560px){.seg{grid-template-columns:1fr}}
 .tab-arrow{position:fixed;top:50%;z-index:5;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;
   width:56px;padding:14px 0;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--muted);cursor:pointer;font:inherit;
   box-shadow:var(--shadow);opacity:.75;transition:opacity .2s,color .2s,border-color .2s,transform .2s}
@@ -139,9 +156,9 @@ table.t th{background:var(--accent-weak)}
 .lfig{margin:0;display:inline-block;text-align:center;vertical-align:top}
 .lfig figcaption{font-size:13px;color:var(--muted);margin-top:-2px;max-width:240px}
 .sol-acts{position:absolute;right:0;top:8px;display:flex;gap:6px}
-.ai-btn,.hist-btn,.retry-btn,.show-btn{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:var(--card);color:var(--accent);
+.ai-btn,.hist-btn,.retry-btn,.show-btn,.giveup-btn{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:var(--card);color:var(--accent);
   border-radius:999px;padding:3px 12px;font:inherit;font-size:13px;font-weight:700;cursor:pointer}
-.ai-btn:hover,.hist-btn:hover,.retry-btn:hover,.show-btn:hover{border-color:var(--accent)}
+.ai-btn:hover,.hist-btn:hover,.retry-btn:hover,.show-btn:hover,.giveup-btn:hover{border-color:var(--accent)}
 .hist-btn[hidden]{display:none}
 .hist-btn.on{background:var(--accent-weak);border-color:var(--accent)}
 .sol.has-hist details summary{padding-right:190px}
@@ -150,7 +167,9 @@ table.t th{background:var(--accent-weak)}
 .hist-h{font-size:12px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--warn);margin-bottom:2px}
 .hist-box ol{margin:0;padding-left:22px;line-height:1.9}
 .fb-acts{display:inline-flex;gap:6px;margin-left:8px;vertical-align:middle;flex-wrap:wrap}
-.retry-btn{color:var(--accent)}.show-btn{color:var(--muted);font-weight:600}
+.retry-btn{color:var(--accent)}.show-btn,.giveup-btn{color:var(--muted);font-weight:600}
+.fb-acts.first{margin-left:0}
+.fb:empty{display:none}
 .sol details summary{padding-right:96px}
 .filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
 .chip{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:20px;padding:4px 12px;font:inherit;font-size:13.5px;cursor:pointer}

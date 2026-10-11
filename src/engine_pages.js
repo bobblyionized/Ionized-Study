@@ -50,18 +50,38 @@ function hub(){
    <p class="meta" style="margin-top:26px"><a href="#" onclick="if(confirm('Reset all saved problem progress in both tracks?')){PROG={q:{},pr:{},mock:[]};saveProg();route()}return false">Reset all problem progress</a></p>`;
 }
 
+/* which contest the AMC Prep page is set up for: '10', '12' or 'both' (kept on this device) */
+const AMC_LEVELS={'10':{name:'AMC 10',d:'Only AMC 10 topics. The AMC 12 precalculus topics are hidden.',mocks:['amc10']},
+  '12':{name:'AMC 12',d:'Every topic, including AMC 12 precalculus, with the AMC 12 mock exam.',mocks:['amc12']},
+  both:{name:'Both',d:'Everything for the AMC 10 and AMC 12, with all three mock exams.',mocks:['amc10','amc12','all']}};
+function amcLevel(){let v='both';try{v=localStorage.getItem('amcprep.level')||'both'}catch(e){}return AMC_LEVELS[v]?v:'both'}
+const amcShown=t=>amcLevel()!=='10'||t.amc!=='12';
+const GEAR='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>';
 function amcHome(){
   setCrumbs([['Home','#/home'],['AMC Prep']]);
-  let all=0,allDone=0;for(const t of amcTopics()){const st=topicStats(t);all+=st.total;allDone+=st.done}
+  const lv=amcLevel(),L_=AMC_LEVELS[lv],shown=amcTopics().filter(amcShown);
+  let all=0,allDone=0;for(const t of shown){const st=topicStats(t);all+=st.total;allDone+=st.done}
+  const tag=t=>lv==='both'?'AMC '+t.amc:L_.name;
   const tile=t=>{const st=topicStats(t);return`<button class="card tile" onclick="location.hash='#/t/${t.id}'">
-    <span class="num">AMC ${t.amc}</span><span class="t">${esc(t.name)}</span><span class="d">${esc(t.d)}</span>
+    <span class="num">${tag(t)}</span><span class="t">${esc(t.name)}</span><span class="d">${esc(t.d)}</span>
     <span class="meta">${t.subs.length} subtopics · ${st.total} problems · ${st.done} attempted</span><span class="bar"><i style="width:${st.total?st.done/st.total*100:0}%"></i></span></button>`};
   const mockTile=k=>{const m=MOCKS[k];const last=PROG.mock.filter(x=>x.topic===k).pop();
     return`<button class="card tile" style="border-color:var(--accent)" onclick="location.hash='#/mock/${k}'"><span class="num">Full mock exam</span><span class="t">${esc(m.name)}</span>
     <span class="d">${esc(m.d)} Real AMC scoring (6 / 1.5 / 0).</span><span class="meta">${last?'Last score: '+last.score+' / 150':'Not taken yet'}</span></button>`};
-  app.innerHTML=`<h1>AMC 10/12 Prep</h1><p class="sub">${amcTopics().length} topics and ${all.toLocaleString()} problems covering everything on the AMC 10 and AMC 12 (${allDone} attempted so far). Topics marked <b>AMC 12</b> are mainly precalculus material for the AMC 12.</p>
-   <h2>Mock exams</h2><div class="grid">${['amc10','amc12','all'].map(mockTile).join('')}</div>`+
-   CATALOG.map(sec=>`<h2>${esc(sec.area)}</h2><p class="meta" style="margin:0 0 12px">${esc(sec.note)}</p><div class="grid">${sec.items.map(tile).join('')}</div>`).join('');
+  const sub=lv==='10'?`${shown.length} topics and ${all.toLocaleString()} problems for the AMC 10 (${allDone} attempted so far). AMC 12-only topics are hidden; change this with the gear.`
+    :lv==='12'?`${shown.length} topics and ${all.toLocaleString()} problems for the AMC 12, including its precalculus topics (${allDone} attempted so far).`
+    :`${shown.length} topics and ${all.toLocaleString()} problems covering everything on the AMC 10 and AMC 12 (${allDone} attempted so far). Topics marked <b>AMC 12</b> are mainly precalculus material for the AMC 12.`;
+  app.innerHTML=`<div class="h1row"><h1>${lv==='both'?'AMC 10/12 Prep':L_.name+' Prep'}</h1>
+     <button class="gear" id="amcGear" type="button" aria-expanded="false" aria-label="AMC settings" title="Settings">${GEAR}<span>${L_.name}</span></button></div>
+   <div class="setpanel" id="amcSet" hidden><div class="h">Which contest are you preparing for?</div>
+     <div class="seg">${Object.entries(AMC_LEVELS).map(([k,v])=>`<button class="${k===lv?'on':''}" data-lv="${k}" type="button"><b>${v.name}</b><span>${v.d}</span></button>`).join('')}</div></div>
+   <p class="sub">${sub}</p>
+   <h2>Mock exam${L_.mocks.length>1?'s':''}</h2><div class="grid">${L_.mocks.map(mockTile).join('')}</div>`+
+   CATALOG.map(sec=>{const its=sec.items.filter(amcShown);return its.length?`<h2>${esc(sec.area)}</h2><p class="meta" style="margin:0 0 12px">${esc(sec.note)}</p><div class="grid">${its.map(tile).join('')}</div>`:''}).join('');
+  const g=document.getElementById('amcGear'),pn=document.getElementById('amcSet');
+  g.addEventListener('click',()=>{pn.hidden=!pn.hidden;g.setAttribute('aria-expanded',String(!pn.hidden));g.classList.toggle('on',!pn.hidden)});
+  pn.addEventListener('click',e=>{const b=e.target.closest('[data-lv]');if(!b)return;try{localStorage.setItem('amcprep.level',b.dataset.lv)}catch(err){}
+    amcHome();const g2=document.getElementById('amcGear'),p2=document.getElementById('amcSet');p2.hidden=false;g2.classList.add('on');g2.setAttribute('aria-expanded','true')});
 }
 
 function pcHome(){

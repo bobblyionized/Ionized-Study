@@ -15,7 +15,15 @@ const SYNC=(()=>{
   const persist=()=>{try{localStorage.setItem(LK,JSON.stringify(st))}catch(e){}};
   const fmt=c=>c?c.slice(0,4)+'-'+c.slice(4):'········';
   const norm=s=>String(s||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
-  const J=x=>x===undefined||x===null?undefined:JSON.stringify(x);
+  /* Firebase sorts keys and drops nulls / empty lists, so compare data in that same canonical form;
+     otherwise every save looks like a remote change and the page gets redrawn */
+  const canon=x=>{
+    if(x===null||x===undefined)return undefined;
+    if(Array.isArray(x)){const a=x.map(canon).filter(v=>v!==undefined);return a.length?a:undefined}
+    if(typeof x==='object'){const o={};for(const k of Object.keys(x).sort()){const v=canon(x[k]);if(v!==undefined)o[k]=v}return Object.keys(o).length?o:undefined}
+    return x;
+  };
+  const J=x=>{const c=canon(x);return c===undefined?undefined:JSON.stringify(c)};
 
   async function api(path,method,body){
     const r=await fetch(DB+'/codes/'+path+'.json',{method:method||'GET',cache:'no-store',
@@ -105,7 +113,13 @@ const SYNC=(()=>{
   /* re-render the current page so new data shows, without interrupting a practice session or mock test */
   function refreshView(){
     const h=location.hash;
-    if(/^#\/(home|t\/[^/]+|s\/[^/]+\/(lesson|set))?$/.test(h)&&h!==''&&h!=='#/'){const y=window.scrollY;route();window.scrollTo(0,y)}
+    if(/^#\/(home|t\/[^/]+|s\/[^/]+\/(lesson|set))?$/.test(h)&&h!==''&&h!=='#/'){
+      const y=window.scrollY,open=[...document.querySelectorAll('.prob')].map(c=>[c.dataset.id,c.querySelector('.sol details')?.open,!c.querySelector('.hist-box')?.hidden]);
+      route();window.scrollTo(0,y);
+      for(const [id,d,hb] of open){const c=document.querySelector(`.prob[data-id="${id}"]`);if(!c)continue;     // keep open solutions open
+        if(d){const det=c.querySelector('.sol details');if(det)det.open=true}
+        if(hb){const b=c.querySelector('.hist-btn');if(b&&!b.hidden)b.click()}}
+    }
   }
 
   /* ---------- codes ---------- */

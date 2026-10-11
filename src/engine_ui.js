@@ -1,6 +1,7 @@
 /* ---------- problem card ---------- */
 /* hand-written problems are 'AMC-style' in the AMC track and 'Worked problem' in precalculus */
 const cLabel=sub=>{const s=subById(sub);return s&&findTopic(s.topic).track==='pc'?'Worked problem':'AMC-style'};
+const GIVEUP='<span class="fb-acts first"><button class="giveup-btn" type="button">Give up</button></span>';
 const ITEMS=new Map();   // id -> problem, so Ask AI can find the problem behind a card
 function cardHTML(it,num,opts={}){
   ITEMS.set(it.id,it);
@@ -9,7 +10,7 @@ function cardHTML(it,num,opts={}){
    <div class="phead"><b>#${num}</b>${tag}<span class="lv" title="Difficulty">${stars(it.lvl)}</span>${opts.extra||''}<span class="spacer"></span><span class="status"></span></div>
    <div class="ptext">${it.q}</div>
    <div class="choices${it.choices.some(c=>/\\begin|<table|<svg/.test(c)||c.length>70)?' wide':''}">${it.choices.map((c,i)=>`<button class="ch" data-i="${i}"><b>(${L[i]})</b><span>${c}</span></button>`).join('')}</div>
-   <div class="fb"></div>
+   <div class="fb">${opts.giveUp?GIVEUP:''}</div>
    <div class="sol" hidden><div class="sol-acts"><button class="hist-btn" type="button" hidden title="Show the wrong answers you picked before">History</button><button class="ai-btn" type="button" title="Open Google AI Mode in a new tab to explain this problem">✦ Ask AI</button></div><details><summary>Show full solution</summary><div class="solbody">${it.sol}</div></details><div class="hist-box" hidden></div></div>
   </div>`;
 }
@@ -25,19 +26,19 @@ function revealCard(el,it,chosen,openSol,hist){
   const sol=el.querySelector('.sol');sol.hidden=false;sol.querySelector('details').open=!!openSol;
   const hb=el.querySelector('.hist-btn'),box=el.querySelector('.hist-box');
   const showHist=chosen===it.ans&&tries>0;hb.hidden=!showHist;box.hidden=true;hb.classList.remove('on');sol.classList.toggle('has-hist',showHist);
-  if(showHist)box.innerHTML='<div class="hist-h">Your earlier wrong answers</div><ol>'+hist.map(i=>'<li><b>('+L[i]+')</b> '+it.choices[i]+'</li>').join('')+'</ol>';
+  if(showHist)box.innerHTML='<div class="hist-h">Your earlier attempts</div><ol>'+hist.map(i=>i<0?'<li><i>Gave up</i></li>':'<li><b>('+L[i]+')</b> '+it.choices[i]+'</li>').join('')+'</ol>';
 }
 /* a wrong pick in a problem set: keep the answer hidden and offer another try */
 function wrongCard(el,it,p){
   el.querySelectorAll('.ch').forEach(b=>{const i=+b.dataset.i;b.disabled=true;b.classList.remove('sel','right','wrong');if(i===p.c)b.classList.add('wrong')});
   const fb=el.querySelector('.fb');fb.className='fb no';
-  fb.innerHTML='Not quite. <span class="fb-acts"><button class="retry-btn" type="button">↻ Try again</button><button class="show-btn" type="button">Show answer</button></span>';
+  fb.innerHTML=(p.c<0?'You gave up.':'Not quite.')+' <span class="fb-acts"><button class="retry-btn" type="button">↻ Try again</button><button class="show-btn" type="button">Show answer</button></span>';
   el.querySelector('.status').innerHTML='<span class="pill no">Missed'+(p.w.length>1?' ×'+p.w.length:'')+'</span>';
   el.querySelector('.sol').hidden=true;
 }
 function retryCard(el){
   el.querySelectorAll('.ch').forEach(b=>{b.disabled=false;b.classList.remove('sel','right','wrong')});
-  const fb=el.querySelector('.fb');fb.className='fb';fb.textContent='';el.querySelector('.sol').hidden=true;
+  const fb=el.querySelector('.fb');fb.className='fb';fb.innerHTML=GIVEUP;el.querySelector('.sol').hidden=true;
 }
 
 /* ---------- problem set ---------- */
@@ -51,14 +52,15 @@ function setView(sid,body){
   function draw(){
     const items=set.map((it,i)=>[it,i+1]).filter(([it])=>{const p=PROG.q[it.id];
       if(filter==='all')return true;if(filter==='c'||filter==='g')return it.src===filter;if(filter==='new')return!p;if(filter==='miss')return p&&!p.ok;return String(it.lvl)===filter});
-    list.innerHTML=items.length?items.map(([it,n])=>cardHTML(it,n)).join(''):'<div class="empty">No problems match this filter.</div>';
+    list.innerHTML=items.length?items.map(([it,n])=>cardHTML(it,n,{giveUp:true})).join(''):'<div class="empty">No problems match this filter.</div>';
     for(const [it] of items){if(PROG.q[it.id])paint(list.querySelector(`[data-id="${it.id}"]`),it,false)}
     renderMath(list);
   }
   /* PROG.q[id] = {c: latest pick, ok: right on the first try, w: wrong picks in order, show: answer revealed after a miss} */
   function paint(card,it,fresh){const p=PROG.q[it.id];const w=p.w||(p.ok?[]:[p.c]);
     if(p.c===it.ans)revealCard(card,it,p.c,false,w);
-    else if(p.show){revealCard(card,it,p.c,fresh,w);const fb=card.querySelector('.fb');
+    else if(p.show){revealCard(card,it,p.c<0?-1:p.c,fresh,w);const fb=card.querySelector('.fb');
+      if(p.c<0){fb.textContent='You gave up. The answer is ('+L[it.ans]+').';card.querySelector('.status').innerHTML='<span class="pill no">Gave up</span>'}
       fb.insertAdjacentHTML('beforeend',' <span class="fb-acts"><button class="retry-btn" type="button">↻ Try again</button></span>')}
     else wrongCard(card,it,{...p,w});
   }
@@ -66,6 +68,8 @@ function setView(sid,body){
     const card=e.target.closest('.prob');if(!card)return;const it=set.find(x=>x.id===card.dataset.id);if(!it)return;
     const hb=e.target.closest('.hist-btn');
     if(hb){const box=card.querySelector('.hist-box');box.hidden=!box.hidden;hb.classList.toggle('on',!box.hidden);if(!box.hidden)renderMath(box);return}
+    if(e.target.closest('.giveup-btn')){const prev=PROG.q[it.id];const w=prev?(prev.w||(prev.ok?[]:[prev.c])).slice():[];w.push(-1);   // counts as a miss
+      PROG.q[it.id]={c:-1,ok:false,w,show:true};saveProg();paint(card,it,true);renderMath(card);body.querySelector('#sstat').innerHTML=statHTML();return}
     if(e.target.closest('.retry-btn')){const p=PROG.q[it.id];if(p&&p.show){delete p.show;saveProg()}retryCard(card);return}
     if(e.target.closest('.show-btn')){const p=PROG.q[it.id];p.show=true;saveProg();paint(card,it,true);renderMath(card);return}
     const b=e.target.closest('.ch');if(!b||b.disabled)return;
