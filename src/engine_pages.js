@@ -23,7 +23,16 @@ const MOCKS={
 const mockKey=t=>t.track==='pc'?'Chapter test':'Mock test';
 const trackCrumb=t=>t.track==='pc'?['Precalculus','#/pc']:['AMC Prep','#/amc'];
 
-function route(){routeTo();if(typeof restoreScroll==='function'&&location.hash)restoreScroll()}
+function route(){
+  const m=location.hash.match(/^#\/s\/([^/]+)/),sub=m?m[1]:null,same=sub&&sub===route.sub;route.sub=sub;
+  routeTo();if(typeof restoreScroll==='function'&&location.hash)restoreScroll();
+  if(window.__quietRoute||typeof document==='undefined'||document.body.classList.contains('landing'))return;
+  const tb=document.getElementById('tabbody');                         // soft cross-fade on every page or tab change
+  const el=same&&tb?tb:app,cls=same&&tb?'tab-fade':'route-in';
+  if(same&&tb&&/tab-in-/.test(tb.className))return;                     // arrow/swipe already animates
+  el.classList.remove(cls);void el.offsetWidth;el.classList.add(cls);
+  el.addEventListener('animationend',()=>el.classList.remove(cls),{once:true});
+}
 function fadeLanding(toLanding){
   const land=document.getElementById('land'),main=document.querySelector('main'),hdr=document.querySelector('header.top');if(!land)return;
   if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
@@ -76,7 +85,7 @@ function amcHome(){
     <span class="num">${tag(t)}</span><span class="t">${esc(t.name)}</span><span class="d">${esc(t.d)}</span>
     <span class="meta">${t.subs.length} subtopics · ${st.total} problems · ${st.done} attempted</span><span class="bar"><i style="width:${st.total?st.done/st.total*100:0}%"></i></span></button>`};
   const mockTile=k=>{const m=MOCKS[k];const last=PROG.mock.filter(x=>x.topic===k).pop();
-    return`<button class="card tile" style="border-color:var(--accent)" onclick="location.hash='#/mock/${k}'"><span class="num">Full mock exam</span><span class="t">${esc(m.name)}</span>
+    return`<button class="card tile mock" onclick="location.hash='#/mock/${k}'"><span class="t">${esc(m.name)}</span>
     <span class="d">${esc(m.d)} Real AMC scoring (6 / 1.5 / 0).</span><span class="meta">${last?'Last score: '+last.score+' / 150':'Not taken yet'}</span></button>`};
   const sub=lv==='10'?`${shown.length} topics and ${all.toLocaleString()} problems for the AMC 10 (${allDone} attempted so far). AMC 12-only topics are hidden; change this with the gear.`
     :lv==='12'?`${shown.length} topics and ${all.toLocaleString()} problems for the AMC 12, including its precalculus topics (${allDone} attempted so far).`
@@ -112,7 +121,7 @@ function topicPage(t){
   const last=PROG.mock.filter(m=>(m.topic||'seq')===t.id).pop();
   app.innerHTML=`<h1>${pc?'Chapter '+t.ch+': ':''}${esc(t.name)}</h1><p class="sub">${esc(t.d)} Work through the ${pc?'sections':'subtopics'} in order: read the lesson, do the problem set, then drill in practice mode. Finish with the ${mockKey(t).toLowerCase()}.</p>
   <div class="grid">${cards}
-  <button class="card tile" style="border-color:var(--accent)" onclick="location.hash='#/mock/${t.id}'"><span class="num">${mockKey(t)}</span><span class="t">${esc(t.name)} ${pc?'Chapter Test':'Mock Test'}</span>
+  <button class="card tile mock" onclick="location.hash='#/mock/${t.id}'"><span class="num">${mockKey(t)}</span><span class="t">${esc(t.name)} ${pc?'Chapter Test':'Mock Test'}</span>
   <span class="d">25 questions in 75 minutes, ordered easy to hard, with AMC-style scoring (6 / 1.5 / 0).</span>
   <span class="meta">${last?'Last score: '+last.score+' / 150':'Not taken yet'}</span></button></div>
   <div class="row" style="margin-top:18px"><button class="btn" onclick="location.hash='${trackCrumb(t)[1]}'">← All ${pc?'chapters':'topics'}</button></div>`;

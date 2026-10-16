@@ -1,0 +1,111 @@
+/* ====================== polish layer ======================
+   Type: Literata (a reading serif that sits well beside KaTeX) for lessons, problems and solutions;
+   Instrument Sans for the interface. Motion only answers what the student does: page and tab changes,
+   answering, opening a solution. Everything is turned off for prefers-reduced-motion. */
+:root{
+  --ui:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --read:"Literata",Georgia,"Times New Roman",serif;
+  --ease:cubic-bezier(.2,.7,.2,1);--ease-out:cubic-bezier(.16,1,.3,1);
+  --t-fast:.14s;--t:.22s;--t-slow:.36s;
+  --r-lg:16px;--r-md:11px;--r-sm:8px;
+  --shadow:0 1px 1px rgba(20,30,60,.04),0 8px 24px -12px rgba(20,30,60,.16);
+  --shadow-lift:0 2px 4px rgba(20,30,60,.06),0 16px 32px -16px rgba(20,30,60,.28);
+  interpolate-size:allow-keywords;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#0d1017;--card:#141923;--line:#242b3a;--muted:#949db3;--ink:#e7eaf2;
+    --accent:#8c9dff;--accent-weak:#1f2642;--good:#62c97a;--good-weak:#132a1b;--bad:#ff7a7a;--bad-weak:#341a1f;
+    --shadow:0 1px 0 rgba(255,255,255,.02) inset,0 10px 30px -18px rgba(0,0,0,.7);
+    --shadow-lift:0 1px 0 rgba(255,255,255,.03) inset,0 18px 40px -20px rgba(0,0,0,.85)}
+}
+body{font-family:var(--ui);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:color-mix(in srgb,var(--accent) 30%,transparent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+
+/* ---------- type scale ---------- */
+h1{font-size:clamp(26px,3.6vw,32px);line-height:1.15;font-weight:650;letter-spacing:-.015em;margin:6px 0 8px}
+h2{font-size:21px;line-height:1.25;font-weight:650;letter-spacing:-.01em;margin:30px 0 10px}
+h3{font-size:17.5px;line-height:1.3;font-weight:650;margin:24px 0 6px}
+h4{font-family:var(--ui);text-transform:none;letter-spacing:0;font-size:14.5px;font-weight:650;color:var(--accent)}
+.sub{font-size:15.5px;max-width:68ch}
+.lesson,.ptext,.solbody,.ch>span,.hist-box ol{font-family:var(--read);font-optical-sizing:auto}
+.lesson{font-size:17px;line-height:1.72;border-radius:var(--r-lg);padding:8px clamp(18px,4vw,34px) 26px}
+.lesson p,.lesson li{max-width:68ch}
+.lesson h2,.lesson h3{font-family:var(--ui)}
+.lesson h2{font-size:24px;margin-top:22px}
+.ptext{font-size:17px;line-height:1.65}
+.solbody{font-size:16.5px;line-height:1.85}
+.katex{font-size:1.06em}
+
+/* ---------- header ---------- */
+header.top{background:color-mix(in srgb,var(--card) 82%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);border-bottom-color:color-mix(in srgb,var(--line) 70%,transparent)}
+.brand{font-weight:700;letter-spacing:-.01em}
+.crumbs a{transition:color var(--t-fast) var(--ease)}
+
+/* ---------- surfaces ---------- */
+.card,.prob,.lesson,.stat div{border-radius:var(--r-lg);box-shadow:var(--shadow)}
+.box,.tip,.warn{border-radius:var(--r-sm);border-left-width:3px}
+.tile{transition:transform var(--t) var(--ease-out),border-color var(--t) var(--ease),box-shadow var(--t) var(--ease),background-color var(--t) var(--ease)}
+.tile:hover{transform:translateY(-2px);box-shadow:var(--shadow-lift)}
+.tile:active{transform:translateY(0) scale(.995);transition-duration:var(--t-fast)}
+.tile .num{text-transform:none;letter-spacing:0;font-size:13px;font-weight:600}
+.tile .t{font-weight:650;letter-spacing:-.01em}
+.bar>i{transition:width .6s var(--ease-out)}
+
+/* ---------- controls ---------- */
+.btn,.chip,.backtimer,.ai-btn,.hist-btn,.retry-btn,.show-btn,.giveup-btn,.gear,.tab{transition:color var(--t-fast) var(--ease),background-color var(--t-fast) var(--ease),border-color var(--t-fast) var(--ease),box-shadow var(--t-fast) var(--ease),transform var(--t-fast) var(--ease)}
+.btn:active,.chip:active,.ai-btn:active,.hist-btn:active,.retry-btn:active,.show-btn:active,.giveup-btn:active,.gear:active{transform:scale(.97)}
+.btn{border-radius:var(--r-md);font-weight:600}
+.btn.pri{box-shadow:0 1px 0 rgba(255,255,255,.15) inset,0 6px 16px -8px color-mix(in srgb,var(--accent) 70%,transparent)}
+.chip{font-weight:500}
+.chip:hover:not(.on){border-color:color-mix(in srgb,var(--accent) 55%,var(--line));color:var(--ink)}
+.tab{position:relative;border-bottom:0;padding:11px 14px 12px;font-weight:600}
+.tab::after{content:"";position:absolute;left:12px;right:12px;bottom:-1px;height:2.5px;border-radius:2px;background:var(--accent);transform:scaleX(0);transition:transform var(--t) var(--ease-out)}
+.tab.on::after{transform:scaleX(1)}
+.tab:hover:not(.on){color:var(--ink)}
+
+/* ---------- problem cards: the answer moment ---------- */
+.ch{border-radius:var(--r-md);transition:border-color var(--t) var(--ease),background-color var(--t) var(--ease),color var(--t) var(--ease),transform var(--t-fast) var(--ease),box-shadow var(--t) var(--ease)}
+.ch:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 6px 14px -10px color-mix(in srgb,var(--accent) 80%,transparent)}
+.ch:active:not(:disabled){transform:translateY(0) scale(.985)}
+.prob.just .ch.right{animation:chRight .5s var(--ease-out)}
+.prob.just .ch.wrong{animation:chWrong .42s var(--ease)}
+@keyframes chRight{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--good) 55%,transparent)}100%{box-shadow:0 0 0 10px transparent}}
+@keyframes chWrong{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}55%{transform:translateX(3px)}80%{transform:translateX(-1px)}}
+.prob.just .fb{animation:rise var(--t-slow) var(--ease-out)}
+.prob.just .sol:not([hidden]){animation:rise .42s var(--ease-out) .06s both}
+.hist-box:not([hidden]){animation:rise var(--t) var(--ease-out)}
+@keyframes rise{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.pill{transition:background-color var(--t) var(--ease),color var(--t) var(--ease)}
+.sol details summary{transition:color var(--t-fast) var(--ease)}
+.sol details summary:hover{color:var(--ink)}
+
+/* solutions, block names, and every other <details> open and close smoothly where supported */
+details::details-content{block-size:0;overflow:hidden;opacity:0;transition:block-size var(--t-slow) var(--ease-out),opacity var(--t) var(--ease),content-visibility var(--t-slow) allow-discrete}
+details[open]::details-content{block-size:auto;opacity:1}
+
+/* ---------- page and tab changes ---------- */
+#app.route-in{animation:routeIn .32s var(--ease-out)}
+#tabbody.tab-fade{animation:routeIn .26s var(--ease-out)}
+@keyframes routeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* ---------- scrollbars ---------- */
+html{scrollbar-color:color-mix(in srgb,var(--muted) 45%,transparent) transparent;scrollbar-width:thin}
+
+/* ---------- motion off when asked ---------- */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+
+/* ---------- side arrows: in the margins on wide screens, bottom corners on medium ones ---------- */
+.tab-arrow{transition:opacity var(--t) var(--ease),color var(--t) var(--ease),border-color var(--t) var(--ease),transform var(--t) var(--ease-out);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);background:color-mix(in srgb,var(--card) 85%,transparent)}
+@media (max-width:1140px) and (min-width:761px) and (pointer:fine){
+  .tab-arrow{top:auto;bottom:18px;transform:none;width:44px;height:44px;padding:0;border-radius:50%;justify-content:center;box-shadow:var(--shadow-lift)}
+  .tab-arrow.prev{left:18px}.tab-arrow.next{right:18px}
+  .tab-arrow.prev:hover{transform:translateX(-2px)}.tab-arrow.next:hover{transform:translateX(2px)}
+  .tab-arrow .ta-ch{font-size:26px;line-height:1;margin-top:-3px}
+}
+
+.tile.mock{border-color:color-mix(in srgb,var(--accent) 38%,var(--line));background:color-mix(in srgb,var(--accent) 4%,var(--card))}
+.tile.mock:hover{border-color:var(--accent)}

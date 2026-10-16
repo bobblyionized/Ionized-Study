@@ -29,6 +29,7 @@ function revealCard(el,it,chosen,openSol,hist){
   if(showHist)box.innerHTML='<div class="hist-h">Your earlier attempts</div><ol>'+hist.map(i=>i<0?'<li><i>Gave up</i></li>':'<li><b>('+L[i]+')</b> '+it.choices[i]+'</li>').join('')+'</ol>';
 }
 /* a wrong pick in a problem set: keep the answer hidden and offer another try */
+const flash=el=>{el.classList.remove('just');void el.offsetWidth;el.classList.add('just');clearTimeout(el._jt);el._jt=setTimeout(()=>el.classList.remove('just'),800)};   // marks a card that was just answered
 function wrongCard(el,it,p){
   el.querySelectorAll('.ch').forEach(b=>{const i=+b.dataset.i;b.disabled=true;b.classList.remove('sel','right','wrong');if(i===p.c)b.classList.add('wrong')});
   const fb=el.querySelector('.fb');fb.className='fb no';
@@ -69,13 +70,13 @@ function setView(sid,body){
     const hb=e.target.closest('.hist-btn');
     if(hb){const box=card.querySelector('.hist-box');box.hidden=!box.hidden;hb.classList.toggle('on',!box.hidden);if(!box.hidden)renderMath(box);return}
     if(e.target.closest('.giveup-btn')){const prev=PROG.q[it.id];const w=prev?(prev.w||(prev.ok?[]:[prev.c])).slice():[];w.push(-1);   // counts as a miss
-      PROG.q[it.id]={c:-1,ok:false,w,show:true};saveProg();paint(card,it,true);renderMath(card);body.querySelector('#sstat').innerHTML=statHTML();return}
+      PROG.q[it.id]={c:-1,ok:false,w,show:true};saveProg();paint(card,it,true);flash(card);renderMath(card);body.querySelector('#sstat').innerHTML=statHTML();return}
     if(e.target.closest('.retry-btn')){const p=PROG.q[it.id];if(p&&p.show){delete p.show;saveProg()}retryCard(card);return}
-    if(e.target.closest('.show-btn')){const p=PROG.q[it.id];p.show=true;saveProg();paint(card,it,true);renderMath(card);return}
+    if(e.target.closest('.show-btn')){const p=PROG.q[it.id];p.show=true;saveProg();paint(card,it,true);flash(card);renderMath(card);return}
     const b=e.target.closest('.ch');if(!b||b.disabled)return;
     const c=+b.dataset.i,prev=PROG.q[it.id];const w=prev?(prev.w||(prev.ok?[]:[prev.c])).slice():[];
     if(c!==it.ans)w.push(c);
-    PROG.q[it.id]={c,ok:c===it.ans&&!w.length,w};saveProg();paint(card,it,true);renderMath(card);
+    PROG.q[it.id]={c,ok:c===it.ans&&!w.length,w};saveProg();paint(card,it,true);flash(card);renderMath(card);
     body.querySelector('#sstat').innerHTML=statHTML()});
   body.querySelector('#flt').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;
     if(b.id==='resetset'){if(confirm('Clear your answers for this problem set?')){for(const it of set)delete PROG.q[it.id];saveProg();setView(sid,body)}return}
@@ -121,7 +122,7 @@ function runPractice(sid,body,items,cfg){
     if(locked){idx++;if(idx>=N)return finish();return show()}
     const it=items[idx];const c=skipped?null:sel;res[idx]={c,r:c===null?'blank':c===it.ans?'ok':'no'};
     if(PROG.q.hasOwnProperty(it.id)===false&&it.src==='c'&&c!==null){PROG.q[it.id]={c,ok:c===it.ans};saveProg()}
-    locked=true;revealCard(pq.querySelector('.prob'),it,c,c!==it.ans);renderMath(pq);
+    locked=true;revealCard(pq.querySelector('.prob'),it,c,c!==it.ans);flash(pq.querySelector('.prob'));renderMath(pq);
     go.disabled=false;go.textContent=idx===N-1?'See results':'Next →';skip.disabled=true;
   }
   pq.addEventListener('click',e=>{const b=e.target.closest('.ch');if(b&&!b.disabled)choose(+b.dataset.i)});

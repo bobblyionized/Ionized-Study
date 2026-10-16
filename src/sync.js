@@ -126,7 +126,7 @@ const SYNC=(()=>{
     const h=location.hash;
     if(/^#\/(home|amc|pc|t\/[^/]+|s\/[^/]+\/(lesson|set))?$/.test(h)&&h!==''&&h!=='#/'){
       const y=window.scrollY,open=[...document.querySelectorAll('.prob')].map(c=>[c.dataset.id,c.querySelector('.sol details')?.open,!c.querySelector('.hist-box')?.hidden]);
-      route();window.scrollTo(0,y);
+      window.__quietRoute=true;try{route()}finally{window.__quietRoute=false}window.scrollTo(0,y);
       for(const [id,d,hb] of open){const c=document.querySelector(`.prob[data-id="${id}"]`);if(!c)continue;     // keep open solutions open
         if(d){const det=c.querySelector('.sol details');if(det)det.open=true}
         if(hb){const b=c.querySelector('.hist-btn');if(b&&!b.hidden)b.click()}}
