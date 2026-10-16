@@ -224,6 +224,30 @@ body.landing #land{display:flex}
 .tm-tz-d{font-size:13px;color:var(--tp-fg)}
 .tm-tz-z{font-size:12px;color:var(--tp-muted);margin-top:3px}
 @media (max-width:420px){.tm-times{grid-template-columns:1fr}}
+.tm-sheet.tm-tall{max-height:88vh;max-height:88dvh;overflow-y:auto;overscroll-behavior:contain}
+.tm-blocks{background:var(--tp-field);border:1px solid var(--tp-sline);border-radius:14px;padding:14px;margin:6px 0 12px}
+.bk-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.bk-seg{display:inline-flex;border:1px solid var(--tp-sline);border-radius:999px;padding:2px;background:var(--tp-sheet)}
+.bk-seg button{border:0;background:none;font:inherit;font-size:12.5px;padding:5px 11px;border-radius:999px;color:var(--tp-muted);cursor:pointer}
+.bk-seg button.on{background:var(--tp-fg);color:var(--tp-sheet)}
+.bk-day{font-size:13.5px;color:var(--tp-muted);margin-bottom:10px}.bk-day b{color:var(--tp-fg)}
+.bk-cur,.bk-next{display:grid;grid-template-columns:44px 1fr auto;align-items:baseline;gap:4px 10px;margin:6px 0}
+.bk-k{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tp-muted)}
+.bk-cur b{font-size:19px;font-weight:600}.bk-next b{font-size:16px;font-weight:600}
+.bk-t{font-variant-numeric:tabular-nums;font-size:17px;font-weight:300;white-space:nowrap}
+.bk-w{grid-column:2/4;font-size:12.5px;color:var(--tp-muted);margin-top:-2px}
+.bk-bar{height:4px;border-radius:2px;background:var(--tp-sline);margin:2px 0 10px 54px;overflow:hidden}.bk-bar i{display:block;height:100%;background:var(--tp-fg);transition:width 1s linear}
+.bk-cap{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tp-muted);margin:12px 0 4px}
+.bk-list{margin-top:8px;border-top:1px solid var(--tp-sline);padding-top:6px}
+.bk-row{display:grid;grid-template-columns:96px 1fr auto;gap:10px;padding:5px 8px;border-radius:8px;font-size:14px;align-items:baseline}
+.bk-row span{font-variant-numeric:tabular-nums;color:var(--tp-muted);font-size:13px}.bk-row b{font-weight:600}.bk-row em{font-style:normal;color:var(--tp-muted);text-align:right}
+.bk-row.lunch b{font-weight:500;color:var(--tp-muted)}
+.bk-row.past{opacity:.4}.bk-row.cur{background:var(--tp-sheet);box-shadow:inset 3px 0 0 var(--tp-fg)}
+.bk-names{margin-top:10px}.bk-names summary{cursor:pointer;font-size:13.5px;color:var(--tp-muted)}
+.bk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:10px}
+.bk-grid label{display:flex;align-items:center;gap:8px}.bk-grid label span{font-weight:700;width:14px}
+.bk-grid input{flex:1;min-width:0;font:inherit;font-size:14px;padding:7px 9px;border-radius:9px;border:1px solid var(--tp-sline);background:var(--tp-sheet);color:var(--tp-fg)}
+.bk-src{font-size:12px;color:var(--tp-muted);margin-top:10px;line-height:1.5}
 .tm-clock svg{width:100%;height:100%;display:block;overflow:visible}
 .tm-face{fill:var(--tp-face);stroke:var(--tp-line);stroke-width:1}
 .tm-tick{stroke:var(--tp-muted);stroke-linecap:round}
@@ -399,13 +423,14 @@ textarea.tm-input{resize:vertical;min-height:84px;line-height:1.45}
 </div>
 
 <!-- current time -->
-<div class="tm-sheet" id="tmTimeSheet" role="dialog" aria-label="Current time">
+<div class="tm-sheet tm-tall" id="tmTimeSheet" role="dialog" aria-label="Current time and school blocks">
   <div class="tm-grab"><span></span></div>
   <h2>Current Time</h2>
   <div class="tm-times">
     <div class="tm-tz"><div class="tm-tz-h">Your local time</div><div class="tm-tz-t" id="tmLocT"></div><div class="tm-tz-d" id="tmLocD"></div><div class="tm-tz-z" id="tmLocZ"></div></div>
     <div class="tm-tz"><div class="tm-tz-h">Universal time</div><div class="tm-tz-t" id="tmUtcT"></div><div class="tm-tz-d" id="tmUtcD"></div><div class="tm-tz-z">UTC · Coordinated Universal Time</div></div>
   </div>
+  <div class="tm-blocks" id="tmBlocks"></div>
   <div class="tm-row"><button class="tm-btn solid" id="tmTimeClose">Done</button></div>
 </div>
 

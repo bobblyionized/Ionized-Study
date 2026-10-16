@@ -32,6 +32,7 @@
       const d=new Date(),l=fmt(d,undefined,undefined),u=fmt(d,'UTC',false);
       $('tmLocT').textContent=l.t;$('tmLocD').textContent=l.d;$('tmLocZ').textContent=zone.replace(/_/g,' ')+' · '+off(d);
       $('tmUtcT').textContent=u.t;$('tmUtcD').textContent=u.d;
+      if(window.paintBlocks)paintBlocks();
     }
     const open=()=>{TM.openSheet(sheet);paint();clearInterval(tick);
       setTimeout(()=>{paint();tick=setInterval(paint,1000)},1000-(Date.now()%1000))};   // tick on the second
