@@ -11,7 +11,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const L='ABCDE';
 function renderMath(el){if(window.renderMathInElement){try{renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})}catch(e){}}}
 function setCrumbs(parts){crumbs.innerHTML=parts.map(p=>p[1]?`<a href="${p[1]}">${esc(p[0])}</a>`:esc(p[0])).join(' &nbsp;›&nbsp; ')}
-function cleanup(){if(timerHandle){clearInterval(timerHandle);timerHandle=null}if(keyHandler){document.removeEventListener('keydown',keyHandler);keyHandler=null}}
+function cleanup(){if(window.__graphOff)window.__graphOff();if(timerHandle){clearInterval(timerHandle);timerHandle=null}if(keyHandler){document.removeEventListener('keydown',keyHandler);keyHandler=null}}
 const stars=l=>'★'.repeat(l)+'☆'.repeat(3-l);
 const fmtTime=s=>{s=Math.max(0,Math.round(s));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
 
@@ -80,7 +80,7 @@ function amcHome(){
    CATALOG.map(sec=>{const its=sec.items.filter(amcShown);return its.length?`<h2>${esc(sec.area)}</h2><p class="meta" style="margin:0 0 12px">${esc(sec.note)}</p><div class="grid">${its.map(tile).join('')}</div>`:''}).join('');
   const g=document.getElementById('amcGear'),pn=document.getElementById('amcSet');
   g.addEventListener('click',()=>{pn.hidden=!pn.hidden;g.setAttribute('aria-expanded',String(!pn.hidden));g.classList.toggle('on',!pn.hidden)});
-  pn.addEventListener('click',e=>{const b=e.target.closest('[data-lv]');if(!b)return;try{localStorage.setItem('amcprep.level',b.dataset.lv)}catch(err){}
+  pn.addEventListener('click',e=>{const b=e.target.closest('[data-lv]');if(!b)return;try{localStorage.setItem('amcprep.level',b.dataset.lv)}catch(err){}if(typeof SYNC!=='undefined')SYNC.changed();
     amcHome();const g2=document.getElementById('amcGear'),p2=document.getElementById('amcSet');p2.hidden=false;g2.classList.add('on');g2.setAttribute('aria-expanded','true')});
 }
 
@@ -112,11 +112,12 @@ function subPage(sid,tab){
   const s=subById(sid);const t=findTopic(s.topic);setCrumbs([['Home','#/home'],trackCrumb(t),[t.name,'#/t/'+t.id],[s.name]]);
   const st=subStats(sid);
   app.innerHTML=`<h1>${s.sec?'<span class="secno">'+s.sec+'</span> ':''}${esc(s.name)}</h1><p class="sub">${esc(s.d)}</p>
-  <div class="tabs">${[['lesson','Lesson'],['set','Problem Set ('+st.total+')'],['practice','Practice Mode']].map(([k,n])=>`<button class="tab ${k===tab?'on':''}" onclick="location.hash='#/s/${sid}/${k}'">${n}</button>`).join('')}</div>
+  <div class="tabs">${[['lesson','Lesson'],['set','Problem Set ('+st.total+')'],['practice','Practice Mode'],['graph','Graph']].map(([k,n])=>`<button class="tab ${k===tab?'on':''}" onclick="location.hash='#/s/${sid}/${k}'">${n}</button>`).join('')}</div>
   <div id="tabbody"></div>${tabArrows(sid,tab)}`;
   const body=document.getElementById('tabbody');enterTab(body);
   if(tab==='set')return setView(sid,body);
   if(tab==='practice')return practiceSetup(sid,body);
+  if(tab==='graph')return graphView(body);
   const les=document.getElementById('L-'+sid);
   const i=t.subs.indexOf(s),next=t.subs[i+1];
   body.innerHTML=`<div class="lesson">${les?les.textContent:'<p>Lesson coming soon.</p>'}</div>
@@ -124,7 +125,7 @@ function subPage(sid,tab){
   drawLessonPlots(body);renderMath(body);
 }
 /* ---------- moving between Lesson / Problem Set / Practice: side arrows + sideways swipe ---------- */
-const SUB_TABS=[['lesson','Lesson'],['set','Problem Set'],['practice','Practice Mode']];
+const SUB_TABS=[['lesson','Lesson'],['set','Problem Set'],['practice','Practice Mode'],['graph','Graph']];
 let tabSlide=null;                                              // 'next' | 'prev': direction the new tab slides in from
 function tabArrows(sid,tab){
   const i=SUB_TABS.findIndex(x=>x[0]===tab),pv=SUB_TABS[i-1],nx=SUB_TABS[i+1];
@@ -150,7 +151,7 @@ if(typeof document!=='undefined')(()=>{                          // arrow clicks
     if(/(auto|scroll)/.test(cs.overflowX)&&el.scrollWidth>el.clientWidth+2)return true}return false};
   document.addEventListener('touchstart',e=>{
     body=null;lock=null;dx=0;if(e.touches.length!==1||!curSubTab())return;
-    const tg=e.target;if(tg.closest('input,textarea,select,.katex-display,.plot,.lfig,table')||scrollsX(tg))return;
+    const tg=e.target;if(tg.closest('input,textarea,select,.katex-display,.plot,.lfig,table,.gc')||scrollsX(tg))return;
     body=document.getElementById('tabbody');x0=e.touches[0].clientX;y0=e.touches[0].clientY;t0=Date.now();
   },{passive:true});
   document.addEventListener('touchmove',e=>{

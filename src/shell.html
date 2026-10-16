@@ -63,6 +63,57 @@ h4{margin:0 0 6px;font-size:15px;text-transform:uppercase;letter-spacing:.6px;co
 .tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin:14px 0 18px;flex-wrap:wrap}
 .tab{border:none;background:none;padding:10px 14px;font:inherit;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px}
 .tab.on{color:var(--accent);border-bottom-color:var(--accent)}
+/* ---- Graph tab (Desmos-style calculator) ---- */
+body.graph-mode main{max-width:1500px}
+body.graph-mode .tab-arrow{display:none}
+.gc{display:flex;height:640px;border:1px solid #d6d6d6;border-radius:6px;overflow:hidden;background:#fff;color:#222;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.gc-panel{width:360px;flex:none;display:flex;flex-direction:column;border-right:1px solid #ccc;background:#fff;min-height:0}
+.gc-top{display:flex;align-items:center;gap:2px;padding:4px 6px;background:#ededed;border-bottom:1px solid #ccc}
+.gc-sp{flex:1}
+.gc-ib{width:34px;height:30px;border:0;background:none;border-radius:4px;font-size:20px;line-height:1;color:#555;cursor:pointer}
+.gc-ib:hover{background:#dcdcdc}.gc-ib:disabled{opacity:.35;cursor:default;background:none}
+.gc-list{flex:1;overflow-y:auto;min-height:0}
+.gc-row{display:flex;align-items:stretch;border-bottom:1px solid #e2e2e2;min-height:58px;position:relative;background:#fff}
+.gc-row.sel .gc-tab{background:#2f72dc}.gc-row.sel .gc-n{color:#fff}
+.gc-row.editing{box-shadow:inset 0 0 0 2px #2f72dc}
+.gc-tab{width:42px;flex:none;background:#f1f1f1;display:flex;flex-direction:column;align-items:center;padding-top:5px;gap:5px;border-right:1px solid #e2e2e2}
+.gc-n{font-size:10px;color:#777}
+.gc-ic{width:22px;height:22px;border-radius:50%;border:2.5px solid var(--c);background:var(--c);cursor:pointer;padding:0;box-shadow:inset 0 0 0 2px #fff}
+.gc-ic.off{background:#fff}
+.gc-ex{flex:1;min-width:0;padding:8px 8px 6px 10px;position:relative;cursor:text}
+.gc-math{font-size:17px;min-height:26px;line-height:26px;overflow-x:auto;overflow-y:hidden;white-space:nowrap;scrollbar-width:thin}
+.gc-math .katex{font-size:1.08em}
+.gc-in{display:none;width:100%;border:0;outline:0;font:17px "Times New Roman",Times,serif;font-style:italic;padding:0;height:26px;background:transparent;color:#222}
+.gc-row.editing .gc-math{display:none}.gc-row.editing .gc-in{display:block}
+.gc-math.empty{color:#bbb}
+.gc-extra:empty{display:none}
+.gc-val{text-align:right;font-size:15px;color:#555;margin-top:2px;font-family:"Times New Roman",serif}
+.gc-err{font-size:12px;color:#c74440;margin-top:3px}
+.gc-addsl{font-size:12px;color:#777;margin-top:4px}.gc-addsl button{border:1px solid #ccc;background:#f6f6f6;border-radius:4px;padding:1px 8px;font-style:italic;cursor:pointer;margin-left:3px}
+.gc-slider{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:12px;color:#666}
+.gc-range{flex:1;accent-color:#2f72dc;min-width:0}
+.gc-lim{cursor:pointer;padding:1px 3px;border-radius:3px}.gc-lim:hover{background:#eee}
+.gc-play{width:24px;height:24px;border-radius:50%;border:1px solid #ccc;background:#fff;font-size:10px;cursor:pointer;color:#555;flex:none}
+.gc-play.on{background:#2f72dc;color:#fff;border-color:#2f72dc}
+.gc-dom{font-size:13px;color:#666;margin-top:4px;font-family:"Times New Roman",serif;font-style:italic}.gc-dom input{width:52px;font:inherit;border:1px solid #ddd;border-radius:3px;padding:1px 4px}
+.gc-x{width:30px;border:0;background:none;font-size:20px;color:#aaa;cursor:pointer;opacity:0}
+.gc-row:hover .gc-x,.gc-row.editing .gc-x{opacity:1}.gc-x:hover{color:#c74440}
+.gc-new{padding:16px;color:#aaa;font-size:14px;cursor:pointer;border-bottom:1px solid #eee}.gc-new:hover{background:#fafafa;color:#777}
+.gc-graph{flex:1;position:relative;min-width:0;background:#fff}
+.gc-graph canvas{position:absolute;inset:0;touch-action:none;cursor:grab;display:block}
+.gc-zoom{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:6px}
+.gc-zoom button{width:34px;height:34px;border:1px solid #ccc;border-radius:5px;background:#fff;font-size:20px;color:#444;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.1);display:flex;align-items:center;justify-content:center}
+.gc-zoom button:hover{background:#f3f3f3}
+.gc-zoom svg{width:18px;height:18px;fill:none;stroke:#444;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+.gc-set{position:absolute;right:52px;top:10px;background:#fff;border:1px solid #ccc;border-radius:6px;padding:10px 12px;box-shadow:0 2px 8px rgba(0,0,0,.15);display:flex;flex-direction:column;gap:8px;font-size:14px;z-index:2}
+.gc-set[hidden]{display:none}.gc-set label{display:flex;gap:6px;align-items:center;cursor:pointer}
+.gc-seg{display:flex;border:1px solid #ccc;border-radius:5px;overflow:hidden}.gc-seg button{flex:1;border:0;background:#fff;padding:4px 10px;font:inherit;font-size:13px;cursor:pointer}
+.gc-seg button.on{background:#2f72dc;color:#fff}
+.gc-tip{position:absolute;background:#fff;border:1px solid #ccc;border-radius:4px;padding:3px 7px;font:14px "Times New Roman",serif;color:#222;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.15);white-space:nowrap;z-index:1}
+.gc-tip small{display:block;font:11px "Helvetica Neue",Arial,sans-serif;color:#777}
+.gc-tip[hidden]{display:none}
+@media (max-width:760px){.gc{flex-direction:column-reverse}.gc-panel{width:auto;height:42%;border-right:0;border-top:1px solid #ccc}.gc-graph{flex:1}}
 .h1row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .h1row h1{margin-right:auto}
 .gear{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;

@@ -7,9 +7,9 @@
 const SYNC=(()=>{
   if(typeof document==='undefined'||!document.getElementById('tmCodeBox'))return null;
   const DB='https://ionized-study-and-shi-default-rtdb.firebaseio.com';
-  const LK='amcprep.sync', ALPH='ABCDEFGHJKMNPQRSTUVWXYZ23456789', CATS=['q','pr','mock','hist'];
+  const LK='amcprep.sync', ALPH='ABCDEFGHJKMNPQRSTUVWXYZ23456789', CATS=['q','pr','mock','hist','set'];
   const $=id=>document.getElementById(id);
-  const empty=()=>({q:{},pr:{},mock:{},hist:{}});
+  const empty=()=>({q:{},pr:{},mock:{},hist:{},set:{}});
   let st=(()=>{try{return JSON.parse(localStorage.getItem(LK))||{}}catch(e){return{}}})();
   if(!st.last)st.last=empty();
   const persist=()=>{try{localStorage.setItem(LK,JSON.stringify(st))}catch(e){}};
@@ -39,6 +39,11 @@ const SYNC=(()=>{
     for(const k in PROG.pr)o.pr[k]=J(PROG.pr[k]);
     for(const m of PROG.mock)o.mock['m'+m.at]=J(m);
     for(const h of TM.getHist())o.hist['h'+h.start]=J(h);
+    const ls=k=>{try{return localStorage.getItem(k)}catch(e){return null}};      // settings: lunch, block names, AMC level
+    const l=ls('amcprep.lunch');if(l==='1'||l==='2')o.set.lunch=J(+l);
+    const lv=ls('amcprep.level');if(lv&&lv!=='both')o.set.level=J(lv);
+    let bn={};try{bn=JSON.parse(ls('amcprep.blocknames'))||{}}catch(e){}
+    for(const b in bn)if(/^[A-G]$/.test(b)&&bn[b])o.set['bn'+b]=J(bn[b]);
     return o;
   }
   function applyLocal(M){
@@ -48,6 +53,12 @@ const SYNC=(()=>{
     PROG.mock=val('mock').sort((a,b)=>a.at-b.at);
     try{localStorage.setItem(KEY,JSON.stringify(PROG))}catch(e){}
     TM.setHist(val('hist').sort((a,b)=>a.start-b.start));
+    const sv=k=>M.set[k]===undefined?undefined:JSON.parse(M.set[k]),bn={};
+    for(const k in M.set)if(/^bn[A-G]$/.test(k))bn[k.slice(2)]=sv(k);
+    try{const l=sv('lunch');if(l)localStorage.setItem('amcprep.lunch',String(l));else localStorage.removeItem('amcprep.lunch');
+      const lv=sv('level');if(lv)localStorage.setItem('amcprep.level',lv);else localStorage.removeItem('amcprep.level');
+      localStorage.setItem('amcprep.blocknames',JSON.stringify(bn))}catch(e){}
+    document.dispatchEvent(new Event('amcprep:settings'));
   }
   function remoteMap(d){const o=empty();d=d||{};for(const c of CATS){const s=d[c]||{};for(const k in s)o[c][k]=J(s[k])}return o}
   function merge3(L,R,B){
@@ -113,7 +124,7 @@ const SYNC=(()=>{
   /* re-render the current page so new data shows, without interrupting a practice session or mock test */
   function refreshView(){
     const h=location.hash;
-    if(/^#\/(home|t\/[^/]+|s\/[^/]+\/(lesson|set))?$/.test(h)&&h!==''&&h!=='#/'){
+    if(/^#\/(home|amc|pc|t\/[^/]+|s\/[^/]+\/(lesson|set))?$/.test(h)&&h!==''&&h!=='#/'){
       const y=window.scrollY,open=[...document.querySelectorAll('.prob')].map(c=>[c.dataset.id,c.querySelector('.sol details')?.open,!c.querySelector('.hist-box')?.hidden]);
       route();window.scrollTo(0,y);
       for(const [id,d,hb] of open){const c=document.querySelector(`.prob[data-id="${id}"]`);if(!c)continue;     // keep open solutions open

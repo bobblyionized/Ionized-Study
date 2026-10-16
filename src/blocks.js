@@ -83,9 +83,13 @@ const BHS=(()=>{
       <div class="bk-src">Times and the 7-day cycle come from the Belmont High School 2026–27 schedule and calendar. A snow day can shift the cycle, and early-release days only show dismissal (period times for those days are not published).</div></details>`;
   const segs=box.querySelectorAll('.bk-seg button');
   const setSeg=()=>segs.forEach(b=>b.classList.toggle('on',+b.dataset.l===lunch));setSeg();
-  segs.forEach(b=>b.addEventListener('click',()=>{lunch=+b.dataset.l;try{localStorage.setItem(LK,String(lunch))}catch(e){}setSeg();paint(true)}));
+  const synced=()=>{if(typeof SYNC!=='undefined')SYNC.changed()};
+  segs.forEach(b=>b.addEventListener('click',()=>{lunch=+b.dataset.l;try{localStorage.setItem(LK,String(lunch))}catch(e){}setSeg();paint(true);synced()}));
   box.querySelectorAll('.bk-grid input').forEach(inp=>inp.addEventListener('input',()=>{const v=inp.value.trim();if(v)names[inp.dataset.b]=v;else delete names[inp.dataset.b];
-    try{localStorage.setItem(NK,JSON.stringify(names))}catch(e){}paint(true)}));
+    try{localStorage.setItem(NK,JSON.stringify(names))}catch(e){}paint(true);synced()}));
+  document.addEventListener('amcprep:settings',()=>{                     // new values arrived from another device
+    try{lunch=+localStorage.getItem(LK)===1?1:2;names=JSON.parse(localStorage.getItem(NK))||{}}catch(e){}
+    setSeg();box.querySelectorAll('.bk-grid input').forEach(inp=>{if(inp!==document.activeElement)inp.value=names[inp.dataset.b]||''});paint(true)});
 
   let lastList='';
   function paint(force){
