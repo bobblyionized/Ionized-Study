@@ -1,0 +1,160 @@
+=== LESSONS ===
+<script type="text/plain" id="L-a10-poly">
+<h2>Polygons, Area &amp; Coordinates</h2>
+
+<h3>1. Angles of polygons</h3>
+<div class="box"><h4>Theorems</h4><ul>
+<li>The interior angles of an $n$-gon add to $180^\circ(n-2)$.</li>
+<li>The exterior angles (one at each vertex) of any convex polygon add to $360^\circ$.</li>
+<li>An $n$-gon has $\dfrac{n(n-3)}2$ diagonals.</li></ul></div>
+<p><b>Proofs.</b> Drawing all diagonals from one vertex cuts a convex $n$-gon into $n-2$ triangles, whose angles make up exactly the polygon's angles. Walking once around the polygon, you turn by each exterior angle and end facing the original direction: one full turn, $360^\circ$. Each vertex connects by a diagonal to the $n-3$ vertices that are neither itself nor a neighbor, and each diagonal is counted from both ends.</p>
+<p>Each interior angle of a regular $n$-gon is $180^\circ-\frac{360^\circ}{n}$: $108^\circ$ for a pentagon, $120^\circ$ for a hexagon, $135^\circ$ for an octagon.</p>
+
+<h3>2. Areas of quadrilaterals</h3>
+<ul><li><b>Parallelogram:</b> base $\times$ height (cut off a triangle from one end and move it to the other to make a rectangle).</li>
+<li><b>Trapezoid:</b> $\frac{b_1+b_2}{2}h$. Two copies, one rotated, fit together into a parallelogram with base $b_1+b_2$.</li>
+<li><b>Rhombus or kite</b> (perpendicular diagonals): $\frac{d_1d_2}2$. The diagonals split it into four right triangles. A rhombus's diagonals bisect each other at right angles, so its side is $\sqrt{(d_1/2)^2+(d_2/2)^2}$.</li>
+<li><b>Regular hexagon</b> of side $s$: six equilateral triangles, area $\frac{3\sqrt3}{2}s^2$.</li>
+<li><b>Subtraction:</b> often the easiest area is a big shape minus pieces, like a rectangle minus corner triangles.</li></ul>
+
+<h3>3. The coordinate plane</h3>
+<ul><li><b>Distance:</b> $\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$, which is the Pythagorean theorem on the horizontal and vertical legs.</li>
+<li><b>Midpoint:</b> $\left(\frac{x_1+x_2}2,\frac{y_1+y_2}2\right)$.</li>
+<li><b>Slope</b> $m=\frac{y_2-y_1}{x_2-x_1}$; line $y=mx+b$. Parallel lines have equal slopes. Perpendicular lines have slopes with product $-1$. (Rotating a line by $90^\circ$ turns a run-rise step $(1,m)$ into $(-m,1)$, whose slope is $-\frac1m$.)</li>
+<li><b>Distance from a point to a line</b> $ax+by+c=0$: $\dfrac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}$.</li></ul>
+
+<h3>4. Shoelace formula</h3>
+<div class="box"><h4>Theorem</h4>For a polygon with vertices $(x_1,y_1),\dots,(x_n,y_n)$ listed in order around the boundary,
+$$\text{Area}=\tfrac12\left|\sum_{i=1}^{n}(x_iy_{i+1}-x_{i+1}y_i)\right|,$$ with $(x_{n+1},y_{n+1})=(x_1,y_1)$.</div>
+<p><b>Why it works.</b> The term $\frac12(x_iy_{i+1}-x_{i+1}y_i)$ is the signed area of the triangle formed by the origin and edge $i$. Going around the polygon, these signed triangles add up to the polygon's area: the parts outside the polygon are counted once positively and once negatively, so they cancel.</p>
+
+<h3>5. Lattice points</h3>
+<ul><li>The segment from $(0,0)$ to $(a,b)$ contains $\gcd(a,b)+1$ lattice points, endpoints included. The lattice points are evenly spaced, at steps of $\left(\frac a g,\frac bg\right)$ with $g=\gcd(a,b)$.</li>
+<li><b>Pick's theorem:</b> a polygon whose vertices are lattice points, with $I$ lattice points inside and $B$ on the boundary, has area $I+\frac B2-1$.</li></ul>
+
+<h3>6. Reflections and shortest paths</h3>
+<p>Reflecting over $y=x$ swaps coordinates; over the $x$-axis it negates $y$. <b>Shortest path that touches a line:</b> to go from $A$ to the line and then to $B$ (both on the same side), reflect $B$ across the line. Any path $A\to P\to B$ has the same length as $A\to P\to B'$, which is shortest when it's a straight line.</p>
+</script>
+
+=== BANK ===
+@@ a10-poly
+Q: What is the area of the quadrilateral with vertices $(1,1)$, $(5,2)$, $(4,6)$, and $(0,4)$, in that order?
+L: 2
+A: \frac{31}2
+W: 15
+W: 16
+W: 14
+W: \frac{33}2
+S: Shoelace: list the vertices in order and repeat the first.
+$\sum x_iy_{i+1}=1\cdot2+5\cdot6+4\cdot4+0\cdot1=2+30+16+0=48$.
+$\sum y_ix_{i+1}=1\cdot5+2\cdot4+6\cdot0+4\cdot1=5+8+0+4=17$.
+Area $=\frac12|48-17|=\frac{31}2$.
+---
+Q: What is the measure of each interior angle of a regular $12$-gon, in degrees?
+L: 1
+A: 150
+W: 144
+W: 135
+W: 160
+W: 30
+S: The interior angles add to $180^\circ(12-2)=1800^\circ$; each of the $12$ equal angles is $150^\circ$.
+(Or: each exterior angle is $\frac{360^\circ}{12}=30^\circ$, so each interior angle is $150^\circ$.)
+---
+Q: How many diagonals does a convex polygon with $20$ sides have?
+L: 1
+A: 170
+W: 190
+W: 340
+W: 180
+W: 160
+S: Each vertex has a diagonal to every vertex except itself and its two neighbors: $20-3=17$.
+That counts every diagonal twice (once from each end): $\frac{20\cdot17}2=170$.
+---
+Q: The interior angles of a convex polygon add up to $1800^\circ$. How many sides does it have?
+L: 1
+A: 12
+W: 10
+W: 11
+W: 13
+W: 14
+S: $180(n-2)=1800$ gives $n-2=10$, so $n=12$.
+---
+Q: What is the area of a regular hexagon with side length $4$?
+L: 1
+A: 24\sqrt3
+W: 16\sqrt3
+W: 48\sqrt3
+W: 12\sqrt3
+W: 96
+S: A regular hexagon splits into $6$ equilateral triangles with side $4$, each of area $\frac{\sqrt3}4\cdot16=4\sqrt3$.
+Total: $6\cdot4\sqrt3=24\sqrt3$.
+---
+Q: What is the distance between $(1,2)$ and $(7,10)$?
+L: 1
+A: 10
+W: 14
+W: 8
+W: 2\sqrt{13}
+W: 12
+S: $\sqrt{(7-1)^2+(10-2)^2}=\sqrt{36+64}=\sqrt{100}=10$ (a $6$-$8$-$10$ right triangle).
+---
+Q: The line through $(2,3)$ perpendicular to $y=2x+1$ crosses the $y$-axis at what $y$-value?
+L: 1
+A: 4
+W: 2
+W: -1
+W: 3
+W: 5
+S: Perpendicular slopes multiply to $-1$, so the new slope is $-\frac12$.
+$y-3=-\frac12(x-2)$ gives $y=-\frac12x+4$, so the $y$-intercept is $4$.
+---
+Q: How many lattice points (points with integer coordinates) lie on the segment from $(0,0)$ to $(12,18)$, including both endpoints?
+L: 2
+A: 7
+W: 6
+W: 13
+W: 19
+W: 31
+S: $\gcd(12,18)=6$, so the lattice points are evenly spaced at steps of $\left(\frac{12}6,\frac{18}6\right)=(2,3)$.
+They are $(0,0),(2,3),\dots,(12,18)$: $6+1=7$ points.
+---
+Q: A rhombus has diagonals of length $10$ and $24$. What is its perimeter?
+L: 1
+A: 52
+W: 68
+W: 26
+W: 120
+W: 48
+S: The diagonals of a rhombus bisect each other at right angles, making four right triangles with legs $5$ and $12$.
+Each side is $\sqrt{25+144}=13$, so the perimeter is $52$.
+---
+Q: A trapezoid has parallel sides $8$ and $14$ and height $5$. What is its area?
+L: 1
+A: 55
+W: 110
+W: 70
+W: 40
+W: 60
+S: Area $=\frac{b_1+b_2}2\cdot h=\frac{8+14}2\cdot5=11\cdot5=55$.
+---
+Q: A polygon with vertices at lattice points has $10$ lattice points in its interior and $8$ on its boundary. What is its area?
+L: 2
+A: 13
+W: 14
+W: 18
+W: 9
+W: 17
+S: Pick's theorem: Area $=I+\frac B2-1=10+4-1=13$.
+---
+Q: A runner starts at $A=(0,3)$, must touch the $x$-axis, and then run to $B=(6,5)$. What is the shortest possible total distance?
+L: 2
+A: 10
+W: 8
+W: 2\sqrt{10}+5
+W: 2\sqrt{13}
+W: 11
+S: Reflect $B$ across the $x$-axis to $B'=(6,-5)$. For any point $P$ on the axis, $PB=PB'$, so the path length equals $AP+PB'$, which is shortest as a straight line.
+$AB'=\sqrt{6^2+8^2}=10$.
+
+=== GENS ===
+GENS['a10-poly']=[...GENS['polyg-quad'],...GENS['polyg-reg'],...GENS['polyg-shoe'],...GENS['polyg-ratio'],...GENS['coord-line'],...GENS['coord-dist'],...GENS['coord-lattice'],...GENS['coord-trans']];

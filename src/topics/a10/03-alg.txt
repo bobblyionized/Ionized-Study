@@ -1,0 +1,187 @@
+=== LESSONS ===
+<script type="text/plain" id="L-a10-alg">
+<h2>Equations, Quadratics &amp; Functions</h2>
+<p>Algebra is the largest share of the AMC 10. The test rarely asks you to solve a hard equation by brute force; it rewards spotting structure: a symmetric system, a hidden factorization, a quantity you can find without finding the variables.</p>
+
+<h3>1. Factoring identities</h3>
+<div class="box"><h4>Know these by heart</h4><ul>
+<li>$a^2-b^2=(a-b)(a+b)$</li>
+<li>$(a\pm b)^2=a^2\pm2ab+b^2$, so $a^2+b^2=(a+b)^2-2ab$</li>
+<li>$a^3\pm b^3=(a\pm b)(a^2\mp ab+b^2)$</li>
+<li>$(a+b)^3=a^3+b^3+3ab(a+b)$, so $a^3+b^3=(a+b)^3-3ab(a+b)$</li>
+<li>$xy+ax+by+ab=(x+b)(y+a)$ (Simon's Favorite Factoring Trick)</li></ul></div>
+<p><b>Proofs.</b> Each is checked by multiplying out the right side. For example $(a-b)(a^2+ab+b^2)=a^3+a^2b+ab^2-a^2b-ab^2-b^3=a^3-b^3$: the middle terms cancel in pairs.</p>
+<p><b>Using them.</b> $2027^2-2023^2=(4)(4050)=16200$ without squaring anything. If $x+\frac1x=5$, then $x^2+\frac1{x^2}=\left(x+\frac1x\right)^2-2=23$.</p>
+<p><b>Simon's trick.</b> To solve $xy+3x+2y=20$ in integers, add $6$ to both sides: $(x+2)(y+3)=26$, then list factor pairs of $26$.</p>
+
+<h3>2. Systems of equations</h3>
+<ul><li>When every variable appears symmetrically, <b>add all the equations</b>. From $x+y=7$, $y+z=9$, $z+x=10$: adding gives $2(x+y+z)=26$, so $x+y+z=13$ and each variable is $13$ minus one equation.</li>
+<li>If the question asks for a combination like $a+b$, look for a way to get it directly instead of solving for each variable.</li>
+<li>Multiplying equations works too: if $xy=6,\ yz=10,\ zx=15$ then $(xyz)^2=900$.</li></ul>
+
+<h3>3. Quadratics</h3>
+<div class="box"><h4>Quadratic formula</h4>The solutions of $ax^2+bx+c=0$ ($a\ne0$) are $x=\dfrac{-b\pm\sqrt{b^2-4ac}}{2a}$.</div>
+<p><b>Proof (completing the square).</b> Divide by $a$: $x^2+\frac bax=-\frac ca$. Add $\left(\frac b{2a}\right)^2$ to both sides: $\left(x+\frac b{2a}\right)^2=\frac{b^2-4ac}{4a^2}$. Take square roots: $x+\frac b{2a}=\pm\frac{\sqrt{b^2-4ac}}{2a}$, and solve for $x$.</p>
+<p><b>Discriminant</b> $D=b^2-4ac$: two real roots if $D\gt0$, one (double) root if $D=0$, none if $D\lt0$. For integer coefficients, the roots are rational exactly when $D$ is a perfect square.</p>
+<p><b>Vertex.</b> $ax^2+bx+c=a\left(x+\frac b{2a}\right)^2+c-\frac{b^2}{4a}$, so the vertex is at $x=-\frac b{2a}$. For $a\gt0$ that is the minimum; this is how to answer "maximize the area" problems.</p>
+<div class="box"><h4>Vieta's formulas</h4>If $ax^2+bx+c=0$ has roots $r$ and $s$, then $r+s=-\frac ba$ and $rs=\frac ca$.</div>
+<p><b>Proof.</b> A quadratic with roots $r,s$ factors as $a(x-r)(x-s)=ax^2-a(r+s)x+ars$. Compare coefficients: $b=-a(r+s)$ and $c=ars$. The same argument gives the cubic version: for $ax^3+bx^2+cx+d$, the roots sum to $-\frac ba$, the pairwise products sum to $\frac ca$, and the product is $-\frac da$.</p>
+<p><b>Use:</b> $r^2+s^2=(r+s)^2-2rs$ and $\frac1r+\frac1s=\frac{r+s}{rs}$ come straight from Vieta, with no square roots.</p>
+
+<h3>4. Exponents and radicals</h3>
+<ul><li>$a^m a^n=a^{m+n}$, $(a^m)^n=a^{mn}$, $a^{-n}=\frac1{a^n}$, $a^{1/n}=\sqrt[n]a$. All follow from counting factors of $a$.</li>
+<li>Compare powers by rewriting with a common base or a common exponent: $2^{300}=8^{100}$ and $3^{200}=9^{100}$, so $3^{200}$ is bigger.</li>
+<li>Rationalize: $\frac1{\sqrt a-\sqrt b}=\frac{\sqrt a+\sqrt b}{a-b}$ (difference of squares).</li>
+<li>Denest: $\sqrt{a+2\sqrt b}=\sqrt x+\sqrt y$ when $x+y=a$ and $xy=b$, because $(\sqrt x+\sqrt y)^2=x+y+2\sqrt{xy}$.</li></ul>
+
+<h3>5. Absolute value</h3>
+<p>$|x-a|$ is the distance from $x$ to $a$. So $|x-1|+|x-5|$ is the total distance from $x$ to $1$ and to $5$: it equals $4$ for every $x$ between them and is larger outside. To solve $|E|=k$, solve $E=k$ and $E=-k$; for sums of absolute values, split at the points where each inside is zero.</p>
+
+<h3>6. Functions</h3>
+<ul><li>$f(g(x))$ means: apply $g$ first. Compositions are usually not commutative.</li>
+<li>For a functional equation, plug in convenient values ($0$, $1$, or the same expression twice) to get equations you can solve.</li>
+<li>Repeated application often cycles: compute the first few values and look for the period.</li>
+<li>The inverse undoes $f$: solve $y=f(x)$ for $x$. Its graph is the reflection over $y=x$.</li></ul>
+
+<h3>7. AM–GM inequality</h3>
+<div class="box"><h4>Theorem</h4>For nonnegative $a,b$: $\dfrac{a+b}2\ge\sqrt{ab}$, with equality exactly when $a=b$.</div>
+<p><b>Proof.</b> $(\sqrt a-\sqrt b)^2\ge0$ expands to $a-2\sqrt{ab}+b\ge0$, i.e. $a+b\ge2\sqrt{ab}$. Equality holds only when $\sqrt a=\sqrt b$.</p>
+<p><b>Use:</b> for $x\gt0$, $x+\frac9x\ge2\sqrt9=6$, with the minimum at $x=3$. Among rectangles with a fixed perimeter, the square has the largest area.</p>
+</script>
+
+=== BANK ===
+@@ a10-alg
+Q: What is $2027^2-2023^2$?
+L: 1
+A: 16200
+W: 16
+W: 8100
+W: 4050
+W: 16000
+S: Difference of squares: $a^2-b^2=(a-b)(a+b)$.
+$(2027-2023)(2027+2023)=4\cdot4050=16200$. No need to square four-digit numbers.
+---
+Q: Real numbers satisfy $x+y=7$, $y+z=9$, and $z+x=10$. What is $xyz$?
+L: 1
+A: 72
+W: 60
+W: 80
+W: 63
+W: 90
+S: Every variable appears in two equations, so add all three: $2(x+y+z)=26$, giving $x+y+z=13$.
+Subtract each equation from $13$: $z=13-7=6$, $x=13-9=4$, $y=13-10=3$.
+$xyz=4\cdot3\cdot6=72$.
+---
+Q: The roots of $x^2-6x+4=0$ are $r$ and $s$. What is $r^2+s^2$?
+L: 1
+A: 28
+W: 36
+W: 32
+W: 20
+W: 44
+S: By Vieta, $r+s=6$ and $rs=4$ (the sum is minus the $x$ coefficient; the product is the constant term).
+$r^2+s^2=(r+s)^2-2rs=36-8=28$.
+No need to find $r=3\pm\sqrt5$.
+---
+Q: If $x+\dfrac1x=4$, what is $x^3+\dfrac1{x^3}$?
+L: 2
+A: 52
+W: 64
+W: 60
+W: 56
+W: 48
+S: Cube the given equation: $\left(x+\frac1x\right)^3=x^3+3x+\frac3x+\frac1{x^3}=x^3+\frac1{x^3}+3\left(x+\frac1x\right)$.
+So $64=x^3+\frac1{x^3}+3\cdot4$, giving $x^3+\frac1{x^3}=64-12=52$.
+---
+Q: How many ordered pairs of positive integers $(x,y)$ satisfy $xy+2x+3y=29$?
+L: 2
+A: 2
+W: 0
+W: 1
+W: 3
+W: 4
+S: Simon's trick: add $6$ to both sides so the left side factors. $xy+2x+3y+6=35$, i.e. $(x+3)(y+2)=35$.
+With $x,y\ge1$, we need $x+3\ge4$ and $y+2\ge3$. Factor pairs of $35$: $1\cdot35$, $5\cdot7$, $7\cdot5$, $35\cdot1$.
+Only $(x+3,y+2)=(5,7)$ and $(7,5)$ meet both bounds: $(x,y)=(2,5)$ and $(4,3)$.
+Check $(2,5)$: $10+4+15=29$ ✓. Check $(4,3)$: $12+8+9=29$ ✓. That is $2$ pairs.
+---
+Q: For what value of $k$ does $x^2+kx+16=0$ have exactly one real solution, if $k\gt0$?
+L: 1
+A: 8
+W: 4
+W: 16
+W: 2
+W: 32
+S: One real solution means a double root, so the discriminant is zero: $k^2-4\cdot1\cdot16=0$.
+$k^2=64$, and $k\gt0$ gives $k=8$. (Then $x^2+8x+16=(x+4)^2$.)
+---
+Q: A farmer has $100$ meters of fence to make a rectangular pen against a long barn wall, so only three sides need fence. What is the largest possible area, in square meters?
+L: 2
+A: 1250
+W: 625
+W: 2500
+W: 1000
+W: 1200
+S: Let the two sides perpendicular to the wall have length $x$; the side parallel to the wall is $100-2x$.
+Area $A=x(100-2x)=-2x^2+100x$, a downward parabola with vertex at $x=-\frac{100}{2(-2)}=25$.
+$A(25)=25\cdot50=1250$.
+(AM–GM view: $2x\cdot(100-2x)\le\left(\frac{100}{2}\right)^2=2500$, so $A\le1250$, with equality when $2x=100-2x$.)
+---
+Q: Which is the largest: $2^{600}$, $3^{400}$, $5^{200}$, $6^{200}$, $10^{100}$?
+L: 2
+A: 3^{400}
+W: 2^{600}
+W: 5^{200}
+W: 6^{200}
+W: 10^{100}
+S: Rewrite everything as a power with exponent $200$ (or compare $200$th roots):
+$2^{600}=8^{200}$, $3^{400}=9^{200}$, $5^{200}$, $6^{200}$, $10^{100}=\sqrt{10}^{\,200}\approx3.16^{200}$.
+The bases are $8,9,5,6,3.16$, so $3^{400}=9^{200}$ is the largest.
+---
+Q: How many real numbers $x$ satisfy $|x-2|+|x+4|=6$?
+L: 2
+A: \text{infinitely many}
+W: 0
+W: 1
+W: 2
+W: 3
+S: $|x-2|+|x+4|$ is the distance from $x$ to $2$ plus the distance from $x$ to $-4$.
+For any $x$ between $-4$ and $2$, these add up to exactly the distance between $-4$ and $2$, which is $6$. Outside that interval the sum is larger.
+So every $x$ in $[-4,2]$ works: infinitely many solutions.
+---
+Q: A function satisfies $f(x)+2f(1-x)=3x$ for all real $x$. What is $f(0)$?
+L: 3
+A: 2
+W: 1
+W: 0
+W: -1
+W: 3
+S: Replace $x$ by $1-x$ to get a second equation: $f(1-x)+2f(x)=3(1-x)=3-3x$.
+Now treat $A=f(x)$ and $B=f(1-x)$ as unknowns: $A+2B=3x$ and $2A+B=3-3x$.
+Double the second and subtract the first: $4A+2B-(A+2B)=6-6x-3x$, so $3A=6-9x$ and $f(x)=2-3x$.
+Check: $f(1-x)=2-3(1-x)=3x-1$, and $(2-3x)+2(3x-1)=3x$ ✓. So $f(0)=2$.
+(Faster for just $f(0)$: plug in $x=0$ and $x=1$ to get $f(0)+2f(1)=0$ and $f(1)+2f(0)=3$, then solve.)
+---
+Q: If $\sqrt{x}+\dfrac{1}{\sqrt{x}}=3$, what is $x+\dfrac1x$?
+L: 1
+A: 7
+W: 9
+W: 11
+W: 8
+W: 6
+S: Square both sides: $x+2+\frac1x=9$ (the cross term is $2\sqrt x\cdot\frac1{\sqrt x}=2$).
+So $x+\frac1x=7$.
+---
+Q: What is the minimum value of $\dfrac{x^2+16}{x}$ for $x\gt0$?
+L: 2
+A: 8
+W: 4
+W: 16
+W: 10
+W: 17
+S: Split the fraction: $\frac{x^2+16}{x}=x+\frac{16}{x}$.
+AM–GM: $x+\frac{16}x\ge2\sqrt{x\cdot\frac{16}x}=2\cdot4=8$, with equality when $x=\frac{16}x$, i.e. $x=4$.
+Minimum: $8$.
+
+=== GENS ===
+GENS['a10-alg']=[...GENS['alg-fact'],...GENS['quad-vieta'],...GENS['quad-disc'],...GENS['alg-lin'],...GENS['ineq-amgm'],...GENS['func-eval'],...GENS['alg-rad']];

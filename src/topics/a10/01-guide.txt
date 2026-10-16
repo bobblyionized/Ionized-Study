@@ -1,0 +1,153 @@
+=== LESSONS ===
+<script type="text/plain" id="L-a10-guide">
+<h2>How the AMC 10 Works</h2>
+<p>The AMC 10 is the first round of the U.S. math olympiad path for students in grade 10 and below. It is offered on two dates each November (the <b>A</b> and <b>B</b> exams, which have different problems); you may take one or both. This course covers everything that has appeared on the 42 AMC 10 exams from 2006 through 2025.</p>
+<div class="box"><h4>The format</h4><ul>
+<li>25 multiple-choice questions, 5 choices each, in 75 minutes. No calculators.</li>
+<li><b>Scoring:</b> 6 points for a correct answer, 1.5 points for a blank, 0 for a wrong answer. Maximum 150.</li>
+<li>Roughly the top 2.5% of AMC 10 scorers qualify for the AIME. The exact cutoff changes every year and has usually been somewhere around 100–120.</li>
+<li>The problems get harder as you go: problems 1–10 are routine, 11–20 need a real idea, and 21–25 are hard.</li>
+</ul></div>
+
+<h3>When should you guess? (with proof)</h3>
+<p>Suppose you can narrow a problem down to $k$ equally likely choices. Guessing earns $6$ points with probability $\frac1k$, so its expected value is $\frac6k$. A blank earns $1.5$ for sure.</p>
+<p>$\frac6k\gt 1.5 \iff k\lt 4$. So <b>guess only when you have eliminated at least 2 choices</b> (3 or fewer remain). With 4 left it is a tie in expectation, and a blank is safer. A pure guess among 5 choices is worth $1.2$ points on average, which is less than a blank.</p>
+
+<h3>A scoring strategy that works</h3>
+<ul>
+<li>Do problems 1–15 carefully. Each one is worth exactly as much as problem 25, and the early ones are where points are lost to careless errors. Checking your work is worth more than reaching new problems.</li>
+<li>Answering 15 correctly and leaving 10 blank scores $15\cdot6+10\cdot1.5=105$. Accuracy beats speed.</li>
+<li>Read the answer choices before you start. They tell you the form of the answer (a radical? a fraction?) and let you eliminate choices, estimate, or plug them in.</li>
+<li>Use the last 10 minutes to check the problems you answered, not to rush a hard one.</li>
+</ul>
+
+<h3>What gets tested</h3>
+<p>Counts vary a lot from exam to exam, but over many years the mix has been roughly this. (Estimates based on published breakdowns of recent exams; every exam differs.)</p>
+<table class="exmix"><tr><th>Area</th><th>Share of a typical exam</th><th>Lesson in this course</th></tr>
+<tr><td>Arithmetic, algebra, word problems, sequences, functions</td><td>about 35–40%</td><td>Arithmetic · Equations · Sequences</td></tr>
+<tr><td>Geometry (plane, coordinate, 3D)</td><td>about 20–30%</td><td>Triangles · Circles · Polygons · 3D</td></tr>
+<tr><td>Counting and probability</td><td>about 20%</td><td>Counting · Probability</td></tr>
+<tr><td>Number theory</td><td>about 15–20%</td><td>Number Theory</td></tr>
+<tr><td>Logic, statistics, puzzles</td><td>a few problems</td><td>Logic, Statistics &amp; Puzzles</td></tr></table>
+<p>Topics that are <b>not</b> on the AMC 10: trigonometry beyond right triangles, logarithms, complex numbers, conics, vectors, and calculus. (Those are on the AMC 12; see the other topics on the AMC Prep page.)</p>
+
+<h3>How to use this course</h3>
+<ol><li>Read each lesson. Every formula comes with a proof, because the AMC rewards knowing <i>why</i> something is true: the hard problems are usually a familiar idea used in an unfamiliar way.</li>
+<li>Do the problem set. Problems marked ★ are early-test level, ★★ middle, ★★★ the last five.</li>
+<li>Take a real past exam from the index below under test conditions (75 minutes, no calculator), then check the answer key and read the solutions on the AoPS wiki for every problem you missed or guessed.</li>
+<li>Take the AMC 10 mock exam on the AMC Prep page for more timed practice.</li></ol>
+
+<h3>The 20-year exam index</h3>
+<p>Every AMC 10 from 2006 to 2025. Each link opens the official problems or answer key on the Art of Problem Solving wiki, where every problem also has several full solutions. (In 2021 there were four exams: the spring A/B and the fall A/B.)</p>
+<table class="exidx"><tr><th>Year</th><th>Exams (problems · answer key)</th></tr>
+<tr><td>2025</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2025_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2025_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2025_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2025_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2024</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2024_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2024_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2024_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2024_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2023</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2023_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2023_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2023_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2023_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2022</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2022_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2022_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2022_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2022_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2021</td><td><b>Spring A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2021_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2021_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>Spring B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2021_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2021_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>Fall A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2021_Fall_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2021_Fall_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>Fall B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2021_Fall_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2021_Fall_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2020</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2020_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2020_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2020_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2020_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2019</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2019_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2019_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2019_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2019_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2018</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2018_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2018_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2018_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2018_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2017</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2017_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2017_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2017_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2017_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2016</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2016_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2016_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2016_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2016_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2015</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2015_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2015_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2015_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2015_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2014</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2014_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2014_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2014_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2014_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2013</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2013_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2013_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2013_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2013_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2012</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2012_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2012_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2012_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2012_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2011</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2011_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2011_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2011_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2011_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2010</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2010_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2010_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2010_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2010_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2009</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2009_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2009_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2009_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2009_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2008</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2008_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2008_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2008_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2008_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2007</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2007_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2007_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2007_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2007_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2006</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2006_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2006_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2006_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2006_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+</table>
+<p class="meta">The AMC problems are © Mathematical Association of America; they are linked here, not copied. All practice problems in this course are original.</p>
+</script>
+
+=== BANK ===
+@@ a10-guide
+Q: On the AMC 10, a correct answer is worth $6$ points, a blank $1.5$, and a wrong answer $0$. A student answers $16$ questions correctly, gets $4$ wrong, and leaves the rest blank. What is the score?
+L: 1
+A: 103.5
+W: 96
+W: 102
+W: 105
+W: 111
+S: There are $25-16-4=5$ blanks.
+Score $=16\cdot6+4\cdot0+5\cdot1.5=96+0+7.5=103.5$.
+(Wrong answers cost you the $1.5$ you would have earned by leaving them blank: those 4 guesses lost $6$ points compared with blanks.)
+---
+Q: A student is sure of $14$ answers and leaves the other $11$ blank. How many of those blanks must the student turn into correct answers (with no wrong answers) to score at least $110$?
+L: 1
+A: 3
+W: 1
+W: 2
+W: 4
+W: 5
+S: Right now the score is $14\cdot6+11\cdot1.5=84+16.5=100.5$.
+Turning a blank into a correct answer changes $1.5$ points into $6$, a gain of $4.5$. After $k$ more correct answers the score is $100.5+4.5k$.
+$100.5+4.5k\ge110 \iff 4.5k\ge9.5 \iff k\ge2.\overline{1}$, so $k=3$ (score $114$). Two more would give only $109.5$.
+---
+Q: You have eliminated $2$ of the $5$ answer choices on a problem, and the other $3$ seem equally likely. What is the expected score from guessing, compared with leaving it blank?
+L: 1
+A: 2 \text{ vs } 1.5
+W: 1.2 \text{ vs } 1.5
+W: 1.5 \text{ vs } 1.5
+W: 3 \text{ vs } 1.5
+W: 2 \text{ vs } 0
+S: Guessing among $3$ equally likely choices is right with probability $\frac13$, worth $6$ points: expected value $\frac13\cdot6=2$.
+A blank is a guaranteed $1.5$. Since $2\gt1.5$, guessing is better here.
+In general guessing among $k$ choices is worth $\frac6k$, which beats $1.5$ exactly when $k\le3$.
+---
+Q: What is the largest number of answer choices you can have left for a guess to have a <b>strictly</b> higher expected value than a blank?
+L: 1
+A: 3
+W: 1
+W: 2
+W: 4
+W: 5
+S: A guess among $k$ choices has expected value $\frac6k$. We need $\frac6k\gt1.5$, i.e. $k\lt4$.
+So the most is $k=3$. With $k=4$ the expected values are equal ($1.5$ each).
+---
+Q: Which score is <b>impossible</b> on the AMC 10 (6 for correct, 1.5 for blank, 0 for wrong)?
+L: 2
+A: 149
+W: 150
+W: 145.5
+W: 141
+W: 144
+S: With $c$ correct and $b$ blank, the score is $6c+1.5b$, a multiple of $1.5$. $149$ is not a multiple of $1.5$ ($149/1.5$ is not an integer), so it is impossible.
+Check the others: $150=6\cdot25$; $145.5=6\cdot24+1.5$; $141=6\cdot23+1.5\cdot2$; $144=6\cdot24+0$ (one wrong).
+---
+Q: A student guesses randomly (among all $5$ choices) on $10$ questions instead of leaving them blank. By how much does this change the expected score?
+L: 2
+A: -3
+W: 0
+W: 3
+W: -15
+W: 12
+S: Each random guess is worth $\frac15\cdot6=1.2$ on average; each blank is worth $1.5$. The difference is $1.2-1.5=-0.3$ per question.
+Over $10$ questions: $10\cdot(-0.3)=-3$ points on average. Random guessing hurts.
+---
+Q: Two students each answer $20$ questions. One gets $18$ right and $2$ wrong; the other gets $17$ right and $3$ wrong. Both leave $5$ blank. How many more points does the first student score?
+L: 1
+A: 6
+W: 4.5
+W: 7.5
+W: 1.5
+W: 12
+S: Both have the same $5$ blanks, so the difference is only in correct answers: one more correct answer is worth $6$ more points.
+(Scores: $18\cdot6+7.5=115.5$ and $17\cdot6+7.5=109.5$.)
+---
+Q: What is the least number of questions a student must answer correctly to guarantee a score of at least $120$, if every question not answered correctly is left blank?
+L: 2
+A: 19
+W: 18
+W: 20
+W: 17
+W: 21
+S: With $c$ correct and $25-c$ blank, the score is $6c+1.5(25-c)=37.5+4.5c$.
+$37.5+4.5c\ge120 \iff 4.5c\ge82.5 \iff c\ge18.\overline{3}$.
+So $c=19$: score $37.5+85.5=123$. ($18$ gives only $118.5$.)
+
+=== GENS ===

@@ -63,6 +63,11 @@ h4{margin:0 0 6px;font-size:15px;text-transform:uppercase;letter-spacing:.6px;co
 .tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin:14px 0 18px;flex-wrap:wrap}
 .tab{border:none;background:none;padding:10px 14px;font:inherit;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px}
 .tab.on{color:var(--accent);border-bottom-color:var(--accent)}
+.exidx,.exmix{border-collapse:collapse;margin:10px 0 16px;font-size:14.5px;width:100%}
+.exidx th,.exidx td,.exmix th,.exmix td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+.exidx th,.exmix th{color:var(--muted);font-size:12.5px;text-transform:uppercase;letter-spacing:.06em}
+.exidx td:first-child{font-weight:700;white-space:nowrap}
+.exidx a{color:var(--accent)}
 /* ---- Graph tab (Desmos-style calculator) ---- */
 body.graph-mode main{max-width:1500px}
 body.graph-mode .tab-arrow{display:none}
@@ -252,6 +257,12 @@ table.t th{background:var(--accent-weak)}
 body.landing header.top,body.landing main{display:none}
 body.landing{background:var(--tp-bg)}
 body.landing #land{display:flex}
+#land.fade-out{display:flex;animation:landOut .5s ease forwards;pointer-events:none}
+#land.fade-in{animation:landIn .45s ease}
+@keyframes landOut{from{opacity:1}to{opacity:0;transform:scale(1.015)}}
+@keyframes landIn{from{opacity:0;transform:scale(1.015)}to{opacity:1;transform:none}}
+main.study-in,header.top.study-in{animation:studyIn .55s ease}
+@keyframes studyIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 #land{position:fixed;inset:0;z-index:20;background:var(--tp-bg);color:var(--tp-fg);font-family:var(--tp-font);
   flex-direction:column;align-items:center;overflow-y:auto;-webkit-user-select:none;user-select:none;
   padding:calc(env(safe-area-inset-top) + 14px) 16px calc(env(safe-area-inset-bottom) + 18px)}
@@ -3186,6 +3197,472 @@ $$f(x)=(x-2)(x^2-6x+10)=x^3-8x^2+22x-20.$$
 <li>Applying the Conjugate Roots Theorem when the coefficients are not real.</li>
 <li>Confusing "exactly $n$ complex roots" with "$n$ real roots."</li>
 </ul></div>
+</script>
+<script type="text/plain" id="L-a10-guide">
+<h2>How the AMC 10 Works</h2>
+<p>The AMC 10 is the first round of the U.S. math olympiad path for students in grade 10 and below. It is offered on two dates each November (the <b>A</b> and <b>B</b> exams, which have different problems); you may take one or both. This course covers everything that has appeared on the 42 AMC 10 exams from 2006 through 2025.</p>
+<div class="box"><h4>The format</h4><ul>
+<li>25 multiple-choice questions, 5 choices each, in 75 minutes. No calculators.</li>
+<li><b>Scoring:</b> 6 points for a correct answer, 1.5 points for a blank, 0 for a wrong answer. Maximum 150.</li>
+<li>Roughly the top 2.5% of AMC 10 scorers qualify for the AIME. The exact cutoff changes every year and has usually been somewhere around 100–120.</li>
+<li>The problems get harder as you go: problems 1–10 are routine, 11–20 need a real idea, and 21–25 are hard.</li>
+</ul></div>
+
+<h3>When should you guess? (with proof)</h3>
+<p>Suppose you can narrow a problem down to $k$ equally likely choices. Guessing earns $6$ points with probability $\frac1k$, so its expected value is $\frac6k$. A blank earns $1.5$ for sure.</p>
+<p>$\frac6k\gt 1.5 \iff k\lt 4$. So <b>guess only when you have eliminated at least 2 choices</b> (3 or fewer remain). With 4 left it is a tie in expectation, and a blank is safer. A pure guess among 5 choices is worth $1.2$ points on average, which is less than a blank.</p>
+
+<h3>A scoring strategy that works</h3>
+<ul>
+<li>Do problems 1–15 carefully. Each one is worth exactly as much as problem 25, and the early ones are where points are lost to careless errors. Checking your work is worth more than reaching new problems.</li>
+<li>Answering 15 correctly and leaving 10 blank scores $15\cdot6+10\cdot1.5=105$. Accuracy beats speed.</li>
+<li>Read the answer choices before you start. They tell you the form of the answer (a radical? a fraction?) and let you eliminate choices, estimate, or plug them in.</li>
+<li>Use the last 10 minutes to check the problems you answered, not to rush a hard one.</li>
+</ul>
+
+<h3>What gets tested</h3>
+<p>Counts vary a lot from exam to exam, but over many years the mix has been roughly this. (Estimates based on published breakdowns of recent exams; every exam differs.)</p>
+<table class="exmix"><tr><th>Area</th><th>Share of a typical exam</th><th>Lesson in this course</th></tr>
+<tr><td>Arithmetic, algebra, word problems, sequences, functions</td><td>about 35–40%</td><td>Arithmetic · Equations · Sequences</td></tr>
+<tr><td>Geometry (plane, coordinate, 3D)</td><td>about 20–30%</td><td>Triangles · Circles · Polygons · 3D</td></tr>
+<tr><td>Counting and probability</td><td>about 20%</td><td>Counting · Probability</td></tr>
+<tr><td>Number theory</td><td>about 15–20%</td><td>Number Theory</td></tr>
+<tr><td>Logic, statistics, puzzles</td><td>a few problems</td><td>Logic, Statistics &amp; Puzzles</td></tr></table>
+<p>Topics that are <b>not</b> on the AMC 10: trigonometry beyond right triangles, logarithms, complex numbers, conics, vectors, and calculus. (Those are on the AMC 12; see the other topics on the AMC Prep page.)</p>
+
+<h3>How to use this course</h3>
+<ol><li>Read each lesson. Every formula comes with a proof, because the AMC rewards knowing <i>why</i> something is true: the hard problems are usually a familiar idea used in an unfamiliar way.</li>
+<li>Do the problem set. Problems marked ★ are early-test level, ★★ middle, ★★★ the last five.</li>
+<li>Take a real past exam from the index below under test conditions (75 minutes, no calculator), then check the answer key and read the solutions on the AoPS wiki for every problem you missed or guessed.</li>
+<li>Take the AMC 10 mock exam on the AMC Prep page for more timed practice.</li></ol>
+
+<h3>The 20-year exam index</h3>
+<p>Every AMC 10 from 2006 to 2025. Each link opens the official problems or answer key on the Art of Problem Solving wiki, where every problem also has several full solutions. (In 2021 there were four exams: the spring A/B and the fall A/B.)</p>
+<table class="exidx"><tr><th>Year</th><th>Exams (problems · answer key)</th></tr>
+<tr><td>2025</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2025_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2025_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2025_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2025_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2024</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2024_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2024_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2024_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2024_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2023</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2023_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2023_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2023_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2023_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2022</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2022_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2022_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2022_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2022_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2021</td><td><b>Spring A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2021_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2021_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>Spring B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2021_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2021_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>Fall A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2021_Fall_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2021_Fall_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>Fall B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2021_Fall_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2021_Fall_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2020</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2020_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2020_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2020_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2020_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2019</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2019_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2019_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2019_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2019_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2018</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2018_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2018_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2018_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2018_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2017</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2017_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2017_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2017_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2017_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2016</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2016_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2016_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2016_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2016_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2015</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2015_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2015_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2015_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2015_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2014</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2014_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2014_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2014_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2014_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2013</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2013_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2013_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2013_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2013_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2012</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2012_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2012_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2012_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2012_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2011</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2011_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2011_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2011_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2011_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2010</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2010_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2010_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2010_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2010_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2009</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2009_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2009_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2009_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2009_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2008</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2008_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2008_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2008_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2008_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2007</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2007_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2007_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2007_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2007_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+<tr><td>2006</td><td><b>10A</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2006_AMC_10A_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2006_AMC_10A_Answer_Key" target="_blank" rel="noopener">key</a> &nbsp;·&nbsp; <b>10B</b>: <a href="https://artofproblemsolving.com/wiki/index.php/2006_AMC_10B_Problems" target="_blank" rel="noopener">problems</a> / <a href="https://artofproblemsolving.com/wiki/index.php/2006_AMC_10B_Answer_Key" target="_blank" rel="noopener">key</a></td></tr>
+</table>
+<p class="meta">The AMC problems are © Mathematical Association of America; they are linked here, not copied. All practice problems in this course are original.</p>
+</script>
+<script type="text/plain" id="L-a10-arith">
+<h2>Arithmetic, Percents, Ratios &amp; Rates</h2>
+<p>These ideas fill most of problems 1–10 on every AMC 10, and they show up inside harder problems too. None of them is hard on its own; the points are lost to setting them up wrong.</p>
+
+<h3>1. Percents are multipliers</h3>
+<div class="box"><h4>Rule</h4>Increasing by $p\%$ multiplies by $1+\frac{p}{100}$; decreasing by $p\%$ multiplies by $1-\frac{p}{100}$. Successive changes multiply.</div>
+<p><b>Why:</b> $x$ increased by $p\%$ of itself is $x+\frac{p}{100}x=x\left(1+\frac p{100}\right)$. A second change applies to the <i>new</i> amount, so its multiplier multiplies the first one.</p>
+<p><b>Consequences.</b> A $20\%$ increase followed by a $20\%$ decrease gives $1.2\cdot0.8=0.96$: a $4\%$ loss, not zero. Changes of $+p\%$ and $-p\%$ always give $1-\frac{p^2}{10000}\lt1$ (difference of squares). The order of the changes never matters, since multiplication is commutative.</p>
+<p><b>"Percent of what?"</b> "$A$ is $x\%$ more than $B$" means $A=B(1+\frac x{100})$: the base is $B$. Then $B$ is <i>not</i> $x\%$ less than $A$: if $A$ is $25\%$ more than $B$, then $B=\frac{A}{1.25}=0.8A$, which is $20\%$ less.</p>
+
+<h3>2. Ratios</h3>
+<ul><li>$a:b=3:5$ means $a=3k$, $b=5k$ for some $k$. Introducing $k$ turns a ratio problem into one equation.</li>
+<li>To combine $a:b$ and $b:c$, rescale so the $b$ values match: $a:b=2:3$ and $b:c=4:5$ become $8:12$ and $12:15$, so $a:b:c=8:12:15$.</li>
+<li>Parts of a whole: splitting $N$ in ratio $a:b$ gives $\frac{a}{a+b}N$ and $\frac b{a+b}N$.</li></ul>
+
+<h3>3. Rates, distance, and work</h3>
+<div class="box"><h4>Rule</h4>Amount $=$ rate $\times$ time. Rates of things working together <b>add</b>; times do not.</div>
+<p><b>Work.</b> If $A$ does a job in $a$ hours and $B$ in $b$ hours, their rates are $\frac1a$ and $\frac1b$ jobs per hour, so together they take $\dfrac{1}{\frac1a+\frac1b}=\dfrac{ab}{a+b}$ hours.</p>
+<p><b>Average speed</b> is total distance over total time, not the average of the speeds. Going distance $d$ at speed $u$ and back at speed $v$:
+$$\text{average}=\frac{2d}{\frac du+\frac dv}=\frac{2uv}{u+v},$$
+the <i>harmonic mean</i>. <b>Proof that it is less than $\frac{u+v}2$</b> (for $u\ne v$): $\frac{u+v}{2}-\frac{2uv}{u+v}=\frac{(u+v)^2-4uv}{2(u+v)}=\frac{(u-v)^2}{2(u+v)}\gt0$. Intuitively, you spend more time at the slower speed.</p>
+<p><b>Meeting and chasing.</b> Two objects moving toward each other close the gap at $u+v$; one chasing the other closes it at $u-v$.</p>
+
+<h3>4. Averages (means)</h3>
+<ul><li>Sum $=$ mean $\times$ count. Most average problems become easy once you switch to sums.</li>
+<li>Adding a value $x$ to a list of $n$ numbers with mean $m$ gives mean $\frac{nm+x}{n+1}$. The mean goes up exactly when $x\gt m$.</li>
+<li><b>Weighted average:</b> two groups of sizes $p$ and $q$ with means $a$ and $b$ have combined mean $\frac{pa+qb}{p+q}$, which lies between $a$ and $b$, closer to the larger group.</li></ul>
+
+<h3>5. Fractions and units</h3>
+<ul><li>"$\frac23$ of the remaining" means take what is left first. Work backward from the end when a problem describes repeated fractions.</li>
+<li>Unit conversions: multiply by fractions equal to $1$, like $\frac{60\text{ min}}{1\text{ hr}}$, and cancel units. Area scales with the square of the length conversion: $1\text{ yd}^2=9\text{ ft}^2$.</li></ul>
+
+<div class="tip"><b>On the test:</b> introduce one variable for "one part" or "the original amount", write a single equation, and check your answer against the story. Many early AMC problems also have a clean answer you can test directly from the choices.</div>
+</script>
+<script type="text/plain" id="L-a10-alg">
+<h2>Equations, Quadratics &amp; Functions</h2>
+<p>Algebra is the largest share of the AMC 10. The test rarely asks you to solve a hard equation by brute force; it rewards spotting structure: a symmetric system, a hidden factorization, a quantity you can find without finding the variables.</p>
+
+<h3>1. Factoring identities</h3>
+<div class="box"><h4>Know these by heart</h4><ul>
+<li>$a^2-b^2=(a-b)(a+b)$</li>
+<li>$(a\pm b)^2=a^2\pm2ab+b^2$, so $a^2+b^2=(a+b)^2-2ab$</li>
+<li>$a^3\pm b^3=(a\pm b)(a^2\mp ab+b^2)$</li>
+<li>$(a+b)^3=a^3+b^3+3ab(a+b)$, so $a^3+b^3=(a+b)^3-3ab(a+b)$</li>
+<li>$xy+ax+by+ab=(x+b)(y+a)$ (Simon's Favorite Factoring Trick)</li></ul></div>
+<p><b>Proofs.</b> Each is checked by multiplying out the right side. For example $(a-b)(a^2+ab+b^2)=a^3+a^2b+ab^2-a^2b-ab^2-b^3=a^3-b^3$: the middle terms cancel in pairs.</p>
+<p><b>Using them.</b> $2027^2-2023^2=(4)(4050)=16200$ without squaring anything. If $x+\frac1x=5$, then $x^2+\frac1{x^2}=\left(x+\frac1x\right)^2-2=23$.</p>
+<p><b>Simon's trick.</b> To solve $xy+3x+2y=20$ in integers, add $6$ to both sides: $(x+2)(y+3)=26$, then list factor pairs of $26$.</p>
+
+<h3>2. Systems of equations</h3>
+<ul><li>When every variable appears symmetrically, <b>add all the equations</b>. From $x+y=7$, $y+z=9$, $z+x=10$: adding gives $2(x+y+z)=26$, so $x+y+z=13$ and each variable is $13$ minus one equation.</li>
+<li>If the question asks for a combination like $a+b$, look for a way to get it directly instead of solving for each variable.</li>
+<li>Multiplying equations works too: if $xy=6,\ yz=10,\ zx=15$ then $(xyz)^2=900$.</li></ul>
+
+<h3>3. Quadratics</h3>
+<div class="box"><h4>Quadratic formula</h4>The solutions of $ax^2+bx+c=0$ ($a\ne0$) are $x=\dfrac{-b\pm\sqrt{b^2-4ac}}{2a}$.</div>
+<p><b>Proof (completing the square).</b> Divide by $a$: $x^2+\frac bax=-\frac ca$. Add $\left(\frac b{2a}\right)^2$ to both sides: $\left(x+\frac b{2a}\right)^2=\frac{b^2-4ac}{4a^2}$. Take square roots: $x+\frac b{2a}=\pm\frac{\sqrt{b^2-4ac}}{2a}$, and solve for $x$.</p>
+<p><b>Discriminant</b> $D=b^2-4ac$: two real roots if $D\gt0$, one (double) root if $D=0$, none if $D\lt0$. For integer coefficients, the roots are rational exactly when $D$ is a perfect square.</p>
+<p><b>Vertex.</b> $ax^2+bx+c=a\left(x+\frac b{2a}\right)^2+c-\frac{b^2}{4a}$, so the vertex is at $x=-\frac b{2a}$. For $a\gt0$ that is the minimum; this is how to answer "maximize the area" problems.</p>
+<div class="box"><h4>Vieta's formulas</h4>If $ax^2+bx+c=0$ has roots $r$ and $s$, then $r+s=-\frac ba$ and $rs=\frac ca$.</div>
+<p><b>Proof.</b> A quadratic with roots $r,s$ factors as $a(x-r)(x-s)=ax^2-a(r+s)x+ars$. Compare coefficients: $b=-a(r+s)$ and $c=ars$. The same argument gives the cubic version: for $ax^3+bx^2+cx+d$, the roots sum to $-\frac ba$, the pairwise products sum to $\frac ca$, and the product is $-\frac da$.</p>
+<p><b>Use:</b> $r^2+s^2=(r+s)^2-2rs$ and $\frac1r+\frac1s=\frac{r+s}{rs}$ come straight from Vieta, with no square roots.</p>
+
+<h3>4. Exponents and radicals</h3>
+<ul><li>$a^m a^n=a^{m+n}$, $(a^m)^n=a^{mn}$, $a^{-n}=\frac1{a^n}$, $a^{1/n}=\sqrt[n]a$. All follow from counting factors of $a$.</li>
+<li>Compare powers by rewriting with a common base or a common exponent: $2^{300}=8^{100}$ and $3^{200}=9^{100}$, so $3^{200}$ is bigger.</li>
+<li>Rationalize: $\frac1{\sqrt a-\sqrt b}=\frac{\sqrt a+\sqrt b}{a-b}$ (difference of squares).</li>
+<li>Denest: $\sqrt{a+2\sqrt b}=\sqrt x+\sqrt y$ when $x+y=a$ and $xy=b$, because $(\sqrt x+\sqrt y)^2=x+y+2\sqrt{xy}$.</li></ul>
+
+<h3>5. Absolute value</h3>
+<p>$|x-a|$ is the distance from $x$ to $a$. So $|x-1|+|x-5|$ is the total distance from $x$ to $1$ and to $5$: it equals $4$ for every $x$ between them and is larger outside. To solve $|E|=k$, solve $E=k$ and $E=-k$; for sums of absolute values, split at the points where each inside is zero.</p>
+
+<h3>6. Functions</h3>
+<ul><li>$f(g(x))$ means: apply $g$ first. Compositions are usually not commutative.</li>
+<li>For a functional equation, plug in convenient values ($0$, $1$, or the same expression twice) to get equations you can solve.</li>
+<li>Repeated application often cycles: compute the first few values and look for the period.</li>
+<li>The inverse undoes $f$: solve $y=f(x)$ for $x$. Its graph is the reflection over $y=x$.</li></ul>
+
+<h3>7. AM–GM inequality</h3>
+<div class="box"><h4>Theorem</h4>For nonnegative $a,b$: $\dfrac{a+b}2\ge\sqrt{ab}$, with equality exactly when $a=b$.</div>
+<p><b>Proof.</b> $(\sqrt a-\sqrt b)^2\ge0$ expands to $a-2\sqrt{ab}+b\ge0$, i.e. $a+b\ge2\sqrt{ab}$. Equality holds only when $\sqrt a=\sqrt b$.</p>
+<p><b>Use:</b> for $x\gt0$, $x+\frac9x\ge2\sqrt9=6$, with the minimum at $x=3$. Among rectangles with a fixed perimeter, the square has the largest area.</p>
+</script>
+<script type="text/plain" id="L-a10-seq">
+<h2>Sequences, Series &amp; Patterns</h2>
+
+<h3>1. Arithmetic sequences</h3>
+<div class="box"><h4>Facts</h4><ul>
+<li>$a_n=a_1+(n-1)d$, so $a_m-a_n=(m-n)d$.</li>
+<li>Number of terms from $a$ to $L$ with step $d$: $\frac{L-a}{d}+1$.</li>
+<li>Sum: $S_n=\dfrac{n(a_1+a_n)}{2}=$ (number of terms) $\times$ (average of first and last).</li></ul></div>
+<p><b>Proof of the sum (Gauss).</b> Write the sum forwards and backwards:
+$S=a_1+a_2+\dots+a_n$ and $S=a_n+a_{n-1}+\dots+a_1$. Add them term by term: each pair $a_k+a_{n+1-k}$ equals $a_1+a_n$ (going one step right adds $d$ on the first term and subtracts $d$ on the other). There are $n$ pairs, so $2S=n(a_1+a_n)$.</p>
+<p><b>Special cases:</b> $1+2+\dots+n=\frac{n(n+1)}2$, and $1+3+5+\dots+(2n-1)=n^2$.</p>
+<p><b>Symmetric terms.</b> Three terms of an arithmetic sequence can be written $a-d,\ a,\ a+d$. Their sum is $3a$, which often gives $a$ at once. The middle term of an odd-length arithmetic sequence is its average.</p>
+
+<h3>2. Geometric sequences</h3>
+<div class="box"><h4>Facts</h4><ul>
+<li>$a_n=a_1r^{n-1}$.</li>
+<li>Finite sum: $S_n=a_1\dfrac{r^n-1}{r-1}$ for $r\ne1$.</li>
+<li>Infinite sum, when $|r|\lt1$: $S=\dfrac{a_1}{1-r}$.</li></ul></div>
+<p><b>Proof.</b> $S=a+ar+\dots+ar^{n-1}$ and $rS=ar+ar^2+\dots+ar^n$. Subtracting, everything cancels except $rS-S=ar^n-a$, so $S=a\frac{r^n-1}{r-1}$. When $|r|\lt1$, $r^n\to0$ as $n$ grows, leaving $\frac{-a}{r-1}=\frac a{1-r}$.</p>
+<p><b>Repeating decimals</b> are infinite geometric series: $0.\overline{36}=\frac{36}{100}+\frac{36}{100^2}+\dots=\frac{36/100}{1-1/100}=\frac{36}{99}=\frac4{11}$.</p>
+<p><b>Bouncing ball:</b> each rebound distance is traveled twice (up and down), so total distance $=$ first drop $+\ 2\times$(sum of the rebound heights).</p>
+
+<h3>3. Telescoping</h3>
+<p>If each term can be written as a difference $f(k)-f(k+1)$, the sum collapses: $\sum_{k=1}^{n}\big(f(k)-f(k+1)\big)=f(1)-f(n+1)$, because each middle $f$ appears once with $+$ and once with $-$.</p>
+<ul><li>$\dfrac1{k(k+1)}=\dfrac1k-\dfrac1{k+1}$, so $\sum_{k=1}^{n}\frac1{k(k+1)}=1-\frac1{n+1}$.</li>
+<li>Products telescope too: $\frac21\cdot\frac32\cdot\frac43\cdots\frac{n+1}{n}=n+1$.</li></ul>
+
+<h3>4. Recursion and cycles</h3>
+<ul><li>Compute the first several terms. Many AMC sequences repeat with a short period; then $a_n$ depends only on $n$ modulo the period.</li>
+<li><b>Fibonacci-type</b> recursions $a_n=a_{n-1}+a_{n-2}$ count tilings, stair climbs (1 or 2 steps) and binary strings with no two adjacent 1s, because the last piece is either a "1" or a "2".</li>
+<li>Last digits of powers cycle: $2^n$ ends in $2,4,8,6,\dots$ (period 4).</li></ul>
+
+<h3>5. Patterns in arrays and figures</h3>
+<p>For a growing figure, count the first few stages, find the difference between consecutive stages, and decide whether it is constant (linear formula), growing by a constant (quadratic), or multiplying (exponential). A quadratic $an^2+bn+c$ has constant second differences equal to $2a$.</p>
+</script>
+<script type="text/plain" id="L-a10-nt">
+<h2>Number Theory</h2>
+<p>Number theory has become one of the most common areas on recent AMC 10s. Almost everything rests on one fact: prime factorization.</p>
+
+<h3>1. Prime factorization</h3>
+<div class="box"><h4>Fundamental Theorem of Arithmetic</h4>Every integer $n\gt1$ can be written as a product of primes, $n=p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}$, in exactly one way (up to order).</div>
+<p>Once you have the factorization, divisors, gcd, lcm, and perfect-power questions are all just bookkeeping with exponents.</p>
+<p><b>There are infinitely many primes (Euclid).</b> Suppose $p_1,\dots,p_k$ were all of them. Then $N=p_1p_2\cdots p_k+1$ leaves remainder $1$ when divided by every $p_i$, so none of them divides $N$; but $N\gt1$ has some prime factor. Contradiction.</p>
+
+<h3>2. Counting and summing divisors</h3>
+<div class="box"><h4>Formulas</h4>For $n=p_1^{a_1}\cdots p_k^{a_k}$:<ul>
+<li>Number of positive divisors: $d(n)=(a_1+1)(a_2+1)\cdots(a_k+1)$.</li>
+<li>Sum of divisors: $\sigma(n)=(1+p_1+\dots+p_1^{a_1})\cdots(1+p_k+\dots+p_k^{a_k})$.</li></ul></div>
+<p><b>Proof.</b> A divisor of $n$ is exactly a number $p_1^{b_1}\cdots p_k^{b_k}$ with $0\le b_i\le a_i$ (by unique factorization, it can't contain other primes or higher powers). Each exponent $b_i$ has $a_i+1$ choices, independently, so multiply. Expanding the product for $\sigma$ produces each divisor exactly once.</p>
+<p><b>Consequences.</b> $d(n)$ is odd exactly when every $a_i$ is even, i.e. $n$ is a perfect square (divisors pair up as $d\leftrightarrow\frac nd$ except $\sqrt n$). Numbers with exactly $3$ divisors are squares of primes.</p>
+
+<h3>3. GCD and LCM</h3>
+<ul><li>$\gcd$ takes the <b>minimum</b> exponent of each prime; $\operatorname{lcm}$ takes the <b>maximum</b>.</li>
+<li>$\gcd(a,b)\cdot\operatorname{lcm}(a,b)=ab$. <b>Proof:</b> for each prime, $\min(x,y)+\max(x,y)=x+y$.</li>
+<li><b>Euclidean algorithm:</b> $\gcd(a,b)=\gcd(b,\ a-qb)$ for any integer $q$. <b>Proof:</b> any common divisor of $a$ and $b$ divides $a-qb$, and any common divisor of $b$ and $a-qb$ divides $(a-qb)+qb=a$. So both pairs have the same common divisors. Repeating with remainders shrinks the numbers quickly: $\gcd(1071,462)=\gcd(462,147)=\gcd(147,21)=21$.</li></ul>
+
+<h3>4. Modular arithmetic</h3>
+<p>$a\equiv b\pmod m$ means $m\mid a-b$. Congruences can be added, subtracted and multiplied (if $m\mid a-b$ and $m\mid c-d$, then $m\mid ac-bd=a(c-d)+d(a-b)$). So you can reduce at every step: the last digit of $7^{100}$ is computed mod $10$.</p>
+<ul><li><b>Divisibility rules.</b> Since $10\equiv1\pmod 9$, every power $10^k\equiv1$, so a number is congruent to its digit sum mod $9$ (and mod $3$). Since $10\equiv-1\pmod{11}$, a number is congruent to its alternating digit sum mod $11$. Divisibility by $4$ or $8$ depends only on the last $2$ or $3$ digits, because $100$ and $1000$ are multiples of them.</li>
+<li><b>Cycles.</b> Powers mod $m$ repeat. Find the cycle, then reduce the exponent: $2^3=8\equiv1\pmod7$, so $2^{100}=2^{99}\cdot2\equiv2\pmod 7$.</li>
+<li><b>Fermat's little theorem:</b> if $p$ is prime and $p\nmid a$, then $a^{p-1}\equiv1\pmod p$. (Proof idea: multiplying $1,2,\dots,p-1$ by $a$ just rearranges them mod $p$, so $a^{p-1}(p-1)!\equiv(p-1)!$, and $(p-1)!$ can be cancelled.)</li>
+<li><b>Chinese Remainder Theorem:</b> conditions mod $m$ and mod $n$ with $\gcd(m,n)=1$ combine into a single condition mod $mn$. "Remainder $1$ when divided by $2,3,4,5,6$" means $n\equiv1\pmod{60}$.</li></ul>
+
+<h3>5. Factorials</h3>
+<div class="box"><h4>Legendre's formula</h4>The exponent of a prime $p$ in $n!$ is $\left\lfloor\frac np\right\rfloor+\left\lfloor\frac n{p^2}\right\rfloor+\left\lfloor\frac n{p^3}\right\rfloor+\cdots$</div>
+<p><b>Proof.</b> $\lfloor n/p\rfloor$ of the numbers $1,\dots,n$ are multiples of $p$, each contributing at least one factor $p$; $\lfloor n/p^2\rfloor$ are multiples of $p^2$ and contribute a second factor; and so on. Each number with exactly $j$ factors of $p$ is counted exactly $j$ times.</p>
+<p><b>Trailing zeros</b> of $n!$ = exponent of $5$ (there are always more $2$s): $100!$ ends in $20+4=24$ zeros.</p>
+
+<h3>6. Digits and bases</h3>
+<ul><li>$\overline{ab}=10a+b$; reversing digits changes a two-digit number by $9(a-b)$.</li>
+<li>In base $b$: $\overline{d_k\cdots d_0}_b=\sum d_ib^i$, with $0\le d_i\lt b$. Convert to base $b$ by repeated division and reading the remainders from bottom to top.</li></ul>
+
+<h3>7. Euler's totient</h3>
+<p>$\varphi(n)$ counts $1\le k\le n$ with $\gcd(k,n)=1$. For $n=\prod p_i^{a_i}$: $\varphi(n)=n\prod\left(1-\frac1{p_i}\right)$, by inclusion–exclusion on the multiples of each prime. $\varphi(100)=100\cdot\frac12\cdot\frac45=40$.</p>
+</script>
+<script type="text/plain" id="L-a10-count">
+<h2>Counting</h2>
+<p>Counting problems appear on every AMC 10, often several times. Nearly all of them come down to a few principles, used carefully. The main dangers are counting something twice and missing a case.</p>
+
+<h3>1. The two basic rules</h3>
+<ul><li><b>Addition rule:</b> if a choice is made in one of several <i>non-overlapping</i> ways, add the counts.</li>
+<li><b>Multiplication rule:</b> if a process has stages, with $a$ options at the first and $b$ at the second (no matter what was chosen first), there are $ab$ outcomes.</li></ul>
+<p>Example: a license plate of $3$ letters then $3$ digits has $26^3\cdot10^3$ possibilities.</p>
+
+<h3>2. Permutations and combinations</h3>
+<div class="box"><h4>Formulas</h4><ul>
+<li>Arrange all $n$ distinct objects in a row: $n!$.</li>
+<li>Arrange $k$ of them in order: $P(n,k)=\dfrac{n!}{(n-k)!}$.</li>
+<li>Choose $k$ of them, order not mattering: $\dbinom nk=\dfrac{n!}{k!\,(n-k)!}$.</li></ul></div>
+<p><b>Proof of $\binom nk$.</b> Counting ordered lists of $k$ objects in two ways: directly there are $\frac{n!}{(n-k)!}$; alternatively, first choose the set ($\binom nk$ ways) and then order it ($k!$ ways). So $\binom nk\cdot k!=\frac{n!}{(n-k)!}$.</p>
+<p><b>Repeated letters.</b> The arrangements of a word with repeated letters: divide by the factorial of each repeat count, because swapping identical letters gives the same word. $\text{BANANA}$: $\frac{6!}{3!\,2!}=60$.</p>
+<p><b>Circular arrangements.</b> $n$ people around a round table (rotations considered the same): $(n-1)!$. Fix one person's seat to remove the rotations, then arrange the rest.</p>
+<p><b>Useful identities</b> (each provable by counting a set two ways): $\binom nk=\binom n{n-k}$ (choosing who's in = choosing who's out); $\binom nk=\binom{n-1}{k-1}+\binom{n-1}k$ (Pascal: does the set contain a particular person or not?); $\sum_k\binom nk=2^n$ (every subset).</p>
+
+<h3>3. Complementary counting</h3>
+<p>"At least one" is usually easiest as <b>total minus none</b>. Four-digit numbers with at least one $7$: $9000-8\cdot9^3=3168$.</p>
+
+<h3>4. Restrictions</h3>
+<ul><li><b>Must be together:</b> glue them into one block, arrange the blocks, then arrange inside the block.</li>
+<li><b>Must not be together:</b> total minus together, or place the others first and choose gaps for the restricted ones.</li>
+<li><b>Handle the most restricted position first.</b> For digits, the first digit can't be $0$.</li></ul>
+
+<h3>5. Lattice paths</h3>
+<p>Paths from $(0,0)$ to $(m,n)$ using unit steps right and up: $\binom{m+n}{m}$. <b>Proof:</b> every path is a sequence of $m+n$ steps, of which exactly $m$ are "right"; choosing which positions are "right" determines the path.</p>
+
+<h3>6. Stars and bars</h3>
+<div class="box"><h4>Theorem</h4>The number of solutions of $x_1+\dots+x_k=n$ in <b>nonnegative</b> integers is $\dbinom{n+k-1}{k-1}$. In <b>positive</b> integers it is $\dbinom{n-1}{k-1}$.</div>
+<p><b>Proof.</b> Represent a solution as a row of $n$ stars and $k-1$ bars: the bars split the stars into $k$ groups of sizes $x_1,\dots,x_k$. Every arrangement of the $n+k-1$ symbols gives exactly one solution, and we choose which $k-1$ positions are bars. For positive solutions, give each variable $1$ first, leaving $n-k$ to distribute freely: $\binom{n-1}{k-1}$.</p>
+<p>Use it for distributing identical objects (candies, votes) into distinct boxes.</p>
+
+<h3>7. Inclusion–exclusion</h3>
+<p>$|A\cup B|=|A|+|B|-|A\cap B|$, and for three sets $|A\cup B\cup C|=|A|+|B|+|C|-|A\cap B|-|B\cap C|-|C\cap A|+|A\cap B\cap C|$.</p>
+<p><b>Why:</b> an element in exactly $j$ of the sets is counted $\binom j1-\binom j2+\binom j3=1$ time (for $j\le3$), exactly once.</p>
+
+<h3>8. Casework and symmetry</h3>
+<p>Split into cases that don't overlap and together cover everything, usually by the value of the most constrained quantity. Look for symmetry: in exactly half of all arrangements, $A$ comes before $B$.</p>
+</script>
+<script type="text/plain" id="L-a10-prob">
+<h2>Probability &amp; Expected Value</h2>
+
+<h3>1. Equally likely outcomes</h3>
+<p>When all outcomes are equally likely, $P(A)=\dfrac{\text{favorable outcomes}}{\text{total outcomes}}$. The key word is <i>equally likely</i>: the sums of two dice are <b>not</b> equally likely ($7$ happens $6$ ways, $2$ happens $1$ way), so list ordered pairs, not sums.</p>
+<ul><li><b>Complement:</b> $P(\text{not }A)=1-P(A)$. "At least one" problems: $P(\text{at least one head in }3\text{ flips})=1-\frac18$.</li>
+<li><b>Addition:</b> $P(A\text{ or }B)=P(A)+P(B)-P(A\text{ and }B)$ (inclusion–exclusion).</li>
+<li><b>Independence:</b> $A$ and $B$ are independent if $P(A\text{ and }B)=P(A)P(B)$, as for separate dice or coin flips. Drawing without replacement is <b>not</b> independent: multiply the changing probabilities, $\frac58\cdot\frac47$.</li></ul>
+
+<h3>2. Conditional probability</h3>
+<div class="box"><h4>Definition</h4>$P(A\mid B)=\dfrac{P(A\text{ and }B)}{P(B)}$: the chance of $A$ once you know $B$ happened.</div>
+<p><b>Why it's defined this way:</b> knowing $B$ happened shrinks the sample space to $B$; the outcomes in $A$ that survive are those in $A\cap B$, and we rescale so the new space has total probability $1$.</p>
+<p><b>Classic trap:</b> a family has two children and at least one is a boy. The equally likely outcomes are $BB, BG, GB$ (we only removed $GG$), so $P(BB)=\frac13$, not $\frac12$.</p>
+<p><b>Bayes' rule</b> follows from writing $P(A\text{ and }B)$ both ways: $P(A\mid B)P(B)=P(B\mid A)P(A)$.</p>
+
+<h3>3. Geometric probability</h3>
+<p>When a point is chosen uniformly from a region, probability $=\dfrac{\text{favorable area (or length)}}{\text{total area}}$. Two numbers chosen independently from $[0,1]$ are a random point in the unit square; draw the condition as a region.</p>
+<p>Example: $P(|x-y|\lt\frac12)$: the complement is two corner triangles with legs $\frac12$, total area $2\cdot\frac18=\frac14$, so the answer is $\frac34$.</p>
+
+<h3>4. Expected value</h3>
+<div class="box"><h4>Definition and linearity</h4>$E[X]=\sum x\cdot P(X=x)$. For any random variables, $E[X+Y]=E[X]+E[Y]$, <b>even if they are dependent</b>.</div>
+<p><b>Proof of linearity.</b> Sum over outcomes $\omega$: $E[X+Y]=\sum_\omega (X(\omega)+Y(\omega))P(\omega)=\sum_\omega X(\omega)P(\omega)+\sum_\omega Y(\omega)P(\omega)$. Nothing about independence was used.</p>
+<p><b>Indicator trick.</b> To find the expected number of things that happen, add up the probability of each one. For a random permutation of $n$ letters into $n$ envelopes, each letter lands in its own envelope with probability $\frac1n$, so the expected number of correct letters is $n\cdot\frac1n=1$, for every $n$.</p>
+
+<h3>5. Waiting times and states</h3>
+<div class="box"><h4>Waiting for a success</h4>If each trial succeeds with probability $p$, the expected number of trials until the first success is $\dfrac1p$.</div>
+<p><b>Proof (states).</b> Let $E$ be the expected number of trials. The first trial always counts as $1$; with probability $1-p$ it fails and we're back where we started. So $E=1+(1-p)E$, giving $E=\frac1p$. Rolling a die until a $6$: $6$ rolls on average.</p>
+<p><b>Taking turns.</b> Alice and Bob alternate flipping a fair coin, Alice first, and the first head wins. If $P$ is Alice's chance: she wins immediately with probability $\frac12$, or both miss (probability $\frac14$) and the game restarts. So $P=\frac12+\frac14P$ and $P=\frac23$.</p>
+
+<h3>6. Symmetry</h3>
+<p>If nothing distinguishes the outcomes, they're equally likely. Among $A$, $B$, $C$ in a random order, each is equally likely to come first, so $P(A\text{ before both others})=\frac13$, no matter how many other cards are mixed in.</p>
+</script>
+<script type="text/plain" id="L-a10-tri">
+<h2>Triangles</h2>
+<p>Triangles are the most common geometry objects on the AMC 10. Most problems combine three tools: angle facts, the Pythagorean theorem, and similar triangles.</p>
+
+<h3>1. Angles</h3>
+<div class="box"><h4>Theorem</h4>The angles of a triangle add to $180^\circ$. An exterior angle equals the sum of the two remote interior angles.</div>
+<p><b>Proof.</b> Through vertex $A$ draw the line parallel to $BC$. The two angles it makes with $AB$ and $AC$ equal $\angle B$ and $\angle C$ (alternate interior angles), and together with $\angle A$ they form a straight angle, $180^\circ$. The exterior angle at $C$ is $180^\circ-\angle C=\angle A+\angle B$.</p>
+<ul><li>In an isosceles triangle the base angles are equal (and conversely). <b>Proof:</b> the median to the base splits it into two congruent triangles (SSS).</li>
+<li><b>Triangle inequality:</b> each side is less than the sum of the other two (a straight segment is the shortest path).</li>
+<li>The larger side is opposite the larger angle.</li></ul>
+
+<h3>2. The Pythagorean theorem</h3>
+<div class="box"><h4>Theorem</h4>In a right triangle with legs $a,b$ and hypotenuse $c$: $a^2+b^2=c^2$.</div>
+<p><b>Proof (rearrangement).</b> Place four copies of the triangle inside a square of side $a+b$, with their hypotenuses forming a tilted square of side $c$ in the middle. The big square's area is $(a+b)^2=4\cdot\frac{ab}2+c^2$, so $a^2+2ab+b^2=2ab+c^2$, giving $a^2+b^2=c^2$.</p>
+<p><b>Converse and classification.</b> For the longest side $c$: $a^2+b^2=c^2$ means right, $a^2+b^2\gt c^2$ acute, $a^2+b^2\lt c^2$ obtuse.</p>
+<p><b>Triples to recognize:</b> $3$-$4$-$5$, $5$-$12$-$13$, $8$-$15$-$17$, $7$-$24$-$25$, $20$-$21$-$29$, and their multiples.</p>
+<p><b>Special right triangles.</b> Cutting a square along its diagonal gives $45$-$45$-$90$ with sides $1:1:\sqrt2$. Cutting an equilateral triangle of side $2$ in half gives $30$-$60$-$90$ with sides $1:\sqrt3:2$ (the height is $\sqrt{4-1}=\sqrt3$). An equilateral triangle with side $s$ has height $\frac{\sqrt3}2s$ and area $\frac{\sqrt3}4s^2$.</p>
+
+<h3>3. Similar triangles</h3>
+<div class="box"><h4>Similarity</h4>Two triangles are similar if two pairs of angles are equal (AA). Then all corresponding sides are in the same ratio $k$, and areas are in ratio $k^2$.</div>
+<p><b>Why areas scale by $k^2$:</b> area is $\frac12\cdot$base$\cdot$height, and both the base and the height scale by $k$.</p>
+<ul><li>A line parallel to one side cuts off a similar triangle (corresponding angles are equal). If $DE\parallel BC$ with $D$ on $AB$, then $\frac{AD}{AB}=\frac{DE}{BC}$; use the whole side $AB$, not $DB$.</li>
+<li><b>Altitude to the hypotenuse.</b> It splits a right triangle into two triangles similar to the original. Consequences: $h^2=pq$ (the altitude is the geometric mean of the two pieces of the hypotenuse) and $h=\frac{ab}c$ (compute the area two ways).</li></ul>
+
+<h3>4. Area</h3>
+<ul><li>$\text{Area}=\frac12bh$ for any base and its height. Triangles with the same height have areas in the ratio of their bases; this is often the fastest tool for area-ratio problems.</li>
+<li>A median splits a triangle into two equal areas (same height, equal bases).</li>
+<li><b>Heron's formula:</b> with $s=\frac{a+b+c}2$, $\text{Area}=\sqrt{s(s-a)(s-b)(s-c)}$. The $13$-$14$-$15$ triangle has area $84$ (it is a $5$-$12$-$13$ and a $9$-$12$-$15$ glued along the height $12$).</li>
+<li><b>Inradius:</b> $\text{Area}=rs$. <b>Proof:</b> joining the incenter to the vertices splits the triangle into three triangles with heights $r$ and bases $a,b,c$: total area $\frac12r(a+b+c)=rs$.</li>
+<li>In a right triangle, the circumradius is half the hypotenuse (the right angle is inscribed in a semicircle), and the inradius is $r=\frac{a+b-c}2$.</li></ul>
+
+<h3>5. Cevians and centers</h3>
+<div class="box"><h4>Angle Bisector Theorem</h4>If the bisector of $\angle A$ meets $BC$ at $D$, then $\dfrac{BD}{DC}=\dfrac{AB}{AC}$.</div>
+<p><b>Proof.</b> Triangles $ABD$ and $ACD$ share the height from $A$, so their areas are in the ratio $BD:DC$. They also have equal angles at $A$ and the point $D$ is equally far from lines $AB$ and $AC$ (it's on the bisector), so their areas are in the ratio $AB:AC$. Equate the two ratios.</p>
+<ul><li><b>Centroid:</b> the medians meet at a point $\frac23$ of the way from each vertex to the opposite midpoint, and they cut the triangle into $6$ equal areas.</li>
+<li>In triangle $ABC$, the bisectors of $\angle B$ and $\angle C$ meet at angle $\angle BIC=90^\circ+\frac{\angle A}2$ (because $\angle IBC+\angle ICB=\frac{180^\circ-\angle A}2$).</li></ul>
+</script>
+<script type="text/plain" id="L-a10-circ">
+<h2>Circles</h2>
+<p>Most circle problems are solved by drawing radii. A radius to a point of tangency, to the endpoints of a chord, or to a vertex of an inscribed polygon almost always creates an isosceles or right triangle.</p>
+
+<h3>1. Measuring parts of a circle</h3>
+<ul><li>Circumference $2\pi r$, area $\pi r^2$.</li>
+<li>A central angle of $\theta^\circ$ cuts off an arc of length $\frac{\theta}{360}\cdot2\pi r$ and a sector of area $\frac{\theta}{360}\cdot\pi r^2$ (the fraction of the full turn).</li>
+<li><b>Chords:</b> the perpendicular from the center to a chord bisects it. A chord at distance $d$ from the center of a circle of radius $r$ has length $2\sqrt{r^2-d^2}$ (Pythagoras in the right triangle formed by the radius, the distance, and half the chord).</li></ul>
+
+<h3>2. Inscribed angles</h3>
+<div class="box"><h4>Inscribed Angle Theorem</h4>An inscribed angle is half the central angle that subtends the same arc.</div>
+<p><b>Proof.</b> First suppose the center $O$ lies on one side of the inscribed angle $\angle ABC$, say on $BC$. Triangle $OAB$ is isosceles ($OA=OB$), so $\angle OAB=\angle OBA=x$, and the exterior angle $\angle AOC=2x$. So the inscribed angle is half the central angle. In general, draw the diameter through $B$ and add or subtract two angles of this special type.</p>
+<p><b>Consequences.</b></p>
+<ul><li>All inscribed angles subtending the same arc are equal.</li>
+<li><b>Thales:</b> an angle inscribed in a semicircle is a right angle (half of $180^\circ$). So a right triangle's hypotenuse is a diameter of its circumcircle.</li>
+<li><b>Cyclic quadrilaterals:</b> opposite angles add to $180^\circ$, since the two angles subtend arcs that together make the whole circle ($\frac12\cdot360^\circ$).</li>
+<li>Two chords crossing inside the circle make an angle equal to half the <b>sum</b> of the intercepted arcs; two secants from an outside point make an angle equal to half the <b>difference</b> of the arcs. (Both follow from an exterior-angle argument with inscribed angles.)</li></ul>
+
+<h3>3. Tangents</h3>
+<ul><li><b>A tangent is perpendicular to the radius at the point of tangency.</b> Proof: the point of tangency is the point of the line closest to the center (every other point of the line is outside the circle), and the shortest segment from a point to a line is the perpendicular.</li>
+<li><b>Two tangent segments from the same outside point are equal.</b> Proof: the two right triangles formed with the center share the hypotenuse and have equal legs $r$, so they are congruent.</li>
+<li>Tangent length from a point at distance $d$ from the center: $\sqrt{d^2-r^2}$.</li>
+<li>Common external tangent of circles with radii $r_1,r_2$ and centers $D$ apart: length $\sqrt{D^2-(r_1-r_2)^2}$ (slide the tangent segment to make a right triangle).</li></ul>
+
+<h3>4. Power of a point</h3>
+<div class="box"><h4>Theorem</h4>For a point $P$ and any line through $P$ meeting the circle at $A$ and $B$, the product $PA\cdot PB$ is the same for every line. If a tangent from $P$ touches at $T$, the product equals $PT^2$.</div>
+<p><b>Proof (two chords through an inside point).</b> If chords $AB$ and $CD$ meet at $P$, then $\angle PAC=\angle PDB$ (both subtend arc $CB$) and $\angle APC=\angle DPB$ (vertical angles), so $\triangle PAC\sim\triangle PDB$. Hence $\frac{PA}{PD}=\frac{PC}{PB}$, i.e. $PA\cdot PB=PC\cdot PD$. The outside-point and tangent versions work the same way with similar triangles.</p>
+<p>In words: <b>inside</b>, part $\times$ part $=$ part $\times$ part; <b>outside</b>, outer $\times$ whole $=$ outer $\times$ whole $=$ tangent$^2$.</p>
+
+<h3>5. Circles with polygons</h3>
+<ul><li>A circle inscribed in a square of side $s$ has radius $\frac s2$; the circumscribed circle has radius $\frac{s}{\sqrt2}$ (half the diagonal).</li>
+<li>Inradius of a right triangle: $r=\frac{a+b-c}2$, because the tangent lengths from the right-angle vertex both equal $r$.</li>
+<li>Regular hexagon of side $s$: it is six equilateral triangles, and its circumradius is $s$.</li></ul>
+</script>
+<script type="text/plain" id="L-a10-poly">
+<h2>Polygons, Area &amp; Coordinates</h2>
+
+<h3>1. Angles of polygons</h3>
+<div class="box"><h4>Theorems</h4><ul>
+<li>The interior angles of an $n$-gon add to $180^\circ(n-2)$.</li>
+<li>The exterior angles (one at each vertex) of any convex polygon add to $360^\circ$.</li>
+<li>An $n$-gon has $\dfrac{n(n-3)}2$ diagonals.</li></ul></div>
+<p><b>Proofs.</b> Drawing all diagonals from one vertex cuts a convex $n$-gon into $n-2$ triangles, whose angles make up exactly the polygon's angles. Walking once around the polygon, you turn by each exterior angle and end facing the original direction: one full turn, $360^\circ$. Each vertex connects by a diagonal to the $n-3$ vertices that are neither itself nor a neighbor, and each diagonal is counted from both ends.</p>
+<p>Each interior angle of a regular $n$-gon is $180^\circ-\frac{360^\circ}{n}$: $108^\circ$ for a pentagon, $120^\circ$ for a hexagon, $135^\circ$ for an octagon.</p>
+
+<h3>2. Areas of quadrilaterals</h3>
+<ul><li><b>Parallelogram:</b> base $\times$ height (cut off a triangle from one end and move it to the other to make a rectangle).</li>
+<li><b>Trapezoid:</b> $\frac{b_1+b_2}{2}h$. Two copies, one rotated, fit together into a parallelogram with base $b_1+b_2$.</li>
+<li><b>Rhombus or kite</b> (perpendicular diagonals): $\frac{d_1d_2}2$. The diagonals split it into four right triangles. A rhombus's diagonals bisect each other at right angles, so its side is $\sqrt{(d_1/2)^2+(d_2/2)^2}$.</li>
+<li><b>Regular hexagon</b> of side $s$: six equilateral triangles, area $\frac{3\sqrt3}{2}s^2$.</li>
+<li><b>Subtraction:</b> often the easiest area is a big shape minus pieces, like a rectangle minus corner triangles.</li></ul>
+
+<h3>3. The coordinate plane</h3>
+<ul><li><b>Distance:</b> $\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$, which is the Pythagorean theorem on the horizontal and vertical legs.</li>
+<li><b>Midpoint:</b> $\left(\frac{x_1+x_2}2,\frac{y_1+y_2}2\right)$.</li>
+<li><b>Slope</b> $m=\frac{y_2-y_1}{x_2-x_1}$; line $y=mx+b$. Parallel lines have equal slopes. Perpendicular lines have slopes with product $-1$. (Rotating a line by $90^\circ$ turns a run-rise step $(1,m)$ into $(-m,1)$, whose slope is $-\frac1m$.)</li>
+<li><b>Distance from a point to a line</b> $ax+by+c=0$: $\dfrac{|ax_0+by_0+c|}{\sqrt{a^2+b^2}}$.</li></ul>
+
+<h3>4. Shoelace formula</h3>
+<div class="box"><h4>Theorem</h4>For a polygon with vertices $(x_1,y_1),\dots,(x_n,y_n)$ listed in order around the boundary,
+$$\text{Area}=\tfrac12\left|\sum_{i=1}^{n}(x_iy_{i+1}-x_{i+1}y_i)\right|,$$ with $(x_{n+1},y_{n+1})=(x_1,y_1)$.</div>
+<p><b>Why it works.</b> The term $\frac12(x_iy_{i+1}-x_{i+1}y_i)$ is the signed area of the triangle formed by the origin and edge $i$. Going around the polygon, these signed triangles add up to the polygon's area: the parts outside the polygon are counted once positively and once negatively, so they cancel.</p>
+
+<h3>5. Lattice points</h3>
+<ul><li>The segment from $(0,0)$ to $(a,b)$ contains $\gcd(a,b)+1$ lattice points, endpoints included. The lattice points are evenly spaced, at steps of $\left(\frac a g,\frac bg\right)$ with $g=\gcd(a,b)$.</li>
+<li><b>Pick's theorem:</b> a polygon whose vertices are lattice points, with $I$ lattice points inside and $B$ on the boundary, has area $I+\frac B2-1$.</li></ul>
+
+<h3>6. Reflections and shortest paths</h3>
+<p>Reflecting over $y=x$ swaps coordinates; over the $x$-axis it negates $y$. <b>Shortest path that touches a line:</b> to go from $A$ to the line and then to $B$ (both on the same side), reflect $B$ across the line. Any path $A\to P\to B$ has the same length as $A\to P\to B'$, which is shortest when it's a straight line.</p>
+</script>
+<script type="text/plain" id="L-a10-3d">
+<h2>3D Geometry</h2>
+<p>AMC 10 solid geometry is mostly computing volumes, surface areas, and distances, plus a few counting problems about cubes. The trick is usually to find the right 2D cross-section or the right right triangle.</p>
+
+<h3>1. Volume</h3>
+<div class="box"><h4>Formulas</h4><ul>
+<li>Prism or cylinder: $V=(\text{base area})\times h$. Cylinder: $\pi r^2h$.</li>
+<li>Pyramid or cone: $V=\frac13(\text{base area})\times h$. Cone: $\frac13\pi r^2h$.</li>
+<li>Sphere: $V=\frac43\pi r^3$, surface area $4\pi r^2$.</li></ul></div>
+<p><b>Why the $\frac13$.</b> A cube can be cut into $3$ congruent square pyramids, each with a face of the cube as its base and the opposite corner as its apex. So each has volume $\frac13s^3=\frac13(s^2)(s)$. <b>Cavalieri's principle</b> (solids with equal cross-section areas at every height have equal volume) extends this to every pyramid and cone with the same base area and height.</p>
+<p><b>Sphere.</b> Archimedes showed that a sphere has $\frac23$ the volume of the cylinder around it: $\frac23\cdot\pi r^2\cdot2r=\frac43\pi r^3$. (Cavalieri: a hemisphere's cross-section at height $y$ has area $\pi(r^2-y^2)$, the same as a cylinder of radius $r$ with a cone removed, so hemisphere $=\pi r^3-\frac13\pi r^3=\frac23\pi r^3$.)</p>
+
+<h3>2. Surface area</h3>
+<ul><li>Box $a\times b\times c$: $2(ab+bc+ca)$.</li>
+<li>Cylinder: $2\pi r^2+2\pi rh$ (unroll the side into a rectangle $2\pi r$ by $h$).</li>
+<li>Cone: lateral area $\pi r\ell$, where $\ell=\sqrt{r^2+h^2}$ is the slant height. <b>Proof:</b> unrolled, the side is a sector of radius $\ell$ whose arc is the base circumference $2\pi r$; a sector's area is $\frac12\cdot$radius$\cdot$arc $=\frac12\ell\cdot2\pi r$.</li>
+<li>Pyramid: base plus triangles; each triangle's height is the slant height, not the pyramid's height.</li></ul>
+
+<h3>3. Distances</h3>
+<ul><li><b>Space diagonal</b> of an $a\times b\times c$ box: $\sqrt{a^2+b^2+c^2}$. Apply Pythagoras twice: the face diagonal is $\sqrt{a^2+b^2}$, and it is perpendicular to the edge $c$.</li>
+<li>Cube of side $s$: face diagonal $s\sqrt2$, space diagonal $s\sqrt3$.</li>
+<li><b>Shortest path along the surface:</b> unfold (make a net) so the path lies flat, then use a straight line. From one corner of a unit cube to the opposite corner along the surface: unfold two faces into a $1\times2$ rectangle, giving $\sqrt5$.</li></ul>
+
+<h3>4. Scaling</h3>
+<p>Scaling a solid by $k$ multiplies lengths by $k$, areas by $k^2$, and volumes by $k^3$. Increasing every edge of a cube by $50\%$ multiplies the volume by $1.5^3=3.375$.</p>
+
+<h3>5. Counting on solids</h3>
+<ul><li><b>Euler's formula:</b> for a convex polyhedron, $V-E+F=2$. (Cube: $8-12+6=2$.)</li>
+<li><b>Painted cube:</b> an $n\times n\times n$ cube painted outside and cut into unit cubes has $8$ cubes with $3$ painted faces (corners), $12(n-2)$ with $2$ (edges), $6(n-2)^2$ with $1$ (faces), and $(n-2)^3$ with none.</li></ul>
+
+<h3>6. Regular tetrahedron and other facts</h3>
+<ul><li>Regular tetrahedron with edge $s$: volume $\frac{s^3}{6\sqrt2}$. It fits inside a cube of side $\frac s{\sqrt2}$ using alternate corners; remove four corner pyramids, each $\frac16$ of the cube, leaving $\frac13$ of the cube.</li>
+<li><b>Water displacement:</b> an object fully submerged raises the water level by (object volume) $\div$ (container base area).</li></ul>
+</script>
+<script type="text/plain" id="L-a10-logic">
+<h2>Logic, Statistics &amp; Puzzles</h2>
+<p>A few problems on every AMC 10 need no formulas at all, just careful reasoning: statistics of a data set, truth-tellers and liars, games, clocks and calendars, and invariants.</p>
+
+<h3>1. Mean, median, mode, range</h3>
+<ul><li><b>Mean</b> $=\frac{\text{sum}}{\text{count}}$. Work with sums: changing one value by $c$ changes the mean by $\frac cn$.</li>
+<li><b>Median:</b> the middle value of the sorted list (the average of the two middle values if the count is even). It only depends on order, so changing the largest value doesn't move it.</li>
+<li><b>Mode:</b> the most frequent value. "Unique mode" means no other value is tied with it.</li>
+<li><b>Range:</b> largest minus smallest.</li></ul>
+<p><b>Strategy for "find the list" problems:</b> write the sorted list with unknowns, place the median, use the mode to force repeated values, then use the sum. To maximize one value, make all the others as small as the conditions allow.</p>
+
+<h3>2. Truth-tellers and liars</h3>
+<p>Knights always tell the truth and knaves always lie. <b>Method:</b> assume one person is a knight, follow the consequences, and see whether you reach a contradiction; then try the other case. With $3$ people there are only $8$ cases, so you can also check them all. A statement made by a knave must be false, so "I am a knave" can never be said by anyone.</p>
+
+<h3>3. Games</h3>
+<div class="box"><h4>Winning and losing positions</h4>A position is <b>losing</b> (for the player about to move) if every move leads to a winning position, and <b>winning</b> if some move leads to a losing position. Work backward from the end of the game.</div>
+<p><b>Why this works:</b> from a losing position, whatever you do hands your opponent a winning position, and they can keep doing that until the game ends. Example: players take $1$, $2$, or $3$ stones, and whoever takes the last stone wins. The losing positions are the multiples of $4$ (any move from a multiple of $4$ leaves a non-multiple, and from any non-multiple you can move to a multiple). So with $21$ stones, take $1$.</p>
+
+<h3>4. Pigeonhole principle</h3>
+<p>If more than $n$ objects go into $n$ boxes, some box gets at least two. <b>Proof:</b> if every box had at most one, there would be at most $n$ objects. More generally, some box gets at least $\lceil\frac{\text{objects}}{\text{boxes}}\rceil$. Example: with socks in $5$ colors, $6$ socks guarantee a matching pair.</p>
+
+<h3>5. Invariants and parity</h3>
+<p>If an operation never changes some quantity (a sum, a parity, a remainder), the final state must have the same value as the start. Example: replacing $a,b$ by $a+b-1$ lowers the total by exactly $1$ each step; starting from $1,\dots,10$ (sum $55$), after $9$ steps one number remains: $55-9=46$. Parity arguments (even/odd) often show something is impossible.</p>
+
+<h3>6. Clocks and calendars</h3>
+<ul><li>The minute hand moves $6^\circ$ per minute and the hour hand $0.5^\circ$ per minute. At $h{:}m$ the angle between them is $|30h-5.5m|$ (take $360^\circ$ minus that if it's over $180^\circ$).</li>
+<li>Days of the week repeat every $7$ days: $n$ days after a Monday is the weekday $n\bmod7$ steps later. A non-leap year has $365\equiv1\pmod7$ days, so a date moves forward one weekday each year (two after a February $29$).</li>
+<li>Leap years: divisible by $4$, except century years not divisible by $400$.</li></ul>
 </script>
 
 <!-- ======================= PROBLEM BANK ======================= -->
@@ -15497,6 +15974,1428 @@ W: 3
 S: Factor as a quadratic in $x^2$: $(x^2+1)(x^2+4)$.
 Both factors are always positive for real $x$, so there are no real roots.
 The four complex roots are $\pm i$ and $\pm2i$.
+@@ a10-guide
+Q: On the AMC 10, a correct answer is worth $6$ points, a blank $1.5$, and a wrong answer $0$. A student answers $16$ questions correctly, gets $4$ wrong, and leaves the rest blank. What is the score?
+L: 1
+A: 103.5
+W: 96
+W: 102
+W: 105
+W: 111
+S: There are $25-16-4=5$ blanks.
+Score $=16\cdot6+4\cdot0+5\cdot1.5=96+0+7.5=103.5$.
+(Wrong answers cost you the $1.5$ you would have earned by leaving them blank: those 4 guesses lost $6$ points compared with blanks.)
+---
+Q: A student is sure of $14$ answers and leaves the other $11$ blank. How many of those blanks must the student turn into correct answers (with no wrong answers) to score at least $110$?
+L: 1
+A: 3
+W: 1
+W: 2
+W: 4
+W: 5
+S: Right now the score is $14\cdot6+11\cdot1.5=84+16.5=100.5$.
+Turning a blank into a correct answer changes $1.5$ points into $6$, a gain of $4.5$. After $k$ more correct answers the score is $100.5+4.5k$.
+$100.5+4.5k\ge110 \iff 4.5k\ge9.5 \iff k\ge2.\overline{1}$, so $k=3$ (score $114$). Two more would give only $109.5$.
+---
+Q: You have eliminated $2$ of the $5$ answer choices on a problem, and the other $3$ seem equally likely. What is the expected score from guessing, compared with leaving it blank?
+L: 1
+A: 2 \text{ vs } 1.5
+W: 1.2 \text{ vs } 1.5
+W: 1.5 \text{ vs } 1.5
+W: 3 \text{ vs } 1.5
+W: 2 \text{ vs } 0
+S: Guessing among $3$ equally likely choices is right with probability $\frac13$, worth $6$ points: expected value $\frac13\cdot6=2$.
+A blank is a guaranteed $1.5$. Since $2\gt1.5$, guessing is better here.
+In general guessing among $k$ choices is worth $\frac6k$, which beats $1.5$ exactly when $k\le3$.
+---
+Q: What is the largest number of answer choices you can have left for a guess to have a <b>strictly</b> higher expected value than a blank?
+L: 1
+A: 3
+W: 1
+W: 2
+W: 4
+W: 5
+S: A guess among $k$ choices has expected value $\frac6k$. We need $\frac6k\gt1.5$, i.e. $k\lt4$.
+So the most is $k=3$. With $k=4$ the expected values are equal ($1.5$ each).
+---
+Q: Which score is <b>impossible</b> on the AMC 10 (6 for correct, 1.5 for blank, 0 for wrong)?
+L: 2
+A: 149
+W: 150
+W: 145.5
+W: 141
+W: 144
+S: With $c$ correct and $b$ blank, the score is $6c+1.5b$, a multiple of $1.5$. $149$ is not a multiple of $1.5$ ($149/1.5$ is not an integer), so it is impossible.
+Check the others: $150=6\cdot25$; $145.5=6\cdot24+1.5$; $141=6\cdot23+1.5\cdot2$; $144=6\cdot24+0$ (one wrong).
+---
+Q: A student guesses randomly (among all $5$ choices) on $10$ questions instead of leaving them blank. By how much does this change the expected score?
+L: 2
+A: -3
+W: 0
+W: 3
+W: -15
+W: 12
+S: Each random guess is worth $\frac15\cdot6=1.2$ on average; each blank is worth $1.5$. The difference is $1.2-1.5=-0.3$ per question.
+Over $10$ questions: $10\cdot(-0.3)=-3$ points on average. Random guessing hurts.
+---
+Q: Two students each answer $20$ questions. One gets $18$ right and $2$ wrong; the other gets $17$ right and $3$ wrong. Both leave $5$ blank. How many more points does the first student score?
+L: 1
+A: 6
+W: 4.5
+W: 7.5
+W: 1.5
+W: 12
+S: Both have the same $5$ blanks, so the difference is only in correct answers: one more correct answer is worth $6$ more points.
+(Scores: $18\cdot6+7.5=115.5$ and $17\cdot6+7.5=109.5$.)
+---
+Q: What is the least number of questions a student must answer correctly to guarantee a score of at least $120$, if every question not answered correctly is left blank?
+L: 2
+A: 19
+W: 18
+W: 20
+W: 17
+W: 21
+S: With $c$ correct and $25-c$ blank, the score is $6c+1.5(25-c)=37.5+4.5c$.
+$37.5+4.5c\ge120 \iff 4.5c\ge82.5 \iff c\ge18.\overline{3}$.
+So $c=19$: score $37.5+85.5=123$. ($18$ gives only $118.5$.)
+@@ a10-arith
+Q: A store raises the price of a jacket by $25\%$, then puts it on sale for $20\%$ off the new price. The sale price is what percent of the original price?
+L: 1
+A: 100\%
+W: 95\%
+W: 105\%
+W: 98\%
+W: 102\%
+S: Percent changes are multipliers: $1.25\times0.80=1.00$.
+So the sale price equals the original price: $100\%$.
+(This works because $1.25=\frac54$ and $0.8=\frac45$ are reciprocals. A $25\%$ increase is undone by a $20\%$ decrease, not a $25\%$ one.)
+---
+Q: Maria drives to her grandmother's house at $40$ miles per hour and drives back along the same road at $60$ miles per hour. What is her average speed for the round trip, in miles per hour?
+L: 1
+A: 48
+W: 50
+W: 45
+W: 52
+W: 24
+S: Average speed is total distance over total time. Let each leg be $d$ miles.
+Time: $\frac d{40}+\frac d{60}=\frac{3d+2d}{120}=\frac{d}{24}$ hours. Distance: $2d$.
+Average speed $=\frac{2d}{d/24}=48$ mph. (Formula: $\frac{2uv}{u+v}=\frac{2\cdot40\cdot60}{100}=48$.)
+The plain average $50$ is wrong because she spends more time at $40$ mph.
+---
+Q: Pipe $A$ can fill a pool in $6$ hours and pipe $B$ can fill it in $3$ hours. With both pipes open, how many hours does it take to fill the pool?
+L: 1
+A: 2
+W: \frac92
+W: \frac32
+W: 3
+W: \frac52
+S: Add the rates: $A$ fills $\frac16$ of the pool per hour and $B$ fills $\frac13$.
+Together: $\frac16+\frac13=\frac16+\frac26=\frac12$ pool per hour, so the pool takes $2$ hours.
+(Check: faster than $B$ alone, as it must be.)
+---
+Q: The ratio of boys to girls in a club is $3:5$. After $6$ more boys join, the ratio becomes $3:4$. How many girls are in the club?
+L: 1
+A: 40
+W: 30
+W: 24
+W: 32
+W: 45
+S: Write boys $=3k$ and girls $=5k$. After $6$ boys join: $\frac{3k+6}{5k}=\frac34$.
+Cross-multiply: $4(3k+6)=15k$, so $12k+24=15k$ and $k=8$.
+There are $5k=40$ girls (and $24$ boys, which becomes $30$: $30:40=3:4$ ✓).
+---
+Q: The average of $5$ numbers is $12$. When one of the numbers is removed, the average of the remaining numbers is $10$. What number was removed?
+L: 1
+A: 20
+W: 2
+W: 12
+W: 22
+W: 10
+S: Switch averages to sums. The $5$ numbers sum to $5\cdot12=60$; the remaining $4$ sum to $4\cdot10=40$.
+The removed number is $60-40=20$.
+---
+Q: A class of $20$ students averaged $80$ on a test, and another class of $30$ students averaged $70$. What is the average score of all $50$ students?
+L: 1
+A: 74
+W: 75
+W: 76
+W: 72
+W: 73
+S: Total points: $20\cdot80+30\cdot70=1600+2100=3700$.
+Average: $\frac{3700}{50}=74$.
+It is closer to $70$ than to $80$ because the class that averaged $70$ is larger. (The unweighted $75$ is wrong.)
+---
+Q: Two trains start $300$ miles apart and travel toward each other, one at $70$ mph and the other at $80$ mph. A bird flies back and forth between the trains at $90$ mph from the moment they start until they meet. How many miles does the bird fly?
+L: 2
+A: 180
+W: 150
+W: 270
+W: 300
+W: 90
+S: Don't trace the bird's trips. The trains close the gap at $70+80=150$ mph, so they meet after $\frac{300}{150}=2$ hours.
+The bird flies the whole time at $90$ mph: $90\cdot2=180$ miles.
+---
+Q: Abby spends $\frac13$ of her money on a book, then $\frac14$ of what remains on lunch, and has $\$18$ left. How much money did she start with?
+L: 1
+A: 36
+W: 24
+W: 30
+W: 42
+W: 48
+S: Work with what remains at each step. After the book, $\frac23$ of her money remains. Lunch takes $\frac14$ of that, leaving $\frac34\cdot\frac23=\frac12$ of the original.
+So half her money is $\$18$, and she started with $\$36$.
+(Check: book $\$12$, leaving $\$24$; lunch $\$6$, leaving $\$18$ ✓.)
+---
+Q: Six workers can paint $4$ rooms in $3$ days. At the same rate, how many days would $9$ workers take to paint $10$ rooms?
+L: 2
+A: 5
+W: \frac92
+W: 4
+W: 6
+W: \frac{15}2
+S: Find the rate per worker per day. $6$ workers $\times$ $3$ days $=18$ worker-days paint $4$ rooms, so one room takes $\frac{18}{4}=\frac92$ worker-days.
+$10$ rooms take $10\cdot\frac92=45$ worker-days. With $9$ workers: $\frac{45}{9}=5$ days.
+---
+Q: A rectangle's length is increased by $20\%$ and its width is decreased by $10\%$. By what percent does its area change?
+L: 1
+A: 8\% \text{ increase}
+W: 10\% \text{ increase}
+W: 2\% \text{ increase}
+W: 30\% \text{ increase}
+W: 8\% \text{ decrease}
+S: Area is length times width, so the multipliers multiply: $1.2\times0.9=1.08$.
+The area increases by $8\%$. (Adding the percents to get $10\%$ ignores that the changes act on each other.)
+---
+Q: A car's gas tank is $\frac18$ full. After $15$ gallons are added, it is $\frac34$ full. How many gallons does the tank hold?
+L: 1
+A: 24
+W: 20
+W: 18
+W: 30
+W: 32
+S: The $15$ gallons filled $\frac34-\frac18=\frac68-\frac18=\frac58$ of the tank.
+So the tank holds $15\div\frac58=15\cdot\frac85=24$ gallons.
+---
+Q: Jo walks to school at $3$ mph and arrives $10$ minutes late. If she walks at $4$ mph she arrives $5$ minutes early. How far is school, in miles?
+L: 2
+A: 3
+W: 2
+W: \frac52
+W: 4
+W: \frac72
+S: The two trips differ in time by $10+5=15$ minutes $=\frac14$ hour.
+With distance $d$: $\frac d3-\frac d4=\frac14$, so $\frac{d}{12}=\frac14$ and $d=3$ miles.
+(Check: $1$ hour versus $\frac34$ hour, a $15$-minute difference ✓.)
+@@ a10-alg
+Q: What is $2027^2-2023^2$?
+L: 1
+A: 16200
+W: 16
+W: 8100
+W: 4050
+W: 16000
+S: Difference of squares: $a^2-b^2=(a-b)(a+b)$.
+$(2027-2023)(2027+2023)=4\cdot4050=16200$. No need to square four-digit numbers.
+---
+Q: Real numbers satisfy $x+y=7$, $y+z=9$, and $z+x=10$. What is $xyz$?
+L: 1
+A: 72
+W: 60
+W: 80
+W: 63
+W: 90
+S: Every variable appears in two equations, so add all three: $2(x+y+z)=26$, giving $x+y+z=13$.
+Subtract each equation from $13$: $z=13-7=6$, $x=13-9=4$, $y=13-10=3$.
+$xyz=4\cdot3\cdot6=72$.
+---
+Q: The roots of $x^2-6x+4=0$ are $r$ and $s$. What is $r^2+s^2$?
+L: 1
+A: 28
+W: 36
+W: 32
+W: 20
+W: 44
+S: By Vieta, $r+s=6$ and $rs=4$ (the sum is minus the $x$ coefficient; the product is the constant term).
+$r^2+s^2=(r+s)^2-2rs=36-8=28$.
+No need to find $r=3\pm\sqrt5$.
+---
+Q: If $x+\dfrac1x=4$, what is $x^3+\dfrac1{x^3}$?
+L: 2
+A: 52
+W: 64
+W: 60
+W: 56
+W: 48
+S: Cube the given equation: $\left(x+\frac1x\right)^3=x^3+3x+\frac3x+\frac1{x^3}=x^3+\frac1{x^3}+3\left(x+\frac1x\right)$.
+So $64=x^3+\frac1{x^3}+3\cdot4$, giving $x^3+\frac1{x^3}=64-12=52$.
+---
+Q: How many ordered pairs of positive integers $(x,y)$ satisfy $xy+2x+3y=29$?
+L: 2
+A: 2
+W: 0
+W: 1
+W: 3
+W: 4
+S: Simon's trick: add $6$ to both sides so the left side factors. $xy+2x+3y+6=35$, i.e. $(x+3)(y+2)=35$.
+With $x,y\ge1$, we need $x+3\ge4$ and $y+2\ge3$. Factor pairs of $35$: $1\cdot35$, $5\cdot7$, $7\cdot5$, $35\cdot1$.
+Only $(x+3,y+2)=(5,7)$ and $(7,5)$ meet both bounds: $(x,y)=(2,5)$ and $(4,3)$.
+Check $(2,5)$: $10+4+15=29$ ✓. Check $(4,3)$: $12+8+9=29$ ✓. That is $2$ pairs.
+---
+Q: For what value of $k$ does $x^2+kx+16=0$ have exactly one real solution, if $k\gt0$?
+L: 1
+A: 8
+W: 4
+W: 16
+W: 2
+W: 32
+S: One real solution means a double root, so the discriminant is zero: $k^2-4\cdot1\cdot16=0$.
+$k^2=64$, and $k\gt0$ gives $k=8$. (Then $x^2+8x+16=(x+4)^2$.)
+---
+Q: A farmer has $100$ meters of fence to make a rectangular pen against a long barn wall, so only three sides need fence. What is the largest possible area, in square meters?
+L: 2
+A: 1250
+W: 625
+W: 2500
+W: 1000
+W: 1200
+S: Let the two sides perpendicular to the wall have length $x$; the side parallel to the wall is $100-2x$.
+Area $A=x(100-2x)=-2x^2+100x$, a downward parabola with vertex at $x=-\frac{100}{2(-2)}=25$.
+$A(25)=25\cdot50=1250$.
+(AM–GM view: $2x\cdot(100-2x)\le\left(\frac{100}{2}\right)^2=2500$, so $A\le1250$, with equality when $2x=100-2x$.)
+---
+Q: Which is the largest: $2^{600}$, $3^{400}$, $5^{200}$, $6^{200}$, $10^{100}$?
+L: 2
+A: 3^{400}
+W: 2^{600}
+W: 5^{200}
+W: 6^{200}
+W: 10^{100}
+S: Rewrite everything as a power with exponent $200$ (or compare $200$th roots):
+$2^{600}=8^{200}$, $3^{400}=9^{200}$, $5^{200}$, $6^{200}$, $10^{100}=\sqrt{10}^{\,200}\approx3.16^{200}$.
+The bases are $8,9,5,6,3.16$, so $3^{400}=9^{200}$ is the largest.
+---
+Q: How many real numbers $x$ satisfy $|x-2|+|x+4|=6$?
+L: 2
+A: \text{infinitely many}
+W: 0
+W: 1
+W: 2
+W: 3
+S: $|x-2|+|x+4|$ is the distance from $x$ to $2$ plus the distance from $x$ to $-4$.
+For any $x$ between $-4$ and $2$, these add up to exactly the distance between $-4$ and $2$, which is $6$. Outside that interval the sum is larger.
+So every $x$ in $[-4,2]$ works: infinitely many solutions.
+---
+Q: A function satisfies $f(x)+2f(1-x)=3x$ for all real $x$. What is $f(0)$?
+L: 3
+A: 2
+W: 1
+W: 0
+W: -1
+W: 3
+S: Replace $x$ by $1-x$ to get a second equation: $f(1-x)+2f(x)=3(1-x)=3-3x$.
+Now treat $A=f(x)$ and $B=f(1-x)$ as unknowns: $A+2B=3x$ and $2A+B=3-3x$.
+Double the second and subtract the first: $4A+2B-(A+2B)=6-6x-3x$, so $3A=6-9x$ and $f(x)=2-3x$.
+Check: $f(1-x)=2-3(1-x)=3x-1$, and $(2-3x)+2(3x-1)=3x$ ✓. So $f(0)=2$.
+(Faster for just $f(0)$: plug in $x=0$ and $x=1$ to get $f(0)+2f(1)=0$ and $f(1)+2f(0)=3$, then solve.)
+---
+Q: If $\sqrt{x}+\dfrac{1}{\sqrt{x}}=3$, what is $x+\dfrac1x$?
+L: 1
+A: 7
+W: 9
+W: 11
+W: 8
+W: 6
+S: Square both sides: $x+2+\frac1x=9$ (the cross term is $2\sqrt x\cdot\frac1{\sqrt x}=2$).
+So $x+\frac1x=7$.
+---
+Q: What is the minimum value of $\dfrac{x^2+16}{x}$ for $x\gt0$?
+L: 2
+A: 8
+W: 4
+W: 16
+W: 10
+W: 17
+S: Split the fraction: $\frac{x^2+16}{x}=x+\frac{16}{x}$.
+AM–GM: $x+\frac{16}x\ge2\sqrt{x\cdot\frac{16}x}=2\cdot4=8$, with equality when $x=\frac{16}x$, i.e. $x=4$.
+Minimum: $8$.
+@@ a10-seq
+Q: How many terms are in the arithmetic sequence $13, 17, 21, \dots, 401$?
+L: 1
+A: 98
+W: 97
+W: 99
+W: 100
+W: 388
+S: The common difference is $4$. Number of terms $=\frac{\text{last}-\text{first}}{d}+1=\frac{401-13}{4}+1=97+1=98$.
+(Forgetting the $+1$ is the classic fencepost error.)
+---
+Q: What is the sum of all multiples of $7$ between $100$ and $200$?
+L: 1
+A: 2107
+W: 2100
+W: 2114
+W: 1960
+W: 2009
+S: The multiples are $105, 112, \dots, 196$. Count: $\frac{196-105}{7}+1=13+1=14$.
+Sum $=$ count $\times$ average of first and last $=14\cdot\frac{105+196}{2}=14\cdot150.5=2107$.
+---
+Q: Three numbers in arithmetic progression have sum $30$ and product $910$. What is the largest of the three?
+L: 2
+A: 13
+W: 12
+W: 14
+W: 15
+W: 17
+S: Write them as $10-d,\ 10,\ 10+d$ (the sum $3\cdot10=30$ fixes the middle).
+Product: $10(100-d^2)=910$, so $100-d^2=91$, $d^2=9$, $d=\pm3$.
+The numbers are $7, 10, 13$; the largest is $13$.
+---
+Q: What is the value of $\dfrac1{1\cdot2}+\dfrac1{2\cdot3}+\dfrac1{3\cdot4}+\cdots+\dfrac1{49\cdot50}$?
+L: 1
+A: \frac{49}{50}
+W: \frac{1}{50}
+W: 1
+W: \frac{50}{51}
+W: \frac{48}{49}
+S: Partial fractions: $\frac1{k(k+1)}=\frac1k-\frac1{k+1}$.
+The sum telescopes: $\left(1-\frac12\right)+\left(\frac12-\frac13\right)+\dots+\left(\frac1{49}-\frac1{50}\right)=1-\frac1{50}=\frac{49}{50}$.
+---
+Q: A ball is dropped from a height of $27$ feet. Each time it hits the ground it bounces back up to $\frac23$ of the height it fell. What is the total distance it travels before coming to rest, in feet?
+L: 2
+A: 135
+W: 81
+W: 108
+W: 162
+W: 54
+S: The first drop is $27$. The rebound heights are $18, 12, 8, \dots$, a geometric series with sum $\frac{18}{1-2/3}=54$.
+Each rebound height is traveled twice (up, then down), so the total is $27+2\cdot54=135$ feet.
+---
+Q: A sequence has $a_1=3$, $a_2=7$, and $a_n=a_{n-1}-a_{n-2}$ for $n\ge3$. What is $a_{2026}$?
+L: 2
+A: -3
+W: 3
+W: 7
+W: 4
+W: -7
+S: Compute terms: $a_3=7-3=4$, $a_4=4-7=-3$, $a_5=-3-4=-7$, $a_6=-7-(-3)=-4$, $a_7=-4-(-7)=3$, $a_8=3-(-4)=7$.
+The pair $(3,7)$ came back, so the sequence repeats with period $6$: $3,7,4,-3,-7,-4,\dots$
+$2026=6\cdot337+4$, so $a_{2026}=a_4=-3$.
+---
+Q: The repeating decimal $0.\overline{27}$ equals a fraction $\frac mn$ in lowest terms. What is $m+n$?
+L: 1
+A: 14
+W: 126
+W: 27
+W: 38
+W: 12
+S: A two-digit repeating block over $99$: $0.\overline{27}=\frac{27}{99}=\frac{3}{11}$.
+So $m+n=3+11=14$. (Forgetting to reduce gives $126$.)
+---
+Q: In how many ways can you climb a staircase of $8$ steps, taking $1$ or $2$ steps at a time?
+L: 2
+A: 34
+W: 21
+W: 55
+W: 28
+W: 64
+S: Let $w_n$ be the number of ways for $n$ steps. The last move is a $1$-step (leaving $n-1$) or a $2$-step (leaving $n-2$), so $w_n=w_{n-1}+w_{n-2}$, with $w_1=1$ and $w_2=2$.
+$w_3=3, w_4=5, w_5=8, w_6=13, w_7=21, w_8=34$.
+---
+Q: What is the units digit of $3^{2026}$?
+L: 1
+A: 9
+W: 1
+W: 3
+W: 7
+W: 6
+S: Units digits of powers of $3$ cycle with period $4$: $3, 9, 7, 1, 3, 9, \dots$
+$2026=4\cdot506+2$, so $3^{2026}$ ends like $3^2=9$.
+---
+Q: The sum of the first $n$ positive odd integers is $361$. What is $n$?
+L: 1
+A: 19
+W: 18
+W: 20
+W: 181
+W: 17
+S: The first $n$ odd numbers sum to $n^2$ ($n$ terms with average $\frac{1+(2n-1)}{2}=n$).
+$n^2=361$, so $n=19$.
+---
+Q: What is the value of $\left(1-\dfrac12\right)\left(1-\dfrac13\right)\left(1-\dfrac14\right)\cdots\left(1-\dfrac1{100}\right)$?
+L: 1
+A: \frac{1}{100}
+W: \frac{1}{99}
+W: \frac{99}{100}
+W: \frac12
+W: \frac{1}{50}
+S: Each factor is $\frac{k-1}{k}$: the product is $\frac12\cdot\frac23\cdot\frac34\cdots\frac{99}{100}$.
+Every numerator cancels the previous denominator, leaving $\frac1{100}$.
+---
+Q: Figures are built from unit squares: figure $1$ has $1$ square, figure $2$ has $5$, figure $3$ has $13$, and figure $4$ has $25$. If the pattern continues, how many squares are in figure $10$?
+L: 2
+A: 181
+W: 145
+W: 200
+W: 221
+W: 100
+S: Differences: $4, 8, 12$ grow by $4$ each time, so the count is quadratic with leading coefficient $\frac42=2$.
+Try $2n^2-2n+1$: $n=1\to1$, $n=2\to5$, $n=3\to13$, $n=4\to25$ ✓. (It is $n^2+(n-1)^2$.)
+Figure $10$: $100+81=181$.
+@@ a10-nt
+Q: How many positive divisors does $720$ have?
+L: 1
+A: 30
+W: 24
+W: 28
+W: 32
+W: 36
+S: Factor: $720=2^4\cdot3^2\cdot5$.
+Each divisor is $2^a3^b5^c$ with $0\le a\le4$, $0\le b\le2$, $0\le c\le1$: $(4+1)(2+1)(1+1)=30$ divisors.
+---
+Q: Two positive integers have greatest common divisor $12$ and least common multiple $360$. One of them is $72$. What is the other?
+L: 1
+A: 60
+W: 48
+W: 30
+W: 120
+W: 90
+S: Use $\gcd(a,b)\cdot\operatorname{lcm}(a,b)=ab$: $12\cdot360=72b$, so $b=\frac{4320}{72}=60$.
+Check: $72=2^3\cdot3^2$ and $60=2^2\cdot3\cdot5$; gcd $=2^2\cdot3=12$, lcm $=2^3\cdot3^2\cdot5=360$ ✓.
+---
+Q: How many zeros are at the end of $100!$?
+L: 1
+A: 24
+W: 20
+W: 25
+W: 21
+W: 22
+S: Each trailing zero needs a factor $10=2\cdot5$, and factors of $2$ are more plentiful, so count factors of $5$.
+Legendre: $\left\lfloor\frac{100}5\right\rfloor+\left\lfloor\frac{100}{25}\right\rfloor=20+4=24$. (Multiples of $25$ contribute a second $5$.)
+---
+Q: What is the remainder when $2^{100}$ is divided by $7$?
+L: 1
+A: 2
+W: 1
+W: 4
+W: 3
+W: 6
+S: Powers of $2$ mod $7$ cycle: $2, 4, 1, 2, 4, 1, \dots$ because $2^3=8\equiv1$.
+$2^{100}=(2^3)^{33}\cdot2\equiv1^{33}\cdot2=2\pmod 7$.
+---
+Q: What is the smallest positive integer that leaves a remainder of $1$ when divided by each of $2, 3, 4, 5,$ and $6$, and is divisible by $7$?
+L: 2
+A: 301
+W: 61
+W: 121
+W: 421
+W: 181
+S: Remainder $1$ for each of $2,\dots,6$ means $n-1$ is a multiple of $\operatorname{lcm}(2,3,4,5,6)=60$, so $n=60k+1$.
+Mod $7$: $60\equiv4$, so we need $4k+1\equiv0$, i.e. $4k\equiv6\equiv-1\pmod7$. Trying $k=1,\dots$: $4\cdot5=20\equiv6$, so $k=5$.
+$n=301=7\cdot43$ ✓.
+---
+Q: What is the sum of the digits of $10^{20}-20$?
+L: 2
+A: 170
+W: 162
+W: 171
+W: 180
+W: 172
+S: $10^{20}$ is $1$ followed by $20$ zeros. Subtracting $20$ gives a $20$-digit number: eighteen $9$s followed by $80$: $99\ldots980$.
+(Check with a small case: $10^4-20=9980$, two $9$s then $80$.)
+Digit sum: $18\cdot9+8+0=170$.
+---
+Q: How many integers from $1$ to $100$ share no common factor greater than $1$ with $100$?
+L: 2
+A: 40
+W: 50
+W: 60
+W: 45
+W: 36
+S: $100=2^2\cdot5^2$, so we need numbers divisible by neither $2$ nor $5$.
+Inclusion–exclusion: $100-50-20+10=40$ (multiples of $2$, of $5$, and of $10$ counted back once).
+Equivalently $\varphi(100)=100\cdot\frac12\cdot\frac45=40$.
+---
+Q: When $2026$ is written in base $8$, what is the sum of its digits?
+L: 1
+A: 17
+W: 10
+W: 16
+W: 18
+W: 14
+S: Divide repeatedly by $8$: $2026=8\cdot253+2$, $253=8\cdot31+5$, $31=8\cdot3+7$, $3=8\cdot0+3$.
+Reading the remainders from bottom to top: $2026=3752_8$. (Check: $3\cdot512+7\cdot64+5\cdot8+2=1536+448+40+2=2026$ ✓.)
+Digit sum: $3+7+5+2=17$.
+---
+Q: What is the largest integer $n$ such that $3^n$ divides $30!$?
+L: 1
+A: 14
+W: 10
+W: 13
+W: 15
+W: 12
+S: Legendre's formula: $\left\lfloor\frac{30}3\right\rfloor+\left\lfloor\frac{30}9\right\rfloor+\left\lfloor\frac{30}{27}\right\rfloor=10+3+1=14$.
+(Multiples of $3$ give one factor each, multiples of $9$ an extra one, and $27$ a third.)
+---
+Q: How many positive integers less than or equal to $1000$ have exactly $3$ positive divisors?
+L: 2
+A: 11
+W: 10
+W: 12
+W: 31
+W: 9
+S: $d(n)=3$ means the product of $(a_i+1)$ is $3$, which is prime, so $n=p^2$ for a prime $p$.
+We need $p^2\le1000$, i.e. $p\le31$. The primes up to $31$ are $2,3,5,7,11,13,17,19,23,29,31$: that's $11$.
+---
+Q: What is the remainder when $1!+2!+3!+\cdots+100!$ is divided by $12$?
+L: 1
+A: 9
+W: 3
+W: 0
+W: 1
+W: 5
+S: For $n\ge4$, $n!$ contains $3\cdot4=12$ as a factor, so it is $\equiv0\pmod{12}$.
+Only $1!+2!+3!=1+2+6=9$ matters. Remainder: $9$.
+---
+Q: How many positive divisors of $N=2^4\cdot3^3\cdot5^2$ are perfect squares?
+L: 2
+A: 12
+W: 8
+W: 6
+W: 18
+W: 24
+S: A divisor $2^a3^b5^c$ is a perfect square exactly when all exponents are even.
+$a\in\{0,2,4\}$ (3 choices), $b\in\{0,2\}$ (2 choices), $c\in\{0,2\}$ (2 choices): $3\cdot2\cdot2=12$.
+@@ a10-count
+Q: How many distinct arrangements of the letters in $\text{BANANA}$ are there?
+L: 1
+A: 60
+W: 720
+W: 120
+W: 30
+W: 180
+S: There are $6$ letters: $3$ A's, $2$ N's, and $1$ B. If all were distinct there would be $6!=720$ orders.
+Swapping identical letters doesn't create a new word, so divide by $3!$ for the A's and $2!$ for the N's: $\frac{720}{6\cdot2}=60$.
+---
+Q: A committee of $3$ is chosen from $6$ boys and $4$ girls. How many committees include at least one girl?
+L: 1
+A: 100
+W: 120
+W: 96
+W: 80
+W: 60
+S: Complementary counting: all committees minus the all-boy ones.
+$\binom{10}3-\binom63=120-20=100$.
+---
+Q: In how many ways can $5$ people line up in a row if Alice and Bob refuse to stand next to each other?
+L: 1
+A: 72
+W: 48
+W: 96
+W: 120
+W: 60
+S: Total arrangements: $5!=120$. Arrangements with Alice and Bob together: glue them into one block, giving $4$ units to arrange ($4!=24$) and $2$ orders inside the block, so $48$.
+Not together: $120-48=72$.
+---
+Q: How many integers from $1$ to $100$ are divisible by $2$, $3$, or $5$?
+L: 2
+A: 74
+W: 70
+W: 76
+W: 80
+W: 26
+S: Inclusion–exclusion. Multiples of $2$: $50$; of $3$: $33$; of $5$: $20$.
+Pairs: of $6$: $16$; of $10$: $10$; of $15$: $6$. All three (of $30$): $3$.
+$50+33+20-16-10-6+3=74$.
+---
+Q: A path from $(0,0)$ to $(5,3)$ uses only unit steps to the right or up. How many such paths are there?
+L: 1
+A: 56
+W: 15
+W: 28
+W: 70
+W: 40
+S: Every path has $5+3=8$ steps, of which exactly $3$ are "up". Choosing which $3$ steps go up determines the path.
+$\binom83=56$.
+---
+Q: In how many ways can $10$ identical candies be given to $3$ children so that each child gets at least one?
+L: 1
+A: 36
+W: 66
+W: 45
+W: 30
+W: 28
+S: Give each child $1$ candy first; $7$ remain to distribute freely among $3$ children.
+Stars and bars: $7$ stars and $2$ bars, $\binom{9}{2}=36$. (Equivalently $\binom{10-1}{3-1}$ for positive solutions of $a+b+c=10$.)
+---
+Q: How many solutions does $x+y+z+w=8$ have in nonnegative integers?
+L: 2
+A: 165
+W: 120
+W: 84
+W: 330
+W: 35
+S: Stars and bars: $8$ stars and $3$ bars in a row, choosing the bar positions among $11$ slots: $\binom{11}{3}=165$.
+---
+Q: In how many ways can $6$ people be seated around a round table, if rotations of a seating are considered the same?
+L: 1
+A: 120
+W: 720
+W: 60
+W: 360
+W: 24
+S: Fix one person's seat to account for rotations; the other $5$ can then be arranged in the remaining seats in $5!=120$ ways.
+(Equivalently, $6!$ linear orders, each round seating counted $6$ times: $\frac{720}{6}$.)
+---
+Q: How many three-digit positive integers have three different digits?
+L: 1
+A: 648
+W: 720
+W: 504
+W: 729
+W: 900
+S: Choose the hundreds digit first (most restricted): $9$ choices ($1$–$9$). Tens digit: any digit except that one, $9$ choices (now $0$ is allowed). Units digit: $8$ choices.
+$9\cdot9\cdot8=648$.
+---
+Q: How many four-digit positive integers contain at least one digit $7$?
+L: 2
+A: 3168
+W: 2916
+W: 3000
+W: 3240
+W: 4000
+S: Complement: four-digit numbers with no $7$. First digit: $8$ choices (not $0$ or $7$); each other digit: $9$ choices.
+That's $8\cdot9^3=5832$. There are $9000$ four-digit numbers, so $9000-5832=3168$ contain a $7$.
+---
+Q: At a party, each of $12$ people shakes hands once with each other person. How many handshakes occur?
+L: 1
+A: 66
+W: 132
+W: 144
+W: 72
+W: 78
+S: A handshake is an unordered pair of people: $\binom{12}2=\frac{12\cdot11}2=66$.
+(Counting $12\cdot11$ counts each handshake twice, once from each person.)
+---
+Q: Three vertices of a regular octagon are chosen to form a triangle. How many such triangles have <b>no</b> side that is also a side of the octagon?
+L: 3
+A: 16
+W: 8
+W: 24
+W: 32
+W: 40
+S: Total triangles: $\binom83=56$. Subtract those using at least one octagon side.
+Triangles using two octagon sides: three consecutive vertices; there are $8$ of these.
+Triangles using exactly one side: pick the side ($8$ ways), then a third vertex not adjacent to either endpoint: $8-4=4$ ways, giving $32$.
+$56-8-32=16$.
+(Check with the formula $\frac{n(n-4)(n-5)}6=\frac{8\cdot4\cdot3}{6}=16$.)
+@@ a10-prob
+Q: Two fair six-sided dice are rolled. What is the probability that the sum is $7$ or $11$?
+L: 1
+A: \frac{2}{9}
+W: \frac16
+W: \frac1{18}
+W: \frac5{18}
+W: \frac14
+S: There are $36$ equally likely ordered pairs. A sum of $7$ happens $6$ ways ($(1,6),\dots,(6,1)$); a sum of $11$ happens $2$ ways ($(5,6),(6,5)$).
+$P=\frac{6+2}{36}=\frac8{36}=\frac29$.
+---
+Q: Three fair coins are flipped. What is the probability of at least one head?
+L: 1
+A: \frac78
+W: \frac12
+W: \frac34
+W: \frac38
+W: \frac58
+S: Complement: the only outcome with no heads is TTT, with probability $\left(\frac12\right)^3=\frac18$.
+$P(\text{at least one head})=1-\frac18=\frac78$.
+---
+Q: A bag holds $5$ red and $3$ blue marbles. Two are drawn without replacement. What is the probability that they are the same color?
+L: 1
+A: \frac{13}{28}
+W: \frac{17}{32}
+W: \frac{15}{28}
+W: \frac12
+W: \frac{5}{14}
+S: Both red: $\frac58\cdot\frac47=\frac{20}{56}$. Both blue: $\frac38\cdot\frac27=\frac6{56}$. (The second draw has one fewer marble.)
+Total: $\frac{26}{56}=\frac{13}{28}$.
+(Counting version: $\frac{\binom52+\binom32}{\binom82}=\frac{10+3}{28}$.)
+---
+Q: Three fair dice are rolled. What is the probability that the sum is $10$?
+L: 2
+A: \frac18
+W: \frac19
+W: \frac5{36}
+W: \frac16
+W: \frac{25}{216}
+S: Count ordered triples $(a,b,c)$ with $a+b+c=10$, each from $1$ to $6$.
+Stars and bars for positive solutions gives $\binom92=36$; subtract those with a value $\ge7$: if $a\ge7$, set $a'=a-6$, giving $a'+b+c=4$ with $\binom32=3$ solutions. Same for $b$ and $c$: $3\cdot3=9$. (Two values $\ge7$ is impossible.)
+$36-9=27$ triples, so $P=\frac{27}{216}=\frac18$.
+---
+Q: Two fair dice are rolled. What is the expected value of the larger of the two numbers (or the common value if they are equal)?
+L: 2
+A: \frac{161}{36}
+W: \frac72
+W: 4
+W: \frac{91}{36}
+W: \frac92
+S: $P(\max\le k)=\left(\frac k6\right)^2$, so $P(\max=k)=\frac{k^2-(k-1)^2}{36}=\frac{2k-1}{36}$.
+$E=\sum_{k=1}^6 k\cdot\frac{2k-1}{36}=\frac{1+6+15+28+45+66}{36}=\frac{161}{36}\approx4.47$.
+---
+Q: A point $(x,y)$ is chosen uniformly at random from the square $0\le x\le2$, $0\le y\le2$. What is the probability that $x+y\lt1$?
+L: 1
+A: \frac18
+W: \frac14
+W: \frac12
+W: \frac1{16}
+W: \frac38
+S: Geometric probability: favorable area over total area.
+The region $x+y\lt1$ inside the square is a right triangle with legs $1$ and $1$, area $\frac12$. The square has area $4$.
+$P=\frac{1/2}{4}=\frac18$.
+---
+Q: Ten letters are put into ten addressed envelopes at random, one per envelope. What is the expected number of letters in their correct envelopes?
+L: 2
+A: 1
+W: 0
+W: \frac1{10}
+W: \frac12
+W: 2
+S: Linearity of expectation with indicators: letter $i$ is in its own envelope with probability $\frac1{10}$.
+Expected number of correct letters $=10\cdot\frac1{10}=1$. (The events depend on each other, but linearity doesn't care.)
+---
+Q: The cards $A$, $B$, $C$ are shuffled into a deck of $52$ cards together with $49$ others. What is the probability that $A$ comes before both $B$ and $C$?
+L: 1
+A: \frac13
+W: \frac12
+W: \frac16
+W: \frac23
+W: \frac14
+S: Only the relative order of $A$, $B$, $C$ matters, and by symmetry each of the three is equally likely to be first among them.
+$P=\frac13$. The other $49$ cards are irrelevant.
+---
+Q: A family has two children, and you learn that at least one is a boy. Assuming each child is equally likely to be a boy or a girl, what is the probability that both are boys?
+L: 2
+A: \frac13
+W: \frac12
+W: \frac14
+W: \frac23
+W: \frac34
+S: The equally likely possibilities for (older, younger) are $BB, BG, GB, GG$. Knowing "at least one boy" removes only $GG$.
+Of the three remaining, one is $BB$: $P=\frac13$.
+---
+Q: A fair coin is flipped until the first head appears. What is the expected number of flips?
+L: 1
+A: 2
+W: 1
+W: \frac32
+W: 3
+W: 4
+S: Each flip succeeds with $p=\frac12$, so the expected wait is $\frac1p=2$.
+States proof: $E=1+\frac12E$ (one flip always; half the time we start over), so $E=2$.
+---
+Q: Two numbers $x$ and $y$ are chosen independently and uniformly from the interval $[0,1]$. What is the probability that $|x-y|\lt\frac12$?
+L: 2
+A: \frac34
+W: \frac12
+W: \frac14
+W: \frac23
+W: \frac78
+S: Think of $(x,y)$ as a random point in the unit square. The condition fails in two corner triangles, where $y\ge x+\frac12$ or $y\le x-\frac12$.
+Each triangle has legs $\frac12$, area $\frac18$; together $\frac14$.
+$P=1-\frac14=\frac34$.
+---
+Q: Alice and Bob take turns rolling a fair die, Alice first. The first person to roll a $6$ wins. What is the probability that Alice wins?
+L: 2
+A: \frac6{11}
+W: \frac12
+W: \frac5{11}
+W: \frac16
+W: \frac{7}{12}
+S: Let $P$ be Alice's chance. She wins on her first roll with probability $\frac16$. Otherwise Alice and Bob both miss, with probability $\frac56\cdot\frac56=\frac{25}{36}$, and the game starts over.
+$P=\frac16+\frac{25}{36}P$, so $\frac{11}{36}P=\frac16$ and $P=\frac{6}{11}$.
+@@ a10-tri
+Q: The angles of a triangle are in the ratio $2:3:7$. What is the largest angle, in degrees?
+L: 1
+A: 105
+W: 90
+W: 100
+W: 120
+W: 70
+S: Write the angles as $2k, 3k, 7k$. They sum to $180^\circ$: $12k=180$, so $k=15$.
+The largest angle is $7\cdot15=105^\circ$.
+---
+Q: A right triangle has legs $9$ and $12$. What is the length of the altitude to the hypotenuse?
+L: 1
+A: \frac{36}5
+W: 6
+W: \frac{15}2
+W: 8
+W: \frac{27}5
+S: The hypotenuse is $\sqrt{81+144}=15$ (a $3$-$4$-$5$ triangle scaled by $3$).
+Compute twice the area two ways: $9\cdot12=15\cdot h$, so $h=\frac{108}{15}=\frac{36}5$.
+---
+Q: A triangle has sides $13$, $14$, and $15$. What is the length of the altitude to the side of length $14$?
+L: 1
+A: 12
+W: 13
+W: 11
+W: 10
+W: \frac{84}{13}
+S: Heron's formula: $s=21$, area $=\sqrt{21\cdot8\cdot7\cdot6}=\sqrt{7056}=84$.
+Then $84=\frac12\cdot14\cdot h$, so $h=12$.
+(This triangle is a $5$-$12$-$13$ and a $9$-$12$-$15$ glued along the side $12$.)
+---
+Q: In triangle $ABC$, $AB=6$, $AC=10$, and $BC=12$. The bisector of angle $A$ meets $BC$ at $D$. What is $BD$?
+L: 1
+A: \frac92
+W: 4
+W: 5
+W: 6
+W: \frac{15}4
+S: Angle Bisector Theorem: $\frac{BD}{DC}=\frac{AB}{AC}=\frac{6}{10}=\frac35$.
+So $BD$ is $\frac{3}{8}$ of $BC$: $BD=\frac38\cdot12=\frac92$.
+---
+Q: In triangle $ABC$, points $D$ on $AB$ and $E$ on $AC$ satisfy $DE\parallel BC$. If $AD=4$, $DB=6$, and $DE=6$, what is $BC$?
+L: 1
+A: 15
+W: 9
+W: 10
+W: 12
+W: 18
+S: $DE\parallel BC$ makes $\triangle ADE\sim\triangle ABC$ with ratio $\frac{AD}{AB}=\frac{4}{10}=\frac25$.
+So $\frac{DE}{BC}=\frac25$ and $BC=6\cdot\frac52=15$. (Using $\frac{AD}{DB}$ instead would wrongly give $9$.)
+---
+Q: An equilateral triangle has side length $6$. What is the area of the circle that passes through its three vertices?
+L: 2
+A: 12\pi
+W: 9\pi
+W: 6\pi
+W: 3\pi
+W: 36\pi
+S: In an equilateral triangle the circumcenter is also the centroid, which is $\frac23$ of the way down each median (here a height).
+Height $=\frac{\sqrt3}2\cdot6=3\sqrt3$, so the radius is $\frac23\cdot3\sqrt3=2\sqrt3$.
+Area $=\pi(2\sqrt3)^2=12\pi$.
+---
+Q: A $30$-$60$-$90$ triangle has hypotenuse $10$. What is its area?
+L: 1
+A: \frac{25\sqrt3}{2}
+W: 25\sqrt3
+W: 50
+W: 25
+W: \frac{25\sqrt3}{4}
+S: The sides are in ratio $1:\sqrt3:2$, so the legs are $5$ and $5\sqrt3$.
+Area $=\frac12\cdot5\cdot5\sqrt3=\frac{25\sqrt3}2$.
+---
+Q: What is the area of a triangle with sides $10$, $10$, and $12$?
+L: 1
+A: 48
+W: 60
+W: 40
+W: 50
+W: 24\sqrt2
+S: The altitude to the base $12$ bisects it (isosceles triangle), forming right triangles with hypotenuse $10$ and leg $6$, so the height is $8$.
+Area $=\frac12\cdot12\cdot8=48$.
+---
+Q: In triangle $ABC$, $\angle A=50^\circ$. The bisectors of angles $B$ and $C$ meet at $I$. What is $\angle BIC$?
+L: 2
+A: 115
+W: 100
+W: 130
+W: 105
+W: 125
+S: $\angle B+\angle C=130^\circ$, so the halves add to $\angle IBC+\angle ICB=65^\circ$.
+In triangle $BIC$: $\angle BIC=180^\circ-65^\circ=115^\circ$. (In general $90^\circ+\frac{\angle A}2$.)
+---
+Q: A right triangle has perimeter $30$ and hypotenuse $13$. What is its area?
+L: 2
+A: 30
+W: 60
+W: 39
+W: 36
+W: 32.5
+S: The legs satisfy $a+b=17$ and $a^2+b^2=169$.
+$2ab=(a+b)^2-(a^2+b^2)=289-169=120$, so the area is $\frac{ab}2=30$.
+(The legs are $5$ and $12$.)
+---
+Q: Triangle $ABC$ has area $60$. Point $D$ is the midpoint of $BC$, and $E$ is the midpoint of $AD$. What is the area of triangle $BED$?
+L: 2
+A: 15
+W: 20
+W: 10
+W: 30
+W: 12
+S: The median $AD$ splits $ABC$ into two halves: $[ABD]=30$.
+In triangle $ABD$, $BE$ is a median (to side $AD$), so it splits $ABD$ in half: $[BED]=15$.
+---
+Q: The sides of a triangle are $7$, $8$, and $x$, where $x$ is an integer. How many values of $x$ make the triangle obtuse?
+L: 3
+A: 6
+W: 5
+W: 7
+W: 4
+W: 8
+S: The triangle inequality gives $1\lt x\lt15$, so $2\le x\le14$.
+If $x$ is the longest side ($x\ge8$), obtuse means $x^2\gt49+64=113$: $x\ge11$, so $x=11,12,13,14$ ($4$ values).
+If $8$ is the longest side ($x\le8$), obtuse means $64\gt49+x^2$: $x^2\lt15$, so $x=2,3$ ($2$ values).
+Total: $6$.
+@@ a10-circ
+Q: Points $A$, $B$, $C$ lie on a circle, and the arc $AC$ not containing $B$ measures $100^\circ$. What is $\angle ABC$?
+L: 1
+A: 50
+W: 100
+W: 80
+W: 130
+W: 40
+S: An inscribed angle is half its intercepted arc: $\angle ABC=\frac12\cdot100^\circ=50^\circ$.
+---
+Q: A point $P$ is $13$ units from the center of a circle of radius $5$. What is the length of a tangent segment from $P$ to the circle?
+L: 1
+A: 12
+W: 8
+W: 13
+W: \sqrt{194}
+W: 18
+S: The radius to the point of tangency is perpendicular to the tangent, so the tangent, the radius, and the segment to the center form a right triangle with hypotenuse $13$.
+Tangent length $=\sqrt{13^2-5^2}=\sqrt{144}=12$.
+---
+Q: Two chords $AB$ and $CD$ of a circle intersect at $P$. If $AP=4$, $PB=6$, and $CP=3$, what is $PD$?
+L: 1
+A: 8
+W: 4.5
+W: 2
+W: 7
+W: 5
+S: Power of a point (inside): $AP\cdot PB=CP\cdot PD$.
+$4\cdot6=3\cdot PD$, so $PD=8$.
+---
+Q: From a point $P$ outside a circle, a secant meets the circle at $A$ and then $B$, with $PA=4$ and $AB=5$. A tangent from $P$ touches the circle at $T$. What is $PT$?
+L: 1
+A: 6
+W: 3
+W: 20
+W: 2\sqrt5
+W: 9
+S: Power of a point (outside): tangent$^2$ = outer part $\times$ whole secant.
+$PT^2=PA\cdot PB=4\cdot(4+5)=36$, so $PT=6$.
+---
+Q: Quadrilateral $ABCD$ is inscribed in a circle, and $\angle A=70^\circ$. What is $\angle C$?
+L: 1
+A: 110
+W: 70
+W: 140
+W: 90
+W: 35
+S: Opposite angles of a cyclic quadrilateral add to $180^\circ$ (together they subtend the whole circle).
+$\angle C=180^\circ-70^\circ=110^\circ$.
+---
+Q: What is the area of a sector of a circle with radius $6$ and central angle $60^\circ$?
+L: 1
+A: 6\pi
+W: 2\pi
+W: 12\pi
+W: 36\pi
+W: 3\pi
+S: The sector is $\frac{60}{360}=\frac16$ of the circle. Area $=\frac16\cdot\pi\cdot6^2=6\pi$.
+(Its arc length would be $\frac16\cdot12\pi=2\pi$.)
+---
+Q: A chord of a circle with radius $10$ is $6$ units from the center. How long is the chord?
+L: 1
+A: 16
+W: 8
+W: 12
+W: 2\sqrt{34}
+W: 14
+S: The perpendicular from the center bisects the chord. Half the chord, the distance $6$, and the radius $10$ form a right triangle.
+Half chord $=\sqrt{100-36}=8$, so the chord is $16$.
+---
+Q: A square has side length $2$. What is the area of the region inside the circle circumscribed about the square but outside the circle inscribed in it?
+L: 2
+A: \pi
+W: 2\pi
+W: \frac{\pi}2
+W: 4-\pi
+W: 2\pi-4
+S: The inscribed circle has radius $1$ (half the side). The circumscribed circle has radius $\sqrt2$ (half the diagonal $2\sqrt2$).
+Area between them: $\pi(\sqrt2)^2-\pi\cdot1^2=2\pi-\pi=\pi$.
+---
+Q: A circle is inscribed in a right triangle with legs $6$ and $8$. What is its radius?
+L: 1
+A: 2
+W: 3
+W: \frac52
+W: 4
+W: \frac32
+S: The hypotenuse is $10$. For a right triangle, $r=\frac{a+b-c}2=\frac{6+8-10}2=2$.
+Check with $\text{Area}=rs$: area $24$, semiperimeter $12$, $r=\frac{24}{12}=2$ ✓.
+---
+Q: Two circles with radii $3$ and $5$ are externally tangent. What is the length of a common external tangent segment, between the two points of tangency?
+L: 2
+A: 2\sqrt{15}
+W: 8
+W: 2\sqrt{17}
+W: 4\sqrt3
+W: \sqrt{34}
+S: The centers are $3+5=8$ apart. Both radii to the tangent line are perpendicular to it, so they're parallel. Slide the tangent segment over to the smaller center: it becomes a leg of a right triangle with hypotenuse $8$ and other leg $5-3=2$.
+Length $=\sqrt{8^2-2^2}=\sqrt{60}=2\sqrt{15}$.
+---
+Q: Triangle $ABC$ is inscribed in a circle with diameter $AB=10$, and $AC=6$. What is the area of the triangle?
+L: 1
+A: 24
+W: 30
+W: 48
+W: 20
+W: 25
+S: Thales: an angle inscribed in a semicircle is right, so $\angle C=90^\circ$.
+Then $BC=\sqrt{100-36}=8$, and the area is $\frac12\cdot6\cdot8=24$.
+---
+Q: Two chords of a circle cross at a point inside it. The arcs intercepted by one of the vertical angles they form measure $70^\circ$ and $110^\circ$. What is that angle?
+L: 2
+A: 90
+W: 70
+W: 110
+W: 20
+W: 180
+S: An angle formed by two chords crossing inside a circle is half the sum of the intercepted arcs (the arc it faces and the arc its vertical angle faces).
+$\frac12(70^\circ+110^\circ)=90^\circ$.
+(Proof: join two endpoints; the angle is an exterior angle of a triangle whose remote angles are inscribed angles of $35^\circ$ and $55^\circ$.)
+@@ a10-poly
+Q: What is the area of the quadrilateral with vertices $(1,1)$, $(5,2)$, $(4,6)$, and $(0,4)$, in that order?
+L: 2
+A: \frac{31}2
+W: 15
+W: 16
+W: 14
+W: \frac{33}2
+S: Shoelace: list the vertices in order and repeat the first.
+$\sum x_iy_{i+1}=1\cdot2+5\cdot6+4\cdot4+0\cdot1=2+30+16+0=48$.
+$\sum y_ix_{i+1}=1\cdot5+2\cdot4+6\cdot0+4\cdot1=5+8+0+4=17$.
+Area $=\frac12|48-17|=\frac{31}2$.
+---
+Q: What is the measure of each interior angle of a regular $12$-gon, in degrees?
+L: 1
+A: 150
+W: 144
+W: 135
+W: 160
+W: 30
+S: The interior angles add to $180^\circ(12-2)=1800^\circ$; each of the $12$ equal angles is $150^\circ$.
+(Or: each exterior angle is $\frac{360^\circ}{12}=30^\circ$, so each interior angle is $150^\circ$.)
+---
+Q: How many diagonals does a convex polygon with $20$ sides have?
+L: 1
+A: 170
+W: 190
+W: 340
+W: 180
+W: 160
+S: Each vertex has a diagonal to every vertex except itself and its two neighbors: $20-3=17$.
+That counts every diagonal twice (once from each end): $\frac{20\cdot17}2=170$.
+---
+Q: The interior angles of a convex polygon add up to $1800^\circ$. How many sides does it have?
+L: 1
+A: 12
+W: 10
+W: 11
+W: 13
+W: 14
+S: $180(n-2)=1800$ gives $n-2=10$, so $n=12$.
+---
+Q: What is the area of a regular hexagon with side length $4$?
+L: 1
+A: 24\sqrt3
+W: 16\sqrt3
+W: 48\sqrt3
+W: 12\sqrt3
+W: 96
+S: A regular hexagon splits into $6$ equilateral triangles with side $4$, each of area $\frac{\sqrt3}4\cdot16=4\sqrt3$.
+Total: $6\cdot4\sqrt3=24\sqrt3$.
+---
+Q: What is the distance between $(1,2)$ and $(7,10)$?
+L: 1
+A: 10
+W: 14
+W: 8
+W: 2\sqrt{13}
+W: 12
+S: $\sqrt{(7-1)^2+(10-2)^2}=\sqrt{36+64}=\sqrt{100}=10$ (a $6$-$8$-$10$ right triangle).
+---
+Q: The line through $(2,3)$ perpendicular to $y=2x+1$ crosses the $y$-axis at what $y$-value?
+L: 1
+A: 4
+W: 2
+W: -1
+W: 3
+W: 5
+S: Perpendicular slopes multiply to $-1$, so the new slope is $-\frac12$.
+$y-3=-\frac12(x-2)$ gives $y=-\frac12x+4$, so the $y$-intercept is $4$.
+---
+Q: How many lattice points (points with integer coordinates) lie on the segment from $(0,0)$ to $(12,18)$, including both endpoints?
+L: 2
+A: 7
+W: 6
+W: 13
+W: 19
+W: 31
+S: $\gcd(12,18)=6$, so the lattice points are evenly spaced at steps of $\left(\frac{12}6,\frac{18}6\right)=(2,3)$.
+They are $(0,0),(2,3),\dots,(12,18)$: $6+1=7$ points.
+---
+Q: A rhombus has diagonals of length $10$ and $24$. What is its perimeter?
+L: 1
+A: 52
+W: 68
+W: 26
+W: 120
+W: 48
+S: The diagonals of a rhombus bisect each other at right angles, making four right triangles with legs $5$ and $12$.
+Each side is $\sqrt{25+144}=13$, so the perimeter is $52$.
+---
+Q: A trapezoid has parallel sides $8$ and $14$ and height $5$. What is its area?
+L: 1
+A: 55
+W: 110
+W: 70
+W: 40
+W: 60
+S: Area $=\frac{b_1+b_2}2\cdot h=\frac{8+14}2\cdot5=11\cdot5=55$.
+---
+Q: A polygon with vertices at lattice points has $10$ lattice points in its interior and $8$ on its boundary. What is its area?
+L: 2
+A: 13
+W: 14
+W: 18
+W: 9
+W: 17
+S: Pick's theorem: Area $=I+\frac B2-1=10+4-1=13$.
+---
+Q: A runner starts at $A=(0,3)$, must touch the $x$-axis, and then run to $B=(6,5)$. What is the shortest possible total distance?
+L: 2
+A: 10
+W: 8
+W: 2\sqrt{10}+5
+W: 2\sqrt{13}
+W: 11
+S: Reflect $B$ across the $x$-axis to $B'=(6,-5)$. For any point $P$ on the axis, $PB=PB'$, so the path length equals $AP+PB'$, which is shortest as a straight line.
+$AB'=\sqrt{6^2+8^2}=10$.
+@@ a10-3d
+Q: What is the length of the space diagonal of a $3\times4\times12$ box?
+L: 1
+A: 13
+W: 19
+W: 12
+W: 5
+W: \sqrt{153}
+S: The diagonal of the $3\times4$ face is $5$. That diagonal and the edge $12$ are perpendicular, so the space diagonal is $\sqrt{5^2+12^2}=13$.
+(Formula: $\sqrt{9+16+144}=\sqrt{169}=13$.)
+---
+Q: A sphere has radius $3$ and a cylinder has radius $3$ and height $4$. What is the ratio of the sphere's volume to the cylinder's volume?
+L: 1
+A: 1
+W: \frac34
+W: \frac43
+W: \frac12
+W: 2
+S: Sphere: $\frac43\pi\cdot27=36\pi$. Cylinder: $\pi\cdot9\cdot4=36\pi$.
+The ratio is $1$: they have equal volume.
+---
+Q: A cone has base radius $6$ and height $8$. What is its lateral (curved) surface area?
+L: 1
+A: 60\pi
+W: 48\pi
+W: 96\pi
+W: 36\pi
+W: 100\pi
+S: The slant height is $\ell=\sqrt{6^2+8^2}=10$.
+Lateral area $=\pi r\ell=\pi\cdot6\cdot10=60\pi$. (Its volume would be $\frac13\pi\cdot36\cdot8=96\pi$.)
+---
+Q: What is the total surface area of a $2\times3\times4$ rectangular box?
+L: 1
+A: 52
+W: 24
+W: 26
+W: 48
+W: 56
+S: Three pairs of faces: $2(2\cdot3+3\cdot4+2\cdot4)=2(6+12+8)=52$.
+---
+Q: A $4\times4\times4$ cube is painted on the outside and cut into $64$ unit cubes. How many unit cubes have paint on exactly two faces?
+L: 1
+A: 24
+W: 8
+W: 12
+W: 32
+W: 36
+S: Cubes with exactly two painted faces lie along the edges but not at the corners. Each of the $12$ edges has $4-2=2$ such cubes.
+$12\cdot2=24$.
+---
+Q: What is the volume of a regular tetrahedron with edge length $6$?
+L: 3
+A: 18\sqrt2
+W: 36\sqrt2
+W: 9\sqrt2
+W: 27\sqrt3
+W: 72
+S: Use $V=\frac{s^3}{6\sqrt2}=\frac{216}{6\sqrt2}=\frac{36}{\sqrt2}=18\sqrt2$.
+(Derivation: the tetrahedron sits in a cube of side $\frac6{\sqrt2}=3\sqrt2$, whose volume is $54\sqrt2$; removing four corner pyramids, each $\frac16$ of the cube, leaves $\frac13$ of it, $18\sqrt2$.)
+---
+Q: A square pyramid has base edge $6$ and height $4$. What is its total surface area?
+L: 2
+A: 96
+W: 84
+W: 60
+W: 36+24\sqrt2
+W: 144
+S: The slant height (height of each triangular face) runs from the apex to the midpoint of a base edge: $\sqrt{4^2+3^2}=5$.
+Four triangles: $4\cdot\frac12\cdot6\cdot5=60$. Base: $36$. Total: $96$.
+---
+Q: Each edge of a cube is increased by $50\%$. By what percent does the volume increase?
+L: 1
+A: 237.5\%
+W: 50\%
+W: 150\%
+W: 125\%
+W: 337.5\%
+S: Volume scales by the cube of the length factor: $1.5^3=3.375$.
+That is an increase of $3.375-1=2.375$, or $237.5\%$.
+---
+Q: An ant walks along the surface of a cube with edge $1$ from one corner to the opposite corner. What is the shortest possible distance?
+L: 2
+A: \sqrt5
+W: \sqrt3
+W: 2
+W: 3
+W: 1+\sqrt2
+S: Unfold the two faces the ant crosses into a flat $1\times2$ rectangle; the opposite corners become opposite corners of the rectangle.
+The straight-line distance is $\sqrt{1^2+2^2}=\sqrt5\approx2.24$. (The space diagonal $\sqrt3$ goes through the inside, which isn't allowed.)
+---
+Q: A cylindrical glass with radius $4$ holds water. A solid ball of radius $3$ is dropped in and is completely submerged. By how much does the water level rise?
+L: 2
+A: \frac94
+W: 3
+W: \frac{27}{16}
+W: \frac{9}{16}
+W: 2
+S: The water rises by the ball's volume divided by the glass's base area.
+Ball: $\frac43\pi\cdot27=36\pi$. Base: $16\pi$. Rise: $\frac{36\pi}{16\pi}=\frac94$.
+---
+Q: A convex polyhedron has $12$ vertices and $8$ faces. How many edges does it have?
+L: 1
+A: 18
+W: 20
+W: 16
+W: 22
+W: 24
+S: Euler's formula: $V-E+F=2$, so $12-E+8=2$ and $E=18$.
+(A hexagonal prism is an example.)
+---
+Q: A plane cuts a unit cube through three vertices that are each adjacent to one corner of the cube. What is the area of the triangular cross-section?
+L: 3
+A: \frac{\sqrt3}2
+W: \frac12
+W: \frac{\sqrt3}{4}
+W: \frac{\sqrt2}2
+W: 1
+S: Each side of the triangle is a face diagonal of the cube, length $\sqrt2$, so the triangle is equilateral.
+Area $=\frac{\sqrt3}4(\sqrt2)^2=\frac{\sqrt3}2$.
+@@ a10-logic
+Q: A list of $5$ positive integers has mean $6$, median $7$, and unique mode $8$. What is the largest possible range of the list?
+L: 2
+A: 7
+W: 6
+W: 5
+W: 8
+W: 4
+S: Sorted, the list is $a, b, 7, 8, 8$: the median is the middle value $7$, and $8$ must appear at least twice to be the mode, so it fills the top two spots.
+The sum is $5\cdot6=30$, so $a+b=30-23=7$, with $a\lt b\lt7$ (if $a=b$ that value would tie $8$ as a mode).
+The range $8-a$ is largest when $a$ is smallest: $a=1$, $b=6$. Range $=7$.
+---
+Q: The numbers $2, 4, 4, 5,$ and $x$ have a mean equal to their median. What is $x$?
+L: 1
+A: 5
+W: 4
+W: 3
+W: 6
+W: 9
+S: Wherever $x$ goes, the two $4$s keep the middle value at $4$: the median is always $4$.
+So the mean must be $4$: $\frac{15+x}{5}=4$, giving $x=5$.
+---
+Q: On an island, knights always tell the truth and knaves always lie. $A$ says "$B$ is a knave." $B$ says "$C$ is a knave." $C$ says "$A$ and $B$ are both knaves." How many of the three are knights?
+L: 2
+A: 1
+W: 0
+W: 2
+W: 3
+W: \text{can't be determined}
+S: Suppose $C$ is a knight. Then $A$ and $B$ are both knaves, so $A$'s statement "$B$ is a knave" is true, which a knave can't say. Contradiction, so $C$ is a knave.
+Then $B$'s statement "$C$ is a knave" is true, so $B$ is a knight. Then $A$'s statement "$B$ is a knave" is false, so $A$ is a knave.
+Check $C$: "$A$ and $B$ are both knaves" is false ($B$ is a knight) ✓. Exactly $1$ knight.
+---
+Q: What is the smaller angle between the hour and minute hands of a clock at $3{:}40$?
+L: 1
+A: 130
+W: 120
+W: 140
+W: 150
+W: 110
+S: The minute hand is at $40\cdot6^\circ=240^\circ$. The hour hand is at $3\cdot30^\circ+40\cdot0.5^\circ=110^\circ$ (it moves as the minutes pass).
+The angle between them is $240^\circ-110^\circ=130^\circ$.
+---
+Q: Today is Monday. What day of the week will it be $100$ days from today?
+L: 1
+A: \text{Wednesday}
+W: \text{Tuesday}
+W: \text{Thursday}
+W: \text{Monday}
+W: \text{Friday}
+S: Weekdays repeat every $7$ days, and $100=7\cdot14+2$.
+So it will be $2$ days after Monday: Wednesday.
+---
+Q: Two players start with $21$ stones and take turns removing $1$, $2$, or $3$ stones. The player who takes the last stone wins. How many stones should the first player take to guarantee a win?
+L: 2
+A: 1
+W: 2
+W: 3
+W: \text{it doesn't matter}
+W: \text{the second player always wins}
+S: The losing positions (for the player to move) are the multiples of $4$: from a multiple of $4$, any move leaves a non-multiple, and from a non-multiple you can always move back to a multiple.
+$21=4\cdot5+1$, so take $1$ stone, leaving $20$. After that, whenever the opponent takes $k$, take $4-k$.
+---
+Q: A drawer has socks in $5$ different colors. What is the smallest number of socks you must take, without looking, to be sure of getting two of the same color?
+L: 1
+A: 6
+W: 5
+W: 2
+W: 10
+W: 11
+S: With $5$ socks you might get one of each color. With $6$, by the pigeonhole principle, two must share a color.
+---
+Q: The numbers $1, 2, \dots, 10$ are written on a board. A move erases two numbers $a$ and $b$ and writes $a+b-1$. After $9$ moves one number is left. What is it?
+L: 2
+A: 46
+W: 55
+W: 45
+W: 10
+W: 54
+S: Each move replaces $a+b$ with $a+b-1$, so the total on the board decreases by exactly $1$, no matter which numbers are chosen.
+The starting total is $55$; after $9$ moves it is $55-9=46$, and it's the only number left.
+---
+Q: The average score of $10$ students on a test is $70$. If the highest score, $100$, is removed, what is the average of the remaining scores?
+L: 1
+A: \frac{200}{3}
+W: 60
+W: 67
+W: 70
+W: 63
+S: Switch to sums: the total is $10\cdot70=700$. Removing $100$ leaves $600$ for $9$ students.
+Average $=\frac{600}{9}=\frac{200}{3}\approx66.7$.
+---
+Q: A $3\times3$ grid of lights starts with all lights off. Pressing a light toggles it and the lights directly above, below, left, and right of it (up to $5$ lights in all). Which statement is true about the number of lights that are on after any number of presses?
+L: 3
+A: \text{it can be any number from } 0 \text{ to } 9
+W: \text{it is always even}
+W: \text{it is always odd}
+W: \text{it is always a multiple of } 3
+W: \text{it can never be } 9
+S: There is no parity restriction: pressing the center toggles $5$ lights (odd), and pressing a corner toggles $3$ (odd).
+In fact every pattern is reachable in this "Lights Out" variant on a $3\times3$ grid, because the $9$ press patterns are independent (the system of equations mod $2$ has a unique solution for every target). In particular all $9$ lights can be on.
+So the number of lit lights can be anything from $0$ to $9$.
 </script>
 <script id="timer">
 /* ====================== FOCUS TIMER ====================== */
@@ -15964,6 +17863,20 @@ function sqd(n){let k=1,m=n;for(let i=2;i*i<=m;i++)while(m%(i*i)===0){m/=i*i;k*=
 
 /* ====================== catalog ====================== */
 const CATALOG=[
+ {area:'AMC 10 Focus',note:'Everything the AMC 10 has tested over the last 20 years (2006–2025), with full proofs, a link to every past exam, and original practice in the same style.',items:[
+  {id:'a10',name:'AMC 10: The 20-Year Course',amc:'10',d:'How the test works, an index of all 42 AMC 10 exams from 2006–2025, and every tested topic taught from scratch with proofs and practice.',subs:[
+   {id:'a10-guide',name:'How the AMC 10 Works & 20-Year Exam Index',d:'Format, scoring, when to guess, difficulty by problem number, topic mix, and links to every exam since 2006.'},
+   {id:'a10-arith',name:'Arithmetic, Percents, Ratios & Rates',d:'Fractions, percent change, ratios, rates and work, averages, units: the core of problems 1–10.'},
+   {id:'a10-alg',name:'Equations, Quadratics & Functions',d:'Linear systems, factoring identities, quadratics and Vieta, exponents, absolute value, functions, AM–GM.'},
+   {id:'a10-seq',name:'Sequences, Series & Patterns',d:'Arithmetic and geometric sequences, sums, telescoping, recursion and cycles.'},
+   {id:'a10-nt',name:'Number Theory',d:'Primes, divisors, gcd and lcm, modular arithmetic, digits and bases, factorials.'},
+   {id:'a10-count',name:'Counting',d:'Multiplication principle, permutations, combinations, stars and bars, inclusion–exclusion, casework.'},
+   {id:'a10-prob',name:'Probability & Expected Value',d:'Equally likely outcomes, complements, conditional probability, geometric probability, expectation.'},
+   {id:'a10-tri',name:'Triangles',d:'Angles, Pythagoras, similarity, special triangles, area formulas, angle bisectors, centers.'},
+   {id:'a10-circ',name:'Circles',d:'Inscribed angles, tangents, power of a point, cyclic quadrilaterals, arcs and sectors.'},
+   {id:'a10-poly',name:'Polygons, Area & Coordinates',d:'Angle sums, quadrilaterals, regular polygons, shoelace and Pick, lines, distance, reflections.'},
+   {id:'a10-3d',name:'3D Geometry',d:'Volume and surface area of prisms, cylinders, pyramids, cones and spheres; space diagonals and cross-sections.'},
+   {id:'a10-logic',name:'Logic, Statistics & Puzzles',d:'Mean, median, mode; truth-tellers and liars; games; clocks and calendars; invariants.'}]}]},
  {area:'Algebra',note:'The backbone of both contests: roughly a third of every AMC 10/12.',items:[
   {id:'alg',name:'Algebraic Manipulation & Equations',amc:'10/12',d:'Linear equations and systems, ratios, rates and percents, classic word problems, factoring, radicals.',subs:[
    {id:'alg-lin',name:'Linear Equations & Systems',d:'solving, substitution, elimination, clever combinations of equations'},
@@ -18559,6 +20472,29 @@ r=>{const k=ri(r,1,5);const kind=ri(r,0,1);const K=k**4;
  return{lvl:1,q:T`How many ${realCount?'real':'non-real'} roots does $x^4+${m*m+p*p}x^2+${m*m*p*p}$ have?`,a:realCount?0:4,w:realCount?[2,4,1,3]:[0,2,1,3],
  s:T`Factor as a quadratic in $x^2$: $(x^2+${m*m})(x^2+${p*p})$.<br>Both factors are positive for every real $x$, so there are no real roots. The four roots are $\pm ${m===1?'':m}i$ and $\pm ${p}i$, all non-real.<br>Answer: $${realCount?0:4}$.`}},
 ];
+/* ---- a10/02-arith.txt ---- */
+GENS['a10-arith']=[...GENS['alg-rate'],...GENS['alg-word']];
+GENS['a10-guide']=[...GENS['alg-rate'].slice(0,3),...GENS['count-basic'].slice(0,2),...GENS['div-pf'].slice(0,2),...GENS['tri-pyth'].slice(0,2),...GENS['prob-basic'].slice(0,2),...GENS['alg-lin'].slice(0,2)];
+/* ---- a10/03-alg.txt ---- */
+GENS['a10-alg']=[...GENS['alg-fact'],...GENS['quad-vieta'],...GENS['quad-disc'],...GENS['alg-lin'],...GENS['ineq-amgm'],...GENS['func-eval'],...GENS['alg-rad']];
+/* ---- a10/04-seq.txt ---- */
+GENS['a10-seq']=[...GENS.arith,...GENS.geo,...GENS.infgeo,...GENS.tele,...GENS.recur,...GENS.fib];
+/* ---- a10/05-nt.txt ---- */
+GENS['a10-nt']=[...GENS['div-pf'],...GENS['div-gcd'],...GENS['div-rules'],...GENS['div-fact'],...GENS['mod-basic'],...GENS['mod-cycle'],...GENS['mod-crt'],...GENS['base-conv'],...GENS['base-digit']];
+/* ---- a10/06-count.txt ---- */
+GENS['a10-count']=[...GENS['count-basic'],...GENS['count-comb'],...GENS['count-stars'],...GENS['count-pie'],...GENS['count-arr'],...GENS['binom-coef']];
+/* ---- a10/07-prob.txt ---- */
+GENS['a10-prob']=[...GENS['prob-basic'],...GENS['prob-cond'],...GENS['prob-geo'],...GENS['prob-ev'],...GENS['prob-states']];
+/* ---- a10/08-tri.txt ---- */
+GENS['a10-tri']=[...GENS['tri-angle'],...GENS['tri-sim'],...GENS['tri-pyth'],...GENS['tri-area'],...GENS['tri-cev'],...GENS['tri-center']];
+/* ---- a10/09-circ.txt ---- */
+GENS['a10-circ']=[...GENS['circ-angle'],...GENS['circ-tan'],...GENS['circ-pop'],...GENS['circ-cyc'],...GENS['circ-arc']];
+/* ---- a10/10-poly.txt ---- */
+GENS['a10-poly']=[...GENS['polyg-quad'],...GENS['polyg-reg'],...GENS['polyg-shoe'],...GENS['polyg-ratio'],...GENS['coord-line'],...GENS['coord-dist'],...GENS['coord-lattice'],...GENS['coord-trans']];
+/* ---- a10/11-3d.txt ---- */
+GENS['a10-3d']=[...GENS['solid-prism'],...GENS['solid-pyr'],...GENS['solid-sphere'],...GENS['solid-dist']];
+/* ---- a10/12-logic.txt ---- */
+GENS['a10-logic']=[...GENS['alg-rate'].slice(0,2),...GENS['mod-cycle'],...GENS['count-basic'].slice(0,2)];
 /* ====================== content model ====================== */
 const SET_SIZE=50;
 let BANK={},SETS={};
@@ -19220,10 +21156,20 @@ const mockKey=t=>t.track==='pc'?'Chapter test':'Mock test';
 const trackCrumb=t=>t.track==='pc'?['Precalculus','#/pc']:['AMC Prep','#/amc'];
 
 function route(){routeTo();if(typeof restoreScroll==='function'&&location.hash)restoreScroll()}
+function fadeLanding(toLanding){
+  const land=document.getElementById('land'),main=document.querySelector('main'),hdr=document.querySelector('header.top');if(!land)return;
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  land.classList.remove('fade-in','fade-out');[main,hdr].forEach(el=>el&&el.classList.remove('study-in'));void land.offsetWidth;
+  if(toLanding){land.classList.add('fade-in');land.addEventListener('animationend',()=>land.classList.remove('fade-in'),{once:true})}
+  else{land.classList.add('fade-out');const done=()=>land.classList.remove('fade-out');land.addEventListener('animationend',done,{once:true});setTimeout(done,700);
+    [main,hdr].forEach(el=>{if(!el)return;el.classList.add('study-in');el.addEventListener('animationend',()=>el.classList.remove('study-in'),{once:true})})}
+}
 function routeTo(){
   cleanup();const h=location.hash.replace(/^#\/?/,'').split('/').filter(Boolean);
   window.scrollTo(0,0);
-  const landing=h.length===0;document.body.classList.toggle('landing',landing);if(typeof TM!=='undefined')TM.show(landing);
+  const landing=h.length===0,was=document.body.classList.contains('landing');
+  if(was!==landing&&routeTo.ran)fadeLanding(landing);                 // cross-fade between the timer screen and studying
+  routeTo.ran=true;document.body.classList.toggle('landing',landing);if(typeof TM!=='undefined')TM.show(landing);
   if(landing)return;
   if(h[0]==='home')return hub();
   if(h[0]==='amc')return amcHome();
@@ -19251,7 +21197,7 @@ const AMC_LEVELS={'10':{name:'AMC 10',d:'Only AMC 10 topics. The AMC 12 precalcu
   '12':{name:'AMC 12',d:'Every topic, including AMC 12 precalculus, with the AMC 12 mock exam.',mocks:['amc12']},
   both:{name:'Both',d:'Everything for the AMC 10 and AMC 12, with all three mock exams.',mocks:['amc10','amc12','all']}};
 function amcLevel(){let v='both';try{v=localStorage.getItem('amcprep.level')||'both'}catch(e){}return AMC_LEVELS[v]?v:'both'}
-const amcShown=t=>amcLevel()!=='10'||t.amc!=='12';
+const amcShown=t=>{const lv=amcLevel();return lv==='10'?t.amc!=='12':lv==='12'?t.amc!=='10':true};
 const GEAR='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>';
 function amcHome(){
   setCrumbs([['Home','#/home'],['AMC Prep']]);

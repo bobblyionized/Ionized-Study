@@ -1,0 +1,169 @@
+=== LESSONS ===
+<script type="text/plain" id="L-a10-arith">
+<h2>Arithmetic, Percents, Ratios &amp; Rates</h2>
+<p>These ideas fill most of problems 1–10 on every AMC 10, and they show up inside harder problems too. None of them is hard on its own; the points are lost to setting them up wrong.</p>
+
+<h3>1. Percents are multipliers</h3>
+<div class="box"><h4>Rule</h4>Increasing by $p\%$ multiplies by $1+\frac{p}{100}$; decreasing by $p\%$ multiplies by $1-\frac{p}{100}$. Successive changes multiply.</div>
+<p><b>Why:</b> $x$ increased by $p\%$ of itself is $x+\frac{p}{100}x=x\left(1+\frac p{100}\right)$. A second change applies to the <i>new</i> amount, so its multiplier multiplies the first one.</p>
+<p><b>Consequences.</b> A $20\%$ increase followed by a $20\%$ decrease gives $1.2\cdot0.8=0.96$: a $4\%$ loss, not zero. Changes of $+p\%$ and $-p\%$ always give $1-\frac{p^2}{10000}\lt1$ (difference of squares). The order of the changes never matters, since multiplication is commutative.</p>
+<p><b>"Percent of what?"</b> "$A$ is $x\%$ more than $B$" means $A=B(1+\frac x{100})$: the base is $B$. Then $B$ is <i>not</i> $x\%$ less than $A$: if $A$ is $25\%$ more than $B$, then $B=\frac{A}{1.25}=0.8A$, which is $20\%$ less.</p>
+
+<h3>2. Ratios</h3>
+<ul><li>$a:b=3:5$ means $a=3k$, $b=5k$ for some $k$. Introducing $k$ turns a ratio problem into one equation.</li>
+<li>To combine $a:b$ and $b:c$, rescale so the $b$ values match: $a:b=2:3$ and $b:c=4:5$ become $8:12$ and $12:15$, so $a:b:c=8:12:15$.</li>
+<li>Parts of a whole: splitting $N$ in ratio $a:b$ gives $\frac{a}{a+b}N$ and $\frac b{a+b}N$.</li></ul>
+
+<h3>3. Rates, distance, and work</h3>
+<div class="box"><h4>Rule</h4>Amount $=$ rate $\times$ time. Rates of things working together <b>add</b>; times do not.</div>
+<p><b>Work.</b> If $A$ does a job in $a$ hours and $B$ in $b$ hours, their rates are $\frac1a$ and $\frac1b$ jobs per hour, so together they take $\dfrac{1}{\frac1a+\frac1b}=\dfrac{ab}{a+b}$ hours.</p>
+<p><b>Average speed</b> is total distance over total time, not the average of the speeds. Going distance $d$ at speed $u$ and back at speed $v$:
+$$\text{average}=\frac{2d}{\frac du+\frac dv}=\frac{2uv}{u+v},$$
+the <i>harmonic mean</i>. <b>Proof that it is less than $\frac{u+v}2$</b> (for $u\ne v$): $\frac{u+v}{2}-\frac{2uv}{u+v}=\frac{(u+v)^2-4uv}{2(u+v)}=\frac{(u-v)^2}{2(u+v)}\gt0$. Intuitively, you spend more time at the slower speed.</p>
+<p><b>Meeting and chasing.</b> Two objects moving toward each other close the gap at $u+v$; one chasing the other closes it at $u-v$.</p>
+
+<h3>4. Averages (means)</h3>
+<ul><li>Sum $=$ mean $\times$ count. Most average problems become easy once you switch to sums.</li>
+<li>Adding a value $x$ to a list of $n$ numbers with mean $m$ gives mean $\frac{nm+x}{n+1}$. The mean goes up exactly when $x\gt m$.</li>
+<li><b>Weighted average:</b> two groups of sizes $p$ and $q$ with means $a$ and $b$ have combined mean $\frac{pa+qb}{p+q}$, which lies between $a$ and $b$, closer to the larger group.</li></ul>
+
+<h3>5. Fractions and units</h3>
+<ul><li>"$\frac23$ of the remaining" means take what is left first. Work backward from the end when a problem describes repeated fractions.</li>
+<li>Unit conversions: multiply by fractions equal to $1$, like $\frac{60\text{ min}}{1\text{ hr}}$, and cancel units. Area scales with the square of the length conversion: $1\text{ yd}^2=9\text{ ft}^2$.</li></ul>
+
+<div class="tip"><b>On the test:</b> introduce one variable for "one part" or "the original amount", write a single equation, and check your answer against the story. Many early AMC problems also have a clean answer you can test directly from the choices.</div>
+</script>
+
+=== BANK ===
+@@ a10-arith
+Q: A store raises the price of a jacket by $25\%$, then puts it on sale for $20\%$ off the new price. The sale price is what percent of the original price?
+L: 1
+A: 100\%
+W: 95\%
+W: 105\%
+W: 98\%
+W: 102\%
+S: Percent changes are multipliers: $1.25\times0.80=1.00$.
+So the sale price equals the original price: $100\%$.
+(This works because $1.25=\frac54$ and $0.8=\frac45$ are reciprocals. A $25\%$ increase is undone by a $20\%$ decrease, not a $25\%$ one.)
+---
+Q: Maria drives to her grandmother's house at $40$ miles per hour and drives back along the same road at $60$ miles per hour. What is her average speed for the round trip, in miles per hour?
+L: 1
+A: 48
+W: 50
+W: 45
+W: 52
+W: 24
+S: Average speed is total distance over total time. Let each leg be $d$ miles.
+Time: $\frac d{40}+\frac d{60}=\frac{3d+2d}{120}=\frac{d}{24}$ hours. Distance: $2d$.
+Average speed $=\frac{2d}{d/24}=48$ mph. (Formula: $\frac{2uv}{u+v}=\frac{2\cdot40\cdot60}{100}=48$.)
+The plain average $50$ is wrong because she spends more time at $40$ mph.
+---
+Q: Pipe $A$ can fill a pool in $6$ hours and pipe $B$ can fill it in $3$ hours. With both pipes open, how many hours does it take to fill the pool?
+L: 1
+A: 2
+W: \frac92
+W: \frac32
+W: 3
+W: \frac52
+S: Add the rates: $A$ fills $\frac16$ of the pool per hour and $B$ fills $\frac13$.
+Together: $\frac16+\frac13=\frac16+\frac26=\frac12$ pool per hour, so the pool takes $2$ hours.
+(Check: faster than $B$ alone, as it must be.)
+---
+Q: The ratio of boys to girls in a club is $3:5$. After $6$ more boys join, the ratio becomes $3:4$. How many girls are in the club?
+L: 1
+A: 40
+W: 30
+W: 24
+W: 32
+W: 45
+S: Write boys $=3k$ and girls $=5k$. After $6$ boys join: $\frac{3k+6}{5k}=\frac34$.
+Cross-multiply: $4(3k+6)=15k$, so $12k+24=15k$ and $k=8$.
+There are $5k=40$ girls (and $24$ boys, which becomes $30$: $30:40=3:4$ ✓).
+---
+Q: The average of $5$ numbers is $12$. When one of the numbers is removed, the average of the remaining numbers is $10$. What number was removed?
+L: 1
+A: 20
+W: 2
+W: 12
+W: 22
+W: 10
+S: Switch averages to sums. The $5$ numbers sum to $5\cdot12=60$; the remaining $4$ sum to $4\cdot10=40$.
+The removed number is $60-40=20$.
+---
+Q: A class of $20$ students averaged $80$ on a test, and another class of $30$ students averaged $70$. What is the average score of all $50$ students?
+L: 1
+A: 74
+W: 75
+W: 76
+W: 72
+W: 73
+S: Total points: $20\cdot80+30\cdot70=1600+2100=3700$.
+Average: $\frac{3700}{50}=74$.
+It is closer to $70$ than to $80$ because the class that averaged $70$ is larger. (The unweighted $75$ is wrong.)
+---
+Q: Two trains start $300$ miles apart and travel toward each other, one at $70$ mph and the other at $80$ mph. A bird flies back and forth between the trains at $90$ mph from the moment they start until they meet. How many miles does the bird fly?
+L: 2
+A: 180
+W: 150
+W: 270
+W: 300
+W: 90
+S: Don't trace the bird's trips. The trains close the gap at $70+80=150$ mph, so they meet after $\frac{300}{150}=2$ hours.
+The bird flies the whole time at $90$ mph: $90\cdot2=180$ miles.
+---
+Q: Abby spends $\frac13$ of her money on a book, then $\frac14$ of what remains on lunch, and has $\$18$ left. How much money did she start with?
+L: 1
+A: 36
+W: 24
+W: 30
+W: 42
+W: 48
+S: Work with what remains at each step. After the book, $\frac23$ of her money remains. Lunch takes $\frac14$ of that, leaving $\frac34\cdot\frac23=\frac12$ of the original.
+So half her money is $\$18$, and she started with $\$36$.
+(Check: book $\$12$, leaving $\$24$; lunch $\$6$, leaving $\$18$ ✓.)
+---
+Q: Six workers can paint $4$ rooms in $3$ days. At the same rate, how many days would $9$ workers take to paint $10$ rooms?
+L: 2
+A: 5
+W: \frac92
+W: 4
+W: 6
+W: \frac{15}2
+S: Find the rate per worker per day. $6$ workers $\times$ $3$ days $=18$ worker-days paint $4$ rooms, so one room takes $\frac{18}{4}=\frac92$ worker-days.
+$10$ rooms take $10\cdot\frac92=45$ worker-days. With $9$ workers: $\frac{45}{9}=5$ days.
+---
+Q: A rectangle's length is increased by $20\%$ and its width is decreased by $10\%$. By what percent does its area change?
+L: 1
+A: 8\% \text{ increase}
+W: 10\% \text{ increase}
+W: 2\% \text{ increase}
+W: 30\% \text{ increase}
+W: 8\% \text{ decrease}
+S: Area is length times width, so the multipliers multiply: $1.2\times0.9=1.08$.
+The area increases by $8\%$. (Adding the percents to get $10\%$ ignores that the changes act on each other.)
+---
+Q: A car's gas tank is $\frac18$ full. After $15$ gallons are added, it is $\frac34$ full. How many gallons does the tank hold?
+L: 1
+A: 24
+W: 20
+W: 18
+W: 30
+W: 32
+S: The $15$ gallons filled $\frac34-\frac18=\frac68-\frac18=\frac58$ of the tank.
+So the tank holds $15\div\frac58=15\cdot\frac85=24$ gallons.
+---
+Q: Jo walks to school at $3$ mph and arrives $10$ minutes late. If she walks at $4$ mph she arrives $5$ minutes early. How far is school, in miles?
+L: 2
+A: 3
+W: 2
+W: \frac52
+W: 4
+W: \frac72
+S: The two trips differ in time by $10+5=15$ minutes $=\frac14$ hour.
+With distance $d$: $\frac d3-\frac d4=\frac14$, so $\frac{d}{12}=\frac14$ and $d=3$ miles.
+(Check: $1$ hour versus $\frac34$ hour, a $15$-minute difference ✓.)
+
+=== GENS ===
+GENS['a10-arith']=[...GENS['alg-rate'],...GENS['alg-word']];
+GENS['a10-guide']=[...GENS['alg-rate'].slice(0,3),...GENS['count-basic'].slice(0,2),...GENS['div-pf'].slice(0,2),...GENS['tri-pyth'].slice(0,2),...GENS['prob-basic'].slice(0,2),...GENS['alg-lin'].slice(0,2)];

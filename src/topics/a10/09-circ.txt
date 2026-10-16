@@ -1,0 +1,160 @@
+=== LESSONS ===
+<script type="text/plain" id="L-a10-circ">
+<h2>Circles</h2>
+<p>Most circle problems are solved by drawing radii. A radius to a point of tangency, to the endpoints of a chord, or to a vertex of an inscribed polygon almost always creates an isosceles or right triangle.</p>
+
+<h3>1. Measuring parts of a circle</h3>
+<ul><li>Circumference $2\pi r$, area $\pi r^2$.</li>
+<li>A central angle of $\theta^\circ$ cuts off an arc of length $\frac{\theta}{360}\cdot2\pi r$ and a sector of area $\frac{\theta}{360}\cdot\pi r^2$ (the fraction of the full turn).</li>
+<li><b>Chords:</b> the perpendicular from the center to a chord bisects it. A chord at distance $d$ from the center of a circle of radius $r$ has length $2\sqrt{r^2-d^2}$ (Pythagoras in the right triangle formed by the radius, the distance, and half the chord).</li></ul>
+
+<h3>2. Inscribed angles</h3>
+<div class="box"><h4>Inscribed Angle Theorem</h4>An inscribed angle is half the central angle that subtends the same arc.</div>
+<p><b>Proof.</b> First suppose the center $O$ lies on one side of the inscribed angle $\angle ABC$, say on $BC$. Triangle $OAB$ is isosceles ($OA=OB$), so $\angle OAB=\angle OBA=x$, and the exterior angle $\angle AOC=2x$. So the inscribed angle is half the central angle. In general, draw the diameter through $B$ and add or subtract two angles of this special type.</p>
+<p><b>Consequences.</b></p>
+<ul><li>All inscribed angles subtending the same arc are equal.</li>
+<li><b>Thales:</b> an angle inscribed in a semicircle is a right angle (half of $180^\circ$). So a right triangle's hypotenuse is a diameter of its circumcircle.</li>
+<li><b>Cyclic quadrilaterals:</b> opposite angles add to $180^\circ$, since the two angles subtend arcs that together make the whole circle ($\frac12\cdot360^\circ$).</li>
+<li>Two chords crossing inside the circle make an angle equal to half the <b>sum</b> of the intercepted arcs; two secants from an outside point make an angle equal to half the <b>difference</b> of the arcs. (Both follow from an exterior-angle argument with inscribed angles.)</li></ul>
+
+<h3>3. Tangents</h3>
+<ul><li><b>A tangent is perpendicular to the radius at the point of tangency.</b> Proof: the point of tangency is the point of the line closest to the center (every other point of the line is outside the circle), and the shortest segment from a point to a line is the perpendicular.</li>
+<li><b>Two tangent segments from the same outside point are equal.</b> Proof: the two right triangles formed with the center share the hypotenuse and have equal legs $r$, so they are congruent.</li>
+<li>Tangent length from a point at distance $d$ from the center: $\sqrt{d^2-r^2}$.</li>
+<li>Common external tangent of circles with radii $r_1,r_2$ and centers $D$ apart: length $\sqrt{D^2-(r_1-r_2)^2}$ (slide the tangent segment to make a right triangle).</li></ul>
+
+<h3>4. Power of a point</h3>
+<div class="box"><h4>Theorem</h4>For a point $P$ and any line through $P$ meeting the circle at $A$ and $B$, the product $PA\cdot PB$ is the same for every line. If a tangent from $P$ touches at $T$, the product equals $PT^2$.</div>
+<p><b>Proof (two chords through an inside point).</b> If chords $AB$ and $CD$ meet at $P$, then $\angle PAC=\angle PDB$ (both subtend arc $CB$) and $\angle APC=\angle DPB$ (vertical angles), so $\triangle PAC\sim\triangle PDB$. Hence $\frac{PA}{PD}=\frac{PC}{PB}$, i.e. $PA\cdot PB=PC\cdot PD$. The outside-point and tangent versions work the same way with similar triangles.</p>
+<p>In words: <b>inside</b>, part $\times$ part $=$ part $\times$ part; <b>outside</b>, outer $\times$ whole $=$ outer $\times$ whole $=$ tangent$^2$.</p>
+
+<h3>5. Circles with polygons</h3>
+<ul><li>A circle inscribed in a square of side $s$ has radius $\frac s2$; the circumscribed circle has radius $\frac{s}{\sqrt2}$ (half the diagonal).</li>
+<li>Inradius of a right triangle: $r=\frac{a+b-c}2$, because the tangent lengths from the right-angle vertex both equal $r$.</li>
+<li>Regular hexagon of side $s$: it is six equilateral triangles, and its circumradius is $s$.</li></ul>
+</script>
+
+=== BANK ===
+@@ a10-circ
+Q: Points $A$, $B$, $C$ lie on a circle, and the arc $AC$ not containing $B$ measures $100^\circ$. What is $\angle ABC$?
+L: 1
+A: 50
+W: 100
+W: 80
+W: 130
+W: 40
+S: An inscribed angle is half its intercepted arc: $\angle ABC=\frac12\cdot100^\circ=50^\circ$.
+---
+Q: A point $P$ is $13$ units from the center of a circle of radius $5$. What is the length of a tangent segment from $P$ to the circle?
+L: 1
+A: 12
+W: 8
+W: 13
+W: \sqrt{194}
+W: 18
+S: The radius to the point of tangency is perpendicular to the tangent, so the tangent, the radius, and the segment to the center form a right triangle with hypotenuse $13$.
+Tangent length $=\sqrt{13^2-5^2}=\sqrt{144}=12$.
+---
+Q: Two chords $AB$ and $CD$ of a circle intersect at $P$. If $AP=4$, $PB=6$, and $CP=3$, what is $PD$?
+L: 1
+A: 8
+W: 4.5
+W: 2
+W: 7
+W: 5
+S: Power of a point (inside): $AP\cdot PB=CP\cdot PD$.
+$4\cdot6=3\cdot PD$, so $PD=8$.
+---
+Q: From a point $P$ outside a circle, a secant meets the circle at $A$ and then $B$, with $PA=4$ and $AB=5$. A tangent from $P$ touches the circle at $T$. What is $PT$?
+L: 1
+A: 6
+W: 3
+W: 20
+W: 2\sqrt5
+W: 9
+S: Power of a point (outside): tangent$^2$ = outer part $\times$ whole secant.
+$PT^2=PA\cdot PB=4\cdot(4+5)=36$, so $PT=6$.
+---
+Q: Quadrilateral $ABCD$ is inscribed in a circle, and $\angle A=70^\circ$. What is $\angle C$?
+L: 1
+A: 110
+W: 70
+W: 140
+W: 90
+W: 35
+S: Opposite angles of a cyclic quadrilateral add to $180^\circ$ (together they subtend the whole circle).
+$\angle C=180^\circ-70^\circ=110^\circ$.
+---
+Q: What is the area of a sector of a circle with radius $6$ and central angle $60^\circ$?
+L: 1
+A: 6\pi
+W: 2\pi
+W: 12\pi
+W: 36\pi
+W: 3\pi
+S: The sector is $\frac{60}{360}=\frac16$ of the circle. Area $=\frac16\cdot\pi\cdot6^2=6\pi$.
+(Its arc length would be $\frac16\cdot12\pi=2\pi$.)
+---
+Q: A chord of a circle with radius $10$ is $6$ units from the center. How long is the chord?
+L: 1
+A: 16
+W: 8
+W: 12
+W: 2\sqrt{34}
+W: 14
+S: The perpendicular from the center bisects the chord. Half the chord, the distance $6$, and the radius $10$ form a right triangle.
+Half chord $=\sqrt{100-36}=8$, so the chord is $16$.
+---
+Q: A square has side length $2$. What is the area of the region inside the circle circumscribed about the square but outside the circle inscribed in it?
+L: 2
+A: \pi
+W: 2\pi
+W: \frac{\pi}2
+W: 4-\pi
+W: 2\pi-4
+S: The inscribed circle has radius $1$ (half the side). The circumscribed circle has radius $\sqrt2$ (half the diagonal $2\sqrt2$).
+Area between them: $\pi(\sqrt2)^2-\pi\cdot1^2=2\pi-\pi=\pi$.
+---
+Q: A circle is inscribed in a right triangle with legs $6$ and $8$. What is its radius?
+L: 1
+A: 2
+W: 3
+W: \frac52
+W: 4
+W: \frac32
+S: The hypotenuse is $10$. For a right triangle, $r=\frac{a+b-c}2=\frac{6+8-10}2=2$.
+Check with $\text{Area}=rs$: area $24$, semiperimeter $12$, $r=\frac{24}{12}=2$ ✓.
+---
+Q: Two circles with radii $3$ and $5$ are externally tangent. What is the length of a common external tangent segment, between the two points of tangency?
+L: 2
+A: 2\sqrt{15}
+W: 8
+W: 2\sqrt{17}
+W: 4\sqrt3
+W: \sqrt{34}
+S: The centers are $3+5=8$ apart. Both radii to the tangent line are perpendicular to it, so they're parallel. Slide the tangent segment over to the smaller center: it becomes a leg of a right triangle with hypotenuse $8$ and other leg $5-3=2$.
+Length $=\sqrt{8^2-2^2}=\sqrt{60}=2\sqrt{15}$.
+---
+Q: Triangle $ABC$ is inscribed in a circle with diameter $AB=10$, and $AC=6$. What is the area of the triangle?
+L: 1
+A: 24
+W: 30
+W: 48
+W: 20
+W: 25
+S: Thales: an angle inscribed in a semicircle is right, so $\angle C=90^\circ$.
+Then $BC=\sqrt{100-36}=8$, and the area is $\frac12\cdot6\cdot8=24$.
+---
+Q: Two chords of a circle cross at a point inside it. The arcs intercepted by one of the vertical angles they form measure $70^\circ$ and $110^\circ$. What is that angle?
+L: 2
+A: 90
+W: 70
+W: 110
+W: 20
+W: 180
+S: An angle formed by two chords crossing inside a circle is half the sum of the intercepted arcs (the arc it faces and the arc its vertical angle faces).
+$\frac12(70^\circ+110^\circ)=90^\circ$.
+(Proof: join two endpoints; the angle is an exterior angle of a triangle whose remote angles are inscribed angles of $35^\circ$ and $55^\circ$.)
+
+=== GENS ===
+GENS['a10-circ']=[...GENS['circ-angle'],...GENS['circ-tan'],...GENS['circ-pop'],...GENS['circ-cyc'],...GENS['circ-arc']];

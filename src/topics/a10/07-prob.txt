@@ -1,0 +1,162 @@
+=== LESSONS ===
+<script type="text/plain" id="L-a10-prob">
+<h2>Probability &amp; Expected Value</h2>
+
+<h3>1. Equally likely outcomes</h3>
+<p>When all outcomes are equally likely, $P(A)=\dfrac{\text{favorable outcomes}}{\text{total outcomes}}$. The key word is <i>equally likely</i>: the sums of two dice are <b>not</b> equally likely ($7$ happens $6$ ways, $2$ happens $1$ way), so list ordered pairs, not sums.</p>
+<ul><li><b>Complement:</b> $P(\text{not }A)=1-P(A)$. "At least one" problems: $P(\text{at least one head in }3\text{ flips})=1-\frac18$.</li>
+<li><b>Addition:</b> $P(A\text{ or }B)=P(A)+P(B)-P(A\text{ and }B)$ (inclusion–exclusion).</li>
+<li><b>Independence:</b> $A$ and $B$ are independent if $P(A\text{ and }B)=P(A)P(B)$, as for separate dice or coin flips. Drawing without replacement is <b>not</b> independent: multiply the changing probabilities, $\frac58\cdot\frac47$.</li></ul>
+
+<h3>2. Conditional probability</h3>
+<div class="box"><h4>Definition</h4>$P(A\mid B)=\dfrac{P(A\text{ and }B)}{P(B)}$: the chance of $A$ once you know $B$ happened.</div>
+<p><b>Why it's defined this way:</b> knowing $B$ happened shrinks the sample space to $B$; the outcomes in $A$ that survive are those in $A\cap B$, and we rescale so the new space has total probability $1$.</p>
+<p><b>Classic trap:</b> a family has two children and at least one is a boy. The equally likely outcomes are $BB, BG, GB$ (we only removed $GG$), so $P(BB)=\frac13$, not $\frac12$.</p>
+<p><b>Bayes' rule</b> follows from writing $P(A\text{ and }B)$ both ways: $P(A\mid B)P(B)=P(B\mid A)P(A)$.</p>
+
+<h3>3. Geometric probability</h3>
+<p>When a point is chosen uniformly from a region, probability $=\dfrac{\text{favorable area (or length)}}{\text{total area}}$. Two numbers chosen independently from $[0,1]$ are a random point in the unit square; draw the condition as a region.</p>
+<p>Example: $P(|x-y|\lt\frac12)$: the complement is two corner triangles with legs $\frac12$, total area $2\cdot\frac18=\frac14$, so the answer is $\frac34$.</p>
+
+<h3>4. Expected value</h3>
+<div class="box"><h4>Definition and linearity</h4>$E[X]=\sum x\cdot P(X=x)$. For any random variables, $E[X+Y]=E[X]+E[Y]$, <b>even if they are dependent</b>.</div>
+<p><b>Proof of linearity.</b> Sum over outcomes $\omega$: $E[X+Y]=\sum_\omega (X(\omega)+Y(\omega))P(\omega)=\sum_\omega X(\omega)P(\omega)+\sum_\omega Y(\omega)P(\omega)$. Nothing about independence was used.</p>
+<p><b>Indicator trick.</b> To find the expected number of things that happen, add up the probability of each one. For a random permutation of $n$ letters into $n$ envelopes, each letter lands in its own envelope with probability $\frac1n$, so the expected number of correct letters is $n\cdot\frac1n=1$, for every $n$.</p>
+
+<h3>5. Waiting times and states</h3>
+<div class="box"><h4>Waiting for a success</h4>If each trial succeeds with probability $p$, the expected number of trials until the first success is $\dfrac1p$.</div>
+<p><b>Proof (states).</b> Let $E$ be the expected number of trials. The first trial always counts as $1$; with probability $1-p$ it fails and we're back where we started. So $E=1+(1-p)E$, giving $E=\frac1p$. Rolling a die until a $6$: $6$ rolls on average.</p>
+<p><b>Taking turns.</b> Alice and Bob alternate flipping a fair coin, Alice first, and the first head wins. If $P$ is Alice's chance: she wins immediately with probability $\frac12$, or both miss (probability $\frac14$) and the game restarts. So $P=\frac12+\frac14P$ and $P=\frac23$.</p>
+
+<h3>6. Symmetry</h3>
+<p>If nothing distinguishes the outcomes, they're equally likely. Among $A$, $B$, $C$ in a random order, each is equally likely to come first, so $P(A\text{ before both others})=\frac13$, no matter how many other cards are mixed in.</p>
+</script>
+
+=== BANK ===
+@@ a10-prob
+Q: Two fair six-sided dice are rolled. What is the probability that the sum is $7$ or $11$?
+L: 1
+A: \frac{2}{9}
+W: \frac16
+W: \frac1{18}
+W: \frac5{18}
+W: \frac14
+S: There are $36$ equally likely ordered pairs. A sum of $7$ happens $6$ ways ($(1,6),\dots,(6,1)$); a sum of $11$ happens $2$ ways ($(5,6),(6,5)$).
+$P=\frac{6+2}{36}=\frac8{36}=\frac29$.
+---
+Q: Three fair coins are flipped. What is the probability of at least one head?
+L: 1
+A: \frac78
+W: \frac12
+W: \frac34
+W: \frac38
+W: \frac58
+S: Complement: the only outcome with no heads is TTT, with probability $\left(\frac12\right)^3=\frac18$.
+$P(\text{at least one head})=1-\frac18=\frac78$.
+---
+Q: A bag holds $5$ red and $3$ blue marbles. Two are drawn without replacement. What is the probability that they are the same color?
+L: 1
+A: \frac{13}{28}
+W: \frac{17}{32}
+W: \frac{15}{28}
+W: \frac12
+W: \frac{5}{14}
+S: Both red: $\frac58\cdot\frac47=\frac{20}{56}$. Both blue: $\frac38\cdot\frac27=\frac6{56}$. (The second draw has one fewer marble.)
+Total: $\frac{26}{56}=\frac{13}{28}$.
+(Counting version: $\frac{\binom52+\binom32}{\binom82}=\frac{10+3}{28}$.)
+---
+Q: Three fair dice are rolled. What is the probability that the sum is $10$?
+L: 2
+A: \frac18
+W: \frac19
+W: \frac5{36}
+W: \frac16
+W: \frac{25}{216}
+S: Count ordered triples $(a,b,c)$ with $a+b+c=10$, each from $1$ to $6$.
+Stars and bars for positive solutions gives $\binom92=36$; subtract those with a value $\ge7$: if $a\ge7$, set $a'=a-6$, giving $a'+b+c=4$ with $\binom32=3$ solutions. Same for $b$ and $c$: $3\cdot3=9$. (Two values $\ge7$ is impossible.)
+$36-9=27$ triples, so $P=\frac{27}{216}=\frac18$.
+---
+Q: Two fair dice are rolled. What is the expected value of the larger of the two numbers (or the common value if they are equal)?
+L: 2
+A: \frac{161}{36}
+W: \frac72
+W: 4
+W: \frac{91}{36}
+W: \frac92
+S: $P(\max\le k)=\left(\frac k6\right)^2$, so $P(\max=k)=\frac{k^2-(k-1)^2}{36}=\frac{2k-1}{36}$.
+$E=\sum_{k=1}^6 k\cdot\frac{2k-1}{36}=\frac{1+6+15+28+45+66}{36}=\frac{161}{36}\approx4.47$.
+---
+Q: A point $(x,y)$ is chosen uniformly at random from the square $0\le x\le2$, $0\le y\le2$. What is the probability that $x+y\lt1$?
+L: 1
+A: \frac18
+W: \frac14
+W: \frac12
+W: \frac1{16}
+W: \frac38
+S: Geometric probability: favorable area over total area.
+The region $x+y\lt1$ inside the square is a right triangle with legs $1$ and $1$, area $\frac12$. The square has area $4$.
+$P=\frac{1/2}{4}=\frac18$.
+---
+Q: Ten letters are put into ten addressed envelopes at random, one per envelope. What is the expected number of letters in their correct envelopes?
+L: 2
+A: 1
+W: 0
+W: \frac1{10}
+W: \frac12
+W: 2
+S: Linearity of expectation with indicators: letter $i$ is in its own envelope with probability $\frac1{10}$.
+Expected number of correct letters $=10\cdot\frac1{10}=1$. (The events depend on each other, but linearity doesn't care.)
+---
+Q: The cards $A$, $B$, $C$ are shuffled into a deck of $52$ cards together with $49$ others. What is the probability that $A$ comes before both $B$ and $C$?
+L: 1
+A: \frac13
+W: \frac12
+W: \frac16
+W: \frac23
+W: \frac14
+S: Only the relative order of $A$, $B$, $C$ matters, and by symmetry each of the three is equally likely to be first among them.
+$P=\frac13$. The other $49$ cards are irrelevant.
+---
+Q: A family has two children, and you learn that at least one is a boy. Assuming each child is equally likely to be a boy or a girl, what is the probability that both are boys?
+L: 2
+A: \frac13
+W: \frac12
+W: \frac14
+W: \frac23
+W: \frac34
+S: The equally likely possibilities for (older, younger) are $BB, BG, GB, GG$. Knowing "at least one boy" removes only $GG$.
+Of the three remaining, one is $BB$: $P=\frac13$.
+---
+Q: A fair coin is flipped until the first head appears. What is the expected number of flips?
+L: 1
+A: 2
+W: 1
+W: \frac32
+W: 3
+W: 4
+S: Each flip succeeds with $p=\frac12$, so the expected wait is $\frac1p=2$.
+States proof: $E=1+\frac12E$ (one flip always; half the time we start over), so $E=2$.
+---
+Q: Two numbers $x$ and $y$ are chosen independently and uniformly from the interval $[0,1]$. What is the probability that $|x-y|\lt\frac12$?
+L: 2
+A: \frac34
+W: \frac12
+W: \frac14
+W: \frac23
+W: \frac78
+S: Think of $(x,y)$ as a random point in the unit square. The condition fails in two corner triangles, where $y\ge x+\frac12$ or $y\le x-\frac12$.
+Each triangle has legs $\frac12$, area $\frac18$; together $\frac14$.
+$P=1-\frac14=\frac34$.
+---
+Q: Alice and Bob take turns rolling a fair die, Alice first. The first person to roll a $6$ wins. What is the probability that Alice wins?
+L: 2
+A: \frac6{11}
+W: \frac12
+W: \frac5{11}
+W: \frac16
+W: \frac{7}{12}
+S: Let $P$ be Alice's chance. She wins on her first roll with probability $\frac16$. Otherwise Alice and Bob both miss, with probability $\frac56\cdot\frac56=\frac{25}{36}$, and the game starts over.
+$P=\frac16+\frac{25}{36}P$, so $\frac{11}{36}P=\frac16$ and $P=\frac{6}{11}$.
+
+=== GENS ===
+GENS['a10-prob']=[...GENS['prob-basic'],...GENS['prob-cond'],...GENS['prob-geo'],...GENS['prob-ev'],...GENS['prob-states']];

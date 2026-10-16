@@ -1,0 +1,170 @@
+=== LESSONS ===
+<script type="text/plain" id="L-a10-nt">
+<h2>Number Theory</h2>
+<p>Number theory has become one of the most common areas on recent AMC 10s. Almost everything rests on one fact: prime factorization.</p>
+
+<h3>1. Prime factorization</h3>
+<div class="box"><h4>Fundamental Theorem of Arithmetic</h4>Every integer $n\gt1$ can be written as a product of primes, $n=p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}$, in exactly one way (up to order).</div>
+<p>Once you have the factorization, divisors, gcd, lcm, and perfect-power questions are all just bookkeeping with exponents.</p>
+<p><b>There are infinitely many primes (Euclid).</b> Suppose $p_1,\dots,p_k$ were all of them. Then $N=p_1p_2\cdots p_k+1$ leaves remainder $1$ when divided by every $p_i$, so none of them divides $N$; but $N\gt1$ has some prime factor. Contradiction.</p>
+
+<h3>2. Counting and summing divisors</h3>
+<div class="box"><h4>Formulas</h4>For $n=p_1^{a_1}\cdots p_k^{a_k}$:<ul>
+<li>Number of positive divisors: $d(n)=(a_1+1)(a_2+1)\cdots(a_k+1)$.</li>
+<li>Sum of divisors: $\sigma(n)=(1+p_1+\dots+p_1^{a_1})\cdots(1+p_k+\dots+p_k^{a_k})$.</li></ul></div>
+<p><b>Proof.</b> A divisor of $n$ is exactly a number $p_1^{b_1}\cdots p_k^{b_k}$ with $0\le b_i\le a_i$ (by unique factorization, it can't contain other primes or higher powers). Each exponent $b_i$ has $a_i+1$ choices, independently, so multiply. Expanding the product for $\sigma$ produces each divisor exactly once.</p>
+<p><b>Consequences.</b> $d(n)$ is odd exactly when every $a_i$ is even, i.e. $n$ is a perfect square (divisors pair up as $d\leftrightarrow\frac nd$ except $\sqrt n$). Numbers with exactly $3$ divisors are squares of primes.</p>
+
+<h3>3. GCD and LCM</h3>
+<ul><li>$\gcd$ takes the <b>minimum</b> exponent of each prime; $\operatorname{lcm}$ takes the <b>maximum</b>.</li>
+<li>$\gcd(a,b)\cdot\operatorname{lcm}(a,b)=ab$. <b>Proof:</b> for each prime, $\min(x,y)+\max(x,y)=x+y$.</li>
+<li><b>Euclidean algorithm:</b> $\gcd(a,b)=\gcd(b,\ a-qb)$ for any integer $q$. <b>Proof:</b> any common divisor of $a$ and $b$ divides $a-qb$, and any common divisor of $b$ and $a-qb$ divides $(a-qb)+qb=a$. So both pairs have the same common divisors. Repeating with remainders shrinks the numbers quickly: $\gcd(1071,462)=\gcd(462,147)=\gcd(147,21)=21$.</li></ul>
+
+<h3>4. Modular arithmetic</h3>
+<p>$a\equiv b\pmod m$ means $m\mid a-b$. Congruences can be added, subtracted and multiplied (if $m\mid a-b$ and $m\mid c-d$, then $m\mid ac-bd=a(c-d)+d(a-b)$). So you can reduce at every step: the last digit of $7^{100}$ is computed mod $10$.</p>
+<ul><li><b>Divisibility rules.</b> Since $10\equiv1\pmod 9$, every power $10^k\equiv1$, so a number is congruent to its digit sum mod $9$ (and mod $3$). Since $10\equiv-1\pmod{11}$, a number is congruent to its alternating digit sum mod $11$. Divisibility by $4$ or $8$ depends only on the last $2$ or $3$ digits, because $100$ and $1000$ are multiples of them.</li>
+<li><b>Cycles.</b> Powers mod $m$ repeat. Find the cycle, then reduce the exponent: $2^3=8\equiv1\pmod7$, so $2^{100}=2^{99}\cdot2\equiv2\pmod 7$.</li>
+<li><b>Fermat's little theorem:</b> if $p$ is prime and $p\nmid a$, then $a^{p-1}\equiv1\pmod p$. (Proof idea: multiplying $1,2,\dots,p-1$ by $a$ just rearranges them mod $p$, so $a^{p-1}(p-1)!\equiv(p-1)!$, and $(p-1)!$ can be cancelled.)</li>
+<li><b>Chinese Remainder Theorem:</b> conditions mod $m$ and mod $n$ with $\gcd(m,n)=1$ combine into a single condition mod $mn$. "Remainder $1$ when divided by $2,3,4,5,6$" means $n\equiv1\pmod{60}$.</li></ul>
+
+<h3>5. Factorials</h3>
+<div class="box"><h4>Legendre's formula</h4>The exponent of a prime $p$ in $n!$ is $\left\lfloor\frac np\right\rfloor+\left\lfloor\frac n{p^2}\right\rfloor+\left\lfloor\frac n{p^3}\right\rfloor+\cdots$</div>
+<p><b>Proof.</b> $\lfloor n/p\rfloor$ of the numbers $1,\dots,n$ are multiples of $p$, each contributing at least one factor $p$; $\lfloor n/p^2\rfloor$ are multiples of $p^2$ and contribute a second factor; and so on. Each number with exactly $j$ factors of $p$ is counted exactly $j$ times.</p>
+<p><b>Trailing zeros</b> of $n!$ = exponent of $5$ (there are always more $2$s): $100!$ ends in $20+4=24$ zeros.</p>
+
+<h3>6. Digits and bases</h3>
+<ul><li>$\overline{ab}=10a+b$; reversing digits changes a two-digit number by $9(a-b)$.</li>
+<li>In base $b$: $\overline{d_k\cdots d_0}_b=\sum d_ib^i$, with $0\le d_i\lt b$. Convert to base $b$ by repeated division and reading the remainders from bottom to top.</li></ul>
+
+<h3>7. Euler's totient</h3>
+<p>$\varphi(n)$ counts $1\le k\le n$ with $\gcd(k,n)=1$. For $n=\prod p_i^{a_i}$: $\varphi(n)=n\prod\left(1-\frac1{p_i}\right)$, by inclusion–exclusion on the multiples of each prime. $\varphi(100)=100\cdot\frac12\cdot\frac45=40$.</p>
+</script>
+
+=== BANK ===
+@@ a10-nt
+Q: How many positive divisors does $720$ have?
+L: 1
+A: 30
+W: 24
+W: 28
+W: 32
+W: 36
+S: Factor: $720=2^4\cdot3^2\cdot5$.
+Each divisor is $2^a3^b5^c$ with $0\le a\le4$, $0\le b\le2$, $0\le c\le1$: $(4+1)(2+1)(1+1)=30$ divisors.
+---
+Q: Two positive integers have greatest common divisor $12$ and least common multiple $360$. One of them is $72$. What is the other?
+L: 1
+A: 60
+W: 48
+W: 30
+W: 120
+W: 90
+S: Use $\gcd(a,b)\cdot\operatorname{lcm}(a,b)=ab$: $12\cdot360=72b$, so $b=\frac{4320}{72}=60$.
+Check: $72=2^3\cdot3^2$ and $60=2^2\cdot3\cdot5$; gcd $=2^2\cdot3=12$, lcm $=2^3\cdot3^2\cdot5=360$ ✓.
+---
+Q: How many zeros are at the end of $100!$?
+L: 1
+A: 24
+W: 20
+W: 25
+W: 21
+W: 22
+S: Each trailing zero needs a factor $10=2\cdot5$, and factors of $2$ are more plentiful, so count factors of $5$.
+Legendre: $\left\lfloor\frac{100}5\right\rfloor+\left\lfloor\frac{100}{25}\right\rfloor=20+4=24$. (Multiples of $25$ contribute a second $5$.)
+---
+Q: What is the remainder when $2^{100}$ is divided by $7$?
+L: 1
+A: 2
+W: 1
+W: 4
+W: 3
+W: 6
+S: Powers of $2$ mod $7$ cycle: $2, 4, 1, 2, 4, 1, \dots$ because $2^3=8\equiv1$.
+$2^{100}=(2^3)^{33}\cdot2\equiv1^{33}\cdot2=2\pmod 7$.
+---
+Q: What is the smallest positive integer that leaves a remainder of $1$ when divided by each of $2, 3, 4, 5,$ and $6$, and is divisible by $7$?
+L: 2
+A: 301
+W: 61
+W: 121
+W: 421
+W: 181
+S: Remainder $1$ for each of $2,\dots,6$ means $n-1$ is a multiple of $\operatorname{lcm}(2,3,4,5,6)=60$, so $n=60k+1$.
+Mod $7$: $60\equiv4$, so we need $4k+1\equiv0$, i.e. $4k\equiv6\equiv-1\pmod7$. Trying $k=1,\dots$: $4\cdot5=20\equiv6$, so $k=5$.
+$n=301=7\cdot43$ ✓.
+---
+Q: What is the sum of the digits of $10^{20}-20$?
+L: 2
+A: 170
+W: 162
+W: 171
+W: 180
+W: 172
+S: $10^{20}$ is $1$ followed by $20$ zeros. Subtracting $20$ gives a $20$-digit number: eighteen $9$s followed by $80$: $99\ldots980$.
+(Check with a small case: $10^4-20=9980$, two $9$s then $80$.)
+Digit sum: $18\cdot9+8+0=170$.
+---
+Q: How many integers from $1$ to $100$ share no common factor greater than $1$ with $100$?
+L: 2
+A: 40
+W: 50
+W: 60
+W: 45
+W: 36
+S: $100=2^2\cdot5^2$, so we need numbers divisible by neither $2$ nor $5$.
+Inclusion–exclusion: $100-50-20+10=40$ (multiples of $2$, of $5$, and of $10$ counted back once).
+Equivalently $\varphi(100)=100\cdot\frac12\cdot\frac45=40$.
+---
+Q: When $2026$ is written in base $8$, what is the sum of its digits?
+L: 1
+A: 17
+W: 10
+W: 16
+W: 18
+W: 14
+S: Divide repeatedly by $8$: $2026=8\cdot253+2$, $253=8\cdot31+5$, $31=8\cdot3+7$, $3=8\cdot0+3$.
+Reading the remainders from bottom to top: $2026=3752_8$. (Check: $3\cdot512+7\cdot64+5\cdot8+2=1536+448+40+2=2026$ ✓.)
+Digit sum: $3+7+5+2=17$.
+---
+Q: What is the largest integer $n$ such that $3^n$ divides $30!$?
+L: 1
+A: 14
+W: 10
+W: 13
+W: 15
+W: 12
+S: Legendre's formula: $\left\lfloor\frac{30}3\right\rfloor+\left\lfloor\frac{30}9\right\rfloor+\left\lfloor\frac{30}{27}\right\rfloor=10+3+1=14$.
+(Multiples of $3$ give one factor each, multiples of $9$ an extra one, and $27$ a third.)
+---
+Q: How many positive integers less than or equal to $1000$ have exactly $3$ positive divisors?
+L: 2
+A: 11
+W: 10
+W: 12
+W: 31
+W: 9
+S: $d(n)=3$ means the product of $(a_i+1)$ is $3$, which is prime, so $n=p^2$ for a prime $p$.
+We need $p^2\le1000$, i.e. $p\le31$. The primes up to $31$ are $2,3,5,7,11,13,17,19,23,29,31$: that's $11$.
+---
+Q: What is the remainder when $1!+2!+3!+\cdots+100!$ is divided by $12$?
+L: 1
+A: 9
+W: 3
+W: 0
+W: 1
+W: 5
+S: For $n\ge4$, $n!$ contains $3\cdot4=12$ as a factor, so it is $\equiv0\pmod{12}$.
+Only $1!+2!+3!=1+2+6=9$ matters. Remainder: $9$.
+---
+Q: How many positive divisors of $N=2^4\cdot3^3\cdot5^2$ are perfect squares?
+L: 2
+A: 12
+W: 8
+W: 6
+W: 18
+W: 24
+S: A divisor $2^a3^b5^c$ is a perfect square exactly when all exponents are even.
+$a\in\{0,2,4\}$ (3 choices), $b\in\{0,2\}$ (2 choices), $c\in\{0,2\}$ (2 choices): $3\cdot2\cdot2=12$.
+
+=== GENS ===
+GENS['a10-nt']=[...GENS['div-pf'],...GENS['div-gcd'],...GENS['div-rules'],...GENS['div-fact'],...GENS['mod-basic'],...GENS['mod-cycle'],...GENS['mod-crt'],...GENS['base-conv'],...GENS['base-digit']];

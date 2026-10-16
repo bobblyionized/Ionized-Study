@@ -24,10 +24,20 @@ const mockKey=t=>t.track==='pc'?'Chapter test':'Mock test';
 const trackCrumb=t=>t.track==='pc'?['Precalculus','#/pc']:['AMC Prep','#/amc'];
 
 function route(){routeTo();if(typeof restoreScroll==='function'&&location.hash)restoreScroll()}
+function fadeLanding(toLanding){
+  const land=document.getElementById('land'),main=document.querySelector('main'),hdr=document.querySelector('header.top');if(!land)return;
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  land.classList.remove('fade-in','fade-out');[main,hdr].forEach(el=>el&&el.classList.remove('study-in'));void land.offsetWidth;
+  if(toLanding){land.classList.add('fade-in');land.addEventListener('animationend',()=>land.classList.remove('fade-in'),{once:true})}
+  else{land.classList.add('fade-out');const done=()=>land.classList.remove('fade-out');land.addEventListener('animationend',done,{once:true});setTimeout(done,700);
+    [main,hdr].forEach(el=>{if(!el)return;el.classList.add('study-in');el.addEventListener('animationend',()=>el.classList.remove('study-in'),{once:true})})}
+}
 function routeTo(){
   cleanup();const h=location.hash.replace(/^#\/?/,'').split('/').filter(Boolean);
   window.scrollTo(0,0);
-  const landing=h.length===0;document.body.classList.toggle('landing',landing);if(typeof TM!=='undefined')TM.show(landing);
+  const landing=h.length===0,was=document.body.classList.contains('landing');
+  if(was!==landing&&routeTo.ran)fadeLanding(landing);                 // cross-fade between the timer screen and studying
+  routeTo.ran=true;document.body.classList.toggle('landing',landing);if(typeof TM!=='undefined')TM.show(landing);
   if(landing)return;
   if(h[0]==='home')return hub();
   if(h[0]==='amc')return amcHome();
@@ -55,7 +65,7 @@ const AMC_LEVELS={'10':{name:'AMC 10',d:'Only AMC 10 topics. The AMC 12 precalcu
   '12':{name:'AMC 12',d:'Every topic, including AMC 12 precalculus, with the AMC 12 mock exam.',mocks:['amc12']},
   both:{name:'Both',d:'Everything for the AMC 10 and AMC 12, with all three mock exams.',mocks:['amc10','amc12','all']}};
 function amcLevel(){let v='both';try{v=localStorage.getItem('amcprep.level')||'both'}catch(e){}return AMC_LEVELS[v]?v:'both'}
-const amcShown=t=>amcLevel()!=='10'||t.amc!=='12';
+const amcShown=t=>{const lv=amcLevel();return lv==='10'?t.amc!=='12':lv==='12'?t.amc!=='10':true};
 const GEAR='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>';
 function amcHome(){
   setCrumbs([['Home','#/home'],['AMC Prep']]);

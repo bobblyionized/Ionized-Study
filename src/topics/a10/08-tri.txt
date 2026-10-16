@@ -1,0 +1,168 @@
+=== LESSONS ===
+<script type="text/plain" id="L-a10-tri">
+<h2>Triangles</h2>
+<p>Triangles are the most common geometry objects on the AMC 10. Most problems combine three tools: angle facts, the Pythagorean theorem, and similar triangles.</p>
+
+<h3>1. Angles</h3>
+<div class="box"><h4>Theorem</h4>The angles of a triangle add to $180^\circ$. An exterior angle equals the sum of the two remote interior angles.</div>
+<p><b>Proof.</b> Through vertex $A$ draw the line parallel to $BC$. The two angles it makes with $AB$ and $AC$ equal $\angle B$ and $\angle C$ (alternate interior angles), and together with $\angle A$ they form a straight angle, $180^\circ$. The exterior angle at $C$ is $180^\circ-\angle C=\angle A+\angle B$.</p>
+<ul><li>In an isosceles triangle the base angles are equal (and conversely). <b>Proof:</b> the median to the base splits it into two congruent triangles (SSS).</li>
+<li><b>Triangle inequality:</b> each side is less than the sum of the other two (a straight segment is the shortest path).</li>
+<li>The larger side is opposite the larger angle.</li></ul>
+
+<h3>2. The Pythagorean theorem</h3>
+<div class="box"><h4>Theorem</h4>In a right triangle with legs $a,b$ and hypotenuse $c$: $a^2+b^2=c^2$.</div>
+<p><b>Proof (rearrangement).</b> Place four copies of the triangle inside a square of side $a+b$, with their hypotenuses forming a tilted square of side $c$ in the middle. The big square's area is $(a+b)^2=4\cdot\frac{ab}2+c^2$, so $a^2+2ab+b^2=2ab+c^2$, giving $a^2+b^2=c^2$.</p>
+<p><b>Converse and classification.</b> For the longest side $c$: $a^2+b^2=c^2$ means right, $a^2+b^2\gt c^2$ acute, $a^2+b^2\lt c^2$ obtuse.</p>
+<p><b>Triples to recognize:</b> $3$-$4$-$5$, $5$-$12$-$13$, $8$-$15$-$17$, $7$-$24$-$25$, $20$-$21$-$29$, and their multiples.</p>
+<p><b>Special right triangles.</b> Cutting a square along its diagonal gives $45$-$45$-$90$ with sides $1:1:\sqrt2$. Cutting an equilateral triangle of side $2$ in half gives $30$-$60$-$90$ with sides $1:\sqrt3:2$ (the height is $\sqrt{4-1}=\sqrt3$). An equilateral triangle with side $s$ has height $\frac{\sqrt3}2s$ and area $\frac{\sqrt3}4s^2$.</p>
+
+<h3>3. Similar triangles</h3>
+<div class="box"><h4>Similarity</h4>Two triangles are similar if two pairs of angles are equal (AA). Then all corresponding sides are in the same ratio $k$, and areas are in ratio $k^2$.</div>
+<p><b>Why areas scale by $k^2$:</b> area is $\frac12\cdot$base$\cdot$height, and both the base and the height scale by $k$.</p>
+<ul><li>A line parallel to one side cuts off a similar triangle (corresponding angles are equal). If $DE\parallel BC$ with $D$ on $AB$, then $\frac{AD}{AB}=\frac{DE}{BC}$; use the whole side $AB$, not $DB$.</li>
+<li><b>Altitude to the hypotenuse.</b> It splits a right triangle into two triangles similar to the original. Consequences: $h^2=pq$ (the altitude is the geometric mean of the two pieces of the hypotenuse) and $h=\frac{ab}c$ (compute the area two ways).</li></ul>
+
+<h3>4. Area</h3>
+<ul><li>$\text{Area}=\frac12bh$ for any base and its height. Triangles with the same height have areas in the ratio of their bases; this is often the fastest tool for area-ratio problems.</li>
+<li>A median splits a triangle into two equal areas (same height, equal bases).</li>
+<li><b>Heron's formula:</b> with $s=\frac{a+b+c}2$, $\text{Area}=\sqrt{s(s-a)(s-b)(s-c)}$. The $13$-$14$-$15$ triangle has area $84$ (it is a $5$-$12$-$13$ and a $9$-$12$-$15$ glued along the height $12$).</li>
+<li><b>Inradius:</b> $\text{Area}=rs$. <b>Proof:</b> joining the incenter to the vertices splits the triangle into three triangles with heights $r$ and bases $a,b,c$: total area $\frac12r(a+b+c)=rs$.</li>
+<li>In a right triangle, the circumradius is half the hypotenuse (the right angle is inscribed in a semicircle), and the inradius is $r=\frac{a+b-c}2$.</li></ul>
+
+<h3>5. Cevians and centers</h3>
+<div class="box"><h4>Angle Bisector Theorem</h4>If the bisector of $\angle A$ meets $BC$ at $D$, then $\dfrac{BD}{DC}=\dfrac{AB}{AC}$.</div>
+<p><b>Proof.</b> Triangles $ABD$ and $ACD$ share the height from $A$, so their areas are in the ratio $BD:DC$. They also have equal angles at $A$ and the point $D$ is equally far from lines $AB$ and $AC$ (it's on the bisector), so their areas are in the ratio $AB:AC$. Equate the two ratios.</p>
+<ul><li><b>Centroid:</b> the medians meet at a point $\frac23$ of the way from each vertex to the opposite midpoint, and they cut the triangle into $6$ equal areas.</li>
+<li>In triangle $ABC$, the bisectors of $\angle B$ and $\angle C$ meet at angle $\angle BIC=90^\circ+\frac{\angle A}2$ (because $\angle IBC+\angle ICB=\frac{180^\circ-\angle A}2$).</li></ul>
+</script>
+
+=== BANK ===
+@@ a10-tri
+Q: The angles of a triangle are in the ratio $2:3:7$. What is the largest angle, in degrees?
+L: 1
+A: 105
+W: 90
+W: 100
+W: 120
+W: 70
+S: Write the angles as $2k, 3k, 7k$. They sum to $180^\circ$: $12k=180$, so $k=15$.
+The largest angle is $7\cdot15=105^\circ$.
+---
+Q: A right triangle has legs $9$ and $12$. What is the length of the altitude to the hypotenuse?
+L: 1
+A: \frac{36}5
+W: 6
+W: \frac{15}2
+W: 8
+W: \frac{27}5
+S: The hypotenuse is $\sqrt{81+144}=15$ (a $3$-$4$-$5$ triangle scaled by $3$).
+Compute twice the area two ways: $9\cdot12=15\cdot h$, so $h=\frac{108}{15}=\frac{36}5$.
+---
+Q: A triangle has sides $13$, $14$, and $15$. What is the length of the altitude to the side of length $14$?
+L: 1
+A: 12
+W: 13
+W: 11
+W: 10
+W: \frac{84}{13}
+S: Heron's formula: $s=21$, area $=\sqrt{21\cdot8\cdot7\cdot6}=\sqrt{7056}=84$.
+Then $84=\frac12\cdot14\cdot h$, so $h=12$.
+(This triangle is a $5$-$12$-$13$ and a $9$-$12$-$15$ glued along the side $12$.)
+---
+Q: In triangle $ABC$, $AB=6$, $AC=10$, and $BC=12$. The bisector of angle $A$ meets $BC$ at $D$. What is $BD$?
+L: 1
+A: \frac92
+W: 4
+W: 5
+W: 6
+W: \frac{15}4
+S: Angle Bisector Theorem: $\frac{BD}{DC}=\frac{AB}{AC}=\frac{6}{10}=\frac35$.
+So $BD$ is $\frac{3}{8}$ of $BC$: $BD=\frac38\cdot12=\frac92$.
+---
+Q: In triangle $ABC$, points $D$ on $AB$ and $E$ on $AC$ satisfy $DE\parallel BC$. If $AD=4$, $DB=6$, and $DE=6$, what is $BC$?
+L: 1
+A: 15
+W: 9
+W: 10
+W: 12
+W: 18
+S: $DE\parallel BC$ makes $\triangle ADE\sim\triangle ABC$ with ratio $\frac{AD}{AB}=\frac{4}{10}=\frac25$.
+So $\frac{DE}{BC}=\frac25$ and $BC=6\cdot\frac52=15$. (Using $\frac{AD}{DB}$ instead would wrongly give $9$.)
+---
+Q: An equilateral triangle has side length $6$. What is the area of the circle that passes through its three vertices?
+L: 2
+A: 12\pi
+W: 9\pi
+W: 6\pi
+W: 3\pi
+W: 36\pi
+S: In an equilateral triangle the circumcenter is also the centroid, which is $\frac23$ of the way down each median (here a height).
+Height $=\frac{\sqrt3}2\cdot6=3\sqrt3$, so the radius is $\frac23\cdot3\sqrt3=2\sqrt3$.
+Area $=\pi(2\sqrt3)^2=12\pi$.
+---
+Q: A $30$-$60$-$90$ triangle has hypotenuse $10$. What is its area?
+L: 1
+A: \frac{25\sqrt3}{2}
+W: 25\sqrt3
+W: 50
+W: 25
+W: \frac{25\sqrt3}{4}
+S: The sides are in ratio $1:\sqrt3:2$, so the legs are $5$ and $5\sqrt3$.
+Area $=\frac12\cdot5\cdot5\sqrt3=\frac{25\sqrt3}2$.
+---
+Q: What is the area of a triangle with sides $10$, $10$, and $12$?
+L: 1
+A: 48
+W: 60
+W: 40
+W: 50
+W: 24\sqrt2
+S: The altitude to the base $12$ bisects it (isosceles triangle), forming right triangles with hypotenuse $10$ and leg $6$, so the height is $8$.
+Area $=\frac12\cdot12\cdot8=48$.
+---
+Q: In triangle $ABC$, $\angle A=50^\circ$. The bisectors of angles $B$ and $C$ meet at $I$. What is $\angle BIC$?
+L: 2
+A: 115
+W: 100
+W: 130
+W: 105
+W: 125
+S: $\angle B+\angle C=130^\circ$, so the halves add to $\angle IBC+\angle ICB=65^\circ$.
+In triangle $BIC$: $\angle BIC=180^\circ-65^\circ=115^\circ$. (In general $90^\circ+\frac{\angle A}2$.)
+---
+Q: A right triangle has perimeter $30$ and hypotenuse $13$. What is its area?
+L: 2
+A: 30
+W: 60
+W: 39
+W: 36
+W: 32.5
+S: The legs satisfy $a+b=17$ and $a^2+b^2=169$.
+$2ab=(a+b)^2-(a^2+b^2)=289-169=120$, so the area is $\frac{ab}2=30$.
+(The legs are $5$ and $12$.)
+---
+Q: Triangle $ABC$ has area $60$. Point $D$ is the midpoint of $BC$, and $E$ is the midpoint of $AD$. What is the area of triangle $BED$?
+L: 2
+A: 15
+W: 20
+W: 10
+W: 30
+W: 12
+S: The median $AD$ splits $ABC$ into two halves: $[ABD]=30$.
+In triangle $ABD$, $BE$ is a median (to side $AD$), so it splits $ABD$ in half: $[BED]=15$.
+---
+Q: The sides of a triangle are $7$, $8$, and $x$, where $x$ is an integer. How many values of $x$ make the triangle obtuse?
+L: 3
+A: 6
+W: 5
+W: 7
+W: 4
+W: 8
+S: The triangle inequality gives $1\lt x\lt15$, so $2\le x\le14$.
+If $x$ is the longest side ($x\ge8$), obtuse means $x^2\gt49+64=113$: $x\ge11$, so $x=11,12,13,14$ ($4$ values).
+If $8$ is the longest side ($x\le8$), obtuse means $64\gt49+x^2$: $x^2\lt15$, so $x=2,3$ ($2$ values).
+Total: $6$.
+
+=== GENS ===
+GENS['a10-tri']=[...GENS['tri-angle'],...GENS['tri-sim'],...GENS['tri-pyth'],...GENS['tri-area'],...GENS['tri-cev'],...GENS['tri-center']];

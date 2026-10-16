@@ -1,0 +1,171 @@
+=== LESSONS ===
+<script type="text/plain" id="L-a10-count">
+<h2>Counting</h2>
+<p>Counting problems appear on every AMC 10, often several times. Nearly all of them come down to a few principles, used carefully. The main dangers are counting something twice and missing a case.</p>
+
+<h3>1. The two basic rules</h3>
+<ul><li><b>Addition rule:</b> if a choice is made in one of several <i>non-overlapping</i> ways, add the counts.</li>
+<li><b>Multiplication rule:</b> if a process has stages, with $a$ options at the first and $b$ at the second (no matter what was chosen first), there are $ab$ outcomes.</li></ul>
+<p>Example: a license plate of $3$ letters then $3$ digits has $26^3\cdot10^3$ possibilities.</p>
+
+<h3>2. Permutations and combinations</h3>
+<div class="box"><h4>Formulas</h4><ul>
+<li>Arrange all $n$ distinct objects in a row: $n!$.</li>
+<li>Arrange $k$ of them in order: $P(n,k)=\dfrac{n!}{(n-k)!}$.</li>
+<li>Choose $k$ of them, order not mattering: $\dbinom nk=\dfrac{n!}{k!\,(n-k)!}$.</li></ul></div>
+<p><b>Proof of $\binom nk$.</b> Counting ordered lists of $k$ objects in two ways: directly there are $\frac{n!}{(n-k)!}$; alternatively, first choose the set ($\binom nk$ ways) and then order it ($k!$ ways). So $\binom nk\cdot k!=\frac{n!}{(n-k)!}$.</p>
+<p><b>Repeated letters.</b> The arrangements of a word with repeated letters: divide by the factorial of each repeat count, because swapping identical letters gives the same word. $\text{BANANA}$: $\frac{6!}{3!\,2!}=60$.</p>
+<p><b>Circular arrangements.</b> $n$ people around a round table (rotations considered the same): $(n-1)!$. Fix one person's seat to remove the rotations, then arrange the rest.</p>
+<p><b>Useful identities</b> (each provable by counting a set two ways): $\binom nk=\binom n{n-k}$ (choosing who's in = choosing who's out); $\binom nk=\binom{n-1}{k-1}+\binom{n-1}k$ (Pascal: does the set contain a particular person or not?); $\sum_k\binom nk=2^n$ (every subset).</p>
+
+<h3>3. Complementary counting</h3>
+<p>"At least one" is usually easiest as <b>total minus none</b>. Four-digit numbers with at least one $7$: $9000-8\cdot9^3=3168$.</p>
+
+<h3>4. Restrictions</h3>
+<ul><li><b>Must be together:</b> glue them into one block, arrange the blocks, then arrange inside the block.</li>
+<li><b>Must not be together:</b> total minus together, or place the others first and choose gaps for the restricted ones.</li>
+<li><b>Handle the most restricted position first.</b> For digits, the first digit can't be $0$.</li></ul>
+
+<h3>5. Lattice paths</h3>
+<p>Paths from $(0,0)$ to $(m,n)$ using unit steps right and up: $\binom{m+n}{m}$. <b>Proof:</b> every path is a sequence of $m+n$ steps, of which exactly $m$ are "right"; choosing which positions are "right" determines the path.</p>
+
+<h3>6. Stars and bars</h3>
+<div class="box"><h4>Theorem</h4>The number of solutions of $x_1+\dots+x_k=n$ in <b>nonnegative</b> integers is $\dbinom{n+k-1}{k-1}$. In <b>positive</b> integers it is $\dbinom{n-1}{k-1}$.</div>
+<p><b>Proof.</b> Represent a solution as a row of $n$ stars and $k-1$ bars: the bars split the stars into $k$ groups of sizes $x_1,\dots,x_k$. Every arrangement of the $n+k-1$ symbols gives exactly one solution, and we choose which $k-1$ positions are bars. For positive solutions, give each variable $1$ first, leaving $n-k$ to distribute freely: $\binom{n-1}{k-1}$.</p>
+<p>Use it for distributing identical objects (candies, votes) into distinct boxes.</p>
+
+<h3>7. Inclusion–exclusion</h3>
+<p>$|A\cup B|=|A|+|B|-|A\cap B|$, and for three sets $|A\cup B\cup C|=|A|+|B|+|C|-|A\cap B|-|B\cap C|-|C\cap A|+|A\cap B\cap C|$.</p>
+<p><b>Why:</b> an element in exactly $j$ of the sets is counted $\binom j1-\binom j2+\binom j3=1$ time (for $j\le3$), exactly once.</p>
+
+<h3>8. Casework and symmetry</h3>
+<p>Split into cases that don't overlap and together cover everything, usually by the value of the most constrained quantity. Look for symmetry: in exactly half of all arrangements, $A$ comes before $B$.</p>
+</script>
+
+=== BANK ===
+@@ a10-count
+Q: How many distinct arrangements of the letters in $\text{BANANA}$ are there?
+L: 1
+A: 60
+W: 720
+W: 120
+W: 30
+W: 180
+S: There are $6$ letters: $3$ A's, $2$ N's, and $1$ B. If all were distinct there would be $6!=720$ orders.
+Swapping identical letters doesn't create a new word, so divide by $3!$ for the A's and $2!$ for the N's: $\frac{720}{6\cdot2}=60$.
+---
+Q: A committee of $3$ is chosen from $6$ boys and $4$ girls. How many committees include at least one girl?
+L: 1
+A: 100
+W: 120
+W: 96
+W: 80
+W: 60
+S: Complementary counting: all committees minus the all-boy ones.
+$\binom{10}3-\binom63=120-20=100$.
+---
+Q: In how many ways can $5$ people line up in a row if Alice and Bob refuse to stand next to each other?
+L: 1
+A: 72
+W: 48
+W: 96
+W: 120
+W: 60
+S: Total arrangements: $5!=120$. Arrangements with Alice and Bob together: glue them into one block, giving $4$ units to arrange ($4!=24$) and $2$ orders inside the block, so $48$.
+Not together: $120-48=72$.
+---
+Q: How many integers from $1$ to $100$ are divisible by $2$, $3$, or $5$?
+L: 2
+A: 74
+W: 70
+W: 76
+W: 80
+W: 26
+S: Inclusion–exclusion. Multiples of $2$: $50$; of $3$: $33$; of $5$: $20$.
+Pairs: of $6$: $16$; of $10$: $10$; of $15$: $6$. All three (of $30$): $3$.
+$50+33+20-16-10-6+3=74$.
+---
+Q: A path from $(0,0)$ to $(5,3)$ uses only unit steps to the right or up. How many such paths are there?
+L: 1
+A: 56
+W: 15
+W: 28
+W: 70
+W: 40
+S: Every path has $5+3=8$ steps, of which exactly $3$ are "up". Choosing which $3$ steps go up determines the path.
+$\binom83=56$.
+---
+Q: In how many ways can $10$ identical candies be given to $3$ children so that each child gets at least one?
+L: 1
+A: 36
+W: 66
+W: 45
+W: 30
+W: 28
+S: Give each child $1$ candy first; $7$ remain to distribute freely among $3$ children.
+Stars and bars: $7$ stars and $2$ bars, $\binom{9}{2}=36$. (Equivalently $\binom{10-1}{3-1}$ for positive solutions of $a+b+c=10$.)
+---
+Q: How many solutions does $x+y+z+w=8$ have in nonnegative integers?
+L: 2
+A: 165
+W: 120
+W: 84
+W: 330
+W: 35
+S: Stars and bars: $8$ stars and $3$ bars in a row, choosing the bar positions among $11$ slots: $\binom{11}{3}=165$.
+---
+Q: In how many ways can $6$ people be seated around a round table, if rotations of a seating are considered the same?
+L: 1
+A: 120
+W: 720
+W: 60
+W: 360
+W: 24
+S: Fix one person's seat to account for rotations; the other $5$ can then be arranged in the remaining seats in $5!=120$ ways.
+(Equivalently, $6!$ linear orders, each round seating counted $6$ times: $\frac{720}{6}$.)
+---
+Q: How many three-digit positive integers have three different digits?
+L: 1
+A: 648
+W: 720
+W: 504
+W: 729
+W: 900
+S: Choose the hundreds digit first (most restricted): $9$ choices ($1$–$9$). Tens digit: any digit except that one, $9$ choices (now $0$ is allowed). Units digit: $8$ choices.
+$9\cdot9\cdot8=648$.
+---
+Q: How many four-digit positive integers contain at least one digit $7$?
+L: 2
+A: 3168
+W: 2916
+W: 3000
+W: 3240
+W: 4000
+S: Complement: four-digit numbers with no $7$. First digit: $8$ choices (not $0$ or $7$); each other digit: $9$ choices.
+That's $8\cdot9^3=5832$. There are $9000$ four-digit numbers, so $9000-5832=3168$ contain a $7$.
+---
+Q: At a party, each of $12$ people shakes hands once with each other person. How many handshakes occur?
+L: 1
+A: 66
+W: 132
+W: 144
+W: 72
+W: 78
+S: A handshake is an unordered pair of people: $\binom{12}2=\frac{12\cdot11}2=66$.
+(Counting $12\cdot11$ counts each handshake twice, once from each person.)
+---
+Q: Three vertices of a regular octagon are chosen to form a triangle. How many such triangles have <b>no</b> side that is also a side of the octagon?
+L: 3
+A: 16
+W: 8
+W: 24
+W: 32
+W: 40
+S: Total triangles: $\binom83=56$. Subtract those using at least one octagon side.
+Triangles using two octagon sides: three consecutive vertices; there are $8$ of these.
+Triangles using exactly one side: pick the side ($8$ ways), then a third vertex not adjacent to either endpoint: $8-4=4$ ways, giving $32$.
+$56-8-32=16$.
+(Check with the formula $\frac{n(n-4)(n-5)}6=\frac{8\cdot4\cdot3}{6}=16$.)
+
+=== GENS ===
+GENS['a10-count']=[...GENS['count-basic'],...GENS['count-comb'],...GENS['count-stars'],...GENS['count-pie'],...GENS['count-arr'],...GENS['binom-coef']];

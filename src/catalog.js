@@ -1,5 +1,19 @@
 /* ====================== catalog ====================== */
 const CATALOG=[
+ {area:'AMC 10 Focus',note:'Everything the AMC 10 has tested over the last 20 years (2006–2025), with full proofs, a link to every past exam, and original practice in the same style.',items:[
+  {id:'a10',name:'AMC 10: The 20-Year Course',amc:'10',d:'How the test works, an index of all 42 AMC 10 exams from 2006–2025, and every tested topic taught from scratch with proofs and practice.',subs:[
+   {id:'a10-guide',name:'How the AMC 10 Works & 20-Year Exam Index',d:'Format, scoring, when to guess, difficulty by problem number, topic mix, and links to every exam since 2006.'},
+   {id:'a10-arith',name:'Arithmetic, Percents, Ratios & Rates',d:'Fractions, percent change, ratios, rates and work, averages, units: the core of problems 1–10.'},
+   {id:'a10-alg',name:'Equations, Quadratics & Functions',d:'Linear systems, factoring identities, quadratics and Vieta, exponents, absolute value, functions, AM–GM.'},
+   {id:'a10-seq',name:'Sequences, Series & Patterns',d:'Arithmetic and geometric sequences, sums, telescoping, recursion and cycles.'},
+   {id:'a10-nt',name:'Number Theory',d:'Primes, divisors, gcd and lcm, modular arithmetic, digits and bases, factorials.'},
+   {id:'a10-count',name:'Counting',d:'Multiplication principle, permutations, combinations, stars and bars, inclusion–exclusion, casework.'},
+   {id:'a10-prob',name:'Probability & Expected Value',d:'Equally likely outcomes, complements, conditional probability, geometric probability, expectation.'},
+   {id:'a10-tri',name:'Triangles',d:'Angles, Pythagoras, similarity, special triangles, area formulas, angle bisectors, centers.'},
+   {id:'a10-circ',name:'Circles',d:'Inscribed angles, tangents, power of a point, cyclic quadrilaterals, arcs and sectors.'},
+   {id:'a10-poly',name:'Polygons, Area & Coordinates',d:'Angle sums, quadrilaterals, regular polygons, shoelace and Pick, lines, distance, reflections.'},
+   {id:'a10-3d',name:'3D Geometry',d:'Volume and surface area of prisms, cylinders, pyramids, cones and spheres; space diagonals and cross-sections.'},
+   {id:'a10-logic',name:'Logic, Statistics & Puzzles',d:'Mean, median, mode; truth-tellers and liars; games; clocks and calendars; invariants.'}]}]},
  {area:'Algebra',note:'The backbone of both contests: roughly a third of every AMC 10/12.',items:[
   {id:'alg',name:'Algebraic Manipulation & Equations',amc:'10/12',d:'Linear equations and systems, ratios, rates and percents, classic word problems, factoring, radicals.',subs:[
    {id:'alg-lin',name:'Linear Equations & Systems',d:'solving, substitution, elimination, clever combinations of equations'},

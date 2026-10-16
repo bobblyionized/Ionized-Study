@@ -1,0 +1,137 @@
+=== LESSONS ===
+<script type="text/plain" id="L-a10-logic">
+<h2>Logic, Statistics &amp; Puzzles</h2>
+<p>A few problems on every AMC 10 need no formulas at all, just careful reasoning: statistics of a data set, truth-tellers and liars, games, clocks and calendars, and invariants.</p>
+
+<h3>1. Mean, median, mode, range</h3>
+<ul><li><b>Mean</b> $=\frac{\text{sum}}{\text{count}}$. Work with sums: changing one value by $c$ changes the mean by $\frac cn$.</li>
+<li><b>Median:</b> the middle value of the sorted list (the average of the two middle values if the count is even). It only depends on order, so changing the largest value doesn't move it.</li>
+<li><b>Mode:</b> the most frequent value. "Unique mode" means no other value is tied with it.</li>
+<li><b>Range:</b> largest minus smallest.</li></ul>
+<p><b>Strategy for "find the list" problems:</b> write the sorted list with unknowns, place the median, use the mode to force repeated values, then use the sum. To maximize one value, make all the others as small as the conditions allow.</p>
+
+<h3>2. Truth-tellers and liars</h3>
+<p>Knights always tell the truth and knaves always lie. <b>Method:</b> assume one person is a knight, follow the consequences, and see whether you reach a contradiction; then try the other case. With $3$ people there are only $8$ cases, so you can also check them all. A statement made by a knave must be false, so "I am a knave" can never be said by anyone.</p>
+
+<h3>3. Games</h3>
+<div class="box"><h4>Winning and losing positions</h4>A position is <b>losing</b> (for the player about to move) if every move leads to a winning position, and <b>winning</b> if some move leads to a losing position. Work backward from the end of the game.</div>
+<p><b>Why this works:</b> from a losing position, whatever you do hands your opponent a winning position, and they can keep doing that until the game ends. Example: players take $1$, $2$, or $3$ stones, and whoever takes the last stone wins. The losing positions are the multiples of $4$ (any move from a multiple of $4$ leaves a non-multiple, and from any non-multiple you can move to a multiple). So with $21$ stones, take $1$.</p>
+
+<h3>4. Pigeonhole principle</h3>
+<p>If more than $n$ objects go into $n$ boxes, some box gets at least two. <b>Proof:</b> if every box had at most one, there would be at most $n$ objects. More generally, some box gets at least $\lceil\frac{\text{objects}}{\text{boxes}}\rceil$. Example: with socks in $5$ colors, $6$ socks guarantee a matching pair.</p>
+
+<h3>5. Invariants and parity</h3>
+<p>If an operation never changes some quantity (a sum, a parity, a remainder), the final state must have the same value as the start. Example: replacing $a,b$ by $a+b-1$ lowers the total by exactly $1$ each step; starting from $1,\dots,10$ (sum $55$), after $9$ steps one number remains: $55-9=46$. Parity arguments (even/odd) often show something is impossible.</p>
+
+<h3>6. Clocks and calendars</h3>
+<ul><li>The minute hand moves $6^\circ$ per minute and the hour hand $0.5^\circ$ per minute. At $h{:}m$ the angle between them is $|30h-5.5m|$ (take $360^\circ$ minus that if it's over $180^\circ$).</li>
+<li>Days of the week repeat every $7$ days: $n$ days after a Monday is the weekday $n\bmod7$ steps later. A non-leap year has $365\equiv1\pmod7$ days, so a date moves forward one weekday each year (two after a February $29$).</li>
+<li>Leap years: divisible by $4$, except century years not divisible by $400$.</li></ul>
+</script>
+
+=== BANK ===
+@@ a10-logic
+Q: A list of $5$ positive integers has mean $6$, median $7$, and unique mode $8$. What is the largest possible range of the list?
+L: 2
+A: 7
+W: 6
+W: 5
+W: 8
+W: 4
+S: Sorted, the list is $a, b, 7, 8, 8$: the median is the middle value $7$, and $8$ must appear at least twice to be the mode, so it fills the top two spots.
+The sum is $5\cdot6=30$, so $a+b=30-23=7$, with $a\lt b\lt7$ (if $a=b$ that value would tie $8$ as a mode).
+The range $8-a$ is largest when $a$ is smallest: $a=1$, $b=6$. Range $=7$.
+---
+Q: The numbers $2, 4, 4, 5,$ and $x$ have a mean equal to their median. What is $x$?
+L: 1
+A: 5
+W: 4
+W: 3
+W: 6
+W: 9
+S: Wherever $x$ goes, the two $4$s keep the middle value at $4$: the median is always $4$.
+So the mean must be $4$: $\frac{15+x}{5}=4$, giving $x=5$.
+---
+Q: On an island, knights always tell the truth and knaves always lie. $A$ says "$B$ is a knave." $B$ says "$C$ is a knave." $C$ says "$A$ and $B$ are both knaves." How many of the three are knights?
+L: 2
+A: 1
+W: 0
+W: 2
+W: 3
+W: \text{can't be determined}
+S: Suppose $C$ is a knight. Then $A$ and $B$ are both knaves, so $A$'s statement "$B$ is a knave" is true, which a knave can't say. Contradiction, so $C$ is a knave.
+Then $B$'s statement "$C$ is a knave" is true, so $B$ is a knight. Then $A$'s statement "$B$ is a knave" is false, so $A$ is a knave.
+Check $C$: "$A$ and $B$ are both knaves" is false ($B$ is a knight) ✓. Exactly $1$ knight.
+---
+Q: What is the smaller angle between the hour and minute hands of a clock at $3{:}40$?
+L: 1
+A: 130
+W: 120
+W: 140
+W: 150
+W: 110
+S: The minute hand is at $40\cdot6^\circ=240^\circ$. The hour hand is at $3\cdot30^\circ+40\cdot0.5^\circ=110^\circ$ (it moves as the minutes pass).
+The angle between them is $240^\circ-110^\circ=130^\circ$.
+---
+Q: Today is Monday. What day of the week will it be $100$ days from today?
+L: 1
+A: \text{Wednesday}
+W: \text{Tuesday}
+W: \text{Thursday}
+W: \text{Monday}
+W: \text{Friday}
+S: Weekdays repeat every $7$ days, and $100=7\cdot14+2$.
+So it will be $2$ days after Monday: Wednesday.
+---
+Q: Two players start with $21$ stones and take turns removing $1$, $2$, or $3$ stones. The player who takes the last stone wins. How many stones should the first player take to guarantee a win?
+L: 2
+A: 1
+W: 2
+W: 3
+W: \text{it doesn't matter}
+W: \text{the second player always wins}
+S: The losing positions (for the player to move) are the multiples of $4$: from a multiple of $4$, any move leaves a non-multiple, and from a non-multiple you can always move back to a multiple.
+$21=4\cdot5+1$, so take $1$ stone, leaving $20$. After that, whenever the opponent takes $k$, take $4-k$.
+---
+Q: A drawer has socks in $5$ different colors. What is the smallest number of socks you must take, without looking, to be sure of getting two of the same color?
+L: 1
+A: 6
+W: 5
+W: 2
+W: 10
+W: 11
+S: With $5$ socks you might get one of each color. With $6$, by the pigeonhole principle, two must share a color.
+---
+Q: The numbers $1, 2, \dots, 10$ are written on a board. A move erases two numbers $a$ and $b$ and writes $a+b-1$. After $9$ moves one number is left. What is it?
+L: 2
+A: 46
+W: 55
+W: 45
+W: 10
+W: 54
+S: Each move replaces $a+b$ with $a+b-1$, so the total on the board decreases by exactly $1$, no matter which numbers are chosen.
+The starting total is $55$; after $9$ moves it is $55-9=46$, and it's the only number left.
+---
+Q: The average score of $10$ students on a test is $70$. If the highest score, $100$, is removed, what is the average of the remaining scores?
+L: 1
+A: \frac{200}{3}
+W: 60
+W: 67
+W: 70
+W: 63
+S: Switch to sums: the total is $10\cdot70=700$. Removing $100$ leaves $600$ for $9$ students.
+Average $=\frac{600}{9}=\frac{200}{3}\approx66.7$.
+---
+Q: A $3\times3$ grid of lights starts with all lights off. Pressing a light toggles it and the lights directly above, below, left, and right of it (up to $5$ lights in all). Which statement is true about the number of lights that are on after any number of presses?
+L: 3
+A: \text{it can be any number from } 0 \text{ to } 9
+W: \text{it is always even}
+W: \text{it is always odd}
+W: \text{it is always a multiple of } 3
+W: \text{it can never be } 9
+S: There is no parity restriction: pressing the center toggles $5$ lights (odd), and pressing a corner toggles $3$ (odd).
+In fact every pattern is reachable in this "Lights Out" variant on a $3\times3$ grid, because the $9$ press patterns are independent (the system of equations mod $2$ has a unique solution for every target). In particular all $9$ lights can be on.
+So the number of lit lights can be anything from $0$ to $9$.
+
+=== GENS ===
+GENS['a10-logic']=[...GENS['alg-rate'].slice(0,2),...GENS['mod-cycle'],...GENS['count-basic'].slice(0,2)];

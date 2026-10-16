@@ -1,0 +1,164 @@
+=== LESSONS ===
+<script type="text/plain" id="L-a10-seq">
+<h2>Sequences, Series &amp; Patterns</h2>
+
+<h3>1. Arithmetic sequences</h3>
+<div class="box"><h4>Facts</h4><ul>
+<li>$a_n=a_1+(n-1)d$, so $a_m-a_n=(m-n)d$.</li>
+<li>Number of terms from $a$ to $L$ with step $d$: $\frac{L-a}{d}+1$.</li>
+<li>Sum: $S_n=\dfrac{n(a_1+a_n)}{2}=$ (number of terms) $\times$ (average of first and last).</li></ul></div>
+<p><b>Proof of the sum (Gauss).</b> Write the sum forwards and backwards:
+$S=a_1+a_2+\dots+a_n$ and $S=a_n+a_{n-1}+\dots+a_1$. Add them term by term: each pair $a_k+a_{n+1-k}$ equals $a_1+a_n$ (going one step right adds $d$ on the first term and subtracts $d$ on the other). There are $n$ pairs, so $2S=n(a_1+a_n)$.</p>
+<p><b>Special cases:</b> $1+2+\dots+n=\frac{n(n+1)}2$, and $1+3+5+\dots+(2n-1)=n^2$.</p>
+<p><b>Symmetric terms.</b> Three terms of an arithmetic sequence can be written $a-d,\ a,\ a+d$. Their sum is $3a$, which often gives $a$ at once. The middle term of an odd-length arithmetic sequence is its average.</p>
+
+<h3>2. Geometric sequences</h3>
+<div class="box"><h4>Facts</h4><ul>
+<li>$a_n=a_1r^{n-1}$.</li>
+<li>Finite sum: $S_n=a_1\dfrac{r^n-1}{r-1}$ for $r\ne1$.</li>
+<li>Infinite sum, when $|r|\lt1$: $S=\dfrac{a_1}{1-r}$.</li></ul></div>
+<p><b>Proof.</b> $S=a+ar+\dots+ar^{n-1}$ and $rS=ar+ar^2+\dots+ar^n$. Subtracting, everything cancels except $rS-S=ar^n-a$, so $S=a\frac{r^n-1}{r-1}$. When $|r|\lt1$, $r^n\to0$ as $n$ grows, leaving $\frac{-a}{r-1}=\frac a{1-r}$.</p>
+<p><b>Repeating decimals</b> are infinite geometric series: $0.\overline{36}=\frac{36}{100}+\frac{36}{100^2}+\dots=\frac{36/100}{1-1/100}=\frac{36}{99}=\frac4{11}$.</p>
+<p><b>Bouncing ball:</b> each rebound distance is traveled twice (up and down), so total distance $=$ first drop $+\ 2\times$(sum of the rebound heights).</p>
+
+<h3>3. Telescoping</h3>
+<p>If each term can be written as a difference $f(k)-f(k+1)$, the sum collapses: $\sum_{k=1}^{n}\big(f(k)-f(k+1)\big)=f(1)-f(n+1)$, because each middle $f$ appears once with $+$ and once with $-$.</p>
+<ul><li>$\dfrac1{k(k+1)}=\dfrac1k-\dfrac1{k+1}$, so $\sum_{k=1}^{n}\frac1{k(k+1)}=1-\frac1{n+1}$.</li>
+<li>Products telescope too: $\frac21\cdot\frac32\cdot\frac43\cdots\frac{n+1}{n}=n+1$.</li></ul>
+
+<h3>4. Recursion and cycles</h3>
+<ul><li>Compute the first several terms. Many AMC sequences repeat with a short period; then $a_n$ depends only on $n$ modulo the period.</li>
+<li><b>Fibonacci-type</b> recursions $a_n=a_{n-1}+a_{n-2}$ count tilings, stair climbs (1 or 2 steps) and binary strings with no two adjacent 1s, because the last piece is either a "1" or a "2".</li>
+<li>Last digits of powers cycle: $2^n$ ends in $2,4,8,6,\dots$ (period 4).</li></ul>
+
+<h3>5. Patterns in arrays and figures</h3>
+<p>For a growing figure, count the first few stages, find the difference between consecutive stages, and decide whether it is constant (linear formula), growing by a constant (quadratic), or multiplying (exponential). A quadratic $an^2+bn+c$ has constant second differences equal to $2a$.</p>
+</script>
+
+=== BANK ===
+@@ a10-seq
+Q: How many terms are in the arithmetic sequence $13, 17, 21, \dots, 401$?
+L: 1
+A: 98
+W: 97
+W: 99
+W: 100
+W: 388
+S: The common difference is $4$. Number of terms $=\frac{\text{last}-\text{first}}{d}+1=\frac{401-13}{4}+1=97+1=98$.
+(Forgetting the $+1$ is the classic fencepost error.)
+---
+Q: What is the sum of all multiples of $7$ between $100$ and $200$?
+L: 1
+A: 2107
+W: 2100
+W: 2114
+W: 1960
+W: 2009
+S: The multiples are $105, 112, \dots, 196$. Count: $\frac{196-105}{7}+1=13+1=14$.
+Sum $=$ count $\times$ average of first and last $=14\cdot\frac{105+196}{2}=14\cdot150.5=2107$.
+---
+Q: Three numbers in arithmetic progression have sum $30$ and product $910$. What is the largest of the three?
+L: 2
+A: 13
+W: 12
+W: 14
+W: 15
+W: 17
+S: Write them as $10-d,\ 10,\ 10+d$ (the sum $3\cdot10=30$ fixes the middle).
+Product: $10(100-d^2)=910$, so $100-d^2=91$, $d^2=9$, $d=\pm3$.
+The numbers are $7, 10, 13$; the largest is $13$.
+---
+Q: What is the value of $\dfrac1{1\cdot2}+\dfrac1{2\cdot3}+\dfrac1{3\cdot4}+\cdots+\dfrac1{49\cdot50}$?
+L: 1
+A: \frac{49}{50}
+W: \frac{1}{50}
+W: 1
+W: \frac{50}{51}
+W: \frac{48}{49}
+S: Partial fractions: $\frac1{k(k+1)}=\frac1k-\frac1{k+1}$.
+The sum telescopes: $\left(1-\frac12\right)+\left(\frac12-\frac13\right)+\dots+\left(\frac1{49}-\frac1{50}\right)=1-\frac1{50}=\frac{49}{50}$.
+---
+Q: A ball is dropped from a height of $27$ feet. Each time it hits the ground it bounces back up to $\frac23$ of the height it fell. What is the total distance it travels before coming to rest, in feet?
+L: 2
+A: 135
+W: 81
+W: 108
+W: 162
+W: 54
+S: The first drop is $27$. The rebound heights are $18, 12, 8, \dots$, a geometric series with sum $\frac{18}{1-2/3}=54$.
+Each rebound height is traveled twice (up, then down), so the total is $27+2\cdot54=135$ feet.
+---
+Q: A sequence has $a_1=3$, $a_2=7$, and $a_n=a_{n-1}-a_{n-2}$ for $n\ge3$. What is $a_{2026}$?
+L: 2
+A: -3
+W: 3
+W: 7
+W: 4
+W: -7
+S: Compute terms: $a_3=7-3=4$, $a_4=4-7=-3$, $a_5=-3-4=-7$, $a_6=-7-(-3)=-4$, $a_7=-4-(-7)=3$, $a_8=3-(-4)=7$.
+The pair $(3,7)$ came back, so the sequence repeats with period $6$: $3,7,4,-3,-7,-4,\dots$
+$2026=6\cdot337+4$, so $a_{2026}=a_4=-3$.
+---
+Q: The repeating decimal $0.\overline{27}$ equals a fraction $\frac mn$ in lowest terms. What is $m+n$?
+L: 1
+A: 14
+W: 126
+W: 27
+W: 38
+W: 12
+S: A two-digit repeating block over $99$: $0.\overline{27}=\frac{27}{99}=\frac{3}{11}$.
+So $m+n=3+11=14$. (Forgetting to reduce gives $126$.)
+---
+Q: In how many ways can you climb a staircase of $8$ steps, taking $1$ or $2$ steps at a time?
+L: 2
+A: 34
+W: 21
+W: 55
+W: 28
+W: 64
+S: Let $w_n$ be the number of ways for $n$ steps. The last move is a $1$-step (leaving $n-1$) or a $2$-step (leaving $n-2$), so $w_n=w_{n-1}+w_{n-2}$, with $w_1=1$ and $w_2=2$.
+$w_3=3, w_4=5, w_5=8, w_6=13, w_7=21, w_8=34$.
+---
+Q: What is the units digit of $3^{2026}$?
+L: 1
+A: 9
+W: 1
+W: 3
+W: 7
+W: 6
+S: Units digits of powers of $3$ cycle with period $4$: $3, 9, 7, 1, 3, 9, \dots$
+$2026=4\cdot506+2$, so $3^{2026}$ ends like $3^2=9$.
+---
+Q: The sum of the first $n$ positive odd integers is $361$. What is $n$?
+L: 1
+A: 19
+W: 18
+W: 20
+W: 181
+W: 17
+S: The first $n$ odd numbers sum to $n^2$ ($n$ terms with average $\frac{1+(2n-1)}{2}=n$).
+$n^2=361$, so $n=19$.
+---
+Q: What is the value of $\left(1-\dfrac12\right)\left(1-\dfrac13\right)\left(1-\dfrac14\right)\cdots\left(1-\dfrac1{100}\right)$?
+L: 1
+A: \frac{1}{100}
+W: \frac{1}{99}
+W: \frac{99}{100}
+W: \frac12
+W: \frac{1}{50}
+S: Each factor is $\frac{k-1}{k}$: the product is $\frac12\cdot\frac23\cdot\frac34\cdots\frac{99}{100}$.
+Every numerator cancels the previous denominator, leaving $\frac1{100}$.
+---
+Q: Figures are built from unit squares: figure $1$ has $1$ square, figure $2$ has $5$, figure $3$ has $13$, and figure $4$ has $25$. If the pattern continues, how many squares are in figure $10$?
+L: 2
+A: 181
+W: 145
+W: 200
+W: 221
+W: 100
+S: Differences: $4, 8, 12$ grow by $4$ each time, so the count is quadratic with leading coefficient $\frac42=2$.
+Try $2n^2-2n+1$: $n=1\to1$, $n=2\to5$, $n=3\to13$, $n=4\to25$ ✓. (It is $n^2+(n-1)^2$.)
+Figure $10$: $100+81=181$.
+
+=== GENS ===
+GENS['a10-seq']=[...GENS.arith,...GENS.geo,...GENS.infgeo,...GENS.tele,...GENS.recur,...GENS.fib];

@@ -1,0 +1,159 @@
+=== LESSONS ===
+<script type="text/plain" id="L-a10-3d">
+<h2>3D Geometry</h2>
+<p>AMC 10 solid geometry is mostly computing volumes, surface areas, and distances, plus a few counting problems about cubes. The trick is usually to find the right 2D cross-section or the right right triangle.</p>
+
+<h3>1. Volume</h3>
+<div class="box"><h4>Formulas</h4><ul>
+<li>Prism or cylinder: $V=(\text{base area})\times h$. Cylinder: $\pi r^2h$.</li>
+<li>Pyramid or cone: $V=\frac13(\text{base area})\times h$. Cone: $\frac13\pi r^2h$.</li>
+<li>Sphere: $V=\frac43\pi r^3$, surface area $4\pi r^2$.</li></ul></div>
+<p><b>Why the $\frac13$.</b> A cube can be cut into $3$ congruent square pyramids, each with a face of the cube as its base and the opposite corner as its apex. So each has volume $\frac13s^3=\frac13(s^2)(s)$. <b>Cavalieri's principle</b> (solids with equal cross-section areas at every height have equal volume) extends this to every pyramid and cone with the same base area and height.</p>
+<p><b>Sphere.</b> Archimedes showed that a sphere has $\frac23$ the volume of the cylinder around it: $\frac23\cdot\pi r^2\cdot2r=\frac43\pi r^3$. (Cavalieri: a hemisphere's cross-section at height $y$ has area $\pi(r^2-y^2)$, the same as a cylinder of radius $r$ with a cone removed, so hemisphere $=\pi r^3-\frac13\pi r^3=\frac23\pi r^3$.)</p>
+
+<h3>2. Surface area</h3>
+<ul><li>Box $a\times b\times c$: $2(ab+bc+ca)$.</li>
+<li>Cylinder: $2\pi r^2+2\pi rh$ (unroll the side into a rectangle $2\pi r$ by $h$).</li>
+<li>Cone: lateral area $\pi r\ell$, where $\ell=\sqrt{r^2+h^2}$ is the slant height. <b>Proof:</b> unrolled, the side is a sector of radius $\ell$ whose arc is the base circumference $2\pi r$; a sector's area is $\frac12\cdot$radius$\cdot$arc $=\frac12\ell\cdot2\pi r$.</li>
+<li>Pyramid: base plus triangles; each triangle's height is the slant height, not the pyramid's height.</li></ul>
+
+<h3>3. Distances</h3>
+<ul><li><b>Space diagonal</b> of an $a\times b\times c$ box: $\sqrt{a^2+b^2+c^2}$. Apply Pythagoras twice: the face diagonal is $\sqrt{a^2+b^2}$, and it is perpendicular to the edge $c$.</li>
+<li>Cube of side $s$: face diagonal $s\sqrt2$, space diagonal $s\sqrt3$.</li>
+<li><b>Shortest path along the surface:</b> unfold (make a net) so the path lies flat, then use a straight line. From one corner of a unit cube to the opposite corner along the surface: unfold two faces into a $1\times2$ rectangle, giving $\sqrt5$.</li></ul>
+
+<h3>4. Scaling</h3>
+<p>Scaling a solid by $k$ multiplies lengths by $k$, areas by $k^2$, and volumes by $k^3$. Increasing every edge of a cube by $50\%$ multiplies the volume by $1.5^3=3.375$.</p>
+
+<h3>5. Counting on solids</h3>
+<ul><li><b>Euler's formula:</b> for a convex polyhedron, $V-E+F=2$. (Cube: $8-12+6=2$.)</li>
+<li><b>Painted cube:</b> an $n\times n\times n$ cube painted outside and cut into unit cubes has $8$ cubes with $3$ painted faces (corners), $12(n-2)$ with $2$ (edges), $6(n-2)^2$ with $1$ (faces), and $(n-2)^3$ with none.</li></ul>
+
+<h3>6. Regular tetrahedron and other facts</h3>
+<ul><li>Regular tetrahedron with edge $s$: volume $\frac{s^3}{6\sqrt2}$. It fits inside a cube of side $\frac s{\sqrt2}$ using alternate corners; remove four corner pyramids, each $\frac16$ of the cube, leaving $\frac13$ of the cube.</li>
+<li><b>Water displacement:</b> an object fully submerged raises the water level by (object volume) $\div$ (container base area).</li></ul>
+</script>
+
+=== BANK ===
+@@ a10-3d
+Q: What is the length of the space diagonal of a $3\times4\times12$ box?
+L: 1
+A: 13
+W: 19
+W: 12
+W: 5
+W: \sqrt{153}
+S: The diagonal of the $3\times4$ face is $5$. That diagonal and the edge $12$ are perpendicular, so the space diagonal is $\sqrt{5^2+12^2}=13$.
+(Formula: $\sqrt{9+16+144}=\sqrt{169}=13$.)
+---
+Q: A sphere has radius $3$ and a cylinder has radius $3$ and height $4$. What is the ratio of the sphere's volume to the cylinder's volume?
+L: 1
+A: 1
+W: \frac34
+W: \frac43
+W: \frac12
+W: 2
+S: Sphere: $\frac43\pi\cdot27=36\pi$. Cylinder: $\pi\cdot9\cdot4=36\pi$.
+The ratio is $1$: they have equal volume.
+---
+Q: A cone has base radius $6$ and height $8$. What is its lateral (curved) surface area?
+L: 1
+A: 60\pi
+W: 48\pi
+W: 96\pi
+W: 36\pi
+W: 100\pi
+S: The slant height is $\ell=\sqrt{6^2+8^2}=10$.
+Lateral area $=\pi r\ell=\pi\cdot6\cdot10=60\pi$. (Its volume would be $\frac13\pi\cdot36\cdot8=96\pi$.)
+---
+Q: What is the total surface area of a $2\times3\times4$ rectangular box?
+L: 1
+A: 52
+W: 24
+W: 26
+W: 48
+W: 56
+S: Three pairs of faces: $2(2\cdot3+3\cdot4+2\cdot4)=2(6+12+8)=52$.
+---
+Q: A $4\times4\times4$ cube is painted on the outside and cut into $64$ unit cubes. How many unit cubes have paint on exactly two faces?
+L: 1
+A: 24
+W: 8
+W: 12
+W: 32
+W: 36
+S: Cubes with exactly two painted faces lie along the edges but not at the corners. Each of the $12$ edges has $4-2=2$ such cubes.
+$12\cdot2=24$.
+---
+Q: What is the volume of a regular tetrahedron with edge length $6$?
+L: 3
+A: 18\sqrt2
+W: 36\sqrt2
+W: 9\sqrt2
+W: 27\sqrt3
+W: 72
+S: Use $V=\frac{s^3}{6\sqrt2}=\frac{216}{6\sqrt2}=\frac{36}{\sqrt2}=18\sqrt2$.
+(Derivation: the tetrahedron sits in a cube of side $\frac6{\sqrt2}=3\sqrt2$, whose volume is $54\sqrt2$; removing four corner pyramids, each $\frac16$ of the cube, leaves $\frac13$ of it, $18\sqrt2$.)
+---
+Q: A square pyramid has base edge $6$ and height $4$. What is its total surface area?
+L: 2
+A: 96
+W: 84
+W: 60
+W: 36+24\sqrt2
+W: 144
+S: The slant height (height of each triangular face) runs from the apex to the midpoint of a base edge: $\sqrt{4^2+3^2}=5$.
+Four triangles: $4\cdot\frac12\cdot6\cdot5=60$. Base: $36$. Total: $96$.
+---
+Q: Each edge of a cube is increased by $50\%$. By what percent does the volume increase?
+L: 1
+A: 237.5\%
+W: 50\%
+W: 150\%
+W: 125\%
+W: 337.5\%
+S: Volume scales by the cube of the length factor: $1.5^3=3.375$.
+That is an increase of $3.375-1=2.375$, or $237.5\%$.
+---
+Q: An ant walks along the surface of a cube with edge $1$ from one corner to the opposite corner. What is the shortest possible distance?
+L: 2
+A: \sqrt5
+W: \sqrt3
+W: 2
+W: 3
+W: 1+\sqrt2
+S: Unfold the two faces the ant crosses into a flat $1\times2$ rectangle; the opposite corners become opposite corners of the rectangle.
+The straight-line distance is $\sqrt{1^2+2^2}=\sqrt5\approx2.24$. (The space diagonal $\sqrt3$ goes through the inside, which isn't allowed.)
+---
+Q: A cylindrical glass with radius $4$ holds water. A solid ball of radius $3$ is dropped in and is completely submerged. By how much does the water level rise?
+L: 2
+A: \frac94
+W: 3
+W: \frac{27}{16}
+W: \frac{9}{16}
+W: 2
+S: The water rises by the ball's volume divided by the glass's base area.
+Ball: $\frac43\pi\cdot27=36\pi$. Base: $16\pi$. Rise: $\frac{36\pi}{16\pi}=\frac94$.
+---
+Q: A convex polyhedron has $12$ vertices and $8$ faces. How many edges does it have?
+L: 1
+A: 18
+W: 20
+W: 16
+W: 22
+W: 24
+S: Euler's formula: $V-E+F=2$, so $12-E+8=2$ and $E=18$.
+(A hexagonal prism is an example.)
+---
+Q: A plane cuts a unit cube through three vertices that are each adjacent to one corner of the cube. What is the area of the triangular cross-section?
+L: 3
+A: \frac{\sqrt3}2
+W: \frac12
+W: \frac{\sqrt3}{4}
+W: \frac{\sqrt2}2
+W: 1
+S: Each side of the triangle is a face diagonal of the cube, length $\sqrt2$, so the triangle is equilateral.
+Area $=\frac{\sqrt3}4(\sqrt2)^2=\frac{\sqrt3}2$.
+
+=== GENS ===
+GENS['a10-3d']=[...GENS['solid-prism'],...GENS['solid-pyr'],...GENS['solid-sphere'],...GENS['solid-dist']];
