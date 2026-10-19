@@ -115,7 +115,7 @@ function pcHome(){
 function topicPage(t){
   setCrumbs([['Home','#/home'],trackCrumb(t),[t.name]]);const pc=t.track==='pc';
   const cards=t.subs.map((s,i)=>{const st=subStats(s.id);return`<button class="card tile" onclick="location.hash='#/s/${s.id}/lesson'">
-    <span class="num">${s.id==='mixed'?'Challenge':pc?'Section '+s.sec:'Subtopic '+(i+1)}</span><span class="t">${esc(s.name)}</span><span class="d">${esc(s.d)}</span>
+    <span class="num">${s.id==='mixed'?'Challenge':pc?(s.sec?'Section '+s.sec:'Test review'):'Subtopic '+(i+1)}</span><span class="t">${esc(s.name)}</span><span class="d">${esc(s.d)}</span>
     <span class="meta">${st.total} problems · ${st.done} attempted · ${st.done?Math.round(st.ok/st.done*100)+'% correct':'not started'}</span>
     <span class="bar"><i style="width:${st.total?st.done/st.total*100:0}%"></i></span></button>`}).join('');
   const last=PROG.mock.filter(m=>(m.topic||'seq')===t.id).pop();

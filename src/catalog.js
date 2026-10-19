@@ -171,7 +171,8 @@ const PC_CATALOG=[
    {id:'pc4-ineq',sec:'4.6',name:'Polynomial and Rational Inequalities',d:'linear, quadratic, factorable and rational inequalities, sign charts'},
    {id:'pc4-abs',sec:'4.6.A',name:'Absolute Value Inequalities',d:'|x − c| < r and |x − c| > r, distance interpretation, compound inequalities'},
    {id:'pc4-cplx',sec:'4.7',name:'Complex Numbers',d:'arithmetic, powers of i, conjugates and division, square roots of negatives, complex solutions of quadratics'},
-   {id:'pc4-theory',sec:'4.8',name:'Theory of Equations',d:'the Fundamental Theorem of Algebra, conjugate roots, factoring completely, building polynomials from complex roots'}]},
+   {id:'pc4-theory',sec:'4.8',name:'Theory of Equations',d:'the Fundamental Theorem of Algebra, conjugate roots, factoring completely, building polynomials from complex roots'},
+   {id:'pc4-review',name:'Chapter 4 Test Review',d:'Every assigned review question from p. 335 with worked solutions, plus a review of all five test lessons.'}]},
  ]},
 ];
 const TRACKS=[

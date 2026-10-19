@@ -8,7 +8,7 @@ const html = fs.readFileSync(file, 'utf8');
 const main = html.match(/<script id="main">([\s\S]*?)<\/script>/)[1];
 const bank = html.match(/<script type="text\/plain" id="bank">([\s\S]*?)<\/script>/)[1];
 const ctx = { console, Math, Date, JSON }; vm.createContext(ctx);
-vm.runInContext(main + '\n;this.API={loadData,SETS,GENS,mkGen,hash,SUBS,TOPICS,BANK:()=>BANK};', ctx);
+vm.runInContext(main + '\n;this.API={loadData,SETS,GENS,mkGen,hash,SUBS,TOPICS,BANK:()=>BANK,freshGen};', ctx);
 const A = ctx.API; A.loadData(bank);
 let bad = 0; const err = m => { bad++; if (bad < 400) console.log('ERR', m); };
 let totalProblems = 0, totalClassic = 0;
@@ -33,7 +33,8 @@ for (const s of A.SUBS) {
   const qs = new Set(); for (const it of set) { if (qs.has(it.q)) err(s.id + ' dup question'); qs.add(it.q); }
 }
 for (const k of Object.keys(A.BANK())) if (!A.SUBS.find(s => s.id === k)) err('bank section for unknown subtopic ' + k);
-for (const k of Object.keys(A.GENS)) if (!A.SUBS.find(s => s.id === k)) err('GENS for unknown subtopic ' + k);
+for (const s of A.SUBS) { try { const g = A.freshGen(s.id, 5); if ((A.GENS[s.id] || []).length + (A.GENS[s.id + ':practice'] || []).length && !g.length) err('practice drills empty for ' + s.id); } catch (e) { err('practice drills crash for ' + s.id + ': ' + e.message); } }
+for (const k of Object.keys(A.GENS)) if (!A.SUBS.find(s => s.id === k.replace(/:practice$/, ''))) err('GENS for unknown subtopic ' + k);
 const bads = /NaN|undefined|Infinity|\[object|null/;
 for (const [sub, gens] of Object.entries(A.GENS)) {
   if (sub === 'mixed') continue;

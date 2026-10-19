@@ -42,7 +42,7 @@ function buildSet(sub){
 }
 function loadData(bankText){BANK=parseBank(bankText);for(const s of SUBS)SETS[s.id]=buildSet(s.id)}
 function freshGen(sub,count){
-  const gens=GENS[sub];const out=[];const base=(Date.now()^Math.floor(Math.random()*1e9))>>>0;
+  const gens=GENS[sub]&&GENS[sub].length?GENS[sub]:(GENS[sub+':practice']||[]);/* a review set can keep its own practice pool */const out=[];const base=(Date.now()^Math.floor(Math.random()*1e9))>>>0;
   for(let i=0;out.length<count&&i<count*5;i++){const g=gens[Math.floor(Math.random()*gens.length)];let it;try{it=mkGen(sub,g,base+i*7919,'p'+base+'-'+i)}catch(e){continue}if(!out.some(o=>o.q===it.q))out.push(it)}
   return out;
 }

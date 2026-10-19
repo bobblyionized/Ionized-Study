@@ -1,0 +1,754 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc4-review">
+<h2>Chapter 4 Test Review</h2>
+<p>This review covers every topic on the Chapter 4 test. The problem set has every assigned review question from p. 335 (#1–96, skipping 7, 26, 31, 32, 41–46, 55–65, and 67–84), turned into multiple choice, with a full worked solution for each. Multi-part questions are split into one problem per part. Each problem is labeled with its book number, so you can match it to your homework.</p>
+<p>How to use it: read the section for a lesson, then do the matching problems. Skip around; you don't need to do them all.</p>
+<table class="exmix"><tr><th>Test lesson</th><th>Review problems</th></tr>
+<tr><td>4.1 Quadratic functions</td><td>1–6, 8–10</td></tr>
+<tr><td>4.2–4.2.A Polynomials, long division, synthetic division</td><td>11–17, 35, 36</td></tr>
+<tr><td>4.3–4.4 Roots, Rational Root Test, graphs</td><td>18–25, 27–30, 33, 34, 37–40, 47–50</td></tr>
+<tr><td>4.5–4.5.A Rational functions</td><td>51–54, 66</td></tr>
+<tr><td>4.8 Theory of equations (complex roots)</td><td>85–96</td></tr></table>
+
+<h3>4.1 Quadratic functions</h3>
+<div class="box"><h4>Key facts</h4><ul>
+<li><b>Vertex form</b> $f(x)=a(x-h)^2+k$ has vertex $(h,k)$. Watch the sign: $(x+1)^2$ means $h=-1$.</li>
+<li><b>Standard form</b> $f(x)=ax^2+bx+c$ has vertex at $x=-\dfrac{b}{2a}$; plug that $x$ in to get the $y$-coordinate.</li>
+<li>$a\gt0$: opens up, the vertex is the minimum. $a\lt0$: opens down, the vertex is the maximum. $|a|$ controls how narrow it is.</li>
+<li>$y=ax^2+k$ is $y=ax^2$ shifted <b>up</b> $k$; $y=a(x-h)^2$ is shifted <b>right</b> $h$.</li></ul></div>
+<p><b>Where $-\frac b{2a}$ comes from:</b> completing the square, $ax^2+bx+c=a\left(x+\frac{b}{2a}\right)^2+c-\frac{b^2}{4a}$, so the vertex is at $x=-\frac b{2a}$.</p>
+<p><b>Optimization ("largest area", "maximum revenue", "maximum height").</b> Write the quantity as a quadratic in one variable, then the answer is at the vertex.</p>
+<ul><li><i>Fencing:</i> name the side lengths with one variable, use the fixed amount of fence to write the other side, then area $=$ length $\times$ width.</li>
+<li><i>Price/quantity:</i> if each step of $k$ changes the price by $p$ and the quantity by $q$, revenue $=$ (price) $\times$ (quantity), both written in terms of $k$.</li>
+<li><i>Projectile:</i> $h(t)=h_0+v_0t-16t^2$. The launch height is $h(0)$; the maximum is at $t=-\frac{b}{2a}$; "back at the launch height" means $h(t)=h(0)$.</li></ul>
+
+<h3>4.2 Polynomials and division</h3>
+<div class="box"><h4>What counts as a polynomial</h4>A sum of terms $ax^n$ with $n$ a <b>whole number</b> ($0,1,2,\dots$). Constants like $\pi$, $\sqrt2$, or $2^3$ are fine as coefficients. Not allowed: $\frac1x$ ($x^{-1}$), $\sqrt x$ ($x^{1/2}$), $|x|$, or fractional exponents that don't simplify to whole numbers. ($x^{120/10}=x^{12}$ is fine.)</div>
+<p><b>Division Algorithm.</b> Dividing $f(x)$ by $g(x)$ gives $f(x)=g(x)q(x)+r(x)$ with the remainder $r$ of lower degree than $g$. Use long division for divisors like $x^2+1$; keep a $0$ placeholder for every missing power.</p>
+<p><b>Remainder Theorem.</b> The remainder when $f(x)$ is divided by $x-c$ is $f(c)$. (From $f(x)=(x-c)q(x)+r$, plug in $x=c$.) So to find the remainder of a huge polynomial divided by $x-1$, just compute $f(1)$.</p>
+<p><b>Factor Theorem.</b> $x-c$ is a factor of $f(x)$ exactly when $f(c)=0$.</p>
+<p><b>Synthetic division</b> (only for divisors $x-c$): write $c$ and the coefficients (with $0$s for missing powers), bring down the first, then repeatedly multiply by $c$ and add. The last number is the remainder $f(c)$; the others are the quotient's coefficients, one degree lower.</p>
+<p><b>Building a polynomial from roots.</b> Roots $r_1,\dots,r_n$ give $f(x)=a(x-r_1)\cdots(x-r_n)$; use one extra condition (like $f(0)=5$) to find $a$ or a remaining factor.</p>
+<p><b>Multiplicity.</b> In $(x-c)^m$, the root $c$ has multiplicity $m$. Factor completely first: $(x^2-9)^2=(x-3)^2(x+3)^2$.</p>
+<p><b>Difference quotient.</b> $\dfrac{f(x+h)-f(x)}{h}$: expand $f(x+h)$, subtract, and every remaining term has a factor of $h$ to cancel. Use $(x+h)^3=x^3+3x^2h+3xh^2+h^3$.</p>
+
+<h3>4.3 Real roots</h3>
+<div class="box"><h4>Rational Root Test</h4>If $f$ has integer coefficients, every rational root $\frac pq$ (in lowest terms) has $p$ dividing the constant term and $q$ dividing the leading coefficient.</div>
+<p><b>Method for finding all roots:</b></p>
+<ol><li>Factor out any common factor (like $3y^3$), and look for quadratic form: $x^4-11x^2+18$ is a quadratic in $x^2$.</li>
+<li>List the possible rational roots and test them (synthetic division is fastest). Use any hint given (like "$2$ is a root").</li>
+<li>Each root found lets you divide down one degree. Once you reach a quadratic, use factoring or the quadratic formula.</li>
+<li>Count real roots by factoring: $x^3+4x=x(x^2+4)$ has one real root, since $x^2+4$ is never $0$.</li></ol>
+<p>A polynomial of degree $n$ has at most $n$ real roots. If no rational roots work, the remaining roots can still be irrational; the Intermediate Value Theorem says a sign change between two consecutive integers means a root lies between them.</p>
+
+<h3>4.4 Graphs of polynomials</h3>
+<div class="box"><h4>Reading and sketching polynomial graphs</h4><ul>
+<li><b>End behavior</b> follows the leading term $ax^n$: even degree means both ends go the same way; odd degree means opposite ways ($a\gt0$: rises on the right).</li>
+<li>A degree-$n$ polynomial has at most $n$ $x$-intercepts and at most $n-1$ turning points. So a graph with $4$ turning points has degree at least $5$.</li>
+<li>At a root of <b>odd</b> multiplicity the graph crosses the axis; at <b>even</b> multiplicity it touches and turns back.</li>
+<li>Polynomial graphs are smooth and unbroken: no gaps, holes, jumps, sharp corners, or asymptotes.</li></ul></div>
+<p>To sketch: find intercepts (factor), check multiplicities, use the end behavior, and locate turning points (with a calculator, or from the derivative-free fact that a turning point lies between consecutive roots).</p>
+
+<h3>4.5 Rational functions</h3>
+<div class="box"><h4>The checklist for $f(x)=\dfrac{p(x)}{q(x)}$</h4><ol>
+<li><b>Factor</b> the top and bottom completely.</li>
+<li><b>Holes:</b> a factor that cancels leaves a hole there. Find its $y$-value by plugging that $x$ into the simplified function.</li>
+<li><b>Vertical asymptotes:</b> zeros of the denominator that remain after cancelling.</li>
+<li><b>$x$-intercepts:</b> zeros of the numerator that remain after cancelling. <b>$y$-intercept:</b> $f(0)$.</li>
+<li><b>Horizontal asymptote</b> (compare degrees of top $n$ and bottom $m$): $n\lt m$ gives $y=0$; $n=m$ gives $y=\frac{\text{leading coefficient of top}}{\text{leading coefficient of bottom}}$; $n\gt m$ gives none.</li></ol></div>
+<p><b>4.5.A: when the top's degree is exactly one more</b>, divide: the quotient (a line) is a slant asymptote. If the top's degree is bigger by more, the graph follows the quotient polynomial's shape for large $|x|$.</p>
+<p><b>Sign of a rational function on an interval:</b> pick a test value and check the sign of each factor. Factors that are always positive, like $x^2+1$, never change the sign.</p>
+
+<h3>4.8 Theory of equations</h3>
+<div class="box"><h4>Key theorems</h4><ul>
+<li><b>Fundamental Theorem of Algebra:</b> every polynomial of degree $n\ge1$ has exactly $n$ complex roots, counting multiplicity, so it factors completely into linear factors over the complex numbers.</li>
+<li><b>Conjugate Roots Theorem:</b> if a polynomial has <b>real</b> coefficients and $a+bi$ is a root, so is $a-bi$.</li>
+<li>So a real polynomial with roots $a\pm bi$ has the real quadratic factor $(x-(a+bi))(x-(a-bi))=x^2-2ax+(a^2+b^2)$.</li></ul></div>
+<p><b>Solving in the complex numbers.</b> Use the quadratic formula; a negative discriminant gives $\sqrt{-d}=i\sqrt d$. Quartics like $3x^4+x^2-2$ are quadratics in $x^2$: solve for $x^2$, then take square roots (a negative $x^2$ gives imaginary roots).</p>
+<p><b>Sum and difference of cubes:</b> $x^3+8=(x+2)(x^2-2x+4)$ and $x^3-27=(x-3)(x^2+3x+9)$. The quadratic factor gives the two complex roots.</p>
+<p><b>Given one complex root.</b> If $i$ is a root of a real polynomial, so is $-i$, so $x^2+1$ is a factor. Divide by $x^2+1$ and factor the quotient.</p>
+<p><b>Building a polynomial.</b> List every root, including the conjugates the theorem forces, multiply the factors, and use any extra condition to find the leading coefficient.</p>
+<div class="tip"><b>Test tips:</b> show the vertex formula or the Rational Root list before computing; write each factorization step; and for rational functions, always factor and cancel before naming asymptotes.</div>
+</script>
+
+=== BANK ===
+@@ pc4-review
+Q: <b>Book #1.</b> What is the vertex of the graph of $f(x)=(x-2)^2+3$?
+L: 1
+A: (2,3)
+W: (-2,3)
+W: (2,-3)
+W: (3,2)
+W: (-2,-3)
+S: Vertex form $f(x)=a(x-h)^2+k$ has vertex $(h,k)$.
+Here $(x-2)^2$ means $h=2$ (the sign flips: $x-h=x-2$), and $k=3$. Vertex: $(2,3)$.
+Check: $(x-2)^2\ge0$, so $f(x)\ge3$, with equality only at $x=2$.
+---
+Q: <b>Book #2.</b> What is the vertex of the graph of $f(x)=2(x+1)^2-1$?
+L: 1
+A: (-1,-1)
+W: (1,-1)
+W: (-1,1)
+W: (1,1)
+W: (-2,-1)
+S: Rewrite $x+1$ as $x-(-1)$, so $h=-1$. The constant outside is $k=-1$. Vertex: $(-1,-1)$.
+The factor $2$ only makes the parabola narrower; it doesn't move the vertex.
+---
+Q: <b>Book #3.</b> What is the vertex of the graph of $f(x)=x^2-8x+12$?
+L: 1
+A: (4,-4)
+W: (-4,-4)
+W: (4,12)
+W: (8,12)
+W: (4,4)
+S: For $ax^2+bx+c$, the vertex has $x=-\frac{b}{2a}=-\frac{-8}{2}=4$.
+$f(4)=16-32+12=-4$. Vertex: $(4,-4)$.
+(Completing the square: $x^2-8x+12=(x-4)^2-4$.)
+---
+Q: <b>Book #4.</b> What is the vertex of the graph of $f(x)=x^2-6x+9$?
+L: 1
+A: (3,0)
+W: (-3,0)
+W: (3,9)
+W: (0,9)
+W: (6,9)
+S: $x=-\frac{b}{2a}=-\frac{-6}{2}=3$, and $f(3)=9-18+9=0$. Vertex: $(3,0)$.
+In fact $x^2-6x+9=(x-3)^2$ is a perfect square, so the vertex sits on the $x$-axis.
+---
+Q: <b>Book #5.</b> What is the vertex of the graph of $f(x)=3x^2-9x+1$?
+L: 2
+A: \left(\frac32,-\frac{23}4\right)
+W: \left(\frac32,\frac{23}4\right)
+W: \left(-\frac32,\frac{85}4\right)
+W: (3,1)
+W: \left(\frac92,1\right)
+S: $x=-\frac{b}{2a}=-\frac{-9}{2\cdot3}=\frac32$.
+$f\!\left(\frac32\right)=3\cdot\frac94-9\cdot\frac32+1=\frac{27}4-\frac{54}4+\frac44=-\frac{23}4$.
+Vertex: $\left(\frac32,-\frac{23}4\right)$.
+---
+Q: <b>Book #6.</b> For $f(x)=3x^2+2$ and $g(x)=-3x^2+2$, which statement is <b>false</b>?<br>(a) The graphs of $f$ and $g$ are parabolas.<br>(b) The graphs have the same vertex.<br>(c) The graphs open in opposite directions.<br>(d) The graph of $f$ is the graph of $y=3x^2$ shifted $2$ units to the right.
+L: 1
+A: \text{(d)}
+W: \text{(a)}
+W: \text{(b)}
+W: \text{(c)}
+W: \text{none of them}
+S: (a) is true: both are quadratics. (b) is true: both have vertex $(0,2)$. (c) is true: $f$ has $a=3\gt0$ (opens up) and $g$ has $a=-3\lt0$ (opens down).
+(d) is false: adding $2$ <i>outside</i> shifts the graph <b>up</b> $2$. A shift right by $2$ would be $y=3(x-2)^2$.
+---
+Q: <b>Book #8(a).</b> A model rocket is launched from a platform, and its height in feet after $t$ seconds is $h(t)=10+112t-16t^2$. What is its height at the moment of launch?
+L: 1
+A: 10
+W: 0
+W: 112
+W: 16
+W: 122
+S: The launch happens at $t=0$: $h(0)=10+0-0=10$ feet. (The platform is $10$ feet high.)
+---
+Q: <b>Book #8(b).</b> With $h(t)=10+112t-16t^2$, what is the rocket's height $2$ seconds after launch?
+L: 1
+A: 170
+W: 234
+W: 106
+W: 186
+W: 160
+S: $h(2)=10+112\cdot2-16\cdot2^2=10+224-64=170$ feet.
+---
+Q: <b>Book #8(c).</b> With $h(t)=10+112t-16t^2$, what is the maximum height the rocket reaches?
+L: 2
+A: 206
+W: 196
+W: 210
+W: 170
+W: 224
+S: The maximum is at the vertex: $t=-\frac{b}{2a}=-\frac{112}{2(-16)}=3.5$ seconds.
+$h(3.5)=10+112(3.5)-16(3.5)^2=10+392-196=206$ feet.
+---
+Q: <b>Book #8(d).</b> With $h(t)=10+112t-16t^2$, at what time (in seconds) does the rocket come back down to the height it was launched from?
+L: 2
+A: 7
+W: 3.5
+W: 14
+W: 6
+W: 7.5
+S: Launch height is $10$, so solve $10+112t-16t^2=10$: $112t-16t^2=0$, i.e. $16t(7-t)=0$.
+$t=0$ is the launch, so it returns at $t=7$ seconds.
+(By symmetry, it's twice the time to the top: $2\cdot3.5=7$.)
+---
+Q: <b>Book #9.</b> A rectangular garden next to a building will be fenced on its three other sides with $120$ feet of fencing (the side along the building needs no fence). What side lengths give the largest area?
+L: 2
+A: 30, 30, \text{ and } 60 \text{ ft (the } 60 \text{ ft side parallel to the building)}
+W: 40, 40, \text{ and } 40 \text{ ft}
+W: 20, 20, \text{ and } 80 \text{ ft}
+W: 25, 25, \text{ and } 70 \text{ ft}
+W: 35, 35, \text{ and } 50 \text{ ft}
+S: Let $x$ be each side perpendicular to the building. Then the side parallel to it is $120-2x$.
+Area $A=x(120-2x)=-2x^2+120x$, a downward parabola with vertex at $x=-\frac{120}{2(-2)}=30$.
+Sides: $30$, $30$, and $120-60=60$ feet, area $1800$ ft². (Compare $40\cdot40=1600$ and $25\cdot70=1750$.)
+---
+Q: <b>Book #10.</b> A factory sells calculators to a retailer at $\$20$ each for an order of $100$. For each calculator over $100$, the price of <b>every</b> calculator in the order drops by $5$ cents. How many calculators give the factory the most revenue?
+L: 2
+A: 250
+W: 100
+W: 150
+W: 200
+W: 300
+S: Let $k$ be the number of calculators over $100$. Then $100+k$ are sold at $20-0.05k$ dollars each.
+Revenue $R=(100+k)(20-0.05k)=2000+15k-0.05k^2$.
+Vertex: $k=-\frac{15}{2(-0.05)}=150$, so the order is $100+150=250$ calculators.
+Check: $R=250\cdot12.50=\$3125$, more than $200\cdot15=\$3000$ or $300\cdot10=\$3000$.
+---
+Q: <b>Book #11.</b> Which of these are polynomials?<br>(a) $2^3+x^2$ &nbsp; (b) $x+\frac1x$ &nbsp; (c) $(\sqrt2)x^3+2x^2+1$ &nbsp; (d) $x^{120/10}-3x^{60/10}$<br>(e) $\sqrt[5]{2x^8}$ &nbsp; (f) $\pi x+2\pi^3$ &nbsp; (g) $3x^3+2x^2+\frac12x^{1/2}+1$ &nbsp; (h) $x-|x|$
+L: 2
+A: \text{(a), (c), (d), (f)}
+W: \text{(a), (c), (f)}
+W: \text{(c), (d), (f)}
+W: \text{(a), (c), (d), (f), (g)}
+W: \text{all except (b)}
+S: A polynomial is a sum of terms $ax^n$ with whole-number exponents; the coefficients can be any real numbers.
+(a) yes: $2^3=8$ is just a constant. (c) yes: $\sqrt2$ is a coefficient. (d) yes: the exponents simplify to $12$ and $6$. (f) yes: $\pi$ and $2\pi^3$ are constants.
+(b) no: $\frac1x=x^{-1}$. (e) no: $\sqrt[5]{2x^8}=\sqrt[5]2\,x^{8/5}$, a fractional exponent. (g) no: $x^{1/2}$. (h) no: $|x|$ is not a power of $x$.
+---
+Q: <b>Book #12.</b> What is the remainder when $x^4+3x^3+1$ is divided by $x^2+1$?
+L: 2
+A: 2-3x
+W: 3x-2
+W: 2+3x
+W: 1
+W: -3x
+S: Long division (use $0$ placeholders: $x^4+3x^3+0x^2+0x+1$).
+$x^4\div x^2=x^2$: subtract $x^2(x^2+1)=x^4+x^2$, leaving $3x^3-x^2+0x+1$.
+$3x^3\div x^2=3x$: subtract $3x(x^2+1)=3x^3+3x$, leaving $-x^2-3x+1$.
+$-x^2\div x^2=-1$: subtract $-1(x^2+1)=-x^2-1$, leaving $-3x+2$.
+The remainder $-3x+2=2-3x$ has degree less than $2$, so we stop. (Quotient: $x^2+3x-1$.)
+---
+Q: <b>Book #13.</b> What is the remainder when $x^{112}-2x^8+9x^5-4x^4+x-5$ is divided by $x-1$?
+L: 1
+A: 0
+W: -1
+W: 1
+W: -2
+W: -5
+S: Remainder Theorem: dividing by $x-1$ leaves remainder $f(1)$.
+Every power of $1$ is $1$: $f(1)=1-2+9-4+1-5=0$.
+So the remainder is $0$ (and $x-1$ is a factor).
+---
+Q: <b>Book #14.</b> Is $x-1$ a factor of $f(x)=14x^{87}-65x^{56}+51$?
+L: 1
+A: \text{Yes, because } f(1)=0
+W: \text{No, because } f(1)\ne0
+W: \text{Yes, because } f(-1)=0
+W: \text{No, because } 87 \text{ is odd}
+W: \text{It can't be decided without long division}
+S: Factor Theorem: $x-1$ is a factor exactly when $f(1)=0$.
+$f(1)=14-65+51=0$, so yes, $x-1$ is a factor.
+(For comparison, $f(-1)=-14-65+51=-28\ne0$, so $x+1$ is not.)
+---
+Q: <b>Book #15.</b> Synthetic division shows that $x-2$ is a factor of $x^6-5x^5+8x^4+x^3-17x^2+16x-4$. What is the other factor?
+L: 2
+A: x^5-3x^4+2x^3+5x^2-7x+2
+W: x^5-3x^4+2x^3+5x^2-7x-2
+W: x^5-7x^4+22x^3-43x^2+69x-122
+W: x^5+3x^4+2x^3+5x^2+7x+2
+W: x^5-3x^4-2x^3+5x^2-7x+2
+S: Synthetic division by $2$ with coefficients $1,-5,8,1,-17,16,-4$:
+Bring down $1$. $1\cdot2=2$, $-5+2=-3$. $-3\cdot2=-6$, $8-6=2$. $2\cdot2=4$, $1+4=5$. $5\cdot2=10$, $-17+10=-7$. $-7\cdot2=-14$, $16-14=2$. $2\cdot2=4$, $-4+4=0$.
+The remainder is $0$ (so $x-2$ is a factor) and the quotient is $x^5-3x^4+2x^3+5x^2-7x+2$.
+---
+Q: <b>Book #16(a).</b> List the roots of $f(x)=\pi(x-1)^3(x^2-9)^2(x+2)$ with their multiplicities.
+L: 2
+A: 1 \text{ (mult. } 3),\ 3 \text{ (mult. } 2),\ -3 \text{ (mult. } 2),\ -2 \text{ (mult. } 1)
+W: 1 \text{ (mult. } 3),\ 9 \text{ (mult. } 2),\ -2 \text{ (mult. } 1)
+W: 1 \text{ (mult. } 3),\ 3 \text{ (mult. } 4),\ -2 \text{ (mult. } 1)
+W: \pi,\ 1,\ \pm3,\ -2 \text{ (each mult. } 1)
+W: -1 \text{ (mult. } 3),\ \pm3 \text{ (mult. } 2),\ 2 \text{ (mult. } 1)
+S: Factor completely first: $x^2-9=(x-3)(x+3)$, so $(x^2-9)^2=(x-3)^2(x+3)^2$.
+$f(x)=\pi(x-1)^3(x-3)^2(x+3)^2(x+2)$. Each factor $(x-c)^m$ gives the root $c$ with multiplicity $m$.
+Roots: $1$ (mult. 3), $3$ (mult. 2), $-3$ (mult. 2), $-2$ (mult. 1). The constant $\pi$ is not a root.
+---
+Q: <b>Book #16(b).</b> List the roots of $g(x)=x^4-8x^3+18x^2-27$ with their multiplicities. (Hint: compute $g(-1)$.)
+L: 3
+A: 3 \text{ (mult. } 3),\ -1 \text{ (mult. } 1)
+W: 3 \text{ (mult. } 2),\ -1 \text{ (mult. } 2)
+W: -3 \text{ (mult. } 3),\ 1 \text{ (mult. } 1)
+W: 3 \text{ (mult. } 1),\ -1 \text{ (mult. } 3)
+W: 3,\ -1,\ 1,\ -3 \text{ (each mult. } 1)
+S: $g(-1)=1+8+18-27=0$, so $x+1$ is a factor. Synthetic division by $-1$ (coefficients $1,-8,18,0,-27$) gives $x^3-9x^2+27x-27$.
+That cubic is $(x-3)^3$ (compare $(x-3)^3=x^3-9x^2+27x-27$).
+So $g(x)=(x+1)(x-3)^3$: roots $3$ (mult. 3) and $-1$ (mult. 1).
+---
+Q: <b>Book #17.</b> Which is a polynomial $f$ of degree $3$ with $f(-1)=0$, $f(1)=0$, and $f(0)=5$?
+L: 2
+A: x^3-5x^2-x+5
+W: x^3+5x^2-x-5
+W: x^3-x+5
+W: 5x^3-5x
+W: -5x^3+5
+S: Roots $\pm1$ mean $(x-1)(x+1)=x^2-1$ is a factor, so $f(x)=(x^2-1)(ax+b)$ for degree $3$.
+$f(0)=(-1)(b)=5$ gives $b=-5$. Any $a\ne0$ works; with $a=1$: $f(x)=(x^2-1)(x-5)=x^3-5x^2-x+5$.
+Check the others: $x^3+5x^2-x-5$ has $f(0)=-5$; $x^3-x+5$ has $f(1)=5$; $5x^3-5x$ has $f(0)=0$; $-5x^3+5$ has $f(-1)=10$.
+---
+Q: <b>Book #18.</b> Find the root of $2\left(\frac{x}{5}+7\right)-3x-\frac{x+2}{5}+4$.
+L: 2
+A: \frac{44}{7}
+W: \frac{22}{7}
+W: \frac{7}{44}
+W: -\frac{44}{7}
+W: \frac{44}{9}
+S: Set it equal to $0$ and multiply everything by $5$ to clear fractions:
+$2(x+35)-15x-(x+2)+20=0$, i.e. $2x+70-15x-x-2+20=0$.
+Combine: $-14x+88=0$, so $x=\frac{88}{14}=\frac{44}{7}$.
+---
+Q: <b>Book #19.</b> Find the roots of $3x^2-2x-5$.
+L: 1
+A: \frac53 \text{ and } -1
+W: -\frac53 \text{ and } 1
+W: \frac35 \text{ and } -1
+W: \frac53 \text{ only}
+W: 5 \text{ and } -\frac13
+S: Factor: $3x^2-2x-5=(3x-5)(x+1)$. (Check: $3x^2+3x-5x-5$ ✓.)
+Set each factor to $0$: $x=\frac53$ or $x=-1$.
+---
+Q: <b>Book #20.</b> Factor $x^3-8x^2+9x+6$, given that $2$ is a root.
+L: 2
+A: (x-2)(x^2-6x-3)
+W: (x-2)(x^2-6x+3)
+W: (x-2)(x^2+6x-3)
+W: (x+2)(x^2-6x-3)
+W: (x-2)(x-3)(x+1)
+S: Synthetic division by $2$ (coefficients $1,-8,9,6$): $1$; $-8+2=-6$; $9-12=-3$; $6-6=0$.
+So $x^3-8x^2+9x+6=(x-2)(x^2-6x-3)$.
+The quadratic has roots $3\pm2\sqrt3$ (quadratic formula: $\frac{6\pm\sqrt{36+12}}2$), so completely: $(x-2)(x-3-2\sqrt3)(x-3+2\sqrt3)$.
+---
+Q: <b>Book #21.</b> Find all real roots of $x^6-4x^3+4$.
+L: 2
+A: \sqrt[3]{2}
+W: \pm\sqrt[3]{2}
+W: 2
+W: \sqrt[3]{4}
+W: \text{no real roots}
+S: It's a quadratic in $x^3$: $x^6-4x^3+4=(x^3)^2-4(x^3)+4=(x^3-2)^2$.
+So $x^3=2$, and the only real cube root is $x=\sqrt[3]2$ (a double root).
+($-\sqrt[3]2$ cubes to $-2$, so it doesn't work.)
+---
+Q: <b>Book #22.</b> Find all real roots of $9x^3-6x^2-35x+26$. (Hint: try $x=-2$.)
+L: 2
+A: -2,\ \frac{4\pm\sqrt3}{3}
+W: -2,\ \frac{4\pm\sqrt{3}}{9}
+W: 2,\ \frac{-4\pm\sqrt3}{3}
+W: -2,\ \frac{4}{3}
+W: -2,\ \frac{12\pm\sqrt3}{3}
+S: $f(-2)=-72-24+70+26=0$, so $x+2$ is a factor. Synthetic division by $-2$ (coefficients $9,-6,-35,26$): $9$; $-6-18=-24$; $-35+48=13$; $26-26=0$.
+Quotient: $9x^2-24x+13$. Quadratic formula: $x=\frac{24\pm\sqrt{576-468}}{18}=\frac{24\pm\sqrt{108}}{18}=\frac{24\pm6\sqrt3}{18}=\frac{4\pm\sqrt3}{3}$.
+Roots: $-2$ and $\frac{4\pm\sqrt3}3$ (about $0.756$ and $1.911$).
+---
+Q: <b>Book #23.</b> Find all real roots of $3y^3(y^4-y^2-5)$.
+L: 2
+A: 0,\ \pm\sqrt{\frac{1+\sqrt{21}}{2}}
+W: 0,\ \pm\sqrt{5}
+W: 0,\ \frac{1\pm\sqrt{21}}{2}
+W: \pm\sqrt{\frac{1+\sqrt{21}}{2}}
+W: 0,\ \pm\sqrt{\frac{1\pm\sqrt{21}}{2}}
+S: The factor $3y^3$ gives $y=0$.
+$y^4-y^2-5=0$ is a quadratic in $y^2$: $y^2=\frac{1\pm\sqrt{1+20}}{2}=\frac{1\pm\sqrt{21}}2$.
+$\frac{1-\sqrt{21}}2$ is negative, so it gives no real $y$. From $y^2=\frac{1+\sqrt{21}}2$: $y=\pm\sqrt{\frac{1+\sqrt{21}}{2}}\approx\pm1.67$.
+---
+Q: <b>Book #24.</b> Find the rational roots of $x^4-2x^3-4x^2+1$.
+L: 1
+A: -1
+W: 1
+W: \pm1
+W: \text{none}
+W: -1 \text{ and } \frac12
+S: Rational Root Test: the possible rational roots are $\pm1$ (factors of $1$ over factors of $1$).
+$f(1)=1-2-4+1=-4\ne0$. $f(-1)=1+2-4+1=0$ ✓.
+The only rational root is $-1$. (The other three roots are irrational.)
+---
+Q: <b>Book #25(a).</b> For $2x^3-8x^2+5x+3$, what are the only <i>possible</i> rational roots?
+L: 1
+A: \pm1,\ \pm3,\ \pm\frac12,\ \pm\frac32
+W: \pm1,\ \pm3
+W: \pm1,\ \pm2,\ \pm3,\ \pm\frac13,\ \pm\frac23
+W: \pm\frac12,\ \pm\frac32
+W: \pm1,\ \pm3,\ \pm\frac12,\ \pm\frac32,\ \pm2
+S: Possible rational roots are $\frac pq$ with $p\mid3$ (constant term) and $q\mid2$ (leading coefficient).
+$p\in\{\pm1,\pm3\}$, $q\in\{1,2\}$: $\pm1,\pm3,\pm\frac12,\pm\frac32$.
+---
+Q: <b>Book #25(b).</b> Which is a rational root of $2x^3-8x^2+5x+3$?
+L: 1
+A: 3
+W: 1
+W: -1
+W: \frac12
+W: \frac32
+S: Test the candidates: $f(1)=2-8+5+3=2$, $f(-1)=-2-8-5+3=-12$, $f\!\left(\frac12\right)=\frac14-2+\frac52+3=\frac{15}4$, $f\!\left(\frac32\right)=\frac{27}4-18+\frac{15}2+3=-\frac34$.
+$f(3)=54-72+15+3=0$ ✓. So $3$ is a root.
+---
+Q: <b>Book #25(c).</b> Find all the roots of $2x^3-8x^2+5x+3$.
+L: 2
+A: 3,\ \frac{1\pm\sqrt3}{2}
+W: 3,\ \frac{1\pm\sqrt{3}}{4}
+W: 3,\ \frac{2\pm\sqrt3}{2}
+W: 3,\ 1,\ -\frac12
+W: 3 \text{ only}
+S: Divide by $x-3$ (synthetic division with $2,-8,5,3$): $2$; $-8+6=-2$; $5-6=-1$; $3-3=0$. Quotient: $2x^2-2x-1$.
+Quadratic formula: $x=\frac{2\pm\sqrt{4+8}}{4}=\frac{2\pm2\sqrt3}4=\frac{1\pm\sqrt3}2$.
+Roots: $3$ and $\frac{1\pm\sqrt3}2$ (about $1.366$ and $-0.366$).
+---
+Q: <b>Book #27.</b> How many distinct real roots does $x^3+4x$ have?
+L: 1
+A: 1
+W: 0
+W: 2
+W: 3
+W: 4
+S: Factor: $x^3+4x=x(x^2+4)$.
+$x=0$ is a root. $x^2+4=0$ would need $x^2=-4$, which has no real solution.
+So there is exactly $1$ real root.
+---
+Q: <b>Book #28.</b> How many distinct real roots does $f(x)=x^3-x^2-3x+3$ have?
+L: 1
+A: 3
+W: 1
+W: 2
+W: 0
+W: 4
+S: Factor by grouping: $x^2(x-1)-3(x-1)=(x-1)(x^2-3)$.
+Roots: $1$ and $\pm\sqrt3$, three distinct real roots.
+---
+Q: <b>Book #29.</b> Find the roots of $x^4-11x^2+18$.
+L: 1
+A: \pm\sqrt2,\ \pm3
+W: \pm2,\ \pm9
+W: 2,\ 9
+W: \pm3 \text{ only}
+W: \pm\sqrt2,\ \pm\sqrt3
+S: Treat it as a quadratic in $x^2$: $x^4-11x^2+18=(x^2-2)(x^2-9)$.
+$x^2=2$ gives $x=\pm\sqrt2$; $x^2=9$ gives $x=\pm3$.
+---
+Q: <b>Book #30.</b> The polynomial $x^3-2x+1$ has<br>(a) no real roots &nbsp; (b) only one real root &nbsp; (c) three rational roots &nbsp; (d) only one rational root &nbsp; (e) none of the above
+L: 2
+A: \text{(d) only one rational root}
+W: \text{(a) no real roots}
+W: \text{(b) only one real root}
+W: \text{(c) three rational roots}
+W: \text{(e) none of the above}
+S: Possible rational roots: $\pm1$. $f(1)=1-2+1=0$ ✓ and $f(-1)=-1+2+1=2$.
+Divide by $x-1$: $x^3-2x+1=(x-1)(x^2+x-1)$, and $x^2+x-1$ has roots $\frac{-1\pm\sqrt5}2$, which are real but irrational.
+So there are three real roots, and exactly one of them ($1$) is rational: (d).
+---
+Q: <b>Book #33.</b> Find the real roots of $x^6-2x^5-x^4+3x^3-x^2-x+1$.
+L: 3
+A: \pm1,\ \frac{1\pm\sqrt{3+2\sqrt5}}{2}\ (\approx-0.867,\ 1.867)
+W: \pm1 \text{ only}
+W: 1,\ \frac{1\pm\sqrt5}{2}
+W: \pm1,\ \frac{1\pm\sqrt{5}}{2}
+W: -1,\ 1.867
+S: Test $\pm1$: $f(1)=1-2-1+3-1-1+1=0$ and $f(-1)=1+2-1-3-1+1+1=0$. So $(x-1)(x+1)=x^2-1$ is a factor.
+Dividing gives $x^4-2x^3+x-1$. This factors as $(x^2-x+p)(x^2-x+q)$ with $p+q=-1$ and $pq=-1$, so $p,q=\frac{-1\pm\sqrt5}2$.
+$x^2-x+\frac{-1-\sqrt5}2=0$ has real roots $x=\frac{1\pm\sqrt{3+2\sqrt5}}2\approx-0.867,\ 1.867$; the other quadratic has negative discriminant.
+Real roots: $-1$, $1$, about $-0.867$, and about $1.867$. (On the test, a calculator's root finder gives the decimals.)
+---
+Q: <b>Book #34.</b> Find the real roots of $x^5-5x^4+8x^3-5x^2-13x+30$.
+L: 3
+A: 2,\ 3,\ \text{and about } -1.328
+W: 2 \text{ and } 3 \text{ only}
+W: -2,\ -3,\ \text{and about } 1.328
+W: 2,\ 3,\ 5
+W: 2,\ 3,\ \pm1.328
+S: Rational candidates are divisors of $30$. $f(2)=32-80+64-20-26+30=0$ ✓ and $f(3)=243-405+216-45-39+30=0$ ✓.
+Dividing by $(x-2)(x-3)=x^2-5x+6$ leaves $x^3+2x+5$.
+$x^3+2x+5$ is increasing (both $x^3$ and $2x$ increase), so it has exactly one real root; it changes sign between $-2$ ($-7$) and $-1$ ($2$), and a calculator gives about $-1.328$.
+Real roots: $2$, $3$, and about $-1.328$.
+---
+Q: <b>Book #35.</b> Simplify the difference quotient $\dfrac{f(x+h)-f(x)}{h}$ for $f(x)=x^2+x$.
+L: 1
+A: 2x+h+1
+W: 2x+1
+W: 2x+h
+W: x+h+1
+W: 2x+2h+1
+S: $f(x+h)=(x+h)^2+(x+h)=x^2+2xh+h^2+x+h$.
+$f(x+h)-f(x)=2xh+h^2+h=h(2x+h+1)$.
+Divide by $h$: $2x+h+1$.
+---
+Q: <b>Book #36.</b> Simplify the difference quotient $\dfrac{g(x+h)-g(x)}{h}$ for $g(x)=3x^3+2$.
+L: 2
+A: 9x^2+9xh+3h^2
+W: 9x^2
+W: 9x^2+3h^2
+W: 3x^2+3xh+h^2
+W: 9x^2+9xh+h^2
+S: $(x+h)^3=x^3+3x^2h+3xh^2+h^3$, so $g(x+h)=3x^3+9x^2h+9xh^2+3h^3+2$.
+$g(x+h)-g(x)=9x^2h+9xh^2+3h^3$ (the $3x^3$ and $2$ cancel).
+Divide by $h$: $9x^2+9xh+3h^2$.
+---
+Q: <b>Book #37.</b> Which of these could <b>not</b> be the graph of a polynomial function?
+L: 1
+A: \text{A graph with a sharp corner, like } y=|x|
+W: \text{A graph with four } x\text{-intercepts}
+W: \text{A graph that rises on both ends}
+W: \text{A graph with no } x\text{-intercepts}
+W: \text{A graph with exactly one turning point}
+S: Polynomial graphs are smooth and unbroken: no sharp corners, gaps, holes, jumps, or asymptotes. A sharp corner rules it out.
+The others are all possible: $(x^2-1)(x^2-4)$ has four intercepts, $x^2$ rises on both ends and has one turning point, and $x^2+1$ has no intercepts.
+---
+Q: <b>Book #38.</b> Which description fits a possible graph of a polynomial of degree $5$?
+L: 2
+A: \text{Falls on the left, rises on the right, } 4 \text{ turning points, } 3\ x\text{-intercepts}
+W: \text{Rises on both ends with } 4 \text{ turning points}
+W: \text{Falls on the left, rises on the right, with } 5 \text{ turning points}
+W: \text{Has a horizontal asymptote } y=0
+W: \text{Rises on the left, falls on the right, and has no } x\text{-intercepts}
+S: Degree $5$ is odd, so the ends go opposite ways, and the graph must cross the $x$-axis at least once. It has at most $5-1=4$ turning points and at most $5$ intercepts.
+Only the first description satisfies all of this. (A positive leading coefficient gives falls-left, rises-right.)
+---
+Q: <b>Book #39 (with a redrawn graph).</b> The graph of a polynomial $f$ is shown below. Which statement is <b>not</b> true?<br><span class="plots"><svg class="plot" viewBox="0 0 260 260" width="260" height="260" role="img" aria-label="Graph of a cubic polynomial f: it rises from the lower left, crosses the x-axis near x = -1.6, has a high point near (-0.4, 2.2), passes through (0, 2.06), crosses near x = 1.6, dips to a low point near (2.3, -0.46), crosses again near x = 2.9, and rises to the upper right."><line class="pg" x1="16" y1="244" x2="16" y2="16"/><line class="pg" x1="48.6" y1="244" x2="48.6" y2="16"/><line class="pg" x1="81.1" y1="244" x2="81.1" y2="16"/><line class="pg" x1="113.7" y1="244" x2="113.7" y2="16"/><line class="pg" x1="146.3" y1="244" x2="146.3" y2="16"/><line class="pg" x1="178.9" y1="244" x2="178.9" y2="16"/><line class="pg" x1="211.4" y1="244" x2="211.4" y2="16"/><line class="pg" x1="244" y1="244" x2="244" y2="16"/><line class="pg" x1="16" y1="244" x2="244" y2="244"/><line class="pg" x1="16" y1="211.4" x2="244" y2="211.4"/><line class="pg" x1="16" y1="178.9" x2="244" y2="178.9"/><line class="pg" x1="16" y1="146.3" x2="244" y2="146.3"/><line class="pg" x1="16" y1="113.7" x2="244" y2="113.7"/><line class="pg" x1="16" y1="81.1" x2="244" y2="81.1"/><line class="pg" x1="16" y1="48.6" x2="244" y2="48.6"/><line class="pg" x1="16" y1="16" x2="244" y2="16"/><line class="pa" x1="16" y1="146.3" x2="244" y2="146.3"/><line class="pa" x1="113.7" y1="244" x2="113.7" y2="16"/><text x="48.6" y="157.3" text-anchor="middle">-2</text><text x="81.1" y="157.3" text-anchor="middle">-1</text><text x="146.3" y="157.3" text-anchor="middle">1</text><text x="178.9" y="157.3" text-anchor="middle">2</text><text x="211.4" y="157.3" text-anchor="middle">3</text><text x="109.7" y="214.9" text-anchor="end">-2</text><text x="109.7" y="182.4" text-anchor="end">-1</text><text x="109.7" y="117.2" text-anchor="end">1</text><text x="109.7" y="84.6" text-anchor="end">2</text><text x="109.7" y="52.1" text-anchor="end">3</text><text x="242" y="141.3" text-anchor="end" class="pl">x</text><text x="118.7" y="25" class="pl">y</text><path class="pc" d="M46.9 219.8L47.7 215.4L48.4 211.1L49.1 206.8L49.9 202.6L50.6 198.5L51.3 194.5L52.1 190.6L52.8 186.7L53.5 182.9L54.3 179.2L55 175.6L55.7 172L56.5 168.6L57.2 165.2L57.9 161.8L58.7 158.6L59.4 155.4L60.1 152.3L60.9 149.3L61.6 146.3L62.3 143.4L63.1 140.6L63.8 137.8L64.5 135.1L65.3 132.5L66 129.9L66.7 127.5L67.5 125L68.2 122.7L68.9 120.4L69.7 118.2L70.4 116L71.1 113.9L71.9 111.9L72.6 109.9L73.3 108L74.1 106.1L74.8 104.3L75.5 102.6L76.3 100.9L77 99.3L77.7 97.8L78.5 96.3L79.2 94.8L79.9 93.4L80.7 92.1L81.4 90.8L82.1 89.6L82.9 88.4L83.6 87.3L84.3 86.2L85.1 85.2L85.8 84.3L86.5 83.3L87.3 82.5L88 81.7L88.7 80.9L89.4 80.2L90.2 79.5L90.9 78.9L91.6 78.3L92.4 77.7L93.1 77.3L93.8 76.8L94.6 76.4L95.3 76L96 75.7L96.8 75.4L97.5 75.2L98.2 75L99 74.8L99.7 74.7L100.4 74.6L101.2 74.6L101.9 74.6L102.6 74.6L103.4 74.7L104.1 74.8L104.8 74.9L105.6 75.1L106.3 75.3L107 75.5L107.8 75.8L108.5 76.1L109.2 76.5L110 76.8L110.7 77.2L111.4 77.6L112.2 78.1L112.9 78.6L113.6 79.1L114.4 79.6L115.1 80.1L115.8 80.7L116.6 81.3L117.3 82L118 82.6L118.8 83.3L119.5 84L120.2 84.7L121 85.5L121.7 86.2L122.4 87L123.2 87.8L123.9 88.6L124.6 89.5L125.4 90.3L126.1 91.2L126.8 92.1L127.6 93L128.3 93.9L129 94.9L129.8 95.8L130.5 96.8L131.2 97.7L132 98.7L132.7 99.7L133.4 100.7L134.2 101.7L134.9 102.8L135.6 103.8L136.4 104.9L137.1 105.9L137.8 107L138.6 108L139.3 109.1L140 110.2L140.7 111.2L141.5 112.3L142.2 113.4L142.9 114.5L143.7 115.6L144.4 116.7L145.1 117.8L145.9 118.9L146.6 120L147.3 121L148.1 122.1L148.8 123.2L149.5 124.3L150.3 125.4L151 126.5L151.7 127.5L152.5 128.6L153.2 129.6L153.9 130.7L154.7 131.7L155.4 132.8L156.1 133.8L156.9 134.8L157.6 135.8L158.3 136.8L159.1 137.8L159.8 138.8L160.5 139.8L161.3 140.7L162 141.6L162.7 142.6L163.5 143.5L164.2 144.4L164.9 145.2L165.7 146.1L166.4 146.9L167.1 147.8L167.9 148.6L168.6 149.4L169.3 150.1L170.1 150.9L170.8 151.6L171.5 152.3L172.3 153L173 153.6L173.7 154.3L174.5 154.9L175.2 155.5L175.9 156L176.7 156.6L177.4 157.1L178.1 157.6L178.9 158L179.6 158.4L180.3 158.8L181.1 159.2L181.8 159.5L182.5 159.8L183.3 160.1L184 160.4L184.7 160.6L185.5 160.7L186.2 160.9L186.9 161L187.7 161.1L188.4 161.1L189.1 161.1L189.9 161.1L190.6 161L191.3 160.9L192 160.7L192.8 160.5L193.5 160.3L194.2 160L195 159.7L195.7 159.4L196.4 159L197.2 158.5L197.9 158L198.6 157.5L199.4 156.9L200.1 156.3L200.8 155.6L201.6 154.9L202.3 154.2L203 153.4L203.8 152.5L204.5 151.6L205.2 150.6L206 149.6L206.7 148.6L207.4 147.5L208.2 146.3L208.9 145.1L209.6 143.8L210.4 142.5L211.1 141.1L211.8 139.7L212.6 138.2L213.3 136.6L214 135L214.8 133.3L215.5 131.6L216.2 129.8L217 128L217.7 126.1L218.4 124.1L219.2 122.1L219.9 120L220.6 117.9L221.4 115.6L222.1 113.4L222.8 111"/></svg></span><br>(a) $f$ has three roots between $-2$ and $3$. &nbsp; (b) $f(x)$ could possibly be a fifth-degree polynomial.<br>(c) $(f\circ f)(0)\gt0$. &nbsp; (d) $f(2)-f(-1)\lt3$. &nbsp; (e) $f(x)$ is positive for all $x$ in $[-1,0]$.
+L: 2
+A: \text{(c)}
+W: \text{(a)}
+W: \text{(b)}
+W: \text{(d)}
+W: \text{(e)}
+S: Read values from the graph: $f(0)\approx2$, $f(2)$ is a little below $0$, and $f(-1)\approx1.7$.
+(c): $(f\circ f)(0)=f(f(0))=f(2)$, which is negative. So (c) is <b>not</b> true.
+(a) true: crossings near $-1.6$, $1.6$, and $2.9$. (b) true: the graph's shape doesn't rule out degree $5$ (a degree-5 polynomial can have this shape on this window). (d) true: $f(2)-f(-1)$ is negative, so less than $3$. (e) true: the graph is above the axis from $x=-1$ to $0$.
+---
+Q: <b>Book #40 (with a redrawn graph).</b> The graph of a polynomial $f$ is shown below. Which of the statements are <b>false</b>?<br><span class="plots"><svg class="plot" viewBox="0 0 280 280" width="280" height="280" role="img" aria-label="Graph of a polynomial f with x-intercepts at -6, -4, -2, 0 and 2, rising from the lower left, with four turning points, and rising to the upper right."><line class="pg" x1="16" y1="264" x2="16" y2="16"/><line class="pg" x1="40.8" y1="264" x2="40.8" y2="16"/><line class="pg" x1="65.6" y1="264" x2="65.6" y2="16"/><line class="pg" x1="90.4" y1="264" x2="90.4" y2="16"/><line class="pg" x1="115.2" y1="264" x2="115.2" y2="16"/><line class="pg" x1="140" y1="264" x2="140" y2="16"/><line class="pg" x1="164.8" y1="264" x2="164.8" y2="16"/><line class="pg" x1="189.6" y1="264" x2="189.6" y2="16"/><line class="pg" x1="214.4" y1="264" x2="214.4" y2="16"/><line class="pg" x1="239.2" y1="264" x2="239.2" y2="16"/><line class="pg" x1="264" y1="264" x2="264" y2="16"/><line class="pg" x1="16" y1="264" x2="264" y2="264"/><line class="pg" x1="16" y1="243.3" x2="264" y2="243.3"/><line class="pg" x1="16" y1="222.7" x2="264" y2="222.7"/><line class="pg" x1="16" y1="202" x2="264" y2="202"/><line class="pg" x1="16" y1="181.3" x2="264" y2="181.3"/><line class="pg" x1="16" y1="160.7" x2="264" y2="160.7"/><line class="pg" x1="16" y1="140" x2="264" y2="140"/><line class="pg" x1="16" y1="119.3" x2="264" y2="119.3"/><line class="pg" x1="16" y1="98.7" x2="264" y2="98.7"/><line class="pg" x1="16" y1="78" x2="264" y2="78"/><line class="pg" x1="16" y1="57.3" x2="264" y2="57.3"/><line class="pg" x1="16" y1="36.7" x2="264" y2="36.7"/><line class="pg" x1="16" y1="16" x2="264" y2="16"/><line class="pa" x1="16" y1="140" x2="264" y2="140"/><line class="pa" x1="189.6" y1="264" x2="189.6" y2="16"/><text x="40.8" y="151" text-anchor="middle">-6</text><text x="65.6" y="151" text-anchor="middle">-5</text><text x="90.4" y="151" text-anchor="middle">-4</text><text x="115.2" y="151" text-anchor="middle">-3</text><text x="140" y="151" text-anchor="middle">-2</text><text x="164.8" y="151" text-anchor="middle">-1</text><text x="214.4" y="151" text-anchor="middle">1</text><text x="239.2" y="151" text-anchor="middle">2</text><text x="185.6" y="226.2" text-anchor="end">-4</text><text x="185.6" y="184.8" text-anchor="end">-2</text><text x="185.6" y="102.2" text-anchor="end">2</text><text x="185.6" y="60.8" text-anchor="end">4</text><text x="262" y="135" text-anchor="end" class="pl">x</text><text x="194.6" y="25" class="pl">y</text><path class="pc" d="M34.6 224.9L35.5 210.3L36.4 196.5L37.3 183.6L38.2 171.5L39 160.2L39.9 149.6L40.8 139.8L41.7 130.7L42.6 122.2L43.5 114.5L44.4 107.3L45.3 100.8L46.2 94.8L47 89.4L47.9 84.5L48.8 80.2L49.7 76.3L50.6 72.9L51.5 69.9L52.4 67.4L53.3 65.3L54.2 63.5L55 62.2L55.9 61.1L56.8 60.4L57.7 60L58.6 60L59.5 60.1L60.4 60.6L61.3 61.3L62.1 62.2L63 63.3L63.9 64.7L64.8 66.2L65.7 67.9L66.6 69.7L67.5 71.7L68.4 73.8L69.3 76.1L70.1 78.4L71 80.9L71.9 83.4L72.8 86L73.7 88.7L74.6 91.4L75.5 94.2L76.4 97L77.3 99.8L78.1 102.7L79 105.5L79.9 108.4L80.8 111.3L81.7 114.1L82.6 116.9L83.5 119.7L84.4 122.5L85.3 125.2L86.1 127.9L87 130.5L87.9 133.1L88.8 135.6L89.7 138.1L90.6 140.5L91.5 142.8L92.4 145.1L93.3 147.2L94.1 149.3L95 151.3L95.9 153.2L96.8 155L97.7 156.8L98.6 158.4L99.5 160L100.4 161.4L101.3 162.7L102.1 164L103 165.1L103.9 166.2L104.8 167.2L105.7 168L106.6 168.8L107.5 169.4L108.4 170L109.2 170.4L110.1 170.8L111 171L111.9 171.2L112.8 171.3L113.7 171.2L114.6 171.1L115.5 170.9L116.4 170.6L117.2 170.3L118.1 169.8L119 169.3L119.9 168.6L120.8 167.9L121.7 167.2L122.6 166.3L123.5 165.4L124.4 164.4L125.2 163.4L126.1 162.3L127 161.1L127.9 159.9L128.8 158.7L129.7 157.4L130.6 156L131.5 154.6L132.4 153.2L133.2 151.7L134.1 150.3L135 148.7L135.9 147.2L136.8 145.7L137.7 144.1L138.6 142.5L139.5 141L140.4 139.4L141.2 137.8L142.1 136.2L143 134.7L143.9 133.1L144.8 131.6L145.7 130.1L146.6 128.6L147.5 127.1L148.3 125.7L149.2 124.3L150.1 122.9L151 121.6L151.9 120.3L152.8 119.1L153.7 118L154.6 116.8L155.5 115.8L156.3 114.8L157.2 113.9L158.1 113L159 112.2L159.9 111.5L160.8 110.9L161.7 110.3L162.6 109.8L163.5 109.4L164.3 109.1L165.2 108.9L166.1 108.8L167 108.7L167.9 108.8L168.8 108.9L169.7 109.2L170.6 109.5L171.5 109.9L172.3 110.5L173.2 111.1L174.1 111.8L175 112.7L175.9 113.6L176.8 114.6L177.7 115.8L178.6 117L179.5 118.3L180.3 119.7L181.2 121.3L182.1 122.9L183 124.6L183.9 126.4L184.8 128.3L185.7 130.3L186.6 132.3L187.5 134.5L188.3 136.7L189.2 139L190.1 141.4L191 143.8L191.9 146.3L192.8 148.9L193.7 151.5L194.6 154.2L195.4 156.9L196.3 159.7L197.2 162.5L198.1 165.3L199 168.1L199.9 171L200.8 173.9L201.7 176.7L202.6 179.6L203.4 182.4L204.3 185.2L205.2 188L206.1 190.7L207 193.4L207.9 196L208.8 198.6L209.7 201.1L210.6 203.4L211.4 205.7L212.3 207.9L213.2 209.9L214.1 211.8L215 213.5L215.9 215L216.8 216.4L217.7 217.6L218.6 218.6L219.4 219.3L220.3 219.8L221.2 220L222.1 220L223 219.7L223.9 219L224.8 218.1L225.7 216.8L226.6 215.1L227.4 213.1L228.3 210.6L229.2 207.8L230.1 204.5L231 200.7L231.9 196.4L232.8 191.7L233.7 186.4L234.6 180.5L235.4 174.1L236.3 167.1L237.2 159.4L238.1 151.2L239 142.2L239.9 132.5L240.8 122.1L241.7 111L242.5 99L243.4 86.3L244.3 72.7L245.2 58.2L246.1 42.9L247 26.6L247.9 9.3"/></svg></span><br>(i) $f$ has $2$ roots in the interval $[-6,-3)$. &nbsp; (ii) $f(-3)-f(-6)\lt0$. &nbsp; (iii) $f(0)\lt f(1)$.<br>(iv) $f(2)-2=0$. &nbsp; (v) $f$ has degree $\le4$.
+L: 3
+A: \text{(iii), (iv), and (v)}
+W: \text{(iv) and (v) only}
+W: \text{(v) only}
+W: \text{(i), (iii), and (v)}
+W: \text{(ii), (iv), and (v)}
+S: From the graph: the $x$-intercepts are $-6,-4,-2,0,2$, and there are $4$ turning points.
+(i) true: $-6$ and $-4$ are in $[-6,-3)$. (ii) true: $f(-6)=0$ and $f(-3)$ is below the axis, so the difference is negative.
+(iii) false: $f(0)=0$, but $f(1)$ is below the axis (between the roots $0$ and $2$ the graph dips), so $f(0)\gt f(1)$.
+(iv) false: $f(2)=0$, so $f(2)-2=-2\ne0$.
+(v) false: $4$ turning points (or $5$ intercepts) require degree at least $5$.
+False statements: (iii), (iv), (v).
+---
+Q: <b>Book #47.</b> For $f(x)=x^3-9x$, what are the $x$-intercepts and local extrema?
+L: 2
+A: x=0,\pm3;\ \text{max at } (-\sqrt3,\,6\sqrt3),\ \text{min at } (\sqrt3,\,-6\sqrt3)
+W: x=0,\pm3;\ \text{max at } (\sqrt3,\,6\sqrt3),\ \text{min at } (-\sqrt3,\,-6\sqrt3)
+W: x=0,\pm9;\ \text{max at } (-3,\,0),\ \text{min at } (3,\,0)
+W: x=\pm3;\ \text{max at } (-1.5,\,10.1),\ \text{min at } (1.5,\,-10.1)
+W: x=0,\pm3;\ \text{no local extrema}
+S: Intercepts: $x^3-9x=x(x-3)(x+3)$, so $x=0,\pm3$.
+Turning points (calculator, or the vertex of the derivative $3x^2-9$): $x=\pm\sqrt3\approx\pm1.73$.
+$f(-\sqrt3)=-3\sqrt3+9\sqrt3=6\sqrt3\approx10.39$ (local max); $f(\sqrt3)=-6\sqrt3\approx-10.39$ (local min).
+End behavior: falls left, rises right (odd degree, positive leading coefficient). No holes or asymptotes.
+---
+Q: <b>Book #48.</b> For $g(x)=x^3-2x^2+3$, what are the $x$-intercepts and local extrema?
+L: 2
+A: x=-1;\ \text{max at } (0,3),\ \text{min at } \left(\frac43,\frac{49}{27}\right)
+W: x=-1,\ 1,\ 3;\ \text{max at } (0,3),\ \text{min at } \left(\frac43,\frac{49}{27}\right)
+W: x=-1;\ \text{min at } (0,3),\ \text{max at } \left(\frac43,\frac{49}{27}\right)
+W: x=1;\ \text{max at } (0,3),\ \text{min at } (2,3)
+W: x=-1;\ \text{no local extrema}
+S: $g(-1)=-1-2+3=0$, and dividing gives $g(x)=(x+1)(x^2-3x+3)$. The quadratic has discriminant $9-12\lt0$, so $x=-1$ is the only intercept.
+Turning points: $g'(x)=3x^2-4x=x(3x-4)$ is $0$ at $x=0$ and $x=\frac43$.
+$g(0)=3$ is a local max and $g\!\left(\frac43\right)=\frac{64}{27}-\frac{32}9+3=\frac{49}{27}\approx1.81$ is a local min (the graph stays above the axis there).
+---
+Q: <b>Book #49.</b> Which describes the graph of $h(x)=x^4+3x^3-12x^2-20x+48$?
+L: 3
+A: x\text{-int } -4,-3,2 \text{ (touches at } 2);\ \text{mins near } (-3.54,-7.62) \text{ and at } (2,0);\ \text{max near } (-0.71,55.33)
+W: x\text{-int } -4,-3,2 \text{ (crosses at } 2);\ \text{one min near } (-3.54,-7.62)
+W: x\text{-int } 4,3,-2;\ \text{max near } (0.71,55.33)
+W: x\text{-int } -4,-3,2,3;\ \text{two maxes and one min}
+W: x\text{-int } -4,-3,2;\ \text{mins near } (-3.54,-7.62) \text{ and } (2,0);\ \text{no local max}
+S: Test rational roots: $h(2)=16+24-48-40+48=0$, $h(-3)=81-81-108+60+48=0$, $h(-4)=256-192-192+80+48=0$. Factoring gives $h(x)=(x-2)^2(x+3)(x+4)$.
+$x=2$ has even multiplicity, so the graph <b>touches</b> the axis there (a local min at $(2,0)$); it crosses at $-4$ and $-3$.
+Even degree with positive leading coefficient: both ends rise. A calculator gives the other turning points: a min near $(-3.54,-7.62)$ and a max near $(-0.71,55.33)$.
+---
+Q: <b>Book #50.</b> Which describes the graph of $f(x)=x^4-3x-2$?
+L: 3
+A: x\text{-int } \frac{1\pm\sqrt5}2\ (\approx-0.618,\,1.618);\ \text{one min near } (0.909,-4.04)
+W: x\text{-int } \pm1;\ \text{one min near } (0.909,-4.04)
+W: x\text{-int } \frac{1\pm\sqrt5}2;\ \text{a min and a max}
+W: \text{no } x\text{-intercepts};\ \text{min at } (0,-2)
+W: x\text{-int } \frac{-1\pm\sqrt5}2;\ \text{one min near } (-0.909,-4.04)
+S: It factors: $x^4-3x-2=(x^2-x-1)(x^2+x+2)$. (Check: the $x^3$ and $x^2$ terms cancel.)
+$x^2+x+2$ has no real roots (discriminant $-7$), and $x^2-x-1=0$ gives $x=\frac{1\pm\sqrt5}2$.
+The only turning point is where $4x^3-3=0$, $x=\sqrt[3]{3/4}\approx0.909$, with $f\approx-4.04$: a minimum. Both ends rise.
+---
+Q: <b>Book #51.</b> For $g(x)=\dfrac{-2}{x+4}$, which list of features is correct?
+L: 1
+A: \text{VA } x=-4,\ \text{HA } y=0,\ \text{no } x\text{-intercept},\ y\text{-int } -\frac12
+W: \text{VA } x=4,\ \text{HA } y=0,\ \text{no } x\text{-intercept}
+W: \text{VA } x=-4,\ \text{HA } y=-2,\ x\text{-int } -4
+W: \text{VA } x=-4,\ \text{no HA},\ y\text{-int } -\frac12
+W: \text{hole at } x=-4,\ \text{HA } y=0
+S: Denominator zero at $x=-4$ (nothing cancels): vertical asymptote $x=-4$.
+Degree of top ($0$) is less than degree of bottom ($1$): horizontal asymptote $y=0$.
+The numerator $-2$ is never $0$, so no $x$-intercept; $g(0)=-\frac24=-\frac12$. No holes or local extrema.
+---
+Q: <b>Book #52.</b> For $f(x)=\dfrac{3x^3+2x^2-8x}{x^3-3x^2+2x}$, which list of features is correct?
+L: 3
+A: \text{hole } (0,-4);\ \text{VA } x=1,\,x=2;\ \text{HA } y=3;\ x\text{-int } -2,\,\frac43
+W: \text{VA } x=0,1,2;\ \text{HA } y=3;\ x\text{-int } -2,\,0,\,\frac43
+W: \text{hole } (0,-4);\ \text{VA } x=1,\,x=2;\ \text{HA } y=1;\ x\text{-int } -2,\,\frac43
+W: \text{hole } (0,4);\ \text{VA } x=1,\,x=2;\ \text{HA } y=3;\ x\text{-int } 2,\,-\frac43
+W: \text{no hole};\ \text{VA } x=1,\,x=2;\ \text{no HA}
+S: Factor: top $=x(3x^2+2x-8)=x(3x-4)(x+2)$; bottom $=x(x^2-3x+2)=x(x-1)(x-2)$.
+The factor $x$ cancels, leaving a <b>hole</b> at $x=0$. Its $y$-value from the simplified form $\frac{(3x-4)(x+2)}{(x-1)(x-2)}$: $\frac{(-4)(2)}{(-1)(-2)}=-4$, so the hole is $(0,-4)$.
+VAs: $x=1$ and $x=2$. Equal degrees: HA $y=\frac31=3$. $x$-intercepts: $x=\frac43$ and $x=-2$.
+---
+Q: <b>Book #53.</b> For $k(x)=\dfrac{4x+10}{3x-9}$, which list of features is correct?
+L: 1
+A: \text{VA } x=3,\ \text{HA } y=\frac43,\ x\text{-int } -\frac52,\ y\text{-int } -\frac{10}9
+W: \text{VA } x=-3,\ \text{HA } y=\frac43,\ x\text{-int } -\frac52
+W: \text{VA } x=3,\ \text{HA } y=\frac34,\ x\text{-int } \frac52
+W: \text{VA } x=9,\ \text{HA } y=4,\ x\text{-int } -10
+W: \text{VA } x=3,\ \text{HA } y=0,\ x\text{-int } -\frac52
+S: Bottom zero: $3x-9=0$ at $x=3$, a vertical asymptote. Equal degrees: HA $y=\frac43$.
+$x$-intercept: $4x+10=0$, $x=-\frac52$. $y$-intercept: $k(0)=\frac{10}{-9}=-\frac{10}9$. No holes.
+---
+Q: <b>Book #54.</b> For $f(x)=\dfrac{x+1}{x^2-1}$, which list of features is correct?
+L: 2
+A: \text{hole } \left(-1,-\frac12\right);\ \text{VA } x=1;\ \text{HA } y=0;\ \text{no } x\text{-intercept}
+W: \text{VA } x=\pm1;\ \text{HA } y=0;\ x\text{-int } -1
+W: \text{hole } \left(1,\frac12\right);\ \text{VA } x=-1;\ \text{HA } y=0
+W: \text{hole } \left(-1,-\frac12\right);\ \text{VA } x=1;\ \text{HA } y=1
+W: \text{VA } x=1;\ \text{HA } y=0;\ x\text{-int } -1
+S: Factor: $\frac{x+1}{(x+1)(x-1)}=\frac1{x-1}$ for $x\ne-1$.
+The cancelled factor gives a hole at $x=-1$, with $y=\frac1{-1-1}=-\frac12$: hole $\left(-1,-\frac12\right)$.
+VA $x=1$; top degree less than bottom: HA $y=0$. The simplified numerator is $1$, never $0$, so there's no $x$-intercept ($-1$ is a hole, not an intercept).
+---
+Q: <b>Book #66.</b> Which statement about the graph of $f(x)=\dfrac{(x-1)(x+3)}{(x^2+1)(x^2-1)}$ is <b>true</b>?<br>(a) The graph has two vertical asymptotes. &nbsp; (b) The graph touches the $x$-axis at $x=3$.<br>(c) The graph lies above the $x$-axis when $x\lt-1$. &nbsp; (d) The graph has a hole at $x=1$. &nbsp; (e) The graph has no horizontal asymptotes.
+L: 3
+A: \text{(d)}
+W: \text{(a)}
+W: \text{(b)}
+W: \text{(c)}
+W: \text{(e)}
+S: Factor $x^2-1=(x-1)(x+1)$: $f(x)=\frac{(x-1)(x+3)}{(x^2+1)(x-1)(x+1)}$. The $x-1$ cancels, so there's a <b>hole at $x=1$</b>: (d) is true.
+(a) false: only one VA, $x=-1$ ($x^2+1$ is never $0$). (b) false: the $x$-intercept is $-3$, not $3$, and it crosses there.
+(c) false: for $-3\lt x\lt-1$, the simplified $\frac{x+3}{(x^2+1)(x+1)}$ has a positive top and negative bottom, so the graph is <i>below</i> the axis. (e) false: top degree $2$ is less than bottom degree $4$, so $y=0$ is a horizontal asymptote.
+---
+Q: <b>Book #85.</b> Solve $x^2+3x+10=0$ in the complex numbers.
+L: 1
+A: \frac{-3\pm\sqrt{31}\,i}{2}
+W: \frac{3\pm\sqrt{31}\,i}{2}
+W: \frac{-3\pm\sqrt{31}}{2}
+W: -3\pm\sqrt{31}\,i
+W: \frac{-3\pm\sqrt{49}\,i}{2}
+S: Quadratic formula: $x=\frac{-3\pm\sqrt{9-40}}{2}=\frac{-3\pm\sqrt{-31}}2$.
+$\sqrt{-31}=i\sqrt{31}$, so $x=\frac{-3\pm\sqrt{31}\,i}2$.
+---
+Q: <b>Book #86.</b> Solve $x^2+2x+5=0$ in the complex numbers.
+L: 1
+A: -1\pm2i
+W: 1\pm2i
+W: -1\pm4i
+W: -2\pm2i
+W: -1\pm\sqrt6
+S: $x=\frac{-2\pm\sqrt{4-20}}{2}=\frac{-2\pm\sqrt{-16}}2=\frac{-2\pm4i}2=-1\pm2i$.
+(Completing the square: $(x+1)^2=-4$, so $x+1=\pm2i$.)
+---
+Q: <b>Book #87.</b> Solve $5x^2+2=3x$ in the complex numbers.
+L: 2
+A: \frac{3\pm\sqrt{31}\,i}{10}
+W: \frac{-3\pm\sqrt{31}\,i}{10}
+W: \frac{3\pm\sqrt{31}\,i}{5}
+W: \frac{3\pm\sqrt{49}}{10}
+W: \frac{3\pm\sqrt{31}}{10}
+S: Rewrite in standard form first: $5x^2-3x+2=0$.
+$x=\frac{3\pm\sqrt{9-40}}{10}=\frac{3\pm\sqrt{31}\,i}{10}$.
+---
+Q: <b>Book #88.</b> Solve $-3x^2+4x-5=0$ in the complex numbers.
+L: 2
+A: \frac{2\pm\sqrt{11}\,i}{3}
+W: \frac{-2\pm\sqrt{11}\,i}{3}
+W: \frac{2\pm\sqrt{11}\,i}{6}
+W: \frac{4\pm\sqrt{44}\,i}{3}
+W: \frac{2\pm\sqrt{11}}{3}
+S: Multiply by $-1$: $3x^2-4x+5=0$. Then $x=\frac{4\pm\sqrt{16-60}}{6}=\frac{4\pm\sqrt{-44}}6=\frac{4\pm2\sqrt{11}\,i}6=\frac{2\pm\sqrt{11}\,i}3$.
+---
+Q: <b>Book #89.</b> Solve $3x^4+x^2-2=0$ in the complex numbers.
+L: 2
+A: \pm\frac{\sqrt6}{3},\ \pm i
+W: \pm\frac{\sqrt6}{3} \text{ only}
+W: \pm\frac23,\ \pm1
+W: \pm\frac{\sqrt6}{3},\ \pm1
+W: \frac23,\ -1
+S: Quadratic in $x^2$: $3x^4+x^2-2=(3x^2-2)(x^2+1)$.
+$x^2=\frac23$ gives $x=\pm\sqrt{\frac23}=\pm\frac{\sqrt6}3$. $x^2=-1$ gives $x=\pm i$.
+---
+Q: <b>Book #90.</b> Solve $8x^4+10x^2+3=0$ in the complex numbers.
+L: 2
+A: \pm\frac{\sqrt2}{2}i,\ \pm\frac{\sqrt3}{2}i
+W: \pm\frac{\sqrt2}{2},\ \pm\frac{\sqrt3}{2}
+W: \pm\frac12 i,\ \pm\frac34 i
+W: \pm\frac{\sqrt2}{2}i \text{ only}
+W: -\frac12,\ -\frac34
+S: Quadratic in $x^2$: $8x^4+10x^2+3=(2x^2+1)(4x^2+3)$.
+$x^2=-\frac12$ gives $x=\pm\frac{i}{\sqrt2}=\pm\frac{\sqrt2}2i$; $x^2=-\frac34$ gives $x=\pm\frac{\sqrt3}2i$. All four roots are imaginary.
+---
+Q: <b>Book #91.</b> Solve $x^3+8=0$ in the complex numbers.
+L: 2
+A: -2,\ 1\pm\sqrt3\,i
+W: -2 \text{ only}
+W: 2,\ -1\pm\sqrt3\,i
+W: -2,\ -1\pm\sqrt3\,i
+W: -2,\ 1\pm\sqrt{3}
+S: Sum of cubes: $x^3+8=(x+2)(x^2-2x+4)$.
+$x=-2$, or $x=\frac{2\pm\sqrt{4-16}}{2}=\frac{2\pm2\sqrt3\,i}2=1\pm\sqrt3\,i$.
+---
+Q: <b>Book #92.</b> Solve $x^3-27=0$ in the complex numbers.
+L: 2
+A: 3,\ \frac{-3\pm3\sqrt3\,i}{2}
+W: 3 \text{ only}
+W: 3,\ \frac{3\pm3\sqrt3\,i}{2}
+W: -3,\ \frac{3\pm3\sqrt3\,i}{2}
+W: 3,\ -3\pm3\sqrt3\,i
+S: Difference of cubes: $x^3-27=(x-3)(x^2+3x+9)$.
+$x=3$, or $x=\frac{-3\pm\sqrt{9-36}}2=\frac{-3\pm3\sqrt3\,i}2$.
+---
+Q: <b>Book #93.</b> One root of $x^4-x^3-x^2-x-2$ is $i$. Find all the roots.
+L: 2
+A: i,\ -i,\ 2,\ -1
+W: i,\ 2,\ -1
+W: i,\ -i,\ -2,\ 1
+W: i,\ -i,\ 1\pm\sqrt2
+W: \pm i,\ \pm2
+S: Real coefficients, so $-i$ is also a root, and $(x-i)(x+i)=x^2+1$ is a factor.
+Divide: $x^4-x^3-x^2-x-2=(x^2+1)(x^2-x-2)$. (Check: $x^4-x^3-2x^2+x^2-x-2$ ✓.)
+$x^2-x-2=(x-2)(x+1)$. Roots: $i,-i,2,-1$.
+---
+Q: <b>Book #94.</b> One root of $x^4+x^3-5x^2+x-6$ is $i$. Find all the roots.
+L: 2
+A: i,\ -i,\ 2,\ -3
+W: i,\ -i,\ -2,\ 3
+W: i,\ 2,\ -3
+W: i,\ -i,\ 1,\ -6
+W: \pm i,\ \pm\sqrt6
+S: $-i$ is also a root, so $x^2+1$ is a factor. Dividing: $x^4+x^3-5x^2+x-6=(x^2+1)(x^2+x-6)$.
+$x^2+x-6=(x+3)(x-2)$. Roots: $i,-i,2,-3$.
+---
+Q: <b>Book #95.</b> Which is a fourth-degree polynomial with real coefficients whose roots include $0$ and $1+i$?
+L: 2
+A: x^4-2x^3+2x^2
+W: x^4-2x^3-2x^2
+W: x^4+2x^3+2x^2
+W: x^4-x^3+x^2
+W: x^3-2x^2+2x
+S: Real coefficients force $1-i$ to be a root too. Those two give $(x-(1+i))(x-(1-i))=x^2-2x+2$.
+Root $0$ gives the factor $x$; one more factor is needed for degree $4$. Using $x$ again: $x^2(x^2-2x+2)=x^4-2x^3+2x^2$. (Many other answers work, like $x(x-5)(x^2-2x+2)$.)
+$x^3-2x^2+2x$ has the right roots but is only degree $3$.
+---
+Q: <b>Book #96.</b> Find a fourth-degree polynomial $f$ whose only roots are $2+i$ and $2-i$, with $f(-1)=50$.
+L: 3
+A: \frac12\left(x^2-4x+5\right)^2
+W: \left(x^2-4x+5\right)^2
+W: 2\left(x^2-4x+5\right)^2
+W: \frac12\left(x^2+4x+5\right)^2
+W: \frac14\left(x^2-4x+5\right)^2
+S: The roots $2\pm i$ give the factor $(x-2-i)(x-2+i)=(x-2)^2+1=x^2-4x+5$.
+For degree $4$ with no other roots, each must be a double root: $f(x)=a(x^2-4x+5)^2$.
+$f(-1)=a(1+4+5)^2=100a=50$, so $a=\frac12$: $f(x)=\frac12(x^2-4x+5)^2=\frac12x^4-4x^3+13x^2-20x+\frac{25}2$.
+
+=== GENS ===
+GENS['pc4-review']=[];   // the problem set is exactly the book's review questions
+GENS['pc4-review:practice']=['pc4-quad','pc4-poly','pc4-synth','pc4-roots','pc4-graph','pc4-rat','pc4-ratx','pc4-cplx','pc4-theory'].flatMap(k=>GENS[k]||[]);
