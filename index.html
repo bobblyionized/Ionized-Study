@@ -3383,6 +3383,364 @@ $$f(x)=(x-2)(x^2-6x+10)=x^3-8x^2+22x-20.$$
 <p><b>Building a polynomial.</b> List every root, including the conjugates the theorem forces, multiply the factors, and use any extra condition to find the leading coefficient.</p>
 <div class="tip"><b>Test tips:</b> show the vertex formula or the Rational Root list before computing; write each factorization step; and for rational functions, always factor and cancel before naming asymptotes.</div>
 </script>
+<script type="text/plain" id="L-pc5-rad">
+<h2>5.1 Radicals and Rational Exponents</h2>
+<p>Exponential and logarithmic functions need powers like $2^{1.5}$ or $10^{\sqrt2}$. This section gives meaning to any real exponent, starting with roots.</p>
+
+<h3>1. $n$th roots</h3>
+<p>The <b>$n$th roots</b> of $c$ are the solutions of $x^n=c$. Look at where the line $y=c$ meets the graph of $y=x^n$:</p>
+<ul><li><b>$n$ odd:</b> exactly one solution for every $c$ (the graph rises from $-\infty$ to $\infty$).</li>
+<li><b>$n$ even:</b> two solutions (one positive, one negative) if $c\gt0$; one ($x=0$) if $c=0$; none if $c\lt0$.</li></ul>
+<div class="lfigs">
+<div class="lplot" data-f="x*x*x" data-x="-3,3" data-y="-4,4" data-w="170" data-cap="$y=x^3$: one root for every $c$"></div>
+<div class="lplot" data-f="x*x*x*x;2" data-x="-3,3" data-y="-1,5" data-w="170" data-cap="$y=x^4$ and $y=2$: two roots"></div>
+</div>
+<div class="box"><h4>Principal $n$th root</h4>$\sqrt[n]{c}=c^{1/n}$ is <b>the</b> solution of $x^n=c$ when $n$ is odd, and the <b>nonnegative</b> solution when $n$ is even and $c\ge0$.</div>
+<p>So $\sqrt[3]{-8}=-2$, $81^{1/4}=3$, $\sqrt[5]{32}=2$, but $\sqrt[4]{-16}$ is not a real number.</p>
+
+<h3>2. Rational exponents</h3>
+<div class="box"><h4>Definition</h4>For $c\gt0$ and $\frac tk$ in lowest terms with $k\gt0$: $c^{t/k}=\left(c^{t}\right)^{1/k}=\left(c^{1/k}\right)^{t}$.</div>
+<p>The two forms agree: $4^{3/2}=(4^3)^{1/2}=\sqrt{64}=8$ and $(4^{1/2})^3=2^3=8$. Usually take the root first, since it keeps the numbers small: $256^{3/4}=(\sqrt[4]{256})^3=4^3=64$.</p>
+<p>The definition also works for negative $c$ when $k$ is odd: $(-8)^{2/3}=\left(\sqrt[3]{-8}\right)^2=(-2)^2=4$. <b>Reduce the fraction first:</b> $(-1)^{2/6}=(-1)^{1/3}=-1$, but $\sqrt[6]{(-1)^2}=1$ would be wrong.</p>
+
+<h3>3. Exponent laws</h3>
+<div class="box"><h4>For $c,d\gt0$ and any rational (in fact, any real) $r,s$</h4><ol>
+<li>$c^rc^s=c^{r+s}$</li><li>$\dfrac{c^r}{c^s}=c^{r-s}$</li><li>$(c^r)^s=c^{rs}$</li>
+<li>$(cd)^r=c^rd^r$</li><li>$\left(\dfrac cd\right)^r=\dfrac{c^r}{d^r}$</li><li>$c^{-r}=\dfrac1{c^r}$</li></ol></div>
+<p>Example: $(8r^{3/4}s^{-3})^{2/3}=8^{2/3}r^{(3/4)(2/3)}s^{-2}=\dfrac{4r^{1/2}}{s^2}$. And $x^{1/2}(x^{3/4}-x^{3/2})=x^{5/4}-x^2$ (add the exponents).</p>
+<div class="warn"><b>Caution:</b> the laws cover products and quotients only. $(c+d)^r\ne c^r+d^r$; for example $\sqrt{9+16}=5$, not $3+4$.</div>
+<p><b>Factoring with rational exponents.</b> $x^{2/3}+x^{1/3}-6$ is a quadratic in $u=x^{1/3}$: $u^2+u-6=(u+3)(u-2)$, so it equals $(x^{1/3}+3)(x^{1/3}-2)$.</p>
+
+<h3>4. Radical notation and simplifying</h3>
+<p>$c^{t/k}=\sqrt[k]{c^t}=\left(\sqrt[k]c\right)^t$, and the laws read $\sqrt[n]{cd}=\sqrt[n]c\,\sqrt[n]d$ and $\sqrt[n]{\frac cd}=\frac{\sqrt[n]c}{\sqrt[n]d}$. To simplify, pull out perfect $n$th powers:</p>
+<ul><li>$\sqrt{63}=\sqrt{9\cdot7}=3\sqrt7$.</li>
+<li>$\sqrt{12}-\sqrt{75}=2\sqrt3-5\sqrt3=-3\sqrt3$ (only like radicals combine).</li>
+<li>$\sqrt[3]{40k^4}=\sqrt[3]{8k^3}\,\sqrt[3]{5k}=2k\sqrt[3]{5k}$.</li></ul>
+
+<h3>5. Rationalizing</h3>
+<p>Multiply by $1$ written as a well-chosen fraction:</p>
+<ul><li>One radical: $\dfrac7{\sqrt5}\cdot\dfrac{\sqrt5}{\sqrt5}=\dfrac{7\sqrt5}5$.</li>
+<li>A sum or difference: use the <b>conjugate</b> and $(a+b)(a-b)=a^2-b^2$. $\dfrac2{3+\sqrt6}\cdot\dfrac{3-\sqrt6}{3-\sqrt6}=\dfrac{2(3-\sqrt6)}{9-6}=\dfrac{6-2\sqrt6}3$.</li>
+<li>Cube roots: use $a^3+b^3=(a+b)(a^2-ab+b^2)$. $\dfrac1{\sqrt[3]2+1}\cdot\dfrac{\sqrt[3]4-\sqrt[3]2+1}{\sqrt[3]4-\sqrt[3]2+1}=\dfrac{\sqrt[3]4-\sqrt[3]2+1}{3}$.</li>
+<li><b>Rationalizing the numerator</b> of a difference quotient (used in calculus): $\dfrac{\sqrt{x+h}-\sqrt x}{h}\cdot\dfrac{\sqrt{x+h}+\sqrt x}{\sqrt{x+h}+\sqrt x}=\dfrac{(x+h)-x}{h(\sqrt{x+h}+\sqrt x)}=\dfrac1{\sqrt{x+h}+\sqrt x}$. Now you can see it approaches $\frac1{2\sqrt x}$ as $h\to0$.</li></ul>
+
+<h3>6. Irrational exponents</h3>
+<p>$10^{\sqrt2}$ is the number that $10^{1.4},10^{1.41},10^{1.414},\dots$ approach (about $25.9545$). So $a^t$ makes sense for every real $t$ when $a\gt0$, and all the exponent laws still hold.</p>
+
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Applying exponents to sums: $(x+y)^{1/2}\ne x^{1/2}+y^{1/2}$.</li>
+<li>Not reducing $\frac tk$ before using a negative base.</li>
+<li>A negative exponent means reciprocal, not negative: $27^{-2/3}=\frac19$.</li></ul></div>
+</script>
+<script type="text/plain" id="L-pc5-radeq">
+<h2>5.1.A Radical Equations</h2>
+<p>To solve an equation with a square root, we get rid of the root by squaring. Squaring is safe in one direction only, and that's the whole story of this section.</p>
+
+<div class="box"><h4>Power Principle</h4>If both sides of an equation are raised to the same positive integer power, every solution of the original equation is also a solution of the new one. <b>But the new equation may have extra solutions</b> that don't solve the original. These are called <b>extraneous solutions</b>.</div>
+<p>Why: $x-2=3$ has only $x=5$, but $(x-2)^2=9$ also has $x=-1$, because squaring forgets the sign. So <b>after squaring, always check every answer in the original equation</b>.</p>
+
+<h3>1. The method</h3>
+<ol><li><b>Isolate</b> one radical on one side.</li>
+<li><b>Raise both sides</b> to the power that removes it (square for $\sqrt{\ }$, cube for $\sqrt[3]{\ }$).</li>
+<li><b>Solve</b> the resulting equation.</li>
+<li><b>Check</b> each answer in the original equation and throw out the extraneous ones.</li></ol>
+<div class="ex"><b class="lbl">Example 1.</b> Solve $5+\sqrt{3x-11}=x$.
+<details><summary>Solution</summary>Isolate: $\sqrt{3x-11}=x-5$. Square: $3x-11=x^2-10x+25$, so $x^2-13x+36=0=(x-4)(x-9)$.<br>Check $x=9$: $5+\sqrt{16}=9$ ✓. Check $x=4$: $5+\sqrt1=6\ne4$ ✗.<br>Only $x=9$. (At $x=4$ the right side $x-5$ is negative, but a square root can't be negative.)</details></div>
+<div class="lfigs"><div class="lplot" data-f="5+sqrt(3*x-11)-x|3.67|15" data-x="-1,15" data-y="-4,4" data-w="230" data-cap="$y=5+\sqrt{3x-11}-x$ crosses at $x=9$ only"></div></div>
+<p>Graphing $y=(\text{left side})-(\text{right side})$ is a quick check: its $x$-intercepts are the real solutions.</p>
+
+<h3>2. Two radicals: square twice</h3>
+<div class="ex"><b class="lbl">Example 2.</b> Solve $\sqrt{2x-3}-\sqrt{x+7}=2$.
+<details><summary>Solution</summary>Isolate one radical: $\sqrt{2x-3}=\sqrt{x+7}+2$.<br>Square (the right side is a binomial): $2x-3=(x+7)+4\sqrt{x+7}+4$, so $x-14=4\sqrt{x+7}$.<br>Square again: $x^2-28x+196=16(x+7)$, so $x^2-44x+84=0=(x-2)(x-42)$.<br>Check: $x=2$ gives $1-3=-2$ ✗; $x=42$ gives $9-7=2$ ✓. Only $x=42$.</details></div>
+<div class="warn"><b>Squaring a sum:</b> $(\sqrt{x+7}+2)^2=(x+7)+4\sqrt{x+7}+4$, not $(x+7)+4$. The middle term is where the second radical comes from.</div>
+
+<h3>3. Odd roots and rational exponents</h3>
+<ul><li>Cubing never creates extraneous solutions (every real number has exactly one cube root), but checking is still good practice: $\sqrt[3]{x^2-1}=2$ gives $x^2-1=8$, so $x=\pm3$.</li>
+<li>$x^{2/3}=9$ means $\left(x^{1/3}\right)^2=9$, so $x^{1/3}=\pm3$ and $x=\pm27$.</li>
+<li>$x^{3/2}=8$ means $\left(\sqrt x\right)^3=8$, so $\sqrt x=2$ and $x=4$ (here $x\ge0$ is required).</li>
+<li><b>Quadratic in form:</b> $x-3\sqrt x-4=0$ is $u^2-3u-4=0$ with $u=\sqrt x$, so $u=4$ or $u=-1$. Since $\sqrt x\ge0$, only $u=4$ works: $x=16$.</li></ul>
+
+<h3>4. Solving formulas</h3>
+<p>Isolate the radical, then square. Example: solve the pendulum formula $T=2\pi\sqrt{\frac Lg}$ for $L$: $\frac{T}{2\pi}=\sqrt{\frac Lg}$, so $\frac{T^2}{4\pi^2}=\frac Lg$ and $L=\frac{gT^2}{4\pi^2}$.</p>
+
+<h3>5. Applications</h3>
+<p>Distances in the plane involve $\sqrt{x^2+a^2}$ (Pythagorean Theorem), so travel-time and cable-length problems lead to radical equations. Example: a boat is $6$ miles from the nearest point $P$ on a straight shore. A dock is $x$ miles along the shore from $P$, and the straight route from the boat to the dock is $2$ miles longer than $x$. Then $\sqrt{x^2+36}=x+2$; squaring gives $36=4x+4$, so $x=8$ (check: $\sqrt{100}=10=8+2$ ✓).</p>
+
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Squaring before isolating the radical: $(\sqrt{a}+b)^2\ne a+b^2$.</li>
+<li>Skipping the check. Extraneous solutions are common, especially when one side could be negative.</li>
+<li>Writing $\sqrt x=-1$ has a solution. A principal square root is never negative.</li></ul></div>
+</script>
+<script type="text/plain" id="L-pc5-exp">
+<h2>5.2 Exponential Functions</h2>
+<p>An <b>exponential function</b> has the variable in the exponent: $f(x)=a^x$ with a fixed base $a\gt0$, $a\ne1$. Compare $x^2$ (variable base) with $2^x$ (variable exponent). Exponential functions model anything that grows or shrinks by the <b>same percentage</b> each time period.</p>
+
+<h3>1. Graphs of $a^x$</h3>
+<div class="lfigs">
+<div class="lplot" data-f="pow(2,x);pow(3,x)" data-x="-4,4" data-y="-1,8" data-w="180" data-cap="$a\gt1$: $2^x$ and $3^x$ rise"></div>
+<div class="lplot" data-f="pow(0.5,x);pow(1/3,x)" data-x="-4,4" data-y="-1,8" data-w="180" data-cap="$0\lt a\lt1$: $(\frac12)^x$ and $(\frac13)^x$ fall"></div>
+</div>
+<div class="box"><h4>Properties of $f(x)=a^x$</h4><ul>
+<li>Domain: all real numbers. Range: all <b>positive</b> numbers ($a^x\gt0$ always).</li>
+<li>$y$-intercept $(0,1)$, since $a^0=1$. The graph also passes through $(1,a)$.</li>
+<li>Horizontal asymptote $y=0$ (the $x$-axis): on the left if $a\gt1$, on the right if $0\lt a\lt1$.</li>
+<li>$a\gt1$: increasing, and it grows faster than any polynomial eventually. $0\lt a\lt1$: decreasing.</li></ul></div>
+<p><b>Negative exponents flip the graph:</b> $3^{-x}=\left(3^{-1}\right)^x=\left(\frac13\right)^x$, the reflection of $3^x$ across the $y$-axis. In $a^{kx}$, the size of $k$ controls the steepness; its sign controls rising or falling.</p>
+<p><b>How fast is "exponential"?</b> $2^{50}\approx1.13\times10^{15}$. On a graph with $1$-inch units, the height at $x=50$ would reach past the sun.</p>
+<p><b>Transformations</b> work as in Section 3.4: $g(x)=2^{x-3}+1$ is $2^x$ shifted right $3$ and up $1$, so its asymptote is $y=1$ and its range is $y\gt1$.</p>
+
+<h3>2. Exponential growth</h3>
+<div class="box"><h4>Growth model</h4>A quantity that starts at $P$ and grows by $r$ (as a decimal) per time period is $f(x)=P(1+r)^x=Pa^x$ after $x$ periods. The <b>growth factor</b> $a=1+r$ is greater than $1$.</div>
+<p><b>Why:</b> each period multiplies by $1+r$: $P\to P(1+r)\to P(1+r)^2\to\cdots$. Example: $\$5000$ at $3\%$ compounded annually for $9$ years: $5000(1.03)^9\approx\$6523.87$.</p>
+<p><b>Finding the factor from data.</b> A culture has $1000$ bacteria, and $7600$ five hours later. Then $1000a^5=7600$, so $a^5=7.6$ and $a=7.6^{1/5}$. After $24$ hours: $1000\cdot7.6^{24/5}\approx16{,}900{,}721$ bacteria.</p>
+
+<h3>3. Exponential decay and half-life</h3>
+<p>If a fixed percentage is <i>lost</i> each period, $f(x)=P(1-r)^x$ with factor $0\lt a\lt1$. Example: a filter removes $30\%$ of impurities, so $70\%$ remain after each layer: $f(x)=(0.7)^x$ of the original remains after $x$ layers.</p>
+<div class="box"><h4>Radioactive decay</h4>The <b>half-life</b> $h$ is the time for half of a substance to decay. Starting from $c$, the amount left after $x$ years is $M(x)=c\,(0.5)^{x/h}$.</div>
+<p>Each time $x$ increases by $h$, the exponent $\frac xh$ goes up by $1$ and the amount halves. Plutonium-239 has $h=24{,}360$ years, so $M(x)=(0.5)^{x/24360}\approx0.99997^x$: a base so close to $1$ that it decays extremely slowly.</p>
+<div class="lfigs"><div class="lplot" data-f="80*pow(0.5,x/5)" data-x="0,25" data-y="0,90" data-w="230" data-cap="$80(0.5)^{x/5}$: half-life $5$ (80, 40, 20, 10, ...)"></div></div>
+
+<h3>4. The natural exponential function</h3>
+<p>The number $e\approx2.718281828459$ is irrational (Section 5.2.A shows where it comes from). The <b>natural exponential function</b> is $f(x)=e^x$, which sits between $2^x$ and $3^x$. Models are often written $f(t)=Pe^{kt}$: growth if $k\gt0$, decay if $k\lt0$.</p>
+<p>Example: if $P(t)=227e^{0.0093t}$ million people ($t=0$ in 1980), then in 2000, $P(20)=227e^{0.186}\approx273.4$ million.</p>
+
+<h3>5. Other exponential functions</h3>
+<ul><li><b>Logistic (inhibited) growth:</b> $p(t)=\dfrac{c}{1+ae^{-kt}}$ grows quickly at first, then levels off at the <b>upper limit</b> $c$ (as $t$ grows, $e^{-kt}\to0$). For $p(t)=\dfrac{20000}{1+24e^{-t/4}}$ the limit is $20{,}000$ and the starting value is $p(0)=\frac{20000}{25}=800$.</li>
+<li>$f(x)=\dfrac{e^x+e^{-x}}2$ is an <b>even</b> function (replacing $x$ by $-x$ swaps the two terms), and its graph is a U-shaped curve called a catenary.</li></ul>
+<div class="lfigs"><div class="lplot" data-f="20000/(1+24*exp(-x/4))" data-x="0,40" data-y="0,22000" data-w="240" data-cap="Logistic growth levels off at $20{,}000$"></div></div>
+
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Growth by $r$ per period means multiplying by $1+r$ (not $r$): $3\%$ growth is $\times1.03$.</li>
+<li>$a^x$ is never $0$ or negative, so its range is $(0,\infty)$, not all reals.</li>
+<li>For half-life, the exponent is $\frac xh$ (time divided by half-life), not $x\cdot h$.</li></ul></div>
+</script>
+<script type="text/plain" id="L-pc5-int">
+<h2>5.2.A Compound Interest and the Number $e$</h2>
+<p>Interest that earns interest is the clearest example of exponential growth, and it is also where the number $e$ comes from.</p>
+
+<div class="box"><h4>Compound Interest Formula</h4>If $P$ dollars is invested at interest rate $r$ <b>per time period</b> (as a decimal), the amount after $t$ periods is
+$$A=P(1+r)^t.$$</div>
+<p><b>Why:</b> each period adds $r$ times the current balance, which multiplies the balance by $1+r$.</p>
+
+<h3>1. Reading financial language</h3>
+<p>"$6.4\%$ compounded quarterly" means the <b>annual</b> rate is $6.4\%$, split into $4$ periods per year: the rate per period is $\frac{0.064}4=0.016$, and $3.5$ years is $3.5\cdot4=14$ periods.</p>
+<div class="box"><h4>Translating</h4>Annual rate $R$ compounded $n$ times per year for $y$ years: $\;r=\dfrac Rn$ and $t=ny$, so $A=P\left(1+\dfrac Rn\right)^{ny}$.</div>
+<p>$\$3500$ for $3.5$ years at $6.4\%$:</p>
+<ul><li>annually: $3500(1.064)^{3.5}\approx\$4348.74$</li>
+<li>quarterly: $3500(1.016)^{14}\approx\$4370.99$</li>
+<li>monthly: $3500\left(1+\frac{0.064}{12}\right)^{42}\approx\$4376.14$</li></ul>
+<p>The more often interest is compounded, the more you earn, but the gains get smaller and smaller.</p>
+<p><b>Careful with periods:</b> at $18\%$ per <i>week</i>, a $\$50$ loan grows to $50(1.18)^{52}\approx\$273{,}422.58$ in $52$ weeks. (A $365$-day year is actually $\frac{365}7$ weeks.)</p>
+
+<h3>2. Solving for time, rate, or present value</h3>
+<ul><li><b>Doubling time:</b> $5000\left(1+\frac{0.065}{12}\right)^t=10000$ means $\left(1+\frac{0.065}{12}\right)^t=2$. With technology (or the logarithms of Section 5.5), $t\approx128.3$ months $\approx10.7$ years. Notice $P$ doesn't matter for doubling.</li>
+<li><b>Rate:</b> what annual rate turns $\$16{,}000$ into $\$50{,}000$ in $18$ years? $(1+r)^{18}=\frac{50000}{16000}=3.125$, so $1+r=3.125^{1/18}$ and $r\approx0.0653$, about $6.53\%$.</li>
+<li><b>Present value:</b> the amount to invest <i>now</i> to have $A$ later is $P=\dfrac{A}{(1+r)^t}$. To have $\$10{,}000$ in $5$ years at $6\%$ compounded annually, invest $\frac{10000}{1.06^5}\approx\$7472.58$.</li></ul>
+
+<h3>3. The number $e$</h3>
+<p>Invest $\$1$ for a year at $100\%$ interest, compounded $n$ times: $A=\left(1+\frac1n\right)^n$.</p>
+<table class="exmix"><tr><th>$n$</th><th>$\left(1+\frac1n\right)^n$</th></tr>
+<tr><td>$1$ (annually)</td><td>$2$</td></tr><tr><td>$4$ (quarterly)</td><td>$2.4414$</td></tr><tr><td>$12$ (monthly)</td><td>$2.6130$</td></tr>
+<tr><td>$365$ (daily)</td><td>$2.7146$</td></tr><tr><td>$1000$</td><td>$2.7169$</td></tr><tr><td>$1{,}000{,}000$</td><td>$2.71828$</td></tr></table>
+<p>The values increase, but they level off at a limit: the number $e\approx2.718281828$. No matter how often you compound, $\$1$ can't grow past about $\$2.72$.</p>
+<div class="lfigs"><div class="lplot" data-f="pow(1+1/x,x)|0.2|60;2.718281828" data-x="0,60" data-y="1,3" data-w="240" data-cap="$(1+\frac1x)^x$ approaches $y=e$"></div></div>
+
+<div class="box"><h4>Continuous Compounding</h4>If $P$ dollars is invested at annual rate $r$, compounded continuously, the amount after $t$ years is
+$$A=Pe^{rt}.$$</div>
+<p><b>Why:</b> with $n$ compoundings, $P\left(1+\frac rn\right)^{nt}=P\left[\left(1+\frac rn\right)^{n/r}\right]^{rt}$, and the bracket approaches $e$ as $n$ grows (it's $(1+\frac1m)^m$ with $m=\frac nr$).</p>
+<p>Example: $\$3800$ at $3.8\%$ compounded continuously for $7.5$ years: $3800e^{0.285}\approx\$5053.10$. Reaching $\$5000$ takes $t$ with $3800e^{0.038t}=5000$, about $7.22$ years.</p>
+
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Using the annual rate for each period: monthly compounding at $6\%$ uses $0.005$ per period, not $0.06$.</li>
+<li>Counting periods in years: $5$ years compounded quarterly is $t=20$ periods.</li>
+<li>Writing the rate as a percent: $3.8\%$ is $r=0.038$.</li></ul></div>
+</script>
+<script type="text/plain" id="L-pc5-log">
+<h2>5.3 Common and Natural Logarithmic Functions</h2>
+<p>A logarithm answers the question: <b>what exponent do I need?</b> $\log 1000=3$ because $10^3=1000$. Logarithms undo exponential functions, which is exactly what you need to solve for an unknown exponent.</p>
+
+<h3>1. Common logarithms (base 10)</h3>
+<div class="box"><h4>Definition</h4>For $v\gt0$, $\;\log v=u\;$ means $\;10^u=v$. So $\log v$ is the exponent you put on $10$ to get $v$.</div>
+<p>$f(x)=\log x$ is the <b>inverse function</b> of $g(x)=10^x$: since $10^x$ passes the horizontal line test, it has an inverse, and swapping inputs and outputs of $10^x$ gives $\log x$.</p>
+<ul><li>$\log1000=3$, $\log10=1$, $\log1=0$, $\log0.01=-2$ (since $10^{-2}=0.01$), $\log\sqrt{10}=\frac12$.</li>
+<li>$\log v$ only exists for $v\gt0$: no power of $10$ is zero or negative. So $\log0$ and $\log(-5)$ are not defined.</li></ul>
+<p><b>Translating.</b> $\log29\approx1.4624$ says the same thing as $10^{1.4624}\approx29$. Going the other way, $10^{-1.5}\approx0.0316$ says $\log0.0316\approx-1.5$.</p>
+
+<h3>2. Natural logarithms (base $e$)</h3>
+<div class="box"><h4>Definition</h4>For $v\gt0$, $\;\ln v=u\;$ means $\;e^u=v$. $\ln x$ is the inverse function of $e^x$.</div>
+<p>$\ln e=1$, $\ln1=0$, $\ln e^5=5$, $\ln\frac1e=-1$. And $e^{3.4}\approx29.96$ says the same thing as $\ln29.96\approx3.4$.</p>
+
+<h3>3. Properties</h3>
+<div class="box"><h4>Inverse properties</h4>
+<ul><li>$\log10^u=u$ for every $u$, and $10^{\log v}=v$ for every $v\gt0$.</li>
+<li>$\ln e^u=u$ for every $u$, and $e^{\ln v}=v$ for every $v\gt0$.</li>
+<li>$\log1=\ln1=0$; $\log10=\ln e=1$.</li></ul></div>
+<p>These hold because each function undoes the other: $\ln e^u$ asks "what power of $e$ gives $e^u$?", and the answer is $u$. Examples: $\ln e^{x^2+1}=x^2+1$; $10^{\log7}=7$; $10^{\log7+2}=10^{\log7}\cdot10^2=700$.</p>
+<p><b>Solving simple equations:</b> $\ln x=2$ means $x=e^2\approx7.389$. And $10^x=29$ means $x=\log29\approx1.4624$.</p>
+
+<h3>4. Graphs</h3>
+<p>The graph of an inverse function is the reflection across $y=x$. So the graph of $\ln x$ is the graph of $e^x$ reflected across that line.</p>
+<div class="lfigs">
+<div class="lplot" data-f="exp(x);log(x)|0.01|6;x" data-x="-3,6" data-y="-3,6" data-w="200" data-cap="$e^x$, $\ln x$, and the mirror line $y=x$"></div>
+<div class="lplot" data-f="log10(x)|0.01|12;log(x)|0.01|12" data-x="-1,12" data-y="-3,3" data-w="200" data-cap="$\log x$ (lower) and $\ln x$ (upper)"></div>
+</div>
+<div class="box"><h4>Properties of $y=\log x$ and $y=\ln x$</h4><ul>
+<li>Domain: $x\gt0$. Range: all real numbers.</li>
+<li>$x$-intercept $(1,0)$. Also $(10,1)$ on $\log x$ and $(e,1)$ on $\ln x$.</li>
+<li>Vertical asymptote $x=0$ (the $y$-axis): as $x\to0^+$, the graph drops to $-\infty$.</li>
+<li>Increasing, but very slowly: $\log x$ only reaches $6$ at $x=1{,}000{,}000$.</li>
+<li>Negative for $0\lt x\lt1$, positive for $x\gt1$.</li></ul></div>
+<p><b>Domains of related functions:</b> the input of the log must be positive. $\ln(x+2)$ needs $x+2\gt0$, so $x\gt-2$; $\log(x^2-4)$ needs $x^2\gt4$, so $x\lt-2$ or $x\gt2$.</p>
+<p><b>Transformations:</b> $y=\ln(x-3)+1$ is $\ln x$ shifted right $3$ and up $1$. Its vertical asymptote moves to $x=3$, and its domain is $x\gt3$.</p>
+
+<div class="warn"><h4>Common traps</h4><ul>
+<li>$\log v$ is an exponent, not a product: $\log1000\ne\frac{1000}{10}$.</li>
+<li>Logs of $0$ or negative numbers don't exist.</li>
+<li>$\ln x$ and $\log x$ have different bases: $\ln100\approx4.605$, while $\log100=2$.</li></ul></div>
+</script>
+<script type="text/plain" id="L-pc5-laws">
+<h2>5.4 Properties of Logarithms</h2>
+<p>Logarithms are exponents, so the exponent laws turn into logarithm laws. These laws let you expand or combine logarithms, and they're how logarithms turn multiplication into addition.</p>
+
+<div class="box"><h4>Logarithm Laws</h4>For all $v,w\gt0$ and any real $k$:
+<ul><li><b>Product Law:</b> $\ln(vw)=\ln v+\ln w$</li>
+<li><b>Quotient Law:</b> $\ln\left(\dfrac vw\right)=\ln v-\ln w$</li>
+<li><b>Power Law:</b> $\ln(v^k)=k\ln v$</li></ul>
+The same laws hold for $\log$ (and, in 5.4.A, for every base).</div>
+
+<h3>1. Why they're true</h3>
+<p><b>Product Law.</b> By the inverse property, $v=e^{\ln v}$ and $w=e^{\ln w}$. So $vw=e^{\ln v}e^{\ln w}=e^{\ln v+\ln w}$ (add exponents). Taking $\ln$ of both sides: $\ln(vw)=\ln v+\ln w$.</p>
+<p><b>Power Law.</b> $v^k=\left(e^{\ln v}\right)^k=e^{k\ln v}$ (multiply exponents), so $\ln(v^k)=k\ln v$.</p>
+<p><b>Quotient Law.</b> $\ln\frac vw=\ln(v\cdot w^{-1})=\ln v+\ln w^{-1}=\ln v-\ln w$, using the other two laws.</p>
+
+<h3>2. Expanding and combining</h3>
+<ul><li><b>Expand:</b> $\ln\dfrac{x^2\sqrt y}{z}=\ln x^2+\ln y^{1/2}-\ln z=2\ln x+\tfrac12\ln y-\ln z$.</li>
+<li><b>Combine into one logarithm:</b> $\ln x+3\ln y-\ln z=\ln x+\ln y^3-\ln z=\ln\dfrac{xy^3}{z}$. Move coefficients up as exponents <i>first</i> (Power Law), then combine.</li>
+<li><b>Exact values:</b> $\log5+\log20=\log100=2$, and $\log8-\log2=\log4$.</li>
+<li><b>In terms of $u=\ln x$ and $v=\ln y$:</b> $\ln(x^3y^2)=3u+2v$ and $\ln\dfrac{\sqrt x}{y}=\tfrac12u-v$.</li>
+<li><b>From known values:</b> with $\ln2\approx0.693$ and $\ln3\approx1.099$: $\ln12=\ln(2^2\cdot3)=2\ln2+\ln3\approx2.485$.</li></ul>
+
+<div class="warn"><h4>What the laws do NOT say</h4><ul>
+<li>$\ln(v+w)\ne\ln v+\ln w$. There is no law for the log of a sum or difference.</li>
+<li>$\ln v\cdot\ln w\ne\ln(vw)$, and $\dfrac{\ln v}{\ln w}\ne\ln\dfrac vw$.</li>
+<li>$(\ln x)^2\ne2\ln x$; only $\ln(x^2)=2\ln x$ (for $x\gt0$).</li></ul>
+A quick numeric check exposes these: $\ln(1+1)=\ln2\approx0.693$, but $\ln1+\ln1=0$.</div>
+
+<h3>3. Application: the Richter scale</h3>
+<div class="box"><h4>Earthquake magnitude</h4>An earthquake of intensity $i$ has Richter magnitude $R(i)=\log\dfrac{i}{i_0}$, where $i_0$ is a fixed reference (minimum) intensity.</div>
+<p>By the Product Law, $R(10i)=\log10+\log\frac{i}{i_0}=1+R(i)$: <b>multiplying the intensity by $10$ adds $1$ to the magnitude.</b> In general, multiplying the intensity by $10^k$ adds $k$.</p>
+<p>So two earthquakes whose magnitudes differ by $d$ differ in intensity by a factor of $10^d$. The 1906 San Francisco earthquake ($8.3$) was $10^{8.3-7.1}=10^{1.2}\approx16$ times as intense as a $7.1$ earthquake. An earthquake $1000=10^3$ times as intense as a magnitude-$5.0$ quake has magnitude $8.0$.</p>
+<div class="lfigs"><div class="lplot" data-f="log10(x)|0.05|100" data-x="0,100" data-y="-1,2.5" data-w="230" data-cap="$\log x$: multiplying $x$ by 10 adds 1 to the height"></div></div>
+</script>
+<script type="text/plain" id="L-pc5-base">
+<h2>5.4.A Logarithmic Functions to Other Bases</h2>
+<p>Bases $10$ and $e$ are the ones on your calculator, but any positive base $b\ne1$ works the same way.</p>
+
+<div class="box"><h4>Definition</h4>For $b\gt0$, $b\ne1$, and $v\gt0$: $\;\log_b v=u\;$ means $\;b^u=v$.<br>So $\log_b v$ is the exponent you put on $b$ to get $v$. $\log_{10}=\log$ and $\log_e=\ln$.</div>
+<ul><li>$\log_2 32=5$ because $2^5=32$.</li>
+<li>$\log_3\frac1{81}=-4$ because $3^{-4}=\frac1{81}$.</li>
+<li>$\log_5\sqrt5=\frac12$ because $5^{1/2}=\sqrt5$.</li>
+<li>$\log_4 8=\frac32$ because $4^{3/2}=(\sqrt4)^3=8$. (Tip: write both as powers of $2$: $4^u=8$ means $2^{2u}=2^3$, so $u=\frac32$.)</li></ul>
+<p><b>Translating</b> works exactly as before: $2^{-3}=\frac18$ is the same statement as $\log_2\frac18=-3$.</p>
+
+<h3>1. Properties</h3>
+<div class="box"><h4>Properties of $\log_b$</h4><ul>
+<li>$\log_b1=0$ and $\log_bb=1$.</li>
+<li>$\log_b(b^u)=u$ for every $u$, and $b^{\log_b v}=v$ for every $v\gt0$. ($\log_bx$ and $b^x$ are inverse functions.)</li>
+<li>The domain of $\log_bx$ is $x\gt0$; its graph passes through $(1,0)$ and $(b,1)$ and has vertical asymptote $x=0$. It rises when $b\gt1$ and falls when $0\lt b\lt1$.</li></ul></div>
+<div class="lfigs"><div class="lplot" data-f="log(x)/log(2)|0.03|9;log(x)/log(0.5)|0.03|9" data-x="-1,9" data-y="-4,4" data-w="220" data-cap="$\log_2x$ (rising) and $\log_{1/2}x$ (falling)"></div></div>
+
+<h3>2. Logarithm Laws (any base)</h3>
+<div class="box">For $v,w\gt0$ and any $k$: $\;\log_b(vw)=\log_bv+\log_bw$, $\;\log_b\frac vw=\log_bv-\log_bw$, $\;\log_b(v^k)=k\log_bv$.</div>
+<p>Same proofs as 5.4, with $b$ in place of $e$. Examples: $\log_2 12-\log_2 3=\log_2 4=2$; $\;2\log_5x-\log_5y+\log_53=\log_5\dfrac{3x^2}{y}$.</p>
+<p><b>Solving for the unknown:</b></p>
+<ul><li>$\log_3x=4$: $x=3^4=81$.</li>
+<li>$\log_x64=3$: $x^3=64$, so $x=4$.</li>
+<li>$\log_2(x+1)=5$: $x+1=32$, so $x=31$.</li></ul>
+
+<h3>3. Change of base</h3>
+<div class="box"><h4>Change of Base Formula</h4>For any $b\gt0$, $b\ne1$, and $v\gt0$: $$\log_bv=\frac{\ln v}{\ln b}=\frac{\log v}{\log b}.$$</div>
+<p><b>Proof.</b> Let $u=\log_bv$, so $b^u=v$. Take $\ln$ of both sides and use the Power Law: $u\ln b=\ln v$, so $u=\frac{\ln v}{\ln b}$.</p>
+<p>This is how to compute any logarithm on a calculator: $\log_7 19=\frac{\ln19}{\ln7}\approx\frac{2.9444}{1.9459}\approx1.5131$. Check: $7^{1.5131}\approx19$ ✓.</p>
+<p>It also shows every log function is a constant multiple of $\ln x$: $\log_bx=\frac1{\ln b}\ln x$. For example $\log_9x=\frac{\ln x}{\ln9}=\frac{\ln x}{2\ln3}=\frac12\log_3x$.</p>
+
+<div class="warn"><h4>Common traps</h4><ul>
+<li>$\dfrac{\ln v}{\ln b}$ is not $\ln\dfrac vb$ and not $\ln v-\ln b$.</li>
+<li>Getting the formula upside down: the base goes on the bottom.</li>
+<li>Bases must be positive and not $1$; inputs must be positive.</li></ul></div>
+</script>
+<script type="text/plain" id="L-pc5-eq">
+<h2>5.5 Algebraic Solutions of Exponential and Logarithmic Equations</h2>
+<p>Two tools do almost all the work: <b>take a logarithm</b> to bring an unknown exponent down, and <b>exponentiate</b> to undo a logarithm.</p>
+
+<h3>1. Exponential equations</h3>
+<div class="box"><h4>Method</h4><ol><li>Isolate the exponential expression.</li><li>Take $\ln$ (or $\log$) of both sides.</li><li>Use the Power Law to bring the exponent down, then solve the resulting linear equation.</li></ol></div>
+<ul><li>$5^x=2$: $\;\ln5^x=\ln2$, so $x\ln5=\ln2$ and $x=\dfrac{\ln2}{\ln5}\approx0.4307$.</li>
+<li>$e^{3x}=7$: $\;3x=\ln7$, so $x=\frac{\ln7}3\approx0.6486$ (with base $e$, $\ln$ undoes it directly).</li>
+<li>$10^{x+1}=500$: $\;x+1=\log500$, so $x=\log500-1=\log50\approx1.699$.</li>
+<li>Variables on both sides: $2^{4x-1}=3^{1-x}$. Take $\ln$: $(4x-1)\ln2=(1-x)\ln3$. Collect the $x$ terms: $x(4\ln2+\ln3)=\ln3+\ln2$, so $x=\dfrac{\ln6}{\ln48}\approx0.4628$.</li></ul>
+<p><b>When the bases match</b>, you don't need logs: $2^{x+3}=2^{5}$ gives $x+3=5$, because $2^x$ is one-to-one.</p>
+
+<h3>2. Equations quadratic in $e^x$</h3>
+<p>$e^x-5e^{-x}=4$: multiply by $e^x$ (never zero) to get $(e^x)^2-4e^x-5=0$. With $u=e^x$: $(u-5)(u+1)=0$. Since $e^x\gt0$, only $u=5$ works: $x=\ln5$.</p>
+
+<h3>3. Applications</h3>
+<ul><li><b>Half-life from data.</b> $M(x)=c(0.5)^{x/h}$. If $20$ mg of strontium-90 becomes $6.071$ mg after $43$ years: $(0.5)^{43/h}=0.30355$. Take $\ln$: $\frac{43}h\ln0.5=\ln0.30355$, so $h=\dfrac{43\ln0.5}{\ln0.30355}\approx25$ years.</li>
+<li><b>Carbon-14 dating.</b> Carbon-14 has half-life $5730$ years. If a fossil has $20\%$ of its original carbon-14: $(0.5)^{t/5730}=0.2$, so $t=\dfrac{5730\ln0.2}{\ln0.5}\approx13{,}305$ years.</li>
+<li><b>Growth rate.</b> If $P(t)=P_0e^{kt}$ grows from $10$ to $15$ million in $8$ years: $e^{8k}=1.5$, so $k=\frac{\ln1.5}8\approx0.0507$ ($5.07\%$ continuous growth).</li>
+<li><b>Doubling time</b> at continuous rate $r$: $e^{rt}=2$, so $t=\frac{\ln2}{r}$. At $5\%$: $\frac{0.6931}{0.05}\approx13.9$ years.</li></ul>
+
+<h3>4. Logarithmic equations</h3>
+<div class="box"><h4>Method</h4><ol><li>Use the laws to combine into a single logarithm on one side.</li><li>Rewrite in exponential form (exponentiate).</li><li>Solve, then <b>check</b>: a solution that makes any original log's input zero or negative is extraneous.</li></ol></div>
+<ul><li>$\ln(x+1)-\ln x=1$: $\;\ln\frac{x+1}x=1$, so $\frac{x+1}x=e$, $x+1=ex$, and $x=\dfrac1{e-1}\approx0.582$ ✓.</li>
+<li>$\log(x-16)=2-\log(x-1)$: $\;\log\big[(x-16)(x-1)\big]=2$, so $(x-16)(x-1)=100$, i.e. $x^2-17x-84=0=(x-21)(x+4)$. $x=-4$ makes $x-16$ negative, so it's extraneous. Answer: $x=21$.</li>
+<li>$\log_2x+\log_2(x-2)=3$: $\;x(x-2)=8$, so $x=4$ or $x=-2$. Only $x=4$ checks.</li></ul>
+
+<div class="warn"><h4>Common traps</h4><ul>
+<li>$\ln(x+1)\ne\ln x+\ln1$. Combine logs only with the Product, Quotient, and Power Laws.</li>
+<li>$\dfrac{\ln2}{\ln5}\ne\ln\dfrac25$. Leave it as a quotient (or compute it).</li>
+<li>Skipping the check: the combined equation can have solutions the original can't.</li></ul></div>
+</script>
+<script type="text/plain" id="L-pc5-model">
+<h2>5.6 Exponential, Logarithmic, and Other Models</h2>
+<p>Given real data, which kind of function fits it best? This section is about recognizing the shape of the data and checking it with a quick computation, before letting a calculator's regression find the exact model.</p>
+
+<h3>1. The menu of models</h3>
+<table class="exmix"><tr><th>Model</th><th>Form</th><th>Shape and tell-tale sign</th></tr>
+<tr><td>Linear</td><td>$y=ax+b$</td><td>constant differences between successive $y$-values</td></tr>
+<tr><td>Quadratic</td><td>$y=ax^2+bx+c$</td><td>constant second differences; one turn</td></tr>
+<tr><td>Power</td><td>$y=ax^r$</td><td>passes through the origin; $(\ln x,\ln y)$ is linear</td></tr>
+<tr><td>Exponential</td><td>$y=ab^x$</td><td>constant <b>ratios</b> of successive $y$-values (equal $x$-steps)</td></tr>
+<tr><td>Logarithmic</td><td>$y=a+b\ln x$</td><td>rises ever more slowly; $(\ln x,y)$ is linear</td></tr>
+<tr><td>Logistic</td><td>$y=\dfrac{c}{1+ae^{-kx}}$</td><td>S-shaped: fast growth that levels off at $c$</td></tr></table>
+<div class="lfigs">
+<div class="lplot" data-f="0.6*pow(1.6,x)|0|7" data-x="0,7" data-y="0,16" data-w="150" data-cap="Exponential"></div>
+<div class="lplot" data-f="1+3*log(x)|0.2|7" data-x="0,7" data-y="-2,8" data-w="150" data-cap="Logarithmic"></div>
+<div class="lplot" data-f="10/(1+40*exp(-1.3*x))|0|7" data-x="0,7" data-y="0,12" data-w="150" data-cap="Logistic"></div>
+<div class="lplot" data-f="0.5*pow(x,1.8)|0|7" data-x="0,7" data-y="0,16" data-w="150" data-cap="Power"></div>
+</div>
+
+<h3>2. Checking for an exponential model: ratios</h3>
+<p>If $y=ab^x$, then going from $x$ to $x+1$ multiplies $y$ by $b$: $\dfrac{ab^{x+1}}{ab^x}=b$. So for equally spaced $x$-values, <b>constant ratios of successive $y$-values</b> mean exponential growth or decay.</p>
+<p>Example: $100,\ 115,\ 132.25,\ 152.09$ has ratios $1.15$ each time, so $y=100(1.15)^x$. Compare: $3,\ 6,\ 12,\ 24$ (ratio $2$) is exponential, but $3,\ 6,\ 9,\ 12$ (difference $3$) is linear.</p>
+<p><b>Two points determine an exponential model.</b> Through $(0,50)$ and $(3,400)$: $a=50$ and $50b^3=400$, so $b^3=8$, $b=2$: $y=50\cdot2^x$.</p>
+
+<h3>3. Power and logarithmic models: take logs</h3>
+<ul><li><b>Power:</b> if $y=ax^r$, then $\ln y=\ln a+r\ln x$, which is linear in $\ln x$. So if the points $(\ln x,\ln y)$ lie on a line with slope $r$, a power model fits, with exponent $r$.</li>
+<li><b>Logarithmic:</b> $y=a+b\ln x$ is linear in $\ln x$. A sign: multiplying $x$ by a constant adds a constant to $y$. For example $x=1,10,100,1000$ and $y=2,5,8,11$ fit $y=2+3\log x$.</li>
+<li><b>Exponential</b> again: $\ln y=\ln a+x\ln b$ is linear in $x$, so $(x,\ln y)$ is linear.</li></ul>
+
+<h3>4. Logistic models</h3>
+<p>$y=\dfrac c{1+ae^{-kx}}$ ($k\gt0$) starts near $\frac c{1+a}$, grows fastest in the middle, and levels off at the upper limit $c$. Populations with limited resources and the spread of news or a disease often look like this.</p>
+<p>When does $y=\dfrac{1000}{1+9e^{-0.5x}}$ reach half its limit? $\frac{1000}{1+9e^{-0.5x}}=500$ means $1+9e^{-0.5x}=2$, so $e^{-0.5x}=\frac19$ and $x=2\ln9\approx4.39$.</p>
+
+<h3>5. Using a model</h3>
+<p>Once you have a model, plug in: $y=4.2(1.08)^x$ predicts $4.2(1.08)^{10}\approx9.07$ at $x=10$; $y=5x^{2.7}$ gives $5\cdot2^{2.7}\approx32.5$ at $x=2$. Be careful far outside the data: an exponential model predicts unlimited growth, while a logistic model levels off. Choose the one that makes sense for the situation.</p>
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Checking differences when you should check ratios (or the other way around).</li>
+<li>Using ratios with unequally spaced $x$-values.</li>
+<li>Trusting a model far beyond the data it was fit to.</li></ul></div>
+</script>
 <script type="text/plain" id="L-a10-guide">
 <h2>How the AMC 10 Works</h2>
 <p>The AMC 10 is the first round of the U.S. math olympiad path for students in grade 10 and below. It is offered on two dates each November (the <b>A</b> and <b>B</b> exams, which have different problems); you may take one or both. This course covers everything that has appeared on the 42 AMC 10 exams from 2006 through 2025.</p>
@@ -16835,6 +17193,1101 @@ W: \frac14\left(x^2-4x+5\right)^2
 S: The roots $2\pm i$ give the factor $(x-2-i)(x-2+i)=(x-2)^2+1=x^2-4x+5$.
 For degree $4$ with no other roots, each must be a double root: $f(x)=a(x^2-4x+5)^2$.
 $f(-1)=a(1+4+5)^2=100a=50$, so $a=\frac12$: $f(x)=\frac12(x^2-4x+5)^2=\frac12x^4-4x^3+13x^2-20x+\frac{25}2$.
+@@ pc5-rad
+Q: What is $27^{-2/3}$?
+L: 1
+A: \frac19
+W: -9
+W: -\frac19
+W: 9
+W: -18
+S: A negative exponent means reciprocal: $27^{-2/3}=\dfrac1{27^{2/3}}$.
+Root first: $27^{1/3}=3$, then square: $27^{2/3}=9$. So $27^{-2/3}=\frac19$.
+---
+Q: What is $(-8)^{2/3}$?
+L: 1
+A: 4
+W: -4
+W: \frac14
+W: -\frac{16}3
+W: \text{not a real number}
+S: The denominator $3$ is odd, so a negative base is allowed: $(-8)^{2/3}=\left(\sqrt[3]{-8}\right)^2=(-2)^2=4$.
+(Some calculators give an error here; entering $((-8)^{2})^{1/3}$ works.)
+---
+Q: Simplify $(8r^{3/4}s^{-3})^{2/3}$ with no negative exponents.
+L: 2
+A: \frac{4r^{1/2}}{s^2}
+W: \frac{16r^{1/2}}{s^2}
+W: 4r^{1/2}s^{2}
+W: \frac{4r^{9/8}}{s^{2}}
+W: \frac{16r^{9/8}}{s^{9/2}}
+S: Product to a power: $8^{2/3}\,(r^{3/4})^{2/3}\,(s^{-3})^{2/3}$.
+Power of a power: $8^{2/3}=(\sqrt[3]8)^2=4$, $r^{\frac34\cdot\frac23}=r^{1/2}$, $s^{-3\cdot\frac23}=s^{-2}$.
+So the result is $4r^{1/2}s^{-2}=\dfrac{4r^{1/2}}{s^2}$.
+---
+Q: Simplify $x^{1/2}\left(x^{3/4}-x^{3/2}\right)$.
+L: 1
+A: x^{5/4}-x^{2}
+W: x^{3/8}-x^{3/4}
+W: x^{5/4}-x^{3/2}
+W: x^{1/4}-x
+W: x^{5/2}-x^{2}
+S: Distribute, then add exponents (law 1): $x^{1/2}x^{3/4}-x^{1/2}x^{3/2}=x^{\frac12+\frac34}-x^{\frac12+\frac32}$.
+$\frac12+\frac34=\frac54$ and $\frac12+\frac32=2$, so the result is $x^{5/4}-x^2$.
+---
+Q: Simplify $\sqrt{12}-\sqrt{75}$.
+L: 1
+A: -3\sqrt3
+W: -\sqrt{63}
+W: 3\sqrt3
+W: -7\sqrt3
+W: \sqrt{-63}
+S: Pull out perfect squares: $\sqrt{12}=\sqrt{4\cdot3}=2\sqrt3$ and $\sqrt{75}=\sqrt{25\cdot3}=5\sqrt3$.
+Like radicals combine: $2\sqrt3-5\sqrt3=-3\sqrt3$.
+(Radicals don't subtract inside: $\sqrt{12}-\sqrt{75}\ne\sqrt{12-75}$.)
+---
+Q: Simplify $\sqrt[3]{40k^4}$.
+L: 2
+A: 2k\sqrt[3]{5k}
+W: 2k^{2}\sqrt[3]{5}
+W: 4k\sqrt[3]{10k}
+W: 2\sqrt[3]{5k^{4}}
+W: 8k\sqrt[3]{5k}
+S: Look for a perfect cube: $40k^4=8k^3\cdot5k$, and $8k^3=(2k)^3$.
+$\sqrt[3]{40k^4}=\sqrt[3]{8k^3}\cdot\sqrt[3]{5k}=2k\sqrt[3]{5k}$.
+---
+Q: Rationalize the denominator: $\dfrac{2}{3+\sqrt6}$.
+L: 2
+A: \frac{6-2\sqrt6}{3}
+W: \frac{6-2\sqrt6}{15}
+W: \frac{2\sqrt6}{9}
+W: \frac{6+2\sqrt6}{3}
+W: 6-2\sqrt6
+S: Multiply by the conjugate over itself: $\dfrac2{3+\sqrt6}\cdot\dfrac{3-\sqrt6}{3-\sqrt6}$.
+The denominator becomes $3^2-(\sqrt6)^2=9-6=3$ (difference of squares), so the result is $\dfrac{2(3-\sqrt6)}3=\dfrac{6-2\sqrt6}3$.
+---
+Q: Rationalize the numerator: $\dfrac{\sqrt{x+h}-\sqrt x}{h}$ (with $h\ne0$).
+L: 2
+A: \frac{1}{\sqrt{x+h}+\sqrt{x}}
+W: \frac{1}{\sqrt{x+h}-\sqrt{x}}
+W: \frac{h}{\sqrt{x+h}+\sqrt{x}}
+W: \frac{1}{2\sqrt x}
+W: \frac{\sqrt{h}}{h}
+S: Multiply top and bottom by the conjugate $\sqrt{x+h}+\sqrt x$.
+The numerator becomes $(\sqrt{x+h})^2-(\sqrt x)^2=(x+h)-x=h$.
+$\dfrac{h}{h(\sqrt{x+h}+\sqrt x)}=\dfrac1{\sqrt{x+h}+\sqrt x}$.
+(It's close to $\frac1{2\sqrt x}$ when $h$ is near $0$, but not equal to it.)
+---
+Q: Factor $x^{2/3}+x^{1/3}-6$.
+L: 2
+A: (x^{1/3}+3)(x^{1/3}-2)
+W: (x^{1/3}-3)(x^{1/3}+2)
+W: (x^{2/3}+3)(x^{1/3}-2)
+W: (x^{1/3}+6)(x^{1/3}-1)
+W: (x+3)(x-2)
+S: Let $u=x^{1/3}$; then $x^{2/3}=u^2$, and the expression is $u^2+u-6=(u+3)(u-2)$.
+Substitute back: $(x^{1/3}+3)(x^{1/3}-2)$.
+---
+Q: What is $(-1)^{2/6}$, using the definition of rational exponents?
+L: 2
+A: -1
+W: 1
+W: \frac13
+W: -\frac13
+W: \text{not a real number}
+S: The definition needs the fraction in lowest terms: $\frac26=\frac13$.
+$(-1)^{1/3}=\sqrt[3]{-1}=-1$.
+(If you don't reduce, $\sqrt[6]{(-1)^2}=\sqrt[6]1=1$, which is wrong.)
+---
+Q: What is $256^{3/4}$?
+L: 1
+A: 64
+W: 192
+W: 16
+W: 48
+W: 4096
+S: Root first: $\sqrt[4]{256}=4$ (since $4^4=256$). Then cube: $4^3=64$.
+---
+Q: Rationalize the denominator: $\dfrac{1}{\sqrt[3]{2}+1}$.
+L: 3
+A: \frac{\sqrt[3]{4}-\sqrt[3]{2}+1}{3}
+W: \frac{\sqrt[3]{2}-1}{1}
+W: \frac{\sqrt[3]{4}+\sqrt[3]{2}+1}{3}
+W: \frac{\sqrt[3]{4}-\sqrt[3]{2}+1}{2}
+W: \frac{\sqrt[3]{2}-1}{3}
+S: Use $a^3+b^3=(a+b)(a^2-ab+b^2)$ with $a=\sqrt[3]2$, $b=1$: multiply top and bottom by $a^2-ab+b^2=\sqrt[3]4-\sqrt[3]2+1$.
+The denominator becomes $a^3+b^3=2+1=3$.
+Result: $\dfrac{\sqrt[3]4-\sqrt[3]2+1}{3}$.
+@@ pc5-radeq
+Q: Solve $5+\sqrt{3x-11}=x$.
+L: 1
+A: 9
+W: 4
+W: 4\text{ and }9
+W: 13
+W: \text{no solution}
+S: Isolate the radical: $\sqrt{3x-11}=x-5$.
+Square both sides: $3x-11=x^2-10x+25$, so $x^2-13x+36=0$, i.e. $(x-4)(x-9)=0$.
+Check in the original equation. $x=9$: $5+\sqrt{16}=9$ ✓. $x=4$: $5+\sqrt{1}=6\ne4$ ✗ (extraneous).
+The only solution is $x=9$.
+---
+Q: Solve $\sqrt{2x-3}-\sqrt{x+7}=2$.
+L: 3
+A: 42
+W: 2
+W: 2\text{ and }42
+W: 14
+W: 9
+S: Isolate one radical: $\sqrt{2x-3}=\sqrt{x+7}+2$.
+Square: $2x-3=(x+7)+4\sqrt{x+7}+4$, so $x-14=4\sqrt{x+7}$.
+Square again: $x^2-28x+196=16x+112$, so $x^2-44x+84=0=(x-2)(x-42)$.
+Check: $x=2$ gives $\sqrt1-\sqrt9=-2$ ✗; $x=42$ gives $\sqrt{81}-\sqrt{49}=2$ ✓. Answer: $42$.
+---
+Q: Solve $\sqrt{x+5}=x-1$.
+L: 1
+A: 4
+W: -1
+W: 4\text{ and }-1
+W: 5
+W: \text{no solution}
+S: Square: $x+5=x^2-2x+1$, so $x^2-3x-4=0=(x-4)(x+1)$.
+Check $x=4$: $\sqrt9=3=4-1$ ✓. Check $x=-1$: $\sqrt4=2$, but $-1-1=-2$ ✗.
+Answer: $x=4$.
+---
+Q: Solve $\sqrt[3]{x^2-1}=2$.
+L: 1
+A: \pm3
+W: 3
+W: \pm\sqrt5
+W: 9
+W: \pm\sqrt3
+S: Cube both sides: $x^2-1=8$, so $x^2=9$ and $x=\pm3$.
+Cubing doesn't create extraneous solutions, and both check: $\sqrt[3]{9-1}=2$ ✓.
+---
+Q: Solve $\sqrt{x+7}-\sqrt x=1$.
+L: 2
+A: 9
+W: 3
+W: 6
+W: 16
+W: \text{no solution}
+S: Isolate one radical: $\sqrt{x+7}=1+\sqrt x$.
+Square: $x+7=1+2\sqrt x+x$, so $2\sqrt x=6$ and $\sqrt x=3$.
+So $x=9$. Check: $\sqrt{16}-\sqrt9=4-3=1$ ✓.
+---
+Q: Solve $x^{2/3}=9$.
+L: 2
+A: \pm27
+W: 27
+W: \pm3
+W: 6
+W: \pm\sqrt{27}
+S: $x^{2/3}=\left(x^{1/3}\right)^2=9$, so $x^{1/3}=3$ or $x^{1/3}=-3$.
+Cube: $x=27$ or $x=-27$. Both check, because $(-27)^{2/3}=(\sqrt[3]{-27})^2=9$.
+---
+Q: Solve $x-3\sqrt x-4=0$.
+L: 2
+A: 16
+W: 16\text{ and }1
+W: 4
+W: 16\text{ and }-1
+W: 1
+S: Let $u=\sqrt x$, so $x=u^2$: $u^2-3u-4=0=(u-4)(u+1)$.
+$u=4$ gives $x=16$. $u=-1$ is impossible, since $\sqrt x\ge0$.
+Answer: $x=16$ (check: $16-12-4=0$ ✓).
+---
+Q: Solve $\sqrt{x-2}=x-4$.
+L: 1
+A: 6
+W: 3
+W: 3\text{ and }6
+W: 2
+W: \text{no solution}
+S: Square: $x-2=x^2-8x+16$, so $x^2-9x+18=0=(x-3)(x-6)$.
+$x=6$: $\sqrt4=2=6-4$ ✓. $x=3$: $\sqrt1=1$, but $3-4=-1$ ✗.
+Answer: $x=6$.
+---
+Q: Solve the pendulum formula $T=2\pi\sqrt{\dfrac{L}{g}}$ for $L$.
+L: 2
+A: L=\frac{gT^2}{4\pi^2}
+W: L=\frac{gT^2}{2\pi}
+W: L=\frac{T^2}{4\pi^2g}
+W: L=\frac{g\sqrt T}{2\pi}
+W: L=\frac{4\pi^2T^2}{g}
+S: Divide by $2\pi$: $\dfrac{T}{2\pi}=\sqrt{\dfrac Lg}$.
+Square: $\dfrac{T^2}{4\pi^2}=\dfrac{L}{g}$.
+Multiply by $g$: $L=\dfrac{gT^2}{4\pi^2}$.
+---
+Q: A boat is $6$ miles from the nearest point $P$ on a straight shore. A dock is $x$ miles from $P$ along the shore, and the straight-line distance from the boat to the dock is $2$ miles more than $x$. What is $x$?
+L: 2
+A: 8
+W: 6
+W: 10
+W: 4
+W: 9
+S: The boat, $P$, and the dock form a right triangle with legs $6$ and $x$, so the boat-to-dock distance is $\sqrt{x^2+36}$.
+$\sqrt{x^2+36}=x+2$. Square: $x^2+36=x^2+4x+4$, so $4x=32$ and $x=8$.
+Check: $\sqrt{64+36}=10=8+2$ ✓.
+---
+Q: Which value is an <b>extraneous</b> solution that appears when solving $\sqrt{x+2}=x$ by squaring?
+L: 1
+A: -1
+W: 2
+W: -2
+W: 1
+W: 0
+S: Square: $x+2=x^2$, so $x^2-x-2=0=(x-2)(x+1)$.
+$x=2$: $\sqrt4=2$ ✓. $x=-1$: $\sqrt1=1\ne-1$ ✗.
+So $-1$ is extraneous: it solves the squared equation but not the original.
+---
+Q: How many real solutions does $\sqrt{x+4}+2=0$ have?
+L: 1
+A: 0
+W: 1
+W: 2
+W: \text{infinitely many}
+W: 3
+S: Isolate: $\sqrt{x+4}=-2$. A principal square root is never negative, so there is no solution.
+(Squaring would give $x+4=4$, $x=0$, but checking: $\sqrt4+2=4\ne0$. Extraneous.)
+@@ pc5-exp
+Q: Which statement describes the graph of $g(x)=3^{-x}$?
+L: 1
+A: \text{It falls from left to right, passes through }(0,1)\text{, and has asymptote }y=0
+W: \text{It rises from left to right, passes through }(0,1)\text{, and has asymptote }y=0
+W: \text{It falls from left to right and passes through }(0,-1)
+W: \text{It is the graph of }3^x\text{ reflected across the }x\text{-axis}
+W: \text{It has a vertical asymptote at }x=0
+S: $3^{-x}=(3^{-1})^x=\left(\frac13\right)^x$, an exponential function with base between $0$ and $1$, so it falls from left to right.
+Every $a^x$ passes through $(0,1)$ and has the $x$-axis $y=0$ as a horizontal asymptote (here on the right side).
+It is $3^x$ reflected across the $y$-axis (not the $x$-axis: the values stay positive).
+---
+Q: You deposit $\$5000$ in an account paying $3\%$ interest compounded annually. How much is in the account after $9$ years?
+L: 1
+A: \$6523.87
+W: \$6350.00
+W: \$6333.85
+W: \$5150.00
+W: \$6719.58
+S: Each year the balance is multiplied by $1+0.03=1.03$, so after $9$ years: $5000(1.03)^9\approx\$6523.87$.
+($\$6350$ is simple interest, $5000(1+0.03\cdot9)$; $\$6333.85$ uses only $8$ years.)
+---
+Q: A culture starts with $1000$ bacteria and has $7600$ after $5$ hours. Assuming exponential growth, about how many bacteria are there after $24$ hours?
+L: 2
+A: \approx16{,}900{,}000
+W: \approx36{,}480
+W: \approx182{,}400
+W: \approx7{,}600{,}000
+W: \approx1{,}540{,}000
+S: Model $f(x)=1000a^x$. From $f(5)=7600$: $a^5=7.6$, so $a=7.6^{1/5}\approx1.50$.
+$f(24)=1000\,a^{24}=1000\cdot7.6^{24/5}\approx16{,}900{,}721$.
+($36{,}480$ assumes linear growth, which is wrong for an exponential model.)
+---
+Q: Plutonium-239 has a half-life of $24{,}360$ years. About what fraction of a sample remains after $10{,}000$ years?
+L: 2
+A: \approx0.752
+W: \approx0.205
+W: \approx0.590
+W: \approx0.410
+W: \approx0.500
+S: The amount left is $M(x)=(0.5)^{x/24360}$ of the original.
+$M(10000)=(0.5)^{10000/24360}=(0.5)^{0.4105}\approx0.752$, so about $75\%$ remains.
+(Less than one half-life has passed, so more than half must remain.)
+---
+Q: Each layer of a filter removes $30\%$ of the impurities in the water that passes through it. What is the fewest number of layers needed to remove at least $95\%$ of the impurities?
+L: 2
+A: 9
+W: 4
+W: 8
+W: 10
+W: 3
+S: After each layer $70\%$ of the impurities remain, so after $n$ layers $(0.7)^n$ remains.
+We need $(0.7)^n\le0.05$. $(0.7)^8\approx0.0576$ (not enough) and $(0.7)^9\approx0.0404$ ✓.
+So $9$ layers. (Removing $30\%$ four times is not $120\%$: each layer removes $30\%$ of what's left.)
+---
+Q: What is the range of $f(x)=2^x+3$?
+L: 1
+A: y\gt3
+W: \text{all real numbers}
+W: y\gt0
+W: y\ge3
+W: y\gt2
+S: $2^x$ takes every positive value and never reaches $0$, so $2^x\gt0$.
+Adding $3$ shifts everything up: $f(x)\gt3$. The horizontal asymptote is $y=3$, and $3$ itself is never reached.
+---
+Q: The graph of $g(x)=2^{x-3}+1$ is obtained from the graph of $y=2^x$ by which transformations?
+L: 1
+A: \text{right }3\text{, up }1
+W: \text{left }3\text{, up }1
+W: \text{right }3\text{, down }1
+W: \text{left }3\text{, down }1
+W: \text{up }3\text{, right }1
+S: Replacing $x$ by $x-3$ shifts the graph <b>right</b> $3$; adding $1$ shifts it <b>up</b> $1$.
+So the asymptote moves from $y=0$ to $y=1$, and the point $(0,1)$ moves to $(3,2)$.
+---
+Q: The population of a country (in millions) is modeled by $P(t)=227e^{0.0093t}$, where $t=0$ is 1980. What does the model give for 2000?
+L: 1
+A: \approx273.4\text{ million}
+W: \approx269.2\text{ million}
+W: \approx231.2\text{ million}
+W: \approx249.5\text{ million}
+W: \approx227.2\text{ million}
+S: 2000 is $t=20$. $P(20)=227e^{0.0093\cdot20}=227e^{0.186}\approx227(1.2044)\approx273.4$ million.
+---
+Q: A lake's fish population after $t$ months is $p(t)=\dfrac{20000}{1+24e^{-t/4}}$. What is the upper limit on the population, and what is the starting population?
+L: 2
+A: \text{limit }20{,}000\text{; start }800
+W: \text{limit }20{,}000\text{; start }20{,}000
+W: \text{limit }24{,}000\text{; start }800
+W: \text{limit }800\text{; start }20{,}000
+W: \text{no limit; start }800
+S: As $t$ grows, $e^{-t/4}$ gets closer and closer to $0$, so $p(t)$ approaches $\frac{20000}{1+0}=20{,}000$: that's the upper limit.
+At $t=0$: $e^0=1$, so $p(0)=\frac{20000}{1+24}=800$.
+---
+Q: What is the average rate of change of $f(x)=2^x$ from $x=1$ to $x=3$?
+L: 1
+A: 3
+W: 6
+W: 2
+W: 4
+W: 8
+S: Average rate of change $=\dfrac{f(3)-f(1)}{3-1}=\dfrac{8-2}{2}=3$.
+---
+Q: Which function is even?
+L: 2
+A: f(x)=\frac{e^x+e^{-x}}{2}
+W: f(x)=\frac{e^x-e^{-x}}{2}
+W: f(x)=e^x
+W: f(x)=2^{x+1}
+W: f(x)=e^{-x}
+S: A function is even when $f(-x)=f(x)$.
+For $\frac{e^x+e^{-x}}2$: replacing $x$ by $-x$ gives $\frac{e^{-x}+e^{x}}2$, the same thing ✓.
+$\frac{e^x-e^{-x}}2$ changes sign (it's odd), and $e^x$, $2^{x+1}$, $e^{-x}$ are neither.
+---
+Q: The world population was about $4.5$ billion in 1980 and grows about $1.5\%$ per year. What does this model predict for 2010?
+L: 1
+A: \approx7.0\text{ billion}
+W: \approx6.5\text{ billion}
+W: \approx5.2\text{ billion}
+W: \approx9.0\text{ billion}
+W: \approx4.6\text{ billion}
+S: Growth factor $1.015$ per year, for $30$ years: $4.5(1.015)^{30}\approx4.5(1.563)\approx7.03$ billion.
+($6.5$ billion would be linear growth: $4.5(1+0.015\cdot30)=6.525$.)
+@@ pc5-int
+Q: $\$3500$ is invested at $6.4\%$ interest, compounded quarterly. How much is it worth after $3.5$ years?
+L: 1
+A: \$4370.99
+W: \$4348.74
+W: \$4376.14
+W: \$4284.00
+W: \$34{,}261.32
+S: Quarterly: the rate per period is $\frac{0.064}4=0.016$, and $3.5$ years is $3.5\cdot4=14$ periods.
+$A=3500(1.016)^{14}\approx\$4370.99$.
+(Annual compounding gives $\$4348.74$ and monthly gives $\$4376.14$: more frequent compounding earns a little more.)
+---
+Q: $\$3500$ is invested at $6.4\%$ interest, compounded monthly. How much is it worth after $3.5$ years?
+L: 1
+A: \$4376.14
+W: \$4370.99
+W: \$4348.74
+W: \$3576.03
+W: \$4440.62
+S: Monthly: $r=\frac{0.064}{12}$ per period and $t=3.5\cdot12=42$ periods.
+$A=3500\left(1+\frac{0.064}{12}\right)^{42}\approx\$4376.14$.
+---
+Q: A loan shark charges $18\%$ interest per week on a $\$50$ loan. How much is owed after $52$ weeks?
+L: 1
+A: \$273{,}422.58
+W: \$518.00
+W: \$9.36
+W: \$59.00
+W: \$231{,}714.05
+S: The rate is per week, so $r=0.18$ and $t=52$ periods: $A=50(1.18)^{52}\approx\$273{,}422.58$.
+($\$518$ is simple interest, $50(1+0.18\cdot52)$. Compounding weekly at $18\%$ is ruinous.)
+---
+Q: $\$5000$ is invested at $6.5\%$ annual interest compounded monthly. About how long until it doubles?
+L: 2
+A: \approx10.7\text{ years}
+W: \approx15.4\text{ years}
+W: \approx6.5\text{ years}
+W: \approx30.8\text{ years}
+W: \approx11.1\text{ years}
+S: We need $5000\left(1+\frac{0.065}{12}\right)^t=10000$, i.e. $\left(1+\frac{0.065}{12}\right)^t=2$.
+Graphing (or using logarithms, Section 5.5): $t\approx128.3$ months, which is about $10.7$ years.
+($15.4$ years would be simple interest, $\frac{1}{0.065}$.)
+---
+Q: What annual interest rate, compounded annually, makes $\$16{,}000$ grow to $\$50{,}000$ in $18$ years?
+L: 2
+A: \approx6.53\%
+W: \approx11.94\%
+W: \approx17.36\%
+W: \approx3.13\%
+W: \approx5.00\%
+S: Solve $16000(1+r)^{18}=50000$: $(1+r)^{18}=\frac{50000}{16000}=3.125$.
+Take the $18$th root: $1+r=3.125^{1/18}\approx1.0653$, so $r\approx6.53\%$.
+($11.94\%$ is the simple-interest rate $\frac{34000}{16000\cdot18}$.)
+---
+Q: $\$3800$ is invested at $3.8\%$ interest, compounded continuously. How much is in the account after $7.5$ years?
+L: 1
+A: \$5053.10
+W: \$4883.00
+W: \$5016.70
+W: \$3946.42
+W: \$4945.88
+S: Continuous compounding: $A=Pe^{rt}=3800e^{0.038\cdot7.5}=3800e^{0.285}\approx\$5053.10$.
+---
+Q: With $\$3800$ invested at $3.8\%$ compounded continuously, about how long until the balance reaches $\$5000$?
+L: 2
+A: \approx7.2\text{ years}
+W: \approx8.3\text{ years}
+W: \approx3.6\text{ years}
+W: \approx6.1\text{ years}
+W: \approx26.3\text{ years}
+S: Solve $3800e^{0.038t}=5000$, i.e. $e^{0.038t}=\frac{5000}{3800}\approx1.3158$.
+Graphically (or with logarithms, $t=\frac{\ln1.3158}{0.038}$): $t\approx7.22$ years.
+---
+Q: How much must be invested now at $6\%$ interest compounded annually to have $\$10{,}000$ in $5$ years? (This is the present value.)
+L: 1
+A: \$7472.58
+W: \$7000.00
+W: \$13{,}382.26
+W: \$9433.96
+W: \$7692.31
+S: Present value: $P=\dfrac{A}{(1+r)^t}=\dfrac{10000}{1.06^5}\approx\dfrac{10000}{1.33823}\approx\$7472.58$.
+Check: $7472.58(1.06)^5\approx10000$ ✓.
+---
+Q: To four decimal places, what is $\left(1+\frac{1}{1000}\right)^{1000}$, and what number does $\left(1+\frac1n\right)^n$ approach as $n$ grows?
+L: 1
+A: 2.7169\text{; it approaches }e\approx2.71828
+W: 2.7169\text{; it grows without bound}
+W: 1.0010\text{; it approaches }1
+W: 2.0000\text{; it approaches }2
+W: 3.0000\text{; it approaches }\pi
+S: $\left(1.001\right)^{1000}\approx2.7169$.
+As $n$ grows, $\left(1+\frac1n\right)^n$ increases but levels off at $e\approx2.718281828$. (It never grows without bound: $\$1$ at $100\%$ can't exceed about $\$2.72$ in a year.)
+---
+Q: Which earns more in one year: $6\%$ compounded monthly, or $6.1\%$ compounded annually?
+L: 2
+A: 6\%\text{ monthly (about }6.168\%\text{ per year)}
+W: 6.1\%\text{ annually}
+W: \text{They are exactly equal}
+W: 6\%\text{ monthly (about }72\%\text{ per year)}
+W: \text{It depends on the amount invested}
+S: Compare the growth factors for one year.
+Monthly: $\left(1+\frac{0.06}{12}\right)^{12}=1.005^{12}\approx1.06168$, an effective rate of about $6.168\%$.
+Annually: $1.061$. Since $1.06168\gt1.061$, $6\%$ compounded monthly is better. (The amount invested doesn't change which is larger.)
+---
+Q: $\$1000$ is invested at $5\%$ compounded continuously. How much is there after $10$ years?
+L: 1
+A: \$1648.72
+W: \$1628.89
+W: \$1500.00
+W: \$1050.00
+W: \$2718.28
+S: $A=Pe^{rt}=1000e^{0.05\cdot10}=1000e^{0.5}\approx\$1648.72$.
+(Annual compounding would give $1000(1.05)^{10}\approx\$1628.89$, slightly less.)
+---
+Q: What is the present value of $\$8000$ due in $5$ years, if money earns $5\%$ compounded quarterly?
+L: 2
+A: \$6240.07
+W: \$6268.21
+W: \$7619.05
+W: \$10{,}256.30
+W: \$6400.00
+S: Quarterly: $r=\frac{0.05}4=0.0125$ and $t=5\cdot4=20$ periods.
+$P=\dfrac{8000}{(1.0125)^{20}}\approx\$6240.07$.
+($\$6268.21$ uses annual compounding, $\frac{8000}{1.05^5}$.)
+@@ pc5-log
+Q: What is $\log0.001$?
+L: 1
+A: -3
+W: 3
+W: -2
+W: 0.001
+W: -\frac13
+S: $\log0.001$ is the exponent $u$ with $10^u=0.001$.
+$0.001=\frac1{1000}=10^{-3}$, so $\log0.001=-3$.
+---
+Q: What is $\log\sqrt{10}$?
+L: 1
+A: \frac12
+W: 5
+W: \sqrt{10}
+W: 2
+W: \frac{1}{10}
+S: $\sqrt{10}=10^{1/2}$, and $\log10^u=u$. So $\log\sqrt{10}=\frac12$.
+---
+Q: Which exponential statement says the same thing as $\log29\approx1.4624$?
+L: 1
+A: 10^{1.4624}\approx29
+W: 29^{1.4624}\approx10
+W: 1.4624^{10}\approx29
+W: e^{1.4624}\approx29
+W: 10^{29}\approx1.4624
+S: $\log v=u$ means $10^u=v$. Here $v=29$ and $u\approx1.4624$, so $10^{1.4624}\approx29$.
+($e^{1.4624}$ would match $\ln29$, a different logarithm.)
+---
+Q: Which logarithmic statement says the same thing as $e^{3.4}\approx29.96$?
+L: 1
+A: \ln29.96\approx3.4
+W: \ln3.4\approx29.96
+W: \log29.96\approx3.4
+W: \ln e\approx29.96
+W: \log3.4\approx29.96
+S: $e^u=v$ means $\ln v=u$. Here $u=3.4$ and $v\approx29.96$: $\ln29.96\approx3.4$.
+---
+Q: Simplify $\ln e^{x^2+1}$.
+L: 1
+A: x^2+1
+W: e^{x^2+1}
+W: (x^2+1)e
+W: 1
+W: \ln(x^2+1)
+S: $\ln$ and $e^{(\ )}$ undo each other: $\ln e^u=u$ for every $u$.
+With $u=x^2+1$: $\ln e^{x^2+1}=x^2+1$.
+---
+Q: What is $10^{\log7+2}$?
+L: 2
+A: 700
+W: 9
+W: 72
+W: 49
+W: 14
+S: Split the exponent: $10^{\log7+2}=10^{\log7}\cdot10^2$.
+$10^{\log7}=7$ (inverse property), so the result is $7\cdot100=700$.
+---
+Q: What is the domain of $f(x)=\ln(x+2)$?
+L: 1
+A: x\gt-2
+W: x\gt0
+W: x\ge-2
+W: x\gt2
+W: \text{all real numbers}
+S: A logarithm needs a positive input: $x+2\gt0$, so $x\gt-2$.
+($x=-2$ would give $\ln0$, which doesn't exist.)
+---
+Q: What is the domain of $g(x)=\log(x^2-4)$?
+L: 2
+A: x\lt-2\text{ or }x\gt2
+W: x\gt2
+W: -2\lt x\lt2
+W: x\gt4
+W: \text{all real numbers}
+S: Need $x^2-4\gt0$, i.e. $x^2\gt4$.
+That happens when $x\gt2$ or $x\lt-2$ (for example, $x=-3$ gives $9-4=5\gt0$).
+---
+Q: What is the vertical asymptote of $y=\ln(x-3)+1$?
+L: 1
+A: x=3
+W: x=-3
+W: x=0
+W: y=1
+W: x=4
+S: $\ln x$ has vertical asymptote $x=0$. Replacing $x$ by $x-3$ shifts the graph right $3$, so the asymptote moves to $x=3$.
+The "$+1$" moves the graph up, which doesn't affect a vertical line.
+---
+Q: Solve $\ln x=2$.
+L: 1
+A: e^2
+W: 2e
+W: 100
+W: \frac2e
+W: \ln2
+S: $\ln x=2$ means $e^2=x$ (definition of natural log). So $x=e^2\approx7.389$.
+---
+Q: For which $x$ is $\log x$ negative?
+L: 1
+A: 0\lt x\lt1
+W: x\lt0
+W: x\lt1
+W: x\gt1
+W: x\lt10
+S: $\log x=u$ means $10^u=x$. A negative exponent gives $10^u$ between $0$ and $1$ (like $10^{-2}=0.01$).
+So $\log x\lt0$ exactly when $0\lt x\lt1$. (For $x\le0$, $\log x$ isn't defined at all.)
+---
+Q: Solve $10^x=29$ for $x$.
+L: 1
+A: \log29
+W: \ln29
+W: \frac{29}{10}
+W: 29^{1/10}
+W: 10^{29}
+S: $10^x=29$ means $x$ is the exponent on $10$ that gives $29$: by definition $x=\log29\approx1.4624$.
+@@ pc5-laws
+Q: Write $\ln x+3\ln y-\ln z$ as a single logarithm.
+L: 1
+A: \ln\frac{xy^3}{z}
+W: \ln\frac{3xy}{z}
+W: \ln(x+y^3-z)
+W: \ln\frac{x}{3yz}
+W: 3\ln\frac{xy}{z}
+S: Power Law first: $3\ln y=\ln y^3$.
+Then the Product and Quotient Laws: $\ln x+\ln y^3-\ln z=\ln(xy^3)-\ln z=\ln\dfrac{xy^3}{z}$.
+---
+Q: What is $\log5+\log20$?
+L: 1
+A: 2
+W: \log25
+W: 100
+W: 1
+W: \log5\cdot\log20
+S: Product Law: $\log5+\log20=\log(5\cdot20)=\log100=2$.
+(Adding logs multiplies the inputs; it doesn't add them, so $\log25$ is wrong.)
+---
+Q: Expand $\ln\dfrac{x^2\sqrt y}{z}$.
+L: 2
+A: 2\ln x+\tfrac12\ln y-\ln z
+W: 2\ln x+\tfrac12\ln y+\ln z
+W: \ln2x+\ln\tfrac y2-\ln z
+W: 2\ln x\cdot\tfrac12\ln y-\ln z
+W: (\ln x)^2+\sqrt{\ln y}-\ln z
+S: Quotient Law: $\ln(x^2\sqrt y)-\ln z$. Product Law: $\ln x^2+\ln\sqrt y-\ln z$.
+Power Law (with $\sqrt y=y^{1/2}$): $2\ln x+\tfrac12\ln y-\ln z$.
+---
+Q: Let $u=\ln x$ and $v=\ln y$. Write $\ln\left(x^3y^2\right)$ in terms of $u$ and $v$.
+L: 1
+A: 3u+2v
+W: 6uv
+W: u^3+v^2
+W: 3u\cdot2v
+W: 5(u+v)
+S: Product Law, then Power Law: $\ln x^3+\ln y^2=3\ln x+2\ln y=3u+2v$.
+---
+Q: Let $u=\ln x$ and $v=\ln y$. Write $\ln\dfrac{\sqrt x}{y}$ in terms of $u$ and $v$.
+L: 1
+A: \tfrac12u-v
+W: \frac{\sqrt u}{v}
+W: \tfrac12(u-v)
+W: \frac{u}{2v}
+W: 2u-v
+S: Quotient Law: $\ln\sqrt x-\ln y$. Power Law with $\sqrt x=x^{1/2}$: $\tfrac12\ln x-\ln y=\tfrac12u-v$.
+---
+Q: Given $\ln2\approx0.693$ and $\ln3\approx1.099$, what is $\ln12$?
+L: 2
+A: \approx2.485
+W: \approx1.792
+W: \approx3.180
+W: \approx0.761
+W: \approx2.079
+S: $12=2^2\cdot3$, so $\ln12=2\ln2+\ln3\approx2(0.693)+1.099=2.485$.
+($1.792$ is $\ln6=\ln2+\ln3$; $2.079$ is $\ln8=3\ln2$.)
+---
+Q: Which statement is <b>false</b> for all positive $v$ and $w$?
+L: 1
+A: \ln(v+w)=\ln v+\ln w
+W: \ln(vw)=\ln v+\ln w
+W: \ln\frac vw=\ln v-\ln w
+W: \ln v^3=3\ln v
+W: \ln\frac1v=-\ln v
+S: There is no law for the log of a sum. Check with $v=w=1$: $\ln2\approx0.693$, but $\ln1+\ln1=0$.
+The others are the Product, Quotient, and Power Laws ($\ln\frac1v=\ln v^{-1}=-\ln v$).
+---
+Q: The 1906 San Francisco earthquake measured $8.3$ on the Richter scale. How many times as intense was it as an earthquake of magnitude $7.1$?
+L: 2
+A: \approx15.8
+W: 1.2
+W: 12
+W: \approx1.17
+W: 120
+S: A difference of $d$ in magnitude means a factor of $10^d$ in intensity.
+$8.3-7.1=1.2$, so the ratio is $10^{1.2}\approx15.8$.
+(Each whole unit on the Richter scale is a factor of $10$, so the difference isn't just $1.2$ times.)
+---
+Q: An earthquake is $1000$ times as intense as one that measures $5.0$ on the Richter scale. What is its magnitude?
+L: 1
+A: 8.0
+W: 5{,}000
+W: 15.0
+W: 6.0
+W: 7.0
+S: $R=\log\frac{i}{i_0}$. Multiplying $i$ by $1000=10^3$ adds $\log1000=3$ to the magnitude (Product Law).
+$5.0+3=8.0$.
+---
+Q: Simplify $\log8-\log2$.
+L: 1
+A: \log4
+W: \log6
+W: 4
+W: \frac{\log8}{\log2}
+W: \log16
+S: Quotient Law: $\log8-\log2=\log\frac82=\log4\approx0.602$.
+($\frac{\log8}{\log2}=3$ is a different expression; division of logs is not subtraction.)
+---
+Q: Write $\frac13\log(x^2+1)-\log x$ as a single logarithm.
+L: 2
+A: \log\frac{\sqrt[3]{x^2+1}}{x}
+W: \log\frac{x^2+1}{3x}
+W: \log\left(\sqrt[3]{x^2+1}-x\right)
+W: \frac13\log\frac{x^2+1}{x}
+W: \log\frac{\sqrt[3]{x^2}+1}{x}
+S: Power Law: $\frac13\log(x^2+1)=\log(x^2+1)^{1/3}=\log\sqrt[3]{x^2+1}$.
+Quotient Law: $\log\sqrt[3]{x^2+1}-\log x=\log\dfrac{\sqrt[3]{x^2+1}}{x}$.
+($\sqrt[3]{x^2+1}\ne\sqrt[3]{x^2}+1$.)
+---
+Q: Which expression equals $2\ln3-\ln9$?
+L: 1
+A: 0
+W: \ln\frac23
+W: \ln3
+W: -\ln3
+W: 1
+S: Power Law: $2\ln3=\ln3^2=\ln9$. So $2\ln3-\ln9=\ln9-\ln9=0$.
+@@ pc5-base
+Q: What is $\log_2 32$?
+L: 1
+A: 5
+W: 16
+W: 4
+W: \frac{1}{5}
+W: 64
+S: $\log_2 32$ is the exponent on $2$ that gives $32$. Since $2^5=32$, it's $5$.
+---
+Q: What is $\log_3\dfrac{1}{81}$?
+L: 1
+A: -4
+W: 4
+W: -\frac14
+W: -27
+W: \frac{1}{4}
+S: $\frac1{81}=\frac1{3^4}=3^{-4}$, so $\log_3\frac1{81}=-4$.
+---
+Q: What is $\log_5\sqrt5$?
+L: 1
+A: \frac12
+W: 2
+W: \sqrt5
+W: 1
+W: \frac{5}{2}
+S: $\sqrt5=5^{1/2}$, and $\log_5 5^u=u$. So $\log_5\sqrt5=\frac12$.
+---
+Q: What is $\log_4 8$?
+L: 2
+A: \frac32
+W: 2
+W: \frac23
+W: 4
+W: \frac12
+S: Write both as powers of $2$: $4^u=8$ means $2^{2u}=2^3$, so $2u=3$ and $u=\frac32$.
+Check: $4^{3/2}=(\sqrt4)^3=2^3=8$ ✓.
+---
+Q: Which logarithmic statement is equivalent to $2^{-3}=\frac18$?
+L: 1
+A: \log_2\frac18=-3
+W: \log_{-3}\frac18=2
+W: \log_{1/8}2=-3
+W: \log_2(-3)=\frac18
+W: \log_{1/8}(-3)=2
+S: $b^u=v$ means $\log_bv=u$. Here $b=2$, $u=-3$, $v=\frac18$: $\log_2\frac18=-3$.
+---
+Q: Solve $\log_x 64=3$.
+L: 1
+A: 4
+W: 8
+W: 192
+W: \frac{64}3
+W: 2
+S: $\log_x64=3$ means $x^3=64$. So $x=\sqrt[3]{64}=4$.
+---
+Q: Solve $\log_3 x=4$.
+L: 1
+A: 81
+W: 12
+W: 64
+W: \frac43
+W: 7
+S: $\log_3x=4$ means $3^4=x$, so $x=81$.
+---
+Q: Use the change of base formula to approximate $\log_7 19$.
+L: 1
+A: \approx1.5131
+W: \approx0.6609
+W: \approx2.7143
+W: \approx0.9997
+W: \approx12.000
+S: $\log_7 19=\dfrac{\ln19}{\ln7}\approx\dfrac{2.9444}{1.9459}\approx1.5131$.
+($0.6609$ is the upside-down ratio $\frac{\ln7}{\ln19}$; $2.7143$ is $\frac{19}{7}$.)
+Check: $7^{1.5131}\approx19$ ✓.
+---
+Q: Write $2\log_5x-\log_5y+\log_53$ as a single logarithm.
+L: 2
+A: \log_5\frac{3x^2}{y}
+W: \log_5\frac{6x}{y}
+W: \log_5(x^2-y+3)
+W: \log_5\frac{3x^2y}{1}
+W: \log_5\frac{x^2}{3y}
+S: Power Law: $2\log_5x=\log_5x^2$.
+Product and Quotient Laws: $\log_5x^2+\log_53-\log_5y=\log_5\dfrac{3x^2}{y}$.
+---
+Q: What is $6^{\log_6 11}$?
+L: 1
+A: 11
+W: 6
+W: 66
+W: \log_6 11
+W: 17
+S: $b^{\log_bv}=v$ (the functions $6^x$ and $\log_6x$ undo each other). So $6^{\log_611}=11$.
+---
+Q: What is $\log_2 12-\log_2 3$?
+L: 1
+A: 2
+W: 9
+W: \log_2 9
+W: 4
+W: 3
+S: Quotient Law: $\log_212-\log_23=\log_2\frac{12}{3}=\log_24=2$.
+---
+Q: Which expression is equal to $\log_9 x$ for all $x\gt0$?
+L: 3
+A: \frac12\log_3x
+W: 2\log_3x
+W: \log_3\frac x2
+W: \frac{\ln x}{\ln 3}
+W: (\log_3 x)^2
+S: Change of base: $\log_9x=\dfrac{\ln x}{\ln9}=\dfrac{\ln x}{2\ln3}=\dfrac12\cdot\dfrac{\ln x}{\ln3}=\dfrac12\log_3x$.
+Check with $x=9$: $\log_99=1$ and $\frac12\log_39=\frac12\cdot2=1$ ✓.
+@@ pc5-eq
+Q: Solve $5^x=2$.
+L: 1
+A: \frac{\ln2}{\ln5}
+W: \frac{\ln5}{\ln2}
+W: \ln\frac25
+W: \frac25
+W: \ln2-\ln5
+S: Take $\ln$ of both sides: $\ln5^x=\ln2$. Power Law: $x\ln5=\ln2$.
+So $x=\dfrac{\ln2}{\ln5}\approx0.4307$.
+(It is not $\ln\frac25$: a quotient of logs is not the log of a quotient.)
+---
+Q: Solve $2^{4x-1}=3^{1-x}$.
+L: 3
+A: \frac{\ln6}{\ln48}
+W: \frac{\ln3}{\ln48}
+W: \frac{\ln6}{\ln12}
+W: \frac{\ln3-\ln2}{4\ln2-\ln3}
+W: \frac{2}{5}
+S: Take $\ln$: $(4x-1)\ln2=(1-x)\ln3$.
+Expand: $4x\ln2-\ln2=\ln3-x\ln3$. Collect $x$ terms: $x(4\ln2+\ln3)=\ln3+\ln2$.
+$4\ln2+\ln3=\ln(16\cdot3)=\ln48$ and $\ln3+\ln2=\ln6$, so $x=\dfrac{\ln6}{\ln48}\approx0.4628$.
+---
+Q: Solve $e^{3x}=7$.
+L: 1
+A: \frac{\ln7}{3}
+W: 3\ln7
+W: \ln\frac73
+W: \frac{7}{3e}
+W: \ln4
+S: Take $\ln$ of both sides: $3x=\ln7$, since $\ln e^{3x}=3x$.
+So $x=\dfrac{\ln7}3\approx0.6486$.
+---
+Q: Solve $10^{x+1}=500$.
+L: 1
+A: \log50
+W: \log500
+W: 49
+W: \log499
+W: \ln500-1
+S: Take $\log$: $x+1=\log500$, so $x=\log500-1$.
+Since $\log500-1=\log500-\log10=\log50\approx1.699$.
+---
+Q: $20$ mg of strontium-90 decays to $6.071$ mg in $43$ years. Using $M(x)=c(0.5)^{x/h}$, what is the half-life $h$?
+L: 2
+A: \approx25\text{ years}
+W: \approx14\text{ years}
+W: \approx21.5\text{ years}
+W: \approx36\text{ years}
+W: \approx71\text{ years}
+S: $20(0.5)^{43/h}=6.071$, so $(0.5)^{43/h}=0.30355$.
+Take $\ln$: $\frac{43}{h}\ln0.5=\ln0.30355$, so $h=\dfrac{43\ln0.5}{\ln0.30355}\approx\dfrac{43(-0.6931)}{-1.1922}\approx25.0$ years.
+---
+Q: Carbon-14 has a half-life of $5730$ years. A fossil has $20\%$ of its original carbon-14. About how old is it?
+L: 2
+A: \approx13{,}300\text{ years}
+W: \approx1{,}150\text{ years}
+W: \approx28{,}650\text{ years}
+W: \approx4{,}585\text{ years}
+W: \approx9{,}220\text{ years}
+S: Solve $(0.5)^{t/5730}=0.2$. Take $\ln$: $\frac{t}{5730}\ln0.5=\ln0.2$.
+$t=\dfrac{5730\ln0.2}{\ln0.5}\approx\dfrac{5730(-1.6094)}{-0.6931}\approx13{,}305$ years.
+---
+Q: A population modeled by $P(t)=P_0e^{kt}$ grows from $10$ million to $15$ million in $8$ years. What is $k$?
+L: 2
+A: \approx0.0507
+W: \approx0.0625
+W: \approx0.1875
+W: \approx0.0220
+W: \approx0.4055
+S: $10e^{8k}=15$, so $e^{8k}=1.5$.
+Take $\ln$: $8k=\ln1.5\approx0.4055$, so $k\approx0.0507$ (about $5.07\%$ per year, compounded continuously).
+---
+Q: Solve $e^x-5e^{-x}=4$.
+L: 3
+A: \ln5
+W: \ln5\text{ and }\ln(-1)
+W: 5
+W: \ln4
+W: \ln5-1
+S: Multiply by $e^x$: $(e^x)^2-5=4e^x$, so $(e^x)^2-4e^x-5=0$.
+With $u=e^x$: $u^2-4u-5=(u-5)(u+1)=0$.
+$e^x=-1$ is impossible ($e^x\gt0$), so $e^x=5$ and $x=\ln5\approx1.609$.
+---
+Q: Solve $\ln(x+1)-\ln x=1$.
+L: 2
+A: \frac{1}{e-1}
+W: e-1
+W: \frac{e}{e-1}
+W: \frac1e
+W: e+1
+S: Quotient Law: $\ln\dfrac{x+1}{x}=1$, so $\dfrac{x+1}x=e$.
+$x+1=ex$, so $1=x(e-1)$ and $x=\dfrac1{e-1}\approx0.582$.
+Check: both $x$ and $x+1$ are positive ✓.
+---
+Q: Solve $\log(x-16)=2-\log(x-1)$.
+L: 2
+A: 21
+W: -4
+W: 21\text{ and }-4
+W: 17
+W: 116
+S: Move the logs together: $\log(x-16)+\log(x-1)=2$, so $\log\big[(x-16)(x-1)\big]=2$.
+Exponentiate: $(x-16)(x-1)=100$, i.e. $x^2-17x-84=0=(x-21)(x+4)$.
+$x=-4$ makes $x-16$ negative, so $\log(x-16)$ isn't defined: extraneous. Answer: $x=21$.
+---
+Q: Solve $\log_2x+\log_2(x-2)=3$.
+L: 2
+A: 4
+W: -2
+W: 4\text{ and }-2
+W: 5
+W: 8
+S: Product Law: $\log_2\big[x(x-2)\big]=3$, so $x(x-2)=2^3=8$.
+$x^2-2x-8=0=(x-4)(x+2)$. $x=-2$ would put a negative number into $\log_2x$, so it's extraneous. Answer: $x=4$.
+---
+Q: Money grows at $5\%$ per year, compounded continuously. About how long does it take to double?
+L: 1
+A: \approx13.9\text{ years}
+W: \approx20\text{ years}
+W: \approx14.2\text{ years}
+W: \approx10\text{ years}
+W: \approx6.9\text{ years}
+S: Solve $e^{0.05t}=2$: $0.05t=\ln2$, so $t=\dfrac{\ln2}{0.05}\approx\dfrac{0.6931}{0.05}\approx13.9$ years.
+($20$ years would be simple interest; $14.2$ years is annual compounding.)
+@@ pc5-model
+Q: At $x=0,1,2,3,4$, the data values are $3,\ 6,\ 12,\ 24,\ 48$. Which type of model fits best?
+L: 1
+A: \text{exponential}
+W: \text{linear}
+W: \text{quadratic}
+W: \text{logarithmic}
+W: \text{logistic}
+S: The $x$-values are equally spaced, and each $y$-value is $2$ times the one before: the ratios are constant.
+Constant ratios mean exponential: $y=3\cdot2^x$. (The differences $3,6,12,24$ are not constant, so it isn't linear.)
+---
+Q: A rabbit population grows quickly at first, then levels off near $500$. Which model is most appropriate?
+L: 1
+A: \text{logistic}
+W: \text{exponential}
+W: \text{linear}
+W: \text{power}
+W: \text{quadratic}
+S: Fast growth followed by leveling off at a limit is the S-shape of a logistic model $y=\dfrac{c}{1+ae^{-kx}}$, with upper limit $c\approx500$.
+An exponential model would keep growing without bound.
+---
+Q: At $x=0,1,2,3$ the data values are $100,\ 115,\ 132.25,\ 152.0875$. Which model fits exactly?
+L: 2
+A: y=100(1.15)^x
+W: y=100+15x
+W: y=100(0.15)^x
+W: y=115^x
+W: y=100x^{1.15}
+S: Ratios of successive values: $\frac{115}{100}=1.15$, $\frac{132.25}{115}=1.15$, $\frac{152.0875}{132.25}=1.15$.
+Constant ratio $1.15$ and starting value $100$ give $y=100(1.15)^x$ ($15\%$ growth per step).
+---
+Q: For a data set, the points $(\ln x,\ln y)$ lie on a straight line with slope $2.7$. What kind of model fits the original data?
+L: 2
+A: y=ax^{2.7}
+W: y=a(2.7)^x
+W: y=a+2.7\ln x
+W: y=2.7x+a
+W: y=ae^{2.7x}
+S: For a power model $y=ax^r$: $\ln y=\ln a+r\ln x$. That's a line in the variables $(\ln x,\ln y)$ with slope $r$.
+So slope $2.7$ means $y=ax^{2.7}$.
+---
+Q: Data: when $x=1,10,100,1000$, $y=2,5,8,11$. Which model fits exactly?
+L: 2
+A: y=2+3\log x
+W: y=2\cdot3^x
+W: y=2+3x
+W: y=2x^3
+W: y=2+\log 3x
+S: Each time $x$ is multiplied by $10$, $y$ goes up by $3$. That's the sign of a logarithmic model.
+Try $y=a+b\log x$: at $x=1$, $\log1=0$ gives $a=2$. At $x=10$: $2+b=5$, so $b=3$. Check $x=1000$: $2+3\cdot3=11$ ✓.
+---
+Q: A model is $y=4.2(1.08)^x$. What does it predict at $x=10$?
+L: 1
+A: \approx9.07
+W: \approx7.56
+W: \approx45.36
+W: \approx4.54
+W: \approx12.6
+S: $y=4.2(1.08)^{10}\approx4.2(2.1589)\approx9.07$.
+($7.56$ comes from adding $8\%$ of $4.2$ ten times, which ignores compounding.)
+---
+Q: The logistic model $y=\dfrac{1000}{1+9e^{-0.5x}}$ levels off at $1000$. At what $x$ does it reach $500$?
+L: 3
+A: 2\ln9\approx4.39
+W: \frac{\ln9}{2}\approx1.10
+W: \ln9\approx2.20
+W: 9
+W: 18
+S: Set $\dfrac{1000}{1+9e^{-0.5x}}=500$: then $1+9e^{-0.5x}=2$, so $e^{-0.5x}=\frac19$.
+Take $\ln$: $-0.5x=\ln\frac19=-\ln9$, so $x=2\ln9\approx4.39$.
+---
+Q: A power model is $y=5x^{2.7}$. What is $y$ when $x=2$?
+L: 1
+A: \approx32.5
+W: 27
+W: \approx10.8
+W: \approx65.0
+W: \approx6.5
+S: $y=5\cdot2^{2.7}\approx5(6.498)\approx32.5$.
+(Not $5\cdot2\cdot2.7=27$: the $2.7$ is an exponent.)
+---
+Q: An exponential model $y=ab^x$ passes through $(0,50)$ and $(3,400)$. What is it?
+L: 2
+A: y=50\cdot2^x
+W: y=50\cdot8^x
+W: y=50+\frac{350}{3}x
+W: y=400\cdot2^x
+W: y=50\cdot3^x
+S: At $x=0$: $y=a=50$. At $x=3$: $50b^3=400$, so $b^3=8$ and $b=2$.
+The model is $y=50\cdot2^x$.
+---
+Q: For equally spaced $x$-values, the second differences of the $y$-values are all equal (but not zero). Which model fits?
+L: 1
+A: \text{quadratic}
+W: \text{linear}
+W: \text{exponential}
+W: \text{logarithmic}
+W: \text{power with exponent }\tfrac12
+S: Constant first differences mean linear; constant <b>second</b> differences mean quadratic $y=ax^2+bx+c$ (just as in Section 4.4.A).
+---
+Q: A model of the form $y=a+b\ln x$ passes through $(1,4)$ and $(e,7)$. What is it?
+L: 2
+A: y=4+3\ln x
+W: y=7+4\ln x
+W: y=4+7\ln x
+W: y=4e^{3x}
+W: y=3+4\ln x
+S: At $x=1$: $\ln1=0$, so $a=4$. At $x=e$: $\ln e=1$, so $4+b=7$ and $b=3$.
+Model: $y=4+3\ln x$.
+---
+Q: Which model predicts that the quantity keeps increasing forever, but never exceeds a fixed limit?
+L: 1
+A: \text{logistic } y=\frac{c}{1+ae^{-kx}},\ k\gt0
+W: \text{exponential } y=ab^x,\ b\gt1
+W: \text{logarithmic } y=a+b\ln x,\ b\gt0
+W: \text{power } y=ax^r,\ r\gt0
+W: \text{quadratic } y=ax^2+bx+c,\ a\gt0
+S: A logistic model with $k\gt0$ always increases and has the horizontal asymptote $y=c$, so it never passes $c$.
+The logarithmic, exponential, power, and (eventually) quadratic models all grow without any upper limit, even if, like $\ln x$, very slowly.
 @@ a10-guide
 Q: On the AMC 10, a correct answer is worth $6$ points, a blank $1.5$, and a wrong answer $0$. A student answers $16$ questions correctly, gets $4$ wrong, and leaves the rest blank. What is the score?
 L: 1
@@ -18897,6 +20350,16 @@ const PC_CATALOG=[
    {id:'pc4-cplx',sec:'4.7',name:'Complex Numbers',d:'arithmetic, powers of i, conjugates and division, square roots of negatives, complex solutions of quadratics'},
    {id:'pc4-theory',sec:'4.8',name:'Theory of Equations',d:'the Fundamental Theorem of Algebra, conjugate roots, factoring completely, building polynomials from complex roots'},
    {id:'pc4-review',name:'Chapter 4 Test Review',d:'Every assigned review question from p. 335 with worked solutions, plus a review of all five test lessons.'}]},
+  {id:'pc5',name:'Exponential and Logarithmic Functions',ch:5,d:'Chapter 5: radicals and rational exponents, radical equations, exponential growth and decay, compound interest and e, common and natural logarithms, logarithm laws, logarithms to any base, solving exponential and logarithmic equations, and models.',subs:[
+   {id:'pc5-rad',sec:'5.1',name:'Radicals and Rational Exponents',d:'nth roots, rational exponents, exponent laws, simplifying radicals, rationalizing denominators and numerators'},
+   {id:'pc5-radeq',sec:'5.1.A',name:'Radical Equations',d:'the Power Principle, extraneous solutions, equations with two radicals, applied problems'},
+   {id:'pc5-exp',sec:'5.2',name:'Exponential Functions',d:'graphs of a^x, growth and decay models, half-life, the natural exponential function e^x'},
+   {id:'pc5-int',sec:'5.2.A',name:'Compound Interest and the Number e',d:'the compound interest formula, present value, continuous compounding, where e comes from'},
+   {id:'pc5-log',sec:'5.3',name:'Common and Natural Logarithms',d:'log x and ln x as inverses of 10^x and e^x, translating log and exponential statements, graphs and domains'},
+   {id:'pc5-laws',sec:'5.4',name:'Properties of Logarithms',d:'the Product, Quotient, and Power Laws, expanding and combining logarithms, the Richter scale'},
+   {id:'pc5-base',sec:'5.4.A',name:'Logarithms to Other Bases',d:'log base b, the logarithm laws for any base, the change of base formula'},
+   {id:'pc5-eq',sec:'5.5',name:'Exponential and Logarithmic Equations',d:'solving with logarithms, half-life and carbon dating, equations quadratic in e^x, logarithmic equations and extraneous roots'},
+   {id:'pc5-model',sec:'5.6',name:'Exponential, Logarithmic, and Other Models',d:'choosing a model from data, ratios of successive values, power and logistic models'}]},
  ]},
 ];
 const TRACKS=[
@@ -21337,6 +22800,290 @@ r=>{const k=ri(r,1,5);const kind=ri(r,0,1);const K=k**4;
 /* ---- pc4/13-review.txt ---- */
 GENS['pc4-review']=[];   // the problem set is exactly the book's review questions
 GENS['pc4-review:practice']=['pc4-quad','pc4-poly','pc4-synth','pc4-roots','pc4-graph','pc4-rat','pc4-ratx','pc4-cplx','pc4-theory'].flatMap(k=>GENS[k]||[]);
+/* ---- pc5/01-rad.txt ---- */
+const ex5=f=>f.d===1?String(f.n):f.n+'/'+f.d;   /* exponent as a slash fraction: 3/4 */
+GENS['pc5-rad']=[
+/* evaluate c^(t/k) for a perfect power */
+r=>{const k=pick(r,[2,3,4,5]);const b=k===2?ri(r,2,12):k===3?ri(r,2,6):k===4?ri(r,2,4):2;const c=b**k;const t=pick(r,[1,2,3,-1,-2]);if(Math.abs(b**Math.abs(t))>5000)return GENS['pc5-rad'][0](r);
+ const val=t>0?F(b**t):F(1,b**(-t));
+ return{lvl:1,q:T`What is $${c}^{${ex5(F(t,k))}}$?`,a:val,w:[F(c*t,k),t>0?F(1,b**t):F(b**(-t)),val.neg(),F(b*Math.abs(t)),F(b**Math.abs(t)+1)],
+ s:T`Take the root first: $\sqrt[${k}]{${c}}=${b}$ because $${b}^{${k}}=${c}$.<br>${t>0?T`Then raise to the power $${t}$: $${b}^{${t}}=${val.tex()}$.`:T`Then raise to the power $${-t}$ and take the reciprocal (negative exponent): $\dfrac1{${b}^{${-t}}}=${val.tex()}$.`}`}},
+/* combine exponents in a product */
+r=>{const a=F(ri(r,1,5),pick(r,[2,3,4])),b=F(ri(r,1,5)*pick(r,[1,-1]),pick(r,[2,3,4,6]));const s_=a.add(b);if(Math.abs(a.mul(b).v-s_.v)<1e-9||s_.n===0)return GENS['pc5-rad'][1](r);
+ const ans=O(T`x^{${ex5(s_)}}`,s_.v);
+ return{lvl:1,q:T`Simplify $x^{${ex5(a)}}\cdot x^{${ex5(b)}}$.`,a:ans,w:[O(T`x^{${ex5(a.mul(b))}}`,0.1),O(T`x^{${ex5(a.sub(b))}}`,0.2),O(T`x^{${ex5(F(a.n+b.n,a.d+b.d))}}`,0.3),O(T`x^{${ex5(s_.add(1))}}`,0.4)],
+ s:T`Law 1: when multiplying powers of the same base, <b>add</b> the exponents.<br>$${a.tex()}+${P(b)}=${s_.tex()}$, so the product is $x^{${ex5(s_)}}$.<br>(Common mistakes: multiplying the exponents, or adding numerators and denominators separately.)`}},
+/* simplify sqrt(a^2 m) +/- sqrt(b^2 m) */
+r=>{const m=pick(r,[2,3,5,6,7]);const a=ri(r,1,6),b=ri(r,1,6);const plus=r()<.5;const c=plus?a+b:a-b;if(c===0)return GENS['pc5-rad'][2](r);
+ const coef=n=>n===1?'':n===-1?'-':String(n);const ans=O(T`${coef(c)}\sqrt{${m}}`,c*Math.sqrt(m));
+ return{lvl:1,q:T`Simplify $\sqrt{${a*a*m}}${plus?'+':'-'}\sqrt{${b*b*m}}$.`,a:ans,w:[O(T`\sqrt{${plus?a*a*m+b*b*m:Math.abs(a*a*m-b*b*m)}}`,0.1),O(T`${coef(plus?a-b||7:a+b)}\sqrt{${m}}`,0.2),O(T`${coef(c)}\sqrt{${2*m}}`,0.3),O(T`${coef(-c)}\sqrt{${m}}`,0.4)],
+ s:T`Pull out perfect squares: $\sqrt{${a*a*m}}=\sqrt{${a*a}\cdot${m}}=${coef(a)}\sqrt{${m}}$ and $\sqrt{${b*b*m}}=${coef(b)}\sqrt{${m}}$.<br>Like radicals combine: $${a}${plus?'+':'-'}${b}=${c}$, giving $${ans.tex}$.`}},
+/* rationalize a/(b + sqrt c) */
+r=>{let b=ri(r,1,6),c=pick(r,[2,3,5,6,7,10,11]);if(Math.abs(b*b-c)<2)return GENS['pc5-rad'][3](r);const a=ri(r,1,9);const D=b*b-c;
+ const g=F(a,D);const A=g.mul(b),B=g.neg();const sq=T`\sqrt{${c}}`;
+ const tex=(p,q)=>{const s=q.n<0?'-':'+';const qa=q.n<0?q.neg():q;return T`${p.tex()}${s}${qa.n===1&&qa.d===1?'':qa.tex()}${sq}`};
+ const ans=O(tex(A,B),A.v+B.v*Math.sqrt(c));
+ return{lvl:2,q:T`Rationalize the denominator: $\dfrac{${a}}{${b}+\sqrt{${c}}}$.`,a:ans,w:[O(tex(g.mul(b),g),0.1),O(tex(F(a*b,b*b+c),F(-a,b*b+c)),0.2),O(tex(A.neg(),B.neg()),0.3),O(tex(F(a*b),F(-a)),0.4)],
+ s:T`Multiply top and bottom by the conjugate $${b}-\sqrt{${c}}$: $\dfrac{${a}(${b}-\sqrt{${c}})}{${b}^2-(\sqrt{${c}})^2}=\dfrac{${a}(${b}-\sqrt{${c}})}{${D}}$.<br>Simplify: $${ans.tex}$.`}},
+/* factor x^(2/n) + p x^(1/n) + q */
+r=>{const n=pick(r,[3,4,5,7]);let u=ri(r,-6,6),v=ri(r,-6,6);if(!u||!v||u+v===0)return GENS['pc5-rad'][4](r);const p=-(u+v),q=u*v;
+ const X=T`x^{1/${n}}`,f=c=>T`(${X}${c<0?'+':'-'}${Math.abs(c)})`;const ans=O(f(u)+f(v),1);
+ const mid=p===0?'':p===1?T`+${X}`:p===-1?T`-${X}`:T`${p>0?'+':''}${p}${X}`;
+ return{lvl:2,q:T`Factor $x^{2/${n}}${mid}${q<0?'':'+'}${q}$.`,a:ans,w:[O(f(-u)+f(-v),2),O(T`(x^{2/${n}}${u<0?'+':'-'}${Math.abs(u)})`+f(v),3),O(T`(x${u<0?'+':'-'}${Math.abs(u)})(x${v<0?'+':'-'}${Math.abs(v)})`,4),O(f(u)+f(-v),5)],
+ s:T`Let $u=x^{1/${n}}$, so $x^{2/${n}}=u^2$. The expression is $u^2${p===0?'':(p>0?'+':'-')+(Math.abs(p)===1?'':Math.abs(p))+'u'}${q<0?'':'+'}${q}$, which factors as $(u${u<0?'+':'-'}${Math.abs(u)})(u${v<0?'+':'-'}${Math.abs(v)})$ (the numbers $${-u}$ and $${-v}$ multiply to $${q}$ and add to $${p}$).<br>Substitute back: $${ans.tex}$.`}},
+];
+/* ---- pc5/02-radeq.txt ---- */
+GENS['pc5-radeq']=[
+/* sqrt(x+p) = x - q with one true and one extraneous root */
+r=>{const q=ri(r,-3,5),t=q+ri(r,1,6),e=2*q+1-t;if(e>=q||t*e===q*q)return GENS['pc5-radeq'][0](r);const p=q*q-t*e;if(t+p<0||e+p<0)return GENS['pc5-radeq'][0](r);
+ const rhs=q===0?'x':T`x${q<0?'+':'-'}${Math.abs(q)}`,lhs=T`\sqrt{x${p<0?'-':'+'}${Math.abs(p)}}`;
+ const t2=O(T`${t}\text{ and }${e}`,t+e/100);
+ return{lvl:1,q:T`Solve $${lhs}=${rhs}$.`,a:t,w:[e,t2,t+1,q],
+ s:T`Square both sides: $x${p<0?'-':'+'}${Math.abs(p)}=${q===0?'x^2':T`(${rhs})^2=${pl([1,-2*q,q*q])}`}$.<br>Collect terms: $${pl([1,-(2*q+1),q*q-p])}=0$, which factors as $${fx(t)}${fx(e)}=0$.<br>Check $x=${t}$: the left side is $\sqrt{${t+p}}=${Math.sqrt(t+p)}$ and the right side is $${t-q}$ ✓.<br>Check $x=${e}$: the left side is $\sqrt{${e+p}}=${Math.sqrt(e+p)}$ but the right side is $${e-q}$ ✗ (a square root can't be negative). So $x=${e}$ is extraneous.<br>Answer: $x=${t}$.`}},
+/* cube root equation */
+r=>{const a=ri(r,1,5),c=ri(r,-4,4),x=ri(r,-9,9);const b=c**3-a*x;
+ const inner=T`${a===1?'':a}x${b<0?'-':'+'}${Math.abs(b)}`;
+ return{lvl:1,q:T`Solve $\sqrt[3]{${inner}}=${c}$.`,a:x,w:[F(c*c-b,a),F(3*c-b,a),-x||7,x+1],
+ s:T`Cube both sides: $${inner}=${P(c)}^3=${c**3}$.<br>So $${a===1?'':a}x=${c**3}-${P(b)}=${a*x}$ and $x=${x}$.<br>(Cubing never adds extraneous solutions, but it's quick to check: $\sqrt[3]{${a*x+b}}=${c}$ ✓.)`}},
+/* x^(m/n) = value */
+r=>{const k=ri(r,2,5);const even=r()<.5;
+ if(even){const v=k*k;return{lvl:2,q:T`Solve $x^{2/3}=${v}$.`,a:O(T`\pm${k**3}`,k**3),w:[k**3,O(T`\pm${k}`,k+.1),O(T`\pm\sqrt{${v}}`,k+.2),v*3],
+   s:T`$x^{2/3}=\left(x^{1/3}\right)^2=${v}$, so $x^{1/3}=\pm${k}$.<br>Cube: $x=\pm${k**3}$. Both work, since squaring the cube root erases the sign.`}}
+ const v=k**3;return{lvl:2,q:T`Solve $x^{3/2}=${v}$.`,a:k*k,w:[O(T`\pm${k*k}`,k*k+.1),k,k**3,O(T`${v}^{2}`,v*v)],
+   s:T`$x^{3/2}=\left(\sqrt x\right)^3=${v}$, so $\sqrt x=${k}$ and $x=${k*k}$.<br>Here $x$ must be nonnegative ($\sqrt x$ appears), so $-${k*k}$ is not a solution.`}},
+/* quadratic in sqrt(x) */
+r=>{const u=ri(r,2,7);const v=pick(r,[-1,-2,-3,ri(r,1,u-1)]);const b=-(u+v),c=u*v;const both=v>0;
+ const ans=both?O(T`${u*u}\text{ and }${v*v}`,u*u+v*v/100):u*u;
+ const eq=T`x${b<0?'-':'+'}${Math.abs(b)===1?'':Math.abs(b)}\sqrt{x}${c<0?'-':'+'}${Math.abs(c)}=0`;
+ return{lvl:2,q:T`Solve $${eq}$.`,a:ans,w:both?[u*u,v*v,O(T`${u}\text{ and }${v}`,u+v/100),u*u+v*v]:[O(T`${u*u}\text{ and }${v*v}`,u*u+v*v/100),u,v*v,u*u+1],
+ s:T`Let $u=\sqrt x$ (so $x=u^2$): $u^2${b<0?'-':'+'}${Math.abs(b)===1?'':Math.abs(b)}u${c<0?'-':'+'}${Math.abs(c)}=0$, which factors as $(u-${u})(u${v<0?'+':'-'}${Math.abs(v)})=0$.<br>${both?T`Both $u=${u}$ and $u=${v}$ are positive, so $x=${u*u}$ or $x=${v*v}$.`:T`$u=${v}$ is impossible because $\sqrt x\ge0$. So $\sqrt x=${u}$ and $x=${u*u}$.`}`}},
+/* two radicals: sqrt(x + a) - sqrt(x) = d  -> sqrt(x) = (a - d^2)/(2d) */
+r=>{const d=ri(r,1,3),m=ri(r,1,6);const a=d*d+2*d*m;const x=m*m;
+ return{lvl:3,q:T`Solve $\sqrt{x+${a}}-\sqrt{x}=${d}$.`,a:x,w:[m,F(a-d*d,2),x+d,a],
+ s:T`Isolate one radical: $\sqrt{x+${a}}=${d}+\sqrt x$.<br>Square: $x+${a}=${d*d}+${2*d}\sqrt x+x$. The $x$'s cancel: $${2*d}\sqrt x=${a-d*d}$, so $\sqrt x=${m}$.<br>Then $x=${x}$. Check: $\sqrt{${x+a}}-\sqrt{${x}}=${Math.sqrt(x+a)}-${m}=${d}$ ✓.`}},
+];
+/* ---- pc5/03-exp.txt ---- */
+GENS['pc5-exp']=[
+/* asymptote / range / y-intercept of a^(x-h)+k */
+r=>{const a=pick(r,[2,3,4,5]),h=ri(r,-4,4),k=ri(r,-5,5);const ask=pick(r,['asym','range','yint']);
+ const fn=T`f(x)=${a}^{${h===0?'x':T`x${h<0?'+':'-'}${Math.abs(h)}`}}${k===0?'':k<0?k:'+'+k}`;
+ const y0=h>=0?F(1,a**h).add(k):F(a**(-h)+k);const base=T`${a}^{${h===0?'x':T`x${h<0?'+':'-'}${Math.abs(h)}`}}`;
+ if(ask==='asym'){const t=TXT(r,'y='+k,['y='+(-k),'y=0','y='+h,'x='+h,'y='+(k+1),'y='+(k-1),'x='+(-h)].filter(x=>x!=='y='+k));
+  return{lvl:1,q:T`What is the horizontal asymptote of the graph of $${fn}$?`,a:t.a,w:t.w,
+  s:T`A power of ${a} is always positive and gets arbitrarily close to $0$, so $${base}$ has asymptote $y=0$.<br>${k?T`Adding $${k}$ shifts the graph ${k>0?'up':'down'} ${Math.abs(k)}, so the asymptote moves to $y=${k}$.`:'There is no vertical shift, so it stays $y=0$.'}<br>(A horizontal shift doesn't move a horizontal line.)`}}
+ if(ask==='range'){const t=TXT(r,T`y\gt ${k}`,[T`y\ge ${k}`,String.raw`\text{all real numbers}`,T`y\gt ${k+1}`,T`y\gt ${k-1}`,T`y\lt ${k}`,'y\\gt 0'].filter(x=>x!==T`y\gt ${k}`));
+  return{lvl:1,q:T`What is the range of $${fn}$?`,a:t.a,w:t.w,
+  s:T`$${base}$ takes every positive value but never $0$, so its range is $y\gt0$.<br>${k?T`Adding $${k}$ shifts every output by $${k}$`:'There is no vertical shift'}: the range is $y\gt ${k}$. The value $${k}$ itself is never reached (it's the asymptote).`}}
+ return{lvl:1,q:T`What is the $y$-intercept of $${fn}$?`,a:y0,w:[F(1+k),F(a**Math.abs(h)+k),F(k),y0.add(1)],
+  s:T`Set $x=0$: $f(0)=${a}^{${-h}}${k===0?'':k<0?k:'+'+k}=${F(a).v**(-h)<1?F(1,a**h).tex():a**(-h)}${k===0?'':k<0?k:'+'+k}=${y0.tex()}$.`}},
+/* compound growth P(1+r)^t */
+r=>{const P=pick(r,[500,1000,1500,2000,2500,4000,5000,8000,10000]),rp=pick(r,[2,3,4,5,6,7,8]),t=ri(r,3,15);const A=P*(1+rp/100)**t;
+ const m=v=>O('\\$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}).replace(/,/g,'{,}'),v);
+ return{lvl:1,q:T`$\$${cm(P)}$ is invested at $${rp}\%$ interest compounded annually. How much is in the account after $${t}$ years?`,a:m(A),w:[m(P*(1+rp*t/100)),m(P*(1+rp/100)**(t-1)),m(P*(1+rp/100)**(t+1)),m(P*(rp/100)**1*t+P*1.5)],
+ s:T`Each year multiplies the balance by $1+${rp/100}=${1+rp/100}$.<br>After $${t}$ years: $${cm(P)}(${1+rp/100})^{${t}}\approx${m(A).tex}$.<br>(Simple interest would give only $${cm(P)}(1+${rp/100}\cdot${t})=${m(P*(1+rp*t/100)).tex}$.)`}},
+/* half-life with whole numbers of half-lives */
+r=>{const n=ri(r,1,5),h=pick(r,[3,5,8,10,12,20,25,30]),c=pick(r,[16,32,48,64,80,96,128,160,200,320]);const left=F(c,2**n);
+ const subs=pick(r,['a radioactive isotope','a medication in the bloodstream','a sample of iodine-131']);
+ return{lvl:1,q:T`The half-life of ${subs} is $${h}$ ${subs.includes('medication')?'hours':'days'}. Starting with $${c}$ mg, how much remains after $${n*h}$ ${subs.includes('medication')?'hours':'days'}?`,a:left,w:[0,1,2,3,4,5,6,7].filter(j=>j!==n).sort((x,y)=>Math.abs(x-n)-Math.abs(y-n)).slice(0,3).map(j=>F(c,2**j)).concat([F(c*(n+1),2**(n+1)).v===left.v?F(c,3):F(c*(n+1),2**(n+1))]),
+ s:T`The amount left is $M(x)=${c}(0.5)^{x/${h}}$.<br>$x=${n*h}$ is $\frac{${n*h}}{${h}}=${n}$ half-lives, so $M=${c}(0.5)^{${n}}=\dfrac{${c}}{${2**n}}=${left.tex()}$ mg.<br>(Each half-life halves the amount; it does not subtract the same amount each time.)`}},
+/* growth factor from two data points, predict later */
+r=>{const a=pick(r,[2,3]),t1=ri(r,2,5),k=ri(r,2,3),P0=pick(r,[100,200,300,500,1000]);const P1=P0*a**t1,T2=t1*k,P2=P0*a**T2;
+ if(P2>5e7)return GENS['pc5-exp'][3](r);
+ return{lvl:2,q:T`A population grows exponentially from $${cm(P0)}$ to $${cm(P1)}$ in $${t1}$ hours. What will it be after $${T2}$ hours?`,a:O(cm(P2),P2),w:[P1*k,P0+(P1-P0)*k,P2/a,P2*a].map(v=>O(cm(v),v)),
+ s:T`Model $f(x)=${P0}\,b^x$. From $f(${t1})=${P1}$: $b^{${t1}}=${a**t1}$, so $b=${a}$.<br>$f(${T2})=${P0}\cdot${a}^{${T2}}=${cm(P2)}$.<br>Shortcut: $${T2}$ hours is ${k} periods of $${t1}$ hours, each multiplying by $${a**t1}$: $${P0}\cdot${a**t1}^{${k}}$.`}},
+/* average rate of change of b^x */
+r=>{const b=pick(r,[2,3,4]),m=ri(r,0,2),n=m+ri(r,1,3);const v=F(b**n-b**m,n-m);
+ return{lvl:1,q:T`What is the average rate of change of $f(x)=${b}^x$ from $x=${m}$ to $x=${n}$?`,a:v,w:[F(b**n-b**m),F(b**n,n),F(b**(n-m)),v.add(1)],
+ s:T`$\dfrac{f(${n})-f(${m})}{${n}-${m}}=\dfrac{${b**n}-${b**m}}{${n-m}}=${v.tex()}$.<br>(Exponential functions get steeper and steeper, so this rate grows if the interval moves right.)`}},
+/* logistic limit and starting value */
+r=>{const c=pick(r,[1000,2000,5000,10000,20000,50000]),a=pick(r,[4,9,19,24,49,99]),k=pick(r,[2,3,4,5]);const st=F(c,1+a);
+ const lim=O(T`\text{limit }${cm(c)}\text{; start }${st.isInt()?cm(st.n):st.tex()}`,1);
+ return{lvl:2,q:T`A population follows $p(t)=\dfrac{${cm(c)}}{1+${a}e^{-t/${k}}}$. What are its upper limit and its starting value $p(0)$?`,a:lim,
+ w:[O(T`\text{limit }${cm(c)}\text{; start }${cm(c)}`,2),O(T`\text{limit }${cm(c*(1+a))}\text{; start }${st.isInt()?cm(st.n):st.tex()}`,3),O(T`\text{limit }${cm(c)}\text{; start }${F(c,a).isInt()?cm(c/a):F(c,a).tex()}`,4),O(T`\text{no limit; start }${st.isInt()?cm(st.n):st.tex()}`,5)],
+ s:T`As $t\to\infty$, $e^{-t/${k}}\to0$, so $p(t)\to\dfrac{${cm(c)}}{1}=${cm(c)}$. That's the upper limit.<br>At $t=0$, $e^0=1$: $p(0)=\dfrac{${cm(c)}}{1+${a}}=${st.isInt()?cm(st.n):st.tex()}$.`}},
+];
+/* ---- pc5/04-int.txt ---- */
+const money5=v=>O('\\$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}).replace(/,/g,'{,}'),v);
+GENS['pc5-int']=[
+/* compound n times per year */
+r=>{const P=pick(r,[1000,2000,2500,3000,5000,7500,10000]),R=pick(r,[3,4,4.5,5,6,7,8]),y=ri(r,2,12);const [n,name]=pick(r,[[2,'semiannually'],[4,'quarterly'],[12,'monthly'],[365,'daily']]);
+ const A=P*(1+R/100/n)**(n*y);
+ return{lvl:1,q:T`$\$${cm(P)}$ is invested at $${R}\%$ interest, compounded ${name}. How much is in the account after $${y}$ years?`,a:money5(A),w:[money5(P*(1+R/100*y)),money5(P*(1+R/100)**(n*y)),money5(P*(1+R/100/n)**y),money5(P*Math.exp(R/100*y)+(n===365?37:0))],
+ s:T`Rate per period: $r=\dfrac{${R/100}}{${n}}${n===1?'':T`\approx${(R/100/n).toPrecision(4)}`}$. Number of periods: $t=${n}\cdot${y}=${n*y}$.<br>$A=${cm(P)}\left(1+\dfrac{${R/100}}{${n}}\right)^{${n*y}}\approx${money5(A).tex}$.<br>(Using the annual rate every period, or $${y}$ periods instead of $${n*y}$, are the usual mistakes.)`}},
+/* continuous compounding */
+r=>{const P=pick(r,[500,1000,2000,2500,4000,5000,10000]),R=pick(r,[2,3,3.5,4,5,6,7.5]),y=ri(r,2,20);const A=P*Math.exp(R/100*y);
+ return{lvl:1,q:T`$\$${cm(P)}$ is invested at $${R}\%$ compounded continuously. How much is there after $${y}$ years?`,a:money5(A),w:[money5(P*(1+R/100)**y),money5(P*(1+R*y/100)),money5(P*Math.exp(R*y)/Math.exp(R*y-R/100*y)*1.02),money5(P*Math.E**(R/100)*y/ y+P*R/100)],
+ s:T`Continuous compounding: $A=Pe^{rt}=${cm(P)}e^{${R/100}\cdot${y}}=${cm(P)}e^{${+(R/100*y).toFixed(4)}}\approx${money5(A).tex}$.<br>(Annual compounding would give $${money5(P*(1+R/100)**y).tex}$, a bit less.)`}},
+/* present value */
+r=>{const A=pick(r,[5000,8000,10000,15000,20000,25000,50000]),R=pick(r,[3,4,5,6,8]),y=ri(r,2,15);const P=A/(1+R/100)**y;
+ return{lvl:2,q:T`How much must be invested now at $${R}\%$ compounded annually to have $\$${cm(A)}$ in $${y}$ years?`,a:money5(P),w:[money5(A*(1+R/100)**y),money5(A/(1+R*y/100)),money5(A*(1-R/100)**y),money5(A/(1+R/100)**(y+1))],
+ s:T`Present value: $P=\dfrac{A}{(1+r)^t}=\dfrac{${cm(A)}}{${1+R/100}^{${y}}}\approx${money5(P).tex}$.<br>Check: $${money5(P).tex.replace('\\$','')}\cdot${1+R/100}^{${y}}\approx${cm(A)}$ ✓.`}},
+/* doubling / tripling time with nice rule numbers -> pick answer from table (rounded) */
+r=>{const R=pick(r,[2,3,4,5,6,7,8,9,10,12]),k=pick(r,[2,3]);const t=Math.log(k)/Math.log(1+R/100);const ans=Math.ceil(t);
+ return{lvl:2,q:T`Money is invested at $${R}\%$ compounded annually. After how many whole years will it first be at least ${k===2?'double':'triple'} the original amount?`,a:ans,w:[ans-1,ans+1,Math.round(100*(k-1)/R),ans+3].filter((v,i,arr)=>v>0&&v!==ans&&arr.indexOf(v)===i),
+ s:T`We need $(1+${R/100})^t\ge${k}$ (the starting amount cancels).<br>$${1+R/100}^{${ans-1}}\approx${((1+R/100)**(ans-1)).toFixed(3)}$ (not yet) and $${1+R/100}^{${ans}}\approx${((1+R/100)**ans).toFixed(3)}$ ✓.<br>So it takes $${ans}$ years. (Exactly: $t=\frac{\ln ${k}}{\ln ${1+R/100}}\approx${t.toFixed(2)}$, using Section 5.5.)`}},
+/* compare compounding: effective annual growth */
+r=>{const R=pick(r,[4,5,6,8,10,12]);const [n,name]=pick(r,[[4,'quarterly'],[12,'monthly'],[365,'daily']]);const eff=(1+R/100/n)**n-1;
+ const pc=v=>O((v*100).toFixed(3)+'\\%',v);
+ return{lvl:2,q:T`What is the effective annual rate (the actual one-year growth) of $${R}\%$ compounded ${name}?`,a:pc(eff),w:[pc(R/100),pc((1+R/100/n)**(n/2)-1),pc(Math.exp(R/100)-1+0.003),pc(R/100*n/ (n-0.5)+0.0004)],
+ s:T`One year is $${n}$ periods at rate $\frac{${R/100}}{${n}}$: the growth factor is $\left(1+\dfrac{${R/100}}{${n}}\right)^{${n}}\approx${(1+eff).toFixed(5)}$.<br>So the balance grows by about $${(eff*100).toFixed(3)}\%$ per year, slightly more than $${R}\%$ because interest earns interest.`}},
+];
+/* ---- pc5/05-log.txt ---- */
+GENS['pc5-log']=[
+/* evaluate log of a power of 10 / ln of a power of e */
+r=>{const nat=r()<.4;const k=pick(r,[-4,-3,-2,-1,2,3,4,5,6]);const half=!nat&&r()<.25;
+ if(nat){const form=pick(r,['e^{k}','1/e^k']);const v=form==='e^{k}'?k:-k;const tex=form==='e^{k}'?T`e^{${k}}`:T`\frac{1}{e^{${k}}}`;
+  return{lvl:1,q:T`What is $\ln${tex}$?`,a:v,w:[-v,v+1,v-1,O(T`e^{${v}}`,Math.exp(v)+.1)],s:T`$\ln$ undoes $e^{(\ )}$: ${form==='e^{k}'?T`$\ln e^{${k}}=${k}$`:T`$\frac1{e^{${k}}}=e^{${-k}}$, so $\ln e^{${-k}}=${-k}$`}.`}}
+ if(half){const n=ri(r,1,3);const v=F(n,2);const tex=n===1?String.raw`\sqrt{10}`:T`10\sqrt{10}`;if(n===3)return GENS['pc5-log'][0](r);
+  return{lvl:1,q:T`What is $\log${tex}$?`,a:v,w:[v.add(1),F(10*n),F(1,2*n),v.neg()],s:T`$${tex}=10^{${v.tex()}}$, and $\log10^u=u$. So the answer is $${v.tex()}$.`}}
+ const val=k>0?cm(10**k):String(+(10**k).toFixed(-k));
+ return{lvl:1,q:T`What is $\log${val}$?`,a:k,w:[-k,k+1,k-1,O(String(10**k>=1?10**(k-1):'0.1'),99)],
+ s:T`$${val}=10^{${k}}$, so $\log${val}=${k}$ (the exponent on $10$).`}},
+/* translate log <-> exponential */
+r=>{const nat=r()<.5;const toExp=r()<.5;const b=nat?'e':'10',L=nat?'\\ln':'\\log';const u=+(ri(r,3,45)/10).toFixed(1);const v=nat?Math.exp(u):10**u;const vs=+v.toPrecision(4);
+ if(toExp){const t=TXT(r,T`${b}^{${u}}\approx${vs}`,[T`${vs}^{${u}}\approx ${b}`,T`${u}^{${b}}\approx${vs}`,T`${nat?'10':'e'}^{${u}}\approx${vs}`,T`${b}^{${vs}}\approx${u}`]);
+  return{lvl:1,q:T`Which exponential statement is equivalent to $${L}${vs}\approx${u}$?`,a:t.a,w:t.w,s:T`$${L} v=u$ means $${b}^u=v$. With $v=${vs}$ and $u=${u}$: $${b}^{${u}}\approx${vs}$.`}}
+ const t=TXT(r,T`${L}${vs}\approx${u}`,[T`${L}${u}\approx${vs}`,T`${nat?'\\log':'\\ln'}${vs}\approx${u}`,T`${L}${b}\approx${vs}`,T`${L}${vs}\approx ${b}`]);
+ return{lvl:1,q:T`Which logarithmic statement is equivalent to $${b}^{${u}}\approx${vs}$?`,a:t.a,w:t.w,s:T`$${b}^u=v$ means $${L} v=u$: $${L}${vs}\approx${u}$.`}},
+/* inverse properties */
+r=>{const a=ri(r,2,40),k=ri(r,1,3);const which=pick(r,[0,1,2]);
+ if(which===0)return{lvl:1,q:T`What is $e^{\ln${a}}$?`,a:a,w:[O(T`e^{${a}}`,Math.exp(a)),O(T`\ln${a}`,Math.log(a)+.01),a*Math.E>100?a+1:Math.round(a*Math.E),1],s:T`$e^{(\ )}$ and $\ln$ undo each other: $e^{\ln v}=v$ for $v\gt0$. So $e^{\ln${a}}=${a}$.`};
+ if(which===1)return{lvl:2,q:T`What is $10^{\log${a}+${k}}$?`,a:a*10**k,w:[a+10**k,a+k,a*k,a**k>1e6?a*10**(k+1):a**k],s:T`$10^{\log${a}+${k}}=10^{\log${a}}\cdot10^{${k}}=${a}\cdot${10**k}=${a*10**k}$.`};
+ const ex=pick(r,['3x','x^2-1','5-2x','x+4']);
+ return{lvl:1,q:T`Simplify $\ln e^{${ex}}$.`,a:O(ex,1),w:[O(T`e^{${ex}}`,2),O(T`${ex}\cdot e`,3),O('1',4),O(T`\ln(${ex})`,5)],s:T`$\ln e^u=u$ for every $u$, so $\ln e^{${ex}}=${ex}$.`}},
+/* domain of log(ax+b) */
+r=>{let a=ri(r,1,5)*pick(r,[1,-1]),b=ri(r,-10,10);const c=F(-b,a);const L=pick(r,['\\ln','\\log']);
+ const ans=a>0?T`x\gt ${c.tex()}`:T`x\lt ${c.tex()}`;const t=TXT(r,ans,[a>0?T`x\lt ${c.tex()}`:T`x\gt ${c.tex()}`,a>0?T`x\ge ${c.tex()}`:T`x\le ${c.tex()}`,T`x\gt 0`,String.raw`\text{all real numbers}`,T`x\gt ${c.neg().tex()}`].filter(x=>x!==ans));
+ return{lvl:1,q:T`What is the domain of $f(x)=${L}(${lin(a,b)})$?`,a:t.a,w:t.w,
+ s:T`The input of a logarithm must be positive: $${lin(a,b)}\gt0$.<br>${a>0?T`$${a===1?'':a}x\gt ${-b}$, so $x\gt ${c.tex()}$.`:T`$${a===-1?'-':a}x\gt ${-b}$; dividing by the negative number ${a} flips the inequality: $x\lt ${c.tex()}$.`}`}},
+/* asymptote / domain of shifted ln */
+r=>{const h=ri(r,-6,6),k=ri(r,-5,5);if(h===0)return GENS['pc5-log'][4](r);const L=pick(r,['\\ln','\\log']);
+ const fn=T`y=${L}(x${h<0?'+':'-'}${Math.abs(h)})${k===0?'':k<0?k:'+'+k}`;const t=TXT(r,'x='+h,['x='+(-h),'x=0','y='+k,'x='+(h+1),'x='+k,'y='+h].filter(x=>x!=='x='+h));
+ return{lvl:1,q:T`What is the vertical asymptote of $${fn}$?`,a:t.a,w:t.w,
+ s:T`$${L} x$ has vertical asymptote $x=0$. Replacing $x$ by $x${h<0?'+':'-'}${Math.abs(h)}$ shifts the graph ${h>0?'right':'left'} ${Math.abs(h)}, so the asymptote is $x=${h}$ (where the input $x${h<0?'+':'-'}${Math.abs(h)}$ is $0$).<br>${k?T`The $${k>0?'+':''}${k}$ shifts the graph ${k>0?'up':'down'}, which doesn't move a vertical line.`:''}`}},
+/* solve ln(ax+b)=k or log(ax+b)=k exactly */
+r=>{const nat=r()<.5;const a=ri(r,1,4),b=ri(r,-6,6),k=ri(r,1,3);const L=nat?'\\ln':'\\log',B=nat?'e':'10';
+ if(!nat){const x=F(10**k-b,a);return{lvl:2,q:T`Solve $\log(${lin(a,b)})=${k}$.`,a:x,w:[F(k-b,a),F(10*k-b,a),F(10**k+b,a),F(10**k,a)],
+  s:T`$\log v=${k}$ means $v=10^{${k}}=${10**k}$: $${lin(a,b)}=${10**k}$.<br>$${a===1?'':a}x=${10**k-b}$, so $x=${x.tex()}$.`}}
+ const ex=T`\frac{e^{${k}}${b>0?'-':'+'}${Math.abs(b)}}{${a}}`,ex1=a===1?T`e^{${k}}${b>0?'-':'+'}${Math.abs(b)}`:ex;
+ const t=TXT(r,ex1,[a===1?T`e^{${k}}${b>0?'+':'-'}${Math.abs(b)}`:T`\frac{e^{${k}}${b>0?'+':'-'}${Math.abs(b)}}{${a}}`,a===1?T`${k}${b>0?'-':'+'}${Math.abs(b)}`:T`\frac{${k}${b>0?'-':'+'}${Math.abs(b)}}{${a}}`,a===1?T`10^{${k}}${b>0?'-':'+'}${Math.abs(b)}`:T`\frac{10^{${k}}${b>0?'-':'+'}${Math.abs(b)}}{${a}}`,T`\ln${k}`]);
+ return{lvl:2,q:T`Solve $\ln(${lin(a,b)})=${k}$.`,a:t.a,w:t.w,
+ s:T`$\ln v=${k}$ means $v=e^{${k}}$: $${lin(a,b)}=e^{${k}}$.<br>Solve: $x=${ex1}\approx${((Math.exp(k)-b)/a).toFixed(3)}$.`}},
+];
+/* ---- pc5/06-laws.txt ---- */
+GENS['pc5-laws']=[
+/* combine a ln x + b ln y - c ln z into one log */
+r=>{const a=ri(r,1,4),b=ri(r,1,4),c=ri(r,1,3);const L=pick(r,['\\ln','\\log']);const pw=(v,k)=>k===1?v:v+'^{'+k+'}';const co=k=>k===1?'':k;
+ const ans=T`${L}\frac{${pw('x',a)}${pw('y',b)}}{${pw('z',c)}}`;
+ const t=TXT(r,ans,[T`${L}\frac{${a===1?'':a}x\cdot ${b===1?'':b}y}{${c===1?'':c}z}`,T`${L}(${pw('x',a)}+${pw('y',b)}-${pw('z',c)})`,T`${L}\frac{${pw('x',a)}}{${pw('y',b)}${pw('z',c)}}`,T`${L}(${pw('x',a)}${pw('y',b)}${pw('z',c)})`]);
+ return{lvl:1,q:T`Write $${co(a)}${L} x+${co(b)}${L} y-${co(c)}${L} z$ as a single logarithm.`,a:t.a,w:t.w,
+ s:T`Power Law first: move each coefficient up as an exponent: $${L} ${pw('x',a)}+${L} ${pw('y',b)}-${L} ${pw('z',c)}$.<br>Product Law for the sum, Quotient Law for the difference: $${ans}$.`}},
+/* expand ln(x^a y^b / z^c) in u,v,w */
+r=>{const a=ri(r,1,5),b=pick(r,[F(1,2),F(1,3),F(2),F(3),F(2,3)]),c=ri(r,1,4);const co=k=>k===1?'':k;
+ const tb=b.d===1?T`y^{${b.n}}`:b.n===1?T`\sqrt${b.d===2?'':'['+b.d+']'}{y}`:T`y^{${b.n}/${b.d}}`;
+ const ans=T`${co(a)}u+${b.d===1?co(b.n):b.tex()}v-${co(c)}w`;
+ const t=TXT(r,ans,[T`${co(a)}u+${b.d===1?co(b.n):b.tex()}v+${co(c)}w`,T`${co(a)}u\cdot ${b.d===1?b.n:b.tex()}v-${co(c)}w`,T`${co(a)}u-${b.d===1?co(b.n):b.tex()}v-${co(c)}w`,T`${a===1?'u':'u^{'+a+'}'}+v^{${b.tex()}}-${c===1?'w':'w^{'+c+'}'}`]);
+ return{lvl:1,q:T`Let $u=\ln x$, $v=\ln y$, and $w=\ln z$. Write $\ln\dfrac{${a===1?'x':'x^{'+a+'}'}${tb}}{${c===1?'z':'z^{'+c+'}'}}$ in terms of $u$, $v$, and $w$.`,a:t.a,w:t.w,
+ s:T`Quotient Law, then Product Law: $\ln ${a===1?'x':'x^{'+a+'}'}+\ln ${tb}-\ln ${c===1?'z':'z^{'+c+'}'}$.<br>Power Law${b.d>1?T` (with $${tb}=y^{${b.tex()}}$)`:''}: $${co(a)}\ln x+${b.d===1?co(b.n):b.tex()}\ln y-${co(c)}\ln z=${ans}$.`}},
+/* exact values: log a + log b = integer */
+r=>{const k=ri(r,1,4);const target=10**k;const ds=[];for(let d=2;d<target;d++)if(target%d===0&&d*d!==target&&d>1)ds.push(d);const a=pick(r,ds),b=target/a;const sub=r()<.4;
+ if(sub){const big=target*a;return{lvl:1,q:T`What is $\log${cm(big)}-\log${a}$?`,a:k,w:[O(T`\log${cm(big-a)}`,9),k+1,k-1,O(T`\frac{\log${cm(big)}}{\log${a}}`,8)],s:T`Quotient Law: $\log${cm(big)}-\log${a}=\log\frac{${cm(big)}}{${a}}=\log${cm(target)}=${k}$.`}}
+ return{lvl:1,q:T`What is $\log${a}+\log${b}$?`,a:k,w:[O(T`\log${a+b}`,9),k+1,O(cm(target),target),k-1],
+ s:T`Product Law: $\log${a}+\log${b}=\log(${a}\cdot${b})=\log${cm(target)}=${k}$.`}},
+/* ln of 2^a 3^b from given approximations */
+r=>{const a=ri(r,0,4),b=ri(r,0,3);if(a+b<2)return GENS['pc5-laws'][3](r);const n=2**a*3**b;const v=a*0.693+b*1.099;const f=x=>O('\\approx'+x.toFixed(3),x);
+ return{lvl:2,q:T`Given $\ln2\approx0.693$ and $\ln3\approx1.099$, what is $\ln${n}$?`,a:f(v),w:[0.693*1.099*Math.max(a,1)*Math.max(b,1),v+0.693,v-0.693,v+1.099,v-1.099,0.693+1.099,a*1.099+b*0.693,n*0.1].filter(x=>x>0&&Math.abs(x-v)>0.01).filter((x,i,arr)=>arr.findIndex(y=>Math.abs(y-x)<0.01)===i).slice(0,4).map(f),
+ s:T`Factor: $${n}=${[a?(a===1?'2':'2^{'+a+'}'):'',b?(b===1?'3':'3^{'+b+'}'):''].filter(Boolean).join('\\cdot ')}$.<br>Product and Power Laws: $\ln${n}=${[a?(a===1?'':a)+'\\ln2':'',b?(b===1?'':b)+'\\ln3':''].filter(Boolean).join('+')}\approx${v.toFixed(3)}$.`}},
+/* Richter: intensity ratio from magnitudes, or magnitude from ratio */
+r=>{const R1=+(ri(r,40,85)/10).toFixed(1);const kind=r()<.5;
+ if(kind){const d=pick(r,[1,2,3]);return{lvl:1,q:T`An earthquake is $${cm(10**d)}$ times as intense as one measuring $${R1}$ on the Richter scale. What is its magnitude?`,a:O((R1+d).toFixed(1),R1+d),w:[O((R1*10**d>100?R1+10*d:R1*10**d).toFixed(1),1),O((R1+d+1).toFixed(1),2),O((R1+d/10).toFixed(1),3),O((R1*d).toFixed(1),4)],
+  s:T`Multiplying the intensity by $10^{${d}}$ adds $\log10^{${d}}=${d}$ to the magnitude: $${R1}+${d}=${(R1+d).toFixed(1)}$.`}}
+ const R2=+(R1-ri(r,3,25)/10).toFixed(1);const d=+(R1-R2).toFixed(1);const ratio=10**d;const f=x=>O('\\approx'+(x<100?x.toFixed(1):cm(Math.round(x))),x);
+ return{lvl:2,q:T`How many times as intense is an earthquake measuring $${R1}$ as one measuring $${R2}$?`,a:f(ratio),w:[O(String(d),d),f(R1/R2),f(10*d),f(ratio*10)],
+ s:T`Magnitudes differ by $${R1}-${R2}=${d}$, so intensities differ by a factor of $10^{${d}}\approx${f(ratio).tex.replace('\\approx','')}$.`}},
+];
+/* ---- pc5/07-base.txt ---- */
+GENS['pc5-base']=[
+/* evaluate log_b of a power of b (including reciprocals and roots) */
+r=>{const b=pick(r,[2,3,4,5,6,7,8,9,10]);const kind=pick(r,['pow','recip','root']);
+ if(kind==='root'){const n=pick(r,[2,3]);const v=F(1,n);return{lvl:1,q:T`What is $\log_{${b}}\sqrt${n===2?'':'['+n+']'}{${b}}$?`,a:v,w:[F(n),F(-1,n),F(1),F(b,n)],s:T`$\sqrt${n===2?'':'['+n+']'}{${b}}=${b}^{1/${n}}$, so the logarithm is $${v.tex()}$.`}}
+ const k=ri(r,1,b<=3?6:b<=5?4:3);const val=b**k;
+ if(kind==='recip')return{lvl:1,q:T`What is $\log_{${b}}\dfrac{1}{${cm(val)}}$?`,a:-k,w:[k,F(-1,k),O(T`-${cm(val)}`,-val),-k-1],s:T`$\frac1{${cm(val)}}=\frac1{${b}^{${k}}}=${b}^{-${k}}$, so $\log_{${b}}\frac1{${cm(val)}}=-${k}$.`};
+ return{lvl:1,q:T`What is $\log_{${b}}${cm(val)}$?`,a:k,w:[k+1,k-1,F(val,b),F(1,k)].filter(x=>(x.v??x)!==k),s:T`$${b}^{${k}}=${cm(val)}$, so $\log_{${b}}${cm(val)}=${k}$.`}},
+/* log_4 8 type: common base */
+r=>{const p=pick(r,[2,3]);const m=ri(r,2,3),n=ri(r,1,5);if(m===n)return GENS['pc5-base'][1](r);const b=p**m,v=p**n;const ans=F(n,m);
+ return{lvl:2,q:T`What is $\log_{${b}}${v}$?`,a:ans,w:[F(m,n),F(v,b),F(n),F(n-m)].filter(x=>x.v!==ans.v),
+ s:T`Write both as powers of ${p}: $${b}=${p}^{${m}}$ and $${v}=${p}^{${n}}$.<br>$${b}^u=${v}$ means $${p}^{${m}u}=${p}^{${n}}$, so $${m}u=${n}$ and $u=${ans.tex()}$.`}},
+/* solve log_b x = k  or  log_x v = k */
+r=>{const b=pick(r,[2,3,4,5,6,10]);const k=ri(r,2,b<=3?5:3);const v=b**k;
+ if(r()<.5)return{lvl:1,q:T`Solve $\log_{${b}}x=${k}$.`,a:v,w:[b*k,k**b,F(k,b),b+k],s:T`$\log_{${b}}x=${k}$ means $${b}^{${k}}=x$, so $x=${cm(v)}$.`};
+ return{lvl:1,q:T`Solve $\log_x${cm(v)}=${k}$.`,a:b,w:[F(v,k),v*k,b*b,b+1].filter(x=>(x.v??x)!==b),s:T`$\log_x${cm(v)}=${k}$ means $x^{${k}}=${cm(v)}$, so $x=\sqrt[${k}]{${cm(v)}}=${b}$.`}},
+/* change of base numeric */
+r=>{const b=pick(r,[2,3,5,6,7,8,11,12]),v=ri(r,3,200);if(Number.isInteger(Math.log(v)/Math.log(b)))return GENS['pc5-base'][3](r);const ans=Math.log(v)/Math.log(b);const f=x=>O('\\approx'+x.toFixed(4),x);
+ return{lvl:1,q:T`Use the change of base formula to approximate $\log_{${b}}${v}$.`,a:f(ans),w:[f(1/ans),f(v/b),f(Math.log(v/b)),f(Math.log10(v))],
+ s:T`$\log_{${b}}${v}=\dfrac{\ln${v}}{\ln${b}}\approx\dfrac{${Math.log(v).toFixed(4)}}{${Math.log(b).toFixed(4)}}\approx${ans.toFixed(4)}$.<br>Check: $${b}^{${ans.toFixed(4)}}\approx${v}$ ✓. (The base goes in the denominator.)`}},
+/* inverse property b^{log_b a} and log_b b^expr */
+r=>{const b=pick(r,[2,3,5,7,8,9]),a=ri(r,2,40);if(r()<.5)return{lvl:1,q:T`What is $${b}^{\log_{${b}}${a}}$?`,a:a,w:[b,a*b,a+b,O(T`\log_{${b}}${a}`,0.5)],s:T`$${b}^x$ and $\log_{${b}}x$ undo each other: $${b}^{\log_{${b}}${a}}=${a}$.`};
+ const ex=pick(r,['2x+1','x^2','5-x','3x']);return{lvl:1,q:T`Simplify $\log_{${b}}${b}^{${ex}}$.`,a:O(ex,1),w:[O(T`${b}^{${ex}}`,2),O(T`${b}(${ex})`,3),O('1',4),O(T`(${ex})\log ${b}`,5)],s:T`$\log_b b^u=u$, so $\log_{${b}}${b}^{${ex}}=${ex}$.`}},
+];
+/* ---- pc5/08-eq.txt ---- */
+GENS['pc5-eq']=[
+/* a^x = c  ->  ln c / ln a */
+r=>{const a=pick(r,[2,3,5,6,7,1.05,1.08]),c=pick(r,[3,5,7,10,12,20,50]);if(a===c)return GENS['pc5-eq'][0](r);const v=Math.log(c)/Math.log(a);
+ const t=TXT(r,T`\frac{\ln${c}}{\ln${a}}`,[T`\frac{\ln${a}}{\ln${c}}`,T`\ln\frac{${c}}{${a}}`,T`\ln${c}-\ln${a}`,T`\frac{${c}}{${a}}`]);
+ return{lvl:1,q:T`Solve $${a}^x=${c}$.`,a:t.a,w:t.w,
+ s:T`Take $\ln$ of both sides and use the Power Law: $x\ln${a}=\ln${c}$.<br>So $x=\dfrac{\ln${c}}{\ln${a}}\approx${v.toFixed(4)}$. (A quotient of logs, not the log of a quotient.)`}},
+/* P e^{kx} = Q -> x = ln(Q/P)/k */
+r=>{const P=pick(r,[2,3,4,5,10]),Q=P*pick(r,[2,3,4,5,6,8,10]),k=pick(r,[2,3,4,5]);const ratio=Q/P;
+ const t=TXT(r,T`\frac{\ln${ratio}}{${k}}`,[T`${k}\ln${ratio}`,T`\ln\frac{${ratio}}{${k}}`,T`\frac{\ln${Q}}{${k}}`,T`\frac{${ratio}}{${k}e}`]);
+ return{lvl:1,q:T`Solve $${P}e^{${k}x}=${Q}$.`,a:t.a,w:t.w,
+ s:T`Isolate the exponential: $e^{${k}x}=\frac{${Q}}{${P}}=${ratio}$.<br>Take $\ln$: $${k}x=\ln${ratio}$, so $x=\dfrac{\ln${ratio}}{${k}}\approx${(Math.log(ratio)/k).toFixed(4)}$.`}},
+/* half-life or age from fraction remaining */
+r=>{const [name,h]=pick(r,[['carbon-14',5730],['radium-226',1620],['cobalt-60',5.3],['iodine-131',8]]);const unit=h>100?'years':h>6?'days':'years';const frac=pick(r,[0.1,0.2,0.3,0.4,0.6,0.75,0.8,0.9]);
+ const t=h*Math.log(frac)/Math.log(0.5);const fmt=v=>v>=100?cm(Math.round(v)):v.toFixed(1);const f=v=>O('\\approx'+fmt(v)+'\\text{ '+unit+'}',v);
+ return{lvl:2,q:T`The half-life of ${name} is $${cm(h)}$ ${unit}. How long until only $${Math.round(frac*100)}\%$ of a sample remains?`,a:f(t),w:[f(h*frac),f(h/frac),f(h*(1-frac)*2),f(t*2)],
+ s:T`Solve $(0.5)^{t/${h}}=${frac}$. Take $\ln$: $\dfrac{t}{${h}}\ln0.5=\ln${frac}$.<br>$t=\dfrac{${h}\ln${frac}}{\ln0.5}\approx\dfrac{${h}(${Math.log(frac).toFixed(4)})}{${Math.log(0.5).toFixed(4)}}\approx${fmt(t)}$ ${unit}.`}},
+/* log equation: log_b(x) + log_b(x - d) = k with one extraneous root */
+r=>{const b=pick(r,[2,3,10]);const s_=ri(r,2,b===10?12:9),d=ri(r,1,s_-1);const N=s_*(s_-d);if(b===10&&N!==10&&N!==100)return GENS['pc5-eq'][3](r);
+ const kk=Math.round(Math.log(N)/Math.log(b));if(b**kk!==N)return GENS['pc5-eq'][3](r);const e=d-s_;
+ const L=b===10?'\\log':'\\log_{'+b+'}';
+ return{lvl:2,q:T`Solve $${L} x+${L}(x-${d})=${kk}$.`,a:s_,w:[e,O(T`${s_}\text{ and }${e}`,s_+e/100),N,s_+d],
+ s:T`Product Law: $${L}\big[x(x-${d})\big]=${kk}$, so $x(x-${d})=${b}^{${kk}}=${N}$.<br>$x^2-${d}x-${N}=0$, which factors as $${fx(s_)}${fx(e)}=0$.<br>$x=${e}$ makes the input of $${L} x$ negative, so the log is not defined, so it's extraneous. Answer: $x=${s_}$.`}},
+/* doubling / tripling time with continuous rate */
+r=>{const rp=pick(r,[2,3,4,5,6,7,8,10]),k=pick(r,[2,3]);const t=Math.log(k)/(rp/100);const f=v=>O('\\approx'+v.toFixed(1)+'\\text{ years}',v);
+ return{lvl:1,q:T`An investment grows at $${rp}\%$ per year, compounded continuously. About how long until it ${k===2?'doubles':'triples'}?`,a:f(t),w:[f(100*(k-1)/rp),f(Math.log(k)/Math.log(1+rp/100)+0.3),f(t/2),f(k*100/rp)],
+ s:T`Solve $e^{${rp/100}t}=${k}$: take $\ln$ to get $${rp/100}t=\ln${k}$, so $t=\dfrac{\ln${k}}{${rp/100}}\approx\dfrac{${Math.log(k).toFixed(4)}}{${rp/100}}\approx${t.toFixed(1)}$ years.`}},
+];
+/* ---- pc5/09-model.txt ---- */
+GENS['pc5-model']=[
+/* classify a data list as linear / exponential / quadratic */
+r=>{const kind=pick(r,['exp','lin','quad']);const a=ri(r,2,9);let ys;
+ if(kind==='exp'){const b=pick(r,[2,3]);ys=[0,1,2,3,4].map(x=>a*b**x)}
+ else if(kind==='lin'){const d=ri(r,2,12);ys=[0,1,2,3,4].map(x=>a+d*x)}
+ else{const c=ri(r,1,3);ys=[0,1,2,3,4].map(x=>a+c*x*x)}
+ const name={exp:'exponential',lin:'linear',quad:'quadratic'}[kind];const t=TXT(r,String.raw`\text{${name}}`,['linear','exponential','quadratic','logarithmic','logistic','power'].filter(x=>x!==name).map(x=>String.raw`\text{${x}}`));
+ const d1=ys.slice(1).map((v,i)=>v-ys[i]),d2=d1.slice(1).map((v,i)=>v-d1[i]),rt=ys.slice(1).map((v,i)=>F(v,ys[i]).tex());
+ return{lvl:1,q:T`At $x=0,1,2,3,4$ the data values are $${ys.join(',\\ ')}$. Which type of model fits exactly?`,a:t.a,w:t.w,
+ s:T`Differences: $${d1.join(',\\ ')}$. ${kind==='lin'?'They are constant, so the data is linear.':T`Second differences: $${d2.join(',\\ ')}$.`}<br>${kind==='exp'?T`Ratios of successive values: $${rt.join(',\\ ')}$, all equal, so it's exponential.`:kind==='quad'?'The second differences are constant, so it is quadratic.':''}`}},
+/* exponential model through (0,a) and (n, a b^n) */
+r=>{const a=pick(r,[5,10,20,25,50,100]),b=pick(r,[2,3,4,0.5]),n=ri(r,2,3);const y=a*b**n;
+ const bt=b===0.5?'0.5':String(b);const t=TXT(r,T`y=${a}\cdot${bt}^x`,[T`y=${a}\cdot${b===0.5?'0.25':b**n}^x`,T`y=${cm(y)}\cdot${bt}^x`,T`y=${a}+${F(y-a,n).tex()}x`,T`y=${a}\cdot${b===2?3:2}^x`]);
+ return{lvl:2,q:T`An exponential model $y=ab^x$ passes through $(0,${a})$ and $(${n},${cm(y)})$. What is it?`,a:t.a,w:t.w,
+ s:T`At $x=0$, $b^0=1$, so $a=${a}$.<br>At $x=${n}$: $${a}b^{${n}}=${cm(y)}$, so $b^{${n}}=${b**n}$ and $b=${bt}$.<br>Model: $y=${a}\cdot${bt}^x$.`}},
+/* predict from an exponential model */
+r=>{const a=pick(r,[2.5,4.2,10,12,25,150]),b=pick(r,[1.03,1.05,1.08,1.12,0.9,0.95]),x=ri(r,5,20);const y=a*b**x;const f=v=>O('\\approx'+v.toFixed(2),v);
+ return{lvl:1,q:T`A model is $y=${a}(${b})^x$. What does it predict at $x=${x}$?`,a:f(y),w:[a*(1+(b-1)*x),a*b*x,y*b,y/b,a*b**(x+2)].filter(v=>Math.abs(v-y)>0.01).filter((v,i,arr)=>arr.findIndex(w=>Math.abs(w-v)<0.01)===i).slice(0,4).map(f),
+ s:T`$y=${a}(${b})^{${x}}\approx${a}(${(b**x).toFixed(4)})\approx${y.toFixed(2)}$.`}},
+/* logistic: time to reach half the limit */
+r=>{const c=pick(r,[500,1000,2000,5000]),a=pick(r,[4,9,19,24,49]),k=pick(r,[0.2,0.25,0.5,1]);const x=Math.log(a)/k;
+ const t=TXT(r,T`\frac{\ln${a}}{${k}}\approx${x.toFixed(2)}`,[T`${k}\ln${a}\approx${(k*Math.log(a)).toFixed(2)}`,T`\ln${a}\approx${Math.log(a).toFixed(2)}`,T`\frac{${a}}{${k}}=${+(a/k).toFixed(2)}`,T`\frac{\ln${c/2}}{${k}}\approx${(Math.log(c/2)/k).toFixed(2)}`]);
+ return{lvl:3,q:T`When does $y=\dfrac{${cm(c)}}{1+${a}e^{-${k}x}}$ reach half of its upper limit?`,a:t.a,w:t.w,
+ s:T`The limit is ${cm(c)}, so set $y=${cm(c/2)}$: $1+${a}e^{-${k}x}=2$, so $e^{-${k}x}=\frac1{${a}}$.<br>Take $\ln$: $-${k}x=-\ln${a}$, so $x=\dfrac{\ln${a}}{${k}}\approx${x.toFixed(2)}$.`}},
+/* logarithmic model from points (1,a) and (10,a+b) */
+r=>{const a=ri(r,1,9),b=ri(r,2,6);const t=TXT(r,T`y=${a}+${b}\log x`,[T`y=${a+b}+${b}\log x`,T`y=${a}+${a+b}\log x`,T`y=${a}\cdot${b}^x`,T`y=${b}+${a}\log x`]);
+ return{lvl:2,q:T`A model of the form $y=a+b\log x$ gives $y=${a}$ at $x=1$ and $y=${a+b}$ at $x=10$. What is it?`,a:t.a,w:t.w,
+ s:T`At $x=1$: $\log1=0$, so $a=${a}$.<br>At $x=10$: $\log10=1$, so $${a}+b=${a+b}$ and $b=${b}$.<br>Model: $y=${a}+${b}\log x$. (Each tenfold increase in $x$ adds ${b} to $y$.)`}},
+];
 /* ---- a10/02-arith.txt ---- */
 GENS['a10-arith']=[...GENS['alg-rate'],...GENS['alg-word']];
 GENS['a10-guide']=[...GENS['alg-rate'].slice(0,3),...GENS['count-basic'].slice(0,2),...GENS['div-pf'].slice(0,2),...GENS['tri-pyth'].slice(0,2),...GENS['prob-basic'].slice(0,2),...GENS['alg-lin'].slice(0,2)];

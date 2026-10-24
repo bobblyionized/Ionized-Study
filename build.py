@@ -14,7 +14,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, 'src')
 ORDER = ['alg', 'quad', 'func', 'polys', 'ineq', 'seq', 'tri', 'circ', 'polyg', 'coord', 'solid',
          'div', 'mod', 'base', 'dioph', 'count', 'prob', 'binom', 'explog', 'trig', 'cplx', 'conic',
-         'pc3', 'pc4', 'a10']
+         'pc3', 'pc4', 'pc5', 'a10']
 
 
 def rd(*p):

@@ -1,0 +1,210 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc5-exp">
+<h2>5.2 Exponential Functions</h2>
+<p>An <b>exponential function</b> has the variable in the exponent: $f(x)=a^x$ with a fixed base $a\gt0$, $a\ne1$. Compare $x^2$ (variable base) with $2^x$ (variable exponent). Exponential functions model anything that grows or shrinks by the <b>same percentage</b> each time period.</p>
+
+<h3>1. Graphs of $a^x$</h3>
+<div class="lfigs">
+<div class="lplot" data-f="pow(2,x);pow(3,x)" data-x="-4,4" data-y="-1,8" data-w="180" data-cap="$a\gt1$: $2^x$ and $3^x$ rise"></div>
+<div class="lplot" data-f="pow(0.5,x);pow(1/3,x)" data-x="-4,4" data-y="-1,8" data-w="180" data-cap="$0\lt a\lt1$: $(\frac12)^x$ and $(\frac13)^x$ fall"></div>
+</div>
+<div class="box"><h4>Properties of $f(x)=a^x$</h4><ul>
+<li>Domain: all real numbers. Range: all <b>positive</b> numbers ($a^x\gt0$ always).</li>
+<li>$y$-intercept $(0,1)$, since $a^0=1$. The graph also passes through $(1,a)$.</li>
+<li>Horizontal asymptote $y=0$ (the $x$-axis): on the left if $a\gt1$, on the right if $0\lt a\lt1$.</li>
+<li>$a\gt1$: increasing, and it grows faster than any polynomial eventually. $0\lt a\lt1$: decreasing.</li></ul></div>
+<p><b>Negative exponents flip the graph:</b> $3^{-x}=\left(3^{-1}\right)^x=\left(\frac13\right)^x$, the reflection of $3^x$ across the $y$-axis. In $a^{kx}$, the size of $k$ controls the steepness; its sign controls rising or falling.</p>
+<p><b>How fast is "exponential"?</b> $2^{50}\approx1.13\times10^{15}$. On a graph with $1$-inch units, the height at $x=50$ would reach past the sun.</p>
+<p><b>Transformations</b> work as in Section 3.4: $g(x)=2^{x-3}+1$ is $2^x$ shifted right $3$ and up $1$, so its asymptote is $y=1$ and its range is $y\gt1$.</p>
+
+<h3>2. Exponential growth</h3>
+<div class="box"><h4>Growth model</h4>A quantity that starts at $P$ and grows by $r$ (as a decimal) per time period is $f(x)=P(1+r)^x=Pa^x$ after $x$ periods. The <b>growth factor</b> $a=1+r$ is greater than $1$.</div>
+<p><b>Why:</b> each period multiplies by $1+r$: $P\to P(1+r)\to P(1+r)^2\to\cdots$. Example: $\$5000$ at $3\%$ compounded annually for $9$ years: $5000(1.03)^9\approx\$6523.87$.</p>
+<p><b>Finding the factor from data.</b> A culture has $1000$ bacteria, and $7600$ five hours later. Then $1000a^5=7600$, so $a^5=7.6$ and $a=7.6^{1/5}$. After $24$ hours: $1000\cdot7.6^{24/5}\approx16{,}900{,}721$ bacteria.</p>
+
+<h3>3. Exponential decay and half-life</h3>
+<p>If a fixed percentage is <i>lost</i> each period, $f(x)=P(1-r)^x$ with factor $0\lt a\lt1$. Example: a filter removes $30\%$ of impurities, so $70\%$ remain after each layer: $f(x)=(0.7)^x$ of the original remains after $x$ layers.</p>
+<div class="box"><h4>Radioactive decay</h4>The <b>half-life</b> $h$ is the time for half of a substance to decay. Starting from $c$, the amount left after $x$ years is $M(x)=c\,(0.5)^{x/h}$.</div>
+<p>Each time $x$ increases by $h$, the exponent $\frac xh$ goes up by $1$ and the amount halves. Plutonium-239 has $h=24{,}360$ years, so $M(x)=(0.5)^{x/24360}\approx0.99997^x$: a base so close to $1$ that it decays extremely slowly.</p>
+<div class="lfigs"><div class="lplot" data-f="80*pow(0.5,x/5)" data-x="0,25" data-y="0,90" data-w="230" data-cap="$80(0.5)^{x/5}$: half-life $5$ (80, 40, 20, 10, ...)"></div></div>
+
+<h3>4. The natural exponential function</h3>
+<p>The number $e\approx2.718281828459$ is irrational (Section 5.2.A shows where it comes from). The <b>natural exponential function</b> is $f(x)=e^x$, which sits between $2^x$ and $3^x$. Models are often written $f(t)=Pe^{kt}$: growth if $k\gt0$, decay if $k\lt0$.</p>
+<p>Example: if $P(t)=227e^{0.0093t}$ million people ($t=0$ in 1980), then in 2000, $P(20)=227e^{0.186}\approx273.4$ million.</p>
+
+<h3>5. Other exponential functions</h3>
+<ul><li><b>Logistic (inhibited) growth:</b> $p(t)=\dfrac{c}{1+ae^{-kt}}$ grows quickly at first, then levels off at the <b>upper limit</b> $c$ (as $t$ grows, $e^{-kt}\to0$). For $p(t)=\dfrac{20000}{1+24e^{-t/4}}$ the limit is $20{,}000$ and the starting value is $p(0)=\frac{20000}{25}=800$.</li>
+<li>$f(x)=\dfrac{e^x+e^{-x}}2$ is an <b>even</b> function (replacing $x$ by $-x$ swaps the two terms), and its graph is a U-shaped curve called a catenary.</li></ul>
+<div class="lfigs"><div class="lplot" data-f="20000/(1+24*exp(-x/4))" data-x="0,40" data-y="0,22000" data-w="240" data-cap="Logistic growth levels off at $20{,}000$"></div></div>
+
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Growth by $r$ per period means multiplying by $1+r$ (not $r$): $3\%$ growth is $\times1.03$.</li>
+<li>$a^x$ is never $0$ or negative, so its range is $(0,\infty)$, not all reals.</li>
+<li>For half-life, the exponent is $\frac xh$ (time divided by half-life), not $x\cdot h$.</li></ul></div>
+</script>
+
+=== BANK ===
+@@ pc5-exp
+Q: Which statement describes the graph of $g(x)=3^{-x}$?
+L: 1
+A: \text{It falls from left to right, passes through }(0,1)\text{, and has asymptote }y=0
+W: \text{It rises from left to right, passes through }(0,1)\text{, and has asymptote }y=0
+W: \text{It falls from left to right and passes through }(0,-1)
+W: \text{It is the graph of }3^x\text{ reflected across the }x\text{-axis}
+W: \text{It has a vertical asymptote at }x=0
+S: $3^{-x}=(3^{-1})^x=\left(\frac13\right)^x$, an exponential function with base between $0$ and $1$, so it falls from left to right.
+Every $a^x$ passes through $(0,1)$ and has the $x$-axis $y=0$ as a horizontal asymptote (here on the right side).
+It is $3^x$ reflected across the $y$-axis (not the $x$-axis: the values stay positive).
+---
+Q: You deposit $\$5000$ in an account paying $3\%$ interest compounded annually. How much is in the account after $9$ years?
+L: 1
+A: \$6523.87
+W: \$6350.00
+W: \$6333.85
+W: \$5150.00
+W: \$6719.58
+S: Each year the balance is multiplied by $1+0.03=1.03$, so after $9$ years: $5000(1.03)^9\approx\$6523.87$.
+($\$6350$ is simple interest, $5000(1+0.03\cdot9)$; $\$6333.85$ uses only $8$ years.)
+---
+Q: A culture starts with $1000$ bacteria and has $7600$ after $5$ hours. Assuming exponential growth, about how many bacteria are there after $24$ hours?
+L: 2
+A: \approx16{,}900{,}000
+W: \approx36{,}480
+W: \approx182{,}400
+W: \approx7{,}600{,}000
+W: \approx1{,}540{,}000
+S: Model $f(x)=1000a^x$. From $f(5)=7600$: $a^5=7.6$, so $a=7.6^{1/5}\approx1.50$.
+$f(24)=1000\,a^{24}=1000\cdot7.6^{24/5}\approx16{,}900{,}721$.
+($36{,}480$ assumes linear growth, which is wrong for an exponential model.)
+---
+Q: Plutonium-239 has a half-life of $24{,}360$ years. About what fraction of a sample remains after $10{,}000$ years?
+L: 2
+A: \approx0.752
+W: \approx0.205
+W: \approx0.590
+W: \approx0.410
+W: \approx0.500
+S: The amount left is $M(x)=(0.5)^{x/24360}$ of the original.
+$M(10000)=(0.5)^{10000/24360}=(0.5)^{0.4105}\approx0.752$, so about $75\%$ remains.
+(Less than one half-life has passed, so more than half must remain.)
+---
+Q: Each layer of a filter removes $30\%$ of the impurities in the water that passes through it. What is the fewest number of layers needed to remove at least $95\%$ of the impurities?
+L: 2
+A: 9
+W: 4
+W: 8
+W: 10
+W: 3
+S: After each layer $70\%$ of the impurities remain, so after $n$ layers $(0.7)^n$ remains.
+We need $(0.7)^n\le0.05$. $(0.7)^8\approx0.0576$ (not enough) and $(0.7)^9\approx0.0404$ ✓.
+So $9$ layers. (Removing $30\%$ four times is not $120\%$: each layer removes $30\%$ of what's left.)
+---
+Q: What is the range of $f(x)=2^x+3$?
+L: 1
+A: y\gt3
+W: \text{all real numbers}
+W: y\gt0
+W: y\ge3
+W: y\gt2
+S: $2^x$ takes every positive value and never reaches $0$, so $2^x\gt0$.
+Adding $3$ shifts everything up: $f(x)\gt3$. The horizontal asymptote is $y=3$, and $3$ itself is never reached.
+---
+Q: The graph of $g(x)=2^{x-3}+1$ is obtained from the graph of $y=2^x$ by which transformations?
+L: 1
+A: \text{right }3\text{, up }1
+W: \text{left }3\text{, up }1
+W: \text{right }3\text{, down }1
+W: \text{left }3\text{, down }1
+W: \text{up }3\text{, right }1
+S: Replacing $x$ by $x-3$ shifts the graph <b>right</b> $3$; adding $1$ shifts it <b>up</b> $1$.
+So the asymptote moves from $y=0$ to $y=1$, and the point $(0,1)$ moves to $(3,2)$.
+---
+Q: The population of a country (in millions) is modeled by $P(t)=227e^{0.0093t}$, where $t=0$ is 1980. What does the model give for 2000?
+L: 1
+A: \approx273.4\text{ million}
+W: \approx269.2\text{ million}
+W: \approx231.2\text{ million}
+W: \approx249.5\text{ million}
+W: \approx227.2\text{ million}
+S: 2000 is $t=20$. $P(20)=227e^{0.0093\cdot20}=227e^{0.186}\approx227(1.2044)\approx273.4$ million.
+---
+Q: A lake's fish population after $t$ months is $p(t)=\dfrac{20000}{1+24e^{-t/4}}$. What is the upper limit on the population, and what is the starting population?
+L: 2
+A: \text{limit }20{,}000\text{; start }800
+W: \text{limit }20{,}000\text{; start }20{,}000
+W: \text{limit }24{,}000\text{; start }800
+W: \text{limit }800\text{; start }20{,}000
+W: \text{no limit; start }800
+S: As $t$ grows, $e^{-t/4}$ gets closer and closer to $0$, so $p(t)$ approaches $\frac{20000}{1+0}=20{,}000$: that's the upper limit.
+At $t=0$: $e^0=1$, so $p(0)=\frac{20000}{1+24}=800$.
+---
+Q: What is the average rate of change of $f(x)=2^x$ from $x=1$ to $x=3$?
+L: 1
+A: 3
+W: 6
+W: 2
+W: 4
+W: 8
+S: Average rate of change $=\dfrac{f(3)-f(1)}{3-1}=\dfrac{8-2}{2}=3$.
+---
+Q: Which function is even?
+L: 2
+A: f(x)=\frac{e^x+e^{-x}}{2}
+W: f(x)=\frac{e^x-e^{-x}}{2}
+W: f(x)=e^x
+W: f(x)=2^{x+1}
+W: f(x)=e^{-x}
+S: A function is even when $f(-x)=f(x)$.
+For $\frac{e^x+e^{-x}}2$: replacing $x$ by $-x$ gives $\frac{e^{-x}+e^{x}}2$, the same thing ✓.
+$\frac{e^x-e^{-x}}2$ changes sign (it's odd), and $e^x$, $2^{x+1}$, $e^{-x}$ are neither.
+---
+Q: The world population was about $4.5$ billion in 1980 and grows about $1.5\%$ per year. What does this model predict for 2010?
+L: 1
+A: \approx7.0\text{ billion}
+W: \approx6.5\text{ billion}
+W: \approx5.2\text{ billion}
+W: \approx9.0\text{ billion}
+W: \approx4.6\text{ billion}
+S: Growth factor $1.015$ per year, for $30$ years: $4.5(1.015)^{30}\approx4.5(1.563)\approx7.03$ billion.
+($6.5$ billion would be linear growth: $4.5(1+0.015\cdot30)=6.525$.)
+
+=== GENS ===
+GENS['pc5-exp']=[
+/* asymptote / range / y-intercept of a^(x-h)+k */
+r=>{const a=pick(r,[2,3,4,5]),h=ri(r,-4,4),k=ri(r,-5,5);const ask=pick(r,['asym','range','yint']);
+ const fn=T`f(x)=${a}^{${h===0?'x':T`x${h<0?'+':'-'}${Math.abs(h)}`}}${k===0?'':k<0?k:'+'+k}`;
+ const y0=h>=0?F(1,a**h).add(k):F(a**(-h)+k);const base=T`${a}^{${h===0?'x':T`x${h<0?'+':'-'}${Math.abs(h)}`}}`;
+ if(ask==='asym'){const t=TXT(r,'y='+k,['y='+(-k),'y=0','y='+h,'x='+h,'y='+(k+1),'y='+(k-1),'x='+(-h)].filter(x=>x!=='y='+k));
+  return{lvl:1,q:T`What is the horizontal asymptote of the graph of $${fn}$?`,a:t.a,w:t.w,
+  s:T`A power of ${a} is always positive and gets arbitrarily close to $0$, so $${base}$ has asymptote $y=0$.<br>${k?T`Adding $${k}$ shifts the graph ${k>0?'up':'down'} ${Math.abs(k)}, so the asymptote moves to $y=${k}$.`:'There is no vertical shift, so it stays $y=0$.'}<br>(A horizontal shift doesn't move a horizontal line.)`}}
+ if(ask==='range'){const t=TXT(r,T`y\gt ${k}`,[T`y\ge ${k}`,String.raw`\text{all real numbers}`,T`y\gt ${k+1}`,T`y\gt ${k-1}`,T`y\lt ${k}`,'y\\gt 0'].filter(x=>x!==T`y\gt ${k}`));
+  return{lvl:1,q:T`What is the range of $${fn}$?`,a:t.a,w:t.w,
+  s:T`$${base}$ takes every positive value but never $0$, so its range is $y\gt0$.<br>${k?T`Adding $${k}$ shifts every output by $${k}$`:'There is no vertical shift'}: the range is $y\gt ${k}$. The value $${k}$ itself is never reached (it's the asymptote).`}}
+ return{lvl:1,q:T`What is the $y$-intercept of $${fn}$?`,a:y0,w:[F(1+k),F(a**Math.abs(h)+k),F(k),y0.add(1)],
+  s:T`Set $x=0$: $f(0)=${a}^{${-h}}${k===0?'':k<0?k:'+'+k}=${F(a).v**(-h)<1?F(1,a**h).tex():a**(-h)}${k===0?'':k<0?k:'+'+k}=${y0.tex()}$.`}},
+/* compound growth P(1+r)^t */
+r=>{const P=pick(r,[500,1000,1500,2000,2500,4000,5000,8000,10000]),rp=pick(r,[2,3,4,5,6,7,8]),t=ri(r,3,15);const A=P*(1+rp/100)**t;
+ const m=v=>O('\\$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}).replace(/,/g,'{,}'),v);
+ return{lvl:1,q:T`$\$${cm(P)}$ is invested at $${rp}\%$ interest compounded annually. How much is in the account after $${t}$ years?`,a:m(A),w:[m(P*(1+rp*t/100)),m(P*(1+rp/100)**(t-1)),m(P*(1+rp/100)**(t+1)),m(P*(rp/100)**1*t+P*1.5)],
+ s:T`Each year multiplies the balance by $1+${rp/100}=${1+rp/100}$.<br>After $${t}$ years: $${cm(P)}(${1+rp/100})^{${t}}\approx${m(A).tex}$.<br>(Simple interest would give only $${cm(P)}(1+${rp/100}\cdot${t})=${m(P*(1+rp*t/100)).tex}$.)`}},
+/* half-life with whole numbers of half-lives */
+r=>{const n=ri(r,1,5),h=pick(r,[3,5,8,10,12,20,25,30]),c=pick(r,[16,32,48,64,80,96,128,160,200,320]);const left=F(c,2**n);
+ const subs=pick(r,['a radioactive isotope','a medication in the bloodstream','a sample of iodine-131']);
+ return{lvl:1,q:T`The half-life of ${subs} is $${h}$ ${subs.includes('medication')?'hours':'days'}. Starting with $${c}$ mg, how much remains after $${n*h}$ ${subs.includes('medication')?'hours':'days'}?`,a:left,w:[0,1,2,3,4,5,6,7].filter(j=>j!==n).sort((x,y)=>Math.abs(x-n)-Math.abs(y-n)).slice(0,3).map(j=>F(c,2**j)).concat([F(c*(n+1),2**(n+1)).v===left.v?F(c,3):F(c*(n+1),2**(n+1))]),
+ s:T`The amount left is $M(x)=${c}(0.5)^{x/${h}}$.<br>$x=${n*h}$ is $\frac{${n*h}}{${h}}=${n}$ half-lives, so $M=${c}(0.5)^{${n}}=\dfrac{${c}}{${2**n}}=${left.tex()}$ mg.<br>(Each half-life halves the amount; it does not subtract the same amount each time.)`}},
+/* growth factor from two data points, predict later */
+r=>{const a=pick(r,[2,3]),t1=ri(r,2,5),k=ri(r,2,3),P0=pick(r,[100,200,300,500,1000]);const P1=P0*a**t1,T2=t1*k,P2=P0*a**T2;
+ if(P2>5e7)return GENS['pc5-exp'][3](r);
+ return{lvl:2,q:T`A population grows exponentially from $${cm(P0)}$ to $${cm(P1)}$ in $${t1}$ hours. What will it be after $${T2}$ hours?`,a:O(cm(P2),P2),w:[P1*k,P0+(P1-P0)*k,P2/a,P2*a].map(v=>O(cm(v),v)),
+ s:T`Model $f(x)=${P0}\,b^x$. From $f(${t1})=${P1}$: $b^{${t1}}=${a**t1}$, so $b=${a}$.<br>$f(${T2})=${P0}\cdot${a}^{${T2}}=${cm(P2)}$.<br>Shortcut: $${T2}$ hours is ${k} periods of $${t1}$ hours, each multiplying by $${a**t1}$: $${P0}\cdot${a**t1}^{${k}}$.`}},
+/* average rate of change of b^x */
+r=>{const b=pick(r,[2,3,4]),m=ri(r,0,2),n=m+ri(r,1,3);const v=F(b**n-b**m,n-m);
+ return{lvl:1,q:T`What is the average rate of change of $f(x)=${b}^x$ from $x=${m}$ to $x=${n}$?`,a:v,w:[F(b**n-b**m),F(b**n,n),F(b**(n-m)),v.add(1)],
+ s:T`$\dfrac{f(${n})-f(${m})}{${n}-${m}}=\dfrac{${b**n}-${b**m}}{${n-m}}=${v.tex()}$.<br>(Exponential functions get steeper and steeper, so this rate grows if the interval moves right.)`}},
+/* logistic limit and starting value */
+r=>{const c=pick(r,[1000,2000,5000,10000,20000,50000]),a=pick(r,[4,9,19,24,49,99]),k=pick(r,[2,3,4,5]);const st=F(c,1+a);
+ const lim=O(T`\text{limit }${cm(c)}\text{; start }${st.isInt()?cm(st.n):st.tex()}`,1);
+ return{lvl:2,q:T`A population follows $p(t)=\dfrac{${cm(c)}}{1+${a}e^{-t/${k}}}$. What are its upper limit and its starting value $p(0)$?`,a:lim,
+ w:[O(T`\text{limit }${cm(c)}\text{; start }${cm(c)}`,2),O(T`\text{limit }${cm(c*(1+a))}\text{; start }${st.isInt()?cm(st.n):st.tex()}`,3),O(T`\text{limit }${cm(c)}\text{; start }${F(c,a).isInt()?cm(c/a):F(c,a).tex()}`,4),O(T`\text{no limit; start }${st.isInt()?cm(st.n):st.tex()}`,5)],
+ s:T`As $t\to\infty$, $e^{-t/${k}}\to0$, so $p(t)\to\dfrac{${cm(c)}}{1}=${cm(c)}$. That's the upper limit.<br>At $t=0$, $e^0=1$: $p(0)=\dfrac{${cm(c)}}{1+${a}}=${st.isInt()?cm(st.n):st.tex()}$.`}},
+];

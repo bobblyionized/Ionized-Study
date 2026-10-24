@@ -1,0 +1,204 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc5-radeq">
+<h2>5.1.A Radical Equations</h2>
+<p>To solve an equation with a square root, we get rid of the root by squaring. Squaring is safe in one direction only, and that's the whole story of this section.</p>
+
+<div class="box"><h4>Power Principle</h4>If both sides of an equation are raised to the same positive integer power, every solution of the original equation is also a solution of the new one. <b>But the new equation may have extra solutions</b> that don't solve the original. These are called <b>extraneous solutions</b>.</div>
+<p>Why: $x-2=3$ has only $x=5$, but $(x-2)^2=9$ also has $x=-1$, because squaring forgets the sign. So <b>after squaring, always check every answer in the original equation</b>.</p>
+
+<h3>1. The method</h3>
+<ol><li><b>Isolate</b> one radical on one side.</li>
+<li><b>Raise both sides</b> to the power that removes it (square for $\sqrt{\ }$, cube for $\sqrt[3]{\ }$).</li>
+<li><b>Solve</b> the resulting equation.</li>
+<li><b>Check</b> each answer in the original equation and throw out the extraneous ones.</li></ol>
+<div class="ex"><b class="lbl">Example 1.</b> Solve $5+\sqrt{3x-11}=x$.
+<details><summary>Solution</summary>Isolate: $\sqrt{3x-11}=x-5$. Square: $3x-11=x^2-10x+25$, so $x^2-13x+36=0=(x-4)(x-9)$.<br>Check $x=9$: $5+\sqrt{16}=9$ ✓. Check $x=4$: $5+\sqrt1=6\ne4$ ✗.<br>Only $x=9$. (At $x=4$ the right side $x-5$ is negative, but a square root can't be negative.)</details></div>
+<div class="lfigs"><div class="lplot" data-f="5+sqrt(3*x-11)-x|3.67|15" data-x="-1,15" data-y="-4,4" data-w="230" data-cap="$y=5+\sqrt{3x-11}-x$ crosses at $x=9$ only"></div></div>
+<p>Graphing $y=(\text{left side})-(\text{right side})$ is a quick check: its $x$-intercepts are the real solutions.</p>
+
+<h3>2. Two radicals: square twice</h3>
+<div class="ex"><b class="lbl">Example 2.</b> Solve $\sqrt{2x-3}-\sqrt{x+7}=2$.
+<details><summary>Solution</summary>Isolate one radical: $\sqrt{2x-3}=\sqrt{x+7}+2$.<br>Square (the right side is a binomial): $2x-3=(x+7)+4\sqrt{x+7}+4$, so $x-14=4\sqrt{x+7}$.<br>Square again: $x^2-28x+196=16(x+7)$, so $x^2-44x+84=0=(x-2)(x-42)$.<br>Check: $x=2$ gives $1-3=-2$ ✗; $x=42$ gives $9-7=2$ ✓. Only $x=42$.</details></div>
+<div class="warn"><b>Squaring a sum:</b> $(\sqrt{x+7}+2)^2=(x+7)+4\sqrt{x+7}+4$, not $(x+7)+4$. The middle term is where the second radical comes from.</div>
+
+<h3>3. Odd roots and rational exponents</h3>
+<ul><li>Cubing never creates extraneous solutions (every real number has exactly one cube root), but checking is still good practice: $\sqrt[3]{x^2-1}=2$ gives $x^2-1=8$, so $x=\pm3$.</li>
+<li>$x^{2/3}=9$ means $\left(x^{1/3}\right)^2=9$, so $x^{1/3}=\pm3$ and $x=\pm27$.</li>
+<li>$x^{3/2}=8$ means $\left(\sqrt x\right)^3=8$, so $\sqrt x=2$ and $x=4$ (here $x\ge0$ is required).</li>
+<li><b>Quadratic in form:</b> $x-3\sqrt x-4=0$ is $u^2-3u-4=0$ with $u=\sqrt x$, so $u=4$ or $u=-1$. Since $\sqrt x\ge0$, only $u=4$ works: $x=16$.</li></ul>
+
+<h3>4. Solving formulas</h3>
+<p>Isolate the radical, then square. Example: solve the pendulum formula $T=2\pi\sqrt{\frac Lg}$ for $L$: $\frac{T}{2\pi}=\sqrt{\frac Lg}$, so $\frac{T^2}{4\pi^2}=\frac Lg$ and $L=\frac{gT^2}{4\pi^2}$.</p>
+
+<h3>5. Applications</h3>
+<p>Distances in the plane involve $\sqrt{x^2+a^2}$ (Pythagorean Theorem), so travel-time and cable-length problems lead to radical equations. Example: a boat is $6$ miles from the nearest point $P$ on a straight shore. A dock is $x$ miles along the shore from $P$, and the straight route from the boat to the dock is $2$ miles longer than $x$. Then $\sqrt{x^2+36}=x+2$; squaring gives $36=4x+4$, so $x=8$ (check: $\sqrt{100}=10=8+2$ ✓).</p>
+
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Squaring before isolating the radical: $(\sqrt{a}+b)^2\ne a+b^2$.</li>
+<li>Skipping the check. Extraneous solutions are common, especially when one side could be negative.</li>
+<li>Writing $\sqrt x=-1$ has a solution. A principal square root is never negative.</li></ul></div>
+</script>
+
+=== BANK ===
+@@ pc5-radeq
+Q: Solve $5+\sqrt{3x-11}=x$.
+L: 1
+A: 9
+W: 4
+W: 4\text{ and }9
+W: 13
+W: \text{no solution}
+S: Isolate the radical: $\sqrt{3x-11}=x-5$.
+Square both sides: $3x-11=x^2-10x+25$, so $x^2-13x+36=0$, i.e. $(x-4)(x-9)=0$.
+Check in the original equation. $x=9$: $5+\sqrt{16}=9$ ✓. $x=4$: $5+\sqrt{1}=6\ne4$ ✗ (extraneous).
+The only solution is $x=9$.
+---
+Q: Solve $\sqrt{2x-3}-\sqrt{x+7}=2$.
+L: 3
+A: 42
+W: 2
+W: 2\text{ and }42
+W: 14
+W: 9
+S: Isolate one radical: $\sqrt{2x-3}=\sqrt{x+7}+2$.
+Square: $2x-3=(x+7)+4\sqrt{x+7}+4$, so $x-14=4\sqrt{x+7}$.
+Square again: $x^2-28x+196=16x+112$, so $x^2-44x+84=0=(x-2)(x-42)$.
+Check: $x=2$ gives $\sqrt1-\sqrt9=-2$ ✗; $x=42$ gives $\sqrt{81}-\sqrt{49}=2$ ✓. Answer: $42$.
+---
+Q: Solve $\sqrt{x+5}=x-1$.
+L: 1
+A: 4
+W: -1
+W: 4\text{ and }-1
+W: 5
+W: \text{no solution}
+S: Square: $x+5=x^2-2x+1$, so $x^2-3x-4=0=(x-4)(x+1)$.
+Check $x=4$: $\sqrt9=3=4-1$ ✓. Check $x=-1$: $\sqrt4=2$, but $-1-1=-2$ ✗.
+Answer: $x=4$.
+---
+Q: Solve $\sqrt[3]{x^2-1}=2$.
+L: 1
+A: \pm3
+W: 3
+W: \pm\sqrt5
+W: 9
+W: \pm\sqrt3
+S: Cube both sides: $x^2-1=8$, so $x^2=9$ and $x=\pm3$.
+Cubing doesn't create extraneous solutions, and both check: $\sqrt[3]{9-1}=2$ ✓.
+---
+Q: Solve $\sqrt{x+7}-\sqrt x=1$.
+L: 2
+A: 9
+W: 3
+W: 6
+W: 16
+W: \text{no solution}
+S: Isolate one radical: $\sqrt{x+7}=1+\sqrt x$.
+Square: $x+7=1+2\sqrt x+x$, so $2\sqrt x=6$ and $\sqrt x=3$.
+So $x=9$. Check: $\sqrt{16}-\sqrt9=4-3=1$ ✓.
+---
+Q: Solve $x^{2/3}=9$.
+L: 2
+A: \pm27
+W: 27
+W: \pm3
+W: 6
+W: \pm\sqrt{27}
+S: $x^{2/3}=\left(x^{1/3}\right)^2=9$, so $x^{1/3}=3$ or $x^{1/3}=-3$.
+Cube: $x=27$ or $x=-27$. Both check, because $(-27)^{2/3}=(\sqrt[3]{-27})^2=9$.
+---
+Q: Solve $x-3\sqrt x-4=0$.
+L: 2
+A: 16
+W: 16\text{ and }1
+W: 4
+W: 16\text{ and }-1
+W: 1
+S: Let $u=\sqrt x$, so $x=u^2$: $u^2-3u-4=0=(u-4)(u+1)$.
+$u=4$ gives $x=16$. $u=-1$ is impossible, since $\sqrt x\ge0$.
+Answer: $x=16$ (check: $16-12-4=0$ ✓).
+---
+Q: Solve $\sqrt{x-2}=x-4$.
+L: 1
+A: 6
+W: 3
+W: 3\text{ and }6
+W: 2
+W: \text{no solution}
+S: Square: $x-2=x^2-8x+16$, so $x^2-9x+18=0=(x-3)(x-6)$.
+$x=6$: $\sqrt4=2=6-4$ ✓. $x=3$: $\sqrt1=1$, but $3-4=-1$ ✗.
+Answer: $x=6$.
+---
+Q: Solve the pendulum formula $T=2\pi\sqrt{\dfrac{L}{g}}$ for $L$.
+L: 2
+A: L=\frac{gT^2}{4\pi^2}
+W: L=\frac{gT^2}{2\pi}
+W: L=\frac{T^2}{4\pi^2g}
+W: L=\frac{g\sqrt T}{2\pi}
+W: L=\frac{4\pi^2T^2}{g}
+S: Divide by $2\pi$: $\dfrac{T}{2\pi}=\sqrt{\dfrac Lg}$.
+Square: $\dfrac{T^2}{4\pi^2}=\dfrac{L}{g}$.
+Multiply by $g$: $L=\dfrac{gT^2}{4\pi^2}$.
+---
+Q: A boat is $6$ miles from the nearest point $P$ on a straight shore. A dock is $x$ miles from $P$ along the shore, and the straight-line distance from the boat to the dock is $2$ miles more than $x$. What is $x$?
+L: 2
+A: 8
+W: 6
+W: 10
+W: 4
+W: 9
+S: The boat, $P$, and the dock form a right triangle with legs $6$ and $x$, so the boat-to-dock distance is $\sqrt{x^2+36}$.
+$\sqrt{x^2+36}=x+2$. Square: $x^2+36=x^2+4x+4$, so $4x=32$ and $x=8$.
+Check: $\sqrt{64+36}=10=8+2$ ✓.
+---
+Q: Which value is an <b>extraneous</b> solution that appears when solving $\sqrt{x+2}=x$ by squaring?
+L: 1
+A: -1
+W: 2
+W: -2
+W: 1
+W: 0
+S: Square: $x+2=x^2$, so $x^2-x-2=0=(x-2)(x+1)$.
+$x=2$: $\sqrt4=2$ ✓. $x=-1$: $\sqrt1=1\ne-1$ ✗.
+So $-1$ is extraneous: it solves the squared equation but not the original.
+---
+Q: How many real solutions does $\sqrt{x+4}+2=0$ have?
+L: 1
+A: 0
+W: 1
+W: 2
+W: \text{infinitely many}
+W: 3
+S: Isolate: $\sqrt{x+4}=-2$. A principal square root is never negative, so there is no solution.
+(Squaring would give $x+4=4$, $x=0$, but checking: $\sqrt4+2=4\ne0$. Extraneous.)
+
+=== GENS ===
+GENS['pc5-radeq']=[
+/* sqrt(x+p) = x - q with one true and one extraneous root */
+r=>{const q=ri(r,-3,5),t=q+ri(r,1,6),e=2*q+1-t;if(e>=q||t*e===q*q)return GENS['pc5-radeq'][0](r);const p=q*q-t*e;if(t+p<0||e+p<0)return GENS['pc5-radeq'][0](r);
+ const rhs=q===0?'x':T`x${q<0?'+':'-'}${Math.abs(q)}`,lhs=T`\sqrt{x${p<0?'-':'+'}${Math.abs(p)}}`;
+ const t2=O(T`${t}\text{ and }${e}`,t+e/100);
+ return{lvl:1,q:T`Solve $${lhs}=${rhs}$.`,a:t,w:[e,t2,t+1,q],
+ s:T`Square both sides: $x${p<0?'-':'+'}${Math.abs(p)}=${q===0?'x^2':T`(${rhs})^2=${pl([1,-2*q,q*q])}`}$.<br>Collect terms: $${pl([1,-(2*q+1),q*q-p])}=0$, which factors as $${fx(t)}${fx(e)}=0$.<br>Check $x=${t}$: the left side is $\sqrt{${t+p}}=${Math.sqrt(t+p)}$ and the right side is $${t-q}$ ✓.<br>Check $x=${e}$: the left side is $\sqrt{${e+p}}=${Math.sqrt(e+p)}$ but the right side is $${e-q}$ ✗ (a square root can't be negative). So $x=${e}$ is extraneous.<br>Answer: $x=${t}$.`}},
+/* cube root equation */
+r=>{const a=ri(r,1,5),c=ri(r,-4,4),x=ri(r,-9,9);const b=c**3-a*x;
+ const inner=T`${a===1?'':a}x${b<0?'-':'+'}${Math.abs(b)}`;
+ return{lvl:1,q:T`Solve $\sqrt[3]{${inner}}=${c}$.`,a:x,w:[F(c*c-b,a),F(3*c-b,a),-x||7,x+1],
+ s:T`Cube both sides: $${inner}=${P(c)}^3=${c**3}$.<br>So $${a===1?'':a}x=${c**3}-${P(b)}=${a*x}$ and $x=${x}$.<br>(Cubing never adds extraneous solutions, but it's quick to check: $\sqrt[3]{${a*x+b}}=${c}$ ✓.)`}},
+/* x^(m/n) = value */
+r=>{const k=ri(r,2,5);const even=r()<.5;
+ if(even){const v=k*k;return{lvl:2,q:T`Solve $x^{2/3}=${v}$.`,a:O(T`\pm${k**3}`,k**3),w:[k**3,O(T`\pm${k}`,k+.1),O(T`\pm\sqrt{${v}}`,k+.2),v*3],
+   s:T`$x^{2/3}=\left(x^{1/3}\right)^2=${v}$, so $x^{1/3}=\pm${k}$.<br>Cube: $x=\pm${k**3}$. Both work, since squaring the cube root erases the sign.`}}
+ const v=k**3;return{lvl:2,q:T`Solve $x^{3/2}=${v}$.`,a:k*k,w:[O(T`\pm${k*k}`,k*k+.1),k,k**3,O(T`${v}^{2}`,v*v)],
+   s:T`$x^{3/2}=\left(\sqrt x\right)^3=${v}$, so $\sqrt x=${k}$ and $x=${k*k}$.<br>Here $x$ must be nonnegative ($\sqrt x$ appears), so $-${k*k}$ is not a solution.`}},
+/* quadratic in sqrt(x) */
+r=>{const u=ri(r,2,7);const v=pick(r,[-1,-2,-3,ri(r,1,u-1)]);const b=-(u+v),c=u*v;const both=v>0;
+ const ans=both?O(T`${u*u}\text{ and }${v*v}`,u*u+v*v/100):u*u;
+ const eq=T`x${b<0?'-':'+'}${Math.abs(b)===1?'':Math.abs(b)}\sqrt{x}${c<0?'-':'+'}${Math.abs(c)}=0`;
+ return{lvl:2,q:T`Solve $${eq}$.`,a:ans,w:both?[u*u,v*v,O(T`${u}\text{ and }${v}`,u+v/100),u*u+v*v]:[O(T`${u*u}\text{ and }${v*v}`,u*u+v*v/100),u,v*v,u*u+1],
+ s:T`Let $u=\sqrt x$ (so $x=u^2$): $u^2${b<0?'-':'+'}${Math.abs(b)===1?'':Math.abs(b)}u${c<0?'-':'+'}${Math.abs(c)}=0$, which factors as $(u-${u})(u${v<0?'+':'-'}${Math.abs(v)})=0$.<br>${both?T`Both $u=${u}$ and $u=${v}$ are positive, so $x=${u*u}$ or $x=${v*v}$.`:T`$u=${v}$ is impossible because $\sqrt x\ge0$. So $\sqrt x=${u}$ and $x=${u*u}$.`}`}},
+/* two radicals: sqrt(x + a) - sqrt(x) = d  -> sqrt(x) = (a - d^2)/(2d) */
+r=>{const d=ri(r,1,3),m=ri(r,1,6);const a=d*d+2*d*m;const x=m*m;
+ return{lvl:3,q:T`Solve $\sqrt{x+${a}}-\sqrt{x}=${d}$.`,a:x,w:[m,F(a-d*d,2),x+d,a],
+ s:T`Isolate one radical: $\sqrt{x+${a}}=${d}+\sqrt x$.<br>Square: $x+${a}=${d*d}+${2*d}\sqrt x+x$. The $x$'s cancel: $${2*d}\sqrt x=${a-d*d}$, so $\sqrt x=${m}$.<br>Then $x=${x}$. Check: $\sqrt{${x+a}}-\sqrt{${x}}=${Math.sqrt(x+a)}-${m}=${d}$ ✓.`}},
+];

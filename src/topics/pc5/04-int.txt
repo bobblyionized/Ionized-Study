@@ -1,0 +1,195 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc5-int">
+<h2>5.2.A Compound Interest and the Number $e$</h2>
+<p>Interest that earns interest is the clearest example of exponential growth, and it is also where the number $e$ comes from.</p>
+
+<div class="box"><h4>Compound Interest Formula</h4>If $P$ dollars is invested at interest rate $r$ <b>per time period</b> (as a decimal), the amount after $t$ periods is
+$$A=P(1+r)^t.$$</div>
+<p><b>Why:</b> each period adds $r$ times the current balance, which multiplies the balance by $1+r$.</p>
+
+<h3>1. Reading financial language</h3>
+<p>"$6.4\%$ compounded quarterly" means the <b>annual</b> rate is $6.4\%$, split into $4$ periods per year: the rate per period is $\frac{0.064}4=0.016$, and $3.5$ years is $3.5\cdot4=14$ periods.</p>
+<div class="box"><h4>Translating</h4>Annual rate $R$ compounded $n$ times per year for $y$ years: $\;r=\dfrac Rn$ and $t=ny$, so $A=P\left(1+\dfrac Rn\right)^{ny}$.</div>
+<p>$\$3500$ for $3.5$ years at $6.4\%$:</p>
+<ul><li>annually: $3500(1.064)^{3.5}\approx\$4348.74$</li>
+<li>quarterly: $3500(1.016)^{14}\approx\$4370.99$</li>
+<li>monthly: $3500\left(1+\frac{0.064}{12}\right)^{42}\approx\$4376.14$</li></ul>
+<p>The more often interest is compounded, the more you earn, but the gains get smaller and smaller.</p>
+<p><b>Careful with periods:</b> at $18\%$ per <i>week</i>, a $\$50$ loan grows to $50(1.18)^{52}\approx\$273{,}422.58$ in $52$ weeks. (A $365$-day year is actually $\frac{365}7$ weeks.)</p>
+
+<h3>2. Solving for time, rate, or present value</h3>
+<ul><li><b>Doubling time:</b> $5000\left(1+\frac{0.065}{12}\right)^t=10000$ means $\left(1+\frac{0.065}{12}\right)^t=2$. With technology (or the logarithms of Section 5.5), $t\approx128.3$ months $\approx10.7$ years. Notice $P$ doesn't matter for doubling.</li>
+<li><b>Rate:</b> what annual rate turns $\$16{,}000$ into $\$50{,}000$ in $18$ years? $(1+r)^{18}=\frac{50000}{16000}=3.125$, so $1+r=3.125^{1/18}$ and $r\approx0.0653$, about $6.53\%$.</li>
+<li><b>Present value:</b> the amount to invest <i>now</i> to have $A$ later is $P=\dfrac{A}{(1+r)^t}$. To have $\$10{,}000$ in $5$ years at $6\%$ compounded annually, invest $\frac{10000}{1.06^5}\approx\$7472.58$.</li></ul>
+
+<h3>3. The number $e$</h3>
+<p>Invest $\$1$ for a year at $100\%$ interest, compounded $n$ times: $A=\left(1+\frac1n\right)^n$.</p>
+<table class="exmix"><tr><th>$n$</th><th>$\left(1+\frac1n\right)^n$</th></tr>
+<tr><td>$1$ (annually)</td><td>$2$</td></tr><tr><td>$4$ (quarterly)</td><td>$2.4414$</td></tr><tr><td>$12$ (monthly)</td><td>$2.6130$</td></tr>
+<tr><td>$365$ (daily)</td><td>$2.7146$</td></tr><tr><td>$1000$</td><td>$2.7169$</td></tr><tr><td>$1{,}000{,}000$</td><td>$2.71828$</td></tr></table>
+<p>The values increase, but they level off at a limit: the number $e\approx2.718281828$. No matter how often you compound, $\$1$ can't grow past about $\$2.72$.</p>
+<div class="lfigs"><div class="lplot" data-f="pow(1+1/x,x)|0.2|60;2.718281828" data-x="0,60" data-y="1,3" data-w="240" data-cap="$(1+\frac1x)^x$ approaches $y=e$"></div></div>
+
+<div class="box"><h4>Continuous Compounding</h4>If $P$ dollars is invested at annual rate $r$, compounded continuously, the amount after $t$ years is
+$$A=Pe^{rt}.$$</div>
+<p><b>Why:</b> with $n$ compoundings, $P\left(1+\frac rn\right)^{nt}=P\left[\left(1+\frac rn\right)^{n/r}\right]^{rt}$, and the bracket approaches $e$ as $n$ grows (it's $(1+\frac1m)^m$ with $m=\frac nr$).</p>
+<p>Example: $\$3800$ at $3.8\%$ compounded continuously for $7.5$ years: $3800e^{0.285}\approx\$5053.10$. Reaching $\$5000$ takes $t$ with $3800e^{0.038t}=5000$, about $7.22$ years.</p>
+
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Using the annual rate for each period: monthly compounding at $6\%$ uses $0.005$ per period, not $0.06$.</li>
+<li>Counting periods in years: $5$ years compounded quarterly is $t=20$ periods.</li>
+<li>Writing the rate as a percent: $3.8\%$ is $r=0.038$.</li></ul></div>
+</script>
+
+=== BANK ===
+@@ pc5-int
+Q: $\$3500$ is invested at $6.4\%$ interest, compounded quarterly. How much is it worth after $3.5$ years?
+L: 1
+A: \$4370.99
+W: \$4348.74
+W: \$4376.14
+W: \$4284.00
+W: \$34{,}261.32
+S: Quarterly: the rate per period is $\frac{0.064}4=0.016$, and $3.5$ years is $3.5\cdot4=14$ periods.
+$A=3500(1.016)^{14}\approx\$4370.99$.
+(Annual compounding gives $\$4348.74$ and monthly gives $\$4376.14$: more frequent compounding earns a little more.)
+---
+Q: $\$3500$ is invested at $6.4\%$ interest, compounded monthly. How much is it worth after $3.5$ years?
+L: 1
+A: \$4376.14
+W: \$4370.99
+W: \$4348.74
+W: \$3576.03
+W: \$4440.62
+S: Monthly: $r=\frac{0.064}{12}$ per period and $t=3.5\cdot12=42$ periods.
+$A=3500\left(1+\frac{0.064}{12}\right)^{42}\approx\$4376.14$.
+---
+Q: A loan shark charges $18\%$ interest per week on a $\$50$ loan. How much is owed after $52$ weeks?
+L: 1
+A: \$273{,}422.58
+W: \$518.00
+W: \$9.36
+W: \$59.00
+W: \$231{,}714.05
+S: The rate is per week, so $r=0.18$ and $t=52$ periods: $A=50(1.18)^{52}\approx\$273{,}422.58$.
+($\$518$ is simple interest, $50(1+0.18\cdot52)$. Compounding weekly at $18\%$ is ruinous.)
+---
+Q: $\$5000$ is invested at $6.5\%$ annual interest compounded monthly. About how long until it doubles?
+L: 2
+A: \approx10.7\text{ years}
+W: \approx15.4\text{ years}
+W: \approx6.5\text{ years}
+W: \approx30.8\text{ years}
+W: \approx11.1\text{ years}
+S: We need $5000\left(1+\frac{0.065}{12}\right)^t=10000$, i.e. $\left(1+\frac{0.065}{12}\right)^t=2$.
+Graphing (or using logarithms, Section 5.5): $t\approx128.3$ months, which is about $10.7$ years.
+($15.4$ years would be simple interest, $\frac{1}{0.065}$.)
+---
+Q: What annual interest rate, compounded annually, makes $\$16{,}000$ grow to $\$50{,}000$ in $18$ years?
+L: 2
+A: \approx6.53\%
+W: \approx11.94\%
+W: \approx17.36\%
+W: \approx3.13\%
+W: \approx5.00\%
+S: Solve $16000(1+r)^{18}=50000$: $(1+r)^{18}=\frac{50000}{16000}=3.125$.
+Take the $18$th root: $1+r=3.125^{1/18}\approx1.0653$, so $r\approx6.53\%$.
+($11.94\%$ is the simple-interest rate $\frac{34000}{16000\cdot18}$.)
+---
+Q: $\$3800$ is invested at $3.8\%$ interest, compounded continuously. How much is in the account after $7.5$ years?
+L: 1
+A: \$5053.10
+W: \$4883.00
+W: \$5016.70
+W: \$3946.42
+W: \$4945.88
+S: Continuous compounding: $A=Pe^{rt}=3800e^{0.038\cdot7.5}=3800e^{0.285}\approx\$5053.10$.
+---
+Q: With $\$3800$ invested at $3.8\%$ compounded continuously, about how long until the balance reaches $\$5000$?
+L: 2
+A: \approx7.2\text{ years}
+W: \approx8.3\text{ years}
+W: \approx3.6\text{ years}
+W: \approx6.1\text{ years}
+W: \approx26.3\text{ years}
+S: Solve $3800e^{0.038t}=5000$, i.e. $e^{0.038t}=\frac{5000}{3800}\approx1.3158$.
+Graphically (or with logarithms, $t=\frac{\ln1.3158}{0.038}$): $t\approx7.22$ years.
+---
+Q: How much must be invested now at $6\%$ interest compounded annually to have $\$10{,}000$ in $5$ years? (This is the present value.)
+L: 1
+A: \$7472.58
+W: \$7000.00
+W: \$13{,}382.26
+W: \$9433.96
+W: \$7692.31
+S: Present value: $P=\dfrac{A}{(1+r)^t}=\dfrac{10000}{1.06^5}\approx\dfrac{10000}{1.33823}\approx\$7472.58$.
+Check: $7472.58(1.06)^5\approx10000$ ✓.
+---
+Q: To four decimal places, what is $\left(1+\frac{1}{1000}\right)^{1000}$, and what number does $\left(1+\frac1n\right)^n$ approach as $n$ grows?
+L: 1
+A: 2.7169\text{; it approaches }e\approx2.71828
+W: 2.7169\text{; it grows without bound}
+W: 1.0010\text{; it approaches }1
+W: 2.0000\text{; it approaches }2
+W: 3.0000\text{; it approaches }\pi
+S: $\left(1.001\right)^{1000}\approx2.7169$.
+As $n$ grows, $\left(1+\frac1n\right)^n$ increases but levels off at $e\approx2.718281828$. (It never grows without bound: $\$1$ at $100\%$ can't exceed about $\$2.72$ in a year.)
+---
+Q: Which earns more in one year: $6\%$ compounded monthly, or $6.1\%$ compounded annually?
+L: 2
+A: 6\%\text{ monthly (about }6.168\%\text{ per year)}
+W: 6.1\%\text{ annually}
+W: \text{They are exactly equal}
+W: 6\%\text{ monthly (about }72\%\text{ per year)}
+W: \text{It depends on the amount invested}
+S: Compare the growth factors for one year.
+Monthly: $\left(1+\frac{0.06}{12}\right)^{12}=1.005^{12}\approx1.06168$, an effective rate of about $6.168\%$.
+Annually: $1.061$. Since $1.06168\gt1.061$, $6\%$ compounded monthly is better. (The amount invested doesn't change which is larger.)
+---
+Q: $\$1000$ is invested at $5\%$ compounded continuously. How much is there after $10$ years?
+L: 1
+A: \$1648.72
+W: \$1628.89
+W: \$1500.00
+W: \$1050.00
+W: \$2718.28
+S: $A=Pe^{rt}=1000e^{0.05\cdot10}=1000e^{0.5}\approx\$1648.72$.
+(Annual compounding would give $1000(1.05)^{10}\approx\$1628.89$, slightly less.)
+---
+Q: What is the present value of $\$8000$ due in $5$ years, if money earns $5\%$ compounded quarterly?
+L: 2
+A: \$6240.07
+W: \$6268.21
+W: \$7619.05
+W: \$10{,}256.30
+W: \$6400.00
+S: Quarterly: $r=\frac{0.05}4=0.0125$ and $t=5\cdot4=20$ periods.
+$P=\dfrac{8000}{(1.0125)^{20}}\approx\$6240.07$.
+($\$6268.21$ uses annual compounding, $\frac{8000}{1.05^5}$.)
+
+=== GENS ===
+const money5=v=>O('\\$'+v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}).replace(/,/g,'{,}'),v);
+GENS['pc5-int']=[
+/* compound n times per year */
+r=>{const P=pick(r,[1000,2000,2500,3000,5000,7500,10000]),R=pick(r,[3,4,4.5,5,6,7,8]),y=ri(r,2,12);const [n,name]=pick(r,[[2,'semiannually'],[4,'quarterly'],[12,'monthly'],[365,'daily']]);
+ const A=P*(1+R/100/n)**(n*y);
+ return{lvl:1,q:T`$\$${cm(P)}$ is invested at $${R}\%$ interest, compounded ${name}. How much is in the account after $${y}$ years?`,a:money5(A),w:[money5(P*(1+R/100*y)),money5(P*(1+R/100)**(n*y)),money5(P*(1+R/100/n)**y),money5(P*Math.exp(R/100*y)+(n===365?37:0))],
+ s:T`Rate per period: $r=\dfrac{${R/100}}{${n}}${n===1?'':T`\approx${(R/100/n).toPrecision(4)}`}$. Number of periods: $t=${n}\cdot${y}=${n*y}$.<br>$A=${cm(P)}\left(1+\dfrac{${R/100}}{${n}}\right)^{${n*y}}\approx${money5(A).tex}$.<br>(Using the annual rate every period, or $${y}$ periods instead of $${n*y}$, are the usual mistakes.)`}},
+/* continuous compounding */
+r=>{const P=pick(r,[500,1000,2000,2500,4000,5000,10000]),R=pick(r,[2,3,3.5,4,5,6,7.5]),y=ri(r,2,20);const A=P*Math.exp(R/100*y);
+ return{lvl:1,q:T`$\$${cm(P)}$ is invested at $${R}\%$ compounded continuously. How much is there after $${y}$ years?`,a:money5(A),w:[money5(P*(1+R/100)**y),money5(P*(1+R*y/100)),money5(P*Math.exp(R*y)/Math.exp(R*y-R/100*y)*1.02),money5(P*Math.E**(R/100)*y/ y+P*R/100)],
+ s:T`Continuous compounding: $A=Pe^{rt}=${cm(P)}e^{${R/100}\cdot${y}}=${cm(P)}e^{${+(R/100*y).toFixed(4)}}\approx${money5(A).tex}$.<br>(Annual compounding would give $${money5(P*(1+R/100)**y).tex}$, a bit less.)`}},
+/* present value */
+r=>{const A=pick(r,[5000,8000,10000,15000,20000,25000,50000]),R=pick(r,[3,4,5,6,8]),y=ri(r,2,15);const P=A/(1+R/100)**y;
+ return{lvl:2,q:T`How much must be invested now at $${R}\%$ compounded annually to have $\$${cm(A)}$ in $${y}$ years?`,a:money5(P),w:[money5(A*(1+R/100)**y),money5(A/(1+R*y/100)),money5(A*(1-R/100)**y),money5(A/(1+R/100)**(y+1))],
+ s:T`Present value: $P=\dfrac{A}{(1+r)^t}=\dfrac{${cm(A)}}{${1+R/100}^{${y}}}\approx${money5(P).tex}$.<br>Check: $${money5(P).tex.replace('\\$','')}\cdot${1+R/100}^{${y}}\approx${cm(A)}$ ✓.`}},
+/* doubling / tripling time with nice rule numbers -> pick answer from table (rounded) */
+r=>{const R=pick(r,[2,3,4,5,6,7,8,9,10,12]),k=pick(r,[2,3]);const t=Math.log(k)/Math.log(1+R/100);const ans=Math.ceil(t);
+ return{lvl:2,q:T`Money is invested at $${R}\%$ compounded annually. After how many whole years will it first be at least ${k===2?'double':'triple'} the original amount?`,a:ans,w:[ans-1,ans+1,Math.round(100*(k-1)/R),ans+3].filter((v,i,arr)=>v>0&&v!==ans&&arr.indexOf(v)===i),
+ s:T`We need $(1+${R/100})^t\ge${k}$ (the starting amount cancels).<br>$${1+R/100}^{${ans-1}}\approx${((1+R/100)**(ans-1)).toFixed(3)}$ (not yet) and $${1+R/100}^{${ans}}\approx${((1+R/100)**ans).toFixed(3)}$ ✓.<br>So it takes $${ans}$ years. (Exactly: $t=\frac{\ln ${k}}{\ln ${1+R/100}}\approx${t.toFixed(2)}$, using Section 5.5.)`}},
+/* compare compounding: effective annual growth */
+r=>{const R=pick(r,[4,5,6,8,10,12]);const [n,name]=pick(r,[[4,'quarterly'],[12,'monthly'],[365,'daily']]);const eff=(1+R/100/n)**n-1;
+ const pc=v=>O((v*100).toFixed(3)+'\\%',v);
+ return{lvl:2,q:T`What is the effective annual rate (the actual one-year growth) of $${R}\%$ compounded ${name}?`,a:pc(eff),w:[pc(R/100),pc((1+R/100/n)**(n/2)-1),pc(Math.exp(R/100)-1+0.003),pc(R/100*n/ (n-0.5)+0.0004)],
+ s:T`One year is $${n}$ periods at rate $\frac{${R/100}}{${n}}$: the growth factor is $\left(1+\dfrac{${R/100}}{${n}}\right)^{${n}}\approx${(1+eff).toFixed(5)}$.<br>So the balance grows by about $${(eff*100).toFixed(3)}\%$ per year, slightly more than $${R}\%$ because interest earns interest.`}},
+];

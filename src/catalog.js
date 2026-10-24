@@ -173,6 +173,16 @@ const PC_CATALOG=[
    {id:'pc4-cplx',sec:'4.7',name:'Complex Numbers',d:'arithmetic, powers of i, conjugates and division, square roots of negatives, complex solutions of quadratics'},
    {id:'pc4-theory',sec:'4.8',name:'Theory of Equations',d:'the Fundamental Theorem of Algebra, conjugate roots, factoring completely, building polynomials from complex roots'},
    {id:'pc4-review',name:'Chapter 4 Test Review',d:'Every assigned review question from p. 335 with worked solutions, plus a review of all five test lessons.'}]},
+  {id:'pc5',name:'Exponential and Logarithmic Functions',ch:5,d:'Chapter 5: radicals and rational exponents, radical equations, exponential growth and decay, compound interest and e, common and natural logarithms, logarithm laws, logarithms to any base, solving exponential and logarithmic equations, and models.',subs:[
+   {id:'pc5-rad',sec:'5.1',name:'Radicals and Rational Exponents',d:'nth roots, rational exponents, exponent laws, simplifying radicals, rationalizing denominators and numerators'},
+   {id:'pc5-radeq',sec:'5.1.A',name:'Radical Equations',d:'the Power Principle, extraneous solutions, equations with two radicals, applied problems'},
+   {id:'pc5-exp',sec:'5.2',name:'Exponential Functions',d:'graphs of a^x, growth and decay models, half-life, the natural exponential function e^x'},
+   {id:'pc5-int',sec:'5.2.A',name:'Compound Interest and the Number e',d:'the compound interest formula, present value, continuous compounding, where e comes from'},
+   {id:'pc5-log',sec:'5.3',name:'Common and Natural Logarithms',d:'log x and ln x as inverses of 10^x and e^x, translating log and exponential statements, graphs and domains'},
+   {id:'pc5-laws',sec:'5.4',name:'Properties of Logarithms',d:'the Product, Quotient, and Power Laws, expanding and combining logarithms, the Richter scale'},
+   {id:'pc5-base',sec:'5.4.A',name:'Logarithms to Other Bases',d:'log base b, the logarithm laws for any base, the change of base formula'},
+   {id:'pc5-eq',sec:'5.5',name:'Exponential and Logarithmic Equations',d:'solving with logarithms, half-life and carbon dating, equations quadratic in e^x, logarithmic equations and extraneous roots'},
+   {id:'pc5-model',sec:'5.6',name:'Exponential, Logarithmic, and Other Models',d:'choosing a model from data, ratios of successive values, power and logistic models'}]},
  ]},
 ];
 const TRACKS=[

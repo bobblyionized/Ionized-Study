@@ -1,0 +1,210 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc5-rad">
+<h2>5.1 Radicals and Rational Exponents</h2>
+<p>Exponential and logarithmic functions need powers like $2^{1.5}$ or $10^{\sqrt2}$. This section gives meaning to any real exponent, starting with roots.</p>
+
+<h3>1. $n$th roots</h3>
+<p>The <b>$n$th roots</b> of $c$ are the solutions of $x^n=c$. Look at where the line $y=c$ meets the graph of $y=x^n$:</p>
+<ul><li><b>$n$ odd:</b> exactly one solution for every $c$ (the graph rises from $-\infty$ to $\infty$).</li>
+<li><b>$n$ even:</b> two solutions (one positive, one negative) if $c\gt0$; one ($x=0$) if $c=0$; none if $c\lt0$.</li></ul>
+<div class="lfigs">
+<div class="lplot" data-f="x*x*x" data-x="-3,3" data-y="-4,4" data-w="170" data-cap="$y=x^3$: one root for every $c$"></div>
+<div class="lplot" data-f="x*x*x*x;2" data-x="-3,3" data-y="-1,5" data-w="170" data-cap="$y=x^4$ and $y=2$: two roots"></div>
+</div>
+<div class="box"><h4>Principal $n$th root</h4>$\sqrt[n]{c}=c^{1/n}$ is <b>the</b> solution of $x^n=c$ when $n$ is odd, and the <b>nonnegative</b> solution when $n$ is even and $c\ge0$.</div>
+<p>So $\sqrt[3]{-8}=-2$, $81^{1/4}=3$, $\sqrt[5]{32}=2$, but $\sqrt[4]{-16}$ is not a real number.</p>
+
+<h3>2. Rational exponents</h3>
+<div class="box"><h4>Definition</h4>For $c\gt0$ and $\frac tk$ in lowest terms with $k\gt0$: $c^{t/k}=\left(c^{t}\right)^{1/k}=\left(c^{1/k}\right)^{t}$.</div>
+<p>The two forms agree: $4^{3/2}=(4^3)^{1/2}=\sqrt{64}=8$ and $(4^{1/2})^3=2^3=8$. Usually take the root first, since it keeps the numbers small: $256^{3/4}=(\sqrt[4]{256})^3=4^3=64$.</p>
+<p>The definition also works for negative $c$ when $k$ is odd: $(-8)^{2/3}=\left(\sqrt[3]{-8}\right)^2=(-2)^2=4$. <b>Reduce the fraction first:</b> $(-1)^{2/6}=(-1)^{1/3}=-1$, but $\sqrt[6]{(-1)^2}=1$ would be wrong.</p>
+
+<h3>3. Exponent laws</h3>
+<div class="box"><h4>For $c,d\gt0$ and any rational (in fact, any real) $r,s$</h4><ol>
+<li>$c^rc^s=c^{r+s}$</li><li>$\dfrac{c^r}{c^s}=c^{r-s}$</li><li>$(c^r)^s=c^{rs}$</li>
+<li>$(cd)^r=c^rd^r$</li><li>$\left(\dfrac cd\right)^r=\dfrac{c^r}{d^r}$</li><li>$c^{-r}=\dfrac1{c^r}$</li></ol></div>
+<p>Example: $(8r^{3/4}s^{-3})^{2/3}=8^{2/3}r^{(3/4)(2/3)}s^{-2}=\dfrac{4r^{1/2}}{s^2}$. And $x^{1/2}(x^{3/4}-x^{3/2})=x^{5/4}-x^2$ (add the exponents).</p>
+<div class="warn"><b>Caution:</b> the laws cover products and quotients only. $(c+d)^r\ne c^r+d^r$; for example $\sqrt{9+16}=5$, not $3+4$.</div>
+<p><b>Factoring with rational exponents.</b> $x^{2/3}+x^{1/3}-6$ is a quadratic in $u=x^{1/3}$: $u^2+u-6=(u+3)(u-2)$, so it equals $(x^{1/3}+3)(x^{1/3}-2)$.</p>
+
+<h3>4. Radical notation and simplifying</h3>
+<p>$c^{t/k}=\sqrt[k]{c^t}=\left(\sqrt[k]c\right)^t$, and the laws read $\sqrt[n]{cd}=\sqrt[n]c\,\sqrt[n]d$ and $\sqrt[n]{\frac cd}=\frac{\sqrt[n]c}{\sqrt[n]d}$. To simplify, pull out perfect $n$th powers:</p>
+<ul><li>$\sqrt{63}=\sqrt{9\cdot7}=3\sqrt7$.</li>
+<li>$\sqrt{12}-\sqrt{75}=2\sqrt3-5\sqrt3=-3\sqrt3$ (only like radicals combine).</li>
+<li>$\sqrt[3]{40k^4}=\sqrt[3]{8k^3}\,\sqrt[3]{5k}=2k\sqrt[3]{5k}$.</li></ul>
+
+<h3>5. Rationalizing</h3>
+<p>Multiply by $1$ written as a well-chosen fraction:</p>
+<ul><li>One radical: $\dfrac7{\sqrt5}\cdot\dfrac{\sqrt5}{\sqrt5}=\dfrac{7\sqrt5}5$.</li>
+<li>A sum or difference: use the <b>conjugate</b> and $(a+b)(a-b)=a^2-b^2$. $\dfrac2{3+\sqrt6}\cdot\dfrac{3-\sqrt6}{3-\sqrt6}=\dfrac{2(3-\sqrt6)}{9-6}=\dfrac{6-2\sqrt6}3$.</li>
+<li>Cube roots: use $a^3+b^3=(a+b)(a^2-ab+b^2)$. $\dfrac1{\sqrt[3]2+1}\cdot\dfrac{\sqrt[3]4-\sqrt[3]2+1}{\sqrt[3]4-\sqrt[3]2+1}=\dfrac{\sqrt[3]4-\sqrt[3]2+1}{3}$.</li>
+<li><b>Rationalizing the numerator</b> of a difference quotient (used in calculus): $\dfrac{\sqrt{x+h}-\sqrt x}{h}\cdot\dfrac{\sqrt{x+h}+\sqrt x}{\sqrt{x+h}+\sqrt x}=\dfrac{(x+h)-x}{h(\sqrt{x+h}+\sqrt x)}=\dfrac1{\sqrt{x+h}+\sqrt x}$. Now you can see it approaches $\frac1{2\sqrt x}$ as $h\to0$.</li></ul>
+
+<h3>6. Irrational exponents</h3>
+<p>$10^{\sqrt2}$ is the number that $10^{1.4},10^{1.41},10^{1.414},\dots$ approach (about $25.9545$). So $a^t$ makes sense for every real $t$ when $a\gt0$, and all the exponent laws still hold.</p>
+
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Applying exponents to sums: $(x+y)^{1/2}\ne x^{1/2}+y^{1/2}$.</li>
+<li>Not reducing $\frac tk$ before using a negative base.</li>
+<li>A negative exponent means reciprocal, not negative: $27^{-2/3}=\frac19$.</li></ul></div>
+</script>
+
+=== BANK ===
+@@ pc5-rad
+Q: What is $27^{-2/3}$?
+L: 1
+A: \frac19
+W: -9
+W: -\frac19
+W: 9
+W: -18
+S: A negative exponent means reciprocal: $27^{-2/3}=\dfrac1{27^{2/3}}$.
+Root first: $27^{1/3}=3$, then square: $27^{2/3}=9$. So $27^{-2/3}=\frac19$.
+---
+Q: What is $(-8)^{2/3}$?
+L: 1
+A: 4
+W: -4
+W: \frac14
+W: -\frac{16}3
+W: \text{not a real number}
+S: The denominator $3$ is odd, so a negative base is allowed: $(-8)^{2/3}=\left(\sqrt[3]{-8}\right)^2=(-2)^2=4$.
+(Some calculators give an error here; entering $((-8)^{2})^{1/3}$ works.)
+---
+Q: Simplify $(8r^{3/4}s^{-3})^{2/3}$ with no negative exponents.
+L: 2
+A: \frac{4r^{1/2}}{s^2}
+W: \frac{16r^{1/2}}{s^2}
+W: 4r^{1/2}s^{2}
+W: \frac{4r^{9/8}}{s^{2}}
+W: \frac{16r^{9/8}}{s^{9/2}}
+S: Product to a power: $8^{2/3}\,(r^{3/4})^{2/3}\,(s^{-3})^{2/3}$.
+Power of a power: $8^{2/3}=(\sqrt[3]8)^2=4$, $r^{\frac34\cdot\frac23}=r^{1/2}$, $s^{-3\cdot\frac23}=s^{-2}$.
+So the result is $4r^{1/2}s^{-2}=\dfrac{4r^{1/2}}{s^2}$.
+---
+Q: Simplify $x^{1/2}\left(x^{3/4}-x^{3/2}\right)$.
+L: 1
+A: x^{5/4}-x^{2}
+W: x^{3/8}-x^{3/4}
+W: x^{5/4}-x^{3/2}
+W: x^{1/4}-x
+W: x^{5/2}-x^{2}
+S: Distribute, then add exponents (law 1): $x^{1/2}x^{3/4}-x^{1/2}x^{3/2}=x^{\frac12+\frac34}-x^{\frac12+\frac32}$.
+$\frac12+\frac34=\frac54$ and $\frac12+\frac32=2$, so the result is $x^{5/4}-x^2$.
+---
+Q: Simplify $\sqrt{12}-\sqrt{75}$.
+L: 1
+A: -3\sqrt3
+W: -\sqrt{63}
+W: 3\sqrt3
+W: -7\sqrt3
+W: \sqrt{-63}
+S: Pull out perfect squares: $\sqrt{12}=\sqrt{4\cdot3}=2\sqrt3$ and $\sqrt{75}=\sqrt{25\cdot3}=5\sqrt3$.
+Like radicals combine: $2\sqrt3-5\sqrt3=-3\sqrt3$.
+(Radicals don't subtract inside: $\sqrt{12}-\sqrt{75}\ne\sqrt{12-75}$.)
+---
+Q: Simplify $\sqrt[3]{40k^4}$.
+L: 2
+A: 2k\sqrt[3]{5k}
+W: 2k^{2}\sqrt[3]{5}
+W: 4k\sqrt[3]{10k}
+W: 2\sqrt[3]{5k^{4}}
+W: 8k\sqrt[3]{5k}
+S: Look for a perfect cube: $40k^4=8k^3\cdot5k$, and $8k^3=(2k)^3$.
+$\sqrt[3]{40k^4}=\sqrt[3]{8k^3}\cdot\sqrt[3]{5k}=2k\sqrt[3]{5k}$.
+---
+Q: Rationalize the denominator: $\dfrac{2}{3+\sqrt6}$.
+L: 2
+A: \frac{6-2\sqrt6}{3}
+W: \frac{6-2\sqrt6}{15}
+W: \frac{2\sqrt6}{9}
+W: \frac{6+2\sqrt6}{3}
+W: 6-2\sqrt6
+S: Multiply by the conjugate over itself: $\dfrac2{3+\sqrt6}\cdot\dfrac{3-\sqrt6}{3-\sqrt6}$.
+The denominator becomes $3^2-(\sqrt6)^2=9-6=3$ (difference of squares), so the result is $\dfrac{2(3-\sqrt6)}3=\dfrac{6-2\sqrt6}3$.
+---
+Q: Rationalize the numerator: $\dfrac{\sqrt{x+h}-\sqrt x}{h}$ (with $h\ne0$).
+L: 2
+A: \frac{1}{\sqrt{x+h}+\sqrt{x}}
+W: \frac{1}{\sqrt{x+h}-\sqrt{x}}
+W: \frac{h}{\sqrt{x+h}+\sqrt{x}}
+W: \frac{1}{2\sqrt x}
+W: \frac{\sqrt{h}}{h}
+S: Multiply top and bottom by the conjugate $\sqrt{x+h}+\sqrt x$.
+The numerator becomes $(\sqrt{x+h})^2-(\sqrt x)^2=(x+h)-x=h$.
+$\dfrac{h}{h(\sqrt{x+h}+\sqrt x)}=\dfrac1{\sqrt{x+h}+\sqrt x}$.
+(It's close to $\frac1{2\sqrt x}$ when $h$ is near $0$, but not equal to it.)
+---
+Q: Factor $x^{2/3}+x^{1/3}-6$.
+L: 2
+A: (x^{1/3}+3)(x^{1/3}-2)
+W: (x^{1/3}-3)(x^{1/3}+2)
+W: (x^{2/3}+3)(x^{1/3}-2)
+W: (x^{1/3}+6)(x^{1/3}-1)
+W: (x+3)(x-2)
+S: Let $u=x^{1/3}$; then $x^{2/3}=u^2$, and the expression is $u^2+u-6=(u+3)(u-2)$.
+Substitute back: $(x^{1/3}+3)(x^{1/3}-2)$.
+---
+Q: What is $(-1)^{2/6}$, using the definition of rational exponents?
+L: 2
+A: -1
+W: 1
+W: \frac13
+W: -\frac13
+W: \text{not a real number}
+S: The definition needs the fraction in lowest terms: $\frac26=\frac13$.
+$(-1)^{1/3}=\sqrt[3]{-1}=-1$.
+(If you don't reduce, $\sqrt[6]{(-1)^2}=\sqrt[6]1=1$, which is wrong.)
+---
+Q: What is $256^{3/4}$?
+L: 1
+A: 64
+W: 192
+W: 16
+W: 48
+W: 4096
+S: Root first: $\sqrt[4]{256}=4$ (since $4^4=256$). Then cube: $4^3=64$.
+---
+Q: Rationalize the denominator: $\dfrac{1}{\sqrt[3]{2}+1}$.
+L: 3
+A: \frac{\sqrt[3]{4}-\sqrt[3]{2}+1}{3}
+W: \frac{\sqrt[3]{2}-1}{1}
+W: \frac{\sqrt[3]{4}+\sqrt[3]{2}+1}{3}
+W: \frac{\sqrt[3]{4}-\sqrt[3]{2}+1}{2}
+W: \frac{\sqrt[3]{2}-1}{3}
+S: Use $a^3+b^3=(a+b)(a^2-ab+b^2)$ with $a=\sqrt[3]2$, $b=1$: multiply top and bottom by $a^2-ab+b^2=\sqrt[3]4-\sqrt[3]2+1$.
+The denominator becomes $a^3+b^3=2+1=3$.
+Result: $\dfrac{\sqrt[3]4-\sqrt[3]2+1}{3}$.
+
+=== GENS ===
+const ex5=f=>f.d===1?String(f.n):f.n+'/'+f.d;   /* exponent as a slash fraction: 3/4 */
+GENS['pc5-rad']=[
+/* evaluate c^(t/k) for a perfect power */
+r=>{const k=pick(r,[2,3,4,5]);const b=k===2?ri(r,2,12):k===3?ri(r,2,6):k===4?ri(r,2,4):2;const c=b**k;const t=pick(r,[1,2,3,-1,-2]);if(Math.abs(b**Math.abs(t))>5000)return GENS['pc5-rad'][0](r);
+ const val=t>0?F(b**t):F(1,b**(-t));
+ return{lvl:1,q:T`What is $${c}^{${ex5(F(t,k))}}$?`,a:val,w:[F(c*t,k),t>0?F(1,b**t):F(b**(-t)),val.neg(),F(b*Math.abs(t)),F(b**Math.abs(t)+1)],
+ s:T`Take the root first: $\sqrt[${k}]{${c}}=${b}$ because $${b}^{${k}}=${c}$.<br>${t>0?T`Then raise to the power $${t}$: $${b}^{${t}}=${val.tex()}$.`:T`Then raise to the power $${-t}$ and take the reciprocal (negative exponent): $\dfrac1{${b}^{${-t}}}=${val.tex()}$.`}`}},
+/* combine exponents in a product */
+r=>{const a=F(ri(r,1,5),pick(r,[2,3,4])),b=F(ri(r,1,5)*pick(r,[1,-1]),pick(r,[2,3,4,6]));const s_=a.add(b);if(Math.abs(a.mul(b).v-s_.v)<1e-9||s_.n===0)return GENS['pc5-rad'][1](r);
+ const ans=O(T`x^{${ex5(s_)}}`,s_.v);
+ return{lvl:1,q:T`Simplify $x^{${ex5(a)}}\cdot x^{${ex5(b)}}$.`,a:ans,w:[O(T`x^{${ex5(a.mul(b))}}`,0.1),O(T`x^{${ex5(a.sub(b))}}`,0.2),O(T`x^{${ex5(F(a.n+b.n,a.d+b.d))}}`,0.3),O(T`x^{${ex5(s_.add(1))}}`,0.4)],
+ s:T`Law 1: when multiplying powers of the same base, <b>add</b> the exponents.<br>$${a.tex()}+${P(b)}=${s_.tex()}$, so the product is $x^{${ex5(s_)}}$.<br>(Common mistakes: multiplying the exponents, or adding numerators and denominators separately.)`}},
+/* simplify sqrt(a^2 m) +/- sqrt(b^2 m) */
+r=>{const m=pick(r,[2,3,5,6,7]);const a=ri(r,1,6),b=ri(r,1,6);const plus=r()<.5;const c=plus?a+b:a-b;if(c===0)return GENS['pc5-rad'][2](r);
+ const coef=n=>n===1?'':n===-1?'-':String(n);const ans=O(T`${coef(c)}\sqrt{${m}}`,c*Math.sqrt(m));
+ return{lvl:1,q:T`Simplify $\sqrt{${a*a*m}}${plus?'+':'-'}\sqrt{${b*b*m}}$.`,a:ans,w:[O(T`\sqrt{${plus?a*a*m+b*b*m:Math.abs(a*a*m-b*b*m)}}`,0.1),O(T`${coef(plus?a-b||7:a+b)}\sqrt{${m}}`,0.2),O(T`${coef(c)}\sqrt{${2*m}}`,0.3),O(T`${coef(-c)}\sqrt{${m}}`,0.4)],
+ s:T`Pull out perfect squares: $\sqrt{${a*a*m}}=\sqrt{${a*a}\cdot${m}}=${coef(a)}\sqrt{${m}}$ and $\sqrt{${b*b*m}}=${coef(b)}\sqrt{${m}}$.<br>Like radicals combine: $${a}${plus?'+':'-'}${b}=${c}$, giving $${ans.tex}$.`}},
+/* rationalize a/(b + sqrt c) */
+r=>{let b=ri(r,1,6),c=pick(r,[2,3,5,6,7,10,11]);if(Math.abs(b*b-c)<2)return GENS['pc5-rad'][3](r);const a=ri(r,1,9);const D=b*b-c;
+ const g=F(a,D);const A=g.mul(b),B=g.neg();const sq=T`\sqrt{${c}}`;
+ const tex=(p,q)=>{const s=q.n<0?'-':'+';const qa=q.n<0?q.neg():q;return T`${p.tex()}${s}${qa.n===1&&qa.d===1?'':qa.tex()}${sq}`};
+ const ans=O(tex(A,B),A.v+B.v*Math.sqrt(c));
+ return{lvl:2,q:T`Rationalize the denominator: $\dfrac{${a}}{${b}+\sqrt{${c}}}$.`,a:ans,w:[O(tex(g.mul(b),g),0.1),O(tex(F(a*b,b*b+c),F(-a,b*b+c)),0.2),O(tex(A.neg(),B.neg()),0.3),O(tex(F(a*b),F(-a)),0.4)],
+ s:T`Multiply top and bottom by the conjugate $${b}-\sqrt{${c}}$: $\dfrac{${a}(${b}-\sqrt{${c}})}{${b}^2-(\sqrt{${c}})^2}=\dfrac{${a}(${b}-\sqrt{${c}})}{${D}}$.<br>Simplify: $${ans.tex}$.`}},
+/* factor x^(2/n) + p x^(1/n) + q */
+r=>{const n=pick(r,[3,4,5,7]);let u=ri(r,-6,6),v=ri(r,-6,6);if(!u||!v||u+v===0)return GENS['pc5-rad'][4](r);const p=-(u+v),q=u*v;
+ const X=T`x^{1/${n}}`,f=c=>T`(${X}${c<0?'+':'-'}${Math.abs(c)})`;const ans=O(f(u)+f(v),1);
+ const mid=p===0?'':p===1?T`+${X}`:p===-1?T`-${X}`:T`${p>0?'+':''}${p}${X}`;
+ return{lvl:2,q:T`Factor $x^{2/${n}}${mid}${q<0?'':'+'}${q}$.`,a:ans,w:[O(f(-u)+f(-v),2),O(T`(x^{2/${n}}${u<0?'+':'-'}${Math.abs(u)})`+f(v),3),O(T`(x${u<0?'+':'-'}${Math.abs(u)})(x${v<0?'+':'-'}${Math.abs(v)})`,4),O(f(u)+f(-v),5)],
+ s:T`Let $u=x^{1/${n}}$, so $x^{2/${n}}=u^2$. The expression is $u^2${p===0?'':(p>0?'+':'-')+(Math.abs(p)===1?'':Math.abs(p))+'u'}${q<0?'':'+'}${q}$, which factors as $(u${u<0?'+':'-'}${Math.abs(u)})(u${v<0?'+':'-'}${Math.abs(v)})$ (the numbers $${-u}$ and $${-v}$ multiply to $${q}$ and add to $${p}$).<br>Substitute back: $${ans.tex}$.`}},
+];

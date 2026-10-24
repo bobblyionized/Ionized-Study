@@ -1,0 +1,205 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc5-log">
+<h2>5.3 Common and Natural Logarithmic Functions</h2>
+<p>A logarithm answers the question: <b>what exponent do I need?</b> $\log 1000=3$ because $10^3=1000$. Logarithms undo exponential functions, which is exactly what you need to solve for an unknown exponent.</p>
+
+<h3>1. Common logarithms (base 10)</h3>
+<div class="box"><h4>Definition</h4>For $v\gt0$, $\;\log v=u\;$ means $\;10^u=v$. So $\log v$ is the exponent you put on $10$ to get $v$.</div>
+<p>$f(x)=\log x$ is the <b>inverse function</b> of $g(x)=10^x$: since $10^x$ passes the horizontal line test, it has an inverse, and swapping inputs and outputs of $10^x$ gives $\log x$.</p>
+<ul><li>$\log1000=3$, $\log10=1$, $\log1=0$, $\log0.01=-2$ (since $10^{-2}=0.01$), $\log\sqrt{10}=\frac12$.</li>
+<li>$\log v$ only exists for $v\gt0$: no power of $10$ is zero or negative. So $\log0$ and $\log(-5)$ are not defined.</li></ul>
+<p><b>Translating.</b> $\log29\approx1.4624$ says the same thing as $10^{1.4624}\approx29$. Going the other way, $10^{-1.5}\approx0.0316$ says $\log0.0316\approx-1.5$.</p>
+
+<h3>2. Natural logarithms (base $e$)</h3>
+<div class="box"><h4>Definition</h4>For $v\gt0$, $\;\ln v=u\;$ means $\;e^u=v$. $\ln x$ is the inverse function of $e^x$.</div>
+<p>$\ln e=1$, $\ln1=0$, $\ln e^5=5$, $\ln\frac1e=-1$. And $e^{3.4}\approx29.96$ says the same thing as $\ln29.96\approx3.4$.</p>
+
+<h3>3. Properties</h3>
+<div class="box"><h4>Inverse properties</h4>
+<ul><li>$\log10^u=u$ for every $u$, and $10^{\log v}=v$ for every $v\gt0$.</li>
+<li>$\ln e^u=u$ for every $u$, and $e^{\ln v}=v$ for every $v\gt0$.</li>
+<li>$\log1=\ln1=0$; $\log10=\ln e=1$.</li></ul></div>
+<p>These hold because each function undoes the other: $\ln e^u$ asks "what power of $e$ gives $e^u$?", and the answer is $u$. Examples: $\ln e^{x^2+1}=x^2+1$; $10^{\log7}=7$; $10^{\log7+2}=10^{\log7}\cdot10^2=700$.</p>
+<p><b>Solving simple equations:</b> $\ln x=2$ means $x=e^2\approx7.389$. And $10^x=29$ means $x=\log29\approx1.4624$.</p>
+
+<h3>4. Graphs</h3>
+<p>The graph of an inverse function is the reflection across $y=x$. So the graph of $\ln x$ is the graph of $e^x$ reflected across that line.</p>
+<div class="lfigs">
+<div class="lplot" data-f="exp(x);log(x)|0.01|6;x" data-x="-3,6" data-y="-3,6" data-w="200" data-cap="$e^x$, $\ln x$, and the mirror line $y=x$"></div>
+<div class="lplot" data-f="log10(x)|0.01|12;log(x)|0.01|12" data-x="-1,12" data-y="-3,3" data-w="200" data-cap="$\log x$ (lower) and $\ln x$ (upper)"></div>
+</div>
+<div class="box"><h4>Properties of $y=\log x$ and $y=\ln x$</h4><ul>
+<li>Domain: $x\gt0$. Range: all real numbers.</li>
+<li>$x$-intercept $(1,0)$. Also $(10,1)$ on $\log x$ and $(e,1)$ on $\ln x$.</li>
+<li>Vertical asymptote $x=0$ (the $y$-axis): as $x\to0^+$, the graph drops to $-\infty$.</li>
+<li>Increasing, but very slowly: $\log x$ only reaches $6$ at $x=1{,}000{,}000$.</li>
+<li>Negative for $0\lt x\lt1$, positive for $x\gt1$.</li></ul></div>
+<p><b>Domains of related functions:</b> the input of the log must be positive. $\ln(x+2)$ needs $x+2\gt0$, so $x\gt-2$; $\log(x^2-4)$ needs $x^2\gt4$, so $x\lt-2$ or $x\gt2$.</p>
+<p><b>Transformations:</b> $y=\ln(x-3)+1$ is $\ln x$ shifted right $3$ and up $1$. Its vertical asymptote moves to $x=3$, and its domain is $x\gt3$.</p>
+
+<div class="warn"><h4>Common traps</h4><ul>
+<li>$\log v$ is an exponent, not a product: $\log1000\ne\frac{1000}{10}$.</li>
+<li>Logs of $0$ or negative numbers don't exist.</li>
+<li>$\ln x$ and $\log x$ have different bases: $\ln100\approx4.605$, while $\log100=2$.</li></ul></div>
+</script>
+
+=== BANK ===
+@@ pc5-log
+Q: What is $\log0.001$?
+L: 1
+A: -3
+W: 3
+W: -2
+W: 0.001
+W: -\frac13
+S: $\log0.001$ is the exponent $u$ with $10^u=0.001$.
+$0.001=\frac1{1000}=10^{-3}$, so $\log0.001=-3$.
+---
+Q: What is $\log\sqrt{10}$?
+L: 1
+A: \frac12
+W: 5
+W: \sqrt{10}
+W: 2
+W: \frac{1}{10}
+S: $\sqrt{10}=10^{1/2}$, and $\log10^u=u$. So $\log\sqrt{10}=\frac12$.
+---
+Q: Which exponential statement says the same thing as $\log29\approx1.4624$?
+L: 1
+A: 10^{1.4624}\approx29
+W: 29^{1.4624}\approx10
+W: 1.4624^{10}\approx29
+W: e^{1.4624}\approx29
+W: 10^{29}\approx1.4624
+S: $\log v=u$ means $10^u=v$. Here $v=29$ and $u\approx1.4624$, so $10^{1.4624}\approx29$.
+($e^{1.4624}$ would match $\ln29$, a different logarithm.)
+---
+Q: Which logarithmic statement says the same thing as $e^{3.4}\approx29.96$?
+L: 1
+A: \ln29.96\approx3.4
+W: \ln3.4\approx29.96
+W: \log29.96\approx3.4
+W: \ln e\approx29.96
+W: \log3.4\approx29.96
+S: $e^u=v$ means $\ln v=u$. Here $u=3.4$ and $v\approx29.96$: $\ln29.96\approx3.4$.
+---
+Q: Simplify $\ln e^{x^2+1}$.
+L: 1
+A: x^2+1
+W: e^{x^2+1}
+W: (x^2+1)e
+W: 1
+W: \ln(x^2+1)
+S: $\ln$ and $e^{(\ )}$ undo each other: $\ln e^u=u$ for every $u$.
+With $u=x^2+1$: $\ln e^{x^2+1}=x^2+1$.
+---
+Q: What is $10^{\log7+2}$?
+L: 2
+A: 700
+W: 9
+W: 72
+W: 49
+W: 14
+S: Split the exponent: $10^{\log7+2}=10^{\log7}\cdot10^2$.
+$10^{\log7}=7$ (inverse property), so the result is $7\cdot100=700$.
+---
+Q: What is the domain of $f(x)=\ln(x+2)$?
+L: 1
+A: x\gt-2
+W: x\gt0
+W: x\ge-2
+W: x\gt2
+W: \text{all real numbers}
+S: A logarithm needs a positive input: $x+2\gt0$, so $x\gt-2$.
+($x=-2$ would give $\ln0$, which doesn't exist.)
+---
+Q: What is the domain of $g(x)=\log(x^2-4)$?
+L: 2
+A: x\lt-2\text{ or }x\gt2
+W: x\gt2
+W: -2\lt x\lt2
+W: x\gt4
+W: \text{all real numbers}
+S: Need $x^2-4\gt0$, i.e. $x^2\gt4$.
+That happens when $x\gt2$ or $x\lt-2$ (for example, $x=-3$ gives $9-4=5\gt0$).
+---
+Q: What is the vertical asymptote of $y=\ln(x-3)+1$?
+L: 1
+A: x=3
+W: x=-3
+W: x=0
+W: y=1
+W: x=4
+S: $\ln x$ has vertical asymptote $x=0$. Replacing $x$ by $x-3$ shifts the graph right $3$, so the asymptote moves to $x=3$.
+The "$+1$" moves the graph up, which doesn't affect a vertical line.
+---
+Q: Solve $\ln x=2$.
+L: 1
+A: e^2
+W: 2e
+W: 100
+W: \frac2e
+W: \ln2
+S: $\ln x=2$ means $e^2=x$ (definition of natural log). So $x=e^2\approx7.389$.
+---
+Q: For which $x$ is $\log x$ negative?
+L: 1
+A: 0\lt x\lt1
+W: x\lt0
+W: x\lt1
+W: x\gt1
+W: x\lt10
+S: $\log x=u$ means $10^u=x$. A negative exponent gives $10^u$ between $0$ and $1$ (like $10^{-2}=0.01$).
+So $\log x\lt0$ exactly when $0\lt x\lt1$. (For $x\le0$, $\log x$ isn't defined at all.)
+---
+Q: Solve $10^x=29$ for $x$.
+L: 1
+A: \log29
+W: \ln29
+W: \frac{29}{10}
+W: 29^{1/10}
+W: 10^{29}
+S: $10^x=29$ means $x$ is the exponent on $10$ that gives $29$: by definition $x=\log29\approx1.4624$.
+
+=== GENS ===
+GENS['pc5-log']=[
+/* evaluate log of a power of 10 / ln of a power of e */
+r=>{const nat=r()<.4;const k=pick(r,[-4,-3,-2,-1,2,3,4,5,6]);const half=!nat&&r()<.25;
+ if(nat){const form=pick(r,['e^{k}','1/e^k']);const v=form==='e^{k}'?k:-k;const tex=form==='e^{k}'?T`e^{${k}}`:T`\frac{1}{e^{${k}}}`;
+  return{lvl:1,q:T`What is $\ln${tex}$?`,a:v,w:[-v,v+1,v-1,O(T`e^{${v}}`,Math.exp(v)+.1)],s:T`$\ln$ undoes $e^{(\ )}$: ${form==='e^{k}'?T`$\ln e^{${k}}=${k}$`:T`$\frac1{e^{${k}}}=e^{${-k}}$, so $\ln e^{${-k}}=${-k}$`}.`}}
+ if(half){const n=ri(r,1,3);const v=F(n,2);const tex=n===1?String.raw`\sqrt{10}`:T`10\sqrt{10}`;if(n===3)return GENS['pc5-log'][0](r);
+  return{lvl:1,q:T`What is $\log${tex}$?`,a:v,w:[v.add(1),F(10*n),F(1,2*n),v.neg()],s:T`$${tex}=10^{${v.tex()}}$, and $\log10^u=u$. So the answer is $${v.tex()}$.`}}
+ const val=k>0?cm(10**k):String(+(10**k).toFixed(-k));
+ return{lvl:1,q:T`What is $\log${val}$?`,a:k,w:[-k,k+1,k-1,O(String(10**k>=1?10**(k-1):'0.1'),99)],
+ s:T`$${val}=10^{${k}}$, so $\log${val}=${k}$ (the exponent on $10$).`}},
+/* translate log <-> exponential */
+r=>{const nat=r()<.5;const toExp=r()<.5;const b=nat?'e':'10',L=nat?'\\ln':'\\log';const u=+(ri(r,3,45)/10).toFixed(1);const v=nat?Math.exp(u):10**u;const vs=+v.toPrecision(4);
+ if(toExp){const t=TXT(r,T`${b}^{${u}}\approx${vs}`,[T`${vs}^{${u}}\approx ${b}`,T`${u}^{${b}}\approx${vs}`,T`${nat?'10':'e'}^{${u}}\approx${vs}`,T`${b}^{${vs}}\approx${u}`]);
+  return{lvl:1,q:T`Which exponential statement is equivalent to $${L}${vs}\approx${u}$?`,a:t.a,w:t.w,s:T`$${L} v=u$ means $${b}^u=v$. With $v=${vs}$ and $u=${u}$: $${b}^{${u}}\approx${vs}$.`}}
+ const t=TXT(r,T`${L}${vs}\approx${u}`,[T`${L}${u}\approx${vs}`,T`${nat?'\\log':'\\ln'}${vs}\approx${u}`,T`${L}${b}\approx${vs}`,T`${L}${vs}\approx ${b}`]);
+ return{lvl:1,q:T`Which logarithmic statement is equivalent to $${b}^{${u}}\approx${vs}$?`,a:t.a,w:t.w,s:T`$${b}^u=v$ means $${L} v=u$: $${L}${vs}\approx${u}$.`}},
+/* inverse properties */
+r=>{const a=ri(r,2,40),k=ri(r,1,3);const which=pick(r,[0,1,2]);
+ if(which===0)return{lvl:1,q:T`What is $e^{\ln${a}}$?`,a:a,w:[O(T`e^{${a}}`,Math.exp(a)),O(T`\ln${a}`,Math.log(a)+.01),a*Math.E>100?a+1:Math.round(a*Math.E),1],s:T`$e^{(\ )}$ and $\ln$ undo each other: $e^{\ln v}=v$ for $v\gt0$. So $e^{\ln${a}}=${a}$.`};
+ if(which===1)return{lvl:2,q:T`What is $10^{\log${a}+${k}}$?`,a:a*10**k,w:[a+10**k,a+k,a*k,a**k>1e6?a*10**(k+1):a**k],s:T`$10^{\log${a}+${k}}=10^{\log${a}}\cdot10^{${k}}=${a}\cdot${10**k}=${a*10**k}$.`};
+ const ex=pick(r,['3x','x^2-1','5-2x','x+4']);
+ return{lvl:1,q:T`Simplify $\ln e^{${ex}}$.`,a:O(ex,1),w:[O(T`e^{${ex}}`,2),O(T`${ex}\cdot e`,3),O('1',4),O(T`\ln(${ex})`,5)],s:T`$\ln e^u=u$ for every $u$, so $\ln e^{${ex}}=${ex}$.`}},
+/* domain of log(ax+b) */
+r=>{let a=ri(r,1,5)*pick(r,[1,-1]),b=ri(r,-10,10);const c=F(-b,a);const L=pick(r,['\\ln','\\log']);
+ const ans=a>0?T`x\gt ${c.tex()}`:T`x\lt ${c.tex()}`;const t=TXT(r,ans,[a>0?T`x\lt ${c.tex()}`:T`x\gt ${c.tex()}`,a>0?T`x\ge ${c.tex()}`:T`x\le ${c.tex()}`,T`x\gt 0`,String.raw`\text{all real numbers}`,T`x\gt ${c.neg().tex()}`].filter(x=>x!==ans));
+ return{lvl:1,q:T`What is the domain of $f(x)=${L}(${lin(a,b)})$?`,a:t.a,w:t.w,
+ s:T`The input of a logarithm must be positive: $${lin(a,b)}\gt0$.<br>${a>0?T`$${a===1?'':a}x\gt ${-b}$, so $x\gt ${c.tex()}$.`:T`$${a===-1?'-':a}x\gt ${-b}$; dividing by the negative number ${a} flips the inequality: $x\lt ${c.tex()}$.`}`}},
+/* asymptote / domain of shifted ln */
+r=>{const h=ri(r,-6,6),k=ri(r,-5,5);if(h===0)return GENS['pc5-log'][4](r);const L=pick(r,['\\ln','\\log']);
+ const fn=T`y=${L}(x${h<0?'+':'-'}${Math.abs(h)})${k===0?'':k<0?k:'+'+k}`;const t=TXT(r,'x='+h,['x='+(-h),'x=0','y='+k,'x='+(h+1),'x='+k,'y='+h].filter(x=>x!=='x='+h));
+ return{lvl:1,q:T`What is the vertical asymptote of $${fn}$?`,a:t.a,w:t.w,
+ s:T`$${L} x$ has vertical asymptote $x=0$. Replacing $x$ by $x${h<0?'+':'-'}${Math.abs(h)}$ shifts the graph ${h>0?'right':'left'} ${Math.abs(h)}, so the asymptote is $x=${h}$ (where the input $x${h<0?'+':'-'}${Math.abs(h)}$ is $0$).<br>${k?T`The $${k>0?'+':''}${k}$ shifts the graph ${k>0?'up':'down'}, which doesn't move a vertical line.`:''}`}},
+/* solve ln(ax+b)=k or log(ax+b)=k exactly */
+r=>{const nat=r()<.5;const a=ri(r,1,4),b=ri(r,-6,6),k=ri(r,1,3);const L=nat?'\\ln':'\\log',B=nat?'e':'10';
+ if(!nat){const x=F(10**k-b,a);return{lvl:2,q:T`Solve $\log(${lin(a,b)})=${k}$.`,a:x,w:[F(k-b,a),F(10*k-b,a),F(10**k+b,a),F(10**k,a)],
+  s:T`$\log v=${k}$ means $v=10^{${k}}=${10**k}$: $${lin(a,b)}=${10**k}$.<br>$${a===1?'':a}x=${10**k-b}$, so $x=${x.tex()}$.`}}
+ const ex=T`\frac{e^{${k}}${b>0?'-':'+'}${Math.abs(b)}}{${a}}`,ex1=a===1?T`e^{${k}}${b>0?'-':'+'}${Math.abs(b)}`:ex;
+ const t=TXT(r,ex1,[a===1?T`e^{${k}}${b>0?'+':'-'}${Math.abs(b)}`:T`\frac{e^{${k}}${b>0?'+':'-'}${Math.abs(b)}}{${a}}`,a===1?T`${k}${b>0?'-':'+'}${Math.abs(b)}`:T`\frac{${k}${b>0?'-':'+'}${Math.abs(b)}}{${a}}`,a===1?T`10^{${k}}${b>0?'-':'+'}${Math.abs(b)}`:T`\frac{10^{${k}}${b>0?'-':'+'}${Math.abs(b)}}{${a}}`,T`\ln${k}`]);
+ return{lvl:2,q:T`Solve $\ln(${lin(a,b)})=${k}$.`,a:t.a,w:t.w,
+ s:T`$\ln v=${k}$ means $v=e^{${k}}$: $${lin(a,b)}=e^{${k}}$.<br>Solve: $x=${ex1}\approx${((Math.exp(k)-b)/a).toFixed(3)}$.`}},
+];

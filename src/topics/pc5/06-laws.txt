@@ -1,0 +1,189 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc5-laws">
+<h2>5.4 Properties of Logarithms</h2>
+<p>Logarithms are exponents, so the exponent laws turn into logarithm laws. These laws let you expand or combine logarithms, and they're how logarithms turn multiplication into addition.</p>
+
+<div class="box"><h4>Logarithm Laws</h4>For all $v,w\gt0$ and any real $k$:
+<ul><li><b>Product Law:</b> $\ln(vw)=\ln v+\ln w$</li>
+<li><b>Quotient Law:</b> $\ln\left(\dfrac vw\right)=\ln v-\ln w$</li>
+<li><b>Power Law:</b> $\ln(v^k)=k\ln v$</li></ul>
+The same laws hold for $\log$ (and, in 5.4.A, for every base).</div>
+
+<h3>1. Why they're true</h3>
+<p><b>Product Law.</b> By the inverse property, $v=e^{\ln v}$ and $w=e^{\ln w}$. So $vw=e^{\ln v}e^{\ln w}=e^{\ln v+\ln w}$ (add exponents). Taking $\ln$ of both sides: $\ln(vw)=\ln v+\ln w$.</p>
+<p><b>Power Law.</b> $v^k=\left(e^{\ln v}\right)^k=e^{k\ln v}$ (multiply exponents), so $\ln(v^k)=k\ln v$.</p>
+<p><b>Quotient Law.</b> $\ln\frac vw=\ln(v\cdot w^{-1})=\ln v+\ln w^{-1}=\ln v-\ln w$, using the other two laws.</p>
+
+<h3>2. Expanding and combining</h3>
+<ul><li><b>Expand:</b> $\ln\dfrac{x^2\sqrt y}{z}=\ln x^2+\ln y^{1/2}-\ln z=2\ln x+\tfrac12\ln y-\ln z$.</li>
+<li><b>Combine into one logarithm:</b> $\ln x+3\ln y-\ln z=\ln x+\ln y^3-\ln z=\ln\dfrac{xy^3}{z}$. Move coefficients up as exponents <i>first</i> (Power Law), then combine.</li>
+<li><b>Exact values:</b> $\log5+\log20=\log100=2$, and $\log8-\log2=\log4$.</li>
+<li><b>In terms of $u=\ln x$ and $v=\ln y$:</b> $\ln(x^3y^2)=3u+2v$ and $\ln\dfrac{\sqrt x}{y}=\tfrac12u-v$.</li>
+<li><b>From known values:</b> with $\ln2\approx0.693$ and $\ln3\approx1.099$: $\ln12=\ln(2^2\cdot3)=2\ln2+\ln3\approx2.485$.</li></ul>
+
+<div class="warn"><h4>What the laws do NOT say</h4><ul>
+<li>$\ln(v+w)\ne\ln v+\ln w$. There is no law for the log of a sum or difference.</li>
+<li>$\ln v\cdot\ln w\ne\ln(vw)$, and $\dfrac{\ln v}{\ln w}\ne\ln\dfrac vw$.</li>
+<li>$(\ln x)^2\ne2\ln x$; only $\ln(x^2)=2\ln x$ (for $x\gt0$).</li></ul>
+A quick numeric check exposes these: $\ln(1+1)=\ln2\approx0.693$, but $\ln1+\ln1=0$.</div>
+
+<h3>3. Application: the Richter scale</h3>
+<div class="box"><h4>Earthquake magnitude</h4>An earthquake of intensity $i$ has Richter magnitude $R(i)=\log\dfrac{i}{i_0}$, where $i_0$ is a fixed reference (minimum) intensity.</div>
+<p>By the Product Law, $R(10i)=\log10+\log\frac{i}{i_0}=1+R(i)$: <b>multiplying the intensity by $10$ adds $1$ to the magnitude.</b> In general, multiplying the intensity by $10^k$ adds $k$.</p>
+<p>So two earthquakes whose magnitudes differ by $d$ differ in intensity by a factor of $10^d$. The 1906 San Francisco earthquake ($8.3$) was $10^{8.3-7.1}=10^{1.2}\approx16$ times as intense as a $7.1$ earthquake. An earthquake $1000=10^3$ times as intense as a magnitude-$5.0$ quake has magnitude $8.0$.</p>
+<div class="lfigs"><div class="lplot" data-f="log10(x)|0.05|100" data-x="0,100" data-y="-1,2.5" data-w="230" data-cap="$\log x$: multiplying $x$ by 10 adds 1 to the height"></div></div>
+</script>
+
+=== BANK ===
+@@ pc5-laws
+Q: Write $\ln x+3\ln y-\ln z$ as a single logarithm.
+L: 1
+A: \ln\frac{xy^3}{z}
+W: \ln\frac{3xy}{z}
+W: \ln(x+y^3-z)
+W: \ln\frac{x}{3yz}
+W: 3\ln\frac{xy}{z}
+S: Power Law first: $3\ln y=\ln y^3$.
+Then the Product and Quotient Laws: $\ln x+\ln y^3-\ln z=\ln(xy^3)-\ln z=\ln\dfrac{xy^3}{z}$.
+---
+Q: What is $\log5+\log20$?
+L: 1
+A: 2
+W: \log25
+W: 100
+W: 1
+W: \log5\cdot\log20
+S: Product Law: $\log5+\log20=\log(5\cdot20)=\log100=2$.
+(Adding logs multiplies the inputs; it doesn't add them, so $\log25$ is wrong.)
+---
+Q: Expand $\ln\dfrac{x^2\sqrt y}{z}$.
+L: 2
+A: 2\ln x+\tfrac12\ln y-\ln z
+W: 2\ln x+\tfrac12\ln y+\ln z
+W: \ln2x+\ln\tfrac y2-\ln z
+W: 2\ln x\cdot\tfrac12\ln y-\ln z
+W: (\ln x)^2+\sqrt{\ln y}-\ln z
+S: Quotient Law: $\ln(x^2\sqrt y)-\ln z$. Product Law: $\ln x^2+\ln\sqrt y-\ln z$.
+Power Law (with $\sqrt y=y^{1/2}$): $2\ln x+\tfrac12\ln y-\ln z$.
+---
+Q: Let $u=\ln x$ and $v=\ln y$. Write $\ln\left(x^3y^2\right)$ in terms of $u$ and $v$.
+L: 1
+A: 3u+2v
+W: 6uv
+W: u^3+v^2
+W: 3u\cdot2v
+W: 5(u+v)
+S: Product Law, then Power Law: $\ln x^3+\ln y^2=3\ln x+2\ln y=3u+2v$.
+---
+Q: Let $u=\ln x$ and $v=\ln y$. Write $\ln\dfrac{\sqrt x}{y}$ in terms of $u$ and $v$.
+L: 1
+A: \tfrac12u-v
+W: \frac{\sqrt u}{v}
+W: \tfrac12(u-v)
+W: \frac{u}{2v}
+W: 2u-v
+S: Quotient Law: $\ln\sqrt x-\ln y$. Power Law with $\sqrt x=x^{1/2}$: $\tfrac12\ln x-\ln y=\tfrac12u-v$.
+---
+Q: Given $\ln2\approx0.693$ and $\ln3\approx1.099$, what is $\ln12$?
+L: 2
+A: \approx2.485
+W: \approx1.792
+W: \approx3.180
+W: \approx0.761
+W: \approx2.079
+S: $12=2^2\cdot3$, so $\ln12=2\ln2+\ln3\approx2(0.693)+1.099=2.485$.
+($1.792$ is $\ln6=\ln2+\ln3$; $2.079$ is $\ln8=3\ln2$.)
+---
+Q: Which statement is <b>false</b> for all positive $v$ and $w$?
+L: 1
+A: \ln(v+w)=\ln v+\ln w
+W: \ln(vw)=\ln v+\ln w
+W: \ln\frac vw=\ln v-\ln w
+W: \ln v^3=3\ln v
+W: \ln\frac1v=-\ln v
+S: There is no law for the log of a sum. Check with $v=w=1$: $\ln2\approx0.693$, but $\ln1+\ln1=0$.
+The others are the Product, Quotient, and Power Laws ($\ln\frac1v=\ln v^{-1}=-\ln v$).
+---
+Q: The 1906 San Francisco earthquake measured $8.3$ on the Richter scale. How many times as intense was it as an earthquake of magnitude $7.1$?
+L: 2
+A: \approx15.8
+W: 1.2
+W: 12
+W: \approx1.17
+W: 120
+S: A difference of $d$ in magnitude means a factor of $10^d$ in intensity.
+$8.3-7.1=1.2$, so the ratio is $10^{1.2}\approx15.8$.
+(Each whole unit on the Richter scale is a factor of $10$, so the difference isn't just $1.2$ times.)
+---
+Q: An earthquake is $1000$ times as intense as one that measures $5.0$ on the Richter scale. What is its magnitude?
+L: 1
+A: 8.0
+W: 5{,}000
+W: 15.0
+W: 6.0
+W: 7.0
+S: $R=\log\frac{i}{i_0}$. Multiplying $i$ by $1000=10^3$ adds $\log1000=3$ to the magnitude (Product Law).
+$5.0+3=8.0$.
+---
+Q: Simplify $\log8-\log2$.
+L: 1
+A: \log4
+W: \log6
+W: 4
+W: \frac{\log8}{\log2}
+W: \log16
+S: Quotient Law: $\log8-\log2=\log\frac82=\log4\approx0.602$.
+($\frac{\log8}{\log2}=3$ is a different expression; division of logs is not subtraction.)
+---
+Q: Write $\frac13\log(x^2+1)-\log x$ as a single logarithm.
+L: 2
+A: \log\frac{\sqrt[3]{x^2+1}}{x}
+W: \log\frac{x^2+1}{3x}
+W: \log\left(\sqrt[3]{x^2+1}-x\right)
+W: \frac13\log\frac{x^2+1}{x}
+W: \log\frac{\sqrt[3]{x^2}+1}{x}
+S: Power Law: $\frac13\log(x^2+1)=\log(x^2+1)^{1/3}=\log\sqrt[3]{x^2+1}$.
+Quotient Law: $\log\sqrt[3]{x^2+1}-\log x=\log\dfrac{\sqrt[3]{x^2+1}}{x}$.
+($\sqrt[3]{x^2+1}\ne\sqrt[3]{x^2}+1$.)
+---
+Q: Which expression equals $2\ln3-\ln9$?
+L: 1
+A: 0
+W: \ln\frac23
+W: \ln3
+W: -\ln3
+W: 1
+S: Power Law: $2\ln3=\ln3^2=\ln9$. So $2\ln3-\ln9=\ln9-\ln9=0$.
+
+=== GENS ===
+GENS['pc5-laws']=[
+/* combine a ln x + b ln y - c ln z into one log */
+r=>{const a=ri(r,1,4),b=ri(r,1,4),c=ri(r,1,3);const L=pick(r,['\\ln','\\log']);const pw=(v,k)=>k===1?v:v+'^{'+k+'}';const co=k=>k===1?'':k;
+ const ans=T`${L}\frac{${pw('x',a)}${pw('y',b)}}{${pw('z',c)}}`;
+ const t=TXT(r,ans,[T`${L}\frac{${a===1?'':a}x\cdot ${b===1?'':b}y}{${c===1?'':c}z}`,T`${L}(${pw('x',a)}+${pw('y',b)}-${pw('z',c)})`,T`${L}\frac{${pw('x',a)}}{${pw('y',b)}${pw('z',c)}}`,T`${L}(${pw('x',a)}${pw('y',b)}${pw('z',c)})`]);
+ return{lvl:1,q:T`Write $${co(a)}${L} x+${co(b)}${L} y-${co(c)}${L} z$ as a single logarithm.`,a:t.a,w:t.w,
+ s:T`Power Law first: move each coefficient up as an exponent: $${L} ${pw('x',a)}+${L} ${pw('y',b)}-${L} ${pw('z',c)}$.<br>Product Law for the sum, Quotient Law for the difference: $${ans}$.`}},
+/* expand ln(x^a y^b / z^c) in u,v,w */
+r=>{const a=ri(r,1,5),b=pick(r,[F(1,2),F(1,3),F(2),F(3),F(2,3)]),c=ri(r,1,4);const co=k=>k===1?'':k;
+ const tb=b.d===1?T`y^{${b.n}}`:b.n===1?T`\sqrt${b.d===2?'':'['+b.d+']'}{y}`:T`y^{${b.n}/${b.d}}`;
+ const ans=T`${co(a)}u+${b.d===1?co(b.n):b.tex()}v-${co(c)}w`;
+ const t=TXT(r,ans,[T`${co(a)}u+${b.d===1?co(b.n):b.tex()}v+${co(c)}w`,T`${co(a)}u\cdot ${b.d===1?b.n:b.tex()}v-${co(c)}w`,T`${co(a)}u-${b.d===1?co(b.n):b.tex()}v-${co(c)}w`,T`${a===1?'u':'u^{'+a+'}'}+v^{${b.tex()}}-${c===1?'w':'w^{'+c+'}'}`]);
+ return{lvl:1,q:T`Let $u=\ln x$, $v=\ln y$, and $w=\ln z$. Write $\ln\dfrac{${a===1?'x':'x^{'+a+'}'}${tb}}{${c===1?'z':'z^{'+c+'}'}}$ in terms of $u$, $v$, and $w$.`,a:t.a,w:t.w,
+ s:T`Quotient Law, then Product Law: $\ln ${a===1?'x':'x^{'+a+'}'}+\ln ${tb}-\ln ${c===1?'z':'z^{'+c+'}'}$.<br>Power Law${b.d>1?T` (with $${tb}=y^{${b.tex()}}$)`:''}: $${co(a)}\ln x+${b.d===1?co(b.n):b.tex()}\ln y-${co(c)}\ln z=${ans}$.`}},
+/* exact values: log a + log b = integer */
+r=>{const k=ri(r,1,4);const target=10**k;const ds=[];for(let d=2;d<target;d++)if(target%d===0&&d*d!==target&&d>1)ds.push(d);const a=pick(r,ds),b=target/a;const sub=r()<.4;
+ if(sub){const big=target*a;return{lvl:1,q:T`What is $\log${cm(big)}-\log${a}$?`,a:k,w:[O(T`\log${cm(big-a)}`,9),k+1,k-1,O(T`\frac{\log${cm(big)}}{\log${a}}`,8)],s:T`Quotient Law: $\log${cm(big)}-\log${a}=\log\frac{${cm(big)}}{${a}}=\log${cm(target)}=${k}$.`}}
+ return{lvl:1,q:T`What is $\log${a}+\log${b}$?`,a:k,w:[O(T`\log${a+b}`,9),k+1,O(cm(target),target),k-1],
+ s:T`Product Law: $\log${a}+\log${b}=\log(${a}\cdot${b})=\log${cm(target)}=${k}$.`}},
+/* ln of 2^a 3^b from given approximations */
+r=>{const a=ri(r,0,4),b=ri(r,0,3);if(a+b<2)return GENS['pc5-laws'][3](r);const n=2**a*3**b;const v=a*0.693+b*1.099;const f=x=>O('\\approx'+x.toFixed(3),x);
+ return{lvl:2,q:T`Given $\ln2\approx0.693$ and $\ln3\approx1.099$, what is $\ln${n}$?`,a:f(v),w:[0.693*1.099*Math.max(a,1)*Math.max(b,1),v+0.693,v-0.693,v+1.099,v-1.099,0.693+1.099,a*1.099+b*0.693,n*0.1].filter(x=>x>0&&Math.abs(x-v)>0.01).filter((x,i,arr)=>arr.findIndex(y=>Math.abs(y-x)<0.01)===i).slice(0,4).map(f),
+ s:T`Factor: $${n}=${[a?(a===1?'2':'2^{'+a+'}'):'',b?(b===1?'3':'3^{'+b+'}'):''].filter(Boolean).join('\\cdot ')}$.<br>Product and Power Laws: $\ln${n}=${[a?(a===1?'':a)+'\\ln2':'',b?(b===1?'':b)+'\\ln3':''].filter(Boolean).join('+')}\approx${v.toFixed(3)}$.`}},
+/* Richter: intensity ratio from magnitudes, or magnitude from ratio */
+r=>{const R1=+(ri(r,40,85)/10).toFixed(1);const kind=r()<.5;
+ if(kind){const d=pick(r,[1,2,3]);return{lvl:1,q:T`An earthquake is $${cm(10**d)}$ times as intense as one measuring $${R1}$ on the Richter scale. What is its magnitude?`,a:O((R1+d).toFixed(1),R1+d),w:[O((R1*10**d>100?R1+10*d:R1*10**d).toFixed(1),1),O((R1+d+1).toFixed(1),2),O((R1+d/10).toFixed(1),3),O((R1*d).toFixed(1),4)],
+  s:T`Multiplying the intensity by $10^{${d}}$ adds $\log10^{${d}}=${d}$ to the magnitude: $${R1}+${d}=${(R1+d).toFixed(1)}$.`}}
+ const R2=+(R1-ri(r,3,25)/10).toFixed(1);const d=+(R1-R2).toFixed(1);const ratio=10**d;const f=x=>O('\\approx'+(x<100?x.toFixed(1):cm(Math.round(x))),x);
+ return{lvl:2,q:T`How many times as intense is an earthquake measuring $${R1}$ as one measuring $${R2}$?`,a:f(ratio),w:[O(String(d),d),f(R1/R2),f(10*d),f(ratio*10)],
+ s:T`Magnitudes differ by $${R1}-${R2}=${d}$, so intensities differ by a factor of $10^{${d}}\approx${f(ratio).tex.replace('\\approx','')}$.`}},
+];

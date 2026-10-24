@@ -1,0 +1,193 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc5-model">
+<h2>5.6 Exponential, Logarithmic, and Other Models</h2>
+<p>Given real data, which kind of function fits it best? This section is about recognizing the shape of the data and checking it with a quick computation, before letting a calculator's regression find the exact model.</p>
+
+<h3>1. The menu of models</h3>
+<table class="exmix"><tr><th>Model</th><th>Form</th><th>Shape and tell-tale sign</th></tr>
+<tr><td>Linear</td><td>$y=ax+b$</td><td>constant differences between successive $y$-values</td></tr>
+<tr><td>Quadratic</td><td>$y=ax^2+bx+c$</td><td>constant second differences; one turn</td></tr>
+<tr><td>Power</td><td>$y=ax^r$</td><td>passes through the origin; $(\ln x,\ln y)$ is linear</td></tr>
+<tr><td>Exponential</td><td>$y=ab^x$</td><td>constant <b>ratios</b> of successive $y$-values (equal $x$-steps)</td></tr>
+<tr><td>Logarithmic</td><td>$y=a+b\ln x$</td><td>rises ever more slowly; $(\ln x,y)$ is linear</td></tr>
+<tr><td>Logistic</td><td>$y=\dfrac{c}{1+ae^{-kx}}$</td><td>S-shaped: fast growth that levels off at $c$</td></tr></table>
+<div class="lfigs">
+<div class="lplot" data-f="0.6*pow(1.6,x)|0|7" data-x="0,7" data-y="0,16" data-w="150" data-cap="Exponential"></div>
+<div class="lplot" data-f="1+3*log(x)|0.2|7" data-x="0,7" data-y="-2,8" data-w="150" data-cap="Logarithmic"></div>
+<div class="lplot" data-f="10/(1+40*exp(-1.3*x))|0|7" data-x="0,7" data-y="0,12" data-w="150" data-cap="Logistic"></div>
+<div class="lplot" data-f="0.5*pow(x,1.8)|0|7" data-x="0,7" data-y="0,16" data-w="150" data-cap="Power"></div>
+</div>
+
+<h3>2. Checking for an exponential model: ratios</h3>
+<p>If $y=ab^x$, then going from $x$ to $x+1$ multiplies $y$ by $b$: $\dfrac{ab^{x+1}}{ab^x}=b$. So for equally spaced $x$-values, <b>constant ratios of successive $y$-values</b> mean exponential growth or decay.</p>
+<p>Example: $100,\ 115,\ 132.25,\ 152.09$ has ratios $1.15$ each time, so $y=100(1.15)^x$. Compare: $3,\ 6,\ 12,\ 24$ (ratio $2$) is exponential, but $3,\ 6,\ 9,\ 12$ (difference $3$) is linear.</p>
+<p><b>Two points determine an exponential model.</b> Through $(0,50)$ and $(3,400)$: $a=50$ and $50b^3=400$, so $b^3=8$, $b=2$: $y=50\cdot2^x$.</p>
+
+<h3>3. Power and logarithmic models: take logs</h3>
+<ul><li><b>Power:</b> if $y=ax^r$, then $\ln y=\ln a+r\ln x$, which is linear in $\ln x$. So if the points $(\ln x,\ln y)$ lie on a line with slope $r$, a power model fits, with exponent $r$.</li>
+<li><b>Logarithmic:</b> $y=a+b\ln x$ is linear in $\ln x$. A sign: multiplying $x$ by a constant adds a constant to $y$. For example $x=1,10,100,1000$ and $y=2,5,8,11$ fit $y=2+3\log x$.</li>
+<li><b>Exponential</b> again: $\ln y=\ln a+x\ln b$ is linear in $x$, so $(x,\ln y)$ is linear.</li></ul>
+
+<h3>4. Logistic models</h3>
+<p>$y=\dfrac c{1+ae^{-kx}}$ ($k\gt0$) starts near $\frac c{1+a}$, grows fastest in the middle, and levels off at the upper limit $c$. Populations with limited resources and the spread of news or a disease often look like this.</p>
+<p>When does $y=\dfrac{1000}{1+9e^{-0.5x}}$ reach half its limit? $\frac{1000}{1+9e^{-0.5x}}=500$ means $1+9e^{-0.5x}=2$, so $e^{-0.5x}=\frac19$ and $x=2\ln9\approx4.39$.</p>
+
+<h3>5. Using a model</h3>
+<p>Once you have a model, plug in: $y=4.2(1.08)^x$ predicts $4.2(1.08)^{10}\approx9.07$ at $x=10$; $y=5x^{2.7}$ gives $5\cdot2^{2.7}\approx32.5$ at $x=2$. Be careful far outside the data: an exponential model predicts unlimited growth, while a logistic model levels off. Choose the one that makes sense for the situation.</p>
+<div class="warn"><h4>Common traps</h4><ul>
+<li>Checking differences when you should check ratios (or the other way around).</li>
+<li>Using ratios with unequally spaced $x$-values.</li>
+<li>Trusting a model far beyond the data it was fit to.</li></ul></div>
+</script>
+
+=== BANK ===
+@@ pc5-model
+Q: At $x=0,1,2,3,4$, the data values are $3,\ 6,\ 12,\ 24,\ 48$. Which type of model fits best?
+L: 1
+A: \text{exponential}
+W: \text{linear}
+W: \text{quadratic}
+W: \text{logarithmic}
+W: \text{logistic}
+S: The $x$-values are equally spaced, and each $y$-value is $2$ times the one before: the ratios are constant.
+Constant ratios mean exponential: $y=3\cdot2^x$. (The differences $3,6,12,24$ are not constant, so it isn't linear.)
+---
+Q: A rabbit population grows quickly at first, then levels off near $500$. Which model is most appropriate?
+L: 1
+A: \text{logistic}
+W: \text{exponential}
+W: \text{linear}
+W: \text{power}
+W: \text{quadratic}
+S: Fast growth followed by leveling off at a limit is the S-shape of a logistic model $y=\dfrac{c}{1+ae^{-kx}}$, with upper limit $c\approx500$.
+An exponential model would keep growing without bound.
+---
+Q: At $x=0,1,2,3$ the data values are $100,\ 115,\ 132.25,\ 152.0875$. Which model fits exactly?
+L: 2
+A: y=100(1.15)^x
+W: y=100+15x
+W: y=100(0.15)^x
+W: y=115^x
+W: y=100x^{1.15}
+S: Ratios of successive values: $\frac{115}{100}=1.15$, $\frac{132.25}{115}=1.15$, $\frac{152.0875}{132.25}=1.15$.
+Constant ratio $1.15$ and starting value $100$ give $y=100(1.15)^x$ ($15\%$ growth per step).
+---
+Q: For a data set, the points $(\ln x,\ln y)$ lie on a straight line with slope $2.7$. What kind of model fits the original data?
+L: 2
+A: y=ax^{2.7}
+W: y=a(2.7)^x
+W: y=a+2.7\ln x
+W: y=2.7x+a
+W: y=ae^{2.7x}
+S: For a power model $y=ax^r$: $\ln y=\ln a+r\ln x$. That's a line in the variables $(\ln x,\ln y)$ with slope $r$.
+So slope $2.7$ means $y=ax^{2.7}$.
+---
+Q: Data: when $x=1,10,100,1000$, $y=2,5,8,11$. Which model fits exactly?
+L: 2
+A: y=2+3\log x
+W: y=2\cdot3^x
+W: y=2+3x
+W: y=2x^3
+W: y=2+\log 3x
+S: Each time $x$ is multiplied by $10$, $y$ goes up by $3$. That's the sign of a logarithmic model.
+Try $y=a+b\log x$: at $x=1$, $\log1=0$ gives $a=2$. At $x=10$: $2+b=5$, so $b=3$. Check $x=1000$: $2+3\cdot3=11$ ✓.
+---
+Q: A model is $y=4.2(1.08)^x$. What does it predict at $x=10$?
+L: 1
+A: \approx9.07
+W: \approx7.56
+W: \approx45.36
+W: \approx4.54
+W: \approx12.6
+S: $y=4.2(1.08)^{10}\approx4.2(2.1589)\approx9.07$.
+($7.56$ comes from adding $8\%$ of $4.2$ ten times, which ignores compounding.)
+---
+Q: The logistic model $y=\dfrac{1000}{1+9e^{-0.5x}}$ levels off at $1000$. At what $x$ does it reach $500$?
+L: 3
+A: 2\ln9\approx4.39
+W: \frac{\ln9}{2}\approx1.10
+W: \ln9\approx2.20
+W: 9
+W: 18
+S: Set $\dfrac{1000}{1+9e^{-0.5x}}=500$: then $1+9e^{-0.5x}=2$, so $e^{-0.5x}=\frac19$.
+Take $\ln$: $-0.5x=\ln\frac19=-\ln9$, so $x=2\ln9\approx4.39$.
+---
+Q: A power model is $y=5x^{2.7}$. What is $y$ when $x=2$?
+L: 1
+A: \approx32.5
+W: 27
+W: \approx10.8
+W: \approx65.0
+W: \approx6.5
+S: $y=5\cdot2^{2.7}\approx5(6.498)\approx32.5$.
+(Not $5\cdot2\cdot2.7=27$: the $2.7$ is an exponent.)
+---
+Q: An exponential model $y=ab^x$ passes through $(0,50)$ and $(3,400)$. What is it?
+L: 2
+A: y=50\cdot2^x
+W: y=50\cdot8^x
+W: y=50+\frac{350}{3}x
+W: y=400\cdot2^x
+W: y=50\cdot3^x
+S: At $x=0$: $y=a=50$. At $x=3$: $50b^3=400$, so $b^3=8$ and $b=2$.
+The model is $y=50\cdot2^x$.
+---
+Q: For equally spaced $x$-values, the second differences of the $y$-values are all equal (but not zero). Which model fits?
+L: 1
+A: \text{quadratic}
+W: \text{linear}
+W: \text{exponential}
+W: \text{logarithmic}
+W: \text{power with exponent }\tfrac12
+S: Constant first differences mean linear; constant <b>second</b> differences mean quadratic $y=ax^2+bx+c$ (just as in Section 4.4.A).
+---
+Q: A model of the form $y=a+b\ln x$ passes through $(1,4)$ and $(e,7)$. What is it?
+L: 2
+A: y=4+3\ln x
+W: y=7+4\ln x
+W: y=4+7\ln x
+W: y=4e^{3x}
+W: y=3+4\ln x
+S: At $x=1$: $\ln1=0$, so $a=4$. At $x=e$: $\ln e=1$, so $4+b=7$ and $b=3$.
+Model: $y=4+3\ln x$.
+---
+Q: Which model predicts that the quantity keeps increasing forever, but never exceeds a fixed limit?
+L: 1
+A: \text{logistic } y=\frac{c}{1+ae^{-kx}},\ k\gt0
+W: \text{exponential } y=ab^x,\ b\gt1
+W: \text{logarithmic } y=a+b\ln x,\ b\gt0
+W: \text{power } y=ax^r,\ r\gt0
+W: \text{quadratic } y=ax^2+bx+c,\ a\gt0
+S: A logistic model with $k\gt0$ always increases and has the horizontal asymptote $y=c$, so it never passes $c$.
+The logarithmic, exponential, power, and (eventually) quadratic models all grow without any upper limit, even if, like $\ln x$, very slowly.
+
+=== GENS ===
+GENS['pc5-model']=[
+/* classify a data list as linear / exponential / quadratic */
+r=>{const kind=pick(r,['exp','lin','quad']);const a=ri(r,2,9);let ys;
+ if(kind==='exp'){const b=pick(r,[2,3]);ys=[0,1,2,3,4].map(x=>a*b**x)}
+ else if(kind==='lin'){const d=ri(r,2,12);ys=[0,1,2,3,4].map(x=>a+d*x)}
+ else{const c=ri(r,1,3);ys=[0,1,2,3,4].map(x=>a+c*x*x)}
+ const name={exp:'exponential',lin:'linear',quad:'quadratic'}[kind];const t=TXT(r,String.raw`\text{${name}}`,['linear','exponential','quadratic','logarithmic','logistic','power'].filter(x=>x!==name).map(x=>String.raw`\text{${x}}`));
+ const d1=ys.slice(1).map((v,i)=>v-ys[i]),d2=d1.slice(1).map((v,i)=>v-d1[i]),rt=ys.slice(1).map((v,i)=>F(v,ys[i]).tex());
+ return{lvl:1,q:T`At $x=0,1,2,3,4$ the data values are $${ys.join(',\\ ')}$. Which type of model fits exactly?`,a:t.a,w:t.w,
+ s:T`Differences: $${d1.join(',\\ ')}$. ${kind==='lin'?'They are constant, so the data is linear.':T`Second differences: $${d2.join(',\\ ')}$.`}<br>${kind==='exp'?T`Ratios of successive values: $${rt.join(',\\ ')}$, all equal, so it's exponential.`:kind==='quad'?'The second differences are constant, so it is quadratic.':''}`}},
+/* exponential model through (0,a) and (n, a b^n) */
+r=>{const a=pick(r,[5,10,20,25,50,100]),b=pick(r,[2,3,4,0.5]),n=ri(r,2,3);const y=a*b**n;
+ const bt=b===0.5?'0.5':String(b);const t=TXT(r,T`y=${a}\cdot${bt}^x`,[T`y=${a}\cdot${b===0.5?'0.25':b**n}^x`,T`y=${cm(y)}\cdot${bt}^x`,T`y=${a}+${F(y-a,n).tex()}x`,T`y=${a}\cdot${b===2?3:2}^x`]);
+ return{lvl:2,q:T`An exponential model $y=ab^x$ passes through $(0,${a})$ and $(${n},${cm(y)})$. What is it?`,a:t.a,w:t.w,
+ s:T`At $x=0$, $b^0=1$, so $a=${a}$.<br>At $x=${n}$: $${a}b^{${n}}=${cm(y)}$, so $b^{${n}}=${b**n}$ and $b=${bt}$.<br>Model: $y=${a}\cdot${bt}^x$.`}},
+/* predict from an exponential model */
+r=>{const a=pick(r,[2.5,4.2,10,12,25,150]),b=pick(r,[1.03,1.05,1.08,1.12,0.9,0.95]),x=ri(r,5,20);const y=a*b**x;const f=v=>O('\\approx'+v.toFixed(2),v);
+ return{lvl:1,q:T`A model is $y=${a}(${b})^x$. What does it predict at $x=${x}$?`,a:f(y),w:[a*(1+(b-1)*x),a*b*x,y*b,y/b,a*b**(x+2)].filter(v=>Math.abs(v-y)>0.01).filter((v,i,arr)=>arr.findIndex(w=>Math.abs(w-v)<0.01)===i).slice(0,4).map(f),
+ s:T`$y=${a}(${b})^{${x}}\approx${a}(${(b**x).toFixed(4)})\approx${y.toFixed(2)}$.`}},
+/* logistic: time to reach half the limit */
+r=>{const c=pick(r,[500,1000,2000,5000]),a=pick(r,[4,9,19,24,49]),k=pick(r,[0.2,0.25,0.5,1]);const x=Math.log(a)/k;
+ const t=TXT(r,T`\frac{\ln${a}}{${k}}\approx${x.toFixed(2)}`,[T`${k}\ln${a}\approx${(k*Math.log(a)).toFixed(2)}`,T`\ln${a}\approx${Math.log(a).toFixed(2)}`,T`\frac{${a}}{${k}}=${+(a/k).toFixed(2)}`,T`\frac{\ln${c/2}}{${k}}\approx${(Math.log(c/2)/k).toFixed(2)}`]);
+ return{lvl:3,q:T`When does $y=\dfrac{${cm(c)}}{1+${a}e^{-${k}x}}$ reach half of its upper limit?`,a:t.a,w:t.w,
+ s:T`The limit is ${cm(c)}, so set $y=${cm(c/2)}$: $1+${a}e^{-${k}x}=2$, so $e^{-${k}x}=\frac1{${a}}$.<br>Take $\ln$: $-${k}x=-\ln${a}$, so $x=\dfrac{\ln${a}}{${k}}\approx${x.toFixed(2)}$.`}},
+/* logarithmic model from points (1,a) and (10,a+b) */
+r=>{const a=ri(r,1,9),b=ri(r,2,6);const t=TXT(r,T`y=${a}+${b}\log x`,[T`y=${a+b}+${b}\log x`,T`y=${a}+${a+b}\log x`,T`y=${a}\cdot${b}^x`,T`y=${b}+${a}\log x`]);
+ return{lvl:2,q:T`A model of the form $y=a+b\log x$ gives $y=${a}$ at $x=1$ and $y=${a+b}$ at $x=10$. What is it?`,a:t.a,w:t.w,
+ s:T`At $x=1$: $\log1=0$, so $a=${a}$.<br>At $x=10$: $\log10=1$, so $${a}+b=${a+b}$ and $b=${b}$.<br>Model: $y=${a}+${b}\log x$. (Each tenfold increase in $x$ adds ${b} to $y$.)`}},
+];

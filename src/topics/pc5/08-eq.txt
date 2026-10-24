@@ -1,0 +1,189 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc5-eq">
+<h2>5.5 Algebraic Solutions of Exponential and Logarithmic Equations</h2>
+<p>Two tools do almost all the work: <b>take a logarithm</b> to bring an unknown exponent down, and <b>exponentiate</b> to undo a logarithm.</p>
+
+<h3>1. Exponential equations</h3>
+<div class="box"><h4>Method</h4><ol><li>Isolate the exponential expression.</li><li>Take $\ln$ (or $\log$) of both sides.</li><li>Use the Power Law to bring the exponent down, then solve the resulting linear equation.</li></ol></div>
+<ul><li>$5^x=2$: $\;\ln5^x=\ln2$, so $x\ln5=\ln2$ and $x=\dfrac{\ln2}{\ln5}\approx0.4307$.</li>
+<li>$e^{3x}=7$: $\;3x=\ln7$, so $x=\frac{\ln7}3\approx0.6486$ (with base $e$, $\ln$ undoes it directly).</li>
+<li>$10^{x+1}=500$: $\;x+1=\log500$, so $x=\log500-1=\log50\approx1.699$.</li>
+<li>Variables on both sides: $2^{4x-1}=3^{1-x}$. Take $\ln$: $(4x-1)\ln2=(1-x)\ln3$. Collect the $x$ terms: $x(4\ln2+\ln3)=\ln3+\ln2$, so $x=\dfrac{\ln6}{\ln48}\approx0.4628$.</li></ul>
+<p><b>When the bases match</b>, you don't need logs: $2^{x+3}=2^{5}$ gives $x+3=5$, because $2^x$ is one-to-one.</p>
+
+<h3>2. Equations quadratic in $e^x$</h3>
+<p>$e^x-5e^{-x}=4$: multiply by $e^x$ (never zero) to get $(e^x)^2-4e^x-5=0$. With $u=e^x$: $(u-5)(u+1)=0$. Since $e^x\gt0$, only $u=5$ works: $x=\ln5$.</p>
+
+<h3>3. Applications</h3>
+<ul><li><b>Half-life from data.</b> $M(x)=c(0.5)^{x/h}$. If $20$ mg of strontium-90 becomes $6.071$ mg after $43$ years: $(0.5)^{43/h}=0.30355$. Take $\ln$: $\frac{43}h\ln0.5=\ln0.30355$, so $h=\dfrac{43\ln0.5}{\ln0.30355}\approx25$ years.</li>
+<li><b>Carbon-14 dating.</b> Carbon-14 has half-life $5730$ years. If a fossil has $20\%$ of its original carbon-14: $(0.5)^{t/5730}=0.2$, so $t=\dfrac{5730\ln0.2}{\ln0.5}\approx13{,}305$ years.</li>
+<li><b>Growth rate.</b> If $P(t)=P_0e^{kt}$ grows from $10$ to $15$ million in $8$ years: $e^{8k}=1.5$, so $k=\frac{\ln1.5}8\approx0.0507$ ($5.07\%$ continuous growth).</li>
+<li><b>Doubling time</b> at continuous rate $r$: $e^{rt}=2$, so $t=\frac{\ln2}{r}$. At $5\%$: $\frac{0.6931}{0.05}\approx13.9$ years.</li></ul>
+
+<h3>4. Logarithmic equations</h3>
+<div class="box"><h4>Method</h4><ol><li>Use the laws to combine into a single logarithm on one side.</li><li>Rewrite in exponential form (exponentiate).</li><li>Solve, then <b>check</b>: a solution that makes any original log's input zero or negative is extraneous.</li></ol></div>
+<ul><li>$\ln(x+1)-\ln x=1$: $\;\ln\frac{x+1}x=1$, so $\frac{x+1}x=e$, $x+1=ex$, and $x=\dfrac1{e-1}\approx0.582$ ✓.</li>
+<li>$\log(x-16)=2-\log(x-1)$: $\;\log\big[(x-16)(x-1)\big]=2$, so $(x-16)(x-1)=100$, i.e. $x^2-17x-84=0=(x-21)(x+4)$. $x=-4$ makes $x-16$ negative, so it's extraneous. Answer: $x=21$.</li>
+<li>$\log_2x+\log_2(x-2)=3$: $\;x(x-2)=8$, so $x=4$ or $x=-2$. Only $x=4$ checks.</li></ul>
+
+<div class="warn"><h4>Common traps</h4><ul>
+<li>$\ln(x+1)\ne\ln x+\ln1$. Combine logs only with the Product, Quotient, and Power Laws.</li>
+<li>$\dfrac{\ln2}{\ln5}\ne\ln\dfrac25$. Leave it as a quotient (or compute it).</li>
+<li>Skipping the check: the combined equation can have solutions the original can't.</li></ul></div>
+</script>
+
+=== BANK ===
+@@ pc5-eq
+Q: Solve $5^x=2$.
+L: 1
+A: \frac{\ln2}{\ln5}
+W: \frac{\ln5}{\ln2}
+W: \ln\frac25
+W: \frac25
+W: \ln2-\ln5
+S: Take $\ln$ of both sides: $\ln5^x=\ln2$. Power Law: $x\ln5=\ln2$.
+So $x=\dfrac{\ln2}{\ln5}\approx0.4307$.
+(It is not $\ln\frac25$: a quotient of logs is not the log of a quotient.)
+---
+Q: Solve $2^{4x-1}=3^{1-x}$.
+L: 3
+A: \frac{\ln6}{\ln48}
+W: \frac{\ln3}{\ln48}
+W: \frac{\ln6}{\ln12}
+W: \frac{\ln3-\ln2}{4\ln2-\ln3}
+W: \frac{2}{5}
+S: Take $\ln$: $(4x-1)\ln2=(1-x)\ln3$.
+Expand: $4x\ln2-\ln2=\ln3-x\ln3$. Collect $x$ terms: $x(4\ln2+\ln3)=\ln3+\ln2$.
+$4\ln2+\ln3=\ln(16\cdot3)=\ln48$ and $\ln3+\ln2=\ln6$, so $x=\dfrac{\ln6}{\ln48}\approx0.4628$.
+---
+Q: Solve $e^{3x}=7$.
+L: 1
+A: \frac{\ln7}{3}
+W: 3\ln7
+W: \ln\frac73
+W: \frac{7}{3e}
+W: \ln4
+S: Take $\ln$ of both sides: $3x=\ln7$, since $\ln e^{3x}=3x$.
+So $x=\dfrac{\ln7}3\approx0.6486$.
+---
+Q: Solve $10^{x+1}=500$.
+L: 1
+A: \log50
+W: \log500
+W: 49
+W: \log499
+W: \ln500-1
+S: Take $\log$: $x+1=\log500$, so $x=\log500-1$.
+Since $\log500-1=\log500-\log10=\log50\approx1.699$.
+---
+Q: $20$ mg of strontium-90 decays to $6.071$ mg in $43$ years. Using $M(x)=c(0.5)^{x/h}$, what is the half-life $h$?
+L: 2
+A: \approx25\text{ years}
+W: \approx14\text{ years}
+W: \approx21.5\text{ years}
+W: \approx36\text{ years}
+W: \approx71\text{ years}
+S: $20(0.5)^{43/h}=6.071$, so $(0.5)^{43/h}=0.30355$.
+Take $\ln$: $\frac{43}{h}\ln0.5=\ln0.30355$, so $h=\dfrac{43\ln0.5}{\ln0.30355}\approx\dfrac{43(-0.6931)}{-1.1922}\approx25.0$ years.
+---
+Q: Carbon-14 has a half-life of $5730$ years. A fossil has $20\%$ of its original carbon-14. About how old is it?
+L: 2
+A: \approx13{,}300\text{ years}
+W: \approx1{,}150\text{ years}
+W: \approx28{,}650\text{ years}
+W: \approx4{,}585\text{ years}
+W: \approx9{,}220\text{ years}
+S: Solve $(0.5)^{t/5730}=0.2$. Take $\ln$: $\frac{t}{5730}\ln0.5=\ln0.2$.
+$t=\dfrac{5730\ln0.2}{\ln0.5}\approx\dfrac{5730(-1.6094)}{-0.6931}\approx13{,}305$ years.
+---
+Q: A population modeled by $P(t)=P_0e^{kt}$ grows from $10$ million to $15$ million in $8$ years. What is $k$?
+L: 2
+A: \approx0.0507
+W: \approx0.0625
+W: \approx0.1875
+W: \approx0.0220
+W: \approx0.4055
+S: $10e^{8k}=15$, so $e^{8k}=1.5$.
+Take $\ln$: $8k=\ln1.5\approx0.4055$, so $k\approx0.0507$ (about $5.07\%$ per year, compounded continuously).
+---
+Q: Solve $e^x-5e^{-x}=4$.
+L: 3
+A: \ln5
+W: \ln5\text{ and }\ln(-1)
+W: 5
+W: \ln4
+W: \ln5-1
+S: Multiply by $e^x$: $(e^x)^2-5=4e^x$, so $(e^x)^2-4e^x-5=0$.
+With $u=e^x$: $u^2-4u-5=(u-5)(u+1)=0$.
+$e^x=-1$ is impossible ($e^x\gt0$), so $e^x=5$ and $x=\ln5\approx1.609$.
+---
+Q: Solve $\ln(x+1)-\ln x=1$.
+L: 2
+A: \frac{1}{e-1}
+W: e-1
+W: \frac{e}{e-1}
+W: \frac1e
+W: e+1
+S: Quotient Law: $\ln\dfrac{x+1}{x}=1$, so $\dfrac{x+1}x=e$.
+$x+1=ex$, so $1=x(e-1)$ and $x=\dfrac1{e-1}\approx0.582$.
+Check: both $x$ and $x+1$ are positive ✓.
+---
+Q: Solve $\log(x-16)=2-\log(x-1)$.
+L: 2
+A: 21
+W: -4
+W: 21\text{ and }-4
+W: 17
+W: 116
+S: Move the logs together: $\log(x-16)+\log(x-1)=2$, so $\log\big[(x-16)(x-1)\big]=2$.
+Exponentiate: $(x-16)(x-1)=100$, i.e. $x^2-17x-84=0=(x-21)(x+4)$.
+$x=-4$ makes $x-16$ negative, so $\log(x-16)$ isn't defined: extraneous. Answer: $x=21$.
+---
+Q: Solve $\log_2x+\log_2(x-2)=3$.
+L: 2
+A: 4
+W: -2
+W: 4\text{ and }-2
+W: 5
+W: 8
+S: Product Law: $\log_2\big[x(x-2)\big]=3$, so $x(x-2)=2^3=8$.
+$x^2-2x-8=0=(x-4)(x+2)$. $x=-2$ would put a negative number into $\log_2x$, so it's extraneous. Answer: $x=4$.
+---
+Q: Money grows at $5\%$ per year, compounded continuously. About how long does it take to double?
+L: 1
+A: \approx13.9\text{ years}
+W: \approx20\text{ years}
+W: \approx14.2\text{ years}
+W: \approx10\text{ years}
+W: \approx6.9\text{ years}
+S: Solve $e^{0.05t}=2$: $0.05t=\ln2$, so $t=\dfrac{\ln2}{0.05}\approx\dfrac{0.6931}{0.05}\approx13.9$ years.
+($20$ years would be simple interest; $14.2$ years is annual compounding.)
+
+=== GENS ===
+GENS['pc5-eq']=[
+/* a^x = c  ->  ln c / ln a */
+r=>{const a=pick(r,[2,3,5,6,7,1.05,1.08]),c=pick(r,[3,5,7,10,12,20,50]);if(a===c)return GENS['pc5-eq'][0](r);const v=Math.log(c)/Math.log(a);
+ const t=TXT(r,T`\frac{\ln${c}}{\ln${a}}`,[T`\frac{\ln${a}}{\ln${c}}`,T`\ln\frac{${c}}{${a}}`,T`\ln${c}-\ln${a}`,T`\frac{${c}}{${a}}`]);
+ return{lvl:1,q:T`Solve $${a}^x=${c}$.`,a:t.a,w:t.w,
+ s:T`Take $\ln$ of both sides and use the Power Law: $x\ln${a}=\ln${c}$.<br>So $x=\dfrac{\ln${c}}{\ln${a}}\approx${v.toFixed(4)}$. (A quotient of logs, not the log of a quotient.)`}},
+/* P e^{kx} = Q -> x = ln(Q/P)/k */
+r=>{const P=pick(r,[2,3,4,5,10]),Q=P*pick(r,[2,3,4,5,6,8,10]),k=pick(r,[2,3,4,5]);const ratio=Q/P;
+ const t=TXT(r,T`\frac{\ln${ratio}}{${k}}`,[T`${k}\ln${ratio}`,T`\ln\frac{${ratio}}{${k}}`,T`\frac{\ln${Q}}{${k}}`,T`\frac{${ratio}}{${k}e}`]);
+ return{lvl:1,q:T`Solve $${P}e^{${k}x}=${Q}$.`,a:t.a,w:t.w,
+ s:T`Isolate the exponential: $e^{${k}x}=\frac{${Q}}{${P}}=${ratio}$.<br>Take $\ln$: $${k}x=\ln${ratio}$, so $x=\dfrac{\ln${ratio}}{${k}}\approx${(Math.log(ratio)/k).toFixed(4)}$.`}},
+/* half-life or age from fraction remaining */
+r=>{const [name,h]=pick(r,[['carbon-14',5730],['radium-226',1620],['cobalt-60',5.3],['iodine-131',8]]);const unit=h>100?'years':h>6?'days':'years';const frac=pick(r,[0.1,0.2,0.3,0.4,0.6,0.75,0.8,0.9]);
+ const t=h*Math.log(frac)/Math.log(0.5);const fmt=v=>v>=100?cm(Math.round(v)):v.toFixed(1);const f=v=>O('\\approx'+fmt(v)+'\\text{ '+unit+'}',v);
+ return{lvl:2,q:T`The half-life of ${name} is $${cm(h)}$ ${unit}. How long until only $${Math.round(frac*100)}\%$ of a sample remains?`,a:f(t),w:[f(h*frac),f(h/frac),f(h*(1-frac)*2),f(t*2)],
+ s:T`Solve $(0.5)^{t/${h}}=${frac}$. Take $\ln$: $\dfrac{t}{${h}}\ln0.5=\ln${frac}$.<br>$t=\dfrac{${h}\ln${frac}}{\ln0.5}\approx\dfrac{${h}(${Math.log(frac).toFixed(4)})}{${Math.log(0.5).toFixed(4)}}\approx${fmt(t)}$ ${unit}.`}},
+/* log equation: log_b(x) + log_b(x - d) = k with one extraneous root */
+r=>{const b=pick(r,[2,3,10]);const s_=ri(r,2,b===10?12:9),d=ri(r,1,s_-1);const N=s_*(s_-d);if(b===10&&N!==10&&N!==100)return GENS['pc5-eq'][3](r);
+ const kk=Math.round(Math.log(N)/Math.log(b));if(b**kk!==N)return GENS['pc5-eq'][3](r);const e=d-s_;
+ const L=b===10?'\\log':'\\log_{'+b+'}';
+ return{lvl:2,q:T`Solve $${L} x+${L}(x-${d})=${kk}$.`,a:s_,w:[e,O(T`${s_}\text{ and }${e}`,s_+e/100),N,s_+d],
+ s:T`Product Law: $${L}\big[x(x-${d})\big]=${kk}$, so $x(x-${d})=${b}^{${kk}}=${N}$.<br>$x^2-${d}x-${N}=0$, which factors as $${fx(s_)}${fx(e)}=0$.<br>$x=${e}$ makes the input of $${L} x$ negative, so the log is not defined, so it's extraneous. Answer: $x=${s_}$.`}},
+/* doubling / tripling time with continuous rate */
+r=>{const rp=pick(r,[2,3,4,5,6,7,8,10]),k=pick(r,[2,3]);const t=Math.log(k)/(rp/100);const f=v=>O('\\approx'+v.toFixed(1)+'\\text{ years}',v);
+ return{lvl:1,q:T`An investment grows at $${rp}\%$ per year, compounded continuously. About how long until it ${k===2?'doubles':'triples'}?`,a:f(t),w:[f(100*(k-1)/rp),f(Math.log(k)/Math.log(1+rp/100)+0.3),f(t/2),f(k*100/rp)],
+ s:T`Solve $e^{${rp/100}t}=${k}$: take $\ln$ to get $${rp/100}t=\ln${k}$, so $t=\dfrac{\ln${k}}{${rp/100}}\approx\dfrac{${Math.log(k).toFixed(4)}}{${rp/100}}\approx${t.toFixed(1)}$ years.`}},
+];
