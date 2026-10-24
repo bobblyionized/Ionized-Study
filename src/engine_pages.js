@@ -120,6 +120,7 @@ function topicPage(t){
     <span class="bar"><i style="width:${st.total?st.done/st.total*100:0}%"></i></span></button>`}).join('');
   const last=PROG.mock.filter(m=>(m.topic||'seq')===t.id).pop();
   app.innerHTML=`<h1>${pc?'Chapter '+t.ch+': ':''}${esc(t.name)}</h1><p class="sub">${esc(t.d)} Work through the ${pc?'sections':'subtopics'} in order: read the lesson, do the problem set, then drill in practice mode. Finish with the ${mockKey(t).toLowerCase()}.</p>
+  ${pc&&typeof BOOKS!=='undefined'?BOOKS.chapterCard(t.id):''}
   <div class="grid">${cards}
   <button class="card tile mock" onclick="location.hash='#/mock/${t.id}'"><span class="num">${mockKey(t)}</span><span class="t">${esc(t.name)} ${pc?'Chapter Test':'Mock Test'}</span>
   <span class="d">25 questions in 75 minutes, ordered easy to hard, with AMC-style scoring (6 / 1.5 / 0).</span>
@@ -139,7 +140,7 @@ function subPage(sid,tab){
   if(tab==='graph')return graphView(body);
   const les=document.getElementById('L-'+sid);
   const i=t.subs.indexOf(s),next=t.subs[i+1];
-  body.innerHTML=`<div class="lesson">${les?les.textContent:'<p>Lesson coming soon.</p>'}</div>
+  body.innerHTML=`${typeof BOOKS!=='undefined'?BOOKS.lessonBar(sid):''}<div class="lesson">${les?les.textContent:'<p>Lesson coming soon.</p>'}</div>
   <div class="row" style="margin-top:16px">${next?`<button class="btn" onclick="location.hash='#/s/${next.id}/lesson'">Next lesson: ${esc(next.name)} →</button>`:''}<span class="spacer"></span><button class="btn pri" onclick="location.hash='#/s/${sid}/set'">Go to problem set →</button></div>`;
   drawLessonPlots(body);renderMath(body);
 }
