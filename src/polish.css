@@ -255,3 +255,19 @@ body.nbe-on{overflow:hidden}
 .nbe-mfield .mq-math-mode .mq-root-block{padding:2px}
 .nbe-mtex{display:block;width:min(420px,70vw);font:14px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;color:#1b2030;background:#f3f5fa;border:0;border-radius:5px;padding:5px 7px;outline:none;resize:none;box-sizing:border-box}
 .nbe-mprev{padding:5px 2px 2px;min-height:1.2em;color:inherit}
+
+.nbe-mfield .mq-math-mode{font-size:1em}
+.nbe-mfield .mq-root-block{padding:0}
+.nbe-selsep{width:1px;align-self:stretch;margin:3px 2px;background:rgba(255,255,255,.18)}
+.nbe-selbar{white-space:nowrap}
+.nbe-toast{position:absolute;left:50%;bottom:70px;transform:translate(-50%,10px);max-width:min(460px,calc(100% - 32px));background:#1e2333;color:#fff;font-size:14px;line-height:1.4;padding:10px 14px;border-radius:10px;box-shadow:0 10px 26px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:6}
+.nbe-toast.on{opacity:1;transform:translate(-50%,0)}
+.nbe-txt{border-color:transparent;outline:1px dashed #8d98b8;outline-offset:2px}
+
+/* Notebooks from the timer screen */
+.tm-nb{display:inline-flex;align-items:center;gap:8px;margin:0 0 18px;padding:9px 20px;border:1px solid var(--tp-line);border-radius:999px;background:transparent;color:var(--tp-fg);font:inherit;font-size:15px;font-weight:600;cursor:pointer;transition:border-color var(--t) var(--ease),background var(--t) var(--ease),transform var(--t) var(--ease-out)}
+.tm-nb svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tm-nb:hover,.tm-nb:focus-visible{border-color:var(--tp-fg);transform:translateY(-1px);outline:none}
+body.nb-only header.top,body.nb-only .tab-arrow{display:none}
+.nb-back{display:inline-flex;align-items:center;gap:4px;margin:4px 0 22px;font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 14px;background:var(--card)}
+.nb-back:hover{border-color:var(--accent);color:var(--accent)}

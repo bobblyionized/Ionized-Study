@@ -47,7 +47,9 @@ function routeTo(){
   const landing=h.length===0,was=document.body.classList.contains('landing');
   if(was!==landing&&routeTo.ran)fadeLanding(landing);                 // cross-fade between the timer screen and studying
   routeTo.ran=true;document.body.classList.toggle('landing',landing);if(typeof TM!=='undefined')TM.show(landing);
+  document.body.classList.toggle('nb-only',h[0]==='notebooks');
   if(landing)return;
+  if(h[0]==='notebooks')return notebooksPage();
   if(h[0]==='home')return hub();
   if(h[0]==='amc')return amcHome();
   if(h[0]==='pc')return pcHome();
@@ -56,6 +58,10 @@ function routeTo(){
   if(h[0]==='mock')return mockPage(h[1]&&(MOCKS[h[1]]||findTopic(h[1]))?h[1]:'all');
   hub();
 }
+
+/* the Notebooks page opened from the timer screen: just the notebook library and a way back */
+function notebooksPage(){setCrumbs([['Notebooks']]);
+  app.innerHTML=`<a class="nb-back" href="#/" title="Back to the timer menu">&larr; Timer</a><div id="nbStand"></div>`;NOTEBOOK.view(document.getElementById('nbStand'))}
 
 function trackStats(id){let total=0,done=0,ok=0;for(const t of TOPICS)if(t.track===id){const st=topicStats(t);total+=st.total;done+=st.done;ok+=st.ok}return{total,done,ok}}
 function hub(){

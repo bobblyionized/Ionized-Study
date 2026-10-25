@@ -9,7 +9,7 @@ const NOTEBOOK=(()=>{
   const FB='https://ionized-study-and-shi-default-rtdb.firebaseio.com';
   const W=1000,SH=1333,MAXH=12;                          // page width in page units; one screen of height (3:4, like the Scribe)
   const TPL=[['blank','Blank'],['lined','Lined'],['grid','Grid'],['dots','Dots']];
-  const TOOLS=[['pen','Pen'],['mark','Marker'],['hl','Highlighter'],['erase','Eraser'],['lasso','Lasso select'],['text','Text']];
+  const TOOLS=[['move','Select and move'],['pen','Pen'],['mark','Marker'],['hl','Highlighter'],['erase','Eraser'],['lasso','Lasso select'],['text','Text']];
   const SIZES={pen:[2.2,3.6,6],mark:[5,9,15],hl:[16,26,38],erase:[10,20,38],text:[24,32,46]};
   const INKS=['#111111','#5b6170','#2f5bd3','#d23b3b','#1f8a4c'],HLS=['#ffe14d','#7cf0a0','#7cc8ff','#ff9ad5'];
   const FONT='"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif';
@@ -142,7 +142,7 @@ const NOTEBOOK=(()=>{
       out.push(line)}return out}
   function drawItem(ctx,it,s,live){
     if(it.k==='m'){if(live)return;ctx.save();ctx.fillStyle=it.c;ctx.textBaseline='top';ctx.font=`${it.z*s}px ${FONT}`;ctx.fillText(plainTex(it.v),it.x*s,(it.y+it.z*.1)*s);ctx.restore();return}
-    if(it.k==='x'){ctx.save();ctx.fillStyle=it.c;ctx.textBaseline='top';textLines(ctx,it,s).forEach((l,i)=>ctx.fillText(l,it.x*s,(it.y+i*it.z*1.3)*s));ctx.restore();return}
+    if(it.k==='x'){ctx.save();ctx.fillStyle=it.c;ctx.textBaseline='middle';textLines(ctx,it,s).forEach((l,i)=>ctx.fillText(l,it.x*s,(it.y+(i+.5)*it.z*1.3)*s));ctx.restore();return}
     const p=it.p,n=p.length/3;if(!n)return;ctx.save();ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle=it.c;
     if(it.t==='hl'){ctx.globalAlpha=.38;ctx.globalCompositeOperation='multiply'}
     if(it.t!=='pen'||n<3){ctx.lineWidth=it.w*s*(it.t==='pen'?.35+.9*p[2]:1);ctx.beginPath();ctx.moveTo(p[0]*s,p[1]*s);
@@ -248,12 +248,12 @@ const NOTEBOOK=(()=>{
 
   /* ---------- the editor ---------- */
   let E=null;
-  let tool=ls('tool')||'pen';if(!SIZES[tool]&&tool!=='lasso')tool='pen';
+  let tool=ls('tool')||'pen';if(!SIZES[tool]&&tool!=='lasso'&&tool!=='move')tool='pen';
   let pref={};try{pref=JSON.parse(ls('pref')||'{}')||{}}catch(e){}const size=t=>(pref['s_'+t]==null?1:pref['s_'+t]);
   const color=t=>pref['c_'+t]||(t==='hl'?HLS[0]:INKS[0]);const savePref=()=>ls('pref',JSON.stringify(pref));
   let penSeen=ls('pen')==='1',fingerDraw=ls('finger')!=='0',fit=ls('fit')||'width';
   const fingerScrolls=()=>penSeen&&!fingerDraw;
-  const ICON={pen:'<path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/>',mark:'<path d="M5 19l3-1 10-10-3-3L5 15z" stroke-width="3.2"/>',
+  const ICON={move:'<path d="M6 3l12 8.5-5.2 1.2 3 5.8-2.4 1.2-3-5.8L6 18z"/>',pen:'<path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/>',mark:'<path d="M5 19l3-1 10-10-3-3L5 15z" stroke-width="3.2"/>',
     hl:'<path d="M9 15l-3 5h6l1-2"/><path d="M8 13l8-9 4 4-9 8z"/>',erase:'<path d="M8 20h11"/><path d="M4 15l9-9 6 6-8 8H8z"/>',
     lasso:'<ellipse cx="12" cy="10" rx="8" ry="5.5" stroke-dasharray="3 2.4"/><path d="M8 15c-1 2 0 4 2 4"/>',text:'<path d="M5 6V4h14v2M12 4v16M9 20h6"/>',
     undo:'<path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/>',redo:'<path d="M15 14l5-5-5-5"/><path d="M20 9H10a6 6 0 0 0 0 12h3"/>'};
@@ -269,7 +269,7 @@ const NOTEBOOK=(()=>{
         <div class="nbe-grp nbe-opts"></div>
         <button class="nbe-b" data-a="more" aria-label="Page options">⋯</button></div>
       <div class="nbe-body"><div class="nbe-page"><canvas class="nbe-base"></canvas><div class="nbe-mlayer"></div><canvas class="nbe-ink"></canvas>
-        <div class="nbe-sel" hidden><div class="nbe-selbar"><button type="button" data-s="dup">Duplicate</button><button type="button" data-s="del">Delete</button></div></div></div>
+        <div class="nbe-sel" hidden><div class="nbe-selbar"></div></div></div>
         <button class="nbe-extend" data-a="extend">＋ Extend this page down</button></div>
       <div class="nbe-bot"><button class="nbe-b" data-a="prev" aria-label="Previous page">‹</button><button class="nbe-b nbe-pgno" data-a="grid" aria-label="All pages"></button>
         <button class="nbe-b" data-a="next" aria-label="Next page">›</button><button class="nbe-b nbe-add" data-a="add">＋ Page</button></div>
@@ -279,6 +279,9 @@ const NOTEBOOK=(()=>{
     const ink=el.querySelector('.nbe-ink');
     ink.addEventListener('pointerdown',down);ink.addEventListener('pointermove',move);ink.addEventListener('pointerup',up);ink.addEventListener('pointercancel',cancel);
     ink.addEventListener('contextmenu',e=>e.preventDefault());
+    const reopen=e=>{if(!E||(tool!=='move'&&tool!=='lasso'))return;const p=pt(e);const i=E.pg.items.findIndex(it=>it.k!=='s'&&hits(it,p[0],p[1],6));if(i<0)return;
+      E.sel=new Set([i]);selAct('edit')};                                       // double-click a text or math box to edit it
+    ink.addEventListener('dblclick',reopen);el.querySelector('.nbe-sel').addEventListener('dblclick',reopen);
     const stylus=e=>{for(const t of e.changedTouches)if(t.touchType==='stylus'){e.preventDefault();return}};   // a stylus draws, it never scrolls the page
     ink.addEventListener('touchstart',stylus,{passive:false});ink.addEventListener('touchmove',stylus,{passive:false});
     const sel=el.querySelector('.nbe-sel');sel.addEventListener('pointerdown',selDown);sel.addEventListener('pointermove',selMove);sel.addEventListener('pointerup',selUp);
@@ -306,13 +309,19 @@ const NOTEBOOK=(()=>{
     const o=E.el.querySelector('.nbe-opts');const cols=tool==='hl'?HLS:INKS;
     o.innerHTML=(tool==='text'?[['text','Aa','Plain text'],['desmos','x²','Math, typed like Desmos'],['latex','TeX','Math, typed as LaTeX']].map(([k,l,t])=>`<button class="nbe-b nbe-tm ${tmode()===k?'on':''}" data-tm="${k}" title="${t}" aria-label="${t}">${l}</button>`).join('')+'<span class="nbe-div"></span>':'')+(SIZES[tool]&&tool!=='erase'?cols.map(c=>`<button class="nbe-sw ${c===color(tool)?'on':''}" data-col="${c}" style="--c:${c}" aria-label="Color ${c}"></button>`).join(''):'')
       +(SIZES[tool]?`<span class="nbe-div"></span>`+[0,1,2].map(k=>`<button class="nbe-b nbe-sz ${k===size(tool)?'on':''}" data-size="${k}" aria-label="${['Thin','Medium','Thick'][k]}"><i style="--d:${[4,8,13][k]}px"></i></button>`).join(''):'');
-    E.ink.style.cursor=tool==='text'?'text':tool==='lasso'?'crosshair':'crosshair';E.ink.style.touchAction=fingerScrolls()?'pan-x pan-y':'none'}
+    E.ink.style.cursor=inkCursor();E.ink.style.touchAction=fingerScrolls()?'pan-x pan-y':'none'}
+  function inkCursor(){                                  // a dot the size and colour of the pen, centred on the point where ink lands
+    if(tool==='move')return'default';if(tool==='text')return'text';if(tool==='lasso')return'crosshair';
+    const r=Math.max(2,Math.min(60,(tool==='erase'?SIZES.erase[size('erase')]:SIZES[tool][size(tool)]/2)*E.s)),d=Math.ceil(r*2+4),c=d/2;
+    const fill=tool==='erase'?'none':color(tool),op=tool==='hl'?.45:1;
+    const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${d}" height="${d}"><circle cx="${c}" cy="${c}" r="${r}" fill="${fill}" fill-opacity="${op}" stroke="${tool==='erase'?'#444':'#fff'}" stroke-width="1"/></svg>`;
+    return`url("data:image/svg+xml,${encodeURIComponent(svg)}") ${Math.round(c)} ${Math.round(c)}, crosshair`}
   function layout(){if(!E)return;const bw=E.body.clientWidth-24,bh=E.body.clientHeight-24;
     let w=fit==='page'?Math.min(bw,bh*W/SH):Math.min(bw,900);w=Math.max(240,Math.floor(w));
     const h=Math.round(w*SH/W*E.pg.h);E.s=w/W;
     let dpr=Math.min(window.devicePixelRatio||1,2);dpr=Math.min(dpr,Math.sqrt(16e6/(w*h)));           // phones cap canvas size
     for(const cv of [E.base,E.ink]){cv.width=Math.round(w*dpr);cv.height=Math.round(h*dpr);cv.style.width=w+'px';cv.style.height=h+'px'}
-    E.dpr=dpr;E.page.style.width=w+'px';E.page.style.height=h+'px';redraw();clearInk();if(E.sel)showSel()}
+    E.dpr=dpr;E.page.style.width=w+'px';E.page.style.height=h+'px';redraw();clearInk();if(E.sel)showSel();E.ink.style.cursor=inkCursor()}
   function redraw(skip){const ctx=E.base.getContext('2d');ctx.setTransform(E.dpr,0,0,E.dpr,0,0);
     const pg=skip?Object.assign({},E.pg,{items:E.pg.items.map((it,i)=>skip.has(i)?shift(it,E.drag.dx,E.drag.dy):it)}):E.pg;drawPage(ctx,pg,E.s,E.pg.h,true);mathLayer(pg)}
   function inkCtx(){const ctx=E.ink.getContext('2d');ctx.setTransform(E.dpr,0,0,E.dpr,0,0);return ctx}
@@ -337,13 +346,18 @@ const NOTEBOOK=(()=>{
     const p=pt(e);clearSel();
     if(tool==='text')return startText(p);
     if(tool==='lasso'){cur={lasso:[p[0],p[1]],id:e.pointerId};return}
+    if(tool==='move'){let i=-1;for(let k=E.pg.items.length-1;k>=0;k--)if(hits(E.pg.items[k],p[0],p[1],8)){i=k;break}
+      if(i>=0){E.sel=new Set([i]);showSel();E.drag={x:e.clientX,y:e.clientY,dx:0,dy:0,id:e.pointerId};return}     // pick it up and drag
+      cur={box:[p[0],p[1]],lasso:[p[0],p[1],p[0],p[1],p[0],p[1],p[0],p[1]],id:e.pointerId};return}            // drag on empty paper: box select
     if(tool==='erase'){cur={erase:true,id:e.pointerId,r:SIZES.erase[size('erase')],snapped:false};eraseAt(p);return}
     cur={id:e.pointerId,it:{k:'s',t:tool,c:color(tool),w:SIZES[tool][size(tool)],p:[+p[0].toFixed(1),+p[1].toFixed(1),+p[2].toFixed(2)]}};frame()}
   function move(e){if(!E)return;
     if(e.pointerType==='touch'&&touches.has(e.pointerId)){touches.set(e.pointerId,[e.clientX,e.clientY]);
       if(pan&&touches.size>=2){const [x,y]=avg();E.body.scrollTop=pan.t-(y-pan.y);E.body.scrollLeft=pan.l-(x-pan.x);return}}
     if(tool==='erase'&&!cur&&e.pointerType!=='touch'){const p=pt(e);const ctx=inkCtx();clearInk();ring(ctx,p,SIZES.erase[size('erase')]);}
+    if(E.drag&&E.drag.id===e.pointerId){e.preventDefault();return selMove(e)}
     if(!cur||cur.id!==e.pointerId)return;e.preventDefault();
+    if(cur.box){const p=pt(e),[x0,y0]=cur.box;cur.lasso=[x0,y0,p[0],y0,p[0],p[1],x0,p[1]];return frame()}
     const evs=e.getCoalescedEvents?e.getCoalescedEvents():[e];
     for(const ev of (evs.length?evs:[e])){const p=pt(ev);
       if(cur.erase){eraseAt(p);continue}
@@ -357,6 +371,7 @@ const NOTEBOOK=(()=>{
     else if(cur.erase&&cur.at)ring(ctx,cur.at,cur.r)})}
   function ring(ctx,p,r){ctx.save();ctx.strokeStyle='rgba(60,70,90,.55)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(p[0]*E.s,p[1]*E.s,r*E.s,0,7);ctx.stroke();ctx.restore()}
   function up(e){if(e.pointerType==='touch'){touches.delete(e.pointerId);if(touches.size<2)pan=null}
+    if(E&&E.drag&&E.drag.id===e.pointerId)return selUp(e);
     if(!E||!cur||cur.id!==e.pointerId)return;const c=cur;cur=null;
     if(c.it){snap();E.pg.items.push(c.it);const ctx=E.base.getContext('2d');ctx.setTransform(E.dpr,0,0,E.dpr,0,0);drawItem(ctx,c.it,E.s);clearInk();changed();return}
     if(c.erase){clearInk();if(c.snapped)changed();return}
@@ -379,19 +394,25 @@ const NOTEBOOK=(()=>{
   function selBox(){let a=1e9,b=1e9,c=-1e9,d=-1e9;for(const i of E.sel){const x=bbox(E.pg.items[i]);a=Math.min(a,x[0]);b=Math.min(b,x[1]);c=Math.max(c,x[2]);d=Math.max(d,x[3])}return[a,b,c,d]}
   function showSel(){const el=E.el.querySelector('.nbe-sel');if(!E.sel||!E.sel.size){el.hidden=true;return}const [a,b,c,d]=selBox(),s=E.s,pad=8;
     Object.assign(el.style,{left:(a*s-pad)+'px',top:(b*s-pad)+'px',width:((c-a)*s+2*pad)+'px',height:((d-b)*s+2*pad)+'px',transform:''});el.hidden=false;
-    el.classList.toggle('nbe-sel-low',b*s<54)}
+    el.classList.toggle('nbe-sel-low',b*s<54);
+    const one=E.sel.size===1&&E.pg.items[[...E.sel][0]],math=one&&one.k!=='s';
+    el.querySelector('.nbe-selbar').innerHTML=(math?'<button type="button" data-s="solve">Solve</button><button type="button" data-s="factor">Factor</button><button type="button" data-s="expand">Expand</button><span class="nbe-selsep"></span>':'')
+      +(math?'<button type="button" data-s="edit">Edit</button>':'')+'<button type="button" data-s="dup">Duplicate</button><button type="button" data-s="del">Delete</button>'}
   function clearSel(){if(!E)return;E.sel=null;E.drag=null;E.el.querySelector('.nbe-sel').hidden=true}
   function shift(it,dx,dy){if(it.k!=='s')return Object.assign({},it,{x:+(it.x+dx).toFixed(1),y:+(it.y+dy).toFixed(1)});
     const p=it.p.slice();for(let i=0;i<p.length;i+=3){p[i]=+(p[i]+dx).toFixed(1);p[i+1]=+(p[i+1]+dy).toFixed(1)}return Object.assign({},it,{p})}
   function selDown(e){if(!E||!E.sel||e.target.closest('[data-s]'))return;e.preventDefault();e.stopPropagation();try{e.currentTarget.setPointerCapture(e.pointerId)}catch(_){}
     E.drag={x:e.clientX,y:e.clientY,dx:0,dy:0,id:e.pointerId}}
   function selMove(e){if(!E||!E.drag||E.drag.id!==e.pointerId)return;E.drag.dx=(e.clientX-E.drag.x)/E.s;E.drag.dy=(e.clientY-E.drag.y)/E.s;
-    e.currentTarget.style.transform=`translate(${E.drag.dx*E.s}px,${E.drag.dy*E.s}px)`;if(!raf)raf=requestAnimationFrame(()=>{raf=0;if(E&&E.drag)redraw(E.sel)})}
+    E.el.querySelector('.nbe-sel').style.transform=`translate(${E.drag.dx*E.s}px,${E.drag.dy*E.s}px)`;if(!raf)raf=requestAnimationFrame(()=>{raf=0;if(E&&E.drag)redraw(E.sel)})}
   function selUp(e){if(!E||!E.drag||E.drag.id!==e.pointerId)return;const {dx,dy}=E.drag;E.drag=null;
     if(Math.abs(dx)+Math.abs(dy)>.5){snap();E.pg.items=E.pg.items.map((it,i)=>E.sel.has(i)?shift(it,dx,dy):it);
       const bottom=selBox()[3];if(bottom>E.pg.h*SH-20&&E.pg.h<MAXH){E.pg.h=Math.min(MAXH,Math.ceil((bottom+40)/SH));layout()}else redraw();changed()}
     showSel()}
-  function selAct(a){if(!E||!E.sel)return;snap();
+  function selAct(a){if(!E||!E.sel)return;
+    if(a==='solve'||a==='factor'||a==='expand'){const it=E.pg.items[[...E.sel][0]];if(it&&it.k!=='s')runCAS(a,it);return}
+    if(a==='edit'){const i=[...E.sel][0],it=E.pg.items[i];clearSel();snap();E.pg.items.splice(i,1);redraw();E.textSnapped=true;return it.k==='m'?startMath(null,it):startText(null,it)}
+    snap();
     if(a==='del'){E.pg.items=E.pg.items.filter((_,i)=>!E.sel.has(i));clearSel()}
     else{const add=[...E.sel].map(i=>shift(E.pg.items[i],24,24)),n0=E.pg.items.length;E.pg.items=E.pg.items.concat(add);E.sel=new Set(add.map((_,k)=>n0+k));showSel()}
     redraw();changed()}
@@ -405,7 +426,7 @@ const NOTEBOOK=(()=>{
     const z=edit?edit.z:SIZES.text[size('text')],c=edit?edit.c:color('text');
     const x=edit?edit.x:p[0],y=edit?edit.y:p[1]-z*.65,w=edit?edit.w:Math.max(120,W-x-30);
     const ta=document.createElement('textarea');ta.className='nbe-txt';ta.value=edit?edit.v:'';ta.rows=1;ta.spellcheck=true;
-    Object.assign(ta.style,{left:x*E.s+'px',top:y*E.s+'px',width:w*E.s+'px',fontSize:z*E.s+'px',lineHeight:(z*1.3*E.s)+'px',color:c});
+    Object.assign(ta.style,{left:(x*E.s-1)+'px',top:(y*E.s-1)+'px',width:w*E.s+'px',fontSize:z*E.s+'px',lineHeight:(z*1.3*E.s)+'px',color:c});
     const fitH=()=>{ta.style.height='auto';ta.style.height=ta.scrollHeight+'px'};
     const ed={kind:'x',ta,it:{k:'x',x:+x.toFixed(1),y:+y.toFixed(1),z,c,w}};E.editing=ed;
     ta.addEventListener('input',fitH);ta.addEventListener('blur',()=>setTimeout(()=>{if(E&&E.editing===ed)commitText()},0));
@@ -421,8 +442,8 @@ const NOTEBOOK=(()=>{
   const texOf=ed=>ed.mq?ed.mq.latex():ed.ta?ed.ta.value:ed.latex;
   function startMath(p,edit){const z=edit?edit.z:Math.round(SIZES.text[size('text')]*1.1),c=edit?edit.c:color('text');
     const x=edit?edit.x:p[0],y=edit?edit.y:p[1]-z*.7;
-    const box=document.createElement('div');box.className='nbe-mbox';Object.assign(box.style,{left:x*E.s+'px',top:y*E.s+'px',fontSize:z*E.s+'px',color:c});
-    box.innerHTML='<div class="nbe-mbar"><button type="button" data-mm="desmos" title="Type like Desmos: ^ for powers, / for fractions, sqrt, pi">Desmos</button><button type="button" data-mm="latex" title="Type LaTeX, e.g. \\frac{1}{2}">LaTeX</button><button type="button" data-mm="done">Done</button></div><div class="nbe-mfield"></div>';
+    const box=document.createElement('div');box.className='nbe-mbox';Object.assign(box.style,{left:(x*E.s-9.5)+'px',top:(y*E.s-5.5)+'px',fontSize:z*E.s+'px',color:c});
+    box.innerHTML='<div class="nbe-mbar"><button type="button" data-mm="desmos" title="Type like Desmos: ^ for powers, / for fractions, sqrt, pi">Desmos</button><button type="button" data-mm="latex" title="Type LaTeX, e.g. \\frac{1}{2}">LaTeX</button><span class="nbe-selsep"></span><button type="button" data-mm="solve">Solve</button><button type="button" data-mm="factor">Factor</button><button type="button" data-mm="done">Done</button></div><div class="nbe-mfield"></div>';
     E.page.appendChild(box);const field=box.querySelector('.nbe-mfield');
     const ed={kind:'m',box,it:{k:'m',x:+x.toFixed(1),y:+y.toFixed(1),z,c},latex:edit?edit.v:'',mq:null,ta:null};E.editing=ed;
     async function setMode(m){ed.latex=texOf(ed);ed.mq=ed.ta=null;field.innerHTML='';pref.tm=m;savePref();paintTools();
@@ -439,7 +460,9 @@ const NOTEBOOK=(()=>{
         const upd=()=>{pv.innerHTML=katexHTML(ta.value);ta.style.height='auto';ta.style.height=ta.scrollHeight+'px'};
         ta.addEventListener('input',upd);ta.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();commitText()}});
         field.append(ta,pv);ed.ta=ta;upd();setTimeout(()=>ta.focus(),0)}}
-    box.addEventListener('click',e=>{const b=e.target.closest('[data-mm]');e.stopPropagation();if(!b)return;b.dataset.mm==='done'?commitText():setMode(b.dataset.mm)});
+    box.addEventListener('click',e=>{const b=e.target.closest('[data-mm]');e.stopPropagation();if(!b)return;const k=b.dataset.mm;if(k==='done')return commitText();
+      if(k==='solve'||k==='factor'){const v=texOf(ed).trim();commitText();if(v)runCAS(k,E.pg.items[E.pg.items.length-1]);return}
+      setMode(k)});
     box.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Escape')commitText()});
     box.addEventListener('pointerdown',e=>e.stopPropagation());
     setMode(tmode()==='latex'?'latex':'desmos')}
@@ -447,6 +470,124 @@ const NOTEBOOK=(()=>{
     if(ed.kind==='x'){const v=ed.ta.value.replace(/\s+$/,'');ed.ta.remove();if(v)it=Object.assign({},ed.it,{v})}
     else{const v=texOf(ed).trim();ed.box.remove();if(v)it=Object.assign({},ed.it,{v})}
     if(it){if(!E.textSnapped)snap();E.pg.items.push(it);redraw();changed()}else if(E.textSnapped){redraw();changed()}E.textSnapped=false}
+
+
+  /* ---------- Solve / Factor / Expand on a math or text box (nerdamer, loaded the first time it is used) ---------- */
+  let casP=null;
+  function loadCAS(){return casP||(casP=(async()=>{const b='https://cdn.jsdelivr.net/npm/nerdamer@1.1.13/';
+    for(const f of ['nerdamer.core.js','Algebra.js','Calculus.js','Solve.js'])await loadJs(b+f);return window.nerdamer})().catch(e=>{casP=null;throw e}))}
+  const CMDS={cdot:'*',times:'*',div:'/',pi:'pi',infty:'Infinity',theta:'theta',alpha:'alpha',beta:'beta',left:'',right:'',quad:' ',qquad:' ',
+    le:'<=',leq:'<=',ge:'>=',geq:'>=',ne:'!=',neq:'!='};
+  function texToExpr(t){const s=String(t);let i=0;
+    const group=()=>{while(s[i]===' ')i++;
+      if(s[i]==='{'){let d=0,j=i;for(;j<s.length;j++){if(s[j]==='{')d++;else if(s[j]==='}'&&--d===0)break}const g=s.slice(i+1,j);i=j+1;return g}
+      if(s[i]==='\\'){const m=/^\\[a-zA-Z]+/.exec(s.slice(i));if(m){i+=m[0].length;return m[0]}}return s[i++]||''};
+    let o='';
+    while(i<s.length){const c=s[i];
+      const fr=/^\\[dt]?frac/.exec(s.slice(i));if(fr){i+=fr[0].length;const a=group(),b=group();o+=`((${texToExpr(a)})/(${texToExpr(b)}))`;continue}
+      if(s.startsWith('\\sqrt',i)){i+=5;let n=null;if(s[i]==='['){const j=s.indexOf(']',i);n=s.slice(i+1,j);i=j+1}const a=group();
+        o+=n?`((${texToExpr(a)})^(1/(${texToExpr(n)})))`:`sqrt(${texToExpr(a)})`;continue}
+      if(c==='^'){i++;o+=`^(${texToExpr(group())})`;continue}
+      if(c==='_'){i++;o+=texToExpr(group()).replace(/\W/g,'');continue}
+      if(c==='{'){o+='('+texToExpr(group())+')';continue}
+      if(c==='\\'){const m=/^\\([a-zA-Z]+|.)/.exec(s.slice(i));i+=m[0].length;const w=m[1];
+        if(w==='operatorname'){o+=group()+' ';continue}
+        if(w==='ln'){o+='log';continue}
+        if(w==='log'){while(s[i]===' ')i++;if(s[i]==='_'){i++;o+=`(1/log(${texToExpr(group())}))*log`}else o+='(1/log(10))*log';continue}o+=w in CMDS?CMDS[w]:/^[a-zA-Z]+$/.test(w)?w+' ':' ';continue}
+      o+=c;i++}
+    return o}
+  const FUNCS='sqrt|sin|cos|tan|sec|csc|cot|arcsin|arccos|arctan|asin|acos|atan|sinh|cosh|tanh|log|ln|exp|abs';
+  function tidy(x){return x.replace(/\s+/g,' ')
+    .replace(new RegExp(`\\b(?!(?:${FUNCS})\\b)([a-zA-Z])\\s*\\(`,'g'),'$1*(')     // x(x+1) means x times (x+1)
+    .replace(/\)\s*(?=[\w(])/g,')*').replace(/(\d)\s*\(/g,'$1*(').replace(/(\d)\s+(?=\d)/g,'$1').trim()}
+  function plainToExpr(v){return String(v).replace(/\blog_?(\d+)\s*\(/g,'(1/LN($1))*LN(').replace(/\blog\b/g,'(1/LN(10))*LN').replace(/\b(ln|LN)\b/g,'log').replace(/×|·/g,'*').replace(/÷/g,'/').replace(/−/g,'-').replace(/√\s*\(/g,'sqrt(').replace(/√\s*(\w+)/g,'sqrt($1)').replace(/π/g,'pi').replace(/\*\*/g,'^')}
+  const itemExpr=it=>tidy(it.k==='m'?texToExpr(it.v):plainToExpr(it.v));
+  /* exact rational helpers for linear and quadratic equations */
+  const gcd=(a,b)=>{a=Math.abs(a);b=Math.abs(b);while(b)[a,b]=[b,a%b];return a||1};
+  function rat(sym){const m=/^(-?\d+)(?:\/(\d+))?$/.exec(String(sym).replace(/\s/g,''));if(!m)return null;const n=+m[1],d=+(m[2]||1);
+    if(!Number.isSafeInteger(n)||!Number.isSafeInteger(d))return null;const g=gcd(n,d);return[n/g,d/g]}
+  const rmul=(a,b)=>{const n=a[0]*b[0],d=a[1]*b[1],g=gcd(n,d);return[n/g,d/g]},rsub=(a,b)=>{const n=a[0]*b[1]-b[0]*a[1],d=a[1]*b[1],g=gcd(n,d);return[n/g,d/g]};
+  const rneg=a=>[-a[0],a[1]],rdiv=(a,b)=>rmul(a,b[0]<0?[-b[1],-b[0]]:[b[1],b[0]]);
+  const rtex=a=>a[1]===1?String(a[0]):`${a[0]<0?'-':''}\\frac{${Math.abs(a[0])}}{${a[1]}}`;
+  function quadRoots(a,b,c){                             // exact roots of a x^2 + b x + c with rational a,b,c
+    const D=rsub(rmul(b,b),rmul([4,1],rmul(a,c))),P=rdiv(rneg(b),rmul([2,1],a));if(D[0]===0)return[rtex(P)];
+    let k=Math.abs(D[0])*D[1],s=1;for(let f=2;f*f<=k;f++)while(k%(f*f)===0){k/=f*f;s*=f}   // sqrt(|D|) = s*sqrt(k)/D[1]
+    const Q=rdiv([s,1],rmul([D[1],1],rmul([2,1],[Math.abs(a[0]),a[1]]))),im=D[0]<0;
+    if(k===1&&!im){const r1=rsub(P,rneg(Q)),r2=rsub(P,Q);return[rtex(r1),rtex(r2)]}
+    const L=P[1]*Q[1]/gcd(P[1],Q[1]),p=P[0]*L/P[1],q=Q[0]*L/Q[1];
+    const rad=(k===1?'':`\\sqrt{${k}}`)+(im?(k===1?'i':'\\,i'):''),qr=(q===1?'':q)+rad;
+    if(!p)return[L===1?`\\pm ${qr}`:`\\pm \\frac{${qr}}{${L}}`];const top=`${p} \\pm ${qr}`;return[L===1?top:`\\frac{${top}}{${L}}`]}
+  function topFactors(str){const out=[];let d=0,st=0;
+    for(let i=0;i<str.length;i++){const ch=str[i];if(ch==='(')d++;else if(ch===')')d--;else if(i&&d===0&&(ch==='+'||ch==='-')&&!/[*^/(e]/.test(str[i-1]))return[str]}
+    d=0;for(let i=0;i<=str.length;i++){const ch=str[i];
+      if(ch==='(')d++;else if(ch===')')d--;else if((ch==='*'||ch===undefined)&&d===0){out.push(str.slice(st,i));st=i+1}}
+    return out.map(f=>f.replace(/^\((.*)\)(\^\d+)?$/,(m,a,p)=>p?a:m).replace(/^\((.*)\)$/,'$1'))}
+  function approx(sym){let t;try{t=nerdamer(sym).evaluate().text('decimals')}catch(e){return null}
+    const num=x=>{const v=+x;return Math.abs(v)<1e-10?0:+v.toPrecision(6)};
+    const m=/^(-?[\d.e+-]+)?\s*([+-])?\s*(?:([\d.e+-]*)\*?i)?$/.exec(t.replace(/\s/g,''));
+    if(!/i/.test(t)){const v=num(t);return isFinite(v)?String(v):null}
+    if(!m)return null;const re=num(m[1]||0),imv=num((m[2]==='-'?'-':'')+(m[3]||'1'));if(imv===0)return String(re);
+    return(re?re+(imv<0?' - ':' + '):(imv<0?'-':''))+(Math.abs(imv)===1?'':Math.abs(imv))+'i'}
+  function solveFor(expr,v){                             // roots of expr = 0 as TeX strings; '≈' marks decimals
+    const N=nerdamer;let ex;try{ex=N.expand(expr)}catch(e){ex=N(expr)}
+    if(ex.symbol.isPoly&&ex.symbol.isPoly()){
+      const roots=[];
+      for(const f of topFactors(N.factor(ex.toString()).toString())){if(!f.includes(v))continue;
+        let cs;try{cs=N.coeffs(N.expand(f),v).toString().replace(/^\[|\]$/g,'').split(',')}catch(e){cs=null}
+        const rs=cs&&cs.map(rat);
+        if(rs&&rs.every(Boolean)&&rs.length===2)roots.push(rtex(rdiv(rneg(rs[0]),rs[1])));
+        else if(rs&&rs.every(Boolean)&&rs.length===3)roots.push(...quadRoots(rs[2],rs[1],rs[0]));
+        else if(rs&&rs.every(Boolean)&&rs.length>3&&rs.slice(1,-1).every(r=>r[0]===0)){const n=rs.length-1,c=rdiv(rneg(rs[0]),rs[n]);   // a x^n + b = 0
+          if(c[0]===0)roots.push('0');else if(n%2||c[0]>0){const v=Math.pow(Math.abs(c[0]/c[1]),1/n),iv=Math.round(v),ok=Math.abs(iv-v)<1e-9;
+            const body=ok?String(iv):`\\sqrt[${n}]{${rtex([Math.abs(c[0]),c[1]])}}`;roots.push(n%2?(c[0]<0?'-':'')+body:'\\pm '+body)}}
+        else{let sol;try{sol=N.solve(f,v).symbol.elements}catch(e){sol=[]}
+          for(const s of sol)roots.push(nice(s.toString(),false))}}
+      return roots.filter(Boolean)}
+    let f;try{f=N(expr).buildFunction([v])}catch(e){return null}            // anything else: find the real roots numerically
+    const trig=/sin|cos|tan|sec|csc|cot/.test(expr),xs=numRoots(f,trig);
+    if(trig){const out=xs.map(piTex);if(out.length)out.push('\\text{(in }[0,2\\pi)\\text{; add }2\\pi k\\text{ for all)}');return out}
+    return xs.map(numTex)}
+  function numRoots(f,trig){const pts=[];
+    if(trig)for(let i=0;i<=6000;i++)pts.push(i*2*Math.PI/6000);
+    else{for(let i=-4000;i<=4000;i++)pts.push(i/40);for(let e=-6;e<=7;e+=.005){const y=Math.pow(10,e);pts.push(y,-y)}pts.sort((p,q)=>p-q)}
+    const F=x=>{try{const y=f(x);return typeof y==='number'?y:NaN}catch(e){return NaN}},roots=[];
+    const keep=r=>{const y=F(r);if(isFinite(y)&&Math.abs(y)<1e-7*(1+Math.abs(r))&&!roots.some(q=>Math.abs(q-r)<1e-7*(1+Math.abs(r))))roots.push(r)};
+    let px=pts[0],pf=F(px);
+    for(let k=1;k<pts.length;k++){const x=pts[k],fx=F(x);
+      if(isFinite(fx)&&fx===0)keep(x);
+      else if(isFinite(pf)&&isFinite(fx)&&pf*fx<0){let lo=px,hi=x,fl=pf;for(let it=0;it<90;it++){const m=(lo+hi)/2,fm=F(m);if(!isFinite(fm))break;if(fl*fm<=0)hi=m;else{lo=m;fl=fm}}keep((lo+hi)/2)}
+      px=x;pf=fx}
+    if(trig)return roots.filter(r=>r<2*Math.PI-1e-9).sort((p,q)=>p-q);return roots.sort((p,q)=>p-q)}
+  function numTex(x){if(Math.abs(x-Math.round(x))<1e-8*(1+Math.abs(x)))return String(Math.round(x));
+    for(let d=2;d<=12;d++){const n=Math.round(x*d);if(Math.abs(n/d-x)<1e-9)return rtex([n/gcd(n,d),d/gcd(n,d)])}
+    const pi=piTex(x);if(!pi.startsWith('\\approx'))return pi;return'\\approx '+(+x.toPrecision(6))}
+  function piTex(x){for(let d=1;d<=12;d++){const n=Math.round(x/Math.PI*d);if(Math.abs(n/d*Math.PI-x)<1e-7){const g=gcd(n,d),a=n/g,b=d/g;
+        if(a===0)return'0';const num=(a===1?'':a)+'\\pi';return b===1?num:`\\frac{${num}}{${b}}`}}return'\\approx '+(+x.toPrecision(6))}
+  function nice(st,dec){                                // exact TeX when nerdamer found it exactly, a rounded decimal otherwise, nothing for complex noise
+    if(!/\d{7,}/.test(st)&&!(dec&&/\./.test(st)))return cleanTex(nerdamer(st).toTeX());
+    const a=approx(st);return a&&!/i/.test(a)?'\\approx '+a:null}
+  const cleanTex=t=>String(t).replace(/\^\{1\}/g,'').replace(/\\frac\{\\left\(([^()]*)\\right\)\}/g,'\\frac{$1}').replace(/\s*\\cdot\s*(?=\\left\(|[a-zA-Z(])/g,' ').replace(/\\left\(/g,'(').replace(/\\right\)/g,')');
+  async function runCAS(op,it){
+    let N;try{N=await loadCAS()}catch(e){return toast('The math engine could not load. Check your connection and try again.')}
+    if(!E)return;const src=itemExpr(it);if(!src.trim())return;
+    let out;
+    try{const sides=src.split(/(?<![<>!])=(?!=)/);
+      if(/[<>]|!=/.test(src))throw new Error('Inequalities are not supported yet.');
+      if(op==='solve'){if(sides.length>2)throw new Error('Use one equation at a time.');
+        const expr=sides.length===2?`(${sides[0]})-(${sides[1]})`:sides[0];const vars=N(expr).variables().filter(x=>!/^(pi|e|i)$/.test(x));
+        const flat=N.expand(expr).toString();if(!N(flat).variables().length&&sides.length===2){out=flat==='0'?'\\text{true for every value}':'\\text{no solution}';throw{done:1}}
+        if(!vars.length)throw new Error('There is no variable to solve for.');
+        const v=vars.includes('x')?'x':vars.includes('y')?'y':vars[0];
+        {const r=solveFor(expr,v);if(!r)throw new Error('Could not solve that.');
+          const uniq=[...new Set(r)];out=uniq.length?uniq.map(x=>x.startsWith('\\text')?x:`${v} ${x.startsWith('\\approx')?x:'= '+x}`).join(',\\quad ').replace(/,\\quad \\text/,'\\quad\\text'):'\\text{no solution}'}}
+      else{const f=x=>cleanTex((op==='factor'?N.factor(x):N.expand(x)).toTeX());out=sides.length===2?`${f(sides[0])} = ${f(sides[1])}`:'= '+f(sides[0])}
+    }catch(e){if(!(e&&e.done))return toast((e&&e.message&&!/^[A-Z_]+$/.test(e.message)&&e.message.length<80?e.message:'Could not '+op+' that.')+' Check how it is written.')}
+    const b=bbox(it),z=it.k==='m'?it.z:Math.round(it.z*1.1);
+    const res={k:'m',x:it.x,y:+(b[3]+z*.35).toFixed(1),z,c:'#2f5bd3',v:out};
+    snap();E.pg.items.push(res);if(res.y+z*2.2>E.pg.h*SH&&E.pg.h<MAXH){E.pg.h++;layout()}else redraw();changed();
+    if(E.sel)showSel()}                                 // the question stays selected, the answer sits just below it
+  let toastT=null;function toast(msg){if(!E)return;let t=E.el.querySelector('.nbe-toast');if(!t){t=document.createElement('div');t.className='nbe-toast';E.el.appendChild(t)}
+    t.textContent=msg;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('on'),3800)}
 
   /* math is drawn with KaTeX in a layer over the page; thumbnails and images get a plain-text version */
   const kcache=new Map();
