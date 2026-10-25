@@ -24433,7 +24433,8 @@ const NOTEBOOK=(()=>{
   function redraw(skip){const ctx=E.base.getContext('2d');ctx.setTransform(E.dpr,0,0,E.dpr,0,0);
     const pg=skip?Object.assign({},E.pg,{items:E.pg.items.map((it,i)=>skip.has(i)?shift(it,E.drag.dx,E.drag.dy):it)}):E.pg;drawPage(ctx,pg,E.s,E.pg.h,true);mathLayer(pg)}
   function inkCtx(){const ctx=E.ink.getContext('2d');ctx.setTransform(E.dpr,0,0,E.dpr,0,0);return ctx}
-  function clearInk(){const ctx=E.ink.getContext('2d');ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,E.ink.width,E.ink.height)}
+  function clearInk(){const ctx=E.ink.getContext('2d');ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,E.ink.width,E.ink.height);
+    ctx.setTransform(E.dpr,0,0,E.dpr,0,0)}                 // put the screen scale back, or live strokes draw shrunk toward the top-left
   function snap(){const h=E.hist[E.pid()];h.u.push({items:E.pg.items.slice(),h:E.pg.h});if(h.u.length>150)h.u.shift();h.r.length=0}
   function changed(){touchPage(E.pid());paintBar();flashSaved()}
   function undoRedo(redo){const h=E.hist[E.pid()],from=redo?h.r:h.u,to=redo?h.u:h.r;if(!from.length)return;
