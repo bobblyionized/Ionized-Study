@@ -119,7 +119,7 @@ function topicPage(t){
     <span class="meta">${st.total} problems · ${st.done} attempted · ${st.done?Math.round(st.ok/st.done*100)+'% correct':'not started'}</span>
     <span class="bar"><i style="width:${st.total?st.done/st.total*100:0}%"></i></span></button>`}).join('');
   const last=PROG.mock.filter(m=>(m.topic||'seq')===t.id).pop();
-  app.innerHTML=`<h1>${pc?'Chapter '+t.ch+': ':''}${esc(t.name)}</h1><p class="sub">${esc(t.d)} Work through the ${pc?'sections':'subtopics'} in order: read the lesson, do the problem set, then drill in practice mode. Finish with the ${mockKey(t).toLowerCase()}.</p>
+  app.innerHTML=`<h1>${pc?'Chapter '+t.ch+': ':''}${esc(t.name)}</h1><p class="sub">${esc(t.d)} Work through the ${pc?'sections':'subtopics'} in order: read the lesson, do the problem set, then work it out in your notebook. Finish with the ${mockKey(t).toLowerCase()}.</p>
   ${pc&&typeof BOOKS!=='undefined'?BOOKS.chapterCard(t.id):''}
   <div class="grid">${cards}
   <button class="card tile mock" onclick="location.hash='#/mock/${t.id}'"><span class="num">${mockKey(t)}</span><span class="t">${esc(t.name)} ${pc?'Chapter Test':'Mock Test'}</span>
@@ -132,11 +132,11 @@ function subPage(sid,tab){
   const s=subById(sid);const t=findTopic(s.topic);setCrumbs([['Home','#/home'],trackCrumb(t),[t.name,'#/t/'+t.id],[s.name]]);
   const st=subStats(sid);
   app.innerHTML=`<h1>${s.sec?'<span class="secno">'+s.sec+'</span> ':''}${esc(s.name)}</h1><p class="sub">${esc(s.d)}</p>
-  <div class="tabs">${[['lesson','Lesson'],['set','Problem Set ('+st.total+')'],['practice','Practice Mode'],['graph','Graph']].map(([k,n])=>`<button class="tab ${k===tab?'on':''}" onclick="location.hash='#/s/${sid}/${k}'">${n}</button>`).join('')}</div>
+  <div class="tabs">${[['lesson','Lesson'],['set','Problem Set ('+st.total+')'],['notebook','Notebook'],['graph','Graph']].map(([k,n])=>`<button class="tab ${k===tab?'on':''}" onclick="location.hash='#/s/${sid}/${k}'">${n}</button>`).join('')}</div>
   <div id="tabbody"></div>${tabArrows(sid,tab)}`;
   const body=document.getElementById('tabbody');enterTab(body);
   if(tab==='set')return setView(sid,body);
-  if(tab==='practice')return practiceSetup(sid,body);
+  if(tab==='notebook')return NOTEBOOK.view(body,sid);
   if(tab==='graph')return graphView(body);
   const les=document.getElementById('L-'+sid);
   const i=t.subs.indexOf(s),next=t.subs[i+1];
@@ -144,8 +144,8 @@ function subPage(sid,tab){
   <div class="row" style="margin-top:16px">${next?`<button class="btn" onclick="location.hash='#/s/${next.id}/lesson'">Next lesson: ${esc(next.name)} →</button>`:''}<span class="spacer"></span><button class="btn pri" onclick="location.hash='#/s/${sid}/set'">Go to problem set →</button></div>`;
   drawLessonPlots(body);renderMath(body);
 }
-/* ---------- moving between Lesson / Problem Set / Practice: side arrows + sideways swipe ---------- */
-const SUB_TABS=[['lesson','Lesson'],['set','Problem Set'],['practice','Practice Mode'],['graph','Graph']];
+/* ---------- moving between Lesson / Problem Set / Notebook / Graph: side arrows + sideways swipe ---------- */
+const SUB_TABS=[['lesson','Lesson'],['set','Problem Set'],['notebook','Notebook'],['graph','Graph']];
 let tabSlide=null;                                              // 'next' | 'prev': direction the new tab slides in from
 function tabArrows(sid,tab){
   const i=SUB_TABS.findIndex(x=>x[0]===tab),pv=SUB_TABS[i-1],nx=SUB_TABS[i+1];
@@ -154,10 +154,8 @@ function tabArrows(sid,tab){
 }
 function curSubTab(){const m=location.hash.match(/^#\/s\/([^/]+)(?:\/(\w+))?/);if(!m||!subById(m[1]))return null;
   const i=Math.max(0,SUB_TABS.findIndex(x=>x[0]===(m[2]||'lesson')));return{sid:m[1],i}}
-function practiceBusy(){return!!document.querySelector('#tabbody #pq')}
 function goTab(dir){
   const c=curSubTab();if(!c)return false;const j=c.i+(dir==='next'?1:-1);if(j<0||j>=SUB_TABS.length)return false;
-  if(practiceBusy()&&!confirm('Leave this practice session? Your progress in it will be lost.'))return false;
   tabSlide=dir;location.hash='#/s/'+c.sid+'/'+SUB_TABS[j][0];return true;
 }
 function enterTab(body){
@@ -171,7 +169,7 @@ if(typeof document!=='undefined')(()=>{                          // arrow clicks
     if(/(auto|scroll)/.test(cs.overflowX)&&el.scrollWidth>el.clientWidth+2)return true}return false};
   document.addEventListener('touchstart',e=>{
     body=null;lock=null;dx=0;if(e.touches.length!==1||!curSubTab())return;
-    const tg=e.target;if(tg.closest('input,textarea,select,.katex-display,.plot,.lfig,table,.gc')||scrollsX(tg))return;
+    const tg=e.target;if(tg.closest('input,textarea,select,.katex-display,.plot,.lfig,table,.gc,.nb')||scrollsX(tg))return;
     body=document.getElementById('tabbody');x0=e.touches[0].clientX;y0=e.touches[0].clientY;t0=Date.now();
   },{passive:true});
   document.addEventListener('touchmove',e=>{

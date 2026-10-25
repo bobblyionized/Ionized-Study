@@ -148,7 +148,7 @@ const CATALOG=[
 ];
 /* General Precalculus: one topic per textbook chapter, one subtopic per section */
 const PC_CATALOG=[
- {area:'Chapters',note:'Follows the textbook chapter by chapter. Each section has a full lesson, a 50+ problem set with worked solutions, and a practice mode.',items:[
+ {area:'Chapters',note:'Follows the textbook chapter by chapter. Each section has a full lesson, a 50+ problem set with worked solutions, and a notebook for your own work.',items:[
   {id:'pc3',name:'Functions and Graphs',ch:3,d:'Chapter 3: what a function is, functional notation, graphs, parametric graphing, transformations, symmetry, operations, rates of change, and inverse functions.',subs:[
    {id:'pc3-func',sec:'3.1',name:'Functions',d:'the definition of a function; functions given by tables, graphs, words and equations'},
    {id:'pc3-not',sec:'3.2',name:'Functional Notation',d:'evaluating f(x), difference quotients, domains, piecewise-defined functions, common mistakes'},

@@ -1,6 +1,6 @@
 /* ====================== cloud sync (Firebase Realtime Database, REST) ======================
    Each device holds a code. Everything lives under /codes/<CODE>:
-     q/<problemId>   answers        pr/<subtopic>  practice stats
+     q/<problemId>   answers        pr/<subtopic>  old practice stats (no longer written)
      mock/m<time>    mock results   hist/h<start>  study sessions
    Every change runs a three-way merge (local, server, last-synced snapshot) and PATCHes only
    the entries that differ, so two devices never overwrite each other's new work.          */
@@ -128,7 +128,7 @@ const SYNC=(()=>{
     es.onerror=()=>status('off','Reconnecting…');
   }
 
-  /* re-render the current page so new data shows, without interrupting a practice session or mock test */
+  /* re-render the current page so new data shows, without interrupting a mock test */
   function refreshView(){
     const h=location.hash;
     if(/^#\/(home|amc|pc|t\/[^/]+|s\/[^/]+\/(lesson|set))?$/.test(h)&&h!==''&&h!=='#/'){
