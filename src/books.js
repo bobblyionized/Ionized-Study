@@ -21,27 +21,71 @@ const BOOKS=(()=>{
     const q=indexedDB.open('ionized-books',1);q.onupgradeneeded=()=>q.result.createObjectStore('files');q.onsuccess=()=>ok(q.result);q.onerror=()=>no(q.error)}));
   const tx=(mode,fn)=>db().then(d=>new Promise((ok,no)=>{const t=d.transaction('files',mode),s=t.objectStore('files');const r=fn(s);t.oncomplete=()=>ok(r&&r.result);t.onerror=()=>no(t.error)}));
   const get=k=>tx('readonly',s=>s.get(k)),put=(k,v)=>tx('readwrite',s=>s.put(v,k)),del=k=>tx('readwrite',s=>s.delete(k));
-  const ready=db().then(d=>new Promise(ok=>{const q=d.transaction('files').objectStore('files').getAllKeys();q.onsuccess=()=>{(q.result||[]).forEach(k=>has.add(k));ok()};q.onerror=()=>ok()})).catch(()=>{});
+  const localAt={};                                      // key -> 'at' stamp of the copy on this device
+  const ready=db().then(d=>new Promise(ok=>{const st=d.transaction('files').objectStore('files'),q=st.getAllKeys(),v=st.getAll();
+    v.onsuccess=()=>{(q.result||[]).forEach((k,i)=>{has.add(k);localAt[k]=(v.result[i]||{}).at||0});ok()};v.onerror=()=>ok()})).catch(()=>{});
+
+  /* ---------- the copy saved under the sync code: /codes/<code>/pdf/meta/<key> and /pdf/data/<key>/<i> ---------- */
+  const FB='https://ionized-study-and-shi-default-rtdb.firebaseio.com';
+  const code=()=>typeof SYNC!=='undefined'?SYNC.code:null;
+  let cloud={},cloudFor=null;const busy={};               // busy[key] = 'up 40%' / 'down 40%' / 'failed'
+  const CHUNK=512*1024;                                   // base64 characters per stored piece
+  async function rest(path,method,body){const c=code();if(!c)throw new Error('no code');
+    const r=await fetch(`${FB}/codes/${c}/pdf/${path}.json`,{method:method||'GET',cache:'no-store',headers:body===undefined?{}:{'Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body)});
+    if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}
+  const enc=k=>k.replace(':','__');                       // keep database keys simple
+  async function loadCloud(){const c=code();if(!c)return;
+    try{const m=await rest('meta');if(code()!==c)return;cloud={};for(const k in m||{})cloud[k.replace('__',':')]=m[k];cloudFor=c}catch(e){return}
+    for(const k of has)if(!cloud[k]||(localAt[k]||0)>cloud[k].at)upload(k);   // copies added before syncing, or newer than the saved one
+    refresh()}
+  const b64of=blob=>new Promise((ok,no)=>{const fr=new FileReader();fr.onload=()=>ok(String(fr.result).split(',')[1]||'');fr.onerror=()=>no(fr.error);fr.readAsDataURL(blob)});
+  function setBusy(k,v){if(v)busy[k]=v;else delete busy[k];document.querySelectorAll(`[data-bk-st="${k}"]`).forEach(el=>{el.textContent=stText(k)})}
+  async function upload(k){if(busy[k]&&busy[k]!=='failed'||!code())return;
+    try{setBusy(k,'up 0%');const rec=await get(k);if(!rec)return setBusy(k);const b=await b64of(rec.blob);const n=Math.max(1,Math.ceil(b.length/CHUNK));
+      await rest('data/'+enc(k),'DELETE');
+      for(let i=0;i<n;i++){await rest('data/'+enc(k)+'/'+i,'PUT',b.slice(i*CHUNK,(i+1)*CHUNK));setBusy(k,'up '+Math.round((i+1)/n*100)+'%')}
+      const meta={name:rec.name,size:rec.size,at:rec.at||Date.now(),n};await rest('meta/'+enc(k),'PUT',meta);cloud[k]=meta;setBusy(k);refresh();
+    }catch(e){setBusy(k,'failed')}}
+  async function download(k,onp){const meta=cloud[k];if(!meta)throw new Error('This PDF is not saved to your code.');
+    setBusy(k,'down 0%');const parts=[];
+    try{for(let i=0;i<meta.n;i++){const piece=await rest('data/'+enc(k)+'/'+i);if(typeof piece!=='string')throw new Error('The saved copy is incomplete. Add the PDF again on the device that has it.');
+        parts.push(piece);const pct=Math.round((i+1)/meta.n*100);setBusy(k,'down '+pct+'%');if(onp)onp(pct)}
+      const bin=atob(parts.join(''));const u8=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u8[i]=bin.charCodeAt(i);
+      await put(k,{blob:new Blob([u8],{type:'application/pdf'}),name:meta.name,size:meta.size,at:meta.at});has.add(k);localAt[k]=meta.at;setBusy(k);
+    }catch(e){setBusy(k);throw e}}
+  const avail=k=>has.has(k)||!!cloud[k];
+  const mb=n=>(n/1048576).toFixed(1)+' MB';
+  function stText(k){const b=busy[k];
+    if(b==='failed')return'Not saved to your code yet (connection problem).';
+    if(b&&b.startsWith('up'))return'Saving to your code… '+b.slice(3);
+    if(b&&b.startsWith('down'))return'Downloading from your code… '+b.slice(5);
+    if(has.has(k)&&cloud[k]&&cloud[k].at<=(localAt[k]||0))return'Saved to your code · on this device';
+    if(cloud[k])return'Saved to your code · downloads when you open it ('+mb(cloud[k].size)+')';
+    if(has.has(k))return code()?'On this device · saving to your code…':'On this device';
+    return'';}
+  if(typeof document!=='undefined'){document.addEventListener('amcprep:code',()=>{cloud={};cloudFor=null;ready.then(loadCloud)});
+    window.addEventListener('online',()=>{for(const k in busy)if(busy[k]==='failed'){delete busy[k];upload(k)}})}
 
   /* ---------- helpers ---------- */
   const bookPage=(tid,p)=>p+DATA[tid].offset;
   const subTopic=sid=>Object.keys(DATA).find(t=>DATA[t].secs[sid]);
   const ICON='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg>';
   function lessonBar(sid){
-    const tid=subTopic(sid);if(!tid)return'';const D=DATA[tid],[a,b]=D.secs[sid],ok=has.has(tid+':book');
-    const range=`pp. ${bookPage(tid,a)}–${bookPage(tid,b)}`;const ans=D.docs.filter(d=>d[0]!=='book'&&has.has(tid+':'+d[0]));
+    const tid=subTopic(sid);if(!tid)return'';const D=DATA[tid],[a,b]=D.secs[sid],ok=avail(tid+':book');
+    const range=`pp. ${bookPage(tid,a)}–${bookPage(tid,b)}`;const ans=D.docs.filter(d=>d[0]!=='book'&&avail(tid+':'+d[0]));
     return`<div class="bkbar">${ICON}<span><b>Textbook</b> · Chapter ${D.ch}, ${range}</span><span class="sp"></span>
       ${ok?`<button class="btn sm" data-bk-open="${tid}:book:${a}">Open ${range}</button>`:`<button class="btn sm" data-bk-add="${tid}:book" data-bk-then="${a}">Add your Chapter ${D.ch} PDF</button>`}
       ${ans.map(d=>`<button class="btn sm" data-bk-open="${tid}:${d[0]}:1">${d[1]}</button>`).join('')}</div>`;
   }
   function chapterCard(tid){
     const D=DATA[tid];if(!D)return'';
-    const row=([id,label])=>{const k=tid+':'+id,ok=has.has(k);
-      return`<div class="bkrow"><span class="bkname">${label}${id==='book'?` <span class="meta">book pp. ${bookPage(tid,1)}–${bookPage(tid,D.pages)}</span>`:''}</span><span class="sp"></span>
+    const row=([id,label])=>{const k=tid+':'+id,ok=avail(k);
+      return`<div class="bkrow"><span class="bkname">${label}${id==='book'?` <span class="meta">book pp. ${bookPage(tid,1)}–${bookPage(tid,D.pages)}</span>`:''}<span class="bkst" data-bk-st="${k}">${stText(k)}</span></span><span class="sp"></span>
+      ${busy[k]==='failed'?`<button class="btn sm" data-bk-up="${k}">Try again</button>`:''}
       ${ok?`<button class="btn sm pri" data-bk-open="${k}:1">Open</button><button class="btn sm" data-bk-add="${k}">Replace</button><button class="btn sm" data-bk-del="${k}">Remove</button>`
          :`<button class="btn sm" data-bk-add="${k}">Add PDF</button>`}</div>`};
-    const ex=D.extra;const jump=has.has(tid+':book')?`<div class="bkjump">Jump to: ${[['Chapter Review',ex.review],['Chapter Test',ex.test]].map(([n,r])=>`<button class="chip" data-bk-open="${tid}:book:${r[0]}">${n} (p. ${bookPage(tid,r[0])})</button>`).join(' ')}</div>`:'';
-    return`<div class="card bkcard"><div class="bkhead">${ICON}<div><b>Your Chapter ${D.ch} textbook</b><div class="meta">Read the chapter here. Each section's lesson links straight to its pages. Files stay on this device and are never uploaded; add them once on each device you use.</div></div></div>
+    const ex=D.extra;const jump=avail(tid+':book')?`<div class="bkjump">Jump to: ${[['Chapter Review',ex.review],['Chapter Test',ex.test]].map(([n,r])=>`<button class="chip" data-bk-open="${tid}:book:${r[0]}">${n} (p. ${bookPage(tid,r[0])})</button>`).join(' ')}</div>`:'';
+    return`<div class="card bkcard"><div class="bkhead">${ICON}<div><b>Your Chapter ${D.ch} textbook</b><div class="meta">Read the chapter here. Each section's lesson links straight to its pages. Files are saved to your sync code, so every device using your code gets them; each device downloads a copy the first time it opens one.</div></div></div>
       ${D.docs.map(row).join('')}${jump}</div>`;
   }
 
@@ -51,11 +95,14 @@ const BOOKS=(()=>{
     if(!picker){picker=document.createElement('input');picker.type='file';picker.accept='application/pdf,.pdf';picker.hidden=true;document.body.appendChild(picker)}
     picker.value='';picker.onchange=async()=>{const f=picker.files&&picker.files[0];if(!f)return;
       if(!/pdf$/i.test(f.type)&&!/\.pdf$/i.test(f.name)){alert('Please choose a PDF file.');return}
-      try{await put(key,{blob:f,name:f.name,size:f.size,at:Date.now()});has.add(key)}catch(e){alert('Could not save the file on this device: '+(e.message||e));return}
-      refresh();if(thenPage)open(key,+thenPage)};
+      const at=Date.now();try{await put(key,{blob:f,name:f.name,size:f.size,at});has.add(key);localAt[key]=at}catch(e){alert('Could not save the file on this device: '+(e.message||e));return}
+      delete busy[key];refresh();upload(key);if(thenPage)open(key,+thenPage)};
     picker.click();
   }
-  async function remove(key){if(!confirm('Remove this PDF from this device?'))return;await del(key).catch(()=>{});has.delete(key);refresh()}
+  async function remove(key){if(!confirm('Remove this PDF from your sync code? It will be removed from every device that uses your code.'))return;
+    await del(key).catch(()=>{});has.delete(key);delete localAt[key];
+    if(code()){try{await rest('meta/'+enc(key),'DELETE');await rest('data/'+enc(key),'DELETE')}catch(e){}}delete cloud[key];
+    refresh()}
   function refresh(){if(typeof route==='function'){const y=window.scrollY;window.__quietRoute=true;try{route()}finally{window.__quietRoute=false}window.scrollTo(0,y)}}
 
   /* ---------- the reader ---------- */
@@ -89,12 +136,14 @@ const BOOKS=(()=>{
   async function open(key,page){
     const [tid,doc]=key.split(':');const el=shell(),$=id=>el.querySelector('#'+id);
     el.classList.add('open');document.body.classList.add('bkv-on');
-    $('bkvTabs').innerHTML=DATA[tid].docs.filter(d=>has.has(tid+':'+d[0])).map(d=>`<button class="bkv-tab${d[0]===doc?' on':''}" data-bk-open="${tid}:${d[0]}:1">${d[1]}</button>`).join('');
+    $('bkvTabs').innerHTML=DATA[tid].docs.filter(d=>avail(tid+':'+d[0])).map(d=>`<button class="bkv-tab${d[0]===doc?' on':''}" data-bk-open="${tid}:${d[0]}:1">${d[1]}</button>`).join('');
     if(V&&V.key===key){go(page||1);return}
     if(V)teardown();
     $('bkvMsg').hidden=false;$('bkvMsg').textContent='Opening…';$('bkvPages').innerHTML='';
     try{
-      const rec=await get(key);if(!rec)throw new Error('That PDF is not stored on this device yet.');
+      if(cloud[key]&&(!has.has(key)||(localAt[key]||0)<cloud[key].at)){
+        await download(key,p=>{const m=document.getElementById('bkvMsg');if(m)m.textContent='Downloading from your code… '+p+'%'})}
+      const rec=await get(key);if(!rec)throw new Error('That PDF is not on this device or in your code yet.');
       const pdfjs=await loadLib();const data=new Uint8Array(await rec.blob.arrayBuffer());
       const pdf=await pdfjs.getDocument({data}).promise;const p1=await pdf.getPage(1);const vp=p1.getViewport({scale:1});
       V={key,tid,doc,isBook:doc==='book',pdf,n:pdf.numPages,ar:vp.height/vp.width,z:1,cur:1,rendered:new Map(),obs:null};
@@ -140,11 +189,12 @@ const BOOKS=(()=>{
   function close(){const el=document.getElementById('bkv');if(el)el.classList.remove('open');document.body.classList.remove('bkv-on')}
 
   if(typeof document!=='undefined')document.addEventListener('click',e=>{
+    const u=e.target.closest('[data-bk-up]');if(u){e.preventDefault();delete busy[u.dataset.bkUp];upload(u.dataset.bkUp);return}
     const o=e.target.closest('[data-bk-open]'),a=e.target.closest('[data-bk-add]'),d=e.target.closest('[data-bk-del]');
     if(o){e.preventDefault();const [t,doc,p]=o.dataset.bkOpen.split(':');open(t+':'+doc,+p||1)}
     else if(a){e.preventDefault();pick(a.dataset.bkAdd,a.dataset.bkThen)}
     else if(d){e.preventDefault();remove(d.dataset.bkDel)}
   });
-  ready.then(()=>{if(has.size&&/^#\/(t|s)\/pc/.test(location.hash||''))refresh()});   // stored files load after the first render
+  ready.then(()=>{if(has.size&&/^#\/(t|s)\/pc/.test(location.hash||''))refresh();if(code())loadCloud()});   // stored files load after the first render
   return{lessonBar,chapterCard,ready,DATA,has};
 })();

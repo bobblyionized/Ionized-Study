@@ -32,6 +32,13 @@ const SYNC=(()=>{
     return r.json();
   }
 
+  /* a code's progress, fetched part by part so the large textbook PDFs under /codes/<code>/pdf are never downloaded here */
+  async function fetchCode(code){
+    const parts=await Promise.all(['created'].concat(CATS).map(k=>api(code+'/'+k)));
+    if(parts[0]===null&&parts.slice(1).every(x=>x===null))return null;
+    const d={created:parts[0]};CATS.forEach((c,i)=>{if(parts[i+1]!==null)d[c]=parts[i+1]});return d;
+  }
+
   /* ---------- local data <-> keyed string maps ---------- */
   function localMap(){
     const o=empty();
@@ -92,7 +99,7 @@ const SYNC=(()=>{
     busy=true;status('','Syncing…');
     try{
       const code=st.code;
-      const d=await api(code);
+      const d=await fetchCode(code);
       if(code!==st.code)throw new Error('code changed');
       const R=remoteMap(d),L=localMap(),M=merge3(L,R,st.last);
       if(!same(M,L)){applyLocal(M);refreshView()}
@@ -115,7 +122,7 @@ const SYNC=(()=>{
   function listen(){
     if(es)es.close();
     if(!st.code||typeof EventSource==='undefined')return;
-    es=new EventSource(DB+'/codes/'+st.code+'.json');
+    es=new EventSource(DB+'/codes/'+st.code+'/updated.json');   // every save bumps this stamp; listening here avoids streaming the PDFs
     const onEvt=()=>{clearTimeout(pull);pull=setTimeout(reconcile,400)};
     es.addEventListener('put',onEvt);es.addEventListener('patch',onEvt);
     es.onerror=()=>status('off','Reconnecting…');
@@ -144,13 +151,14 @@ const SYNC=(()=>{
     if(c.length!==8)return 'Codes are 8 letters and numbers, like K7QH-3XPM.';
     if(c===st.code)return 'That is already this device’s code.';
     let d;
-    try{d=await api(c)}catch(e){return 'Could not reach the server. Check your connection and try again.'}
+    try{d=await fetchCode(c)}catch(e){return 'Could not reach the server. Check your connection and try again.'}
     if(!d||!d.created)return 'No saved progress was found for that code.';
     clearTimeout(debounce);
     if(busy){await new Promise(r=>{const t=setInterval(()=>{if(!busy){clearInterval(t);r()}},100)})}
     await reconcile();                       // save anything pending under the old code first
     st.code=c;st.last=remoteMap(d);persist();
     applyLocal(st.last);refreshView();showCode();listen();status('ok','Synced');
+    document.dispatchEvent(new Event('amcprep:code'));
     return null;
   }
 
@@ -177,7 +185,7 @@ const SYNC=(()=>{
   showCode();
   (async()=>{
     if(!st.code){st.code=await newCode();st.last=empty();persist();showCode()}
-    listen();reconcile();
+    listen();reconcile();document.dispatchEvent(new Event('amcprep:code'));
   })();
   return{changed,reconcile,get code(){return st.code}};
 })();
