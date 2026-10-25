@@ -239,3 +239,19 @@ body.nbe-on{overflow:hidden}
 @media (max-width:760px){.nbe-top{gap:2px;padding:5px 6px}.nbe-lbl,.nbe-saved{display:none}.nbe-title{max-width:40vw}
   .nbe-tools,.nbe-opts{order:9}.nbe-opts{border-left:0}.nbe-top>.spacer{display:none}.nbe-top>[data-a=more]{margin-left:auto}
   .nbe-b{min-width:34px;height:34px;padding:0 5px}.nbe-body{padding:8px}}
+
+.nbe-mlayer{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.nbe-m{position:absolute;white-space:nowrap;line-height:1.25}
+.nbe-m .katex,.nbe-mprev .katex{font-size:1em}
+.nbe-tm{font-size:14px;min-width:40px}
+.nbe-mbox{position:absolute;z-index:3;background:#fff;border:1.5px solid #5b6cff;border-radius:8px;box-shadow:0 6px 18px rgba(30,40,80,.18);min-width:120px}
+.nbe-mbar{position:absolute;left:-1.5px;bottom:100%;margin-bottom:5px;display:flex;gap:3px;background:#1e2333;border-radius:9px;padding:3px;font-size:13px;white-space:nowrap;box-shadow:0 6px 16px rgba(0,0,0,.3)}
+.nbe-mbar button{border:0;background:none;color:#cdd3e6;font:inherit;font-weight:600;padding:5px 9px;border-radius:6px;cursor:pointer}
+.nbe-mbar button.on{background:#5b6cff;color:#fff}
+.nbe-mbar button[data-mm=done]{color:#fff}
+.nbe-mbar button:hover{background:rgba(255,255,255,.14)}
+.nbe-mfield{padding:4px 8px}
+.nbe-mfield .mq-editable-field{border:0!important;box-shadow:none!important;min-width:1.5em;color:inherit}
+.nbe-mfield .mq-math-mode .mq-root-block{padding:2px}
+.nbe-mtex{display:block;width:min(420px,70vw);font:14px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;color:#1b2030;background:#f3f5fa;border:0;border-radius:5px;padding:5px 7px;outline:none;resize:none;box-sizing:border-box}
+.nbe-mprev{padding:5px 2px 2px;min-height:1.2em;color:inherit}
