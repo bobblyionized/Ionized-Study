@@ -271,3 +271,39 @@ body.nbe-on{overflow:hidden}
 body.nb-only header.top,body.nb-only .tab-arrow{display:none}
 .nb-back{display:inline-flex;align-items:center;gap:4px;margin:4px 0 22px;font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 14px;background:var(--card)}
 .nb-back:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ---------- Focus music ---------- */
+.mu-btn{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:max(14px,env(safe-area-inset-bottom));z-index:30;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 18px -8px rgba(0,0,0,.35);transition:transform var(--t) var(--ease-out),border-color var(--t)}
+body.landing .mu-btn{background:var(--tp-face,#fbfaf8);color:var(--tp-fg,#1d1d1f);border-color:var(--tp-line,#d9d8d4)}
+.mu-btn:hover{transform:translateY(-1px);border-color:var(--accent)}
+.mu-btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.mu-eq{display:none;align-items:flex-end;gap:2px;height:16px}
+.mu-eq i{display:block;width:3px;border-radius:2px;background:currentColor;animation:muEq 1s ease-in-out infinite}
+.mu-eq i:nth-child(2){animation-delay:-.35s}.mu-eq i:nth-child(3){animation-delay:-.7s}
+@keyframes muEq{0%,100%{height:4px}50%{height:15px}}
+.mu-btn.on svg{display:none}.mu-btn.on .mu-eq{display:flex}.mu-btn.on{color:var(--accent);border-color:var(--accent)}
+.mu-panel{position:fixed;left:max(14px,env(safe-area-inset-left));bottom:calc(max(14px,env(safe-area-inset-bottom)) + 56px);z-index:31;width:min(340px,calc(100vw - 28px));max-height:min(560px,calc(100vh - 100px));display:flex;flex-direction:column;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 44px -16px rgba(0,0,0,.5);padding:12px 14px;font-family:var(--ui);animation:nbPop .16s var(--ease-out)}
+.mu-panel[hidden]{display:none}
+.mu-head{display:flex;align-items:center;gap:8px;font-size:15px}.mu-sp{flex:1}
+.mu-x{border:0;background:none;color:var(--muted);font-size:22px;line-height:1;cursor:pointer;padding:2px 6px;border-radius:6px}
+.mu-now{margin:8px 0 4px;font-weight:650;font-size:15px;min-height:22px}
+.mu-dim{color:var(--muted);font-weight:400;font-size:13.5px}
+.mu-ctl{display:flex;align-items:center;justify-content:center;gap:14px;margin:6px 0 8px}
+.mu-ctl button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.mu-ctl button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+.mu-ctl .mu-play{width:50px;height:50px;background:var(--accent);border-color:var(--accent);color:#fff}
+.mu-ctl .mu-play svg{width:22px;height:22px}
+.mu-vol{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);margin-bottom:8px}.mu-vol input{flex:1;accent-color:var(--accent)}
+.mu-list{overflow:auto;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 -14px;padding:4px 6px;flex:1;min-height:60px}
+.mu-row{display:flex;align-items:center;gap:6px;border-radius:8px}
+.mu-row.cur .mu-name{color:var(--accent);font-weight:650}
+.mu-name{flex:1;text-align:left;border:0;background:none;color:var(--ink);font:inherit;font-size:14px;padding:7px 8px;cursor:pointer;border-radius:8px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mu-name:hover{background:var(--accent-weak)}
+.mu-st{font-size:12px;color:var(--muted);white-space:nowrap}
+.mu-del{border:0;background:none;color:var(--muted);font-size:16px;cursor:pointer;padding:4px 6px;border-radius:6px;opacity:.5}.mu-del:hover{opacity:1;color:var(--bad)}
+.mu-empty{padding:10px 8px;margin:0;line-height:1.5}
+.mu-foot{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:10px}
+.mu-add{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:9px;padding:6px 12px;font-size:14px;font-weight:600;cursor:pointer}
+.mu-add:hover{border-color:var(--accent)}
+.mu-link{border:0;background:none;color:var(--accent);font:inherit;font-size:13.5px;font-weight:600;cursor:pointer;padding:0}
+.mu-note{margin:8px 0 0;font-size:12.5px;color:var(--muted);line-height:1.45}
