@@ -98,3 +98,8 @@ const SRI={
 function loadScript(src){return new Promise((ok,no)=>{const s=document.createElement('script');s.src=src;
   if(SRI[src]){s.integrity=SRI[src];s.crossOrigin='anonymous'}s.onload=ok;s.onerror=()=>no(new Error('Could not load '+src));document.head.appendChild(s)})}
 function loadStyle(href){const l=document.createElement('link');l.rel='stylesheet';l.href=href;if(SRI[href]){l.integrity=SRI[href];l.crossOrigin='anonymous'}document.head.appendChild(l);return l}
+/* drawn icons, one stroke family (24px grid, 2px round strokes) */
+const IC={x:'<path d="M18 6 6 18M6 6l12 12"/>',plus:'<path d="M12 5v14M5 12h14"/>',
+  dots:'<g fill="currentColor" stroke="none"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></g>',
+  chevL:'<path d="m15 18-6-6 6-6"/>',chevR:'<path d="m9 18 6-6-6-6"/>'};
+const icon=n=>`<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${IC[n]}</svg>`;

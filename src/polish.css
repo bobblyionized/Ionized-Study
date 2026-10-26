@@ -56,7 +56,6 @@ header.top{background:color-mix(in srgb,var(--card) 82%,transparent);-webkit-bac
 .btn,.chip,.backtimer,.ai-btn,.hist-btn,.retry-btn,.show-btn,.giveup-btn,.gear,.tab{transition:color var(--t-fast) var(--ease),background-color var(--t-fast) var(--ease),border-color var(--t-fast) var(--ease),box-shadow var(--t-fast) var(--ease),transform var(--t-fast) var(--ease)}
 .btn:active,.chip:active,.ai-btn:active,.hist-btn:active,.retry-btn:active,.show-btn:active,.giveup-btn:active,.gear:active{transform:scale(.97)}
 .btn{border-radius:var(--r-md);font-weight:600}
-.btn.pri{box-shadow:0 1px 0 rgba(255,255,255,.15) inset,0 6px 16px -8px color-mix(in srgb,var(--accent) 70%,transparent)}
 .chip{font-weight:500}
 .chip:hover:not(.on){border-color:color-mix(in srgb,var(--accent) 55%,var(--line));color:var(--ink)}
 .tab{position:relative;border-bottom:0;padding:11px 14px 12px;font-weight:600}
@@ -66,7 +65,7 @@ header.top{background:color-mix(in srgb,var(--card) 82%,transparent);-webkit-bac
 
 /* ---------- problem cards: the answer moment ---------- */
 .ch{border-radius:var(--r-md);transition:border-color var(--t) var(--ease),background-color var(--t) var(--ease),color var(--t) var(--ease),transform var(--t-fast) var(--ease),box-shadow var(--t) var(--ease)}
-.ch:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 6px 14px -10px color-mix(in srgb,var(--accent) 80%,transparent)}
+.ch:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 6px 14px -10px rgba(0,0,0,.45)}
 .ch:active:not(:disabled){transform:translateY(0) scale(.985)}
 .prob.just .ch.right{animation:chRight .5s var(--ease-out)}
 .prob.just .ch.wrong{animation:chWrong .42s var(--ease)}
@@ -244,7 +243,7 @@ body.nbe-on{overflow:hidden}
 .nbe-m{position:absolute;white-space:nowrap;line-height:1.25}
 .nbe-m .katex,.nbe-mprev .katex{font-size:1em}
 .nbe-tm{font-size:14px;min-width:40px}
-.nbe-mbox{position:absolute;z-index:3;background:#fff;border:1.5px solid #5b6cff;border-radius:8px;box-shadow:0 6px 18px rgba(30,40,80,.18);min-width:120px}
+.nbe-mbox{position:absolute;z-index:3;background:#fff;border:1.5px solid #5b6cff;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.18);min-width:120px}
 .nbe-mbar{position:absolute;left:-1.5px;bottom:100%;margin-bottom:5px;display:flex;gap:3px;background:#1e2333;border-radius:9px;padding:3px;font-size:13px;white-space:nowrap;box-shadow:0 6px 16px rgba(0,0,0,.3)}
 .nbe-mbar button{border:0;background:none;color:#cdd3e6;font:inherit;font-weight:600;padding:5px 9px;border-radius:6px;cursor:pointer}
 .nbe-mbar button.on{background:#5b6cff;color:#fff}
@@ -399,4 +398,58 @@ body.landing .mu-btn.on{color:var(--tp-fg);border-color:var(--tp-fg)}
   .sol-acts :is(.ai-btn,.hist-btn)::before,.sol-acts :is(.ai-btn,.hist-btn)::after{display:none}
   .sol details summary{padding-right:90px}
   .sol.has-hist details summary{padding-right:164px}
+}
+
+/* ---------- polish pass (2026-10-26) ---------- */
+.ic{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.14em}
+.ta-ch .ic{width:26px;height:26px;stroke-width:1.7;vertical-align:middle}
+.nb-more .ic,.mu-x .ic,.bkv-x .ic{width:18px;height:18px}
+.nb-more,.mu-x,.mu-del,.bkv-x{display:inline-flex;align-items:center;justify-content:center}
+.mu-del .ic{width:14px;height:14px}
+.nbe-extend .ic,.nbe-add .ic{width:15px;height:15px;stroke-width:2.2}
+.nbe-b[data-a=more] .ic{width:20px;height:20px}
+
+/* numbers that belong to a heading sit inside it, not above it */
+.tile .t .secno{color:var(--accent);font-variant-numeric:tabular-nums;margin-right:.18em}
+
+/* callouts: tinted surface with a hairline, no heavy side bar */
+.box,.tip,.warn,.hist-box{border:1px solid;border-left-width:1px}
+.box{border-color:color-mix(in srgb,var(--accent) 34%,transparent)}
+.tip{border-color:color-mix(in srgb,var(--good) 34%,transparent)}
+.warn,.hist-box{border-color:color-mix(in srgb,var(--warn) 38%,transparent)}
+
+/* the mock timer gets a drawn clock instead of an emoji */
+.timer{display:inline-flex;align-items:center;gap:6px}
+.timer::before{content:"";width:15px;height:15px;background:currentColor;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='13' r='8'/%3E%3Cpath d='M12 9v4l2.5 1.5M9.5 2.5h5'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='13' r='8'/%3E%3Cpath d='M12 9v4l2.5 1.5M9.5 2.5h5'/%3E%3C/svg%3E") center/contain no-repeat}
+
+/* dismissive buttons (Cancel) keep the flow fill but carry no forward arrow */
+:is(.fb-plain.fb-plain){--fb-ar:0em}
+.fb-plain.fb-plain::before,.fb-plain.fb-plain::after{display:none}
+
+/* browser surfaces */
+input,textarea,[contenteditable]{caret-color:var(--accent)}
+.stat b{font-variant-numeric:tabular-nums}
+
+/* music button: steps aside while reading, and clears the graph's expression list */
+.mu-btn{transition:transform .32s var(--ease-out),opacity .24s var(--ease),border-color var(--t)}
+.mu-btn.mu-away{transform:translateY(calc(100% + 28px));opacity:0;pointer-events:none}
+body.graph-mode .mu-btn,body.graph-mode .mu-panel{left:auto;right:max(14px,env(safe-area-inset-right))}
+
+/* phones */
+@media (max-width:560px){
+  .stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(72px,1fr));gap:8px}
+  .stat div{min-width:0;padding:10px 12px}
+  .nb-tools{flex-wrap:nowrap}
+  .nb-q{flex:1 1 auto;min-width:0;max-width:260px}
+  .nb-tools .chip{flex:none}
+}
+@media (max-width:640px){
+  #crumbs{flex:1 0 100%;white-space:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  #crumbs::-webkit-scrollbar{display:none}
+}
+@media (max-width:560px){
+  .nb-head .nb-crumbs{flex:1 0 100%}
+  .nb-head>.spacer{display:none}
 }

@@ -11,7 +11,7 @@ function cardHTML(it,num,opts={}){
    <div class="ptext">${it.q}</div>
    <div class="choices${it.choices.some(c=>/\\begin|<table|<svg/.test(c)||c.length>70)?' wide':''}">${it.choices.map((c,i)=>`<button class="ch" data-i="${i}"><b>(${L[i]})</b><span>${c}</span></button>`).join('')}</div>
    <div class="fb">${opts.giveUp?GIVEUP:''}</div>
-   <div class="sol" hidden><div class="sol-acts"><button class="hist-btn" type="button" hidden title="Show the wrong answers you picked before">History</button><button class="ai-btn" type="button" title="Open Google AI Mode in a new tab to explain this problem">✦ Ask AI</button></div><details><summary>Show full solution</summary><div class="solbody">${it.sol}</div></details><div class="hist-box" hidden></div></div>
+   <div class="sol" hidden><div class="sol-acts"><button class="hist-btn" type="button" hidden title="Show the wrong answers you picked before">History</button><button class="ai-btn" type="button" title="Open Google AI Mode in a new tab to explain this problem">Ask AI</button></div><details><summary>Show full solution</summary><div class="solbody">${it.sol}</div></details><div class="hist-box" hidden></div></div>
   </div>`;
 }
 /* hist = earlier wrong picks (problem sets only); a correct answer after misses gets a History button */
@@ -33,7 +33,7 @@ const flash=el=>{el.classList.remove('just');void el.offsetWidth;el.classList.ad
 function wrongCard(el,it,p){
   el.querySelectorAll('.ch').forEach(b=>{const i=+b.dataset.i;b.disabled=true;b.classList.remove('sel','right','wrong');if(i===p.c)b.classList.add('wrong')});
   const fb=el.querySelector('.fb');fb.className='fb no';
-  fb.innerHTML=(p.c<0?'You gave up.':'Not quite.')+' <span class="fb-acts"><button class="retry-btn" type="button">↻ Try again</button><button class="show-btn" type="button">Show answer</button></span>';
+  fb.innerHTML=(p.c<0?'You gave up.':'Not quite.')+' <span class="fb-acts"><button class="retry-btn" type="button">Try again</button><button class="show-btn" type="button">Show answer</button></span>';
   el.querySelector('.status').innerHTML='<span class="pill no">Missed'+(p.w.length>1?' ×'+p.w.length:'')+'</span>';
   el.querySelector('.sol').hidden=true;
 }
@@ -62,7 +62,7 @@ function setView(sid,body){
     if(p.c===it.ans)revealCard(card,it,p.c,false,w);
     else if(p.show){revealCard(card,it,p.c<0?-1:p.c,fresh,w);const fb=card.querySelector('.fb');
       if(p.c<0){fb.textContent='You gave up. The answer is ('+L[it.ans]+').';card.querySelector('.status').innerHTML='<span class="pill no">Gave up</span>'}
-      fb.insertAdjacentHTML('beforeend',' <span class="fb-acts"><button class="retry-btn" type="button">↻ Try again</button></span>')}
+      fb.insertAdjacentHTML('beforeend',' <span class="fb-acts"><button class="retry-btn" type="button">Try again</button></span>')}
     else wrongCard(card,it,{...p,w});
   }
   list.addEventListener('click',e=>{

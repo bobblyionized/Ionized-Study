@@ -174,7 +174,7 @@ const NOTEBOOK=(()=>{
   /* ---------- small dialogs ---------- */
   function dlg(title,inner,okLabel,onOk){
     const d=document.createElement('div');d.className='nb-dlg nb';
-    d.innerHTML=`<form class="nb-dlg-box card"><h3>${H(title)}</h3>${inner}<div class="row nb-dlg-row"><span class="spacer"></span><button type="button" class="btn" data-x>Cancel</button><button class="btn pri">${H(okLabel)}</button></div></form>`;
+    d.innerHTML=`<form class="nb-dlg-box card"><h3>${H(title)}</h3>${inner}<div class="row nb-dlg-row"><span class="spacer"></span><button type="button" class="btn fb-plain" data-x>Cancel</button><button class="btn pri">${H(okLabel)}</button></div></form>`;
     document.body.appendChild(d);const f=d.querySelector('form'),done=()=>d.remove();
     d.addEventListener('click',e=>{if(e.target===d||e.target.closest('[data-x]'))done()});
     f.addEventListener('keydown',e=>{if(e.key==='Escape'){e.stopPropagation();done()}});
@@ -185,10 +185,10 @@ const NOTEBOOK=(()=>{
   function tplPreviews(root){root.querySelectorAll('canvas[data-tpl]').forEach(cv=>{const ctx=cv.getContext('2d');drawTpl(ctx,cv.dataset.tpl,cv.width/W*1.6,1)})}
   function askName(title,v,ok,cb,ph){dlg(title,nameField(v,ph),ok,f=>{const n=f.n.value.trim();if(!n){f.n.focus();return false}cb(n)})}
   function folderPicker(title,kind,id,cb){
-    const opts=[['','Notebook (top level)',0]];const walk=(par,dep)=>{Object.keys(lib.f).filter(k=>live(lib.f[k])&&(lib.f[k].par||'')===par)
+    const opts=[['','All notebooks (top level)',0]];const walk=(par,dep)=>{Object.keys(lib.f).filter(k=>live(lib.f[k])&&(lib.f[k].par||'')===par)
       .sort((a,b)=>lib.f[a].n.localeCompare(lib.f[b].n)).forEach(k=>{if(kind==='f'&&inside(k,id))return;opts.push([k,lib.f[k].n,dep]);walk(k,dep+1)})};walk('',1);
     const cur=(lib[kind][id]||{}).par||'';
-    dlg(title,`<div class="nb-pick">${opts.map(([k,n,dep])=>`<label style="padding-left:${10+dep*16}px"><input type="radio" name="to" value="${H(k)}" ${k===cur?'checked':''}> ${dep?'📁 ':''}${H(n)}</label>`).join('')}</div>`,'Move',f=>cb(f.to.value))}
+    dlg(title,`<div class="nb-pick">${opts.map(([k,n,dep])=>`<label style="padding-left:${10+dep*16}px"><input type="radio" name="to" value="${H(k)}" ${k===cur?'checked':''}> ${H(n)}</label>`).join('')}</div>`,'Move',f=>cb(f.to.value))}
   let menuEl=null;
   function menu(anchor,items){closeMenu();const m=document.createElement('div');m.className='nb-menu nb';
     m.innerHTML=items.map((it,i)=>it?`<button type="button" data-i="${i}" class="${it[2]||''}">${it[0]}</button>`:'<hr>').join('');document.body.appendChild(m);
@@ -204,7 +204,7 @@ const NOTEBOOK=(()=>{
     ready.then(()=>{if(libBody!==body)return;renderLib();pull().then(r=>{if(r&&r.changed&&libVisible())renderLib()})})}
   const ago=t=>{const d=(Date.now()-t)/1000;if(d<60)return'just now';if(d<3600)return Math.floor(d/60)+' min ago';if(d<86400)return Math.floor(d/3600)+' h ago';
     if(d<86400*7)return Math.floor(d/86400)+' d ago';return new Date(t).toLocaleDateString(undefined,{month:'short',day:'numeric'})};
-  const mb=n=>n<1048576?(n/1024).toFixed(n<10240?1:0)+' KB':(n/1048576).toFixed(1)+' MB';
+  const mb=n=>!n?'0 KB':n<1048576?(n/1024).toFixed(n<10240?1:0)+' KB':(n/1048576).toFixed(1)+' MB';
   function stText(){const c=code();
     if(!c)return'Only on this device. Set up a sync code to save your notebooks to every device that uses it.';
     if(state==='off')return'Offline. Changes are kept on this device and upload when you reconnect.';
@@ -218,19 +218,19 @@ const NOTEBOOK=(()=>{
     for(const id in lib.f){const f=lib.f[id];if(live(f)&&(q?f.n.toLowerCase().includes(q):(f.par||'')===here))F.push([id,f,folderEdited(id)])}
     for(const id in lib.b){const b=lib.b[id];if(live(b)&&(q?b.n.toLowerCase().includes(q):(b.par||'')===here))B.push([id,b,bookEdited(b)])}
     const srt=a=>a.sort(sortBy==='name'?(x,y)=>x[1].n.localeCompare(y[1].n,undefined,{numeric:true}):(x,y)=>y[2]-x[2]);srt(F);srt(B);
-    const crumbs=[['','Notebook']];for(let f=here;f;f=lib.f[f]&&lib.f[f].par)if(lib.f[f])crumbs.splice(1,0,[f,lib.f[f].n]);
+    const crumbs=[['','All notebooks']];for(let f=here;f;f=lib.f[f]&&lib.f[f].par)if(lib.f[f])crumbs.splice(1,0,[f,lib.f[f].n]);
     const count=id=>{let n=0;for(const k in lib.f)if(live(lib.f[k])&&lib.f[k].par===id)n++;for(const k in lib.b)if(live(lib.b[k])&&lib.b[k].par===id)n++;return n};
     libBody.innerHTML=`<div class="nb nb-lib">
       <div class="nb-head"><nav class="nb-crumbs">${q?'<span>Search results</span>':crumbs.map(([id,n],i)=>i<crumbs.length-1?`<button type="button" data-go="${H(id)}">${H(n)}</button><span class="nb-sep">›</span>`:`<span>${H(n)}</span>`).join('')}</nav>
-        <span class="spacer"></span><button class="btn sm" data-nb="folder">＋ Folder</button><button class="btn pri sm" data-nb="book">＋ Notebook</button></div>
+        <span class="spacer"></span><button class="btn sm" data-nb="folder">New folder</button><button class="btn pri sm" data-nb="book">New notebook</button></div>
       <div class="nb-tools"><input type="search" class="nb-in nb-q" placeholder="Search notebooks" value="${H(query)}" aria-label="Search notebooks">
         <span class="spacer"></span><button class="chip ${sortBy==='recent'?'on':''}" data-sort="recent">Recent</button><button class="chip ${sortBy==='name'?'on':''}" data-sort="name">Name</button></div>
       ${F.length+B.length?`<div class="nb-grid">${F.map(([id,f])=>`<div class="nb-tile nb-folder" data-open-f="${H(id)}" tabindex="0" role="button">
           <div class="nb-cover nb-fcover">${FOLDER_SVG}</div><div class="nb-tname">${H(f.n)}</div><div class="nb-tmeta">${count(id)} item${count(id)===1?'':'s'}</div>
-          <button type="button" class="nb-more" data-more="f:${H(id)}" aria-label="Folder options">⋯</button></div>`).join('')}
+          <button type="button" class="nb-more" data-more="f:${H(id)}" aria-label="Folder options">${icon('dots')}</button></div>`).join('')}
         ${B.map(([id,b,t])=>`<div class="nb-tile nb-book" data-open-b="${H(id)}" tabindex="0" role="button">
           <div class="nb-cover"><canvas data-thumb="${H(id)}"></canvas></div><div class="nb-tname">${H(b.n)}</div><div class="nb-tmeta">${(b.pages||[]).length} page${(b.pages||[]).length===1?'':'s'} · ${ago(t)}</div>
-          <button type="button" class="nb-more" data-more="b:${H(id)}" aria-label="Notebook options">⋯</button></div>`).join('')}</div>`
+          <button type="button" class="nb-more" data-more="b:${H(id)}" aria-label="Notebook options">${icon('dots')}</button></div>`).join('')}</div>`
         :`<div class="nb-empty">${q?'No notebooks match that search.':here?'This folder is empty. Add a notebook or a folder.':'Make a notebook to work problems by hand: write with a pen or stylus, highlight, type, and add as many pages as you need. Group notebooks into folders. Everything saves to your sync code.'}</div>`}
       <p class="nb-status meta" data-st="${state||'local'}">${stText()}</p></div>`;
     libBody.querySelectorAll('canvas[data-thumb]').forEach(cv=>{const b=lib.b[cv.dataset.thumb],pid=(b.pages||[])[0];if(pid)getPage(pid).then(pg=>{if(cv.isConnected)thumb(cv,pg)})})}
@@ -276,12 +276,12 @@ const NOTEBOOK=(()=>{
         <div class="nbe-grp"><button class="nbe-b" data-a="undo" aria-label="Undo">${ico('undo')}</button><button class="nbe-b" data-a="redo" aria-label="Redo">${ico('redo')}</button></div>
         <div class="nbe-grp nbe-tools">${TOOLS.map(([k,n])=>`<button class="nbe-b" data-tool="${k}" aria-label="${n}" title="${n}">${ico(k)}</button>`).join('')}</div>
         <div class="nbe-grp nbe-opts"></div>
-        <button class="nbe-b" data-a="more" aria-label="Page options">⋯</button></div>
+        <button class="nbe-b" data-a="more" aria-label="Page options">${icon('dots')}</button></div>
       <div class="nbe-body"><div class="nbe-page"><canvas class="nbe-base"></canvas><div class="nbe-mlayer"></div><canvas class="nbe-ink"></canvas>
         <div class="nbe-sel" hidden><div class="nbe-selbar"></div></div></div>
-        <button class="nbe-extend" data-a="extend">＋ Extend this page down</button></div>
+        <button class="nbe-extend" data-a="extend">${icon('plus')} Extend this page down</button></div>
       <div class="nbe-bot"><button class="nbe-b" data-a="prev" aria-label="Previous page">‹</button><button class="nbe-b nbe-pgno" data-a="grid" aria-label="All pages"></button>
-        <button class="nbe-b" data-a="next" aria-label="Next page">›</button><button class="nbe-b nbe-add" data-a="add">＋ Page</button></div>
+        <button class="nbe-b" data-a="next" aria-label="Next page">›</button><button class="nbe-b nbe-add" data-a="add">${icon('plus')} Page</button></div>
       <div class="nbe-pages" hidden></div>`;
     document.body.appendChild(el);
     el.addEventListener('click',edClick);

@@ -120,18 +120,18 @@ const MUSIC=(()=>{
     const playing=!audio.paused&&!!audio.src;btn.classList.toggle('on',playing);
     if(panel.hidden)return;
     const ts=tracks(),missing=ts.filter(t=>!local[t.id]).length,size=ts.reduce((a,t)=>a+((cloud[t.id]||local[t.id]||{}).size||0),0);
-    panel.innerHTML=`<div class="mu-head"><b>Focus music</b><span class="mu-sp"></span><button type="button" class="mu-x" data-mu="close" aria-label="Close">×</button></div>
+    panel.innerHTML=`<div class="mu-head"><b>Focus music</b><span class="mu-sp"></span><button type="button" class="mu-x" data-mu="close" aria-label="Close">${icon('x')}</button></div>
       <div class="mu-now">${cur?H(pretty(nameOf(cur)))+(loadingId===cur?' <span class="mu-dim">· loading…</span>':''):'<span class="mu-dim">Shuffle plays your tracks in a random order.</span>'}</div>
       <div class="mu-ctl"><button type="button" data-mu="prev" aria-label="Previous">${ICON.prev}</button>
         <button type="button" class="mu-play" data-mu="toggle" aria-label="${playing?'Pause':'Play'}">${playing?ICON.pause:ICON.play}</button>
         <button type="button" data-mu="next" aria-label="Next">${ICON.next}</button></div>
       ${volumeWorks?`<label class="mu-vol"><span>Volume</span><input type="range" min="0" max="1" step="0.02" value="${audio.volume}" data-mu-vol></label>`:''}
       <div class="mu-list">${ts.length?ts.map(t=>`<div class="mu-row ${t.id===cur?'cur':''}" data-mu-row="${H(t.id)}"><button type="button" class="mu-name" data-mu-play="${H(t.id)}">${H(pretty(t.name))}</button>
-        <span class="mu-st" data-mu-st="${H(t.id)}">${rowStatus(t.id)}</span><button type="button" class="mu-del" data-mu-del="${H(t.id)}" aria-label="Remove">×</button></div>`).join('')
+        <span class="mu-st" data-mu-st="${H(t.id)}">${rowStatus(t.id)}</span><button type="button" class="mu-del" data-mu-del="${H(t.id)}" aria-label="Remove">${icon('x')}</button></div>`).join('')
         :'<p class="mu-dim mu-empty">No music yet. Add MP3 files from this device; they are saved to your sync code so your other devices get them too.</p>'}</div>
       <div class="mu-foot"><label class="mu-add">Add music…<input type="file" accept="audio/*,.mp3,.m4a" multiple hidden data-mu-file></label>
         ${missing&&code()?`<button type="button" class="mu-link" data-mu="all">Download all for offline (${missing})</button>`:''}</div>
-      <p class="mu-note">${msgText?H(msgText):code()?`Saved under your sync code (${ts.length} track${ts.length===1?'':'s'}, ${mb(size)}). Only devices with your code can play them.`:'On this device only. Set up a sync code to keep your music on every device.'}</p>`;
+      <p class="mu-note">${msgText?H(msgText):code()?(ts.length?`Saved under your sync code (${ts.length} track${ts.length===1?'':'s'}, ${mb(size)}). Only devices with your code can play them.`:'Tracks you add are saved under your sync code. Only devices with your code can play them.'):'On this device only. Set up a sync code to keep your music on every device.'}</p>`;
   }
   function paintRow(id){const el=panel.querySelector(`[data-mu-st="${CSS.escape(id)}"]`);if(el)el.textContent=rowStatus(id)}
   btn.addEventListener('click',e=>{e.stopPropagation();panel.hidden?open():close()});
@@ -143,6 +143,9 @@ const MUSIC=(()=>{
   panel.addEventListener('change',e=>{if(e.target.matches('[data-mu-file]')){addFiles([...e.target.files]);e.target.value=''}});
   document.addEventListener('click',e=>{if(!panel.hidden&&!panel.contains(e.target)&&e.target!==btn)close()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden)close()});
+  let lastY=window.scrollY;
+  window.addEventListener('scroll',()=>{const y=window.scrollY,d=y-lastY;if(Math.abs(d)<8)return;
+    btn.classList.toggle('mu-away',d>0&&y>160&&panel.hidden);lastY=y},{passive:true});
 
   /* music that was playing keeps going after a reload; browsers need one tap before sound can start */
   if(pref.on){const resume=e=>{if(btn.contains(e.target)||panel.contains(e.target))return;document.removeEventListener('pointerdown',resume,true);

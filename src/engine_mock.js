@@ -45,11 +45,12 @@ function startMock(scope){
     ans[qi]=ans[qi]===i?null:i;card.querySelectorAll('.ch').forEach(x=>x.classList.toggle('sel',+x.dataset.i===ans[qi]));
     app.querySelector('#mans').textContent=ans.filter(x=>x!==null).length+'/'+N+' answered'});
   const tEl=app.querySelector('#mtimer');
-  const tick=()=>{const left=total-(Date.now()-t0)/1000;tEl.textContent='⏱ '+fmtTime(left);tEl.classList.toggle('low',left<300);if(left<=0){finish(true)}};tick();timerHandle=setInterval(tick,1000);
+  mockLive=true;
+  const tick=()=>{const left=total-(Date.now()-t0)/1000;tEl.textContent=fmtTime(left);tEl.classList.toggle('low',left<300);if(left<=0){finish(true)}};tick();timerHandle=setInterval(tick,1000);
   const ask=()=>{const blanks=ans.filter(x=>x===null).length;if(confirm(blanks?`Submit with ${blanks} blank answer(s)?`:'Submit your test?'))finish(false)};
   app.querySelector('#msubmit').onclick=ask;app.querySelector('#msubmit2').onclick=ask;
   function finish(timeUp){
-    cleanup();let ok=0,blank=0;items.forEach((it,i)=>{if(ans[i]===null)blank++;else if(ans[i]===it.ans)ok++});const wrong=N-ok-blank;const score=ok*6+blank*1.5;
+    mockLive=false;cleanup();let ok=0,blank=0;items.forEach((it,i)=>{if(ans[i]===null)blank++;else if(ans[i]===it.ans)ok++});const wrong=N-ok-blank;const score=ok*6+blank*1.5;
     PROG.mock.push({at:Date.now(),score,ok,blank,topic:scope});saveProg();
     const secs=Math.min(total,(Date.now()-t0)/1000);
     const groups=t?t.subs.map(s=>[s.name,it=>it.sub===s.id]):M.topics().map(x=>[x.name,it=>subById(it.sub).topic===x.id]);
@@ -67,5 +68,10 @@ function startMock(scope){
 if(typeof document!=='undefined'&&document.getElementById('bank')){
   app=document.getElementById('app');crumbs=document.getElementById('crumbs');
   loadData(document.getElementById('bank').textContent);loadProg();
-  window.addEventListener('hashchange',route);route();
+  let lastHash=location.hash;
+  window.addEventListener('hashchange',()=>{
+    if(mockLive&&!confirm('Leave this mock test? Your answers so far will be lost.')){history.replaceState(null,'',lastHash||'#/home');return}
+    mockLive=false;lastHash=location.hash;route()});
+  window.addEventListener('beforeunload',e=>{if(mockLive){e.preventDefault();e.returnValue=''}});
+  route();
 }

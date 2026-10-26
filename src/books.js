@@ -120,7 +120,7 @@ const BOOKS=(()=>{
     el.innerHTML=`<div class="bkv-top"><div class="bkv-tabs" id="bkvTabs"></div><span class="sp"></span>
       <div class="bkv-nav"><button class="bkv-b" id="bkvPrev" aria-label="Previous page">‹</button><label class="bkv-pg"><span id="bkvPre">p.</span><input id="bkvIn" inputmode="numeric" aria-label="Go to page"><span id="bkvOf"></span></label><button class="bkv-b" id="bkvNext" aria-label="Next page">›</button></div>
       <div class="bkv-nav"><button class="bkv-b" id="bkvOut" aria-label="Zoom out">−</button><button class="bkv-b" id="bkvFit" aria-label="Fit width">Fit</button><button class="bkv-b" id="bkvZin" aria-label="Zoom in">+</button></div>
-      <button class="bkv-b bkv-x" id="bkvClose" aria-label="Close">×</button></div>
+      <button class="bkv-b bkv-x" id="bkvClose" aria-label="Close">${icon('x')}</button></div>
       <div class="bkv-body" id="bkvBody"><div class="bkv-msg" id="bkvMsg">Opening…</div><div class="bkv-pages" id="bkvPages"></div></div>`;
     document.body.appendChild(el);
     const $=id=>el.querySelector('#'+id);

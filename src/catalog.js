@@ -186,8 +186,8 @@ const PC_CATALOG=[
  ]},
 ];
 const TRACKS=[
- {id:'amc',name:'AMC 10/12 Prep',cat:CATALOG,d:'Everything on the AMC 10 and AMC 12: 22 topics, lessons, thousands of problems, and full mock exams.'},
- {id:'pc',name:'General Precalculus',cat:PC_CATALOG,d:'A chapter-by-chapter precalculus course: functions and graphs, then polynomial and rational functions.'},
+ {id:'amc',name:'AMC 10/12 Prep',cat:CATALOG,d:'Everything on the AMC 10 and AMC 12: lessons, thousands of problems, and full mock exams.'},
+ {id:'pc',name:'General Precalculus',cat:PC_CATALOG,d:'A chapter-by-chapter precalculus course: functions and graphs, polynomial and rational functions, then exponential and logarithmic functions.'},
 ];
 const TOPICS=[];const SUBS=[];
 for(const tr of TRACKS)for(const sec of tr.cat)for(const t of sec.items){t.area=sec.area;t.track=tr.id;TOPICS.push(t);for(const s of t.subs){s.topic=t.id;SUBS.push(s)}}

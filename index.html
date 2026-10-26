@@ -87,7 +87,7 @@ body.graph-mode .tab-arrow{display:none}
 .gc-row.sel .gc-tab{background:#2f72dc}.gc-row.sel .gc-n{color:#fff}
 .gc-row.editing{box-shadow:inset 0 0 0 2px #2f72dc}
 .gc-tab{width:42px;flex:none;background:#f1f1f1;display:flex;flex-direction:column;align-items:center;padding-top:5px;gap:5px;border-right:1px solid #e2e2e2}
-.gc-n{font-size:10px;color:#777}
+.gc-n{font-size:11px;color:#777}
 .gc-ic{width:22px;height:22px;border-radius:50%;border:2.5px solid var(--c);background:var(--c);cursor:pointer;padding:0;box-shadow:inset 0 0 0 2px #fff}
 .gc-ic.off{background:#fff}
 .gc-ex{flex:1;min-width:0;padding:8px 8px 6px 10px;position:relative;cursor:text}
@@ -149,7 +149,7 @@ body.graph-mode .tab-arrow{display:none}
 .tab-arrow.prev:hover{transform:translateY(-50%) translateX(-3px)}
 .tab-arrow.next:hover{transform:translateY(-50%) translateX(3px)}
 .ta-ch{font-size:34px;line-height:.8;font-weight:300}
-.ta-lbl{font-size:10.5px;font-weight:700;line-height:1.15;text-align:center;padding:0 4px}
+.ta-lbl{font-size:11px;font-weight:700;line-height:1.15;text-align:center;padding:0 4px}
 @media (max-width:1140px){.tab-arrow{width:40px;padding:12px 0}.ta-lbl{display:none}}
 @media (max-width:760px),(pointer:coarse){.tab-arrow{display:none}}
 #tabbody{touch-action:pan-y}
@@ -254,7 +254,7 @@ table.t th{background:var(--accent-weak)}
   .choices{grid-template-columns:1fr 1fr}.choices.wide{grid-template-columns:1fr}
 }
 /* ================= FOCUS TIMER (paper look) ================= */
-:root{--tp-bg:#f4f3f0;--tp-fg:#1d1d1f;--tp-muted:#8a8a8e;--tp-line:#d9d8d4;--tp-face:#fbfaf8;--tp-warn:#a0522d;
+:root{--tp-bg:#f4f3f0;--tp-fg:#1d1d1f;--tp-muted:#6c6c71;--tp-faint:#8a8a8e;--tp-line:#d9d8d4;--tp-face:#fbfaf8;--tp-warn:#a0522d;
   --tp-sheet:#ffffff;--tp-sline:#e2e1dd;--tp-field:#fafaf8;--tp-font:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,"Segoe UI",sans-serif}
 .hidden{display:none !important}
 #land{display:none}
@@ -298,7 +298,7 @@ main.study-in,header.top.study-in{animation:studyIn .55s ease}
 .bk-seg button.on{background:var(--tp-fg);color:var(--tp-sheet)}
 .bk-day{font-size:13.5px;color:var(--tp-muted);margin-bottom:10px}.bk-day b{color:var(--tp-fg)}
 .bk-cur,.bk-next{display:grid;grid-template-columns:44px 1fr auto;align-items:baseline;gap:4px 10px;margin:6px 0}
-.bk-k{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tp-muted)}
+.bk-k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tp-muted)}
 .bk-cur b{font-size:19px;font-weight:600}.bk-next b{font-size:16px;font-weight:600}
 .bk-t{font-variant-numeric:tabular-nums;font-size:17px;font-weight:300;white-space:nowrap}
 .bk-w{grid-column:2/4;font-size:12.5px;color:var(--tp-muted);margin-top:-2px}
@@ -316,9 +316,9 @@ main.study-in,header.top.study-in{animation:studyIn .55s ease}
 .bk-src{font-size:12px;color:var(--tp-muted);margin-top:10px;line-height:1.5}
 .tm-clock svg{width:100%;height:100%;display:block;overflow:visible}
 .tm-face{fill:var(--tp-face);stroke:var(--tp-line);stroke-width:1}
-.tm-tick{stroke:var(--tp-muted);stroke-linecap:round}
+.tm-tick{stroke:var(--tp-faint);stroke-linecap:round}
 .tm-hand{stroke:var(--tp-fg);stroke-linecap:round}
-.tm-hand.sec{stroke:var(--tp-muted)}
+.tm-hand.sec{stroke:var(--tp-faint)}
 .tm-pin{fill:var(--tp-fg)}
 .tm-ring-bg{fill:none;stroke:var(--tp-line);stroke-width:2;opacity:0;transition:opacity .6s}
 .tm-ring{fill:none;stroke:var(--tp-fg);stroke-width:2;stroke-linecap:round;opacity:0;transform:rotate(-90deg);transform-origin:100px 100px;transition:opacity .6s}
@@ -424,7 +424,7 @@ textarea.tm-input{resize:vertical;min-height:84px;line-height:1.45}
 .tmw.drag{cursor:grabbing;box-shadow:0 10px 32px rgba(0,0,0,.22)}
 .tmw.focus{background:#141518;color:#e6e6e8;border-color:#2c2d32}
 .tmw-row{display:flex;align-items:center;gap:2px}
-.tmw-label{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.6;flex:1}
+.tmw-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.6;flex:1}
 .tmw-ic{background:none;border:0;padding:3px;color:inherit;opacity:.6;cursor:pointer}
 .tmw-ic:hover{opacity:1}
 .tmw-ic svg{width:16px;height:16px}
@@ -496,7 +496,6 @@ header.top{background:color-mix(in srgb,var(--card) 82%,transparent);-webkit-bac
 .btn,.chip,.backtimer,.ai-btn,.hist-btn,.retry-btn,.show-btn,.giveup-btn,.gear,.tab{transition:color var(--t-fast) var(--ease),background-color var(--t-fast) var(--ease),border-color var(--t-fast) var(--ease),box-shadow var(--t-fast) var(--ease),transform var(--t-fast) var(--ease)}
 .btn:active,.chip:active,.ai-btn:active,.hist-btn:active,.retry-btn:active,.show-btn:active,.giveup-btn:active,.gear:active{transform:scale(.97)}
 .btn{border-radius:var(--r-md);font-weight:600}
-.btn.pri{box-shadow:0 1px 0 rgba(255,255,255,.15) inset,0 6px 16px -8px color-mix(in srgb,var(--accent) 70%,transparent)}
 .chip{font-weight:500}
 .chip:hover:not(.on){border-color:color-mix(in srgb,var(--accent) 55%,var(--line));color:var(--ink)}
 .tab{position:relative;border-bottom:0;padding:11px 14px 12px;font-weight:600}
@@ -506,7 +505,7 @@ header.top{background:color-mix(in srgb,var(--card) 82%,transparent);-webkit-bac
 
 /* ---------- problem cards: the answer moment ---------- */
 .ch{border-radius:var(--r-md);transition:border-color var(--t) var(--ease),background-color var(--t) var(--ease),color var(--t) var(--ease),transform var(--t-fast) var(--ease),box-shadow var(--t) var(--ease)}
-.ch:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 6px 14px -10px color-mix(in srgb,var(--accent) 80%,transparent)}
+.ch:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 6px 14px -10px rgba(0,0,0,.45)}
 .ch:active:not(:disabled){transform:translateY(0) scale(.985)}
 .prob.just .ch.right{animation:chRight .5s var(--ease-out)}
 .prob.just .ch.wrong{animation:chWrong .42s var(--ease)}
@@ -684,7 +683,7 @@ body.nbe-on{overflow:hidden}
 .nbe-m{position:absolute;white-space:nowrap;line-height:1.25}
 .nbe-m .katex,.nbe-mprev .katex{font-size:1em}
 .nbe-tm{font-size:14px;min-width:40px}
-.nbe-mbox{position:absolute;z-index:3;background:#fff;border:1.5px solid #5b6cff;border-radius:8px;box-shadow:0 6px 18px rgba(30,40,80,.18);min-width:120px}
+.nbe-mbox{position:absolute;z-index:3;background:#fff;border:1.5px solid #5b6cff;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.18);min-width:120px}
 .nbe-mbar{position:absolute;left:-1.5px;bottom:100%;margin-bottom:5px;display:flex;gap:3px;background:#1e2333;border-radius:9px;padding:3px;font-size:13px;white-space:nowrap;box-shadow:0 6px 16px rgba(0,0,0,.3)}
 .nbe-mbar button{border:0;background:none;color:#cdd3e6;font:inherit;font-weight:600;padding:5px 9px;border-radius:6px;cursor:pointer}
 .nbe-mbar button.on{background:#5b6cff;color:#fff}
@@ -841,6 +840,60 @@ body.landing .mu-btn.on{color:var(--tp-fg);border-color:var(--tp-fg)}
   .sol.has-hist details summary{padding-right:164px}
 }
 
+/* ---------- polish pass (2026-10-26) ---------- */
+.ic{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.14em}
+.ta-ch .ic{width:26px;height:26px;stroke-width:1.7;vertical-align:middle}
+.nb-more .ic,.mu-x .ic,.bkv-x .ic{width:18px;height:18px}
+.nb-more,.mu-x,.mu-del,.bkv-x{display:inline-flex;align-items:center;justify-content:center}
+.mu-del .ic{width:14px;height:14px}
+.nbe-extend .ic,.nbe-add .ic{width:15px;height:15px;stroke-width:2.2}
+.nbe-b[data-a=more] .ic{width:20px;height:20px}
+
+/* numbers that belong to a heading sit inside it, not above it */
+.tile .t .secno{color:var(--accent);font-variant-numeric:tabular-nums;margin-right:.18em}
+
+/* callouts: tinted surface with a hairline, no heavy side bar */
+.box,.tip,.warn,.hist-box{border:1px solid;border-left-width:1px}
+.box{border-color:color-mix(in srgb,var(--accent) 34%,transparent)}
+.tip{border-color:color-mix(in srgb,var(--good) 34%,transparent)}
+.warn,.hist-box{border-color:color-mix(in srgb,var(--warn) 38%,transparent)}
+
+/* the mock timer gets a drawn clock instead of an emoji */
+.timer{display:inline-flex;align-items:center;gap:6px}
+.timer::before{content:"";width:15px;height:15px;background:currentColor;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='13' r='8'/%3E%3Cpath d='M12 9v4l2.5 1.5M9.5 2.5h5'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='13' r='8'/%3E%3Cpath d='M12 9v4l2.5 1.5M9.5 2.5h5'/%3E%3C/svg%3E") center/contain no-repeat}
+
+/* dismissive buttons (Cancel) keep the flow fill but carry no forward arrow */
+:is(.fb-plain.fb-plain){--fb-ar:0em}
+.fb-plain.fb-plain::before,.fb-plain.fb-plain::after{display:none}
+
+/* browser surfaces */
+input,textarea,[contenteditable]{caret-color:var(--accent)}
+.stat b{font-variant-numeric:tabular-nums}
+
+/* music button: steps aside while reading, and clears the graph's expression list */
+.mu-btn{transition:transform .32s var(--ease-out),opacity .24s var(--ease),border-color var(--t)}
+.mu-btn.mu-away{transform:translateY(calc(100% + 28px));opacity:0;pointer-events:none}
+body.graph-mode .mu-btn,body.graph-mode .mu-panel{left:auto;right:max(14px,env(safe-area-inset-right))}
+
+/* phones */
+@media (max-width:560px){
+  .stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(72px,1fr));gap:8px}
+  .stat div{min-width:0;padding:10px 12px}
+  .nb-tools{flex-wrap:nowrap}
+  .nb-q{flex:1 1 auto;min-width:0;max-width:260px}
+  .nb-tools .chip{flex:none}
+}
+@media (max-width:640px){
+  #crumbs{flex:1 0 100%;white-space:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  #crumbs::-webkit-scrollbar{display:none}
+}
+@media (max-width:560px){
+  .nb-head .nb-crumbs{flex:1 0 100%}
+  .nb-head>.spacer{display:none}
+}
+
 </style>
 </head>
 <body>
@@ -913,7 +966,7 @@ body.landing .mu-btn.on{color:var(--tp-fg);border-color:var(--tp-fg)}
     <input class="tm-input" id="tmCodeIn" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="12" placeholder="e.g. K7QH-3XPM" style="text-align:center;font-size:20px;letter-spacing:.12em;text-transform:uppercase">
     <div class="tm-hint" id="tmCodeHint">&nbsp;</div>
     <div class="tm-row">
-      <button class="tm-btn" id="tmCodeCancel">Cancel</button>
+      <button class="tm-btn fb-plain" id="tmCodeCancel">Cancel</button>
       <button class="tm-btn solid" id="tmCodeGo">Set Code</button>
     </div>
   </div>
@@ -950,7 +1003,7 @@ body.landing .mu-btn.on{color:var(--tp-fg);border-color:var(--tp-fg)}
       <textarea class="tm-input" id="tmDesc" maxlength="500" placeholder="What are you studying? e.g. Telescoping sums, problems 1–25, then a practice session."></textarea>
     </div>
     <div class="tm-row">
-      <button class="tm-btn" id="tmCancel">Cancel</button>
+      <button class="tm-btn fb-plain" id="tmCancel">Cancel</button>
       <button class="tm-btn solid" id="tmStart">Start</button>
     </div>
   </div>
@@ -20487,6 +20540,11 @@ const SRI={
 function loadScript(src){return new Promise((ok,no)=>{const s=document.createElement('script');s.src=src;
   if(SRI[src]){s.integrity=SRI[src];s.crossOrigin='anonymous'}s.onload=ok;s.onerror=()=>no(new Error('Could not load '+src));document.head.appendChild(s)})}
 function loadStyle(href){const l=document.createElement('link');l.rel='stylesheet';l.href=href;if(SRI[href]){l.integrity=SRI[href];l.crossOrigin='anonymous'}document.head.appendChild(l);return l}
+/* drawn icons, one stroke family (24px grid, 2px round strokes) */
+const IC={x:'<path d="M18 6 6 18M6 6l12 12"/>',plus:'<path d="M12 5v14M5 12h14"/>',
+  dots:'<g fill="currentColor" stroke="none"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></g>',
+  chevL:'<path d="m15 18-6-6 6-6"/>',chevR:'<path d="m9 18 6-6-6-6"/>'};
+const icon=n=>`<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${IC[n]}</svg>`;
 
 /* ====================== catalog ====================== */
 const CATALOG=[
@@ -20676,8 +20734,8 @@ const PC_CATALOG=[
  ]},
 ];
 const TRACKS=[
- {id:'amc',name:'AMC 10/12 Prep',cat:CATALOG,d:'Everything on the AMC 10 and AMC 12: 22 topics, lessons, thousands of problems, and full mock exams.'},
- {id:'pc',name:'General Precalculus',cat:PC_CATALOG,d:'A chapter-by-chapter precalculus course: functions and graphs, then polynomial and rational functions.'},
+ {id:'amc',name:'AMC 10/12 Prep',cat:CATALOG,d:'Everything on the AMC 10 and AMC 12: lessons, thousands of problems, and full mock exams.'},
+ {id:'pc',name:'General Precalculus',cat:PC_CATALOG,d:'A chapter-by-chapter precalculus course: functions and graphs, polynomial and rational functions, then exponential and logarithmic functions.'},
 ];
 const TOPICS=[];const SUBS=[];
 for(const tr of TRACKS)for(const sec of tr.cat)for(const t of sec.items){t.area=sec.area;t.track=tr.id;TOPICS.push(t);for(const s of t.subs){s.topic=t.id;SUBS.push(s)}}
@@ -24170,7 +24228,7 @@ const BOOKS=(()=>{
     el.innerHTML=`<div class="bkv-top"><div class="bkv-tabs" id="bkvTabs"></div><span class="sp"></span>
       <div class="bkv-nav"><button class="bkv-b" id="bkvPrev" aria-label="Previous page">‹</button><label class="bkv-pg"><span id="bkvPre">p.</span><input id="bkvIn" inputmode="numeric" aria-label="Go to page"><span id="bkvOf"></span></label><button class="bkv-b" id="bkvNext" aria-label="Next page">›</button></div>
       <div class="bkv-nav"><button class="bkv-b" id="bkvOut" aria-label="Zoom out">−</button><button class="bkv-b" id="bkvFit" aria-label="Fit width">Fit</button><button class="bkv-b" id="bkvZin" aria-label="Zoom in">+</button></div>
-      <button class="bkv-b bkv-x" id="bkvClose" aria-label="Close">×</button></div>
+      <button class="bkv-b bkv-x" id="bkvClose" aria-label="Close">${icon('x')}</button></div>
       <div class="bkv-body" id="bkvBody"><div class="bkv-msg" id="bkvMsg">Opening…</div><div class="bkv-pages" id="bkvPages"></div></div>`;
     document.body.appendChild(el);
     const $=id=>el.querySelector('#'+id);
@@ -24426,7 +24484,7 @@ const NOTEBOOK=(()=>{
   /* ---------- small dialogs ---------- */
   function dlg(title,inner,okLabel,onOk){
     const d=document.createElement('div');d.className='nb-dlg nb';
-    d.innerHTML=`<form class="nb-dlg-box card"><h3>${H(title)}</h3>${inner}<div class="row nb-dlg-row"><span class="spacer"></span><button type="button" class="btn" data-x>Cancel</button><button class="btn pri">${H(okLabel)}</button></div></form>`;
+    d.innerHTML=`<form class="nb-dlg-box card"><h3>${H(title)}</h3>${inner}<div class="row nb-dlg-row"><span class="spacer"></span><button type="button" class="btn fb-plain" data-x>Cancel</button><button class="btn pri">${H(okLabel)}</button></div></form>`;
     document.body.appendChild(d);const f=d.querySelector('form'),done=()=>d.remove();
     d.addEventListener('click',e=>{if(e.target===d||e.target.closest('[data-x]'))done()});
     f.addEventListener('keydown',e=>{if(e.key==='Escape'){e.stopPropagation();done()}});
@@ -24437,10 +24495,10 @@ const NOTEBOOK=(()=>{
   function tplPreviews(root){root.querySelectorAll('canvas[data-tpl]').forEach(cv=>{const ctx=cv.getContext('2d');drawTpl(ctx,cv.dataset.tpl,cv.width/W*1.6,1)})}
   function askName(title,v,ok,cb,ph){dlg(title,nameField(v,ph),ok,f=>{const n=f.n.value.trim();if(!n){f.n.focus();return false}cb(n)})}
   function folderPicker(title,kind,id,cb){
-    const opts=[['','Notebook (top level)',0]];const walk=(par,dep)=>{Object.keys(lib.f).filter(k=>live(lib.f[k])&&(lib.f[k].par||'')===par)
+    const opts=[['','All notebooks (top level)',0]];const walk=(par,dep)=>{Object.keys(lib.f).filter(k=>live(lib.f[k])&&(lib.f[k].par||'')===par)
       .sort((a,b)=>lib.f[a].n.localeCompare(lib.f[b].n)).forEach(k=>{if(kind==='f'&&inside(k,id))return;opts.push([k,lib.f[k].n,dep]);walk(k,dep+1)})};walk('',1);
     const cur=(lib[kind][id]||{}).par||'';
-    dlg(title,`<div class="nb-pick">${opts.map(([k,n,dep])=>`<label style="padding-left:${10+dep*16}px"><input type="radio" name="to" value="${H(k)}" ${k===cur?'checked':''}> ${dep?'📁 ':''}${H(n)}</label>`).join('')}</div>`,'Move',f=>cb(f.to.value))}
+    dlg(title,`<div class="nb-pick">${opts.map(([k,n,dep])=>`<label style="padding-left:${10+dep*16}px"><input type="radio" name="to" value="${H(k)}" ${k===cur?'checked':''}> ${H(n)}</label>`).join('')}</div>`,'Move',f=>cb(f.to.value))}
   let menuEl=null;
   function menu(anchor,items){closeMenu();const m=document.createElement('div');m.className='nb-menu nb';
     m.innerHTML=items.map((it,i)=>it?`<button type="button" data-i="${i}" class="${it[2]||''}">${it[0]}</button>`:'<hr>').join('');document.body.appendChild(m);
@@ -24456,7 +24514,7 @@ const NOTEBOOK=(()=>{
     ready.then(()=>{if(libBody!==body)return;renderLib();pull().then(r=>{if(r&&r.changed&&libVisible())renderLib()})})}
   const ago=t=>{const d=(Date.now()-t)/1000;if(d<60)return'just now';if(d<3600)return Math.floor(d/60)+' min ago';if(d<86400)return Math.floor(d/3600)+' h ago';
     if(d<86400*7)return Math.floor(d/86400)+' d ago';return new Date(t).toLocaleDateString(undefined,{month:'short',day:'numeric'})};
-  const mb=n=>n<1048576?(n/1024).toFixed(n<10240?1:0)+' KB':(n/1048576).toFixed(1)+' MB';
+  const mb=n=>!n?'0 KB':n<1048576?(n/1024).toFixed(n<10240?1:0)+' KB':(n/1048576).toFixed(1)+' MB';
   function stText(){const c=code();
     if(!c)return'Only on this device. Set up a sync code to save your notebooks to every device that uses it.';
     if(state==='off')return'Offline. Changes are kept on this device and upload when you reconnect.';
@@ -24470,19 +24528,19 @@ const NOTEBOOK=(()=>{
     for(const id in lib.f){const f=lib.f[id];if(live(f)&&(q?f.n.toLowerCase().includes(q):(f.par||'')===here))F.push([id,f,folderEdited(id)])}
     for(const id in lib.b){const b=lib.b[id];if(live(b)&&(q?b.n.toLowerCase().includes(q):(b.par||'')===here))B.push([id,b,bookEdited(b)])}
     const srt=a=>a.sort(sortBy==='name'?(x,y)=>x[1].n.localeCompare(y[1].n,undefined,{numeric:true}):(x,y)=>y[2]-x[2]);srt(F);srt(B);
-    const crumbs=[['','Notebook']];for(let f=here;f;f=lib.f[f]&&lib.f[f].par)if(lib.f[f])crumbs.splice(1,0,[f,lib.f[f].n]);
+    const crumbs=[['','All notebooks']];for(let f=here;f;f=lib.f[f]&&lib.f[f].par)if(lib.f[f])crumbs.splice(1,0,[f,lib.f[f].n]);
     const count=id=>{let n=0;for(const k in lib.f)if(live(lib.f[k])&&lib.f[k].par===id)n++;for(const k in lib.b)if(live(lib.b[k])&&lib.b[k].par===id)n++;return n};
     libBody.innerHTML=`<div class="nb nb-lib">
       <div class="nb-head"><nav class="nb-crumbs">${q?'<span>Search results</span>':crumbs.map(([id,n],i)=>i<crumbs.length-1?`<button type="button" data-go="${H(id)}">${H(n)}</button><span class="nb-sep">›</span>`:`<span>${H(n)}</span>`).join('')}</nav>
-        <span class="spacer"></span><button class="btn sm" data-nb="folder">＋ Folder</button><button class="btn pri sm" data-nb="book">＋ Notebook</button></div>
+        <span class="spacer"></span><button class="btn sm" data-nb="folder">New folder</button><button class="btn pri sm" data-nb="book">New notebook</button></div>
       <div class="nb-tools"><input type="search" class="nb-in nb-q" placeholder="Search notebooks" value="${H(query)}" aria-label="Search notebooks">
         <span class="spacer"></span><button class="chip ${sortBy==='recent'?'on':''}" data-sort="recent">Recent</button><button class="chip ${sortBy==='name'?'on':''}" data-sort="name">Name</button></div>
       ${F.length+B.length?`<div class="nb-grid">${F.map(([id,f])=>`<div class="nb-tile nb-folder" data-open-f="${H(id)}" tabindex="0" role="button">
           <div class="nb-cover nb-fcover">${FOLDER_SVG}</div><div class="nb-tname">${H(f.n)}</div><div class="nb-tmeta">${count(id)} item${count(id)===1?'':'s'}</div>
-          <button type="button" class="nb-more" data-more="f:${H(id)}" aria-label="Folder options">⋯</button></div>`).join('')}
+          <button type="button" class="nb-more" data-more="f:${H(id)}" aria-label="Folder options">${icon('dots')}</button></div>`).join('')}
         ${B.map(([id,b,t])=>`<div class="nb-tile nb-book" data-open-b="${H(id)}" tabindex="0" role="button">
           <div class="nb-cover"><canvas data-thumb="${H(id)}"></canvas></div><div class="nb-tname">${H(b.n)}</div><div class="nb-tmeta">${(b.pages||[]).length} page${(b.pages||[]).length===1?'':'s'} · ${ago(t)}</div>
-          <button type="button" class="nb-more" data-more="b:${H(id)}" aria-label="Notebook options">⋯</button></div>`).join('')}</div>`
+          <button type="button" class="nb-more" data-more="b:${H(id)}" aria-label="Notebook options">${icon('dots')}</button></div>`).join('')}</div>`
         :`<div class="nb-empty">${q?'No notebooks match that search.':here?'This folder is empty. Add a notebook or a folder.':'Make a notebook to work problems by hand: write with a pen or stylus, highlight, type, and add as many pages as you need. Group notebooks into folders. Everything saves to your sync code.'}</div>`}
       <p class="nb-status meta" data-st="${state||'local'}">${stText()}</p></div>`;
     libBody.querySelectorAll('canvas[data-thumb]').forEach(cv=>{const b=lib.b[cv.dataset.thumb],pid=(b.pages||[])[0];if(pid)getPage(pid).then(pg=>{if(cv.isConnected)thumb(cv,pg)})})}
@@ -24528,12 +24586,12 @@ const NOTEBOOK=(()=>{
         <div class="nbe-grp"><button class="nbe-b" data-a="undo" aria-label="Undo">${ico('undo')}</button><button class="nbe-b" data-a="redo" aria-label="Redo">${ico('redo')}</button></div>
         <div class="nbe-grp nbe-tools">${TOOLS.map(([k,n])=>`<button class="nbe-b" data-tool="${k}" aria-label="${n}" title="${n}">${ico(k)}</button>`).join('')}</div>
         <div class="nbe-grp nbe-opts"></div>
-        <button class="nbe-b" data-a="more" aria-label="Page options">⋯</button></div>
+        <button class="nbe-b" data-a="more" aria-label="Page options">${icon('dots')}</button></div>
       <div class="nbe-body"><div class="nbe-page"><canvas class="nbe-base"></canvas><div class="nbe-mlayer"></div><canvas class="nbe-ink"></canvas>
         <div class="nbe-sel" hidden><div class="nbe-selbar"></div></div></div>
-        <button class="nbe-extend" data-a="extend">＋ Extend this page down</button></div>
+        <button class="nbe-extend" data-a="extend">${icon('plus')} Extend this page down</button></div>
       <div class="nbe-bot"><button class="nbe-b" data-a="prev" aria-label="Previous page">‹</button><button class="nbe-b nbe-pgno" data-a="grid" aria-label="All pages"></button>
-        <button class="nbe-b" data-a="next" aria-label="Next page">›</button><button class="nbe-b nbe-add" data-a="add">＋ Page</button></div>
+        <button class="nbe-b" data-a="next" aria-label="Next page">›</button><button class="nbe-b nbe-add" data-a="add">${icon('plus')} Page</button></div>
       <div class="nbe-pages" hidden></div>`;
     document.body.appendChild(el);
     el.addEventListener('click',edClick);
@@ -25052,18 +25110,18 @@ const MUSIC=(()=>{
     const playing=!audio.paused&&!!audio.src;btn.classList.toggle('on',playing);
     if(panel.hidden)return;
     const ts=tracks(),missing=ts.filter(t=>!local[t.id]).length,size=ts.reduce((a,t)=>a+((cloud[t.id]||local[t.id]||{}).size||0),0);
-    panel.innerHTML=`<div class="mu-head"><b>Focus music</b><span class="mu-sp"></span><button type="button" class="mu-x" data-mu="close" aria-label="Close">×</button></div>
+    panel.innerHTML=`<div class="mu-head"><b>Focus music</b><span class="mu-sp"></span><button type="button" class="mu-x" data-mu="close" aria-label="Close">${icon('x')}</button></div>
       <div class="mu-now">${cur?H(pretty(nameOf(cur)))+(loadingId===cur?' <span class="mu-dim">· loading…</span>':''):'<span class="mu-dim">Shuffle plays your tracks in a random order.</span>'}</div>
       <div class="mu-ctl"><button type="button" data-mu="prev" aria-label="Previous">${ICON.prev}</button>
         <button type="button" class="mu-play" data-mu="toggle" aria-label="${playing?'Pause':'Play'}">${playing?ICON.pause:ICON.play}</button>
         <button type="button" data-mu="next" aria-label="Next">${ICON.next}</button></div>
       ${volumeWorks?`<label class="mu-vol"><span>Volume</span><input type="range" min="0" max="1" step="0.02" value="${audio.volume}" data-mu-vol></label>`:''}
       <div class="mu-list">${ts.length?ts.map(t=>`<div class="mu-row ${t.id===cur?'cur':''}" data-mu-row="${H(t.id)}"><button type="button" class="mu-name" data-mu-play="${H(t.id)}">${H(pretty(t.name))}</button>
-        <span class="mu-st" data-mu-st="${H(t.id)}">${rowStatus(t.id)}</span><button type="button" class="mu-del" data-mu-del="${H(t.id)}" aria-label="Remove">×</button></div>`).join('')
+        <span class="mu-st" data-mu-st="${H(t.id)}">${rowStatus(t.id)}</span><button type="button" class="mu-del" data-mu-del="${H(t.id)}" aria-label="Remove">${icon('x')}</button></div>`).join('')
         :'<p class="mu-dim mu-empty">No music yet. Add MP3 files from this device; they are saved to your sync code so your other devices get them too.</p>'}</div>
       <div class="mu-foot"><label class="mu-add">Add music…<input type="file" accept="audio/*,.mp3,.m4a" multiple hidden data-mu-file></label>
         ${missing&&code()?`<button type="button" class="mu-link" data-mu="all">Download all for offline (${missing})</button>`:''}</div>
-      <p class="mu-note">${msgText?H(msgText):code()?`Saved under your sync code (${ts.length} track${ts.length===1?'':'s'}, ${mb(size)}). Only devices with your code can play them.`:'On this device only. Set up a sync code to keep your music on every device.'}</p>`;
+      <p class="mu-note">${msgText?H(msgText):code()?(ts.length?`Saved under your sync code (${ts.length} track${ts.length===1?'':'s'}, ${mb(size)}). Only devices with your code can play them.`:'Tracks you add are saved under your sync code. Only devices with your code can play them.'):'On this device only. Set up a sync code to keep your music on every device.'}</p>`;
   }
   function paintRow(id){const el=panel.querySelector(`[data-mu-st="${CSS.escape(id)}"]`);if(el)el.textContent=rowStatus(id)}
   btn.addEventListener('click',e=>{e.stopPropagation();panel.hidden?open():close()});
@@ -25075,6 +25133,9 @@ const MUSIC=(()=>{
   panel.addEventListener('change',e=>{if(e.target.matches('[data-mu-file]')){addFiles([...e.target.files]);e.target.value=''}});
   document.addEventListener('click',e=>{if(!panel.hidden&&!panel.contains(e.target)&&e.target!==btn)close()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden)close()});
+  let lastY=window.scrollY;
+  window.addEventListener('scroll',()=>{const y=window.scrollY,d=y-lastY;if(Math.abs(d)<8)return;
+    btn.classList.toggle('mu-away',d>0&&y>160&&panel.hidden);lastY=y},{passive:true});
 
   /* music that was playing keeps going after a reload; browsers need one tap before sound can start */
   if(pref.on){const resume=e=>{if(btn.contains(e.target)||panel.contains(e.target))return;document.removeEventListener('pointerdown',resume,true);
@@ -25095,11 +25156,11 @@ function subStats(sub){const set=SETS[sub]||[];let done=0,ok=0;for(const it of s
 function topicStats(t){let done=0,ok=0,total=0;for(const s of t.subs){const st=subStats(s.id);done+=st.done;ok+=st.ok;total+=st.total}return{done,ok,total}}
 
 /* ====================== UI ====================== */
-let app,crumbs,timerHandle=null,keyHandler=null;
+let app,crumbs,timerHandle=null,keyHandler=null,mockLive=false;   // mockLive: a mock test is in progress
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const L='ABCDE';
 function renderMath(el){if(window.renderMathInElement){try{renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})}catch(e){}}}
-function setCrumbs(parts){crumbs.innerHTML=parts.map(p=>p[1]?`<a href="${p[1]}">${esc(p[0])}</a>`:esc(p[0])).join(' &nbsp;›&nbsp; ')}
+function setCrumbs(parts){crumbs.innerHTML=parts.map(p=>p[1]?`<a href="${p[1]}">${esc(p[0])}</a>`:esc(p[0])).join(' &nbsp;›&nbsp; ');crumbs.scrollLeft=crumbs.scrollWidth}
 function cleanup(){if(window.__graphOff)window.__graphOff();if(timerHandle){clearInterval(timerHandle);timerHandle=null}if(keyHandler){document.removeEventListener('keydown',keyHandler);keyHandler=null}}
 const stars=l=>'★'.repeat(l)+'☆'.repeat(3-l);
 const fmtTime=s=>{s=Math.max(0,Math.round(s));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
@@ -25135,7 +25196,7 @@ function routeTo(){
   window.scrollTo(0,0);
   const landing=h.length===0,was=document.body.classList.contains('landing');
   if(was!==landing&&routeTo.ran)fadeLanding(landing);                 // cross-fade between the timer screen and studying
-  routeTo.ran=true;document.body.classList.toggle('landing',landing);if(typeof TM!=='undefined')TM.show(landing);
+  routeTo.ran=true;document.body.classList.toggle('landing',landing);if(typeof TM!=='undefined'){TM.show(landing);if(!landing&&TM.closeSheet)TM.closeSheet(true)}
   document.body.classList.toggle('nb-only',h[0]==='notebooks');
   if(landing)return;
   if(h[0]==='notebooks')return notebooksPage();
@@ -25156,7 +25217,7 @@ function trackStats(id){let total=0,done=0,ok=0;for(const t of TOPICS)if(t.track
 function hub(){
   setCrumbs([['Home']]);
   const card=tr=>{const st=trackStats(tr.id);const ts=TOPICS.filter(t=>t.track===tr.id);const ns=ts.reduce((a,t)=>a+t.subs.length,0);
-    return`<button class="card tile big" onclick="location.hash='#/${tr.id}'"><span class="num">${tr.id==='amc'?'Contest prep':'Course'}</span><span class="t">${esc(tr.name)}</span><span class="d">${esc(tr.d)}</span>
+    return`<button class="card tile big" onclick="location.hash='#/${tr.id}'"><span class="t">${esc(tr.name)}</span><span class="d">${esc(tr.d)}</span>
     <span class="meta">${ts.length} ${tr.id==='pc'?'chapters':'topics'} · ${ns} ${tr.id==='pc'?'sections':'subtopics'} · ${st.total.toLocaleString()} problems · ${st.done} attempted${st.done?' · '+Math.round(st.ok/st.done*100)+'% correct':''}</span>
     <span class="bar"><i style="width:${st.total?st.done/st.total*100:0}%"></i></span></button>`};
   app.innerHTML=`<h1>What are you studying?</h1><p class="sub">Pick a track. Your progress in both is saved to your code and synced across your devices.</p>
@@ -25177,8 +25238,8 @@ function amcHome(){
   let all=0,allDone=0;for(const t of shown){const st=topicStats(t);all+=st.total;allDone+=st.done}
   const tag=t=>lv==='both'?'AMC '+t.amc:L_.name;
   const tile=t=>{const st=topicStats(t);return`<button class="card tile" onclick="location.hash='#/t/${t.id}'">
-    <span class="num">${tag(t)}</span><span class="t">${esc(t.name)}</span><span class="d">${esc(t.d)}</span>
-    <span class="meta">${t.subs.length} subtopics · ${st.total} problems · ${st.done} attempted</span><span class="bar"><i style="width:${st.total?st.done/st.total*100:0}%"></i></span></button>`};
+    <span class="t">${esc(t.name)}</span><span class="d">${esc(t.d)}</span>
+    <span class="meta">${tag(t)} · ${t.subs.length} subtopics · ${st.total} problems · ${st.done} attempted</span><span class="bar"><i style="width:${st.total?st.done/st.total*100:0}%"></i></span></button>`};
   const mockTile=k=>{const m=MOCKS[k];const last=PROG.mock.filter(x=>x.topic===k).pop();
     return`<button class="card tile mock" onclick="location.hash='#/mock/${k}'"><span class="t">${esc(m.name)}</span>
     <span class="d">${esc(m.d)} Real AMC scoring (6 / 1.5 / 0).</span><span class="meta">${last?'Last score: '+last.score+' / 150':'Not taken yet'}</span></button>`};
@@ -25201,7 +25262,7 @@ function amcHome(){
 function pcHome(){
   setCrumbs([['Home','#/home'],['Precalculus']]);
   const tile=t=>{const st=topicStats(t);return`<button class="card tile" onclick="location.hash='#/t/${t.id}'">
-    <span class="num">Chapter ${t.ch}</span><span class="t">${esc(t.name)}</span><span class="d">${esc(t.d)}</span>
+    <span class="t"><span class="secno">${t.ch}</span> ${esc(t.name)}</span><span class="d">${esc(t.d)}</span>
     <span class="meta">${t.subs.length} sections · ${st.total} problems · ${st.done} attempted</span><span class="bar"><i style="width:${st.total?st.done/st.total*100:0}%"></i></span></button>`};
   app.innerHTML=`<h1>General Precalculus</h1><p class="sub">${esc(PC_CATALOG[0].note)}</p>`+
    PC_CATALOG.map(sec=>`<div class="grid two">${sec.items.map(tile).join('')}</div>`).join('');
@@ -25210,14 +25271,14 @@ function pcHome(){
 function topicPage(t){
   setCrumbs([['Home','#/home'],trackCrumb(t),[t.name]]);const pc=t.track==='pc';
   const cards=t.subs.map((s,i)=>{const st=subStats(s.id);return`<button class="card tile" onclick="location.hash='#/s/${s.id}/lesson'">
-    <span class="num">${s.id==='mixed'?'Challenge':pc?(s.sec?'Section '+s.sec:'Test review'):'Subtopic '+(i+1)}</span><span class="t">${esc(s.name)}</span><span class="d">${esc(s.d)}</span>
+    <span class="t">${(n=>n?`<span class="secno">${n}</span> `:'')(s.id==='mixed'?'':pc?s.sec||'':i+1)}${esc(s.name)}</span><span class="d">${esc(s.d)}</span>
     <span class="meta">${st.total} problems · ${st.done} attempted · ${st.done?Math.round(st.ok/st.done*100)+'% correct':'not started'}</span>
     <span class="bar"><i style="width:${st.total?st.done/st.total*100:0}%"></i></span></button>`}).join('');
   const last=PROG.mock.filter(m=>(m.topic||'seq')===t.id).pop();
   app.innerHTML=`<h1>${pc?'Chapter '+t.ch+': ':''}${esc(t.name)}</h1><p class="sub">${esc(t.d)} Work through the ${pc?'sections':'subtopics'} in order: read the lesson, do the problem set, then work it out in your notebook. Finish with the ${mockKey(t).toLowerCase()}.</p>
   ${pc&&typeof BOOKS!=='undefined'?BOOKS.chapterCard(t.id):''}
   <div class="grid">${cards}
-  <button class="card tile mock" onclick="location.hash='#/mock/${t.id}'"><span class="num">${mockKey(t)}</span><span class="t">${esc(t.name)} ${pc?'Chapter Test':'Mock Test'}</span>
+  <button class="card tile mock" onclick="location.hash='#/mock/${t.id}'"><span class="t">${esc(t.name)} ${pc?'Chapter Test':'Mock Test'}</span>
   <span class="d">25 questions in 75 minutes, ordered easy to hard, with AMC-style scoring (6 / 1.5 / 0).</span>
   <span class="meta">${last?'Last score: '+last.score+' / 150':'Not taken yet'}</span></button></div>
   <div class="row" style="margin-top:18px"><button class="btn fb-back" onclick="location.hash='${trackCrumb(t)[1]}'">All ${pc?'chapters':'topics'}</button></div>`;
@@ -25245,7 +25306,7 @@ let tabSlide=null;                                              // 'next' | 'pre
 function tabArrows(sid,tab){
   const i=SUB_TABS.findIndex(x=>x[0]===tab),pv=SUB_TABS[i-1],nx=SUB_TABS[i+1];
   const a=(t,dir,ch)=>t?`<button class="tab-arrow ${dir}" type="button" data-go="${dir}" aria-label="${esc(t[1])}"><span class="ta-ch">${ch}</span><span class="ta-lbl">${esc(t[1])}</span></button>`:'';
-  return a(pv,'prev','‹')+a(nx,'next','›');
+  return a(pv,'prev',icon('chevL'))+a(nx,'next',icon('chevR'));
 }
 function curSubTab(){const m=location.hash.match(/^#\/s\/([^/]+)(?:\/(\w+))?/);if(!m||!subById(m[1]))return null;
   const i=Math.max(0,SUB_TABS.findIndex(x=>x[0]===(m[2]||'lesson')));return{sid:m[1],i}}
@@ -25319,7 +25380,7 @@ function cardHTML(it,num,opts={}){
    <div class="ptext">${it.q}</div>
    <div class="choices${it.choices.some(c=>/\\begin|<table|<svg/.test(c)||c.length>70)?' wide':''}">${it.choices.map((c,i)=>`<button class="ch" data-i="${i}"><b>(${L[i]})</b><span>${c}</span></button>`).join('')}</div>
    <div class="fb">${opts.giveUp?GIVEUP:''}</div>
-   <div class="sol" hidden><div class="sol-acts"><button class="hist-btn" type="button" hidden title="Show the wrong answers you picked before">History</button><button class="ai-btn" type="button" title="Open Google AI Mode in a new tab to explain this problem">✦ Ask AI</button></div><details><summary>Show full solution</summary><div class="solbody">${it.sol}</div></details><div class="hist-box" hidden></div></div>
+   <div class="sol" hidden><div class="sol-acts"><button class="hist-btn" type="button" hidden title="Show the wrong answers you picked before">History</button><button class="ai-btn" type="button" title="Open Google AI Mode in a new tab to explain this problem">Ask AI</button></div><details><summary>Show full solution</summary><div class="solbody">${it.sol}</div></details><div class="hist-box" hidden></div></div>
   </div>`;
 }
 /* hist = earlier wrong picks (problem sets only); a correct answer after misses gets a History button */
@@ -25341,7 +25402,7 @@ const flash=el=>{el.classList.remove('just');void el.offsetWidth;el.classList.ad
 function wrongCard(el,it,p){
   el.querySelectorAll('.ch').forEach(b=>{const i=+b.dataset.i;b.disabled=true;b.classList.remove('sel','right','wrong');if(i===p.c)b.classList.add('wrong')});
   const fb=el.querySelector('.fb');fb.className='fb no';
-  fb.innerHTML=(p.c<0?'You gave up.':'Not quite.')+' <span class="fb-acts"><button class="retry-btn" type="button">↻ Try again</button><button class="show-btn" type="button">Show answer</button></span>';
+  fb.innerHTML=(p.c<0?'You gave up.':'Not quite.')+' <span class="fb-acts"><button class="retry-btn" type="button">Try again</button><button class="show-btn" type="button">Show answer</button></span>';
   el.querySelector('.status').innerHTML='<span class="pill no">Missed'+(p.w.length>1?' ×'+p.w.length:'')+'</span>';
   el.querySelector('.sol').hidden=true;
 }
@@ -25370,7 +25431,7 @@ function setView(sid,body){
     if(p.c===it.ans)revealCard(card,it,p.c,false,w);
     else if(p.show){revealCard(card,it,p.c<0?-1:p.c,fresh,w);const fb=card.querySelector('.fb');
       if(p.c<0){fb.textContent='You gave up. The answer is ('+L[it.ans]+').';card.querySelector('.status').innerHTML='<span class="pill no">Gave up</span>'}
-      fb.insertAdjacentHTML('beforeend',' <span class="fb-acts"><button class="retry-btn" type="button">↻ Try again</button></span>')}
+      fb.insertAdjacentHTML('beforeend',' <span class="fb-acts"><button class="retry-btn" type="button">Try again</button></span>')}
     else wrongCard(card,it,{...p,w});
   }
   list.addEventListener('click',e=>{
@@ -25439,11 +25500,12 @@ function startMock(scope){
     ans[qi]=ans[qi]===i?null:i;card.querySelectorAll('.ch').forEach(x=>x.classList.toggle('sel',+x.dataset.i===ans[qi]));
     app.querySelector('#mans').textContent=ans.filter(x=>x!==null).length+'/'+N+' answered'});
   const tEl=app.querySelector('#mtimer');
-  const tick=()=>{const left=total-(Date.now()-t0)/1000;tEl.textContent='⏱ '+fmtTime(left);tEl.classList.toggle('low',left<300);if(left<=0){finish(true)}};tick();timerHandle=setInterval(tick,1000);
+  mockLive=true;
+  const tick=()=>{const left=total-(Date.now()-t0)/1000;tEl.textContent=fmtTime(left);tEl.classList.toggle('low',left<300);if(left<=0){finish(true)}};tick();timerHandle=setInterval(tick,1000);
   const ask=()=>{const blanks=ans.filter(x=>x===null).length;if(confirm(blanks?`Submit with ${blanks} blank answer(s)?`:'Submit your test?'))finish(false)};
   app.querySelector('#msubmit').onclick=ask;app.querySelector('#msubmit2').onclick=ask;
   function finish(timeUp){
-    cleanup();let ok=0,blank=0;items.forEach((it,i)=>{if(ans[i]===null)blank++;else if(ans[i]===it.ans)ok++});const wrong=N-ok-blank;const score=ok*6+blank*1.5;
+    mockLive=false;cleanup();let ok=0,blank=0;items.forEach((it,i)=>{if(ans[i]===null)blank++;else if(ans[i]===it.ans)ok++});const wrong=N-ok-blank;const score=ok*6+blank*1.5;
     PROG.mock.push({at:Date.now(),score,ok,blank,topic:scope});saveProg();
     const secs=Math.min(total,(Date.now()-t0)/1000);
     const groups=t?t.subs.map(s=>[s.name,it=>it.sub===s.id]):M.topics().map(x=>[x.name,it=>subById(it.sub).topic===x.id]);
@@ -25461,7 +25523,12 @@ function startMock(scope){
 if(typeof document!=='undefined'&&document.getElementById('bank')){
   app=document.getElementById('app');crumbs=document.getElementById('crumbs');
   loadData(document.getElementById('bank').textContent);loadProg();
-  window.addEventListener('hashchange',route);route();
+  let lastHash=location.hash;
+  window.addEventListener('hashchange',()=>{
+    if(mockLive&&!confirm('Leave this mock test? Your answers so far will be lost.')){history.replaceState(null,'',lastHash||'#/home');return}
+    mockLive=false;lastHash=location.hash;route()});
+  window.addEventListener('beforeunload',e=>{if(mockLive){e.preventDefault();e.returnValue=''}});
+  route();
 }
 
 /* ====================== cloud sync (Firebase Realtime Database, REST) ======================

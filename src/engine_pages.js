@@ -6,11 +6,11 @@ function subStats(sub){const set=SETS[sub]||[];let done=0,ok=0;for(const it of s
 function topicStats(t){let done=0,ok=0,total=0;for(const s of t.subs){const st=subStats(s.id);done+=st.done;ok+=st.ok;total+=st.total}return{done,ok,total}}
 
 /* ====================== UI ====================== */
-let app,crumbs,timerHandle=null,keyHandler=null;
+let app,crumbs,timerHandle=null,keyHandler=null,mockLive=false;   // mockLive: a mock test is in progress
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const L='ABCDE';
 function renderMath(el){if(window.renderMathInElement){try{renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})}catch(e){}}}
-function setCrumbs(parts){crumbs.innerHTML=parts.map(p=>p[1]?`<a href="${p[1]}">${esc(p[0])}</a>`:esc(p[0])).join(' &nbsp;›&nbsp; ')}
+function setCrumbs(parts){crumbs.innerHTML=parts.map(p=>p[1]?`<a href="${p[1]}">${esc(p[0])}</a>`:esc(p[0])).join(' &nbsp;›&nbsp; ');crumbs.scrollLeft=crumbs.scrollWidth}
 function cleanup(){if(window.__graphOff)window.__graphOff();if(timerHandle){clearInterval(timerHandle);timerHandle=null}if(keyHandler){document.removeEventListener('keydown',keyHandler);keyHandler=null}}
 const stars=l=>'★'.repeat(l)+'☆'.repeat(3-l);
 const fmtTime=s=>{s=Math.max(0,Math.round(s));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
@@ -46,7 +46,7 @@ function routeTo(){
   window.scrollTo(0,0);
   const landing=h.length===0,was=document.body.classList.contains('landing');
   if(was!==landing&&routeTo.ran)fadeLanding(landing);                 // cross-fade between the timer screen and studying
-  routeTo.ran=true;document.body.classList.toggle('landing',landing);if(typeof TM!=='undefined')TM.show(landing);
+  routeTo.ran=true;document.body.classList.toggle('landing',landing);if(typeof TM!=='undefined'){TM.show(landing);if(!landing&&TM.closeSheet)TM.closeSheet(true)}
   document.body.classList.toggle('nb-only',h[0]==='notebooks');
   if(landing)return;
   if(h[0]==='notebooks')return notebooksPage();
@@ -67,7 +67,7 @@ function trackStats(id){let total=0,done=0,ok=0;for(const t of TOPICS)if(t.track
 function hub(){
   setCrumbs([['Home']]);
   const card=tr=>{const st=trackStats(tr.id);const ts=TOPICS.filter(t=>t.track===tr.id);const ns=ts.reduce((a,t)=>a+t.subs.length,0);
-    return`<button class="card tile big" onclick="location.hash='#/${tr.id}'"><span class="num">${tr.id==='amc'?'Contest prep':'Course'}</span><span class="t">${esc(tr.name)}</span><span class="d">${esc(tr.d)}</span>
+    return`<button class="card tile big" onclick="location.hash='#/${tr.id}'"><span class="t">${esc(tr.name)}</span><span class="d">${esc(tr.d)}</span>
     <span class="meta">${ts.length} ${tr.id==='pc'?'chapters':'topics'} · ${ns} ${tr.id==='pc'?'sections':'subtopics'} · ${st.total.toLocaleString()} problems · ${st.done} attempted${st.done?' · '+Math.round(st.ok/st.done*100)+'% correct':''}</span>
     <span class="bar"><i style="width:${st.total?st.done/st.total*100:0}%"></i></span></button>`};
   app.innerHTML=`<h1>What are you studying?</h1><p class="sub">Pick a track. Your progress in both is saved to your code and synced across your devices.</p>
@@ -88,8 +88,8 @@ function amcHome(){
   let all=0,allDone=0;for(const t of shown){const st=topicStats(t);all+=st.total;allDone+=st.done}
   const tag=t=>lv==='both'?'AMC '+t.amc:L_.name;
   const tile=t=>{const st=topicStats(t);return`<button class="card tile" onclick="location.hash='#/t/${t.id}'">
-    <span class="num">${tag(t)}</span><span class="t">${esc(t.name)}</span><span class="d">${esc(t.d)}</span>
-    <span class="meta">${t.subs.length} subtopics · ${st.total} problems · ${st.done} attempted</span><span class="bar"><i style="width:${st.total?st.done/st.total*100:0}%"></i></span></button>`};
+    <span class="t">${esc(t.name)}</span><span class="d">${esc(t.d)}</span>
+    <span class="meta">${tag(t)} · ${t.subs.length} subtopics · ${st.total} problems · ${st.done} attempted</span><span class="bar"><i style="width:${st.total?st.done/st.total*100:0}%"></i></span></button>`};
   const mockTile=k=>{const m=MOCKS[k];const last=PROG.mock.filter(x=>x.topic===k).pop();
     return`<button class="card tile mock" onclick="location.hash='#/mock/${k}'"><span class="t">${esc(m.name)}</span>
     <span class="d">${esc(m.d)} Real AMC scoring (6 / 1.5 / 0).</span><span class="meta">${last?'Last score: '+last.score+' / 150':'Not taken yet'}</span></button>`};
@@ -112,7 +112,7 @@ function amcHome(){
 function pcHome(){
   setCrumbs([['Home','#/home'],['Precalculus']]);
   const tile=t=>{const st=topicStats(t);return`<button class="card tile" onclick="location.hash='#/t/${t.id}'">
-    <span class="num">Chapter ${t.ch}</span><span class="t">${esc(t.name)}</span><span class="d">${esc(t.d)}</span>
+    <span class="t"><span class="secno">${t.ch}</span> ${esc(t.name)}</span><span class="d">${esc(t.d)}</span>
     <span class="meta">${t.subs.length} sections · ${st.total} problems · ${st.done} attempted</span><span class="bar"><i style="width:${st.total?st.done/st.total*100:0}%"></i></span></button>`};
   app.innerHTML=`<h1>General Precalculus</h1><p class="sub">${esc(PC_CATALOG[0].note)}</p>`+
    PC_CATALOG.map(sec=>`<div class="grid two">${sec.items.map(tile).join('')}</div>`).join('');
@@ -121,14 +121,14 @@ function pcHome(){
 function topicPage(t){
   setCrumbs([['Home','#/home'],trackCrumb(t),[t.name]]);const pc=t.track==='pc';
   const cards=t.subs.map((s,i)=>{const st=subStats(s.id);return`<button class="card tile" onclick="location.hash='#/s/${s.id}/lesson'">
-    <span class="num">${s.id==='mixed'?'Challenge':pc?(s.sec?'Section '+s.sec:'Test review'):'Subtopic '+(i+1)}</span><span class="t">${esc(s.name)}</span><span class="d">${esc(s.d)}</span>
+    <span class="t">${(n=>n?`<span class="secno">${n}</span> `:'')(s.id==='mixed'?'':pc?s.sec||'':i+1)}${esc(s.name)}</span><span class="d">${esc(s.d)}</span>
     <span class="meta">${st.total} problems · ${st.done} attempted · ${st.done?Math.round(st.ok/st.done*100)+'% correct':'not started'}</span>
     <span class="bar"><i style="width:${st.total?st.done/st.total*100:0}%"></i></span></button>`}).join('');
   const last=PROG.mock.filter(m=>(m.topic||'seq')===t.id).pop();
   app.innerHTML=`<h1>${pc?'Chapter '+t.ch+': ':''}${esc(t.name)}</h1><p class="sub">${esc(t.d)} Work through the ${pc?'sections':'subtopics'} in order: read the lesson, do the problem set, then work it out in your notebook. Finish with the ${mockKey(t).toLowerCase()}.</p>
   ${pc&&typeof BOOKS!=='undefined'?BOOKS.chapterCard(t.id):''}
   <div class="grid">${cards}
-  <button class="card tile mock" onclick="location.hash='#/mock/${t.id}'"><span class="num">${mockKey(t)}</span><span class="t">${esc(t.name)} ${pc?'Chapter Test':'Mock Test'}</span>
+  <button class="card tile mock" onclick="location.hash='#/mock/${t.id}'"><span class="t">${esc(t.name)} ${pc?'Chapter Test':'Mock Test'}</span>
   <span class="d">25 questions in 75 minutes, ordered easy to hard, with AMC-style scoring (6 / 1.5 / 0).</span>
   <span class="meta">${last?'Last score: '+last.score+' / 150':'Not taken yet'}</span></button></div>
   <div class="row" style="margin-top:18px"><button class="btn fb-back" onclick="location.hash='${trackCrumb(t)[1]}'">All ${pc?'chapters':'topics'}</button></div>`;
@@ -156,7 +156,7 @@ let tabSlide=null;                                              // 'next' | 'pre
 function tabArrows(sid,tab){
   const i=SUB_TABS.findIndex(x=>x[0]===tab),pv=SUB_TABS[i-1],nx=SUB_TABS[i+1];
   const a=(t,dir,ch)=>t?`<button class="tab-arrow ${dir}" type="button" data-go="${dir}" aria-label="${esc(t[1])}"><span class="ta-ch">${ch}</span><span class="ta-lbl">${esc(t[1])}</span></button>`:'';
-  return a(pv,'prev','‹')+a(nx,'next','›');
+  return a(pv,'prev',icon('chevL'))+a(nx,'next',icon('chevR'));
 }
 function curSubTab(){const m=location.hash.match(/^#\/s\/([^/]+)(?:\/(\w+))?/);if(!m||!subById(m[1]))return null;
   const i=Math.max(0,SUB_TABS.findIndex(x=>x[0]===(m[2]||'lesson')));return{sid:m[1],i}}
