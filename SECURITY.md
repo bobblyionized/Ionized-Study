@@ -1,6 +1,6 @@
 # Security notes
 
-Ionized Study is a static single-page site (GitHub Pages) that syncs through Firebase Realtime Database over REST, plus an iOS app that shows the same page offline ([Ionized-Study-iOS](https://github.com/bobblyionized/Ionized-Study-iOS)). There is no server of our own, no accounts, no passwords and no API keys.
+Ionized Study is a static single-page site (GitHub Pages) that syncs through Firebase Realtime Database over REST. There is no server of our own, no accounts, no passwords and no API keys.
 
 ## How access works
 

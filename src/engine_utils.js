@@ -84,9 +84,8 @@ function sqd(n){let k=1,m=n;for(let i=2;i*i<=m;i++)while(m%(i*i)===0){m/=i*i;k*=
 const safeKey=k=>typeof k==='string'&&!/^(__proto__|constructor|prototype)$/.test(k);
 const safeId=k=>typeof k==='string'&&/^[A-Za-z0-9_-]{1,64}$/.test(k);
 const safeColor=c=>typeof c==='string'&&/^#[0-9a-fA-F]{3,8}$/.test(c);
-/* fingerprints of the libraries loaded on demand: a changed or tampered copy is refused by the browser.
-   The iOS app serves its own HTTPS-downloaded copies from ionized://, so it skips the browser check. */
-const SRI=typeof location!=='undefined'&&location.protocol==='ionized:'?{}:{
+/* fingerprints of the libraries loaded on demand: a changed or tampered copy is refused by the browser */
+const SRI={
   'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js':'sha384-/1qUCSGwTur9vjf/z9lmu/eCUYbpOTgSjmpbMQZ1/CtX2v/WcAIKqRv+U1DUCG6e',
   'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js':'sha384-1H217gwSVyLSIfaLxHbE7dRb3v4mYCKbpQvzx0cegeju1MVsGrX5xXxAvs/HgeFs',
   'https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.css':'sha384-HE6mLTh5BORvU8h5XUAu/rs2s1+04dQTYoMsAAQd7wK5DtzQVFjtQdEtaPXtoeh3',
