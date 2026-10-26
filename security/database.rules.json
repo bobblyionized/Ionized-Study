@@ -1,0 +1,40 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "codes": {
+      "$code": {
+        ".read": "$code.matches(/^[ABCDEFGHJKMNPQRSTUVWXYZ23456789]{8}$/)",
+        ".write": "$code.matches(/^[ABCDEFGHJKMNPQRSTUVWXYZ23456789]{8}$/)",
+        "created": { ".validate": "newData.isNumber()" },
+        "updated": { ".validate": "newData.isNumber()" },
+        "q":    { "$k": { ".validate": "$k.length <= 100" } },
+        "pr":   { "$k": { ".validate": "$k.length <= 100" } },
+        "mock": { "$k": { ".validate": "$k.length <= 40" } },
+        "hist": { "$k": { ".validate": "$k.length <= 40" } },
+        "set":  { "$k": { ".validate": "$k.length <= 20" } },
+        "pdf": {
+          "meta": { "$k": { ".validate": "newData.hasChildren(['n', 'at'])" } },
+          "data": { "$k": { "$i": { ".validate": "newData.isString() && newData.val().length <= 600000" } } },
+          "$other": { ".validate": false }
+        },
+        "music": {
+          "meta": { "$id": { ".validate": "$id.length <= 64 && newData.hasChildren(['at'])" } },
+          "data": { "$id": { "$i": { ".validate": "newData.isString() && newData.val().length <= 600000" } } },
+          "$other": { ".validate": false }
+        },
+        "nb": {
+          "lib": {
+            "$kind": {
+              ".validate": "$kind.matches(/^[fbp]$/)",
+              "$id": { ".validate": "$id.length <= 64 && newData.hasChildren(['at'])" }
+            }
+          },
+          "pg": { "$id": { ".validate": "$id.length <= 64 && newData.isString() && newData.val().length <= 9000000" } },
+          "$other": { ".validate": false }
+        },
+        "$other": { ".validate": false }
+      }
+    }
+  }
+}

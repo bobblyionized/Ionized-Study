@@ -67,7 +67,7 @@ const SYNC=(()=>{
       localStorage.setItem('amcprep.blocknames',JSON.stringify(bn))}catch(e){}
     document.dispatchEvent(new Event('amcprep:settings'));
   }
-  function remoteMap(d){const o=empty();d=d||{};for(const c of CATS){const s=d[c]||{};for(const k in s)o[c][k]=J(s[k])}return o}
+  function remoteMap(d){const o=empty();d=d||{};for(const c of CATS){const s=d[c]||{};for(const k in s)if(safeKey(k))o[c][k]=J(s[k])}return o}
   function merge3(L,R,B){
     const out=empty();
     for(const c of CATS){

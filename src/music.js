@@ -30,7 +30,8 @@ const MUSIC=(()=>{
     const r=await fetch(`${FB}/codes/${c}/music/${path}.json`,{method:method||'GET',cache:'no-store',
       headers:body===undefined?{}:{'Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body)});
     if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}
-  async function loadCloud(){if(!code())return;try{cloud=(await rest('meta'))||{}}catch(e){return}
+  async function loadCloud(){if(!code())return;let m;try{m=(await rest('meta'))||{}}catch(e){return}
+    cloud={};for(const k in m)if(safeId(k)&&m[k]&&typeof m[k]==='object')cloud[k]=m[k];
     for(const id in local){if(cloud[id]&&cloud[id].del){idel(id);delete local[id]}else if(!cloud[id])queueUpload(id)}paint()}
   const b64of=blob=>new Promise((ok,no)=>{const fr=new FileReader();fr.onload=()=>ok(String(fr.result).split(',')[1]||'');fr.onerror=()=>no(fr.error);fr.readAsDataURL(blob)});
   function setBusy(id,v){if(v)busy[id]=v;else delete busy[id];paintRow(id)}
@@ -125,14 +126,14 @@ const MUSIC=(()=>{
         <button type="button" class="mu-play" data-mu="toggle" aria-label="${playing?'Pause':'Play'}">${playing?ICON.pause:ICON.play}</button>
         <button type="button" data-mu="next" aria-label="Next">${ICON.next}</button></div>
       ${volumeWorks?`<label class="mu-vol"><span>Volume</span><input type="range" min="0" max="1" step="0.02" value="${audio.volume}" data-mu-vol></label>`:''}
-      <div class="mu-list">${ts.length?ts.map(t=>`<div class="mu-row ${t.id===cur?'cur':''}" data-mu-row="${t.id}"><button type="button" class="mu-name" data-mu-play="${t.id}">${H(pretty(t.name))}</button>
-        <span class="mu-st" data-mu-st="${t.id}">${rowStatus(t.id)}</span><button type="button" class="mu-del" data-mu-del="${t.id}" aria-label="Remove">×</button></div>`).join('')
+      <div class="mu-list">${ts.length?ts.map(t=>`<div class="mu-row ${t.id===cur?'cur':''}" data-mu-row="${H(t.id)}"><button type="button" class="mu-name" data-mu-play="${H(t.id)}">${H(pretty(t.name))}</button>
+        <span class="mu-st" data-mu-st="${H(t.id)}">${rowStatus(t.id)}</span><button type="button" class="mu-del" data-mu-del="${H(t.id)}" aria-label="Remove">×</button></div>`).join('')
         :'<p class="mu-dim mu-empty">No music yet. Add MP3 files from this device; they are saved to your sync code so your other devices get them too.</p>'}</div>
       <div class="mu-foot"><label class="mu-add">Add music…<input type="file" accept="audio/*,.mp3,.m4a" multiple hidden data-mu-file></label>
         ${missing&&code()?`<button type="button" class="mu-link" data-mu="all">Download all for offline (${missing})</button>`:''}</div>
       <p class="mu-note">${msgText?H(msgText):code()?`Saved under your sync code (${ts.length} track${ts.length===1?'':'s'}, ${mb(size)}). Only devices with your code can play them.`:'On this device only. Set up a sync code to keep your music on every device.'}</p>`;
   }
-  function paintRow(id){const el=panel.querySelector(`[data-mu-st="${id}"]`);if(el)el.textContent=rowStatus(id)}
+  function paintRow(id){const el=panel.querySelector(`[data-mu-st="${CSS.escape(id)}"]`);if(el)el.textContent=rowStatus(id)}
   btn.addEventListener('click',e=>{e.stopPropagation();panel.hidden?open():close()});
   panel.addEventListener('click',e=>{e.stopPropagation();const a=e.target.closest('[data-mu]');
     if(a){const k=a.dataset.mu;if(k==='close')close();else if(k==='toggle')toggle();else if(k==='next')next();else if(k==='prev')prev();else if(k==='all')downloadAll();return}

@@ -196,7 +196,7 @@ const TM = (() => {
     $('tmPause').classList.toggle('hidden', !active);
     $('tmEnd').classList.toggle('hidden', !active);
     $('tmPause').textContent = $('tmwPause').textContent = state.paused ? 'Resume' : 'Pause';
-    const go = $('tmGo'); go.textContent = active ? 'Back to studying →' : 'Browse topics without a timer'; go.classList.toggle('primary', active);
+    const go = $('tmGo'); go.textContent = active ? 'Back to studying' : 'Browse topics without a timer'; go.classList.toggle('primary', active);
     const w = $('tmw');
     w.hidden = !active || onLanding;
     w.classList.toggle('focus', focus && !state.paused);

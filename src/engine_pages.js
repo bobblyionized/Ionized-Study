@@ -61,7 +61,7 @@ function routeTo(){
 
 /* the Notebooks page opened from the timer screen: just the notebook library and a way back */
 function notebooksPage(){setCrumbs([['Notebooks']]);
-  app.innerHTML=`<a class="nb-back" href="#/" title="Back to the timer menu">&larr; Timer</a><div id="nbStand"></div>`;NOTEBOOK.view(document.getElementById('nbStand'))}
+  app.innerHTML=`<a class="nb-back" href="#/" title="Back to the timer menu">Timer</a><div id="nbStand"></div>`;NOTEBOOK.view(document.getElementById('nbStand'))}
 
 function trackStats(id){let total=0,done=0,ok=0;for(const t of TOPICS)if(t.track===id){const st=topicStats(t);total+=st.total;done+=st.done;ok+=st.ok}return{total,done,ok}}
 function hub(){
@@ -131,7 +131,7 @@ function topicPage(t){
   <button class="card tile mock" onclick="location.hash='#/mock/${t.id}'"><span class="num">${mockKey(t)}</span><span class="t">${esc(t.name)} ${pc?'Chapter Test':'Mock Test'}</span>
   <span class="d">25 questions in 75 minutes, ordered easy to hard, with AMC-style scoring (6 / 1.5 / 0).</span>
   <span class="meta">${last?'Last score: '+last.score+' / 150':'Not taken yet'}</span></button></div>
-  <div class="row" style="margin-top:18px"><button class="btn" onclick="location.hash='${trackCrumb(t)[1]}'">← All ${pc?'chapters':'topics'}</button></div>`;
+  <div class="row" style="margin-top:18px"><button class="btn fb-back" onclick="location.hash='${trackCrumb(t)[1]}'">All ${pc?'chapters':'topics'}</button></div>`;
 }
 
 function subPage(sid,tab){
@@ -147,7 +147,7 @@ function subPage(sid,tab){
   const les=document.getElementById('L-'+sid);
   const i=t.subs.indexOf(s),next=t.subs[i+1];
   body.innerHTML=`${typeof BOOKS!=='undefined'?BOOKS.lessonBar(sid):''}<div class="lesson">${les?les.textContent:'<p>Lesson coming soon.</p>'}</div>
-  <div class="row" style="margin-top:16px">${next?`<button class="btn" onclick="location.hash='#/s/${next.id}/lesson'">Next lesson: ${esc(next.name)} →</button>`:''}<span class="spacer"></span><button class="btn pri" onclick="location.hash='#/s/${sid}/set'">Go to problem set →</button></div>`;
+  <div class="row" style="margin-top:16px">${next?`<button class="btn" onclick="location.hash='#/s/${next.id}/lesson'">Next lesson: ${esc(next.name)}</button>`:''}<span class="spacer"></span><button class="btn pri" onclick="location.hash='#/s/${sid}/set'">Go to problem set</button></div>`;
   drawLessonPlots(body);renderMath(body);
 }
 /* ---------- moving between Lesson / Problem Set / Notebook / Graph: side arrows + sideways swipe ---------- */

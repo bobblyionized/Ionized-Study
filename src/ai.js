@@ -35,10 +35,10 @@ const AI=(()=>{
     return s.trim();
   }
   function plain(html){
-    const d=document.createElement('div');
+    const d=document.createElement('template');                 // inert: nothing inside loads or runs
     d.innerHTML=String(html).replace(/<svg[^>]*aria-label="([^"]*)"[\s\S]*?<\/svg>/gi,' [Graph: $1] ').replace(/<svg[\s\S]*?<\/svg>/gi,' [graph] ')
       .replace(/<br\s*\/?>/gi,'\n').replace(/<\/(p|div|li|tr)>/gi,'\n');
-    const t=d.textContent.replace(/\\\$/g,'\u0001');             // keep literal dollar signs
+    const t=d.content.textContent.replace(/\\\$/g,'\u0001');             // keep literal dollar signs
     return t.replace(/\$\$([\s\S]*?)\$\$|\$([^$]*)\$/g,(m,a,b)=>tex(a!=null?a:b)).replace(/\u0001/g,'$')
       .replace(/[ \t]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim();
   }

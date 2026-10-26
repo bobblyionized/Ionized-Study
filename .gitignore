@@ -1,0 +1,13 @@
+# Never commit textbooks, music, secrets or scratch files
+*.pdf
+*.mp3
+*.m4a
+*.wav
+.env
+.env.*
+*.pem
+*.key
+_tmp*/
+__pycache__/
+node_modules/
+.DS_Store

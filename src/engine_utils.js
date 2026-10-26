@@ -79,3 +79,23 @@ function FR(x,m){x=Fr.of(x);if(m===1)return O(x.tex(),x.v);const n=x.n,d=x.d;con
   return O((n<0?'-':'')+(d===1?num:String.raw`\frac{`+num+'}{'+d+'}'),x.v*Math.sqrt(m))}
 const sample=(r,arr,k)=>shuffle(r,arr).slice(0,k);
 function sqd(n){let k=1,m=n;for(let i=2;i*i<=m;i++)while(m%(i*i)===0){m/=i*i;k*=i}return[k,m]}
+/* data that arrives from the sync database is untrusted: keys must not touch object internals,
+   ids must be plain tokens before they go anywhere near HTML */
+const safeKey=k=>typeof k==='string'&&!/^(__proto__|constructor|prototype)$/.test(k);
+const safeId=k=>typeof k==='string'&&/^[A-Za-z0-9_-]{1,64}$/.test(k);
+const safeColor=c=>typeof c==='string'&&/^#[0-9a-fA-F]{3,8}$/.test(c);
+/* fingerprints of the libraries loaded on demand: a changed or tampered copy is refused by the browser.
+   The iOS app serves its own HTTPS-downloaded copies from ionized://, so it skips the browser check. */
+const SRI=typeof location!=='undefined'&&location.protocol==='ionized:'?{}:{
+  'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js':'sha384-/1qUCSGwTur9vjf/z9lmu/eCUYbpOTgSjmpbMQZ1/CtX2v/WcAIKqRv+U1DUCG6e',
+  'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js':'sha384-1H217gwSVyLSIfaLxHbE7dRb3v4mYCKbpQvzx0cegeju1MVsGrX5xXxAvs/HgeFs',
+  'https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.css':'sha384-HE6mLTh5BORvU8h5XUAu/rs2s1+04dQTYoMsAAQd7wK5DtzQVFjtQdEtaPXtoeh3',
+  'https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.js':'sha384-/RBk1jltzHKz5l1cUO7JrI/xiKAtaZjvvBvu1/wSkohgWoJ2toB+6IRzMvemWy+f',
+  'https://cdn.jsdelivr.net/npm/nerdamer@1.1.13/nerdamer.core.js':'sha384-xQSEWC9U3TkEcP2wa+TfVlioD35y0B9w5UDICbHR1VbBRt/Sta9vVtiI7OipX2YP',
+  'https://cdn.jsdelivr.net/npm/nerdamer@1.1.13/Algebra.js':'sha384-Fe6m/6uHCTl86ItmvzSPYPzE16B0zARqm1Bo5Z8oKGHcnQnvkBe0hYavSadUjSqV',
+  'https://cdn.jsdelivr.net/npm/nerdamer@1.1.13/Calculus.js':'sha384-zEv30J3CdpM8w5+WYPmcuv8lUhq3n8qzbDYU3sbZqHluSTmdsjJMBHJWHoqw6Cla',
+  'https://cdn.jsdelivr.net/npm/nerdamer@1.1.13/Solve.js':'sha384-Cd8aK9hE0bOs/4mmDSGOQ3XiHDSs4LMlFFpd8/SzTbVyr07tooiOnw2wkA4D2Off'
+};
+function loadScript(src){return new Promise((ok,no)=>{const s=document.createElement('script');s.src=src;
+  if(SRI[src]){s.integrity=SRI[src];s.crossOrigin='anonymous'}s.onload=ok;s.onerror=()=>no(new Error('Could not load '+src));document.head.appendChild(s)})}
+function loadStyle(href){const l=document.createElement('link');l.rel='stylesheet';l.href=href;if(SRI[href]){l.integrity=SRI[href];l.crossOrigin='anonymous'}document.head.appendChild(l);return l}

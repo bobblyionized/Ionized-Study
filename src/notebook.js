@@ -63,13 +63,22 @@ const NOTEBOOK=(()=>{
     const r=await fetch(`${FB}/codes/${c}/nb${path?'/'+path:''}.json`,{method:method||'GET',cache:'no-store',
       headers:body===undefined?{}:{'Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body)});
     if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}
+  function cleanRec(kind,r){                             // drop anything malformed that came from the database
+    if(!r||typeof r!=='object'||typeof r.at!=='number')return false;
+    if(r.del)return true;
+    if(kind!=='p'&&typeof r.n!=='string')return false;
+    if(r.par!=null&&r.par!==''&&!safeId(r.par))r.par='';
+    if(kind==='b')r.pages=(Array.isArray(r.pages)?r.pages:[]).filter(safeId);
+    if(kind==='p'&&r.b!=null&&!safeId(r.b))return false;
+    return true}
   async function pull(){const c=code();if(!c||ns!==c)return null;
     let cl;try{cl=norm(await rest('lib'))}catch(e){setState('off');return null}
     if(code()!==c||ns!==c)return null;
     let changed=false;const remote=new Set();
     for(const kind of ['f','b','p']){const L=lib[kind],C=cl[kind];
       for(const id of new Set([...Object.keys(L),...Object.keys(C)])){const l=L[id],r=C[id];
-        if(r&&(!l||r.at>l.at)){L[id]=r;changed=true;
+        if(!safeId(id))continue;
+        if(r&&(!l||r.at>l.at)){if(!cleanRec(kind,r))continue;L[id]=r;changed=true;
           if(kind==='p'){if(r.del){delete pages[id];idel(ns+'|pg|'+id)}else remote.add(id)}}
         else if(l&&(!r||l.at>r.at)){dirty.lib.add(kind+'/'+id);if(kind==='p')dirty.pg.add(id)}}}
     if(changed)saveLib();if(dirty.lib.size)schedulePush(50);else if(!pushing)setState('ok');
@@ -179,7 +188,7 @@ const NOTEBOOK=(()=>{
     const opts=[['','Notebook (top level)',0]];const walk=(par,dep)=>{Object.keys(lib.f).filter(k=>live(lib.f[k])&&(lib.f[k].par||'')===par)
       .sort((a,b)=>lib.f[a].n.localeCompare(lib.f[b].n)).forEach(k=>{if(kind==='f'&&inside(k,id))return;opts.push([k,lib.f[k].n,dep]);walk(k,dep+1)})};walk('',1);
     const cur=(lib[kind][id]||{}).par||'';
-    dlg(title,`<div class="nb-pick">${opts.map(([k,n,dep])=>`<label style="padding-left:${10+dep*16}px"><input type="radio" name="to" value="${k}" ${k===cur?'checked':''}> ${dep?'📁 ':''}${H(n)}</label>`).join('')}</div>`,'Move',f=>cb(f.to.value))}
+    dlg(title,`<div class="nb-pick">${opts.map(([k,n,dep])=>`<label style="padding-left:${10+dep*16}px"><input type="radio" name="to" value="${H(k)}" ${k===cur?'checked':''}> ${dep?'📁 ':''}${H(n)}</label>`).join('')}</div>`,'Move',f=>cb(f.to.value))}
   let menuEl=null;
   function menu(anchor,items){closeMenu();const m=document.createElement('div');m.className='nb-menu nb';
     m.innerHTML=items.map((it,i)=>it?`<button type="button" data-i="${i}" class="${it[2]||''}">${it[0]}</button>`:'<hr>').join('');document.body.appendChild(m);
@@ -212,16 +221,16 @@ const NOTEBOOK=(()=>{
     const crumbs=[['','Notebook']];for(let f=here;f;f=lib.f[f]&&lib.f[f].par)if(lib.f[f])crumbs.splice(1,0,[f,lib.f[f].n]);
     const count=id=>{let n=0;for(const k in lib.f)if(live(lib.f[k])&&lib.f[k].par===id)n++;for(const k in lib.b)if(live(lib.b[k])&&lib.b[k].par===id)n++;return n};
     libBody.innerHTML=`<div class="nb nb-lib">
-      <div class="nb-head"><nav class="nb-crumbs">${q?'<span>Search results</span>':crumbs.map(([id,n],i)=>i<crumbs.length-1?`<button type="button" data-go="${id}">${H(n)}</button><span class="nb-sep">›</span>`:`<span>${H(n)}</span>`).join('')}</nav>
+      <div class="nb-head"><nav class="nb-crumbs">${q?'<span>Search results</span>':crumbs.map(([id,n],i)=>i<crumbs.length-1?`<button type="button" data-go="${H(id)}">${H(n)}</button><span class="nb-sep">›</span>`:`<span>${H(n)}</span>`).join('')}</nav>
         <span class="spacer"></span><button class="btn sm" data-nb="folder">＋ Folder</button><button class="btn pri sm" data-nb="book">＋ Notebook</button></div>
       <div class="nb-tools"><input type="search" class="nb-in nb-q" placeholder="Search notebooks" value="${H(query)}" aria-label="Search notebooks">
         <span class="spacer"></span><button class="chip ${sortBy==='recent'?'on':''}" data-sort="recent">Recent</button><button class="chip ${sortBy==='name'?'on':''}" data-sort="name">Name</button></div>
-      ${F.length+B.length?`<div class="nb-grid">${F.map(([id,f])=>`<div class="nb-tile nb-folder" data-open-f="${id}" tabindex="0" role="button">
+      ${F.length+B.length?`<div class="nb-grid">${F.map(([id,f])=>`<div class="nb-tile nb-folder" data-open-f="${H(id)}" tabindex="0" role="button">
           <div class="nb-cover nb-fcover">${FOLDER_SVG}</div><div class="nb-tname">${H(f.n)}</div><div class="nb-tmeta">${count(id)} item${count(id)===1?'':'s'}</div>
-          <button type="button" class="nb-more" data-more="f:${id}" aria-label="Folder options">⋯</button></div>`).join('')}
-        ${B.map(([id,b,t])=>`<div class="nb-tile nb-book" data-open-b="${id}" tabindex="0" role="button">
-          <div class="nb-cover"><canvas data-thumb="${id}"></canvas></div><div class="nb-tname">${H(b.n)}</div><div class="nb-tmeta">${(b.pages||[]).length} page${(b.pages||[]).length===1?'':'s'} · ${ago(t)}</div>
-          <button type="button" class="nb-more" data-more="b:${id}" aria-label="Notebook options">⋯</button></div>`).join('')}</div>`
+          <button type="button" class="nb-more" data-more="f:${H(id)}" aria-label="Folder options">⋯</button></div>`).join('')}
+        ${B.map(([id,b,t])=>`<div class="nb-tile nb-book" data-open-b="${H(id)}" tabindex="0" role="button">
+          <div class="nb-cover"><canvas data-thumb="${H(id)}"></canvas></div><div class="nb-tname">${H(b.n)}</div><div class="nb-tmeta">${(b.pages||[]).length} page${(b.pages||[]).length===1?'':'s'} · ${ago(t)}</div>
+          <button type="button" class="nb-more" data-more="b:${H(id)}" aria-label="Notebook options">⋯</button></div>`).join('')}</div>`
         :`<div class="nb-empty">${q?'No notebooks match that search.':here?'This folder is empty. Add a notebook or a folder.':'Make a notebook to work problems by hand: write with a pen or stylus, highlight, type, and add as many pages as you need. Group notebooks into folders. Everything saves to your sync code.'}</div>`}
       <p class="nb-status meta" data-st="${state||'local'}">${stText()}</p></div>`;
     libBody.querySelectorAll('canvas[data-thumb]').forEach(cv=>{const b=lib.b[cv.dataset.thumb],pid=(b.pages||[])[0];if(pid)getPage(pid).then(pg=>{if(cv.isConnected)thumb(cv,pg)})})}
@@ -434,8 +443,8 @@ const NOTEBOOK=(()=>{
     ta.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Escape')ta.blur()});
     E.page.appendChild(ta);fitH();setTimeout(()=>ta.focus(),0)}
   let mqP=null;
-  const loadJs=src=>new Promise((ok,no)=>{const s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=()=>no(new Error('Could not load '+src));document.head.appendChild(s)});
-  function loadMQ(){return mqP||(mqP=(async()=>{const l=document.createElement('link');l.rel='stylesheet';l.href='https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.css';document.head.appendChild(l);
+  const loadJs=loadScript;
+  function loadMQ(){return mqP||(mqP=(async()=>{loadStyle('https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.css');
     if(!window.jQuery)await loadJs('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js');
     await loadJs('https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.js');return MathQuill.getInterface(2)})().catch(e=>{mqP=null;throw e}))}
   const MQ_CMDS='pi theta sqrt nthroot sum prod int infty alpha beta gamma delta epsilon lambda mu sigma phi omega rho tau degree pm',
@@ -596,7 +605,7 @@ const NOTEBOOK=(()=>{
     try{h=window.katex?katex.renderToString(v?'\\displaystyle '+v:'\\square',{throwOnError:false,displayMode:false}):H(v)}catch(e){h=H(v)}
     if(kcache.size>400)kcache.clear();kcache.set(v,h);return h}
   function mathLayer(pg){const L=E.el.querySelector('.nbe-mlayer');let h='';
-    pg.items.forEach((it,i)=>{if(it.k==='m')h+=`<div class="nbe-m" data-i="${i}" style="left:${it.x*E.s}px;top:${it.y*E.s}px;font-size:${it.z*E.s}px;color:${it.c}">${katexHTML(it.v)}</div>`});
+    pg.items.forEach((it,i)=>{if(it.k==='m')h+=`<div class="nbe-m" data-i="${i}" style="left:${it.x*E.s}px;top:${it.y*E.s}px;font-size:${(+it.z||30)*E.s}px;color:${safeColor(it.c)?it.c:'#111111'}">${katexHTML(it.v)}</div>`});
     L.innerHTML=h;if(pg!==E.pg)return;
     L.querySelectorAll('.nbe-m').forEach(el=>{const it=pg.items[+el.dataset.i];if(!it.bw&&el.offsetWidth){it.bw=+(el.offsetWidth/E.s).toFixed(1);it.bh=+(el.offsetHeight/E.s).toFixed(1)}})}
   function plainTex(v){let s=String(v);
@@ -623,7 +632,7 @@ const NOTEBOOK=(()=>{
       ['Save page as image',exportPng]])}
   async function pageGrid(){const g=E.el.querySelector('.nbe-pages');if(!g.hidden){g.hidden=true;return}const b=E.book();
     g.innerHTML=`<div class="nbe-pghead"><b>${H(b.n)}</b><span class="meta">${b.pages.length} page${b.pages.length===1?'':'s'}</span><span class="spacer"></span><button class="btn sm" data-g="close">Done</button></div>
-      <div class="nbe-pggrid">${b.pages.map((pid,i)=>`<div class="nbe-pgt ${i===E.i?'on':''}"><button type="button" data-g="go" data-i="${i}"><canvas data-pt="${pid}"></canvas></button>
+      <div class="nbe-pggrid">${b.pages.map((pid,i)=>`<div class="nbe-pgt ${i===E.i?'on':''}"><button type="button" data-g="go" data-i="${i}"><canvas data-pt="${H(pid)}"></canvas></button>
         <div class="nbe-pgn"><button type="button" data-g="l" data-i="${i}" ${i?'':'disabled'} aria-label="Move earlier">‹</button><span>${i+1}</span><button type="button" data-g="r" data-i="${i}" ${i<b.pages.length-1?'':'disabled'} aria-label="Move later">›</button></div></div>`).join('')}</div>`;
     g.hidden=false;g.querySelectorAll('canvas[data-pt]').forEach(cv=>getPage(cv.dataset.pt).then(pg=>{if(cv.isConnected)thumb(cv,pg)}))}
   function gridClick(t){const g=E.el.querySelector('.nbe-pages'),a=t.dataset.g,i=+t.dataset.i,b=E.book();

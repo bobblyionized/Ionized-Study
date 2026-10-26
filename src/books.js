@@ -35,7 +35,7 @@ const BOOKS=(()=>{
     if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}
   const enc=k=>k.replace(':','__');                       // keep database keys simple
   async function loadCloud(){const c=code();if(!c)return;
-    try{const m=await rest('meta');if(code()!==c)return;cloud={};for(const k in m||{})cloud[k.replace('__',':')]=m[k];cloudFor=c}catch(e){return}
+    try{const m=await rest('meta');if(code()!==c)return;cloud={};for(const k in m||{})if(safeKey(k))cloud[k.replace('__',':')]=m[k];cloudFor=c}catch(e){return}
     for(const k of has)if(!cloud[k]||(localAt[k]||0)>cloud[k].at)upload(k);   // copies added before syncing, or newer than the saved one
     refresh()}
   const b64of=blob=>new Promise((ok,no)=>{const fr=new FileReader();fr.onload=()=>ok(String(fr.result).split(',')[1]||'');fr.onerror=()=>no(fr.error);fr.readAsDataURL(blob)});
@@ -108,7 +108,8 @@ const BOOKS=(()=>{
   /* ---------- the reader ---------- */
   let lib=null;
   function loadLib(){if(lib)return lib;
-    lib=new Promise((ok,no)=>{const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+    lib=new Promise((ok,no)=>{const u='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js',s=document.createElement('script');s.src=u;
+      if(SRI[u]){s.integrity=SRI[u];s.crossOrigin='anonymous'}
       s.onload=()=>{try{window.pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';ok(window.pdfjsLib)}catch(e){no(e)}};
       s.onerror=()=>{lib=null;no(new Error('Could not load the PDF reader. Check your internet connection.'))};document.head.appendChild(s)});
     return lib}
@@ -145,7 +146,7 @@ const BOOKS=(()=>{
         await download(key,p=>{const m=document.getElementById('bkvMsg');if(m)m.textContent='Downloading from your code… '+p+'%'})}
       const rec=await get(key);if(!rec)throw new Error('That PDF is not on this device or in your code yet.');
       const pdfjs=await loadLib();const data=new Uint8Array(await rec.blob.arrayBuffer());
-      const pdf=await pdfjs.getDocument({data}).promise;const p1=await pdf.getPage(1);const vp=p1.getViewport({scale:1});
+      const pdf=await pdfjs.getDocument({data,isEvalSupported:false}).promise;const p1=await pdf.getPage(1);const vp=p1.getViewport({scale:1});
       V={key,tid,doc,isBook:doc==='book',pdf,n:pdf.numPages,ar:vp.height/vp.width,z:1,cur:1,rendered:new Map(),obs:null};
       $('bkvMsg').hidden=true;
       if(V.isBook&&V.n!==DATA[tid].pages){$('bkvMsg').hidden=false;$('bkvMsg').textContent=`This file has ${V.n} pages; the Chapter ${DATA[tid].ch} PDF has ${DATA[tid].pages}, so section links may point to the wrong pages.`}

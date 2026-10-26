@@ -751,4 +751,3 @@ $f(-1)=a(1+4+5)^2=100a=50$, so $a=\frac12$: $f(x)=\frac12(x^2-4x+5)^2=\frac12x^4
 
 === GENS ===
 GENS['pc4-review']=[];   // the problem set is exactly the book's review questions
-GENS['pc4-review:practice']=['pc4-quad','pc4-poly','pc4-synth','pc4-roots','pc4-graph','pc4-rat','pc4-ratx','pc4-cplx','pc4-theory'].flatMap(k=>GENS[k]||[]);
