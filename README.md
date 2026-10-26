@@ -1,2 +1,5 @@
 # Ionized-Study
-fuh me in the ah and call me a AMC 10/12 prep 
+
+vibe coded study tool because every other study tool SUCKS!
+
+yay
