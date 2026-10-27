@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "instrument sans",
+        "createdAt": "2026-10-27T22:21:30.910Z",
+        "reason": "Claude decided: incumbent brand font used site-wide since before this session; the 2026-10-26 polish pass kept it deliberately (refinement preserves identity)"
+      }
+    ]
+  }
+}
