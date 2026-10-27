@@ -262,6 +262,9 @@ body.nbe-on{overflow:hidden}
 .nbe-toast{position:absolute;left:50%;bottom:70px;transform:translate(-50%,10px);max-width:min(460px,calc(100% - 32px));background:#1e2333;color:#fff;font-size:14px;line-height:1.4;padding:10px 14px;border-radius:10px;box-shadow:0 10px 26px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:6}
 .nbe-toast.on{opacity:1;transform:translate(-50%,0)}
 .nbe-txt{border-color:transparent;outline:1px dashed #8d98b8;outline-offset:2px}
+.nbe-tbar{bottom:auto;margin:0;transform:translateY(calc(-100% - 5px));z-index:3}
+.nbe-mbar button.on:hover{background:#5b6cff}
+@media (max-width:420px){.nbe-mbar button{padding:6px 6px}}
 
 /* Notebooks from the timer screen */
 .tm-nb{display:inline-flex;align-items:center;gap:8px;margin:0 0 18px;padding:9px 20px;border:1px solid var(--tp-line);border-radius:999px;background:transparent;color:var(--tp-fg);font:inherit;font-size:15px;font-weight:600;cursor:pointer;transition:border-color var(--t) var(--ease),background var(--t) var(--ease),transform var(--t) var(--ease-out)}

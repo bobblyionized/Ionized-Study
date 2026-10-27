@@ -429,6 +429,18 @@ const NOTEBOOK=(()=>{
 
   /* typed text boxes: plain text, Desmos-style math (MathQuill: ^ makes a superscript, / a fraction), or raw LaTeX */
   const tmode=()=>pref.tm||'desmos';
+  const MODES=[['text','Text','Plain words, typed normally'],['desmos','Desmos','Math typed like Desmos: ^ for powers, / for fractions, sqrt, pi'],['latex','LaTeX','Math typed as LaTeX, e.g. \\frac{1}{2}']];
+  const modeBtns=m=>MODES.map(([k,l,t])=>`<button type="button" data-mm="${k}" class="${k===m?'on':''}" title="${t}">${l}</button>`).join('');
+  function keepIn(bar){const r=bar.getBoundingClientRect(),b=E.body.getBoundingClientRect(),over=r.right-(b.right-8);   // a bar near the right edge slides left so every button stays on screen
+    if(over>0)bar.style.marginLeft=-Math.max(0,Math.min(over,r.left-b.left-8))+'px'}
+  function switchBox(ed,m){if(!E||E.editing!==ed)return;            // swap the open box between plain text and math, keeping what was typed
+    const math=ed.kind==='m';if(math&&m!=='text')return ed.setMode(m);if(!math&&m==='text')return ed.ta.focus();
+    pref.tm=m;savePref();paintTools();
+    const it=ed.it,base=it.y+it.z*(math?.7:.65);let v;
+    if(math){v=ed.from!=null&&texOf(ed)===ed.fromTex?ed.from:plainTex(texOf(ed));ed.box.remove()}else{v=ed.ta.value;ed.ta.remove();ed.bar.remove()}
+    E.editing=null;v=v.trim();
+    if(math){const z=Math.max(8,Math.round(it.z/1.1));startText(null,{x:it.x,y:+(base-z*.65).toFixed(1),z,c:it.c,w:Math.max(120,W-it.x-30),v})}
+    else{const z=Math.round(it.z*1.1);startMath(null,{x:it.x,y:+(base-z*.7).toFixed(1),z,c:it.c,v,from:v})}}       // untouched math switches back to the exact words
   function startText(p,edit){
     if(!edit){const hit=E.pg.items.findIndex(it=>it.k!=='s'&&hits(it,p[0],p[1],4));
       if(hit>=0){const it=E.pg.items[hit];snap();E.pg.items.splice(hit,1);redraw();E.textSnapped=true;return it.k==='m'?startMath(null,it):startText(null,it)}
@@ -438,10 +450,16 @@ const NOTEBOOK=(()=>{
     const ta=document.createElement('textarea');ta.className='nbe-txt';ta.value=edit?edit.v:'';ta.rows=1;ta.spellcheck=true;
     Object.assign(ta.style,{left:(x*E.s-1)+'px',top:(y*E.s-1)+'px',width:w*E.s+'px',fontSize:z*E.s+'px',lineHeight:(z*1.3*E.s)+'px',color:c});
     const fitH=()=>{ta.style.height='auto';ta.style.height=ta.scrollHeight+'px'};
-    const ed={kind:'x',ta,it:{k:'x',x:+x.toFixed(1),y:+y.toFixed(1),z,c,w}};E.editing=ed;
-    ta.addEventListener('input',fitH);ta.addEventListener('blur',()=>setTimeout(()=>{if(E&&E.editing===ed)commitText()},0));
+    const bar=document.createElement('div');bar.className='nbe-mbar nbe-tbar';bar.innerHTML=modeBtns('text')+'<span class="nbe-selsep"></span><button type="button" data-mm="done">Done</button>';
+    Object.assign(bar.style,{left:(x*E.s-3)+'px',top:(y*E.s-3)+'px'});
+    const ed={kind:'x',ta,bar,it:{k:'x',x:+x.toFixed(1),y:+y.toFixed(1),z,c,w}};E.editing=ed;
+    ta.addEventListener('input',fitH);ta.addEventListener('blur',()=>setTimeout(()=>{if(E&&E.editing===ed&&!ed.hold)commitText()},0));
     ta.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Escape')ta.blur()});
-    E.page.appendChild(ta);fitH();setTimeout(()=>ta.focus(),0)}
+    bar.addEventListener('pointerdown',e=>{e.stopPropagation();ed.hold=true});    // pressing the bar must not close the box
+    bar.addEventListener('mousedown',e=>e.preventDefault());
+    bar.addEventListener('click',e=>{e.stopPropagation();ed.hold=false;const b=e.target.closest('[data-mm]');if(!b)return;
+      b.dataset.mm==='done'?commitText():switchBox(ed,b.dataset.mm)});
+    E.page.append(ta,bar);fitH();keepIn(bar);setTimeout(()=>ta.focus(),0)}
   let mqP=null;
   const loadJs=loadScript;
   function loadMQ(){return mqP||(mqP=(async()=>{loadStyle('https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.css');
@@ -453,31 +471,32 @@ const NOTEBOOK=(()=>{
   function startMath(p,edit){const z=edit?edit.z:Math.round(SIZES.text[size('text')]*1.1),c=edit?edit.c:color('text');
     const x=edit?edit.x:p[0],y=edit?edit.y:p[1]-z*.7;
     const box=document.createElement('div');box.className='nbe-mbox';Object.assign(box.style,{left:(x*E.s-9.5)+'px',top:(y*E.s-5.5)+'px',fontSize:z*E.s+'px',color:c});
-    box.innerHTML='<div class="nbe-mbar"><button type="button" data-mm="desmos" title="Type like Desmos: ^ for powers, / for fractions, sqrt, pi">Desmos</button><button type="button" data-mm="latex" title="Type LaTeX, e.g. \\frac{1}{2}">LaTeX</button><span class="nbe-selsep"></span><button type="button" data-mm="solve">Solve</button><button type="button" data-mm="factor">Factor</button><button type="button" data-mm="done">Done</button></div><div class="nbe-mfield"></div>';
-    E.page.appendChild(box);const field=box.querySelector('.nbe-mfield');
-    const ed={kind:'m',box,it:{k:'m',x:+x.toFixed(1),y:+y.toFixed(1),z,c},latex:edit?edit.v:'',mq:null,ta:null};E.editing=ed;
+    box.innerHTML='<div class="nbe-mbar">'+modeBtns('')+'<span class="nbe-selsep"></span><button type="button" data-mm="solve">Solve</button><button type="button" data-mm="factor">Factor</button><button type="button" data-mm="done">Done</button></div><div class="nbe-mfield"></div>';
+    E.page.appendChild(box);keepIn(box.querySelector('.nbe-mbar'));const field=box.querySelector('.nbe-mfield');
+    const ed={kind:'m',box,it:{k:'m',x:+x.toFixed(1),y:+y.toFixed(1),z,c},latex:edit?edit.v:'',mq:null,ta:null,from:edit&&edit.from};E.editing=ed;
     async function setMode(m){ed.latex=texOf(ed);ed.mq=ed.ta=null;field.innerHTML='';pref.tm=m;savePref();paintTools();
       box.querySelectorAll('[data-mm]').forEach(b=>b.classList.toggle('on',b.dataset.mm===m));
       if(m==='desmos'){let MQ;try{MQ=await loadMQ()}catch(e){alert('The Desmos-style math keyboard could not load (are you offline?). Switching to LaTeX.');return setMode('latex')}
         if(E.editing!==ed)return;const span=document.createElement('span');field.appendChild(span);
         ed.mq=MQ.MathField(span,{spaceBehavesLikeTab:true,leftRightIntoCmdGoes:'up',restrictMismatchedBrackets:true,sumStartsWithNEquals:true,supSubsRequireOperand:true,
           autoCommands:MQ_CMDS,autoOperatorNames:MQ_OPS,handlers:{enter:()=>commitText()}});
-        ed.mq.latex(ed.latex);setTimeout(()=>ed.mq&&ed.mq.focus(),0);
+        ed.mq.latex(ed.latex);if(ed.latex&&!ed.mq.latex())ed.mq.typedText(ed.latex);if(ed.from!=null&&ed.fromTex==null)ed.fromTex=ed.mq.latex();
+        setTimeout(()=>ed.mq&&ed.mq.focus(),0);
         const hid=span.querySelector('textarea');            // phone keyboards that insert text without key presses
         if(hid)hid.addEventListener('input',()=>setTimeout(()=>{if(hid.value&&ed.mq){const v=hid.value;hid.value='';ed.mq.typedText(v)}},0))}
       else{const ta=document.createElement('textarea'),pv=document.createElement('div');ta.className='nbe-mtex';ta.rows=1;ta.spellcheck=false;ta.value=ed.latex;
         ta.placeholder='\\frac{x^2}{3}+\\sqrt{2}';pv.className='nbe-mprev';
         const upd=()=>{pv.innerHTML=katexHTML(ta.value);ta.style.height='auto';ta.style.height=ta.scrollHeight+'px'};
         ta.addEventListener('input',upd);ta.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();commitText()}});
-        field.append(ta,pv);ed.ta=ta;upd();setTimeout(()=>ta.focus(),0)}}
+        field.append(ta,pv);ed.ta=ta;upd();if(ed.from!=null&&ed.fromTex==null)ed.fromTex=ta.value;setTimeout(()=>ta.focus(),0)}}
     box.addEventListener('click',e=>{const b=e.target.closest('[data-mm]');e.stopPropagation();if(!b)return;const k=b.dataset.mm;if(k==='done')return commitText();
       if(k==='solve'||k==='factor'){const v=texOf(ed).trim();commitText();if(v)runCAS(k,E.pg.items[E.pg.items.length-1]);return}
-      setMode(k)});
+      switchBox(ed,k)});
     box.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Escape')commitText()});
     box.addEventListener('pointerdown',e=>e.stopPropagation());
-    setMode(tmode()==='latex'?'latex':'desmos')}
+    ed.setMode=setMode;setMode(tmode()==='latex'?'latex':'desmos')}
   function commitText(){if(!E||!E.editing)return;const ed=E.editing;E.editing=null;let it=null;
-    if(ed.kind==='x'){const v=ed.ta.value.replace(/\s+$/,'');ed.ta.remove();if(v)it=Object.assign({},ed.it,{v})}
+    if(ed.kind==='x'){const v=ed.ta.value.replace(/\s+$/,'');ed.ta.remove();ed.bar.remove();if(v)it=Object.assign({},ed.it,{v})}
     else{const v=texOf(ed).trim();ed.box.remove();if(v)it=Object.assign({},ed.it,{v})}
     if(it){if(!E.textSnapped)snap();E.pg.items.push(it);redraw();changed()}else if(E.textSnapped){redraw();changed()}E.textSnapped=false}
 
@@ -608,10 +627,13 @@ const NOTEBOOK=(()=>{
     pg.items.forEach((it,i)=>{if(it.k==='m')h+=`<div class="nbe-m" data-i="${i}" style="left:${it.x*E.s}px;top:${it.y*E.s}px;font-size:${(+it.z||30)*E.s}px;color:${safeColor(it.c)?it.c:'#111111'}">${katexHTML(it.v)}</div>`});
     L.innerHTML=h;if(pg!==E.pg)return;
     L.querySelectorAll('.nbe-m').forEach(el=>{const it=pg.items[+el.dataset.i];if(!it.bw&&el.offsetWidth){it.bw=+(el.offsetWidth/E.s).toFixed(1);it.bh=+(el.offsetHeight/E.s).toFixed(1)}})}
-  function plainTex(v){let s=String(v);
-    for(let k=0;k<4;k++)s=s.replace(/\\[dt]?frac\{([^{}]*)\}\{([^{}]*)\}/g,'($1)/($2)').replace(/\\sqrt\{([^{}]*)\}/g,'√($1)');
-    return s.replace(/\\left|\\right/g,'').replace(/\\cdot/g,'·').replace(/\\times/g,'×').replace(/\\pi/g,'π').replace(/\\theta/g,'θ').replace(/\\le(q)?\b/g,'≤').replace(/\\ge(q)?\b/g,'≥')
-      .replace(/\\infty/g,'∞').replace(/\\pm/g,'±').replace(/\\(operatorname\{(\w+)\}|(\w+))/g,'$2$3').replace(/[{}]/g,'').replace(/\\ /g,' ')}
+  const SYM={pi:'π',theta:'θ',cdot:'·',times:'×',div:'÷',pm:'±',le:'≤',leq:'≤',ge:'≥',geq:'≥',ne:'≠',neq:'≠',infty:'∞',degree:'°',alpha:'α',beta:'β'};
+  function plainTex(v){let s=String(v),o;                // LaTeX → readable text: \frac{1}{2} → 1/2, x^{10} → x^10, \log_{2} → log₂, \pi → π
+    const g=a=>/^[\w.]+$/.test(a)?a:'('+a+')',sub=d=>[...d].map(n=>'₀₁₂₃₄₅₆₇₈₉'[n]).join('');
+    do{o=s;s=s.replace(/\\[dt]?frac\{([^{}]*)\}\{([^{}]*)\}/g,(_,a,b)=>g(a)+'/'+g(b)).replace(/\\sqrt\{([^{}]*)\}/g,(_,a)=>'√'+g(a)).replace(/\^\{([^{}]*)\}/g,(_,a)=>'^'+g(a))
+      .replace(/_\{([^{}]*)\}/g,(_,a)=>/^\d+$/.test(a)?sub(a):'_'+g(a)).replace(/\\operatorname\{(\w+)\}/g,'$1')}while(s!==o);
+    return s.replace(/_(\d)/g,(_,d)=>sub(d)).replace(/\\left|\\right/g,'').replace(/\\([a-zA-Z]+) ?/g,(m,c,i,t)=>SYM[c]||c+(/[a-zA-Z\\]/.test(t[i+m.length]||'')?' ':''))
+      .replace(/\\[ ,;:!]/g,' ').replace(/[{}]/g,'')}
 
   /* page operations */
   function addPage(){const b=E.book(),pid=newPage(E.bid,E.pg.tpl,stamp());b.pages.splice(E.i+1,0,pid);setRec('b',E.bid,{pages:b.pages});mark('p',pid);flushLocal();gotoPage(E.i+1)}
@@ -643,7 +665,7 @@ const NOTEBOOK=(()=>{
     const g=e.target.closest('[data-g]');if(g)return gridClick(g);
     const s=e.target.closest('[data-s]');if(s)return selAct(s.dataset.s);
     const t=e.target.closest('[data-tool]');if(t){commitText();clearSel();tool=t.dataset.tool;ls('tool',tool);return paintTools()}
-    const tm=e.target.closest('[data-tm]');if(tm){pref.tm=tm.dataset.tm;savePref();return paintTools()}
+    const tm=e.target.closest('[data-tm]');if(tm){pref.tm=tm.dataset.tm;savePref();if(E.editing)switchBox(E.editing,pref.tm);return paintTools()}
     const c=e.target.closest('[data-col]');if(c){pref['c_'+tool]=c.dataset.col;savePref();return paintTools()}
     const z=e.target.closest('[data-size]');if(z){pref['s_'+tool]=+z.dataset.size;savePref();return paintTools()}
     const a=e.target.closest('[data-a]');if(!a)return;const k=a.dataset.a;
