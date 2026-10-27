@@ -11,6 +11,7 @@ const NOTEBOOK=(()=>{
   const TPL=[['blank','Blank'],['lined','Lined'],['grid','Grid'],['dots','Dots']];
   const TOOLS=[['move','Select and move'],['pen','Pen'],['mark','Marker'],['hl','Highlighter'],['erase','Eraser'],['lasso','Lasso select'],['text','Text']];
   const SIZES={pen:[2.2,3.6,6],mark:[5,9,15],hl:[16,26,38],erase:[10,20,38],text:[24,32,46]};
+  const FS=[12,14,16,18,20,24,28,32,36,40,48,56,64,80,96];   // text sizes the A− / A+ buttons step through
   const INKS=['#111111','#5b6170','#2f5bd3','#d23b3b','#1f8a4c'],HLS=['#ffe14d','#7cf0a0','#7cc8ff','#ff9ad5'];
   const FONT='"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif';
   const code=()=>typeof SYNC!=='undefined'?SYNC.code:null;
@@ -260,6 +261,8 @@ const NOTEBOOK=(()=>{
   let tool=ls('tool')||'pen';if(!SIZES[tool]&&tool!=='lasso'&&tool!=='move')tool='pen';
   let pref={};try{pref=JSON.parse(ls('pref')||'{}')||{}}catch(e){}const size=t=>(pref['s_'+t]==null?1:pref['s_'+t]);
   const color=t=>pref['c_'+t]||(t==='hl'?HLS[0]:INKS[0]);const savePref=()=>ls('pref',JSON.stringify(pref));
+  const fsize=()=>+pref.fs||SIZES.text[size('text')];
+  const stepFs=(z,d)=>d>0?(FS.find(v=>v>z)||FS[FS.length-1]):([...FS].reverse().find(v=>v<z)||FS[0]);
   let penSeen=ls('pen')==='1',fingerDraw=ls('finger')!=='0',fit=ls('fit')||'width';
   const fingerScrolls=()=>penSeen&&!fingerDraw;
   const ICON={move:'<path d="M6 3l12 8.5-5.2 1.2 3 5.8-2.4 1.2-3-5.8L6 18z"/>',pen:'<path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/>',mark:'<path d="M5 19l3-1 10-10-3-3L5 15z" stroke-width="3.2"/>',
@@ -278,7 +281,7 @@ const NOTEBOOK=(()=>{
         <div class="nbe-grp nbe-opts"></div>
         <button class="nbe-b" data-a="more" aria-label="Page options">${icon('dots')}</button></div>
       <div class="nbe-body"><div class="nbe-page"><canvas class="nbe-base"></canvas><div class="nbe-mlayer"></div><canvas class="nbe-ink"></canvas>
-        <div class="nbe-sel" hidden><div class="nbe-selbar"></div></div></div>
+        <div class="nbe-sel" hidden><div class="nbe-selbar"></div><span class="nbe-selh" data-h title="Drag to resize" aria-label="Resize"></span></div></div>
         <button class="nbe-extend" data-a="extend">${icon('plus')} Extend this page down</button></div>
       <div class="nbe-bot"><button class="nbe-b" data-a="prev" aria-label="Previous page">‹</button><button class="nbe-b nbe-pgno" data-a="grid" aria-label="All pages"></button>
         <button class="nbe-b" data-a="next" aria-label="Next page">›</button><button class="nbe-b nbe-add" data-a="add">${icon('plus')} Page</button></div>
@@ -294,6 +297,8 @@ const NOTEBOOK=(()=>{
     const stylus=e=>{for(const t of e.changedTouches)if(t.touchType==='stylus'){e.preventDefault();return}};   // a stylus draws, it never scrolls the page
     ink.addEventListener('touchstart',stylus,{passive:false});ink.addEventListener('touchmove',stylus,{passive:false});
     const sel=el.querySelector('.nbe-sel');sel.addEventListener('pointerdown',selDown);sel.addEventListener('pointermove',selMove);sel.addEventListener('pointerup',selUp);
+    const opts=el.querySelector('.nbe-opts'),keepBox=e=>E&&E.editing&&e.target.closest('[data-fs],[data-col]');     // changing size or colour keeps the open text box
+    opts.addEventListener('pointerdown',e=>{if(keepBox(e))E.editing.hold=true});opts.addEventListener('mousedown',e=>{if(keepBox(e))e.preventDefault()});
     el.querySelector('.nbe-body').addEventListener('scroll',()=>{if(E)ls('y:'+E.pid(),Math.round(E.body.scrollTop/E.s))},{passive:true});
     return el}
   async function openBook(bid){const b=lib.b[bid];if(!live(b))return;closeMenu();
@@ -317,7 +322,8 @@ const NOTEBOOK=(()=>{
   function paintTools(){if(!E)return;E.el.querySelectorAll('[data-tool]').forEach(b=>b.classList.toggle('on',b.dataset.tool===tool));
     const o=E.el.querySelector('.nbe-opts');const cols=tool==='hl'?HLS:INKS;
     o.innerHTML=(tool==='text'?[['text','Aa','Plain text'],['desmos','x²','Math, typed like Desmos'],['latex','TeX','Math, typed as LaTeX']].map(([k,l,t])=>`<button class="nbe-b nbe-tm ${tmode()===k?'on':''}" data-tm="${k}" title="${t}" aria-label="${t}">${l}</button>`).join('')+'<span class="nbe-div"></span>':'')+(SIZES[tool]&&tool!=='erase'?cols.map(c=>`<button class="nbe-sw ${c===color(tool)?'on':''}" data-col="${c}" style="--c:${c}" aria-label="Color ${c}"></button>`).join(''):'')
-      +(SIZES[tool]?`<span class="nbe-div"></span>`+[0,1,2].map(k=>`<button class="nbe-b nbe-sz ${k===size(tool)?'on':''}" data-size="${k}" aria-label="${['Thin','Medium','Thick'][k]}"><i style="--d:${[4,8,13][k]}px"></i></button>`).join(''):'');
+      +(tool==='text'?`<span class="nbe-div"></span><button class="nbe-b nbe-fs" data-fs="-1" aria-label="Smaller text" title="Smaller text">A<small>−</small></button><span class="nbe-fsv" title="Text size">${fsize()}</span><button class="nbe-b nbe-fs" data-fs="1" aria-label="Larger text" title="Larger text">A<small>+</small></button>`
+       :SIZES[tool]?`<span class="nbe-div"></span>`+[0,1,2].map(k=>`<button class="nbe-b nbe-sz ${k===size(tool)?'on':''}" data-size="${k}" aria-label="${['Thin','Medium','Thick'][k]}"><i style="--d:${[4,8,13][k]}px"></i></button>`).join(''):'');
     E.ink.style.cursor=inkCursor();E.ink.style.touchAction=fingerScrolls()?'pan-x pan-y':'none'}
   function inkCursor(){                                  // a dot the size and colour of the pen, centred on the point where ink lands
     if(tool==='move')return'default';if(tool==='text')return'text';if(tool==='lasso')return'crosshair';
@@ -332,7 +338,7 @@ const NOTEBOOK=(()=>{
     for(const cv of [E.base,E.ink]){cv.width=Math.round(w*dpr);cv.height=Math.round(h*dpr);cv.style.width=w+'px';cv.style.height=h+'px'}
     E.dpr=dpr;E.page.style.width=w+'px';E.page.style.height=h+'px';redraw();clearInk();if(E.sel)showSel();E.ink.style.cursor=inkCursor()}
   function redraw(skip){const ctx=E.base.getContext('2d');ctx.setTransform(E.dpr,0,0,E.dpr,0,0);
-    const pg=skip?Object.assign({},E.pg,{items:E.pg.items.map((it,i)=>skip.has(i)?shift(it,E.drag.dx,E.drag.dy):it)}):E.pg;drawPage(ctx,pg,E.s,E.pg.h,true);mathLayer(pg)}
+    const pg=skip?Object.assign({},E.pg,{items:E.pg.items.map((it,i)=>skip.has(i)?moved(it):it)}):E.pg;drawPage(ctx,pg,E.s,E.pg.h,true);mathLayer(pg)}
   function inkCtx(){const ctx=E.ink.getContext('2d');ctx.setTransform(E.dpr,0,0,E.dpr,0,0);return ctx}
   function clearInk(){const ctx=E.ink.getContext('2d');ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,E.ink.width,E.ink.height);
     ctx.setTransform(E.dpr,0,0,E.dpr,0,0)}                 // put the screen scale back, or live strokes draw shrunk toward the top-left
@@ -411,13 +417,23 @@ const NOTEBOOK=(()=>{
   function clearSel(){if(!E)return;E.sel=null;E.drag=null;E.el.querySelector('.nbe-sel').hidden=true}
   function shift(it,dx,dy){if(it.k!=='s')return Object.assign({},it,{x:+(it.x+dx).toFixed(1),y:+(it.y+dy).toFixed(1)});
     const p=it.p.slice();for(let i=0;i<p.length;i+=3){p[i]=+(p[i]+dx).toFixed(1);p[i+1]=+(p[i+1]+dy).toFixed(1)}return Object.assign({},it,{p})}
+  function scaleIt(it,ax,ay,k){const X=v=>+(ax+(v-ax)*k).toFixed(1),Y=v=>+(ay+(v-ay)*k).toFixed(1);    // grow or shrink about the corner (ax, ay)
+    if(it.k==='s'){const p=it.p.slice();for(let i=0;i<p.length;i+=3){p[i]=X(p[i]);p[i+1]=Y(p[i+1])}return Object.assign({},it,{p,w:+Math.max(.5,it.w*k).toFixed(2)})}
+    const o=Object.assign({},it,{x:X(it.x),y:Y(it.y),z:Math.max(6,Math.round(it.z*k*10)/10)});
+    if(it.k==='x')o.w=Math.max(40,+(it.w*k).toFixed(1));if(it.bw)o.bw=+(it.bw*k).toFixed(1);if(it.bh)o.bh=+(it.bh*k).toFixed(1);return o}
+  const moved=it=>E.drag.k?scaleIt(it,E.drag.ax,E.drag.ay,E.drag.k):shift(it,E.drag.dx,E.drag.dy);
   function selDown(e){if(!E||!E.sel||e.target.closest('[data-s]'))return;e.preventDefault();e.stopPropagation();try{e.currentTarget.setPointerCapture(e.pointerId)}catch(_){}
-    E.drag={x:e.clientX,y:e.clientY,dx:0,dy:0,id:e.pointerId}}
-  function selMove(e){if(!E||!E.drag||E.drag.id!==e.pointerId)return;E.drag.dx=(e.clientX-E.drag.x)/E.s;E.drag.dy=(e.clientY-E.drag.y)/E.s;
-    E.el.querySelector('.nbe-sel').style.transform=`translate(${E.drag.dx*E.s}px,${E.drag.dy*E.s}px)`;if(!raf)raf=requestAnimationFrame(()=>{raf=0;if(E&&E.drag)redraw(E.sel)})}
-  function selUp(e){if(!E||!E.drag||E.drag.id!==e.pointerId)return;const {dx,dy}=E.drag;E.drag=null;
-    if(Math.abs(dx)+Math.abs(dy)>.5){snap();E.pg.items=E.pg.items.map((it,i)=>E.sel.has(i)?shift(it,dx,dy):it);
+    E.drag={x:e.clientX,y:e.clientY,dx:0,dy:0,id:e.pointerId};
+    if(e.target.closest('[data-h]')){const [a,b,c,d]=selBox();Object.assign(E.drag,{k:1,ax:a,ay:b,w0:Math.max(4,c-a),h0:Math.max(4,d-b)})}}
+  function selMove(e){if(!E||!E.drag||E.drag.id!==e.pointerId)return;const D=E.drag;D.dx=(e.clientX-D.x)/E.s;D.dy=(e.clientY-D.y)/E.s;const el=E.el.querySelector('.nbe-sel');
+    if(D.k){const w=D.w0+D.dx,h=D.h0+D.dy;D.k=Math.max(.15,Math.min(8,(w*D.w0+h*D.h0)/(D.w0*D.w0+D.h0*D.h0)));   // keeps the shape: one scale factor from the drag
+      el.style.width=(D.w0*D.k*E.s+16)+'px';el.style.height=(D.h0*D.k*E.s+16)+'px'}
+    else el.style.transform=`translate(${D.dx*E.s}px,${D.dy*E.s}px)`;
+    if(!raf)raf=requestAnimationFrame(()=>{raf=0;if(E&&E.drag)redraw(E.sel)})}
+  function selUp(e){if(!E||!E.drag||E.drag.id!==e.pointerId)return;const D=E.drag;
+    if(D.k?Math.abs(D.k-1)>.01:Math.abs(D.dx)+Math.abs(D.dy)>.5){snap();E.pg.items=E.pg.items.map((it,i)=>E.sel.has(i)?moved(it):it);E.drag=null;
       const bottom=selBox()[3];if(bottom>E.pg.h*SH-20&&E.pg.h<MAXH){E.pg.h=Math.min(MAXH,Math.ceil((bottom+40)/SH));layout()}else redraw();changed()}
+    else{E.drag=null;redraw()}                              // a tiny drag leaves everything where it was
     showSel()}
   function selAct(a){if(!E||!E.sel)return;
     if(a==='solve'||a==='factor'||a==='expand'){const it=E.pg.items[[...E.sel][0]];if(it&&it.k!=='s')runCAS(a,it);return}
@@ -445,7 +461,7 @@ const NOTEBOOK=(()=>{
     if(!edit){const hit=E.pg.items.findIndex(it=>it.k!=='s'&&hits(it,p[0],p[1],4));
       if(hit>=0){const it=E.pg.items[hit];snap();E.pg.items.splice(hit,1);redraw();E.textSnapped=true;return it.k==='m'?startMath(null,it):startText(null,it)}
       E.textSnapped=false;if(tmode()!=='text')return startMath(p)}
-    const z=edit?edit.z:SIZES.text[size('text')],c=edit?edit.c:color('text');
+    const z=edit?edit.z:fsize(),c=edit?edit.c:color('text');
     const x=edit?edit.x:p[0],y=edit?edit.y:p[1]-z*.65,w=edit?edit.w:Math.max(120,W-x-30);
     const ta=document.createElement('textarea');ta.className='nbe-txt';ta.value=edit?edit.v:'';ta.rows=1;ta.spellcheck=true;
     Object.assign(ta.style,{left:(x*E.s-1)+'px',top:(y*E.s-1)+'px',width:w*E.s+'px',fontSize:z*E.s+'px',lineHeight:(z*1.3*E.s)+'px',color:c});
@@ -468,7 +484,7 @@ const NOTEBOOK=(()=>{
   const MQ_CMDS='pi theta sqrt nthroot sum prod int infty alpha beta gamma delta epsilon lambda mu sigma phi omega rho tau degree pm',
     MQ_OPS='sin cos tan sec csc cot arcsin arccos arctan sinh cosh tanh log ln exp lim max min gcd lcm mod det';
   const texOf=ed=>ed.mq?ed.mq.latex():ed.ta?ed.ta.value:ed.latex;
-  function startMath(p,edit){const z=edit?edit.z:Math.round(SIZES.text[size('text')]*1.1),c=edit?edit.c:color('text');
+  function startMath(p,edit){const z=edit?edit.z:Math.round(fsize()*1.1),c=edit?edit.c:color('text');
     const x=edit?edit.x:p[0],y=edit?edit.y:p[1]-z*.7;
     const box=document.createElement('div');box.className='nbe-mbox';Object.assign(box.style,{left:(x*E.s-9.5)+'px',top:(y*E.s-5.5)+'px',fontSize:z*E.s+'px',color:c});
     box.innerHTML='<div class="nbe-mbar">'+modeBtns('')+'<span class="nbe-selsep"></span><button type="button" data-mm="solve">Solve</button><button type="button" data-mm="factor">Factor</button><button type="button" data-mm="done">Done</button></div><div class="nbe-mfield"></div>';
@@ -495,6 +511,9 @@ const NOTEBOOK=(()=>{
     box.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Escape')commitText()});
     box.addEventListener('pointerdown',e=>e.stopPropagation());
     ed.setMode=setMode;setMode(tmode()==='latex'?'latex':'desmos')}
+  function restyleBox(ed,{z,c}){ed.hold=false;const it=ed.it;if(c)it.c=c;            // the toolbar's size and colour also change the box being typed in
+    if(ed.kind==='x'){if(z)it.z=z;Object.assign(ed.ta.style,{fontSize:it.z*E.s+'px',lineHeight:(it.z*1.3*E.s)+'px',color:it.c});ed.ta.dispatchEvent(new Event('input'));ed.ta.focus()}
+    else{if(z)it.z=Math.round(z*1.1);Object.assign(ed.box.style,{fontSize:it.z*E.s+'px',color:it.c});if(ed.mq)ed.mq.focus();else if(ed.ta)ed.ta.focus()}}
   function commitText(){if(!E||!E.editing)return;const ed=E.editing;E.editing=null;let it=null;
     if(ed.kind==='x'){const v=ed.ta.value.replace(/\s+$/,'');ed.ta.remove();ed.bar.remove();if(v)it=Object.assign({},ed.it,{v})}
     else{const v=texOf(ed).trim();ed.box.remove();if(v)it=Object.assign({},ed.it,{v})}
@@ -666,7 +685,8 @@ const NOTEBOOK=(()=>{
     const s=e.target.closest('[data-s]');if(s)return selAct(s.dataset.s);
     const t=e.target.closest('[data-tool]');if(t){commitText();clearSel();tool=t.dataset.tool;ls('tool',tool);return paintTools()}
     const tm=e.target.closest('[data-tm]');if(tm){pref.tm=tm.dataset.tm;savePref();if(E.editing)switchBox(E.editing,pref.tm);return paintTools()}
-    const c=e.target.closest('[data-col]');if(c){pref['c_'+tool]=c.dataset.col;savePref();return paintTools()}
+    const fz=e.target.closest('[data-fs]');if(fz){pref.fs=stepFs(fsize(),+fz.dataset.fs);savePref();if(E.editing)restyleBox(E.editing,{z:pref.fs});return paintTools()}
+    const c=e.target.closest('[data-col]');if(c){pref['c_'+tool]=c.dataset.col;savePref();if(E.editing&&tool==='text')restyleBox(E.editing,{c:c.dataset.col});return paintTools()}
     const z=e.target.closest('[data-size]');if(z){pref['s_'+tool]=+z.dataset.size;savePref();return paintTools()}
     const a=e.target.closest('[data-a]');if(!a)return;const k=a.dataset.a;
     if(k==='close')return closeEditor();if(k==='undo')return undoRedo(false);if(k==='redo')return undoRedo(true);

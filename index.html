@@ -660,6 +660,10 @@ body.nbe-on{overflow:hidden}
 .nbe-add{font-size:14px;border-color:var(--line);margin-left:8px}
 .nbe-sel{position:absolute;border:1.5px dashed #5b6cff;border-radius:6px;background:rgba(91,108,255,.06);cursor:move;touch-action:none}
 .nbe-sel[hidden]{display:none}
+.nbe-selh{position:absolute;right:-8px;bottom:-8px;width:14px;height:14px;box-sizing:border-box;background:#fff;border:2px solid #5b6cff;border-radius:4px;cursor:nwse-resize;touch-action:none}
+.nbe-selh::before{content:"";position:absolute;inset:-10px}          /* a finger-sized grab area around the small square */
+.nbe-fs{font-weight:700;font-size:15px;min-width:36px}.nbe-fs small{font-size:.72em;margin-left:1px}
+.nbe-fsv{min-width:26px;text-align:center;font-size:14px;font-variant-numeric:tabular-nums;color:var(--muted)}
 .nbe-selbar{position:absolute;left:0;top:-44px;display:flex;gap:4px;background:#1e2333;border-radius:9px;padding:4px;box-shadow:0 6px 16px rgba(0,0,0,.3)}
 .nbe-sel-low .nbe-selbar{top:auto;bottom:-44px}
 .nbe-selbar button{border:0;background:none;color:#fff;font:inherit;font-size:13.5px;font-weight:600;padding:6px 10px;border-radius:6px;cursor:pointer}
@@ -749,6 +753,17 @@ body.landing .mu-btn{background:var(--tp-face,#fbfaf8);color:var(--tp-fg,#1d1d1f
 .mu-add:hover{border-color:var(--accent)}
 .mu-link{border:0;background:none;color:var(--accent);font:inherit;font-size:13.5px;font-weight:600;cursor:pointer;padding:0}
 .mu-note{margin:8px 0 0;font-size:12.5px;color:var(--muted);line-height:1.45}
+.mu-lists{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:2px 0 8px}
+.mu-sel-w{display:flex;align-items:center;gap:8px;flex:1;min-width:0}
+.mu-sel{flex:1;min-width:120px;max-width:200px;font:inherit;font-size:14px;color:inherit;background:transparent;border:1px solid var(--line);border-radius:8px;padding:5px 8px}
+.mu-danger{color:var(--bad)}
+.mu-namef{display:flex;align-items:center;gap:12px;margin:0 0 8px}
+.mu-in{flex:1;min-width:0;font:inherit;font-size:14px;color:inherit;background:transparent;border:1px solid var(--line);border-radius:8px;padding:6px 9px;outline:none}
+.mu-in:focus{border-color:var(--accent)}
+.mu-pick{display:flex;align-items:center;gap:10px}
+.mu-box{flex:none;width:16px;height:16px;border:1.5px solid var(--line);border-radius:4px;display:inline-flex;align-items:center;justify-content:center}
+.mu-pick.on .mu-box{background:var(--accent);border-color:var(--accent)}
+.mu-pick.on .mu-box::after{content:"";width:8px;height:4px;border:solid #fff;border-width:0 0 2px 2px;transform:translateY(-1px) rotate(-45deg)}
 /* on the timer screen the player takes the timer's own palette and type */
 body.landing .mu-panel{background:var(--tp-sheet);color:var(--tp-fg);border-color:var(--tp-line);font-family:var(--tp-font);box-shadow:0 16px 40px -18px rgba(0,0,0,.28)}
 body.landing .mu-x,body.landing .mu-dim,body.landing .mu-note,body.landing .mu-st,body.landing .mu-del,body.landing .mu-vol{color:var(--tp-muted)}
@@ -760,6 +775,11 @@ body.landing .mu-name{color:var(--tp-fg)}
 body.landing .mu-name:hover{background:rgba(0,0,0,.045)}
 body.landing .mu-row.cur .mu-name{color:var(--tp-fg)}
 body.landing .mu-link{color:var(--tp-fg);text-decoration:underline;text-underline-offset:3px}
+body.landing .mu-sel,body.landing .mu-in,body.landing .mu-box{border-color:var(--tp-line)}
+body.landing .mu-in:focus{border-color:var(--tp-fg)}
+body.landing .mu-pick.on .mu-box{background:var(--tp-fg);border-color:var(--tp-fg)}
+body.landing .mu-pick.on .mu-box::after{border-color:var(--tp-sheet)}
+body.landing .mu-danger{color:var(--tp-warn)}
 body.landing .mu-btn{box-shadow:0 2px 10px rgba(0,0,0,.06)}
 body.landing .mu-btn.on{color:var(--tp-fg);border-color:var(--tp-fg)}
 
@@ -879,6 +899,7 @@ input,textarea,[contenteditable]{caret-color:var(--accent)}
 .mu-btn{transition:transform .32s var(--ease-out),opacity .24s var(--ease),border-color var(--t)}
 .mu-btn.mu-away{transform:translateY(calc(100% + 28px));opacity:0;pointer-events:none}
 body.graph-mode .mu-btn,body.graph-mode .mu-panel{left:auto;right:max(14px,env(safe-area-inset-right))}
+body.bkv-on .mu-btn{z-index:61}body.bkv-on .mu-panel{z-index:62}          /* music stays reachable over the textbook and answer pages */
 
 /* phones */
 @media (max-width:560px){
@@ -933,11 +954,11 @@ body.graph-mode .mu-btn,body.graph-mode .mu-panel{left:auto;right:max(14px,env(s
       </svg>
     </div>
     <div class="tm-controls">
-      <button class="tm-btn" id="tmSet">Set</button>
+      <button class="tm-btn" id="tmGo">Go</button>
       <button class="tm-btn hidden" id="tmPause">Pause</button>
       <button class="tm-btn hidden" id="tmEnd">End</button>
     </div>
-    <button class="tm-link tm-go" id="tmGo">Browse topics without a timer</button>
+    <button class="tm-link tm-go" id="tmSet">Set a timer</button>
     <div class="tm-stats" id="tmStats"></div>
   </div>
   <button class="tm-histbtn" id="tmHistBtn"><svg viewBox="0 0 24 24"><path d="M3.5 12a8.5 8.5 0 1 0 2.5-6"/><path d="M3 4v4h4"/><path d="M12 7.5V12l3 2"/></svg>History</button>
@@ -20255,11 +20276,11 @@ const TM = (() => {
     $('tmTimer').classList.toggle('show', active);
     $('tmLabel').textContent = label;
     $('tmDescShow').textContent = active && focus ? oneSentence(state.desc) : '';
-    $('tmSet').classList.toggle('hidden', active);
+    $('tmGo').classList.toggle('hidden', active);
     $('tmPause').classList.toggle('hidden', !active);
     $('tmEnd').classList.toggle('hidden', !active);
     $('tmPause').textContent = $('tmwPause').textContent = state.paused ? 'Resume' : 'Pause';
-    const go = $('tmGo'); go.textContent = active ? 'Back to studying' : 'Browse topics without a timer'; go.classList.toggle('primary', active);
+    const set = $('tmSet'); set.textContent = active ? 'Back to studying' : 'Set a timer'; set.classList.toggle('primary', active);
     const w = $('tmw');
     w.hidden = !active || onLanding;
     w.classList.toggle('focus', focus && !state.paused);
@@ -20355,7 +20376,8 @@ const TM = (() => {
   });
   typed.addEventListener('keydown', e => { if (e.key === 'Enter'){ e.preventDefault(); descEl.focus(); } });
   descEl.addEventListener('input', () => { sfx.key(); $('tmCount').textContent = descEl.value.length + ' / 500'; });
-  $('tmSet').addEventListener('click', () => { lastStep = -1; setSelected(selected, true); $('tmCount').textContent = descEl.value.length + ' / 500'; openSheet($('tmSheet')); });
+  function openSet(){ lastStep = -1; setSelected(selected, true); $('tmCount').textContent = descEl.value.length + ' / 500'; openSheet($('tmSheet')); }
+  $('tmSet').addEventListener('click', () => { if (state.mode !== 'idle') location.hash = '#/home'; else openSet(); });
   $('tmCancel').addEventListener('click', closeSheet);
   startBtn.addEventListener('click', () => {
     sfx.unlock(); store.set('last', selected);
@@ -20368,7 +20390,7 @@ const TM = (() => {
   $('tmEnd').addEventListener('click', endEarly);
   $('tmGo').addEventListener('click', () => { location.hash = '#/home'; });
   $('tmDoneOk').addEventListener('click', closeSheet);
-  $('tmNew').addEventListener('click', () => { closeSheet(true); location.hash = '#/'; setTimeout(() => $('tmSet').click(), 350); });
+  $('tmNew').addEventListener('click', () => { closeSheet(true); location.hash = '#/'; setTimeout(openSet, 350); });
   $('tmBreak').addEventListener('click', () => { sfx.unlock(); closeSheet(true); startSession('break', BREAK, ''); });
 
   // ---------- history ----------
@@ -24324,6 +24346,7 @@ const NOTEBOOK=(()=>{
   const TPL=[['blank','Blank'],['lined','Lined'],['grid','Grid'],['dots','Dots']];
   const TOOLS=[['move','Select and move'],['pen','Pen'],['mark','Marker'],['hl','Highlighter'],['erase','Eraser'],['lasso','Lasso select'],['text','Text']];
   const SIZES={pen:[2.2,3.6,6],mark:[5,9,15],hl:[16,26,38],erase:[10,20,38],text:[24,32,46]};
+  const FS=[12,14,16,18,20,24,28,32,36,40,48,56,64,80,96];   // text sizes the A− / A+ buttons step through
   const INKS=['#111111','#5b6170','#2f5bd3','#d23b3b','#1f8a4c'],HLS=['#ffe14d','#7cf0a0','#7cc8ff','#ff9ad5'];
   const FONT='"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif';
   const code=()=>typeof SYNC!=='undefined'?SYNC.code:null;
@@ -24573,6 +24596,8 @@ const NOTEBOOK=(()=>{
   let tool=ls('tool')||'pen';if(!SIZES[tool]&&tool!=='lasso'&&tool!=='move')tool='pen';
   let pref={};try{pref=JSON.parse(ls('pref')||'{}')||{}}catch(e){}const size=t=>(pref['s_'+t]==null?1:pref['s_'+t]);
   const color=t=>pref['c_'+t]||(t==='hl'?HLS[0]:INKS[0]);const savePref=()=>ls('pref',JSON.stringify(pref));
+  const fsize=()=>+pref.fs||SIZES.text[size('text')];
+  const stepFs=(z,d)=>d>0?(FS.find(v=>v>z)||FS[FS.length-1]):([...FS].reverse().find(v=>v<z)||FS[0]);
   let penSeen=ls('pen')==='1',fingerDraw=ls('finger')!=='0',fit=ls('fit')||'width';
   const fingerScrolls=()=>penSeen&&!fingerDraw;
   const ICON={move:'<path d="M6 3l12 8.5-5.2 1.2 3 5.8-2.4 1.2-3-5.8L6 18z"/>',pen:'<path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/>',mark:'<path d="M5 19l3-1 10-10-3-3L5 15z" stroke-width="3.2"/>',
@@ -24591,7 +24616,7 @@ const NOTEBOOK=(()=>{
         <div class="nbe-grp nbe-opts"></div>
         <button class="nbe-b" data-a="more" aria-label="Page options">${icon('dots')}</button></div>
       <div class="nbe-body"><div class="nbe-page"><canvas class="nbe-base"></canvas><div class="nbe-mlayer"></div><canvas class="nbe-ink"></canvas>
-        <div class="nbe-sel" hidden><div class="nbe-selbar"></div></div></div>
+        <div class="nbe-sel" hidden><div class="nbe-selbar"></div><span class="nbe-selh" data-h title="Drag to resize" aria-label="Resize"></span></div></div>
         <button class="nbe-extend" data-a="extend">${icon('plus')} Extend this page down</button></div>
       <div class="nbe-bot"><button class="nbe-b" data-a="prev" aria-label="Previous page">‹</button><button class="nbe-b nbe-pgno" data-a="grid" aria-label="All pages"></button>
         <button class="nbe-b" data-a="next" aria-label="Next page">›</button><button class="nbe-b nbe-add" data-a="add">${icon('plus')} Page</button></div>
@@ -24607,6 +24632,8 @@ const NOTEBOOK=(()=>{
     const stylus=e=>{for(const t of e.changedTouches)if(t.touchType==='stylus'){e.preventDefault();return}};   // a stylus draws, it never scrolls the page
     ink.addEventListener('touchstart',stylus,{passive:false});ink.addEventListener('touchmove',stylus,{passive:false});
     const sel=el.querySelector('.nbe-sel');sel.addEventListener('pointerdown',selDown);sel.addEventListener('pointermove',selMove);sel.addEventListener('pointerup',selUp);
+    const opts=el.querySelector('.nbe-opts'),keepBox=e=>E&&E.editing&&e.target.closest('[data-fs],[data-col]');     // changing size or colour keeps the open text box
+    opts.addEventListener('pointerdown',e=>{if(keepBox(e))E.editing.hold=true});opts.addEventListener('mousedown',e=>{if(keepBox(e))e.preventDefault()});
     el.querySelector('.nbe-body').addEventListener('scroll',()=>{if(E)ls('y:'+E.pid(),Math.round(E.body.scrollTop/E.s))},{passive:true});
     return el}
   async function openBook(bid){const b=lib.b[bid];if(!live(b))return;closeMenu();
@@ -24630,7 +24657,8 @@ const NOTEBOOK=(()=>{
   function paintTools(){if(!E)return;E.el.querySelectorAll('[data-tool]').forEach(b=>b.classList.toggle('on',b.dataset.tool===tool));
     const o=E.el.querySelector('.nbe-opts');const cols=tool==='hl'?HLS:INKS;
     o.innerHTML=(tool==='text'?[['text','Aa','Plain text'],['desmos','x²','Math, typed like Desmos'],['latex','TeX','Math, typed as LaTeX']].map(([k,l,t])=>`<button class="nbe-b nbe-tm ${tmode()===k?'on':''}" data-tm="${k}" title="${t}" aria-label="${t}">${l}</button>`).join('')+'<span class="nbe-div"></span>':'')+(SIZES[tool]&&tool!=='erase'?cols.map(c=>`<button class="nbe-sw ${c===color(tool)?'on':''}" data-col="${c}" style="--c:${c}" aria-label="Color ${c}"></button>`).join(''):'')
-      +(SIZES[tool]?`<span class="nbe-div"></span>`+[0,1,2].map(k=>`<button class="nbe-b nbe-sz ${k===size(tool)?'on':''}" data-size="${k}" aria-label="${['Thin','Medium','Thick'][k]}"><i style="--d:${[4,8,13][k]}px"></i></button>`).join(''):'');
+      +(tool==='text'?`<span class="nbe-div"></span><button class="nbe-b nbe-fs" data-fs="-1" aria-label="Smaller text" title="Smaller text">A<small>−</small></button><span class="nbe-fsv" title="Text size">${fsize()}</span><button class="nbe-b nbe-fs" data-fs="1" aria-label="Larger text" title="Larger text">A<small>+</small></button>`
+       :SIZES[tool]?`<span class="nbe-div"></span>`+[0,1,2].map(k=>`<button class="nbe-b nbe-sz ${k===size(tool)?'on':''}" data-size="${k}" aria-label="${['Thin','Medium','Thick'][k]}"><i style="--d:${[4,8,13][k]}px"></i></button>`).join(''):'');
     E.ink.style.cursor=inkCursor();E.ink.style.touchAction=fingerScrolls()?'pan-x pan-y':'none'}
   function inkCursor(){                                  // a dot the size and colour of the pen, centred on the point where ink lands
     if(tool==='move')return'default';if(tool==='text')return'text';if(tool==='lasso')return'crosshair';
@@ -24645,7 +24673,7 @@ const NOTEBOOK=(()=>{
     for(const cv of [E.base,E.ink]){cv.width=Math.round(w*dpr);cv.height=Math.round(h*dpr);cv.style.width=w+'px';cv.style.height=h+'px'}
     E.dpr=dpr;E.page.style.width=w+'px';E.page.style.height=h+'px';redraw();clearInk();if(E.sel)showSel();E.ink.style.cursor=inkCursor()}
   function redraw(skip){const ctx=E.base.getContext('2d');ctx.setTransform(E.dpr,0,0,E.dpr,0,0);
-    const pg=skip?Object.assign({},E.pg,{items:E.pg.items.map((it,i)=>skip.has(i)?shift(it,E.drag.dx,E.drag.dy):it)}):E.pg;drawPage(ctx,pg,E.s,E.pg.h,true);mathLayer(pg)}
+    const pg=skip?Object.assign({},E.pg,{items:E.pg.items.map((it,i)=>skip.has(i)?moved(it):it)}):E.pg;drawPage(ctx,pg,E.s,E.pg.h,true);mathLayer(pg)}
   function inkCtx(){const ctx=E.ink.getContext('2d');ctx.setTransform(E.dpr,0,0,E.dpr,0,0);return ctx}
   function clearInk(){const ctx=E.ink.getContext('2d');ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,E.ink.width,E.ink.height);
     ctx.setTransform(E.dpr,0,0,E.dpr,0,0)}                 // put the screen scale back, or live strokes draw shrunk toward the top-left
@@ -24724,13 +24752,23 @@ const NOTEBOOK=(()=>{
   function clearSel(){if(!E)return;E.sel=null;E.drag=null;E.el.querySelector('.nbe-sel').hidden=true}
   function shift(it,dx,dy){if(it.k!=='s')return Object.assign({},it,{x:+(it.x+dx).toFixed(1),y:+(it.y+dy).toFixed(1)});
     const p=it.p.slice();for(let i=0;i<p.length;i+=3){p[i]=+(p[i]+dx).toFixed(1);p[i+1]=+(p[i+1]+dy).toFixed(1)}return Object.assign({},it,{p})}
+  function scaleIt(it,ax,ay,k){const X=v=>+(ax+(v-ax)*k).toFixed(1),Y=v=>+(ay+(v-ay)*k).toFixed(1);    // grow or shrink about the corner (ax, ay)
+    if(it.k==='s'){const p=it.p.slice();for(let i=0;i<p.length;i+=3){p[i]=X(p[i]);p[i+1]=Y(p[i+1])}return Object.assign({},it,{p,w:+Math.max(.5,it.w*k).toFixed(2)})}
+    const o=Object.assign({},it,{x:X(it.x),y:Y(it.y),z:Math.max(6,Math.round(it.z*k*10)/10)});
+    if(it.k==='x')o.w=Math.max(40,+(it.w*k).toFixed(1));if(it.bw)o.bw=+(it.bw*k).toFixed(1);if(it.bh)o.bh=+(it.bh*k).toFixed(1);return o}
+  const moved=it=>E.drag.k?scaleIt(it,E.drag.ax,E.drag.ay,E.drag.k):shift(it,E.drag.dx,E.drag.dy);
   function selDown(e){if(!E||!E.sel||e.target.closest('[data-s]'))return;e.preventDefault();e.stopPropagation();try{e.currentTarget.setPointerCapture(e.pointerId)}catch(_){}
-    E.drag={x:e.clientX,y:e.clientY,dx:0,dy:0,id:e.pointerId}}
-  function selMove(e){if(!E||!E.drag||E.drag.id!==e.pointerId)return;E.drag.dx=(e.clientX-E.drag.x)/E.s;E.drag.dy=(e.clientY-E.drag.y)/E.s;
-    E.el.querySelector('.nbe-sel').style.transform=`translate(${E.drag.dx*E.s}px,${E.drag.dy*E.s}px)`;if(!raf)raf=requestAnimationFrame(()=>{raf=0;if(E&&E.drag)redraw(E.sel)})}
-  function selUp(e){if(!E||!E.drag||E.drag.id!==e.pointerId)return;const {dx,dy}=E.drag;E.drag=null;
-    if(Math.abs(dx)+Math.abs(dy)>.5){snap();E.pg.items=E.pg.items.map((it,i)=>E.sel.has(i)?shift(it,dx,dy):it);
+    E.drag={x:e.clientX,y:e.clientY,dx:0,dy:0,id:e.pointerId};
+    if(e.target.closest('[data-h]')){const [a,b,c,d]=selBox();Object.assign(E.drag,{k:1,ax:a,ay:b,w0:Math.max(4,c-a),h0:Math.max(4,d-b)})}}
+  function selMove(e){if(!E||!E.drag||E.drag.id!==e.pointerId)return;const D=E.drag;D.dx=(e.clientX-D.x)/E.s;D.dy=(e.clientY-D.y)/E.s;const el=E.el.querySelector('.nbe-sel');
+    if(D.k){const w=D.w0+D.dx,h=D.h0+D.dy;D.k=Math.max(.15,Math.min(8,(w*D.w0+h*D.h0)/(D.w0*D.w0+D.h0*D.h0)));   // keeps the shape: one scale factor from the drag
+      el.style.width=(D.w0*D.k*E.s+16)+'px';el.style.height=(D.h0*D.k*E.s+16)+'px'}
+    else el.style.transform=`translate(${D.dx*E.s}px,${D.dy*E.s}px)`;
+    if(!raf)raf=requestAnimationFrame(()=>{raf=0;if(E&&E.drag)redraw(E.sel)})}
+  function selUp(e){if(!E||!E.drag||E.drag.id!==e.pointerId)return;const D=E.drag;
+    if(D.k?Math.abs(D.k-1)>.01:Math.abs(D.dx)+Math.abs(D.dy)>.5){snap();E.pg.items=E.pg.items.map((it,i)=>E.sel.has(i)?moved(it):it);E.drag=null;
       const bottom=selBox()[3];if(bottom>E.pg.h*SH-20&&E.pg.h<MAXH){E.pg.h=Math.min(MAXH,Math.ceil((bottom+40)/SH));layout()}else redraw();changed()}
+    else{E.drag=null;redraw()}                              // a tiny drag leaves everything where it was
     showSel()}
   function selAct(a){if(!E||!E.sel)return;
     if(a==='solve'||a==='factor'||a==='expand'){const it=E.pg.items[[...E.sel][0]];if(it&&it.k!=='s')runCAS(a,it);return}
@@ -24758,7 +24796,7 @@ const NOTEBOOK=(()=>{
     if(!edit){const hit=E.pg.items.findIndex(it=>it.k!=='s'&&hits(it,p[0],p[1],4));
       if(hit>=0){const it=E.pg.items[hit];snap();E.pg.items.splice(hit,1);redraw();E.textSnapped=true;return it.k==='m'?startMath(null,it):startText(null,it)}
       E.textSnapped=false;if(tmode()!=='text')return startMath(p)}
-    const z=edit?edit.z:SIZES.text[size('text')],c=edit?edit.c:color('text');
+    const z=edit?edit.z:fsize(),c=edit?edit.c:color('text');
     const x=edit?edit.x:p[0],y=edit?edit.y:p[1]-z*.65,w=edit?edit.w:Math.max(120,W-x-30);
     const ta=document.createElement('textarea');ta.className='nbe-txt';ta.value=edit?edit.v:'';ta.rows=1;ta.spellcheck=true;
     Object.assign(ta.style,{left:(x*E.s-1)+'px',top:(y*E.s-1)+'px',width:w*E.s+'px',fontSize:z*E.s+'px',lineHeight:(z*1.3*E.s)+'px',color:c});
@@ -24781,7 +24819,7 @@ const NOTEBOOK=(()=>{
   const MQ_CMDS='pi theta sqrt nthroot sum prod int infty alpha beta gamma delta epsilon lambda mu sigma phi omega rho tau degree pm',
     MQ_OPS='sin cos tan sec csc cot arcsin arccos arctan sinh cosh tanh log ln exp lim max min gcd lcm mod det';
   const texOf=ed=>ed.mq?ed.mq.latex():ed.ta?ed.ta.value:ed.latex;
-  function startMath(p,edit){const z=edit?edit.z:Math.round(SIZES.text[size('text')]*1.1),c=edit?edit.c:color('text');
+  function startMath(p,edit){const z=edit?edit.z:Math.round(fsize()*1.1),c=edit?edit.c:color('text');
     const x=edit?edit.x:p[0],y=edit?edit.y:p[1]-z*.7;
     const box=document.createElement('div');box.className='nbe-mbox';Object.assign(box.style,{left:(x*E.s-9.5)+'px',top:(y*E.s-5.5)+'px',fontSize:z*E.s+'px',color:c});
     box.innerHTML='<div class="nbe-mbar">'+modeBtns('')+'<span class="nbe-selsep"></span><button type="button" data-mm="solve">Solve</button><button type="button" data-mm="factor">Factor</button><button type="button" data-mm="done">Done</button></div><div class="nbe-mfield"></div>';
@@ -24808,6 +24846,9 @@ const NOTEBOOK=(()=>{
     box.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Escape')commitText()});
     box.addEventListener('pointerdown',e=>e.stopPropagation());
     ed.setMode=setMode;setMode(tmode()==='latex'?'latex':'desmos')}
+  function restyleBox(ed,{z,c}){ed.hold=false;const it=ed.it;if(c)it.c=c;            // the toolbar's size and colour also change the box being typed in
+    if(ed.kind==='x'){if(z)it.z=z;Object.assign(ed.ta.style,{fontSize:it.z*E.s+'px',lineHeight:(it.z*1.3*E.s)+'px',color:it.c});ed.ta.dispatchEvent(new Event('input'));ed.ta.focus()}
+    else{if(z)it.z=Math.round(z*1.1);Object.assign(ed.box.style,{fontSize:it.z*E.s+'px',color:it.c});if(ed.mq)ed.mq.focus();else if(ed.ta)ed.ta.focus()}}
   function commitText(){if(!E||!E.editing)return;const ed=E.editing;E.editing=null;let it=null;
     if(ed.kind==='x'){const v=ed.ta.value.replace(/\s+$/,'');ed.ta.remove();ed.bar.remove();if(v)it=Object.assign({},ed.it,{v})}
     else{const v=texOf(ed).trim();ed.box.remove();if(v)it=Object.assign({},ed.it,{v})}
@@ -24979,7 +25020,8 @@ const NOTEBOOK=(()=>{
     const s=e.target.closest('[data-s]');if(s)return selAct(s.dataset.s);
     const t=e.target.closest('[data-tool]');if(t){commitText();clearSel();tool=t.dataset.tool;ls('tool',tool);return paintTools()}
     const tm=e.target.closest('[data-tm]');if(tm){pref.tm=tm.dataset.tm;savePref();if(E.editing)switchBox(E.editing,pref.tm);return paintTools()}
-    const c=e.target.closest('[data-col]');if(c){pref['c_'+tool]=c.dataset.col;savePref();return paintTools()}
+    const fz=e.target.closest('[data-fs]');if(fz){pref.fs=stepFs(fsize(),+fz.dataset.fs);savePref();if(E.editing)restyleBox(E.editing,{z:pref.fs});return paintTools()}
+    const c=e.target.closest('[data-col]');if(c){pref['c_'+tool]=c.dataset.col;savePref();if(E.editing&&tool==='text')restyleBox(E.editing,{c:c.dataset.col});return paintTools()}
     const z=e.target.closest('[data-size]');if(z){pref['s_'+tool]=+z.dataset.size;savePref();return paintTools()}
     const a=e.target.closest('[data-a]');if(!a)return;const k=a.dataset.a;
     if(k==='close')return closeEditor();if(k==='undo')return undoRedo(false);if(k==='redo')return undoRedo(true);
@@ -25016,6 +25058,7 @@ const NOTEBOOK=(()=>{
 /* ---------- Focus music: tracks saved under the sync code, shuffled, cached on each device ----------
    cloud  /codes/<code>/music/meta/<id>      {name, size, type, at, n}
           /codes/<code>/music/data/<id>/<i>  512K base64 pieces
+          /codes/<code>/music/lists/<id>     {n, ids:[track ids], at} playlists ({del:1, at} once deleted)
    local  IndexedDB 'ionized-music', store 'files': id -> {blob, name, type, size, at}
    Only devices that know the code can fetch the tracks; nothing is in the public site. */
 const MUSIC=(()=>{
@@ -25047,7 +25090,29 @@ const MUSIC=(()=>{
     if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}
   async function loadCloud(){if(!code())return;let m;try{m=(await rest('meta'))||{}}catch(e){return}
     cloud={};for(const k in m)if(safeId(k)&&m[k]&&typeof m[k]==='object')cloud[k]=m[k];
-    for(const id in local){if(cloud[id]&&cloud[id].del){idel(id);delete local[id]}else if(!cloud[id])queueUpload(id)}paint()}
+    for(const id in local){if(cloud[id]&&cloud[id].del){idel(id);delete local[id]}else if(!cloud[id])queueUpload(id)}
+    try{mergeLists(await rest('lists'))}catch(e){}paint()}
+
+  /* ---------- playlists (kept on this device too, so they work offline and before a code exists) ---------- */
+  const lists=pref.lists&&typeof pref.lists==='object'?pref.lists:(pref.lists={});
+  const liveList=id=>!!(lists[id]&&!lists[id].del);
+  function saveList(id){savePref();if(code())rest('lists/'+id,'PUT',lists[id]).catch(()=>{})}
+  function mergeLists(m){m=m&&typeof m==='object'?m:{};
+    for(const id in m){const r=m[id];if(!safeId(id)||!r||typeof r!=='object')continue;
+      if(!lists[id]||(r.at||0)>(lists[id].at||0))lists[id]=r.del?{del:1,at:r.at||0}:{n:String(r.n||'Playlist').slice(0,60),ids:(Array.isArray(r.ids)?r.ids:Object.values(r.ids||{})).filter(x=>typeof x==='string'&&safeId(x)),at:r.at||0}}
+    for(const id in lists)if(!m[id]||(lists[id].at||0)>(m[id].at||0))saveList(id);           // made offline or before the code existed
+    savePref()}
+  const active=()=>liveList(pref.list)?pref.list:'';
+  const listNames=()=>Object.keys(lists).filter(liveList).sort((a,b)=>lists[a].n.localeCompare(lists[b].n));
+  function pool(){const all=tracks(),l=active();if(!l)return all;const s=new Set(lists[l].ids);return all.filter(t=>s.has(t.id))}
+  function useList(id){pref.list=id;savePref();order=[];pos=-1;editing=false;
+    if(!audio.paused&&audio.src){if(pool().length)next();else{audio.pause();msg('This playlist is empty. Tap Edit to choose its tracks.')}}paint()}
+  function makeList(n){const id=uid();lists[id]={n,ids:[],at:Date.now()};saveList(id);useList(id);editing=true;paint()}
+  function renameList(id,n){lists[id]=Object.assign({},lists[id],{n,at:Date.now()});saveList(id);paint()}
+  function dropList(id){if(!confirm(`Delete the playlist “${lists[id].n}”? Its tracks stay in your music.`))return;
+    lists[id]={del:1,at:Date.now()};saveList(id);useList('')}
+  function toggleIn(id,tid){const L=lists[id],ids=L.ids.includes(tid)?L.ids.filter(x=>x!==tid):L.ids.concat(tid);
+    lists[id]=Object.assign({},L,{ids,at:Date.now()});saveList(id);order=[];pos=-1;paint()}
   const b64of=blob=>new Promise((ok,no)=>{const fr=new FileReader();fr.onload=()=>ok(String(fr.result).split(',')[1]||'');fr.onerror=()=>no(fr.error);fr.readAsDataURL(blob)});
   function setBusy(id,v){if(v)busy[id]=v;else delete busy[id];paintRow(id)}
   let upChain=Promise.resolve();
@@ -25072,7 +25137,7 @@ const MUSIC=(()=>{
   function tracks(){const all={};for(const id in cloud)if(!gone(id))all[id]=cloud[id].name;for(const id in local)if(!gone(id))all[id]=local[id].name;
     return Object.keys(all).map(id=>({id,name:all[id]||'Track'})).sort((a,b)=>a.name.localeCompare(b.name))}
   let order=[],pos=-1;
-  function shuffle(){const ids=tracks().map(t=>t.id);for(let i=ids.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ids[i],ids[j]]=[ids[j],ids[i]]}
+  function shuffle(){const ids=pool().map(t=>t.id);for(let i=ids.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ids[i],ids[j]]=[ids[j],ids[i]]}
     if(order[pos]&&ids.length>1&&ids[0]===order[pos])ids.push(ids.shift());order=ids;pos=-1}
   const nameOf=id=>{const t=tracks().find(x=>x.id===id);return t?t.name:''};
   const pretty=n=>String(n).replace(/\.(mp3|m4a|aac|wav|ogg|flac)$/i,'').replace(/\s*-\s*DeepWork Research$/i,'').trim();
@@ -25088,7 +25153,7 @@ const MUSIC=(()=>{
     try{await audio.play();wantPlay=true;pref.on=true;savePref()}catch(e){wantPlay=false}
     mediaInfo();paint();prefetchNext()}
   function skipToLocal(){const ids=order.slice(pos+1).concat(order.slice(0,pos+1));const id=ids.find(i=>local[i]);if(id&&id!==cur){pos=order.indexOf(id);playId(id)}else{wantPlay=false;paint()}}
-  function next(){if(!order.length||pos>=order.length-1)shuffle();if(!order.length)return msg('Add some music first.');pos++;playId(order[pos])}
+  function next(){if(!order.length||pos>=order.length-1)shuffle();if(!order.length)return msg(active()?'This playlist is empty. Tap Edit to choose its tracks.':'Add some music first.');pos++;playId(order[pos])}
   function prev(){if(audio.currentTime>3||pos<=0){audio.currentTime=0;return}pos--;playId(order[pos])}
   function toggle(){if(!tracks().length){open();return msg('Add your music with “Add music…” below.')}
     if(!audio.src||!cur){next();return}
@@ -25129,33 +25194,58 @@ const MUSIC=(()=>{
   const mb=n=>(n/1048576).toFixed(1)+' MB';
   function rowStatus(id){const b=busy[id];if(b==='failed')return'not saved (offline)';if(b&&b.startsWith('up'))return'saving '+b.slice(3)+'%';
     if(b&&b.startsWith('down'))return'downloading '+b.slice(5)+'%';if(local[id])return'';return'tap to download'}
+  let editing=false,naming=null;                         // naming: 'new' | 'rename' while the name field is open
   function open(){panel.hidden=false;paint()}
-  function close(){panel.hidden=true}
+  function close(){panel.hidden=true;naming=null}
+  function listBar(){const l=active();
+    return`<div class="mu-lists"><label class="mu-sel-w"><span class="mu-dim">Playlist</span><select class="mu-sel" data-mu-list aria-label="Playlist">
+        <option value="">All music</option>${listNames().map(id=>`<option value="${H(id)}"${id===l?' selected':''}>${H(lists[id].n)}</option>`).join('')}<option value="+new">New playlist…</option></select></label>
+      ${l?`<button type="button" class="mu-link" data-mu="edit">${editing?'Done':'Edit'}</button><button type="button" class="mu-link" data-mu="rename">Rename</button><button type="button" class="mu-link mu-danger" data-mu="droplist">Delete</button>`:''}</div>
+      ${naming?`<form class="mu-namef" data-mu-form><input class="mu-in" name="n" maxlength="60" autocomplete="off" placeholder="Playlist name" value="${naming==='rename'&&l?H(lists[l].n):''}">
+        <button type="submit" class="mu-link">${naming==='rename'?'Save':'Create'}</button><button type="button" class="mu-link" data-mu="noname">Cancel</button></form>`:''}`}
+  function listRows(){const l=active(),ts=tracks();
+    if(editing&&l){const s=new Set(lists[l].ids);
+      return ts.map(t=>`<div class="mu-row"><button type="button" class="mu-name mu-pick${s.has(t.id)?' on':''}" data-mu-tog="${H(t.id)}" aria-pressed="${s.has(t.id)}"><i class="mu-box" aria-hidden="true"></i>${H(pretty(t.name))}</button></div>`).join('')
+        ||'<p class="mu-dim mu-empty">Add music first, then choose tracks for this playlist.</p>'}
+    const ps=pool();
+    return ps.length?ps.map(t=>`<div class="mu-row ${t.id===cur?'cur':''}" data-mu-row="${H(t.id)}"><button type="button" class="mu-name" data-mu-play="${H(t.id)}">${H(pretty(t.name))}</button>
+        <span class="mu-st" data-mu-st="${H(t.id)}">${rowStatus(t.id)}</span>${l?'':`<button type="button" class="mu-del" data-mu-del="${H(t.id)}" aria-label="Remove">${icon('x')}</button>`}</div>`).join('')
+      :l?'<p class="mu-dim mu-empty">This playlist is empty. Tap Edit to choose its tracks.</p>'
+      :'<p class="mu-dim mu-empty">No music yet. Add MP3 files from this device; they are saved to your sync code so your other devices get them too.</p>'}
   function paint(){
     const playing=!audio.paused&&!!audio.src;btn.classList.toggle('on',playing);
     if(panel.hidden)return;
-    const ts=tracks(),missing=ts.filter(t=>!local[t.id]).length,size=ts.reduce((a,t)=>a+((cloud[t.id]||local[t.id]||{}).size||0),0);
+    const f=panel.querySelector('.mu-in'),keep=f&&{v:f.value,focus:document.activeElement===f};   // a repaint must not wipe a name being typed
+    const ts=tracks(),missing=ts.filter(t=>!local[t.id]).length,size=ts.reduce((a,t)=>a+((cloud[t.id]||local[t.id]||{}).size||0),0),l=active();
     panel.innerHTML=`<div class="mu-head"><b>Focus music</b><span class="mu-sp"></span><button type="button" class="mu-x" data-mu="close" aria-label="Close">${icon('x')}</button></div>
-      <div class="mu-now">${cur?H(pretty(nameOf(cur)))+(loadingId===cur?' <span class="mu-dim">· loading…</span>':''):'<span class="mu-dim">Shuffle plays your tracks in a random order.</span>'}</div>
+      <div class="mu-now">${cur?H(pretty(nameOf(cur)))+(loadingId===cur?' <span class="mu-dim">· loading…</span>':''):`<span class="mu-dim">Shuffle plays ${l?'“'+H(lists[l].n)+'”':'your tracks'} in a random order.</span>`}</div>
       <div class="mu-ctl"><button type="button" data-mu="prev" aria-label="Previous">${ICON.prev}</button>
         <button type="button" class="mu-play" data-mu="toggle" aria-label="${playing?'Pause':'Play'}">${playing?ICON.pause:ICON.play}</button>
         <button type="button" data-mu="next" aria-label="Next">${ICON.next}</button></div>
       ${volumeWorks?`<label class="mu-vol"><span>Volume</span><input type="range" min="0" max="1" step="0.02" value="${audio.volume}" data-mu-vol></label>`:''}
-      <div class="mu-list">${ts.length?ts.map(t=>`<div class="mu-row ${t.id===cur?'cur':''}" data-mu-row="${H(t.id)}"><button type="button" class="mu-name" data-mu-play="${H(t.id)}">${H(pretty(t.name))}</button>
-        <span class="mu-st" data-mu-st="${H(t.id)}">${rowStatus(t.id)}</span><button type="button" class="mu-del" data-mu-del="${H(t.id)}" aria-label="Remove">${icon('x')}</button></div>`).join('')
-        :'<p class="mu-dim mu-empty">No music yet. Add MP3 files from this device; they are saved to your sync code so your other devices get them too.</p>'}</div>
+      ${ts.length||listNames().length?listBar():''}
+      <div class="mu-list">${listRows()}</div>
       <div class="mu-foot"><label class="mu-add">Add music…<input type="file" accept="audio/*,.mp3,.m4a" multiple hidden data-mu-file></label>
         ${missing&&code()?`<button type="button" class="mu-link" data-mu="all">Download all for offline (${missing})</button>`:''}</div>
       <p class="mu-note">${msgText?H(msgText):code()?(ts.length?`Saved under your sync code (${ts.length} track${ts.length===1?'':'s'}, ${mb(size)}). Only devices with your code can play them.`:'Tracks you add are saved under your sync code. Only devices with your code can play them.'):'On this device only. Set up a sync code to keep your music on every device.'}</p>`;
+    const nf=panel.querySelector('.mu-in');if(nf&&keep){nf.value=keep.v;if(keep.focus)nf.focus()}
   }
   function paintRow(id){const el=panel.querySelector(`[data-mu-st="${CSS.escape(id)}"]`);if(el)el.textContent=rowStatus(id)}
   btn.addEventListener('click',e=>{e.stopPropagation();panel.hidden?open():close()});
   panel.addEventListener('click',e=>{e.stopPropagation();const a=e.target.closest('[data-mu]');
-    if(a){const k=a.dataset.mu;if(k==='close')close();else if(k==='toggle')toggle();else if(k==='next')next();else if(k==='prev')prev();else if(k==='all')downloadAll();return}
+    if(a){const k=a.dataset.mu;if(k==='close')close();else if(k==='toggle')toggle();else if(k==='next')next();else if(k==='prev')prev();else if(k==='all')downloadAll();
+      else if(k==='edit'){editing=!editing;naming=null;paint()}else if(k==='rename'){naming='rename';paint();focusName()}else if(k==='droplist')dropList(active());
+      else if(k==='noname'){naming=null;paint()}return}
+    const g=e.target.closest('[data-mu-tog]');if(g&&active()){toggleIn(active(),g.dataset.muTog);return}
     const p=e.target.closest('[data-mu-play]');if(p){const id=p.dataset.muPlay;if(!order.includes(id))shuffle();pos=order.indexOf(id);playId(id);return}
     const d=e.target.closest('[data-mu-del]');if(d)removeTrack(d.dataset.muDel)});
+  const focusName=()=>{const f=panel.querySelector('.mu-in');if(f){f.focus();f.select()}};
+  panel.addEventListener('submit',e=>{e.preventDefault();const n=(panel.querySelector('.mu-in')||{}).value;const name=String(n||'').trim().slice(0,60);if(!name)return focusName();
+    const was=naming;naming=null;if(was==='rename'&&active())renameList(active(),name);else makeList(name)});
+  panel.addEventListener('keydown',e=>{if(e.key==='Escape'&&naming){e.stopPropagation();naming=null;paint()}});
   panel.addEventListener('input',e=>{if(e.target.matches('[data-mu-vol]')){audio.volume=+e.target.value;pref.vol=audio.volume;savePref()}});
-  panel.addEventListener('change',e=>{if(e.target.matches('[data-mu-file]')){addFiles([...e.target.files]);e.target.value=''}});
+  panel.addEventListener('change',e=>{if(e.target.matches('[data-mu-file]')){addFiles([...e.target.files]);e.target.value=''}
+    if(e.target.matches('[data-mu-list]')){const v=e.target.value;if(v==='+new'){naming='new';paint();focusName()}else{naming=null;useList(v)}}});
   document.addEventListener('click',e=>{if(!panel.hidden&&!panel.contains(e.target)&&e.target!==btn)close()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden)close()});
   let lastY=window.scrollY;
@@ -25164,7 +25254,7 @@ const MUSIC=(()=>{
 
   /* music that was playing keeps going after a reload; browsers need one tap before sound can start */
   if(pref.on){const resume=e=>{if(btn.contains(e.target)||panel.contains(e.target))return;document.removeEventListener('pointerdown',resume,true);
-      if(audio.paused&&tracks().length){const id=pref.last&&tracks().some(t=>t.id===pref.last)?pref.last:null;shuffle();if(id){pos=order.indexOf(id)}else pos=0;playId(order[pos])}};
+      if(audio.paused&&tracks().length){const id=pref.last&&tracks().some(t=>t.id===pref.last)?pref.last:null;shuffle();pos=Math.max(0,id?order.indexOf(id):0);playId(order[pos])}};
     document.addEventListener('pointerdown',resume,true)}
 
   document.addEventListener('amcprep:code',()=>{cloud={};ready.then(loadCloud).then(paint)});

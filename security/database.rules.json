@@ -21,6 +21,7 @@
         "music": {
           "meta": { "$id": { ".validate": "$id.length <= 64 && newData.hasChildren(['at'])" } },
           "data": { "$id": { "$i": { ".validate": "newData.isString() && newData.val().length <= 600000" } } },
+          "lists": { "$id": { ".validate": "$id.length <= 64 && newData.hasChildren(['at'])" } },
           "$other": { ".validate": false }
         },
         "nb": {

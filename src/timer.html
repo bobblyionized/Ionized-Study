@@ -192,11 +192,11 @@ const TM = (() => {
     $('tmTimer').classList.toggle('show', active);
     $('tmLabel').textContent = label;
     $('tmDescShow').textContent = active && focus ? oneSentence(state.desc) : '';
-    $('tmSet').classList.toggle('hidden', active);
+    $('tmGo').classList.toggle('hidden', active);
     $('tmPause').classList.toggle('hidden', !active);
     $('tmEnd').classList.toggle('hidden', !active);
     $('tmPause').textContent = $('tmwPause').textContent = state.paused ? 'Resume' : 'Pause';
-    const go = $('tmGo'); go.textContent = active ? 'Back to studying' : 'Browse topics without a timer'; go.classList.toggle('primary', active);
+    const set = $('tmSet'); set.textContent = active ? 'Back to studying' : 'Set a timer'; set.classList.toggle('primary', active);
     const w = $('tmw');
     w.hidden = !active || onLanding;
     w.classList.toggle('focus', focus && !state.paused);
@@ -292,7 +292,8 @@ const TM = (() => {
   });
   typed.addEventListener('keydown', e => { if (e.key === 'Enter'){ e.preventDefault(); descEl.focus(); } });
   descEl.addEventListener('input', () => { sfx.key(); $('tmCount').textContent = descEl.value.length + ' / 500'; });
-  $('tmSet').addEventListener('click', () => { lastStep = -1; setSelected(selected, true); $('tmCount').textContent = descEl.value.length + ' / 500'; openSheet($('tmSheet')); });
+  function openSet(){ lastStep = -1; setSelected(selected, true); $('tmCount').textContent = descEl.value.length + ' / 500'; openSheet($('tmSheet')); }
+  $('tmSet').addEventListener('click', () => { if (state.mode !== 'idle') location.hash = '#/home'; else openSet(); });
   $('tmCancel').addEventListener('click', closeSheet);
   startBtn.addEventListener('click', () => {
     sfx.unlock(); store.set('last', selected);
@@ -305,7 +306,7 @@ const TM = (() => {
   $('tmEnd').addEventListener('click', endEarly);
   $('tmGo').addEventListener('click', () => { location.hash = '#/home'; });
   $('tmDoneOk').addEventListener('click', closeSheet);
-  $('tmNew').addEventListener('click', () => { closeSheet(true); location.hash = '#/'; setTimeout(() => $('tmSet').click(), 350); });
+  $('tmNew').addEventListener('click', () => { closeSheet(true); location.hash = '#/'; setTimeout(openSet, 350); });
   $('tmBreak').addEventListener('click', () => { sfx.unlock(); closeSheet(true); startSession('break', BREAK, ''); });
 
   // ---------- history ----------
