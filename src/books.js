@@ -13,7 +13,15 @@ const BOOKS=(()=>{
       extra:{review:[96,100],test:[101,102]}},
     pc5:{ch:5,offset:340,pages:86,docs:[['book','Textbook'],['ans1','Answers, part 1'],['ans2','Answers, part 2']],
       secs:{'pc5-rad':[2,9],'pc5-radeq':[10,16],'pc5-exp':[17,28],'pc5-int':[29,34],'pc5-log':[35,44],'pc5-laws':[45,51],'pc5-base':[52,58],'pc5-eq':[59,68],'pc5-model':[69,78],'pc5-hw':[35,68]},
-      extra:{review:[79,83],test:[84,86]}}};
+      extra:{review:[79,83],test:[84,86]}},
+    /* history readings: one PDF per lesson; reads[sub] = [doc, book page of each pdf page] (the Han scan skips p. 262) */
+    wh4:{unit:4,docs:[['unify','The Unification of China'],['qin','The Qin Dynasty'],['han','Han Emperors in China'],['tang','Tang and Song China'],['mongol','Rise of the Mongols'],['kublai','Kublai Khan'],['ming','Ming Dynasty']],
+      secs:{},reads:{'wh4-unify':['unify',rng(137,141)],'wh4-qin':['qin',rng(141,143)],'wh4-han':['han',[256,257,258,259,260,261,263,264,265]],
+        'wh4-tang':['tang',rng(310,317)],'wh4-mongol':['mongol',rng(320,325)],'wh4-kublai':['kublai',rng(325,329)],'wh4-ming':['ming',rng(617,623)]}}};
+  function rng(a,b){const o=[];for(let i=a;i<=b;i++)o.push(i);return o}
+  const readOf=(tid,doc)=>{const R=DATA[tid]&&DATA[tid].reads;if(!R)return null;for(const k in R)if(R[k][0]===doc)return R[k][1];return null};
+  const pageLabel=(tid,doc,p)=>doc==='book'?p+DATA[tid].offset:(readOf(tid,doc)||[])[p-1];   // undefined: plain pdf page numbers (answer scans)
+  const toPdf=(tid,doc,n)=>{if(doc==='book')return n-DATA[tid].offset;const ns=readOf(tid,doc);if(!ns)return n;const i=ns.indexOf(n);return i>=0?i+1:(n<ns[0]?1:ns.length)};
   const has=new Set();                                   // "pc5:book" keys stored on this device
   /* ---------- IndexedDB ---------- */
   let dbp=null;
@@ -68,10 +76,15 @@ const BOOKS=(()=>{
 
   /* ---------- helpers ---------- */
   const bookPage=(tid,p)=>p+DATA[tid].offset;
-  const subTopic=sid=>Object.keys(DATA).find(t=>DATA[t].secs[sid]);
+  const subTopic=sid=>Object.keys(DATA).find(t=>DATA[t].secs[sid]||(DATA[t].reads&&DATA[t].reads[sid]));
   const ICON='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg>';
+  const span=ns=>`pp. ${ns[0]}–${ns[ns.length-1]}`;
   function lessonBar(sid){
-    const tid=subTopic(sid);if(!tid)return'';const D=DATA[tid],[a,b]=D.secs[sid],ok=avail(tid+':book');
+    const tid=subTopic(sid);if(!tid)return'';const D=DATA[tid];
+    if(D.reads&&D.reads[sid]){const [doc,ns]=D.reads[sid],k=tid+':'+doc;   // a history lesson: its own reading PDF
+      return`<div class="bkbar">${ICON}<span><b>Reading</b> · ${span(ns)}</span><span class="sp"></span>
+        ${avail(k)?`<button class="btn sm" data-bk-open="${k}:1">Open the reading</button>`:`<button class="btn sm" data-bk-add="${k}" data-bk-then="1">Add the reading PDF</button>`}</div>`}
+    const [a,b]=D.secs[sid],ok=avail(tid+':book');
     const range=`pp. ${bookPage(tid,a)}–${bookPage(tid,b)}`;const ans=D.docs.filter(d=>d[0]!=='book'&&avail(tid+':'+d[0]));
     return`<div class="bkbar">${ICON}<span><b>Textbook</b> · Chapter ${D.ch}, ${range}</span><span class="sp"></span>
       ${ok?`<button class="btn sm" data-bk-open="${tid}:book:${a}">Open ${range}</button>`:`<button class="btn sm" data-bk-add="${tid}:book" data-bk-then="${a}">Add your Chapter ${D.ch} PDF</button>`}
@@ -79,11 +92,13 @@ const BOOKS=(()=>{
   }
   function chapterCard(tid){
     const D=DATA[tid];if(!D)return'';
-    const row=([id,label])=>{const k=tid+':'+id,ok=avail(k);
-      return`<div class="bkrow"><span class="bkname">${label}${id==='book'?` <span class="meta">book pp. ${bookPage(tid,1)}–${bookPage(tid,D.pages)}</span>`:''}<span class="bkst" data-bk-st="${k}">${stText(k)}</span></span><span class="sp"></span>
+    const row=([id,label])=>{const k=tid+':'+id,ok=avail(k),ns=readOf(tid,id);
+      return`<div class="bkrow"><span class="bkname">${label}${id==='book'?` <span class="meta">book pp. ${bookPage(tid,1)}–${bookPage(tid,D.pages)}</span>`:ns?` <span class="meta">${span(ns)}</span>`:''}<span class="bkst" data-bk-st="${k}">${stText(k)}</span></span><span class="sp"></span>
       ${busy[k]==='failed'?`<button class="btn sm" data-bk-up="${k}">Try again</button>`:''}
       ${ok?`<button class="btn sm pri" data-bk-open="${k}:1">Open</button><button class="btn sm" data-bk-add="${k}">Replace</button><button class="btn sm" data-bk-del="${k}">Remove</button>`
          :`<button class="btn sm" data-bk-add="${k}">Add PDF</button>`}</div>`};
+    if(D.reads)return`<div class="card bkcard"><div class="bkhead">${ICON}<div><b>Your Unit ${D.unit} readings</b><div class="meta">Add each reading’s PDF once and open it from its lesson. Files are saved to your sync code, so every device using your code gets them.</div></div></div>
+      ${D.docs.map(row).join('')}</div>`;
     const ex=D.extra;const jump=avail(tid+':book')?`<div class="bkjump">Jump to: ${[['Chapter Review',ex.review],['Chapter Test',ex.test]].map(([n,r])=>`<button class="chip" data-bk-open="${tid}:book:${r[0]}">${n} (p. ${bookPage(tid,r[0])})</button>`).join(' ')}</div>`:'';
     return`<div class="card bkcard"><div class="bkhead">${ICON}<div><b>Your Chapter ${D.ch} textbook</b><div class="meta">Read the chapter here. Each section's lesson links straight to its pages. Files are saved to your sync code, so every device using your code gets them; each device downloads a copy the first time it opens one.</div></div></div>
       ${D.docs.map(row).join('')}${jump}</div>`;
@@ -127,7 +142,7 @@ const BOOKS=(()=>{
     $('bkvClose').onclick=close;
     $('bkvPrev').onclick=()=>V&&go(V.cur-1);$('bkvNext').onclick=()=>V&&go(V.cur+1);
     $('bkvOut').onclick=()=>V&&zoom(V.z/1.25);$('bkvZin').onclick=()=>V&&zoom(V.z*1.25);$('bkvFit').onclick=()=>V&&zoom(1);
-    $('bkvIn').addEventListener('keydown',e=>{if(e.key!=='Enter'||!V)return;const n=parseInt($('bkvIn').value,10);if(!isFinite(n))return;go(V.isBook?n-DATA[V.tid].offset:n)});
+    $('bkvIn').addEventListener('keydown',e=>{if(e.key!=='Enter'||!V)return;const n=parseInt($('bkvIn').value,10);if(!isFinite(n))return;go(toPdf(V.tid,V.doc,n))});
     $('bkvBody').addEventListener('scroll',()=>{if(V){track();sweep()}},{passive:true});
     document.addEventListener('keydown',e=>{if(!V||!el.classList.contains('open'))return;if(e.key==='Escape')close();
       else if(e.target.tagName!=='INPUT'&&(e.key==='ArrowRight'||e.key==='PageDown'))go(V.cur+1);else if(e.target.tagName!=='INPUT'&&(e.key==='ArrowLeft'||e.key==='PageUp'))go(V.cur-1)});
@@ -147,15 +162,15 @@ const BOOKS=(()=>{
       const rec=await get(key);if(!rec)throw new Error('That PDF is not on this device or in your code yet.');
       const pdfjs=await loadLib();const data=new Uint8Array(await rec.blob.arrayBuffer());
       const pdf=await pdfjs.getDocument({data,isEvalSupported:false}).promise;const p1=await pdf.getPage(1);const vp=p1.getViewport({scale:1});
-      V={key,tid,doc,isBook:doc==='book',pdf,n:pdf.numPages,ar:vp.height/vp.width,z:1,cur:1,rendered:new Map(),obs:null};
+      V={key,tid,doc,isBook:pageLabel(tid,doc,1)!=null,pdf,n:pdf.numPages,ar:vp.height/vp.width,z:1,cur:1,rendered:new Map(),obs:null};
       $('bkvMsg').hidden=true;
-      if(V.isBook&&V.n!==DATA[tid].pages){$('bkvMsg').hidden=false;$('bkvMsg').textContent=`This file has ${V.n} pages; the Chapter ${DATA[tid].ch} PDF has ${DATA[tid].pages}, so section links may point to the wrong pages.`}
+      const want=doc==='book'?DATA[tid].pages:(readOf(tid,doc)||[]).length;if(V.isBook&&V.n!==want){$('bkvMsg').hidden=false;$('bkvMsg').textContent=`This file has ${V.n} pages, but this ${doc==='book'?'chapter':'reading'} should have ${want}, so page numbers may be off.`}
       build();go(page||1,true);
     }catch(e){$('bkvMsg').hidden=false;$('bkvMsg').textContent=e.message||'Could not open this PDF.'}
   }
   function build(){
     const box=document.getElementById('bkvPages');box.innerHTML='';
-    for(let i=1;i<=V.n;i++){const d=document.createElement('div');d.className='bkv-page';d.dataset.p=i;d.innerHTML=`<span class="bkv-num">${V.isBook?'p. '+bookPage(V.tid,i):'page '+i}</span>`;box.appendChild(d)}
+    for(let i=1;i<=V.n;i++){const d=document.createElement('div');d.className='bkv-page';d.dataset.p=i;d.innerHTML=`<span class="bkv-num">${V.isBook?'p. '+pageLabel(V.tid,V.doc,i):'page '+i}</span>`;box.appendChild(d)}
     layout(false);
     document.getElementById('bkvOf').textContent=V.isBook?` (${V.n} pages)`:` of ${V.n}`;document.getElementById('bkvPre').textContent=V.isBook?'p.':'';
   }
@@ -184,7 +199,7 @@ const BOOKS=(()=>{
     if(d)body.scrollTo({top:d.offsetTop-10,behavior:instant?'auto':'smooth'});V.cur=p;label();sweep();setTimeout(sweep,450)}
   function track(){const body=document.getElementById('bkvBody');const mid=body.scrollTop+body.clientHeight*0.35;let cur=1;
     document.querySelectorAll('#bkvPages .bkv-page').forEach(d=>{if(d.offsetTop<=mid)cur=+d.dataset.p});if(cur!==V.cur){V.cur=cur;label()}}
-  function label(){const inp=document.getElementById('bkvIn');if(document.activeElement!==inp)inp.value=V.isBook?bookPage(V.tid,V.cur):V.cur}
+  function label(){const inp=document.getElementById('bkvIn');if(document.activeElement!==inp)inp.value=V.isBook?pageLabel(V.tid,V.doc,V.cur):V.cur}
   function zoom(z){V.z=Math.max(0.5,Math.min(3,z));layout(true)}
   function teardown(){if(!V)return;V.rendered.forEach((_,p)=>unpaint(p,document.querySelector(`#bkvPages .bkv-page[data-p="${p}"]`)));try{V.pdf.destroy()}catch(e){}V=null}
   function close(){const el=document.getElementById('bkv');if(el)el.classList.remove('open');document.body.classList.remove('bkv-on')}
@@ -196,6 +211,6 @@ const BOOKS=(()=>{
     else if(a){e.preventDefault();pick(a.dataset.bkAdd,a.dataset.bkThen)}
     else if(d){e.preventDefault();remove(d.dataset.bkDel)}
   });
-  ready.then(()=>{if(has.size&&/^#\/(t|s)\/pc/.test(location.hash||''))refresh();if(code())loadCloud()});   // stored files load after the first render
+  ready.then(()=>{if(has.size&&/^#\/(t|s)\/(pc|wh)/.test(location.hash||''))refresh();if(code())loadCloud()});   // stored files load after the first render
   return{lessonBar,chapterCard,ready,DATA,has};
 })();

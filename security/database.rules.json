@@ -18,6 +18,11 @@
           "data": { "$k": { "$i": { ".validate": "newData.isString() && newData.val().length <= 600000" } } },
           "$other": { ".validate": false }
         },
+        "fonts": {
+          "meta": { "$id": { ".validate": "$id.length <= 64 && newData.hasChildren(['at'])" } },
+          "data": { "$id": { "$i": { ".validate": "newData.isString() && newData.val().length <= 600000" } } },
+          "$other": { ".validate": false }
+        },
         "music": {
           "meta": { "$id": { ".validate": "$id.length <= 64 && newData.hasChildren(['at'])" } },
           "data": { "$id": { "$i": { ".validate": "newData.isString() && newData.val().length <= 600000" } } },

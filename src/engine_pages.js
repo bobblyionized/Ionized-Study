@@ -53,6 +53,7 @@ function routeTo(){
   document.body.classList.toggle('nb-only',h[0]==='notebooks');
   if(landing)return;
   if(h[0]==='notebooks')return notebooksPage();
+  if(h[0]==='accessibility')return a11yPage();
   if(h[0]==='home')return hub();
   if(h[0]==='amc')return amcHome();
   if(h[0]==='pc')return pcHome();
@@ -66,6 +67,28 @@ function routeTo(){
 /* the Notebooks page opened from the timer screen: just the notebook library and a way back */
 function notebooksPage(){setCrumbs([['Notebooks']]);
   app.innerHTML=`<a class="nb-back" href="#/" title="Back to the timer menu">Timer</a><div id="nbStand"></div>`;NOTEBOOK.view(document.getElementById('nbStand'))}
+
+/* accessibility statement, linked from the header and the timer screen */
+function a11yPage(){setCrumbs([['Home','#/home'],['Accessibility']]);
+  app.innerHTML=`<div class="a11y-page"><h1>Accessibility Statement</h1><p class="meta">Last updated October 27, 2026</p>
+  <p>Ionized Study is a free study site. We want everyone to be able to use it, including people who use a screen reader, a keyboard instead of a mouse, screen magnification, voice control, or other assistive technology.</p>
+  <h2>Our goal</h2><p>We aim to meet the <b>Web Content Accessibility Guidelines (WCAG) 2.1, Level AA</b>, published by the World Wide Web Consortium (W3C). These guidelines explain how to make web content more accessible to people with disabilities.</p>
+  <h2>Conformance status</h2><p>Ionized Study <b>partially conforms</b> to WCAG 2.1 Level AA: most of the site meets the standard, but some parts do not yet, as listed below. This is based on our own review of the site.</p>
+  <h2>What we do</h2><ul>
+  <li>Every page and control can be reached and used with a keyboard, with a visible focus outline.</li>
+  <li>Icon-only buttons have text labels for screen readers.</li>
+  <li>Math is rendered with KaTeX, which includes MathML so screen readers can read equations.</li>
+  <li>Right and wrong answers are marked with words (“Correct”, “Missed”), not only with color.</li>
+  <li>Text meets contrast guidelines in both the light timer screen and the dark study pages.</li>
+  <li>The site follows your device’s “reduce motion” setting and works when zoomed to 200% or on a small screen.</li></ul>
+  <h2>Known limitations</h2><ul>
+  <li><b>Notebook:</b> handwriting and drawings are images on a canvas, so a screen reader cannot read them. Typed text in notebooks is drawn on the same canvas.</li>
+  <li><b>Graph tab:</b> graphs are visual only; the equations you type are readable, but the plotted curves are not described.</li>
+  <li><b>Textbook and reading PDFs</b> you add are often scans, which may not contain selectable or readable text.</li>
+  <li><b>Timed tests</b> have fixed time limits. Every question is also available untimed in its problem set or question set.</li></ul>
+  <h2>Feedback</h2><p>If something on Ionized Study is hard to use with a disability, please tell us so we can fix it: <a href="https://github.com/bobblyionized/Ionized-Study/issues" target="_blank" rel="noopener">open an issue on GitHub</a>. Describe the page and what went wrong, but do not post your sync code. We try to respond as soon as possible.</p>
+  <div class="row" style="margin-top:22px"><button class="btn fb-back" onclick="history.length>1?history.back():location.hash='#/home'">Back</button></div></div>`;
+}
 
 function trackStats(id){let total=0,done=0,ok=0;for(const t of TOPICS)if(t.track===id){const st=topicStats(t);total+=st.total;done+=st.done;ok+=st.ok}return{total,done,ok}}
 function hub(){
@@ -141,7 +164,7 @@ function topicPage(t){
   const how=wh?'Work through the lessons in order: read the lesson, go over the review notes, then answer the practice questions.'
     :`Work through the ${pc?'sections':'subtopics'} in order: read the lesson, do the problem set, then work it out in your notebook.`;
   app.innerHTML=`<h1>${pc?'Chapter '+t.ch+': ':wh?'Unit '+t.unit+': ':''}${esc(t.name)}</h1><p class="sub">${esc(t.d)} ${how} Finish with the ${mockKey(t).toLowerCase()}.</p>
-  ${pc&&typeof BOOKS!=='undefined'?BOOKS.chapterCard(t.id):''}
+  ${(pc||wh)&&typeof BOOKS!=='undefined'?BOOKS.chapterCard(t.id):''}
   <div class="grid">${cards}
   <button class="card tile mock" onclick="location.hash='#/mock/${t.id}'"><span class="t">${esc(t.name)} ${pc?'Chapter Test':wh?'Unit Test':'Mock Test'}</span>
   <span class="d">${wh?`${WH_TEST.n} multiple-choice questions from every lesson in ${WH_TEST.mins} minutes, in the order the unit goes. Scored as a percent, like a class test.`:'25 questions in 75 minutes, ordered easy to hard, with AMC-style scoring (6 / 1.5 / 0).'}</span>

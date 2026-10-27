@@ -14,6 +14,13 @@ const NOTEBOOK=(()=>{
   const FS=[12,14,16,18,20,24,28,32,36,40,48,56,64,80,96];   // text sizes the A− / A+ buttons step through
   const INKS=['#111111','#5b6170','#2f5bd3','#d23b3b','#1f8a4c'],HLS=['#ffe14d','#7cf0a0','#7cc8ff','#ff9ad5'];
   const FONT='"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif';
+  const BUILTIN=[['','Instrument Sans',FONT],['serif','Serif','Georgia,"Times New Roman",serif'],['mono','Monospace','ui-monospace,Consolas,"Courier New",monospace'],
+    ['round','Rounded','"Trebuchet MS","Segoe UI",system-ui,sans-serif'],['hand','Handwriting','"Segoe Print","Bradley Hand","Comic Sans MS",cursive']];
+  const fontWant={};                                     // uploaded fonts already asked to load
+  function famOf(f){const b=BUILTIN.find(x=>x[0]===(f||''));if(b)return b[2];
+    const m=/^u:([a-z0-9]{1,40})$/.exec(String(f));if(!m||typeof FONTS==='undefined'||!FONTS)return FONT;
+    if(!fontWant[m[1]]){fontWant[m[1]]=1;FONTS.load(m[1]).then(()=>{if(E){redraw();if(E.sel)showSel()}}).catch(()=>{})}
+    return`"${FONTS.family(m[1])}",${FONT}`}
   const code=()=>typeof SYNC!=='undefined'?SYNC.code:null;
   const H=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   let lastAt=0;const stamp=()=>lastAt=Math.max(Date.now(),lastAt+1);
@@ -146,7 +153,7 @@ const NOTEBOOK=(()=>{
     else if(tpl==='dots'){const r=Math.max(.6,1.5*s);for(let y=G;y<bottom;y+=G)for(let x=G;x<W;x+=G)ctx.fillRect(x*s-r,y*s-r,2*r,2*r)}
     ctx.restore()}
   let mctx=null;const measure=()=>mctx||(mctx=document.createElement('canvas').getContext('2d'));
-  function textLines(ctx,it,s){ctx.font=`${it.z*s}px ${FONT}`;const out=[];
+  function textLines(ctx,it,s){ctx.font=`${it.z*s}px ${famOf(it.f)}`;const out=[];
     for(const para of String(it.v).split('\n')){let line='';
       for(const w of para.split(/(\s+)/)){const t=line+w;if(line.trim()&&ctx.measureText(t).width>it.w*s){out.push(line.trimEnd());line=w.trimStart()}else line=t}
       out.push(line)}return out}
@@ -167,7 +174,7 @@ const NOTEBOOK=(()=>{
     if(seams&&pg.h>1){ctx.save();ctx.strokeStyle='#dfe4ee';ctx.setLineDash([6,6]);ctx.lineWidth=1;ctx.beginPath();for(let k=1;k<pg.h;k++){ctx.moveTo(0,k*SH*s);ctx.lineTo(W*s,k*SH*s)}ctx.stroke();ctx.restore()}
     for(const it of pg.items)drawItem(ctx,it,s,seams)}
   function bbox(it){if(it.k==='m')return[it.x,it.y,it.x+(it.bw||String(it.v).length*it.z*.45),it.y+(it.bh||it.z*1.4)];
-    if(it.k==='x'){const c=measure(),L=textLines(c,it,1);let mw=10;for(const l of L)mw=Math.max(mw,c.measureText(l).width);return[it.x,it.y,it.x+mw,it.y+L.length*it.z*1.3]}
+    if(it.k==='x'){const c=measure(),L=textLines(c,it,1);let mw=10;for(const l of L)mw=Math.max(mw,c.measureText(l).width);return[it.x,it.y,it.x+Math.max(mw,it.bw||0),it.y+Math.max(L.length*it.z*1.3,it.bh||0)]}
     let a=1e9,b=1e9,c=-1e9,d=-1e9;const p=it.p,r=it.w/2;for(let i=0;i<p.length;i+=3){a=Math.min(a,p[i]);b=Math.min(b,p[i+1]);c=Math.max(c,p[i]);d=Math.max(d,p[i+1])}return[a-r,b-r,c+r,d+r]}
   function thumb(cv,pg){const w=cv.clientWidth||150,hh=Math.round(w*SH/W),dpr=Math.min(2,window.devicePixelRatio||1);
     cv.width=w*dpr;cv.height=hh*dpr;const ctx=cv.getContext('2d');ctx.scale(dpr,dpr);drawPage(ctx,pg,w/W,1)}
@@ -281,7 +288,7 @@ const NOTEBOOK=(()=>{
         <div class="nbe-grp nbe-opts"></div>
         <button class="nbe-b" data-a="more" aria-label="Page options">${icon('dots')}</button></div>
       <div class="nbe-body"><div class="nbe-page"><canvas class="nbe-base"></canvas><div class="nbe-mlayer"></div><canvas class="nbe-ink"></canvas>
-        <div class="nbe-sel" hidden><div class="nbe-selbar"></div><span class="nbe-selh" data-h title="Drag to resize" aria-label="Resize"></span></div></div>
+        <div class="nbe-sel" hidden><div class="nbe-selbar"></div>${['nw','n','ne','e','se','s','sw','w'].map(h=>`<span class="nbe-selh" data-h="${h}" aria-label="Resize"></span>`).join('')}</div></div>
         <button class="nbe-extend" data-a="extend">${icon('plus')} Extend this page down</button></div>
       <div class="nbe-bot"><button class="nbe-b" data-a="prev" aria-label="Previous page">‹</button><button class="nbe-b nbe-pgno" data-a="grid" aria-label="All pages"></button>
         <button class="nbe-b" data-a="next" aria-label="Next page">›</button><button class="nbe-b nbe-add" data-a="add">${icon('plus')} Page</button></div>
@@ -297,8 +304,12 @@ const NOTEBOOK=(()=>{
     const stylus=e=>{for(const t of e.changedTouches)if(t.touchType==='stylus'){e.preventDefault();return}};   // a stylus draws, it never scrolls the page
     ink.addEventListener('touchstart',stylus,{passive:false});ink.addEventListener('touchmove',stylus,{passive:false});
     const sel=el.querySelector('.nbe-sel');sel.addEventListener('pointerdown',selDown);sel.addEventListener('pointermove',selMove);sel.addEventListener('pointerup',selUp);
-    const opts=el.querySelector('.nbe-opts'),keepBox=e=>E&&E.editing&&e.target.closest('[data-fs],[data-col]');     // changing size or colour keeps the open text box
-    opts.addEventListener('pointerdown',e=>{if(keepBox(e))E.editing.hold=true});opts.addEventListener('mousedown',e=>{if(keepBox(e))e.preventDefault()});
+    const opts=el.querySelector('.nbe-opts'),keepBox=e=>E&&E.editing&&e.target.closest('[data-fs],[data-col],[data-fsin],[data-font]');     // changing size, font or colour keeps the open text box
+    opts.addEventListener('pointerdown',e=>{if(keepBox(e))E.editing.hold=true});opts.addEventListener('mousedown',e=>{if(keepBox(e)&&e.target.closest('button'))e.preventDefault()});
+    opts.addEventListener('change',e=>{if(!E)return;const fi=e.target.closest('[data-fsin]');if(fi){const n=parseFloat(fi.value);return isFinite(n)?applyText({z:n}):paintTools()}
+      const fo=e.target.closest('[data-font]');if(!fo)return;const v=fo.value;if(v==='+up'){paintTools();return pickFont()}if(v==='+rm'){return removeFont()}applyText({f:v})});
+    opts.addEventListener('keydown',e=>{const fi=e.target.closest('[data-fsin]');if(fi&&e.key==='Enter'){e.preventDefault();fi.blur()}});
+    if(typeof FONTS!=='undefined'&&FONTS)FONTS.onChange(()=>{if(E&&TEXTY.includes(tool))paintTools()});
     el.querySelector('.nbe-body').addEventListener('scroll',()=>{if(E)ls('y:'+E.pid(),Math.round(E.body.scrollTop/E.s))},{passive:true});
     return el}
   async function openBook(bid){const b=lib.b[bid];if(!live(b))return;closeMenu();
@@ -322,9 +333,33 @@ const NOTEBOOK=(()=>{
   function paintTools(){if(!E)return;E.el.querySelectorAll('[data-tool]').forEach(b=>b.classList.toggle('on',b.dataset.tool===tool));
     const o=E.el.querySelector('.nbe-opts');const cols=tool==='hl'?HLS:INKS;
     o.innerHTML=(tool==='text'?[['text','Aa','Plain text'],['desmos','x²','Math, typed like Desmos'],['latex','TeX','Math, typed as LaTeX']].map(([k,l,t])=>`<button class="nbe-b nbe-tm ${tmode()===k?'on':''}" data-tm="${k}" title="${t}" aria-label="${t}">${l}</button>`).join('')+'<span class="nbe-div"></span>':'')+(SIZES[tool]&&tool!=='erase'?cols.map(c=>`<button class="nbe-sw ${c===color(tool)?'on':''}" data-col="${c}" style="--c:${c}" aria-label="Color ${c}"></button>`).join(''):'')
-      +(tool==='text'?`<span class="nbe-div"></span><button class="nbe-b nbe-fs" data-fs="-1" aria-label="Smaller text" title="Smaller text">A<small>−</small></button><span class="nbe-fsv" title="Text size">${fsize()}</span><button class="nbe-b nbe-fs" data-fs="1" aria-label="Larger text" title="Larger text">A<small>+</small></button>`
+      +(TEXTY.includes(tool)?textCtl()
        :SIZES[tool]?`<span class="nbe-div"></span>`+[0,1,2].map(k=>`<button class="nbe-b nbe-sz ${k===size(tool)?'on':''}" data-size="${k}" aria-label="${['Thin','Medium','Thick'][k]}"><i style="--d:${[4,8,13][k]}px"></i></button>`).join(''):'');
     E.ink.style.cursor=inkCursor();E.ink.style.touchAction=fingerScrolls()?'pan-x pan-y':'none'}
+  const TEXTY=['text','move','lasso'];
+  const selText=()=>E&&E.sel?[...E.sel].filter(i=>E.pg.items[i]&&E.pg.items[i].k!=='s'):[];
+  function curText(){const ed=E.editing;if(ed)return{z:ed.kind==='m'?Math.round(ed.it.z/1.1):ed.it.z,f:ed.it.f||''};
+    const i=selText()[0];if(i!=null){const it=E.pg.items[i];return{z:it.k==='m'?Math.round(it.z/1.1):it.z,f:it.f||''}}return{z:fsize(),f:pref.font||''}}
+  function textCtl(){const c=curText();c.z=Math.round(c.z*2)/2;const ups=typeof FONTS!=='undefined'&&FONTS?FONTS.list():[],sel=(tool!=='text'&&!selText().length)?' nbe-dim':'';
+    const opt=(v,n)=>`<option value="${H(v)}"${v===c.f?' selected':''}>${H(n)}</option>`;
+    return`<span class="nbe-div"></span><span class="nbe-tctl${sel}"><select class="nbe-font" data-font aria-label="Font" title="Font">${BUILTIN.map(b=>opt(b[0],b[1])).join('')}
+      ${ups.length?`<optgroup label="Your fonts">${ups.map(u=>opt('u:'+u.id,u.name)).join('')}</optgroup>`:''}<option value="+up">Upload a font (.ttf)…</option>${ups.length?'<option value="+rm">Remove a font…</option>':''}</select>
+      <button class="nbe-b nbe-fs" data-fs="-1" aria-label="Decrease font size" title="Decrease font size">−</button><input class="nbe-fsin" data-fsin inputmode="numeric" value="${c.z}" aria-label="Font size" title="Font size">
+      <button class="nbe-b nbe-fs" data-fs="1" aria-label="Increase font size" title="Increase font size">+</button></span>`}
+  /* apply a size or font to the box being typed in, else to the selected text and math, and remember it for new boxes */
+  function applyText({z,f}){if(z!=null){z=Math.max(6,Math.min(200,Math.round(z)));pref.fs=z}if(f!=null)pref.font=f;savePref();
+    if(E.editing)restyleBox(E.editing,{z,f});
+    else{const ids=selText();if(ids.length){snap();for(const i of ids){const it=Object.assign({},E.pg.items[i]);
+        if(z!=null){if(it.k==='m'){it.z=Math.round(z*1.1);delete it.bw;delete it.bh}else it.z=z}if(f!=null&&it.k==='x')it.f=f||undefined;E.pg.items[i]=it}
+        redraw();changed();showSel()}}
+    paintTools()}
+  let fontPick=null;
+  function pickFont(){if(!fontPick){fontPick=document.createElement('input');fontPick.type='file';fontPick.accept='.ttf,.otf,.woff,.woff2,font/*';fontPick.hidden=true;document.body.appendChild(fontPick)}
+    fontPick.value='';fontPick.onchange=async()=>{const file=fontPick.files&&fontPick.files[0];if(!file)return;
+      try{const id=await FONTS.add(file);toast('Font added. It is saved to your code, so your other devices get it too.');applyText({f:'u:'+id})}catch(e){toast(e.message||'Could not add that font.');paintTools()}};
+    fontPick.click()}
+  function removeFont(){const ups=FONTS.list();const n=prompt('Type the name of the font to remove:\n'+ups.map(u=>'• '+u.name).join('\n'));
+    const u=n&&ups.find(x=>x.name.toLowerCase()===n.trim().toLowerCase());if(u)FONTS.remove(u.id);paintTools()}
   function inkCursor(){                                  // a dot the size and colour of the pen, centred on the point where ink lands
     if(tool==='move')return'default';if(tool==='text')return'text';if(tool==='lasso')return'crosshair';
     const r=Math.max(2,Math.min(60,(tool==='erase'?SIZES.erase[size('erase')]:SIZES[tool][size(tool)]/2)*E.s)),d=Math.ceil(r*2+4),c=d/2;
@@ -412,26 +447,35 @@ const NOTEBOOK=(()=>{
     Object.assign(el.style,{left:(a*s-pad)+'px',top:(b*s-pad)+'px',width:((c-a)*s+2*pad)+'px',height:((d-b)*s+2*pad)+'px',transform:''});el.hidden=false;
     el.classList.toggle('nbe-sel-low',b*s<54);
     const one=E.sel.size===1&&E.pg.items[[...E.sel][0]],math=one&&one.k!=='s';
+    if(TEXTY.includes(tool)&&!E.editing)paintTools();
     el.querySelector('.nbe-selbar').innerHTML=(math?'<button type="button" data-s="solve">Solve</button><button type="button" data-s="factor">Factor</button><button type="button" data-s="expand">Expand</button><span class="nbe-selsep"></span>':'')
       +(math?'<button type="button" data-s="edit">Edit</button>':'')+'<button type="button" data-s="dup">Duplicate</button><button type="button" data-s="del">Delete</button>'}
-  function clearSel(){if(!E)return;E.sel=null;E.drag=null;E.el.querySelector('.nbe-sel').hidden=true}
+  function clearSel(){if(!E)return;const had=E.sel&&E.sel.size;E.sel=null;E.drag=null;E.el.querySelector('.nbe-sel').hidden=true;if(had&&TEXTY.includes(tool))paintTools()}
   function shift(it,dx,dy){if(it.k!=='s')return Object.assign({},it,{x:+(it.x+dx).toFixed(1),y:+(it.y+dy).toFixed(1)});
     const p=it.p.slice();for(let i=0;i<p.length;i+=3){p[i]=+(p[i]+dx).toFixed(1);p[i+1]=+(p[i+1]+dy).toFixed(1)}return Object.assign({},it,{p})}
-  function scaleIt(it,ax,ay,k){const X=v=>+(ax+(v-ax)*k).toFixed(1),Y=v=>+(ay+(v-ay)*k).toFixed(1);    // grow or shrink about the corner (ax, ay)
-    if(it.k==='s'){const p=it.p.slice();for(let i=0;i<p.length;i+=3){p[i]=X(p[i]);p[i+1]=Y(p[i+1])}return Object.assign({},it,{p,w:+Math.max(.5,it.w*k).toFixed(2)})}
-    const o=Object.assign({},it,{x:X(it.x),y:Y(it.y),z:Math.max(6,Math.round(it.z*k*10)/10)});
-    if(it.k==='x')o.w=Math.max(40,+(it.w*k).toFixed(1));if(it.bw)o.bw=+(it.bw*k).toFixed(1);if(it.bh)o.bh=+(it.bh*k).toFixed(1);return o}
-  const moved=it=>E.drag.k?scaleIt(it,E.drag.ax,E.drag.ay,E.drag.k):shift(it,E.drag.dx,E.drag.dy);
+  function scaleIt(it,ax,ay,kx,ky){const X=v=>+(ax+(v-ax)*kx).toFixed(1),Y=v=>+(ay+(v-ay)*ky).toFixed(1);    // stretch about the fixed point (ax, ay)
+    if(it.k==='s'){const p=it.p.slice();for(let i=0;i<p.length;i+=3){p[i]=X(p[i]);p[i+1]=Y(p[i+1])}return Object.assign({},it,{p,w:+Math.max(.5,it.w*Math.sqrt(kx*ky)).toFixed(2)})}
+    const o=Object.assign({},it,{x:X(it.x),y:Y(it.y)});
+    if(it.k==='x'){if(kx===ky){o.z=Math.max(6,Math.round(it.z*kx*10)/10);o.w=Math.max(40,+(it.w*kx).toFixed(1));if(it.bh)o.bh=+(it.bh*ky).toFixed(1);if(it.bw)o.bw=+(it.bw*kx).toFixed(1);return o}
+      const b=bbox(it);if(kx!==1){const nw=+Math.max(30,(b[2]-b[0])*kx).toFixed(1);o.w=nw;o.bw=nw}   // a side handle reflows the text, like a slide text box
+      if(ky!==1)o.bh=+Math.max(it.z*1.3,(b[3]-b[1])*ky).toFixed(1);return o}
+    const k=kx===1?ky:kx===ky||ky===1?kx:Math.sqrt(kx*ky);                                  // math keeps its shape
+    o.z=Math.max(6,Math.round(it.z*k*10)/10);if(it.bw)o.bw=+(it.bw*k).toFixed(1);if(it.bh)o.bh=+(it.bh*k).toFixed(1);return o}
+  const moved=it=>E.drag.kx!=null?scaleIt(it,E.drag.ax,E.drag.ay,E.drag.kx,E.drag.ky):shift(it,E.drag.dx,E.drag.dy);
   function selDown(e){if(!E||!E.sel||e.target.closest('[data-s]'))return;e.preventDefault();e.stopPropagation();try{e.currentTarget.setPointerCapture(e.pointerId)}catch(_){}
     E.drag={x:e.clientX,y:e.clientY,dx:0,dy:0,id:e.pointerId};
-    if(e.target.closest('[data-h]')){const [a,b,c,d]=selBox();Object.assign(E.drag,{k:1,ax:a,ay:b,w0:Math.max(4,c-a),h0:Math.max(4,d-b)})}}
+    const hd=e.target.closest('[data-h]');if(hd)Object.assign(E.drag,{h:hd.dataset.h,box:selBox(),kx:1,ky:1})}
   function selMove(e){if(!E||!E.drag||E.drag.id!==e.pointerId)return;const D=E.drag;D.dx=(e.clientX-D.x)/E.s;D.dy=(e.clientY-D.y)/E.s;const el=E.el.querySelector('.nbe-sel');
-    if(D.k){const w=D.w0+D.dx,h=D.h0+D.dy;D.k=Math.max(.15,Math.min(8,(w*D.w0+h*D.h0)/(D.w0*D.w0+D.h0*D.h0)));   // keeps the shape: one scale factor from the drag
-      el.style.width=(D.w0*D.k*E.s+16)+'px';el.style.height=(D.h0*D.k*E.s+16)+'px'}
+    if(D.h){const [a,b,c,d]=D.box,w0=Math.max(4,c-a),h0=Math.max(4,d-b),hd=D.h,cl=k=>Math.max(.1,Math.min(10,k));let kx=1,ky=1;D.ax=a;D.ay=b;
+      if(hd.includes('e'))kx=cl((w0+D.dx)/w0);if(hd.includes('w')){kx=cl((w0-D.dx)/w0);D.ax=c}
+      if(hd.includes('s'))ky=cl((h0+D.dy)/h0);if(hd.includes('n')){ky=cl((h0-D.dy)/h0);D.ay=d}
+      if(hd.length===2)kx=ky=cl((kx*w0*w0+ky*h0*h0)/(w0*w0+h0*h0));                       // corners keep the shape
+      D.kx=kx;D.ky=ky;const X=v=>D.ax+(v-D.ax)*kx,Y=v=>D.ay+(v-D.ay)*ky,s=E.s,pad=8;
+      Object.assign(el.style,{left:(Math.min(X(a),X(c))*s-pad)+'px',top:(Math.min(Y(b),Y(d))*s-pad)+'px',width:(Math.abs(X(c)-X(a))*s+2*pad)+'px',height:(Math.abs(Y(d)-Y(b))*s+2*pad)+'px'})}
     else el.style.transform=`translate(${D.dx*E.s}px,${D.dy*E.s}px)`;
     if(!raf)raf=requestAnimationFrame(()=>{raf=0;if(E&&E.drag)redraw(E.sel)})}
   function selUp(e){if(!E||!E.drag||E.drag.id!==e.pointerId)return;const D=E.drag;
-    if(D.k?Math.abs(D.k-1)>.01:Math.abs(D.dx)+Math.abs(D.dy)>.5){snap();E.pg.items=E.pg.items.map((it,i)=>E.sel.has(i)?moved(it):it);E.drag=null;
+    if(D.h?Math.abs(D.kx-1)+Math.abs(D.ky-1)>.01:Math.abs(D.dx)+Math.abs(D.dy)>.5){snap();E.pg.items=E.pg.items.map((it,i)=>E.sel.has(i)?moved(it):it);E.drag=null;
       const bottom=selBox()[3];if(bottom>E.pg.h*SH-20&&E.pg.h<MAXH){E.pg.h=Math.min(MAXH,Math.ceil((bottom+40)/SH));layout()}else redraw();changed()}
     else{E.drag=null;redraw()}                              // a tiny drag leaves everything where it was
     showSel()}
@@ -463,12 +507,13 @@ const NOTEBOOK=(()=>{
       E.textSnapped=false;if(tmode()!=='text')return startMath(p)}
     const z=edit?edit.z:fsize(),c=edit?edit.c:color('text');
     const x=edit?edit.x:p[0],y=edit?edit.y:p[1]-z*.65,w=edit?edit.w:Math.max(120,W-x-30);
+    const f=edit?edit.f:(pref.font||undefined),bh=edit?edit.bh:undefined;
     const ta=document.createElement('textarea');ta.className='nbe-txt';ta.value=edit?edit.v:'';ta.rows=1;ta.spellcheck=true;
-    Object.assign(ta.style,{left:(x*E.s-1)+'px',top:(y*E.s-1)+'px',width:w*E.s+'px',fontSize:z*E.s+'px',lineHeight:(z*1.3*E.s)+'px',color:c});
+    Object.assign(ta.style,{left:(x*E.s-1)+'px',top:(y*E.s-1)+'px',width:w*E.s+'px',fontSize:z*E.s+'px',lineHeight:(z*1.3*E.s)+'px',color:c,fontFamily:famOf(f),minHeight:bh?bh*E.s+'px':''});
     const fitH=()=>{ta.style.height='auto';ta.style.height=ta.scrollHeight+'px'};
     const bar=document.createElement('div');bar.className='nbe-mbar nbe-tbar';bar.innerHTML=modeBtns('text')+'<span class="nbe-selsep"></span><button type="button" data-mm="done">Done</button>';
     Object.assign(bar.style,{left:(x*E.s-3)+'px',top:(y*E.s-3)+'px'});
-    const ed={kind:'x',ta,bar,it:{k:'x',x:+x.toFixed(1),y:+y.toFixed(1),z,c,w}};E.editing=ed;
+    const ed={kind:'x',ta,bar,it:{k:'x',x:+x.toFixed(1),y:+y.toFixed(1),z,c,w,f,bh}};E.editing=ed;
     ta.addEventListener('input',fitH);ta.addEventListener('blur',()=>setTimeout(()=>{if(E&&E.editing===ed&&!ed.hold)commitText()},0));
     ta.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Escape')ta.blur()});
     bar.addEventListener('pointerdown',e=>{e.stopPropagation();ed.hold=true});    // pressing the bar must not close the box
@@ -511,8 +556,8 @@ const NOTEBOOK=(()=>{
     box.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Escape')commitText()});
     box.addEventListener('pointerdown',e=>e.stopPropagation());
     ed.setMode=setMode;setMode(tmode()==='latex'?'latex':'desmos')}
-  function restyleBox(ed,{z,c}){ed.hold=false;const it=ed.it;if(c)it.c=c;            // the toolbar's size and colour also change the box being typed in
-    if(ed.kind==='x'){if(z)it.z=z;Object.assign(ed.ta.style,{fontSize:it.z*E.s+'px',lineHeight:(it.z*1.3*E.s)+'px',color:it.c});ed.ta.dispatchEvent(new Event('input'));ed.ta.focus()}
+  function restyleBox(ed,{z,c,f}){ed.hold=false;const it=ed.it;if(c)it.c=c;            // the toolbar's size, font and colour also change the box being typed in
+    if(ed.kind==='x'){if(z)it.z=z;if(f!=null)it.f=f||undefined;Object.assign(ed.ta.style,{fontSize:it.z*E.s+'px',lineHeight:(it.z*1.3*E.s)+'px',color:it.c,fontFamily:famOf(it.f)});ed.ta.dispatchEvent(new Event('input'));ed.ta.focus()}
     else{if(z)it.z=Math.round(z*1.1);Object.assign(ed.box.style,{fontSize:it.z*E.s+'px',color:it.c});if(ed.mq)ed.mq.focus();else if(ed.ta)ed.ta.focus()}}
   function commitText(){if(!E||!E.editing)return;const ed=E.editing;E.editing=null;let it=null;
     if(ed.kind==='x'){const v=ed.ta.value.replace(/\s+$/,'');ed.ta.remove();ed.bar.remove();if(v)it=Object.assign({},ed.it,{v})}
@@ -685,7 +730,7 @@ const NOTEBOOK=(()=>{
     const s=e.target.closest('[data-s]');if(s)return selAct(s.dataset.s);
     const t=e.target.closest('[data-tool]');if(t){commitText();clearSel();tool=t.dataset.tool;ls('tool',tool);return paintTools()}
     const tm=e.target.closest('[data-tm]');if(tm){pref.tm=tm.dataset.tm;savePref();if(E.editing)switchBox(E.editing,pref.tm);return paintTools()}
-    const fz=e.target.closest('[data-fs]');if(fz){pref.fs=stepFs(fsize(),+fz.dataset.fs);savePref();if(E.editing)restyleBox(E.editing,{z:pref.fs});return paintTools()}
+    const fz=e.target.closest('[data-fs]');if(fz)return applyText({z:stepFs(curText().z,+fz.dataset.fs)});
     const c=e.target.closest('[data-col]');if(c){pref['c_'+tool]=c.dataset.col;savePref();if(E.editing&&tool==='text')restyleBox(E.editing,{c:c.dataset.col});return paintTools()}
     const z=e.target.closest('[data-size]');if(z){pref['s_'+tool]=+z.dataset.size;savePref();return paintTools()}
     const a=e.target.closest('[data-a]');if(!a)return;const k=a.dataset.a;

@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' data: https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob: data:; connect-src 'self' https://*.firebaseio.com wss://*.firebaseio.com; worker-src 'self' blob: https://cdnjs.cloudflare.com; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Ionized Study</title>
+<title>Ionized Study: free AMC 10/12, Precalculus and World History study site</title>
+<meta name="description" content="A free study site with a focus timer, AMC 10/12 prep with thousands of worked problems and mock exams, precalculus lessons, World History lessons with Cornell notes, and a handwriting notebook. No account needed.">
+<link rel="canonical" href="https://bobblyionized.github.io/Ionized-Study/">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2229%22%20fill%3D%22%23fbfaf8%22%20stroke%3D%22%231d1d1f%22%20stroke-width%3D%223.5%22/%3E%3Cg%20stroke%3D%22%231d1d1f%22%20stroke-linecap%3D%22round%22%20stroke-width%3D%223%22%3E%3Cpath%20d%3D%22M32%207v6M32%2051v6M7%2032h6M51%2032h6%22/%3E%3C/g%3E%3Cg%20stroke%3D%22%231d1d1f%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M32%2032L22%2039%22%20stroke-width%3D%224.5%22/%3E%3Cpath%20d%3D%22M32%2032L32%2013%22%20stroke-width%3D%223.2%22/%3E%3C/g%3E%3Cpath%20d%3D%22M32%2032L45%2020%22%20stroke%3D%22%238a8a8e%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22/%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%223.4%22%20fill%3D%22%231d1d1f%22/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-title" content="Ionized Study">
@@ -660,9 +662,17 @@ body.nbe-on{overflow:hidden}
 .nbe-add{font-size:14px;border-color:var(--line);margin-left:8px}
 .nbe-sel{position:absolute;border:1.5px dashed #5b6cff;border-radius:6px;background:rgba(91,108,255,.06);cursor:move;touch-action:none}
 .nbe-sel[hidden]{display:none}
-.nbe-selh{position:absolute;right:-8px;bottom:-8px;width:14px;height:14px;box-sizing:border-box;background:#fff;border:2px solid #5b6cff;border-radius:4px;cursor:nwse-resize;touch-action:none}
-.nbe-selh::before{content:"";position:absolute;inset:-10px}          /* a finger-sized grab area around the small square */
-.nbe-fs{font-weight:700;font-size:15px;min-width:36px}.nbe-fs small{font-size:.72em;margin-left:1px}
+.nbe-selh{position:absolute;width:12px;height:12px;box-sizing:border-box;background:#fff;border:2px solid #5b6cff;border-radius:3px;touch-action:none;margin:-6px 0 0 -6px}
+.nbe-selh::before{content:"";position:absolute;inset:-9px}          /* a finger-sized grab area around the small square */
+.nbe-selh[data-h=nw]{left:0;top:0;cursor:nwse-resize}.nbe-selh[data-h=n]{left:50%;top:0;cursor:ns-resize}.nbe-selh[data-h=ne]{left:100%;top:0;cursor:nesw-resize}
+.nbe-selh[data-h=e]{left:100%;top:50%;cursor:ew-resize}.nbe-selh[data-h=se]{left:100%;top:100%;cursor:nwse-resize}.nbe-selh[data-h=s]{left:50%;top:100%;cursor:ns-resize}
+.nbe-selh[data-h=sw]{left:0;top:100%;cursor:nesw-resize}.nbe-selh[data-h=w]{left:0;top:50%;cursor:ew-resize}
+.nbe-tctl{display:inline-flex;align-items:center;gap:2px}
+.nbe-tctl.nbe-dim .nbe-font,.nbe-tctl.nbe-dim .nbe-fsin{opacity:.7}
+.nbe-font{font:inherit;font-size:14px;color:inherit;background:transparent;border:1px solid var(--line);border-radius:7px;padding:4px 6px;max-width:150px;margin-right:4px}
+.nbe-fs{font-weight:700;font-size:17px;min-width:30px}
+.nbe-fsin{width:44px;font:inherit;font-size:14px;text-align:center;color:inherit;background:transparent;border:1px solid var(--line);border-radius:7px;padding:4px 2px;font-variant-numeric:tabular-nums}
+.nbe-fsin:focus,.nbe-font:focus{outline:2px solid #5b6cff;outline-offset:1px}
 .nbe-fsv{min-width:26px;text-align:center;font-size:14px;font-variant-numeric:tabular-nums;color:var(--muted)}
 .nbe-selbar{position:absolute;left:0;top:-44px;display:flex;gap:4px;background:#1e2333;border-radius:9px;padding:4px;box-shadow:0 6px 16px rgba(0,0,0,.3)}
 .nbe-sel-low .nbe-selbar{top:auto;bottom:-44px}
@@ -949,6 +959,15 @@ body.bkv-on .mu-btn{z-index:61}body.bkv-on .mu-panel{z-index:62}          /* mus
 @media (prefers-reduced-motion:reduce){.cornell.cn-covered .cn-note{transition:none}}
 .lesson.cn-wrap{padding:0;background:none;border:0;box-shadow:none}   /* the notes carry their own frame */
 
+/* accessibility statement link: header (study pages) and the timer screen */
+.a11y-link{margin-left:auto;font-size:13.5px;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.a11y-link:hover,.a11y-link:focus-visible{color:var(--ink)}
+.tm-a11y{position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:12.5px;color:var(--tp-muted);text-decoration:underline;text-underline-offset:3px;padding:8px 4px}
+.tm-a11y:hover,.tm-a11y:focus-visible{color:var(--tp-fg)}
+@media (max-width:640px){.a11y-link{order:1}#crumbs{order:2}}
+.a11y-page{max-width:72ch}
+.a11y-page h2{margin-top:26px}
+
 </style>
 </head>
 <body>
@@ -956,12 +975,14 @@ body.bkv-on .mu-btn{z-index:61}body.bkv-on .mu-panel{z-index:62}          /* mus
   <a class="backtimer" id="backTimer" href="#/" title="Back to the timer menu">Timer</a>
   <a class="brand" href="#/home">Ionized <span>Study</span></a>
   <div class="crumbs" id="crumbs"></div>
+  <a class="a11y-link" href="#/accessibility">Accessibility</a>
 </div></header>
 <main id="app"></main>
 
 <!-- ======================= FOCUS TIMER: landing menu ======================= -->
 <div id="land">
   <div class="tm-top">
+    <a class="tm-a11y" href="#/accessibility">Accessibility</a>
     <div class="tm-brand">Ionized Study</div>
     <button class="tm-icon tm-mute" id="tmMute" aria-label="Mute sounds"></button>
   </div>
@@ -26606,7 +26627,15 @@ const BOOKS=(()=>{
       extra:{review:[96,100],test:[101,102]}},
     pc5:{ch:5,offset:340,pages:86,docs:[['book','Textbook'],['ans1','Answers, part 1'],['ans2','Answers, part 2']],
       secs:{'pc5-rad':[2,9],'pc5-radeq':[10,16],'pc5-exp':[17,28],'pc5-int':[29,34],'pc5-log':[35,44],'pc5-laws':[45,51],'pc5-base':[52,58],'pc5-eq':[59,68],'pc5-model':[69,78],'pc5-hw':[35,68]},
-      extra:{review:[79,83],test:[84,86]}}};
+      extra:{review:[79,83],test:[84,86]}},
+    /* history readings: one PDF per lesson; reads[sub] = [doc, book page of each pdf page] (the Han scan skips p. 262) */
+    wh4:{unit:4,docs:[['unify','The Unification of China'],['qin','The Qin Dynasty'],['han','Han Emperors in China'],['tang','Tang and Song China'],['mongol','Rise of the Mongols'],['kublai','Kublai Khan'],['ming','Ming Dynasty']],
+      secs:{},reads:{'wh4-unify':['unify',rng(137,141)],'wh4-qin':['qin',rng(141,143)],'wh4-han':['han',[256,257,258,259,260,261,263,264,265]],
+        'wh4-tang':['tang',rng(310,317)],'wh4-mongol':['mongol',rng(320,325)],'wh4-kublai':['kublai',rng(325,329)],'wh4-ming':['ming',rng(617,623)]}}};
+  function rng(a,b){const o=[];for(let i=a;i<=b;i++)o.push(i);return o}
+  const readOf=(tid,doc)=>{const R=DATA[tid]&&DATA[tid].reads;if(!R)return null;for(const k in R)if(R[k][0]===doc)return R[k][1];return null};
+  const pageLabel=(tid,doc,p)=>doc==='book'?p+DATA[tid].offset:(readOf(tid,doc)||[])[p-1];   // undefined: plain pdf page numbers (answer scans)
+  const toPdf=(tid,doc,n)=>{if(doc==='book')return n-DATA[tid].offset;const ns=readOf(tid,doc);if(!ns)return n;const i=ns.indexOf(n);return i>=0?i+1:(n<ns[0]?1:ns.length)};
   const has=new Set();                                   // "pc5:book" keys stored on this device
   /* ---------- IndexedDB ---------- */
   let dbp=null;
@@ -26661,10 +26690,15 @@ const BOOKS=(()=>{
 
   /* ---------- helpers ---------- */
   const bookPage=(tid,p)=>p+DATA[tid].offset;
-  const subTopic=sid=>Object.keys(DATA).find(t=>DATA[t].secs[sid]);
+  const subTopic=sid=>Object.keys(DATA).find(t=>DATA[t].secs[sid]||(DATA[t].reads&&DATA[t].reads[sid]));
   const ICON='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg>';
+  const span=ns=>`pp. ${ns[0]}–${ns[ns.length-1]}`;
   function lessonBar(sid){
-    const tid=subTopic(sid);if(!tid)return'';const D=DATA[tid],[a,b]=D.secs[sid],ok=avail(tid+':book');
+    const tid=subTopic(sid);if(!tid)return'';const D=DATA[tid];
+    if(D.reads&&D.reads[sid]){const [doc,ns]=D.reads[sid],k=tid+':'+doc;   // a history lesson: its own reading PDF
+      return`<div class="bkbar">${ICON}<span><b>Reading</b> · ${span(ns)}</span><span class="sp"></span>
+        ${avail(k)?`<button class="btn sm" data-bk-open="${k}:1">Open the reading</button>`:`<button class="btn sm" data-bk-add="${k}" data-bk-then="1">Add the reading PDF</button>`}</div>`}
+    const [a,b]=D.secs[sid],ok=avail(tid+':book');
     const range=`pp. ${bookPage(tid,a)}–${bookPage(tid,b)}`;const ans=D.docs.filter(d=>d[0]!=='book'&&avail(tid+':'+d[0]));
     return`<div class="bkbar">${ICON}<span><b>Textbook</b> · Chapter ${D.ch}, ${range}</span><span class="sp"></span>
       ${ok?`<button class="btn sm" data-bk-open="${tid}:book:${a}">Open ${range}</button>`:`<button class="btn sm" data-bk-add="${tid}:book" data-bk-then="${a}">Add your Chapter ${D.ch} PDF</button>`}
@@ -26672,11 +26706,13 @@ const BOOKS=(()=>{
   }
   function chapterCard(tid){
     const D=DATA[tid];if(!D)return'';
-    const row=([id,label])=>{const k=tid+':'+id,ok=avail(k);
-      return`<div class="bkrow"><span class="bkname">${label}${id==='book'?` <span class="meta">book pp. ${bookPage(tid,1)}–${bookPage(tid,D.pages)}</span>`:''}<span class="bkst" data-bk-st="${k}">${stText(k)}</span></span><span class="sp"></span>
+    const row=([id,label])=>{const k=tid+':'+id,ok=avail(k),ns=readOf(tid,id);
+      return`<div class="bkrow"><span class="bkname">${label}${id==='book'?` <span class="meta">book pp. ${bookPage(tid,1)}–${bookPage(tid,D.pages)}</span>`:ns?` <span class="meta">${span(ns)}</span>`:''}<span class="bkst" data-bk-st="${k}">${stText(k)}</span></span><span class="sp"></span>
       ${busy[k]==='failed'?`<button class="btn sm" data-bk-up="${k}">Try again</button>`:''}
       ${ok?`<button class="btn sm pri" data-bk-open="${k}:1">Open</button><button class="btn sm" data-bk-add="${k}">Replace</button><button class="btn sm" data-bk-del="${k}">Remove</button>`
          :`<button class="btn sm" data-bk-add="${k}">Add PDF</button>`}</div>`};
+    if(D.reads)return`<div class="card bkcard"><div class="bkhead">${ICON}<div><b>Your Unit ${D.unit} readings</b><div class="meta">Add each reading’s PDF once and open it from its lesson. Files are saved to your sync code, so every device using your code gets them.</div></div></div>
+      ${D.docs.map(row).join('')}</div>`;
     const ex=D.extra;const jump=avail(tid+':book')?`<div class="bkjump">Jump to: ${[['Chapter Review',ex.review],['Chapter Test',ex.test]].map(([n,r])=>`<button class="chip" data-bk-open="${tid}:book:${r[0]}">${n} (p. ${bookPage(tid,r[0])})</button>`).join(' ')}</div>`:'';
     return`<div class="card bkcard"><div class="bkhead">${ICON}<div><b>Your Chapter ${D.ch} textbook</b><div class="meta">Read the chapter here. Each section's lesson links straight to its pages. Files are saved to your sync code, so every device using your code gets them; each device downloads a copy the first time it opens one.</div></div></div>
       ${D.docs.map(row).join('')}${jump}</div>`;
@@ -26720,7 +26756,7 @@ const BOOKS=(()=>{
     $('bkvClose').onclick=close;
     $('bkvPrev').onclick=()=>V&&go(V.cur-1);$('bkvNext').onclick=()=>V&&go(V.cur+1);
     $('bkvOut').onclick=()=>V&&zoom(V.z/1.25);$('bkvZin').onclick=()=>V&&zoom(V.z*1.25);$('bkvFit').onclick=()=>V&&zoom(1);
-    $('bkvIn').addEventListener('keydown',e=>{if(e.key!=='Enter'||!V)return;const n=parseInt($('bkvIn').value,10);if(!isFinite(n))return;go(V.isBook?n-DATA[V.tid].offset:n)});
+    $('bkvIn').addEventListener('keydown',e=>{if(e.key!=='Enter'||!V)return;const n=parseInt($('bkvIn').value,10);if(!isFinite(n))return;go(toPdf(V.tid,V.doc,n))});
     $('bkvBody').addEventListener('scroll',()=>{if(V){track();sweep()}},{passive:true});
     document.addEventListener('keydown',e=>{if(!V||!el.classList.contains('open'))return;if(e.key==='Escape')close();
       else if(e.target.tagName!=='INPUT'&&(e.key==='ArrowRight'||e.key==='PageDown'))go(V.cur+1);else if(e.target.tagName!=='INPUT'&&(e.key==='ArrowLeft'||e.key==='PageUp'))go(V.cur-1)});
@@ -26740,15 +26776,15 @@ const BOOKS=(()=>{
       const rec=await get(key);if(!rec)throw new Error('That PDF is not on this device or in your code yet.');
       const pdfjs=await loadLib();const data=new Uint8Array(await rec.blob.arrayBuffer());
       const pdf=await pdfjs.getDocument({data,isEvalSupported:false}).promise;const p1=await pdf.getPage(1);const vp=p1.getViewport({scale:1});
-      V={key,tid,doc,isBook:doc==='book',pdf,n:pdf.numPages,ar:vp.height/vp.width,z:1,cur:1,rendered:new Map(),obs:null};
+      V={key,tid,doc,isBook:pageLabel(tid,doc,1)!=null,pdf,n:pdf.numPages,ar:vp.height/vp.width,z:1,cur:1,rendered:new Map(),obs:null};
       $('bkvMsg').hidden=true;
-      if(V.isBook&&V.n!==DATA[tid].pages){$('bkvMsg').hidden=false;$('bkvMsg').textContent=`This file has ${V.n} pages; the Chapter ${DATA[tid].ch} PDF has ${DATA[tid].pages}, so section links may point to the wrong pages.`}
+      const want=doc==='book'?DATA[tid].pages:(readOf(tid,doc)||[]).length;if(V.isBook&&V.n!==want){$('bkvMsg').hidden=false;$('bkvMsg').textContent=`This file has ${V.n} pages, but this ${doc==='book'?'chapter':'reading'} should have ${want}, so page numbers may be off.`}
       build();go(page||1,true);
     }catch(e){$('bkvMsg').hidden=false;$('bkvMsg').textContent=e.message||'Could not open this PDF.'}
   }
   function build(){
     const box=document.getElementById('bkvPages');box.innerHTML='';
-    for(let i=1;i<=V.n;i++){const d=document.createElement('div');d.className='bkv-page';d.dataset.p=i;d.innerHTML=`<span class="bkv-num">${V.isBook?'p. '+bookPage(V.tid,i):'page '+i}</span>`;box.appendChild(d)}
+    for(let i=1;i<=V.n;i++){const d=document.createElement('div');d.className='bkv-page';d.dataset.p=i;d.innerHTML=`<span class="bkv-num">${V.isBook?'p. '+pageLabel(V.tid,V.doc,i):'page '+i}</span>`;box.appendChild(d)}
     layout(false);
     document.getElementById('bkvOf').textContent=V.isBook?` (${V.n} pages)`:` of ${V.n}`;document.getElementById('bkvPre').textContent=V.isBook?'p.':'';
   }
@@ -26777,7 +26813,7 @@ const BOOKS=(()=>{
     if(d)body.scrollTo({top:d.offsetTop-10,behavior:instant?'auto':'smooth'});V.cur=p;label();sweep();setTimeout(sweep,450)}
   function track(){const body=document.getElementById('bkvBody');const mid=body.scrollTop+body.clientHeight*0.35;let cur=1;
     document.querySelectorAll('#bkvPages .bkv-page').forEach(d=>{if(d.offsetTop<=mid)cur=+d.dataset.p});if(cur!==V.cur){V.cur=cur;label()}}
-  function label(){const inp=document.getElementById('bkvIn');if(document.activeElement!==inp)inp.value=V.isBook?bookPage(V.tid,V.cur):V.cur}
+  function label(){const inp=document.getElementById('bkvIn');if(document.activeElement!==inp)inp.value=V.isBook?pageLabel(V.tid,V.doc,V.cur):V.cur}
   function zoom(z){V.z=Math.max(0.5,Math.min(3,z));layout(true)}
   function teardown(){if(!V)return;V.rendered.forEach((_,p)=>unpaint(p,document.querySelector(`#bkvPages .bkv-page[data-p="${p}"]`)));try{V.pdf.destroy()}catch(e){}V=null}
   function close(){const el=document.getElementById('bkv');if(el)el.classList.remove('open');document.body.classList.remove('bkv-on')}
@@ -26789,8 +26825,64 @@ const BOOKS=(()=>{
     else if(a){e.preventDefault();pick(a.dataset.bkAdd,a.dataset.bkThen)}
     else if(d){e.preventDefault();remove(d.dataset.bkDel)}
   });
-  ready.then(()=>{if(has.size&&/^#\/(t|s)\/pc/.test(location.hash||''))refresh();if(code())loadCloud()});   // stored files load after the first render
+  ready.then(()=>{if(has.size&&/^#\/(t|s)\/(pc|wh)/.test(location.hash||''))refresh();if(code())loadCloud()});   // stored files load after the first render
   return{lessonBar,chapterCard,ready,DATA,has};
+})();
+
+/* ---------- Custom fonts for notebook text: font files saved on this device and under the sync code ----------
+   cloud  /codes/<code>/fonts/meta/<id>      {name, size, at, n}   ({del:1, at} once removed)
+          /codes/<code>/fonts/data/<id>/<i>  512K base64 pieces
+   local  IndexedDB 'ionized-fonts', store 'files': id -> {buf, name, size, at}
+   A font is used as the CSS family "nbf-<id>", loaded with FontFace from the file's bytes (no URL fetch). */
+const FONTS=(()=>{
+  if(typeof document==='undefined')return null;
+  const FB='https://ionized-study-and-shi-default-rtdb.firebaseio.com',CHUNK=512*1024,MAX=8*1048576;
+  const code=()=>typeof SYNC!=='undefined'?SYNC.code:null;
+  const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+  let dbp=null;
+  const db=()=>dbp||(dbp=new Promise((ok,no)=>{if(typeof indexedDB==='undefined')return no(new Error('no IndexedDB'));
+    const r=indexedDB.open('ionized-fonts',1);r.onupgradeneeded=()=>r.result.createObjectStore('files');r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)}));
+  const tx=(mode,fn)=>db().then(d=>new Promise((ok,no)=>{const t=d.transaction('files',mode),q=fn(t.objectStore('files'));t.oncomplete=()=>ok(q&&q.result);t.onerror=()=>no(t.error)}));
+  const iget=k=>tx('readonly',st=>st.get(k)).catch(()=>undefined),iput=(k,v)=>tx('readwrite',st=>st.put(v,k)),idel=k=>tx('readwrite',st=>st.delete(k)).catch(()=>{});
+  const local={},listeners=new Set();let cloud={};
+  const notify=()=>listeners.forEach(f=>{try{f()}catch(e){}});
+  const ready=tx('readonly',st=>st.getAll()).then(async vals=>{const keys=await tx('readonly',st=>st.getAllKeys());
+    (keys||[]).forEach((k,i)=>{const v=vals[i]||{};local[k]={name:v.name,size:v.size,at:v.at||0}})}).catch(()=>{});
+  async function rest(path,method,body){const c=code();if(!c)throw new Error('no code');
+    const r=await fetch(`${FB}/codes/${c}/fonts/${path}.json`,{method:method||'GET',cache:'no-store',headers:body===undefined?{}:{'Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body)});
+    if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}
+  const gone=id=>!!(cloud[id]&&cloud[id].del);
+  async function loadCloud(){if(!code())return;let m;try{m=(await rest('meta'))||{}}catch(e){return}
+    cloud={};for(const k in m)if(safeId(k)&&m[k]&&typeof m[k]==='object')cloud[k]=m[k];
+    for(const id in local){if(gone(id)){idel(id);delete local[id]}else if(!cloud[id])upload(id)}notify()}
+  const b64=buf=>{let s='';const u=new Uint8Array(buf);for(let i=0;i<u.length;i+=0x8000)s+=String.fromCharCode.apply(null,u.subarray(i,i+0x8000));return btoa(s)};
+  async function upload(id){if(!code()||cloud[id])return;try{const rec=await iget(id);if(!rec)return;const s=b64(rec.buf),n=Math.max(1,Math.ceil(s.length/CHUNK));
+      for(let i=0;i<n;i++)await rest(`data/${id}/${i}`,'PUT',s.slice(i*CHUNK,(i+1)*CHUNK));
+      const meta={name:rec.name,size:rec.size,at:rec.at,n};await rest('meta/'+id,'PUT',meta);cloud[id]=meta}catch(e){}}
+  async function download(id){const m=cloud[id];if(!m||m.del)throw new Error('missing');const parts=[];
+    for(let i=0;i<m.n;i++){const p=await rest(`data/${id}/${i}`);if(typeof p!=='string')throw new Error('incomplete');parts.push(p)}
+    const bin=atob(parts.join(''));const u8=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u8[i]=bin.charCodeAt(i);
+    const rec={buf:u8.buffer,name:m.name,size:m.size,at:m.at};await iput(id,rec);local[id]={name:m.name,size:m.size,at:m.at};return rec}
+  const family=id=>'nbf-'+id;
+  const loaded={};
+  function load(id){if(!safeId(id))return Promise.reject(new Error('bad id'));
+    return loaded[id]||(loaded[id]=(async()=>{await ready;let rec=await iget(id);if(!rec)rec=await download(id);
+      const ff=new FontFace(family(id),rec.buf);await ff.load();document.fonts.add(ff);return true})().catch(e=>{delete loaded[id];throw e}))}
+  async function add(file){
+    if(!/\.(ttf|otf|woff2?)$/i.test(file.name))throw new Error('Choose a .ttf, .otf or .woff font file.');
+    if(file.size>MAX)throw new Error('That font file is over 8 MB.');
+    const buf=await file.arrayBuffer();const id=uid();
+    try{const ff=new FontFace(family(id),buf.slice(0));await ff.load();document.fonts.add(ff);loaded[id]=Promise.resolve(true)}catch(e){throw new Error('That file is not a font this browser can read.')}
+    const name=file.name.replace(/\.(ttf|otf|woff2?)$/i,'').replace(/[_-]+/g,' ').trim().slice(0,40)||'Font',at=Date.now();
+    await iput(id,{buf,name,size:file.size,at});local[id]={name,size:file.size,at};upload(id);notify();return id}
+  async function remove(id){await idel(id);delete local[id];cloud[id]={del:1,at:Date.now()};
+    if(code()){try{await rest('meta/'+id,'PUT',cloud[id]);await rest('data/'+id,'DELETE')}catch(e){}}notify()}
+  function list(){const all={};for(const id in cloud)if(!gone(id))all[id]=cloud[id].name;for(const id in local)if(!gone(id))all[id]=local[id].name;
+    return Object.keys(all).map(id=>({id,name:String(all[id]||'Font')})).sort((a,b)=>a.name.localeCompare(b.name))}
+  document.addEventListener('amcprep:code',()=>{cloud={};ready.then(loadCloud)});
+  window.addEventListener('online',()=>{for(const id in local)if(!cloud[id])upload(id)});
+  ready.then(()=>{if(code())loadCloud();notify()});
+  return{list,family,load,add,remove,onChange:f=>listeners.add(f)};
 })();
 
 /* ---------- Notebook: Kindle Scribe-style notebooks in folders, saved to the sync code ----------
@@ -26809,6 +26901,13 @@ const NOTEBOOK=(()=>{
   const FS=[12,14,16,18,20,24,28,32,36,40,48,56,64,80,96];   // text sizes the A− / A+ buttons step through
   const INKS=['#111111','#5b6170','#2f5bd3','#d23b3b','#1f8a4c'],HLS=['#ffe14d','#7cf0a0','#7cc8ff','#ff9ad5'];
   const FONT='"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif';
+  const BUILTIN=[['','Instrument Sans',FONT],['serif','Serif','Georgia,"Times New Roman",serif'],['mono','Monospace','ui-monospace,Consolas,"Courier New",monospace'],
+    ['round','Rounded','"Trebuchet MS","Segoe UI",system-ui,sans-serif'],['hand','Handwriting','"Segoe Print","Bradley Hand","Comic Sans MS",cursive']];
+  const fontWant={};                                     // uploaded fonts already asked to load
+  function famOf(f){const b=BUILTIN.find(x=>x[0]===(f||''));if(b)return b[2];
+    const m=/^u:([a-z0-9]{1,40})$/.exec(String(f));if(!m||typeof FONTS==='undefined'||!FONTS)return FONT;
+    if(!fontWant[m[1]]){fontWant[m[1]]=1;FONTS.load(m[1]).then(()=>{if(E){redraw();if(E.sel)showSel()}}).catch(()=>{})}
+    return`"${FONTS.family(m[1])}",${FONT}`}
   const code=()=>typeof SYNC!=='undefined'?SYNC.code:null;
   const H=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   let lastAt=0;const stamp=()=>lastAt=Math.max(Date.now(),lastAt+1);
@@ -26941,7 +27040,7 @@ const NOTEBOOK=(()=>{
     else if(tpl==='dots'){const r=Math.max(.6,1.5*s);for(let y=G;y<bottom;y+=G)for(let x=G;x<W;x+=G)ctx.fillRect(x*s-r,y*s-r,2*r,2*r)}
     ctx.restore()}
   let mctx=null;const measure=()=>mctx||(mctx=document.createElement('canvas').getContext('2d'));
-  function textLines(ctx,it,s){ctx.font=`${it.z*s}px ${FONT}`;const out=[];
+  function textLines(ctx,it,s){ctx.font=`${it.z*s}px ${famOf(it.f)}`;const out=[];
     for(const para of String(it.v).split('\n')){let line='';
       for(const w of para.split(/(\s+)/)){const t=line+w;if(line.trim()&&ctx.measureText(t).width>it.w*s){out.push(line.trimEnd());line=w.trimStart()}else line=t}
       out.push(line)}return out}
@@ -26962,7 +27061,7 @@ const NOTEBOOK=(()=>{
     if(seams&&pg.h>1){ctx.save();ctx.strokeStyle='#dfe4ee';ctx.setLineDash([6,6]);ctx.lineWidth=1;ctx.beginPath();for(let k=1;k<pg.h;k++){ctx.moveTo(0,k*SH*s);ctx.lineTo(W*s,k*SH*s)}ctx.stroke();ctx.restore()}
     for(const it of pg.items)drawItem(ctx,it,s,seams)}
   function bbox(it){if(it.k==='m')return[it.x,it.y,it.x+(it.bw||String(it.v).length*it.z*.45),it.y+(it.bh||it.z*1.4)];
-    if(it.k==='x'){const c=measure(),L=textLines(c,it,1);let mw=10;for(const l of L)mw=Math.max(mw,c.measureText(l).width);return[it.x,it.y,it.x+mw,it.y+L.length*it.z*1.3]}
+    if(it.k==='x'){const c=measure(),L=textLines(c,it,1);let mw=10;for(const l of L)mw=Math.max(mw,c.measureText(l).width);return[it.x,it.y,it.x+Math.max(mw,it.bw||0),it.y+Math.max(L.length*it.z*1.3,it.bh||0)]}
     let a=1e9,b=1e9,c=-1e9,d=-1e9;const p=it.p,r=it.w/2;for(let i=0;i<p.length;i+=3){a=Math.min(a,p[i]);b=Math.min(b,p[i+1]);c=Math.max(c,p[i]);d=Math.max(d,p[i+1])}return[a-r,b-r,c+r,d+r]}
   function thumb(cv,pg){const w=cv.clientWidth||150,hh=Math.round(w*SH/W),dpr=Math.min(2,window.devicePixelRatio||1);
     cv.width=w*dpr;cv.height=hh*dpr;const ctx=cv.getContext('2d');ctx.scale(dpr,dpr);drawPage(ctx,pg,w/W,1)}
@@ -27076,7 +27175,7 @@ const NOTEBOOK=(()=>{
         <div class="nbe-grp nbe-opts"></div>
         <button class="nbe-b" data-a="more" aria-label="Page options">${icon('dots')}</button></div>
       <div class="nbe-body"><div class="nbe-page"><canvas class="nbe-base"></canvas><div class="nbe-mlayer"></div><canvas class="nbe-ink"></canvas>
-        <div class="nbe-sel" hidden><div class="nbe-selbar"></div><span class="nbe-selh" data-h title="Drag to resize" aria-label="Resize"></span></div></div>
+        <div class="nbe-sel" hidden><div class="nbe-selbar"></div>${['nw','n','ne','e','se','s','sw','w'].map(h=>`<span class="nbe-selh" data-h="${h}" aria-label="Resize"></span>`).join('')}</div></div>
         <button class="nbe-extend" data-a="extend">${icon('plus')} Extend this page down</button></div>
       <div class="nbe-bot"><button class="nbe-b" data-a="prev" aria-label="Previous page">‹</button><button class="nbe-b nbe-pgno" data-a="grid" aria-label="All pages"></button>
         <button class="nbe-b" data-a="next" aria-label="Next page">›</button><button class="nbe-b nbe-add" data-a="add">${icon('plus')} Page</button></div>
@@ -27092,8 +27191,12 @@ const NOTEBOOK=(()=>{
     const stylus=e=>{for(const t of e.changedTouches)if(t.touchType==='stylus'){e.preventDefault();return}};   // a stylus draws, it never scrolls the page
     ink.addEventListener('touchstart',stylus,{passive:false});ink.addEventListener('touchmove',stylus,{passive:false});
     const sel=el.querySelector('.nbe-sel');sel.addEventListener('pointerdown',selDown);sel.addEventListener('pointermove',selMove);sel.addEventListener('pointerup',selUp);
-    const opts=el.querySelector('.nbe-opts'),keepBox=e=>E&&E.editing&&e.target.closest('[data-fs],[data-col]');     // changing size or colour keeps the open text box
-    opts.addEventListener('pointerdown',e=>{if(keepBox(e))E.editing.hold=true});opts.addEventListener('mousedown',e=>{if(keepBox(e))e.preventDefault()});
+    const opts=el.querySelector('.nbe-opts'),keepBox=e=>E&&E.editing&&e.target.closest('[data-fs],[data-col],[data-fsin],[data-font]');     // changing size, font or colour keeps the open text box
+    opts.addEventListener('pointerdown',e=>{if(keepBox(e))E.editing.hold=true});opts.addEventListener('mousedown',e=>{if(keepBox(e)&&e.target.closest('button'))e.preventDefault()});
+    opts.addEventListener('change',e=>{if(!E)return;const fi=e.target.closest('[data-fsin]');if(fi){const n=parseFloat(fi.value);return isFinite(n)?applyText({z:n}):paintTools()}
+      const fo=e.target.closest('[data-font]');if(!fo)return;const v=fo.value;if(v==='+up'){paintTools();return pickFont()}if(v==='+rm'){return removeFont()}applyText({f:v})});
+    opts.addEventListener('keydown',e=>{const fi=e.target.closest('[data-fsin]');if(fi&&e.key==='Enter'){e.preventDefault();fi.blur()}});
+    if(typeof FONTS!=='undefined'&&FONTS)FONTS.onChange(()=>{if(E&&TEXTY.includes(tool))paintTools()});
     el.querySelector('.nbe-body').addEventListener('scroll',()=>{if(E)ls('y:'+E.pid(),Math.round(E.body.scrollTop/E.s))},{passive:true});
     return el}
   async function openBook(bid){const b=lib.b[bid];if(!live(b))return;closeMenu();
@@ -27117,9 +27220,33 @@ const NOTEBOOK=(()=>{
   function paintTools(){if(!E)return;E.el.querySelectorAll('[data-tool]').forEach(b=>b.classList.toggle('on',b.dataset.tool===tool));
     const o=E.el.querySelector('.nbe-opts');const cols=tool==='hl'?HLS:INKS;
     o.innerHTML=(tool==='text'?[['text','Aa','Plain text'],['desmos','x²','Math, typed like Desmos'],['latex','TeX','Math, typed as LaTeX']].map(([k,l,t])=>`<button class="nbe-b nbe-tm ${tmode()===k?'on':''}" data-tm="${k}" title="${t}" aria-label="${t}">${l}</button>`).join('')+'<span class="nbe-div"></span>':'')+(SIZES[tool]&&tool!=='erase'?cols.map(c=>`<button class="nbe-sw ${c===color(tool)?'on':''}" data-col="${c}" style="--c:${c}" aria-label="Color ${c}"></button>`).join(''):'')
-      +(tool==='text'?`<span class="nbe-div"></span><button class="nbe-b nbe-fs" data-fs="-1" aria-label="Smaller text" title="Smaller text">A<small>−</small></button><span class="nbe-fsv" title="Text size">${fsize()}</span><button class="nbe-b nbe-fs" data-fs="1" aria-label="Larger text" title="Larger text">A<small>+</small></button>`
+      +(TEXTY.includes(tool)?textCtl()
        :SIZES[tool]?`<span class="nbe-div"></span>`+[0,1,2].map(k=>`<button class="nbe-b nbe-sz ${k===size(tool)?'on':''}" data-size="${k}" aria-label="${['Thin','Medium','Thick'][k]}"><i style="--d:${[4,8,13][k]}px"></i></button>`).join(''):'');
     E.ink.style.cursor=inkCursor();E.ink.style.touchAction=fingerScrolls()?'pan-x pan-y':'none'}
+  const TEXTY=['text','move','lasso'];
+  const selText=()=>E&&E.sel?[...E.sel].filter(i=>E.pg.items[i]&&E.pg.items[i].k!=='s'):[];
+  function curText(){const ed=E.editing;if(ed)return{z:ed.kind==='m'?Math.round(ed.it.z/1.1):ed.it.z,f:ed.it.f||''};
+    const i=selText()[0];if(i!=null){const it=E.pg.items[i];return{z:it.k==='m'?Math.round(it.z/1.1):it.z,f:it.f||''}}return{z:fsize(),f:pref.font||''}}
+  function textCtl(){const c=curText();c.z=Math.round(c.z*2)/2;const ups=typeof FONTS!=='undefined'&&FONTS?FONTS.list():[],sel=(tool!=='text'&&!selText().length)?' nbe-dim':'';
+    const opt=(v,n)=>`<option value="${H(v)}"${v===c.f?' selected':''}>${H(n)}</option>`;
+    return`<span class="nbe-div"></span><span class="nbe-tctl${sel}"><select class="nbe-font" data-font aria-label="Font" title="Font">${BUILTIN.map(b=>opt(b[0],b[1])).join('')}
+      ${ups.length?`<optgroup label="Your fonts">${ups.map(u=>opt('u:'+u.id,u.name)).join('')}</optgroup>`:''}<option value="+up">Upload a font (.ttf)…</option>${ups.length?'<option value="+rm">Remove a font…</option>':''}</select>
+      <button class="nbe-b nbe-fs" data-fs="-1" aria-label="Decrease font size" title="Decrease font size">−</button><input class="nbe-fsin" data-fsin inputmode="numeric" value="${c.z}" aria-label="Font size" title="Font size">
+      <button class="nbe-b nbe-fs" data-fs="1" aria-label="Increase font size" title="Increase font size">+</button></span>`}
+  /* apply a size or font to the box being typed in, else to the selected text and math, and remember it for new boxes */
+  function applyText({z,f}){if(z!=null){z=Math.max(6,Math.min(200,Math.round(z)));pref.fs=z}if(f!=null)pref.font=f;savePref();
+    if(E.editing)restyleBox(E.editing,{z,f});
+    else{const ids=selText();if(ids.length){snap();for(const i of ids){const it=Object.assign({},E.pg.items[i]);
+        if(z!=null){if(it.k==='m'){it.z=Math.round(z*1.1);delete it.bw;delete it.bh}else it.z=z}if(f!=null&&it.k==='x')it.f=f||undefined;E.pg.items[i]=it}
+        redraw();changed();showSel()}}
+    paintTools()}
+  let fontPick=null;
+  function pickFont(){if(!fontPick){fontPick=document.createElement('input');fontPick.type='file';fontPick.accept='.ttf,.otf,.woff,.woff2,font/*';fontPick.hidden=true;document.body.appendChild(fontPick)}
+    fontPick.value='';fontPick.onchange=async()=>{const file=fontPick.files&&fontPick.files[0];if(!file)return;
+      try{const id=await FONTS.add(file);toast('Font added. It is saved to your code, so your other devices get it too.');applyText({f:'u:'+id})}catch(e){toast(e.message||'Could not add that font.');paintTools()}};
+    fontPick.click()}
+  function removeFont(){const ups=FONTS.list();const n=prompt('Type the name of the font to remove:\n'+ups.map(u=>'• '+u.name).join('\n'));
+    const u=n&&ups.find(x=>x.name.toLowerCase()===n.trim().toLowerCase());if(u)FONTS.remove(u.id);paintTools()}
   function inkCursor(){                                  // a dot the size and colour of the pen, centred on the point where ink lands
     if(tool==='move')return'default';if(tool==='text')return'text';if(tool==='lasso')return'crosshair';
     const r=Math.max(2,Math.min(60,(tool==='erase'?SIZES.erase[size('erase')]:SIZES[tool][size(tool)]/2)*E.s)),d=Math.ceil(r*2+4),c=d/2;
@@ -27207,26 +27334,35 @@ const NOTEBOOK=(()=>{
     Object.assign(el.style,{left:(a*s-pad)+'px',top:(b*s-pad)+'px',width:((c-a)*s+2*pad)+'px',height:((d-b)*s+2*pad)+'px',transform:''});el.hidden=false;
     el.classList.toggle('nbe-sel-low',b*s<54);
     const one=E.sel.size===1&&E.pg.items[[...E.sel][0]],math=one&&one.k!=='s';
+    if(TEXTY.includes(tool)&&!E.editing)paintTools();
     el.querySelector('.nbe-selbar').innerHTML=(math?'<button type="button" data-s="solve">Solve</button><button type="button" data-s="factor">Factor</button><button type="button" data-s="expand">Expand</button><span class="nbe-selsep"></span>':'')
       +(math?'<button type="button" data-s="edit">Edit</button>':'')+'<button type="button" data-s="dup">Duplicate</button><button type="button" data-s="del">Delete</button>'}
-  function clearSel(){if(!E)return;E.sel=null;E.drag=null;E.el.querySelector('.nbe-sel').hidden=true}
+  function clearSel(){if(!E)return;const had=E.sel&&E.sel.size;E.sel=null;E.drag=null;E.el.querySelector('.nbe-sel').hidden=true;if(had&&TEXTY.includes(tool))paintTools()}
   function shift(it,dx,dy){if(it.k!=='s')return Object.assign({},it,{x:+(it.x+dx).toFixed(1),y:+(it.y+dy).toFixed(1)});
     const p=it.p.slice();for(let i=0;i<p.length;i+=3){p[i]=+(p[i]+dx).toFixed(1);p[i+1]=+(p[i+1]+dy).toFixed(1)}return Object.assign({},it,{p})}
-  function scaleIt(it,ax,ay,k){const X=v=>+(ax+(v-ax)*k).toFixed(1),Y=v=>+(ay+(v-ay)*k).toFixed(1);    // grow or shrink about the corner (ax, ay)
-    if(it.k==='s'){const p=it.p.slice();for(let i=0;i<p.length;i+=3){p[i]=X(p[i]);p[i+1]=Y(p[i+1])}return Object.assign({},it,{p,w:+Math.max(.5,it.w*k).toFixed(2)})}
-    const o=Object.assign({},it,{x:X(it.x),y:Y(it.y),z:Math.max(6,Math.round(it.z*k*10)/10)});
-    if(it.k==='x')o.w=Math.max(40,+(it.w*k).toFixed(1));if(it.bw)o.bw=+(it.bw*k).toFixed(1);if(it.bh)o.bh=+(it.bh*k).toFixed(1);return o}
-  const moved=it=>E.drag.k?scaleIt(it,E.drag.ax,E.drag.ay,E.drag.k):shift(it,E.drag.dx,E.drag.dy);
+  function scaleIt(it,ax,ay,kx,ky){const X=v=>+(ax+(v-ax)*kx).toFixed(1),Y=v=>+(ay+(v-ay)*ky).toFixed(1);    // stretch about the fixed point (ax, ay)
+    if(it.k==='s'){const p=it.p.slice();for(let i=0;i<p.length;i+=3){p[i]=X(p[i]);p[i+1]=Y(p[i+1])}return Object.assign({},it,{p,w:+Math.max(.5,it.w*Math.sqrt(kx*ky)).toFixed(2)})}
+    const o=Object.assign({},it,{x:X(it.x),y:Y(it.y)});
+    if(it.k==='x'){if(kx===ky){o.z=Math.max(6,Math.round(it.z*kx*10)/10);o.w=Math.max(40,+(it.w*kx).toFixed(1));if(it.bh)o.bh=+(it.bh*ky).toFixed(1);if(it.bw)o.bw=+(it.bw*kx).toFixed(1);return o}
+      const b=bbox(it);if(kx!==1){const nw=+Math.max(30,(b[2]-b[0])*kx).toFixed(1);o.w=nw;o.bw=nw}   // a side handle reflows the text, like a slide text box
+      if(ky!==1)o.bh=+Math.max(it.z*1.3,(b[3]-b[1])*ky).toFixed(1);return o}
+    const k=kx===1?ky:kx===ky||ky===1?kx:Math.sqrt(kx*ky);                                  // math keeps its shape
+    o.z=Math.max(6,Math.round(it.z*k*10)/10);if(it.bw)o.bw=+(it.bw*k).toFixed(1);if(it.bh)o.bh=+(it.bh*k).toFixed(1);return o}
+  const moved=it=>E.drag.kx!=null?scaleIt(it,E.drag.ax,E.drag.ay,E.drag.kx,E.drag.ky):shift(it,E.drag.dx,E.drag.dy);
   function selDown(e){if(!E||!E.sel||e.target.closest('[data-s]'))return;e.preventDefault();e.stopPropagation();try{e.currentTarget.setPointerCapture(e.pointerId)}catch(_){}
     E.drag={x:e.clientX,y:e.clientY,dx:0,dy:0,id:e.pointerId};
-    if(e.target.closest('[data-h]')){const [a,b,c,d]=selBox();Object.assign(E.drag,{k:1,ax:a,ay:b,w0:Math.max(4,c-a),h0:Math.max(4,d-b)})}}
+    const hd=e.target.closest('[data-h]');if(hd)Object.assign(E.drag,{h:hd.dataset.h,box:selBox(),kx:1,ky:1})}
   function selMove(e){if(!E||!E.drag||E.drag.id!==e.pointerId)return;const D=E.drag;D.dx=(e.clientX-D.x)/E.s;D.dy=(e.clientY-D.y)/E.s;const el=E.el.querySelector('.nbe-sel');
-    if(D.k){const w=D.w0+D.dx,h=D.h0+D.dy;D.k=Math.max(.15,Math.min(8,(w*D.w0+h*D.h0)/(D.w0*D.w0+D.h0*D.h0)));   // keeps the shape: one scale factor from the drag
-      el.style.width=(D.w0*D.k*E.s+16)+'px';el.style.height=(D.h0*D.k*E.s+16)+'px'}
+    if(D.h){const [a,b,c,d]=D.box,w0=Math.max(4,c-a),h0=Math.max(4,d-b),hd=D.h,cl=k=>Math.max(.1,Math.min(10,k));let kx=1,ky=1;D.ax=a;D.ay=b;
+      if(hd.includes('e'))kx=cl((w0+D.dx)/w0);if(hd.includes('w')){kx=cl((w0-D.dx)/w0);D.ax=c}
+      if(hd.includes('s'))ky=cl((h0+D.dy)/h0);if(hd.includes('n')){ky=cl((h0-D.dy)/h0);D.ay=d}
+      if(hd.length===2)kx=ky=cl((kx*w0*w0+ky*h0*h0)/(w0*w0+h0*h0));                       // corners keep the shape
+      D.kx=kx;D.ky=ky;const X=v=>D.ax+(v-D.ax)*kx,Y=v=>D.ay+(v-D.ay)*ky,s=E.s,pad=8;
+      Object.assign(el.style,{left:(Math.min(X(a),X(c))*s-pad)+'px',top:(Math.min(Y(b),Y(d))*s-pad)+'px',width:(Math.abs(X(c)-X(a))*s+2*pad)+'px',height:(Math.abs(Y(d)-Y(b))*s+2*pad)+'px'})}
     else el.style.transform=`translate(${D.dx*E.s}px,${D.dy*E.s}px)`;
     if(!raf)raf=requestAnimationFrame(()=>{raf=0;if(E&&E.drag)redraw(E.sel)})}
   function selUp(e){if(!E||!E.drag||E.drag.id!==e.pointerId)return;const D=E.drag;
-    if(D.k?Math.abs(D.k-1)>.01:Math.abs(D.dx)+Math.abs(D.dy)>.5){snap();E.pg.items=E.pg.items.map((it,i)=>E.sel.has(i)?moved(it):it);E.drag=null;
+    if(D.h?Math.abs(D.kx-1)+Math.abs(D.ky-1)>.01:Math.abs(D.dx)+Math.abs(D.dy)>.5){snap();E.pg.items=E.pg.items.map((it,i)=>E.sel.has(i)?moved(it):it);E.drag=null;
       const bottom=selBox()[3];if(bottom>E.pg.h*SH-20&&E.pg.h<MAXH){E.pg.h=Math.min(MAXH,Math.ceil((bottom+40)/SH));layout()}else redraw();changed()}
     else{E.drag=null;redraw()}                              // a tiny drag leaves everything where it was
     showSel()}
@@ -27258,12 +27394,13 @@ const NOTEBOOK=(()=>{
       E.textSnapped=false;if(tmode()!=='text')return startMath(p)}
     const z=edit?edit.z:fsize(),c=edit?edit.c:color('text');
     const x=edit?edit.x:p[0],y=edit?edit.y:p[1]-z*.65,w=edit?edit.w:Math.max(120,W-x-30);
+    const f=edit?edit.f:(pref.font||undefined),bh=edit?edit.bh:undefined;
     const ta=document.createElement('textarea');ta.className='nbe-txt';ta.value=edit?edit.v:'';ta.rows=1;ta.spellcheck=true;
-    Object.assign(ta.style,{left:(x*E.s-1)+'px',top:(y*E.s-1)+'px',width:w*E.s+'px',fontSize:z*E.s+'px',lineHeight:(z*1.3*E.s)+'px',color:c});
+    Object.assign(ta.style,{left:(x*E.s-1)+'px',top:(y*E.s-1)+'px',width:w*E.s+'px',fontSize:z*E.s+'px',lineHeight:(z*1.3*E.s)+'px',color:c,fontFamily:famOf(f),minHeight:bh?bh*E.s+'px':''});
     const fitH=()=>{ta.style.height='auto';ta.style.height=ta.scrollHeight+'px'};
     const bar=document.createElement('div');bar.className='nbe-mbar nbe-tbar';bar.innerHTML=modeBtns('text')+'<span class="nbe-selsep"></span><button type="button" data-mm="done">Done</button>';
     Object.assign(bar.style,{left:(x*E.s-3)+'px',top:(y*E.s-3)+'px'});
-    const ed={kind:'x',ta,bar,it:{k:'x',x:+x.toFixed(1),y:+y.toFixed(1),z,c,w}};E.editing=ed;
+    const ed={kind:'x',ta,bar,it:{k:'x',x:+x.toFixed(1),y:+y.toFixed(1),z,c,w,f,bh}};E.editing=ed;
     ta.addEventListener('input',fitH);ta.addEventListener('blur',()=>setTimeout(()=>{if(E&&E.editing===ed&&!ed.hold)commitText()},0));
     ta.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Escape')ta.blur()});
     bar.addEventListener('pointerdown',e=>{e.stopPropagation();ed.hold=true});    // pressing the bar must not close the box
@@ -27306,8 +27443,8 @@ const NOTEBOOK=(()=>{
     box.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Escape')commitText()});
     box.addEventListener('pointerdown',e=>e.stopPropagation());
     ed.setMode=setMode;setMode(tmode()==='latex'?'latex':'desmos')}
-  function restyleBox(ed,{z,c}){ed.hold=false;const it=ed.it;if(c)it.c=c;            // the toolbar's size and colour also change the box being typed in
-    if(ed.kind==='x'){if(z)it.z=z;Object.assign(ed.ta.style,{fontSize:it.z*E.s+'px',lineHeight:(it.z*1.3*E.s)+'px',color:it.c});ed.ta.dispatchEvent(new Event('input'));ed.ta.focus()}
+  function restyleBox(ed,{z,c,f}){ed.hold=false;const it=ed.it;if(c)it.c=c;            // the toolbar's size, font and colour also change the box being typed in
+    if(ed.kind==='x'){if(z)it.z=z;if(f!=null)it.f=f||undefined;Object.assign(ed.ta.style,{fontSize:it.z*E.s+'px',lineHeight:(it.z*1.3*E.s)+'px',color:it.c,fontFamily:famOf(it.f)});ed.ta.dispatchEvent(new Event('input'));ed.ta.focus()}
     else{if(z)it.z=Math.round(z*1.1);Object.assign(ed.box.style,{fontSize:it.z*E.s+'px',color:it.c});if(ed.mq)ed.mq.focus();else if(ed.ta)ed.ta.focus()}}
   function commitText(){if(!E||!E.editing)return;const ed=E.editing;E.editing=null;let it=null;
     if(ed.kind==='x'){const v=ed.ta.value.replace(/\s+$/,'');ed.ta.remove();ed.bar.remove();if(v)it=Object.assign({},ed.it,{v})}
@@ -27480,7 +27617,7 @@ const NOTEBOOK=(()=>{
     const s=e.target.closest('[data-s]');if(s)return selAct(s.dataset.s);
     const t=e.target.closest('[data-tool]');if(t){commitText();clearSel();tool=t.dataset.tool;ls('tool',tool);return paintTools()}
     const tm=e.target.closest('[data-tm]');if(tm){pref.tm=tm.dataset.tm;savePref();if(E.editing)switchBox(E.editing,pref.tm);return paintTools()}
-    const fz=e.target.closest('[data-fs]');if(fz){pref.fs=stepFs(fsize(),+fz.dataset.fs);savePref();if(E.editing)restyleBox(E.editing,{z:pref.fs});return paintTools()}
+    const fz=e.target.closest('[data-fs]');if(fz)return applyText({z:stepFs(curText().z,+fz.dataset.fs)});
     const c=e.target.closest('[data-col]');if(c){pref['c_'+tool]=c.dataset.col;savePref();if(E.editing&&tool==='text')restyleBox(E.editing,{c:c.dataset.col});return paintTools()}
     const z=e.target.closest('[data-size]');if(z){pref['s_'+tool]=+z.dataset.size;savePref();return paintTools()}
     const a=e.target.closest('[data-a]');if(!a)return;const k=a.dataset.a;
@@ -27778,6 +27915,7 @@ function routeTo(){
   document.body.classList.toggle('nb-only',h[0]==='notebooks');
   if(landing)return;
   if(h[0]==='notebooks')return notebooksPage();
+  if(h[0]==='accessibility')return a11yPage();
   if(h[0]==='home')return hub();
   if(h[0]==='amc')return amcHome();
   if(h[0]==='pc')return pcHome();
@@ -27791,6 +27929,28 @@ function routeTo(){
 /* the Notebooks page opened from the timer screen: just the notebook library and a way back */
 function notebooksPage(){setCrumbs([['Notebooks']]);
   app.innerHTML=`<a class="nb-back" href="#/" title="Back to the timer menu">Timer</a><div id="nbStand"></div>`;NOTEBOOK.view(document.getElementById('nbStand'))}
+
+/* accessibility statement, linked from the header and the timer screen */
+function a11yPage(){setCrumbs([['Home','#/home'],['Accessibility']]);
+  app.innerHTML=`<div class="a11y-page"><h1>Accessibility Statement</h1><p class="meta">Last updated October 27, 2026</p>
+  <p>Ionized Study is a free study site. We want everyone to be able to use it, including people who use a screen reader, a keyboard instead of a mouse, screen magnification, voice control, or other assistive technology.</p>
+  <h2>Our goal</h2><p>We aim to meet the <b>Web Content Accessibility Guidelines (WCAG) 2.1, Level AA</b>, published by the World Wide Web Consortium (W3C). These guidelines explain how to make web content more accessible to people with disabilities.</p>
+  <h2>Conformance status</h2><p>Ionized Study <b>partially conforms</b> to WCAG 2.1 Level AA: most of the site meets the standard, but some parts do not yet, as listed below. This is based on our own review of the site.</p>
+  <h2>What we do</h2><ul>
+  <li>Every page and control can be reached and used with a keyboard, with a visible focus outline.</li>
+  <li>Icon-only buttons have text labels for screen readers.</li>
+  <li>Math is rendered with KaTeX, which includes MathML so screen readers can read equations.</li>
+  <li>Right and wrong answers are marked with words (“Correct”, “Missed”), not only with color.</li>
+  <li>Text meets contrast guidelines in both the light timer screen and the dark study pages.</li>
+  <li>The site follows your device’s “reduce motion” setting and works when zoomed to 200% or on a small screen.</li></ul>
+  <h2>Known limitations</h2><ul>
+  <li><b>Notebook:</b> handwriting and drawings are images on a canvas, so a screen reader cannot read them. Typed text in notebooks is drawn on the same canvas.</li>
+  <li><b>Graph tab:</b> graphs are visual only; the equations you type are readable, but the plotted curves are not described.</li>
+  <li><b>Textbook and reading PDFs</b> you add are often scans, which may not contain selectable or readable text.</li>
+  <li><b>Timed tests</b> have fixed time limits. Every question is also available untimed in its problem set or question set.</li></ul>
+  <h2>Feedback</h2><p>If something on Ionized Study is hard to use with a disability, please tell us so we can fix it: <a href="https://github.com/bobblyionized/Ionized-Study/issues" target="_blank" rel="noopener">open an issue on GitHub</a>. Describe the page and what went wrong, but do not post your sync code. We try to respond as soon as possible.</p>
+  <div class="row" style="margin-top:22px"><button class="btn fb-back" onclick="history.length>1?history.back():location.hash='#/home'">Back</button></div></div>`;
+}
 
 function trackStats(id){let total=0,done=0,ok=0;for(const t of TOPICS)if(t.track===id){const st=topicStats(t);total+=st.total;done+=st.done;ok+=st.ok}return{total,done,ok}}
 function hub(){
@@ -27866,7 +28026,7 @@ function topicPage(t){
   const how=wh?'Work through the lessons in order: read the lesson, go over the review notes, then answer the practice questions.'
     :`Work through the ${pc?'sections':'subtopics'} in order: read the lesson, do the problem set, then work it out in your notebook.`;
   app.innerHTML=`<h1>${pc?'Chapter '+t.ch+': ':wh?'Unit '+t.unit+': ':''}${esc(t.name)}</h1><p class="sub">${esc(t.d)} ${how} Finish with the ${mockKey(t).toLowerCase()}.</p>
-  ${pc&&typeof BOOKS!=='undefined'?BOOKS.chapterCard(t.id):''}
+  ${(pc||wh)&&typeof BOOKS!=='undefined'?BOOKS.chapterCard(t.id):''}
   <div class="grid">${cards}
   <button class="card tile mock" onclick="location.hash='#/mock/${t.id}'"><span class="t">${esc(t.name)} ${pc?'Chapter Test':wh?'Unit Test':'Mock Test'}</span>
   <span class="d">${wh?`${WH_TEST.n} multiple-choice questions from every lesson in ${WH_TEST.mins} minutes, in the order the unit goes. Scored as a percent, like a class test.`:'25 questions in 75 minutes, ordered easy to hard, with AMC-style scoring (6 / 1.5 / 0).'}</span>
