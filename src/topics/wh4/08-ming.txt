@@ -1,0 +1,221 @@
+=== LESSONS ===
+<script type="text/plain" id="L-wh4-ming">
+<h2>The Ming Dynasty</h2>
+<p class="meta">Textbook pp. 617–623, stopping at “Manchus Found the Qing Dynasty” · Module 16, Lesson 3</p>
+<div class="box"><h4>Big idea</h4>After driving out the Mongols, the <b>Ming Dynasty</b> (1368–1644) restored traditional Chinese values and made China the dominant power in Asia. It reached out to the world with Zheng He’s great voyages, then pulled back into isolation and kept outside influence to a minimum.</div>
+<div class="tip"><b>Unit questions this lesson answers:</b> How did the Ming rise to power? Why were Zheng He’s voyages important? What allowed the Ming Dynasty to maintain stability?<br><b>Key terms:</b> Ming Dynasty, Hongwu, Yonglo, Zheng He, tribute</div>
+
+<h3>China under the powerful Ming</h3>
+<p>Under the Ming, China was the <b>dominant power in Asia</b>. Vassal states from Korea to Southeast Asia paid the Ming regular <b>tribute</b>: a payment from one country to another to show its submission. When Portuguese ships arrived off China’s coast in 1514, the Ming expected the Europeans to pay tribute too, and they would not let outsiders threaten the peace and prosperity they had brought after ending Mongol rule.</p>
+
+<h3>The rise of the Ming: Hongwu</h3>
+<ul><li><b>Hongwu</b>, the <b>son of a peasant</b>, commanded the rebel army that <b>drove the Mongols out of China in 1368</b>. That year he became the first Ming emperor, ruling from <b>Nanjing</b> in the south.</li>
+<li>His reforms aimed to <b>restore farmland</b> ruined by war, <b>erase nearly every trace of the Mongol past</b>, and build China’s power and prosperity. He increased rice production, improved irrigation, and encouraged fish farming and cash crops like cotton and sugar cane.</li>
+<li>He used respected <b>traditions</b> to bring stability: a <b>return to Confucian moral standards</b> and a restored, <b>merit-based civil service exam</b>.</li>
+<li>Later in his rule, suspecting plots everywhere, he became a ruthless tyrant and purged the government, killing thousands of officials.</li></ul>
+
+<h3>Yonglo and the Forbidden City</h3>
+<p>Hongwu died in 1398. After a power struggle his son <b>Yonglo</b> took the throne. He kept many of his father’s policies but <b>moved the court to Beijing</b>.</p>
+<p>There he built the <b>Forbidden City</b> (1406–1420), a huge palace complex surrounded by red walls 35 feet high, with dozens of palaces and temples. It got its name because <b>commoners and foreigners were not allowed in</b>, a way to show the emperor’s power and keep him apart from ordinary people. Its largest building, the <b>Hall of Supreme Harmony</b>, was used for great ceremonies, and its <b>Nine-Dragon Wall</b> shows dragons, the symbol of the imperial family.</p>
+
+<h3>The voyages of Zheng He</h3>
+<p>Yonglo was curious about the wider world. In <b>1405</b>, before European explorers sailed beyond their own waters, he launched the first of <b>seven voyages</b>. He wanted to <b>impress the world with Ming power and splendor</b> and to <b>expand China’s tribute system</b>.</p>
+<ul><li>All seven were led by <b>Zheng He</b>, a <b>Chinese Muslim admiral</b>.</li>
+<li>Everything was enormous: voyages from Southeast Asia to <b>eastern Africa</b>; 40 to 300 ships per trip; <b>treasure ships over 400 feet long</b> (Columbus’s Santa Maria was about 85 feet); crews of more than <b>27,000</b>, including sailors, soldiers, carpenters, interpreters, accountants, doctors, and religious leaders. The fleet was like a floating city.</li>
+<li>Zheng He handed out gifts of silver and silk to show China’s superiority, and more than <b>16 countries</b> began sending tribute to the Ming.</li>
+<li>Chinese scholar-officials complained that the voyages wasted money better spent defending the northern frontier. After the seventh voyage, in <b>1433</b>, <b>China withdrew into isolation</b>.</li></ul>
+
+<h3>Ming relations with foreign countries</h3>
+<ul><li>To keep foreign influence low, <b>only the government</b> could trade with foreigners, and only through three ports: <b>Canton, Macao, and Ningbo</b>.</li>
+<li>In reality, merchants smuggled silk, porcelain, and other goods to eager Europeans, who usually paid in <b>silver</b>, much of it mined in the Americas.</li>
+<li>Demand for Chinese goods grew industries like silk-making and ceramics, but China did <b>not industrialize</b>, for two reasons: commerce offended <b>Confucian beliefs</b>, and Chinese policy <b>favored agriculture</b> (low farm taxes, very high taxes on manufacturing and trade).</li>
+<li>Christian missionaries came with European traders, bringing Christianity and European science and technology such as the clock. The Italian Jesuit <b>Matteo Ricci</b> won favor at court with his intelligence and fluent Chinese, but many educated Chinese opposed the European presence.</li>
+<li>Fearing a Mongol invasion, the Ming rebuilt and extended the <b>Great Wall</b> more than any dynasty before. Most of the wall we see today is Ming.</li></ul>
+
+<h3>A stable and diverse society</h3>
+<div class="box"><h4>What kept the Ming stable</h4><ul>
+<li><b>A Confucian government:</b> Hongwu replaced the Yuan laws with new codes based on Confucian teachings and made the emperor head of the state. With a strong leader this was very stable (it worked less well under weak ones).</li>
+<li><b>Confucian exams:</b> candidates for high office had to pass an exam on Confucian texts, so officials were highly literate and competent.</li>
+<li><b>The Hanlin Academy</b>, a Tang-era institution, issued the official reading of the Confucian books. Hongwu turned it into <b>six secretaries</b> who governed parts of the empire and reported directly to him, giving him direct control.</li>
+<li><b>The Censorate</b> (by 1430) enforced anti-corruption laws. Its officials inspected the provinces and could remove corrupt officials, which pushed officials to be honest.</li>
+<li><b>The military</b> managed diverse provinces, for example by moving more Han Chinese into Yunnan.</li>
+<li><b>Religious diversity</b>: Buddhism, Confucianism, and Daoism all flourished with new temples. Daoist priests performed court rituals and wrote hymns for the emperor, Buddhist monks led rituals for common people, Jesuits served as court musicians, astronomers, and mapmakers, and many sects blended in Confucian ideals.</li></ul></div>
+
+<div class="box"><h4>Answering the unit questions</h4><ul>
+<li><b>How did the Ming rise to power?</b> Hongwu, a peasant’s son, led the rebel army that drove the Mongols out in 1368, became the first Ming emperor, rebuilt farming, erased Mongol influence, and restored Confucian values and the civil service exam.</li>
+<li><b>Why were Zheng He’s voyages important?</b> They showed off Ming power from Southeast Asia to East Africa decades before European explorers, brought more than 16 countries into the tribute system, and, when they ended in 1433, marked China’s turn toward isolation.</li>
+<li><b>What kept the Ming stable?</b> A strong emperor with Confucian law codes, competent officials chosen by Confucian exams, the Hanlin Academy’s six secretaries reporting to the emperor, the Censorate fighting corruption, the military in diverse provinces, and religious tolerance.</li></ul></div>
+<p class="meta">What comes next (the reading stops here): by 1600 the Ming had weakened, and in 1644 the Manchus from the northeast invaded and founded the Qing Dynasty.</p>
+</script>
+<script type="text/plain" id="R-wh4-ming">
+<div class="cornell">
+<div class="cn-top"><div><span class="cn-k">Topic</span>The Ming Dynasty (1368–1644)</div><div><span class="cn-k">Reading</span>pp. 617–623</div>
+<div class="cn-eq"><span class="cn-k">Essential questions</span>How did the Ming rise to power? Why were Zheng He’s voyages important? What allowed the Ming to stay stable?</div></div>
+<div class="cn-h"><span>Cues</span><span>Notes</span></div>
+<div class="cn-row"><div class="cn-cue">How did the Ming rise?</div><div class="cn-note"><ul><li><b>Hongwu</b>, a peasant’s son, led the rebels who drove out the Mongols in <b>1368</b>; first Ming emperor; capital Nanjing.</li><li>Restored farming (rice, irrigation, fish farming, cotton, sugar cane); erased the Mongol past.</li><li>Brought back Confucian morals and the <b>merit-based civil service exam</b>.</li><li>Later a tyrant: purges killed thousands.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Tribute</div><div class="cn-note"><ul><li>Payment from one country to another to show submission; Korea to Southeast Asia paid the Ming.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Yonglo; Forbidden City</div><div class="cn-note"><ul><li>Hongwu’s son; moved the court to <b>Beijing</b>.</li><li><b>Forbidden City</b> (1406–1420): red 35-ft walls; commoners and foreigners kept out; shows imperial power.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Zheng He’s voyages: what?</div><div class="cn-note"><ul><li>Chinese Muslim admiral; <b>7 voyages, 1405–1433</b>, Southeast Asia to East Africa.</li><li>40–300 ships; treasure ships 400+ ft; 27,000+ crew.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Zheng He: why important?</div><div class="cn-note"><ul><li>Showed Ming power before European explorers; gifts of silver and silk → <b>16+ countries</b> sent tribute.</li><li>Officials called them a waste → after 1433 China <b>withdrew into isolation</b>.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Foreign trade policy</div><div class="cn-note"><ul><li>Government-only trade through 3 ports (Canton, Macao, Ningbo); smuggling anyway; Europeans paid in silver.</li><li>No industrialization: commerce offended Confucian beliefs; taxes favored farming.</li><li>Jesuit <b>Matteo Ricci</b> welcomed at court; many educated Chinese opposed Europeans.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">What kept the Ming stable?</div><div class="cn-note"><ul><li>Confucian law codes; emperor as head of state.</li><li>Confucian exams → literate, competent officials.</li><li><b>Hanlin Academy</b> → six secretaries reporting to Hongwu.</li><li><b>Censorate</b> inspected and removed corrupt officials.</li><li>Military in diverse provinces (Yunnan); Buddhism, Confucianism, Daoism all flourished.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Great Wall</div><div class="cn-note"><ul><li>Greatest extension under the Ming, out of fear of the Mongols: the wall we see today.</li></ul></div></div>
+<div class="cn-sum"><span class="cn-k">Summary</span><p>Hongwu, a peasant’s son, drove out the Mongols in 1368 and founded the Ming, restoring farming, Confucian values, and the civil service exam. His son Yonglo moved the capital to Beijing, built the Forbidden City, and sent Zheng He on seven enormous voyages that spread Ming power and tribute, before China turned inward in 1433. Confucian government, exams, the Censorate, and religious tolerance kept the Ming stable for nearly three centuries.</p></div>
+</div>
+</script>
+=== BANK ===
+@@ wh4-ming
+Q: <b>Unit question.</b> How did the Ming Dynasty rise to power?
+L: 1
+A: Hongwu, a peasant’s son, led the rebel army that drove the Mongols out of China in 1368 and became the first Ming emperor.
+W: Kublai Khan’s son handed the throne to a Chinese general.
+W: The Manchus invaded from the northeast and took Beijing.
+W: Zheng He’s navy conquered the Yuan capital.
+W: The Song Dynasty returned from the south and retook the north.
+S: Hongwu commanded the rebels who ended Mongol rule in 1368. He then reformed farming, erased traces of the Mongol past, and restored Confucian standards and the civil service exam.
+---
+Q: Which of these was one of Hongwu’s reforms?
+L: 1
+A: Restoring the merit-based civil service exam and Confucian moral standards
+W: Giving the highest government jobs to foreigners
+W: Burning Confucian books
+W: Moving the capital to Mongolia
+W: Banning rice farming
+S: Hongwu used respected traditions to bring stability: Confucian moral standards and the merit-based civil service exam. He also improved irrigation and rice production and encouraged fish farming and cash crops like cotton and sugar cane.
+---
+Q: What is tribute?
+L: 1
+A: A payment by one country to another to acknowledge its submission
+W: A tax on peasants’ crops
+W: A gift the emperor gave to his officials
+W: A fee for passing the civil service exam
+W: A trade agreement between equals
+S: Vassal states from Korea to Southeast Asia paid the Ming regular tribute, recognizing China’s power. The Ming expected the Europeans to do the same.
+---
+Q: What did Hongwu become later in his rule?
+L: 2
+A: A ruthless tyrant who purged the government, killing thousands of officials he suspected of plotting
+W: A Buddhist monk who gave up the throne
+W: A friend of the Mongols who invited them back
+W: An explorer who sailed to Africa
+W: A weak ruler controlled by his wife
+S: When problems developed, Hongwu suspected plots against him everywhere and conducted purges that killed thousands of officials.
+---
+Q: What did Yonglo do after becoming emperor?
+L: 2
+A: He moved the court to Beijing, built the Forbidden City, and launched Zheng He’s voyages.
+W: He moved the capital back to Nanjing and banned all travel.
+W: He invited the Mongols to rule again.
+W: He ended the civil service exam.
+W: He conquered Japan.
+S: Yonglo won the power struggle after Hongwu died in 1398. He kept many of his father’s policies but moved the court to Beijing, where he built the Forbidden City, and in 1405 he started the voyages of exploration.
+---
+Q: Why was the Forbidden City given that name?
+L: 1
+A: Commoners and foreigners were not allowed to enter it.
+W: It was built on land where farming was forbidden.
+W: The Mongols were forbidden from attacking it.
+W: Only women were allowed inside.
+W: It was forbidden to build anything taller nearby.
+S: Yonglo built the palace complex (1406–1420) to symbolize his power. Keeping ordinary people out set the emperor apart and showed his might.
+---
+Q: Who was Zheng He?
+L: 1
+A: A Chinese Muslim admiral who led all seven Ming voyages of exploration
+W: The first Ming emperor
+W: A Jesuit missionary at the Ming court
+W: A Mongol general who invaded Japan
+W: A Tang poet
+S: Zheng He led every one of the seven voyages from 1405 to 1433, from Southeast Asia to eastern Africa.
+---
+Q: Why did Yonglo send out Zheng He’s voyages?
+L: 2
+A: To impress the world with Ming power and splendor and to expand China’s tribute system
+W: To find a sea route to Europe and conquer it
+W: To bring back silver from the Americas
+W: To spread Christianity
+W: To escape a Mongol invasion
+S: Yonglo was curious about the outside world and wanted the voyages to show off China’s power and bring more countries into the tribute system.
+---
+Q: Which describes the size of Zheng He’s expeditions?
+L: 1
+A: Up to 300 ships, treasure ships over 400 feet long, and crews of more than 27,000
+W: Three small ships with about 90 sailors
+W: Ten ships about 85 feet long
+W: One giant ship carrying the emperor
+W: About 50 rowboats along the Chinese coast
+S: Everything about the voyages was huge. A treasure ship was about five times longer than Columbus’s 85-foot Santa Maria, and crews included sailors, soldiers, carpenters, interpreters, accountants, doctors, and religious leaders.
+---
+Q: <b>Unit question.</b> Why were Zheng He’s voyages important?
+L: 2
+A: They displayed Ming power across the Indian Ocean before European explorers sailed, brought more than 16 countries into the tribute system, and their end marked China’s turn to isolation.
+W: They led to China conquering East Africa.
+W: They brought Christianity to China.
+W: They discovered the Americas for China.
+W: They made China give up the tribute system.
+S: Zheng He handed out silver and silk to show China’s superiority, and more than 16 countries sent tribute. Scholar-officials called the voyages a waste, and after the seventh voyage in 1433 China withdrew into isolation.
+---
+Q: <b>Reading Check.</b> What do you think people in other countries thought about China after one of Zheng He’s visits?
+L: 2
+A: They were probably impressed by China’s wealth and power, which is why many began sending tribute.
+W: They thought China was poor and weak.
+W: They thought China wanted to trade as an equal.
+W: They did not notice the fleet.
+W: They believed China would soon convert to Islam.
+S: A fleet of up to 300 ships and 27,000 people handing out silver and silk was meant to show superiority, and more than 16 countries responded by sending tribute.
+---
+Q: Why did China stop the voyages after 1433?
+L: 2
+A: Scholar-officials argued they wasted resources needed to defend the northern frontier, and China withdrew into isolation.
+W: Zheng He’s fleet was destroyed by a typhoon.
+W: The Portuguese defeated the Chinese navy.
+W: The voyages had found nothing of value.
+W: The Mongols captured the treasure ships.
+S: Officials said the money should go to defending against attacks on the northern frontier. After the seventh voyage, China turned inward.
+---
+Q: How did the Ming control foreign trade?
+L: 2
+A: Only the government could trade with foreigners, and only through three ports: Canton, Macao, and Ningbo.
+W: Any merchant could trade at any port with no taxes.
+W: Foreign trade was handled entirely by Zheng He.
+W: Europeans were allowed to set up their own cities in China.
+W: All trade went over the Silk Roads instead of by sea.
+S: The rule kept outside influence to a minimum. In reality, merchants smuggled silk and porcelain to Europeans, who paid in silver.
+---
+Q: Why did China not become highly industrialized under the Ming, even though demand for its goods grew?
+L: 3
+A: Commerce offended Confucian beliefs, and Chinese policy favored agriculture, with low farm taxes and very high taxes on manufacturing and trade.
+W: China had no silk or ceramics industries.
+W: The Mongols had destroyed all factories.
+W: Europeans refused to buy Chinese goods.
+W: The emperor banned farming.
+S: Industries like silk-making and ceramics did grow, but Confucian values looked down on commerce and the tax system pushed people toward farming.
+---
+Q: <b>Unit question.</b> What allowed the Ming Dynasty to maintain stability?
+L: 2
+A: Confucian law codes under a strong emperor, competent officials chosen by Confucian exams, the Censorate to fight corruption, and religious tolerance
+W: Giving all power to foreign officials
+W: Letting each province choose its own laws
+W: Ending the civil service exam
+W: Banning Buddhism and Daoism
+S: Hongwu replaced Yuan laws with Confucian codes and made the emperor head of the state. Exams on Confucian texts produced literate officials, the Hanlin Academy’s six secretaries reported to the emperor, and the Censorate removed corrupt officials. Buddhism, Confucianism, and Daoism all flourished.
+---
+Q: What was the Censorate?
+L: 2
+A: A department whose officials inspected the provinces and could remove corrupt officials from office
+W: The office that censored Christian books
+W: A council of Mongol advisers
+W: The Ming navy’s command center
+W: The school where Confucian exams were written
+S: Created by 1430, the Censorate enforced anti-corruption laws. Knowing they could be punished encouraged officials to obey the laws and deal honestly.
+---
+Q: Who was Matteo Ricci?
+L: 2
+A: An Italian Jesuit missionary who gained favor at the Ming court through his intelligence and fluent Chinese
+W: A Portuguese captain who first reached China in 1514
+W: A Venetian trader who served Kublai Khan
+W: A Chinese Muslim admiral
+W: A Manchu leader who founded the Qing
+S: Missionaries came with European traders, bringing Christianity and European science and technology such as the clock. Ricci was the first to have a real impact, though many educated Chinese opposed the European presence.
+=== GENS ===
+GENS['wh4-ming']=[];

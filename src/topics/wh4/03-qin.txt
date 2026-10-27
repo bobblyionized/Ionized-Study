@@ -1,0 +1,194 @@
+=== LESSONS ===
+<script type="text/plain" id="L-wh4-qin">
+<h2>The Qin Dynasty Unifies China</h2>
+<p class="meta">Textbook pp. 141–143 · Module 4, Lesson 4 (continued)</p>
+<div class="box"><h4>Big idea</h4>Using Legalist ideas, Shi Huangdi ended the warring states and unified China (221–202 BC) with a harsh, all-powerful government. He built roads, standardized the country, and joined the Great Wall, but his cruelty made the Qin hated, and it collapsed soon after he died.</div>
+<div class="tip"><b>Unit questions this lesson answers:</b> How did Shi Huangdi rule China? How did the Qin Dynasty fall? Why was the Great Wall of China significant?<br><b>Key terms:</b> Qin Dynasty, Shi Huangdi, autocracy, Great Wall of China</div>
+
+<h3>A new emperor takes control</h3>
+<p>In the third century BC the <b>Qin Dynasty</b> (said “chihn”), from the western state of Qin, replaced the Zhou. Its founder used <b>Legalist</b> ideas to defeat the warring states. In <b>221 BC</b>, after ruling for over 20 years, he took the name <b>Shi Huangdi</b>, meaning <b>“First Emperor.”</b></p>
+<ul><li>He first stopped the internal battles that had drained China’s strength.</li>
+<li>His armies fought invaders north of the Huang He (Yellow River) and pushed south as far as present-day Vietnam, <b>doubling China’s size</b>.</li></ul>
+
+<h3>Crushing opposition: an autocracy</h3>
+<ul><li><b>“Strengthening the trunk and weakening the branches”:</b> to break the power of rival warlords, he forced noble families to live in the capital where he could watch them. Tradition says 120,000 families were uprooted.</li>
+<li>He took their land and divided China into <b>36 administrative districts</b> run by Qin officials.</li>
+<li>To stop criticism, he and his Legalist prime minister <b>Li Si</b> killed hundreds of <b>Confucian scholars</b> and <b>burned “useless” books</b> (Confucian works and poetry). Practical books on medicine and farming were spared.</li></ul>
+<p>The result was an <b>autocracy</b>: a government with unlimited power that uses it in an arbitrary way.</p>
+
+<h3>A program of centralization</h3>
+<ul><li>A highway network of more than <b>4,000 miles</b>.</li>
+<li>One standard across China for <b>writing, law, currency, and weights and measures</b>, even the length of cart axles, so every cart fit the ruts of the main roads.</li>
+<li>Irrigation projects increased farm production; trade grew thanks to the roads, and a new class of <b>merchants</b> became important.</li></ul>
+<p>Despite these advances, <b>harsh taxes and a repressive government</b> made the Qin unpopular. Shi Huangdi unified China at the expense of human freedom. Still, he is considered the <b>founder of unified China</b>, and the word <b>“China” comes from “Qin.”</b></p>
+
+<h3>The Great Wall of China</h3>
+<p>Scholars hated Shi Huangdi for burning books; poor people hated him for forcing them to build a huge wall. Earlier Zhou rulers had built smaller walls against <b>northern nomads</b>. Shi Huangdi closed the gaps and extended the wall almost the length of the empire’s border: an enemy would have to ride halfway to Tibet to get around it.</p>
+<ul><li>Built by <b>hundreds of thousands of peasants</b> who were not paid and did not work out of love for the empire: the choice was work on the wall or die. Many died anyway from the crushing labor and harsh winters.</li>
+<li>It stretched from the Yellow Sea in the east to the Gobi Desert in the west, with watchtowers every 200–300 yards.</li>
+<li>Sections were 20–25 feet high: cut stone slabs outside, packed with dirt, pebbles, and rubble inside.</li>
+<li>Most of the wall standing today was rebuilt later, by the <b>Ming Dynasty</b> (AD 1368–1644).</li></ul>
+<p>Shi Huangdi also built a burial chamber the size of a large town, guarded by <b>8,000 life-sized clay soldiers</b>, the <b>terra-cotta warriors</b>.</p>
+
+<h3>The fall of the Qin</h3>
+<p>The Qin lasted only a short time (<b>221–202 BC</b>). Shi Huangdi died in 210 BC. His son was just as cruel but less able. Peasants rebelled only three years after the second emperor took power. A rebel leader, a peasant from the land of Han, marched on the capital, and by <b>202 BC</b> the Qin gave way to the <b>Han Dynasty</b>, one of the longest in Chinese history.</p>
+
+<div class="box"><h4>Answering the unit questions</h4><ul>
+<li><b>How did Shi Huangdi rule?</b> As an autocrat using Legalism: he crushed nobles and critics (moving nobles to the capital, killing scholars, burning books), split China into 36 districts under his officials, and centralized everything with roads and standard writing, laws, money, and measures.</li>
+<li><b>How did the Qin fall?</b> Harsh taxes, forced labor, and repression made it hated. After Shi Huangdi died, his weaker son faced peasant rebellions within three years, and by 202 BC the Han took over.</li>
+<li><b>Why was the Great Wall significant?</b> It defended China’s northern border against nomads and showed the emperor’s power to command huge numbers of people, but it was built with forced labor that cost many lives and turned the poor against the Qin.</li></ul></div>
+<div class="warn"><b>Positive and negative effects of Shi Huangdi’s rule (Reading Check).</b> Positive: a unified, larger China; roads; standard writing, laws, money, and measures; more farming and trade; the Great Wall. Negative: no freedom, murdered scholars, burned books, crushing taxes, forced labor, and a dynasty that lasted only about 20 years.</div>
+</script>
+<script type="text/plain" id="R-wh4-qin">
+<div class="cornell">
+<div class="cn-top"><div><span class="cn-k">Topic</span>The Qin Dynasty unifies China (221–202 BC)</div><div><span class="cn-k">Reading</span>pp. 141–143</div>
+<div class="cn-eq"><span class="cn-k">Essential question</span>How did Shi Huangdi unify China, and why did his dynasty fall so fast?</div></div>
+<div class="cn-h"><span>Cues</span><span>Notes</span></div>
+<div class="cn-row"><div class="cn-cue">Who was Shi Huangdi?</div><div class="cn-note"><ul><li>Qin ruler who in <b>221 BC</b> took the name <b>“First Emperor.”</b></li><li>Used <b>Legalism</b>; ended the warring states; doubled China’s size (north of the Huang He, south to Vietnam).</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">How did he crush opposition?</div><div class="cn-note"><ul><li>“Strengthening the trunk and weakening the branches”: nobles moved to the capital (120,000 families).</li><li>Their land → <b>36 districts</b> run by Qin officials.</li><li>With <b>Li Si</b>: killed Confucian scholars, burned books (spared medicine and farming).</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Autocracy</div><div class="cn-note"><ul><li>Government with unlimited power, used arbitrarily.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Centralization</div><div class="cn-note"><ul><li>4,000+ miles of highways.</li><li>Standard <b>writing, law, currency, weights and measures</b>, cart axles.</li><li>Irrigation → more food; roads → trade, merchants.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">The Great Wall: why it mattered</div><div class="cn-note"><ul><li>Defended against <b>northern nomads</b>; joined older Zhou walls along the border.</li><li>Forced peasant labor, “work or die”; many died.</li><li>Yellow Sea to Gobi Desert, towers every 200–300 yards, 20–25 ft high.</li><li>Today’s wall is mostly <b>Ming</b>.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Other Qin facts</div><div class="cn-note"><ul><li>Tomb guarded by <b>8,000 terra-cotta warriors</b>.</li><li>“China” comes from “Qin”; he is the founder of unified China.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Why did the Qin fall?</div><div class="cn-note"><ul><li>Harsh taxes, repression, forced labor → hated.</li><li>Shi Huangdi died 210 BC; son cruel but weak; peasants rebelled within 3 years.</li><li>Peasant leader from Han took the capital → <b>Han Dynasty by 202 BC</b>.</li></ul></div></div>
+<div class="cn-sum"><span class="cn-k">Summary</span><p>Shi Huangdi used Legalism to end the warring states and create China’s first unified empire. He ruled as an autocrat, crushing nobles and scholars while building roads, standardizing the country, and joining the Great Wall with forced labor. His achievements lasted, but his cruelty did not: the Qin fell to peasant rebellions within a few years of his death, opening the way for the Han.</p></div>
+</div>
+</script>
+=== BANK ===
+@@ wh4-qin
+Q: What does the name Shi Huangdi mean?
+L: 1
+A: First Emperor
+W: Universal Ruler
+W: Martial Emperor
+W: Great Ancestor
+W: Son of the Han
+S: In 221 BC the Qin ruler took the name Shi Huangdi, “First Emperor,” after uniting China. (“Universal ruler” is Genghis Khan; “Martial Emperor” is Wudi; “Great Ancestor” is Taizong.)
+---
+Q: Which philosophy did the Qin Dynasty use to unify and rule China?
+L: 1
+A: Legalism
+W: Confucianism
+W: Daoism
+W: Buddhism
+W: Neo-Confucianism
+S: The Qin founder used Legalist ideas, strict laws, harsh punishments, and control of ideas, to subdue the warring states. His prime minister Li Si was a Legalist philosopher.
+---
+Q: <b>Lesson 4 Assessment #4.</b> What measures did Shi Huangdi take to crush political opposition at home?
+L: 2
+A: He moved noble families to the capital, took their land, killed Confucian scholars, and burned books.
+W: He gave nobles more land in exchange for their loyalty.
+W: He held exams so his critics could win government jobs.
+W: He allowed each province to choose its own ruler.
+W: He paid rival warlords tribute in silver and silk.
+S: His policy of “strengthening the trunk and weakening the branches” forced the nobles to live in the capital under his watch; he seized their land and created 36 districts run by Qin officials. With Li Si he murdered hundreds of Confucian scholars and burned “useless” books.
+---
+Q: What is an autocracy?
+L: 1
+A: A government that has unlimited power and uses it in an arbitrary manner
+W: A government run by trained officials who pass exams
+W: A government that does as little as possible
+W: A government shared by an emperor and his nobles
+W: A government chosen by the people
+S: Shi Huangdi’s measures, crushing opposition, killing critics, and burning books, created an autocracy: unlimited power used however the ruler wished.
+---
+Q: <b>Lesson 4 Assessment #6.</b> Why did Shi Huangdi have his critics murdered?
+L: 2
+A: To prevent criticism of his government, following the Legalist belief that the ruler must control ideas as well as actions
+W: Because they had been caught stealing from the treasury
+W: Because Confucius had told him to
+W: To make room for Daoist priests at court
+W: Because they refused to fight the northern nomads
+S: Legalists believed a ruler should control ideas and destroy anything that encouraged people to criticize the government. Confucian scholars disagreed with the Legalists, so Shi Huangdi and Li Si killed hundreds of them and burned their books.
+---
+Q: Which of these was <b>not</b> standardized by Shi Huangdi?
+L: 2
+A: Religion
+W: Writing
+W: Currency
+W: Weights and measures
+W: The length of cart axles
+S: Shi Huangdi set the same standards across China for writing, law, currency, and weights and measures, even cart axle length so carts fit the road ruts. Religion was not standardized.
+---
+Q: Why did Shi Huangdi set a standard length for cart axles?
+L: 2
+A: So all vehicles could fit into the ruts of China’s main roads
+W: So carts could be taxed by their size
+W: So the Great Wall could be built faster
+W: So nobles could not travel without permission
+W: So merchants could not compete with the government
+S: Standard axles meant every cart fit the ruts worn into the roads. It was part of his centralization program along with a 4,000-mile highway network.
+---
+Q: <b>Unit question.</b> Why was the Great Wall of China significant?
+L: 2
+A: It protected China’s northern border from nomads, but it was built by forced peasant labor that cost many lives and made the Qin hated.
+W: It kept Chinese peasants from escaping to Mongolia.
+W: It was a trade route connecting China to Rome.
+W: It separated the Qin capital from the rest of China.
+W: It was built by paid workers who were proud to serve the empire.
+S: Shi Huangdi joined the older Zhou walls to block northern nomads; enemies would have had to ride halfway to Tibet to get around it. Hundreds of thousands of peasants were forced to work on it with no wages, and many died.
+---
+Q: Who built most of the Great Wall that stands today?
+L: 1
+A: The Ming Dynasty (1368–1644)
+W: The Qin Dynasty under Shi Huangdi
+W: The Zhou Dynasty
+W: The Han Dynasty under Wudi
+W: The Mongols under Genghis Khan
+S: Shi Huangdi built the earliest unified wall, but much of the wall as it exists today dates from the later Ming Dynasty.
+---
+Q: Who built the Great Wall for Shi Huangdi, and under what conditions?
+L: 1
+A: Hundreds of thousands of peasants, forced to work without wages: work on the wall or die
+W: Paid soldiers who volunteered for the job
+W: Enslaved prisoners of war from Rome
+W: Skilled craftsmen hired from Persia
+W: Confucian scholars as punishment for their writings
+S: The wall builders worked neither for wages nor for love of empire. Many died from the crushing labor or the harsh winter weather.
+---
+Q: What guarded Shi Huangdi’s burial chamber?
+L: 1
+A: An army of 8,000 life-sized clay soldiers, the terra-cotta warriors
+W: A section of the Great Wall
+W: A moat filled with the bones of scholars
+W: Statues of Confucius and Laozi
+W: Twelve bronze dragons
+S: His tomb was the size of a large town and was guarded by 8,000 life-sized clay soldiers known as the terra-cotta warriors.
+---
+Q: <b>Unit question.</b> How did the Qin Dynasty fall?
+L: 2
+A: Harsh rule made it hated; after Shi Huangdi died, peasants rebelled against his weaker son, and by 202 BC the Han Dynasty replaced it.
+W: Mongol armies invaded from the north and conquered it.
+W: The Jurchen forced the Qin to retreat south.
+W: Shi Huangdi gave up the throne to become a Daoist monk.
+W: A flood destroyed the capital, and the emperor moved to Japan.
+S: Harsh taxes and repression made the Qin unpopular. Shi Huangdi’s son was just as cruel but less able, and peasants rebelled only three years after he took office. A peasant leader from the land of Han marched on the capital.
+---
+Q: <b>Reading Check.</b> Which of these was a <b>positive</b> effect of Shi Huangdi’s rule?
+L: 2
+A: Roads, irrigation, and standard money and measures helped farming and trade grow.
+W: Confucian scholars gained power in the government.
+W: Taxes were lowered for peasants.
+W: People were free to criticize the government.
+W: Noble families kept control of their land.
+S: Irrigation increased farm production, and the new road system helped trade blossom, creating a new merchant class. The negatives were harsh taxes, repression, forced labor, and the loss of freedom.
+---
+Q: <b>Lesson 4 Assessment #7.</b> Would a ruler who followed Confucian or Daoist ideas have built the Great Wall the way Shi Huangdi did?
+L: 3
+A: Probably not: a Daoist ruler would do as little as possible, and a Confucian ruler would lead by kindness rather than forcing peasants to work or die.
+W: Yes: both philosophies say rulers should force people to work for the state.
+W: Yes: Daoists believed in building large walls in harmony with nature.
+W: Only a Daoist ruler, because Daoists loved large building projects.
+W: Only a Confucian ruler, because filial piety requires building walls.
+S: Daoism says government should do as little as possible, so a huge state project is the opposite of Daoist rule. Confucius taught that rulers should be kind and virtuous, which does not fit forced labor that killed many peasants. Building it this way fits Legalism. (Opinion question; explain with reasons like these.)
+---
+Q: Where does the name “China” come from?
+L: 1
+A: From the Qin Dynasty
+W: From the Han Dynasty
+W: From the Chang Jiang river
+W: From Marco Polo’s book
+W: From the Ming capital
+S: The textbook notes that although Shi Huangdi was a tyrant, he is considered the founder of unified China, and the word Qin is the origin of “China.”
+=== GENS ===
+GENS['wh4-qin']=[];

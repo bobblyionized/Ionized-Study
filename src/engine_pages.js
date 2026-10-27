@@ -15,13 +15,16 @@ function cleanup(){if(window.__graphOff)window.__graphOff();if(timerHandle){clea
 const stars=l=>'★'.repeat(l)+'☆'.repeat(3-l);
 const fmtTime=s=>{s=Math.max(0,Math.round(s));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
 
+const WH_TEST={n:30,mins:40};                                    // a World History unit test: questions and minutes
 const MOCKS={
   amc10:{name:'AMC 10 Mock Exam',short:'AMC 10 Mock',d:'25 questions from the AMC 10 topics only (no precalculus-only material) in 75 minutes, ordered easy to hard like the real AMC 10.',topics:()=>amcTopics().filter(t=>t.amc!=='12'),lv:[9,10,6]},
   amc12:{name:'AMC 12 Mock Exam',short:'AMC 12 Mock',d:'25 questions from every topic in 75 minutes, with a full share of AMC 12 precalculus (logs, trig, complex numbers, conics) and a harder mix.',topics:()=>amcTopics(),lv:[7,10,8],min12:6},
   all:{name:'Full AMC Mock Exam',short:'Full Mock',d:'25 questions drawn evenly from every AMC 10 and AMC 12 topic in 75 minutes, ordered easy to hard.',topics:()=>amcTopics(),lv:[9,10,6]},
 };
-const mockKey=t=>t.track==='pc'?'Chapter test':'Mock test';
-const trackCrumb=t=>t.track==='pc'?['Precalculus','#/pc']:['AMC Prep','#/amc'];
+const mockKey=t=>t.track==='pc'?'Chapter test':t.track==='wh'?'Unit test':'Mock test';
+const trackCrumb=t=>t.track==='pc'?['Precalculus','#/pc']:t.track==='wh'?['World History','#/wh']:['AMC Prep','#/amc'];
+const UNITS={pc:['chapter','section','problems'],wh:['unit','lesson','questions'],amc:['topic','subtopic','problems']};   // what each track calls its parts
+const plural=(n,w)=>n+' '+w+(n===1?'':'s');
 
 function route(){
   const m=location.hash.match(/^#\/s\/([^/]+)/),sub=m?m[1]:null,same=sub&&sub===route.sub;route.sub=sub;
@@ -53,6 +56,7 @@ function routeTo(){
   if(h[0]==='home')return hub();
   if(h[0]==='amc')return amcHome();
   if(h[0]==='pc')return pcHome();
+  if(h[0]==='wh')return whHome();
   if(h[0]==='t'&&findTopic(h[1]))return topicPage(findTopic(h[1]));
   if(h[0]==='s'&&subById(h[1]))return subPage(h[1],h[2]||'lesson');
   if(h[0]==='mock')return mockPage(h[1]&&(MOCKS[h[1]]||findTopic(h[1]))?h[1]:'all');
@@ -66,13 +70,14 @@ function notebooksPage(){setCrumbs([['Notebooks']]);
 function trackStats(id){let total=0,done=0,ok=0;for(const t of TOPICS)if(t.track===id){const st=topicStats(t);total+=st.total;done+=st.done;ok+=st.ok}return{total,done,ok}}
 function hub(){
   setCrumbs([['Home']]);
-  const card=tr=>{const st=trackStats(tr.id);const ts=TOPICS.filter(t=>t.track===tr.id);const ns=ts.reduce((a,t)=>a+t.subs.length,0);
+  const card=tr=>{const st=trackStats(tr.id);const ts=TOPICS.filter(t=>t.track===tr.id);const U=UNITS[tr.id]||UNITS.amc;
+    const ns=ts.reduce((a,t)=>a+t.subs.filter(s=>tr.id!=='wh'||s.sec).length,0);     // a history unit's planner is not a lesson
     return`<button class="card tile big" onclick="location.hash='#/${tr.id}'"><span class="t">${esc(tr.name)}</span><span class="d">${esc(tr.d)}</span>
-    <span class="meta">${ts.length} ${tr.id==='pc'?'chapters':'topics'} · ${ns} ${tr.id==='pc'?'sections':'subtopics'} · ${st.total.toLocaleString()} problems · ${st.done} attempted${st.done?' · '+Math.round(st.ok/st.done*100)+'% correct':''}</span>
+    <span class="meta">${plural(ts.length,U[0])} · ${plural(ns,U[1])} · ${st.total.toLocaleString()} ${U[2]} · ${st.done} attempted${st.done?' · '+Math.round(st.ok/st.done*100)+'% correct':''}</span>
     <span class="bar"><i style="width:${st.total?st.done/st.total*100:0}%"></i></span></button>`};
-  app.innerHTML=`<h1>What are you studying?</h1><p class="sub">Pick a track. Your progress in both is saved to your code and synced across your devices.</p>
+  app.innerHTML=`<h1>What are you studying?</h1><p class="sub">Pick a track. Your progress in every track is saved to your code and synced across your devices.</p>
    <div class="grid two">${TRACKS.map(card).join('')}</div>
-   <p class="meta" style="margin-top:26px"><a href="#" onclick="if(confirm('Reset all saved problem progress in both tracks?')){PROG={q:{},pr:{},mock:[]};saveProg();route()}return false">Reset all problem progress</a></p>`;
+   <p class="meta" style="margin-top:26px"><a href="#" onclick="if(confirm('Reset all saved problem progress in every track?')){PROG={q:{},pr:{},mock:[]};saveProg();route()}return false">Reset all problem progress</a></p>`;
 }
 
 /* which contest the AMC Prep page is set up for: '10', '12' or 'both' (kept on this device) */
@@ -117,52 +122,72 @@ function pcHome(){
   app.innerHTML=`<h1>General Precalculus</h1><p class="sub">${esc(PC_CATALOG[0].note)}</p>`+
    PC_CATALOG.map(sec=>`<div class="grid two">${sec.items.map(tile).join('')}</div>`).join('');
 }
+function whHome(){
+  setCrumbs([['Home','#/home'],['World History']]);
+  const tile=t=>{const st=topicStats(t);return`<button class="card tile" onclick="location.hash='#/t/${t.id}'">
+    <span class="t"><span class="secno">${t.unit}</span> ${esc(t.name)}</span><span class="d">${esc(t.d)}</span>
+    <span class="meta">${plural(t.subs.filter(s=>s.sec).length,'lesson')} · ${st.total} questions · ${st.done} attempted</span><span class="bar"><i style="width:${st.total?st.done/st.total*100:0}%"></i></span></button>`};
+  app.innerHTML=`<h1>World History</h1><p class="sub">${esc(WH_CATALOG[0].note)}</p>`+
+   WH_CATALOG.map(sec=>`<div class="grid two">${sec.items.map(tile).join('')}</div>`).join('');
+}
 
 function topicPage(t){
-  setCrumbs([['Home','#/home'],trackCrumb(t),[t.name]]);const pc=t.track==='pc';
+  setCrumbs([['Home','#/home'],trackCrumb(t),[t.name]]);const pc=t.track==='pc',wh=t.track==='wh',U=UNITS[t.track]||UNITS.amc;
   const cards=t.subs.map((s,i)=>{const st=subStats(s.id);return`<button class="card tile" onclick="location.hash='#/s/${s.id}/lesson'">
-    <span class="t">${(n=>n?`<span class="secno">${n}</span> `:'')(s.id==='mixed'?'':pc?s.sec||'':i+1)}${esc(s.name)}</span><span class="d">${esc(s.d)}</span>
-    <span class="meta">${st.total} problems · ${st.done} attempted · ${st.done?Math.round(st.ok/st.done*100)+'% correct':'not started'}</span>
+    <span class="t">${(n=>n?`<span class="secno">${n}</span> `:'')(s.id==='mixed'?'':pc||wh?s.sec||'':i+1)}${esc(s.name)}</span><span class="d">${esc(s.d)}</span>
+    <span class="meta">${st.total} ${U[2]} · ${st.done} attempted · ${st.done?Math.round(st.ok/st.done*100)+'% correct':'not started'}</span>
     <span class="bar"><i style="width:${st.total?st.done/st.total*100:0}%"></i></span></button>`}).join('');
   const last=PROG.mock.filter(m=>(m.topic||'seq')===t.id).pop();
-  app.innerHTML=`<h1>${pc?'Chapter '+t.ch+': ':''}${esc(t.name)}</h1><p class="sub">${esc(t.d)} Work through the ${pc?'sections':'subtopics'} in order: read the lesson, do the problem set, then work it out in your notebook. Finish with the ${mockKey(t).toLowerCase()}.</p>
+  const how=wh?'Work through the lessons in order: read the lesson, go over the review notes, then answer the practice questions.'
+    :`Work through the ${pc?'sections':'subtopics'} in order: read the lesson, do the problem set, then work it out in your notebook.`;
+  app.innerHTML=`<h1>${pc?'Chapter '+t.ch+': ':wh?'Unit '+t.unit+': ':''}${esc(t.name)}</h1><p class="sub">${esc(t.d)} ${how} Finish with the ${mockKey(t).toLowerCase()}.</p>
   ${pc&&typeof BOOKS!=='undefined'?BOOKS.chapterCard(t.id):''}
   <div class="grid">${cards}
-  <button class="card tile mock" onclick="location.hash='#/mock/${t.id}'"><span class="t">${esc(t.name)} ${pc?'Chapter Test':'Mock Test'}</span>
-  <span class="d">25 questions in 75 minutes, ordered easy to hard, with AMC-style scoring (6 / 1.5 / 0).</span>
-  <span class="meta">${last?'Last score: '+last.score+' / 150':'Not taken yet'}</span></button></div>
-  <div class="row" style="margin-top:18px"><button class="btn fb-back" onclick="location.hash='${trackCrumb(t)[1]}'">All ${pc?'chapters':'topics'}</button></div>`;
+  <button class="card tile mock" onclick="location.hash='#/mock/${t.id}'"><span class="t">${esc(t.name)} ${pc?'Chapter Test':wh?'Unit Test':'Mock Test'}</span>
+  <span class="d">${wh?`${WH_TEST.n} multiple-choice questions from every lesson in ${WH_TEST.mins} minutes, in the order the unit goes. Scored as a percent, like a class test.`:'25 questions in 75 minutes, ordered easy to hard, with AMC-style scoring (6 / 1.5 / 0).'}</span>
+  <span class="meta">${last?'Last score: '+(last.pct?last.score+'%':last.score+' / 150'):'Not taken yet'}</span></button></div>
+  <div class="row" style="margin-top:18px"><button class="btn fb-back" onclick="location.hash='${trackCrumb(t)[1]}'">All ${U[0]}s</button></div>`;
 }
 
 function subPage(sid,tab){
   const s=subById(sid);const t=findTopic(s.topic);setCrumbs([['Home','#/home'],trackCrumb(t),[t.name,'#/t/'+t.id],[s.name]]);
-  const st=subStats(sid);
+  const st=subStats(sid),tabs=subTabs(sid),text=isTextSub(sid);if(!tabs.some(x=>x[0]===tab))tab='lesson';
   app.innerHTML=`<h1>${s.sec?'<span class="secno">'+s.sec+'</span> ':''}${esc(s.name)}</h1><p class="sub">${esc(s.d)}</p>
-  <div class="tabs">${[['lesson','Lesson'],['set','Problem Set ('+st.total+')'],['notebook','Notebook'],['graph','Graph']].map(([k,n])=>`<button class="tab ${k===tab?'on':''}" onclick="location.hash='#/s/${sid}/${k}'">${n}</button>`).join('')}</div>
+  <div class="tabs">${tabs.map(([k,n])=>`<button class="tab ${k===tab?'on':''}" onclick="location.hash='#/s/${sid}/${k}'">${n}${k==='set'?' ('+st.total+')':''}</button>`).join('')}</div>
   <div id="tabbody"></div>${tabArrows(sid,tab)}`;
   const body=document.getElementById('tabbody');enterTab(body);
   if(tab==='set')return setView(sid,body);
   if(tab==='notebook')return NOTEBOOK.view(body,sid);
   if(tab==='graph')return graphView(body);
+  const i=t.subs.indexOf(s),next=t.subs[i+1],setBtn=`<button class="btn pri" onclick="location.hash='#/s/${sid}/set'">${text?'Practice questions':'Go to problem set'}</button>`;
+  if(tab==='review'){const rv=document.getElementById('R-'+sid);         // Cornell-style notes: cues on the left, notes on the right, a summary below
+    body.innerHTML=`${rv?'<div class="cn-tools"><button class="chip" type="button" data-cn-cover>Cover the notes</button><span class="meta">Quiz yourself: answer each cue from memory, then tap its row to check.</span></div>':''}
+    <div class="lesson${rv?' cn-wrap':''}">${rv?rv.textContent:'<p>Review notes coming soon.</p>'}</div>
+    <div class="row" style="margin-top:16px"><button class="btn fb-back" onclick="location.hash='#/s/${sid}/lesson'">Back to the lesson</button><span class="spacer"></span>${setBtn}</div>`;
+    body.addEventListener('click',e=>{const cn=body.querySelector('.cornell');if(!cn)return;const b=e.target.closest('[data-cn-cover]');
+      if(b){const on=cn.classList.toggle('cn-covered');cn.querySelectorAll('.cn-row.open').forEach(r=>r.classList.remove('open'));b.textContent=on?'Show all notes':'Cover the notes';b.classList.toggle('on',on);return}
+      const r=e.target.closest('.cn-row');if(r&&cn.classList.contains('cn-covered'))r.classList.toggle('open')});
+    return renderMath(body)}
   const les=document.getElementById('L-'+sid);
-  const i=t.subs.indexOf(s),next=t.subs[i+1];
   body.innerHTML=`${typeof BOOKS!=='undefined'?BOOKS.lessonBar(sid):''}<div class="lesson">${les?les.textContent:'<p>Lesson coming soon.</p>'}</div>
-  <div class="row" style="margin-top:16px">${next?`<button class="btn" onclick="location.hash='#/s/${next.id}/lesson'">Next lesson: ${esc(next.name)}</button>`:''}<span class="spacer"></span><button class="btn pri" onclick="location.hash='#/s/${sid}/set'">Go to problem set</button></div>`;
+  <div class="row" style="margin-top:16px">${next?`<button class="btn" onclick="location.hash='#/s/${next.id}/lesson'">Next lesson: ${esc(next.name)}</button>`:''}<span class="spacer"></span>${text?`<button class="btn pri" onclick="location.hash='#/s/${sid}/review'">Review notes</button>`:setBtn}</div>`;
   drawLessonPlots(body);renderMath(body);
 }
-/* ---------- moving between Lesson / Problem Set / Notebook / Graph: side arrows + sideways swipe ---------- */
+/* ---------- moving between Lesson / (Review) / Problem Set / Notebook / Graph: side arrows + sideways swipe ---------- */
 const SUB_TABS=[['lesson','Lesson'],['set','Problem Set'],['notebook','Notebook'],['graph','Graph']];
+const TEXT_TABS=[['lesson','Lesson'],['review','Review'],['set','Questions'],['notebook','Notebook']];   // reading subjects: no graph, a review tab
+const subTabs=sid=>isTextSub(sid)?TEXT_TABS:SUB_TABS;
 let tabSlide=null;                                              // 'next' | 'prev': direction the new tab slides in from
 function tabArrows(sid,tab){
-  const i=SUB_TABS.findIndex(x=>x[0]===tab),pv=SUB_TABS[i-1],nx=SUB_TABS[i+1];
+  const T=subTabs(sid),i=T.findIndex(x=>x[0]===tab),pv=T[i-1],nx=T[i+1];
   const a=(t,dir,ch)=>t?`<button class="tab-arrow ${dir}" type="button" data-go="${dir}" aria-label="${esc(t[1])}"><span class="ta-ch">${ch}</span><span class="ta-lbl">${esc(t[1])}</span></button>`:'';
   return a(pv,'prev',icon('chevL'))+a(nx,'next',icon('chevR'));
 }
 function curSubTab(){const m=location.hash.match(/^#\/s\/([^/]+)(?:\/(\w+))?/);if(!m||!subById(m[1]))return null;
-  const i=Math.max(0,SUB_TABS.findIndex(x=>x[0]===(m[2]||'lesson')));return{sid:m[1],i}}
+  const T=subTabs(m[1]),i=Math.max(0,T.findIndex(x=>x[0]===(m[2]||'lesson')));return{sid:m[1],i,n:T.length}}
 function goTab(dir){
-  const c=curSubTab();if(!c)return false;const j=c.i+(dir==='next'?1:-1);if(j<0||j>=SUB_TABS.length)return false;
-  tabSlide=dir;location.hash='#/s/'+c.sid+'/'+SUB_TABS[j][0];return true;
+  const c=curSubTab();if(!c)return false;const j=c.i+(dir==='next'?1:-1),T=subTabs(c.sid);if(j<0||j>=T.length)return false;
+  tabSlide=dir;location.hash='#/s/'+c.sid+'/'+T[j][0];return true;
 }
 function enterTab(body){
   if(!tabSlide)return;const dir=tabSlide;tabSlide=null;
@@ -182,7 +207,7 @@ if(typeof document!=='undefined')(()=>{                          // arrow clicks
     if(!body)return;const x=e.touches[0].clientX-x0,y=e.touches[0].clientY-y0;
     if(!lock){if(Math.abs(x)<10&&Math.abs(y)<10)return;lock=Math.abs(x)>Math.abs(y)*1.2?'x':'y'}
     if(lock!=='x')return;
-    const c=curSubTab();const edge=(x>0&&c.i===0)||(x<0&&c.i===SUB_TABS.length-1);
+    const c=curSubTab();const edge=(x>0&&c.i===0)||(x<0&&c.i===c.n-1);
     dx=edge?x/4:x;body.style.transition='none';body.style.transform=`translateX(${dx}px)`;body.style.opacity=String(1-Math.min(.5,Math.abs(dx)/innerWidth));
   },{passive:true});
   document.addEventListener('touchend',()=>{

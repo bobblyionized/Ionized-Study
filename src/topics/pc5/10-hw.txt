@@ -1,0 +1,614 @@
+=== LESSONS ===
+<script type="text/plain" id="L-pc5-hw">
+<h2>Chapter 5 Homework</h2>
+<p>The homework for the rest of Chapter 5, day by day. The Problem Set has every assigned book problem as multiple choice with a full worked solution, labeled with its day and book number so you can match it to your homework. Friday's practice is written in the style of the two worksheets.</p>
+<table class="exmix"><tr><th>Day</th><th>Class</th><th>Topic</th><th>Homework</th></tr>
+<tr><td>Mon 10/26 · Day 1</td><td>No class</td><td>Catch Up Day</td><td>Catch up on any Chapter 5 homework</td></tr>
+<tr><td>Tue 10/27 · Day 2</td><td>9:49–10:42<br>1:11–1:38</td><td>Lessons 5.3–5.4, 5.4A: Exponential &amp; Logarithmic Functions and Properties · <b>HW Quiz</b></td><td>p. 383 #25–35 odd, 43, 45, 57, 69, 71<br>p. 390 #1–9 odd<br>p. 397 #29–35 odd, 49, 55, 57, 69, 71, 73</td></tr>
+<tr><td>Wed 10/28 · Day 3</td><td>Drop</td><td></td><td></td></tr>
+<tr><td>Thu 10/29 · Day 4</td><td>9:49–10:42</td><td>Lesson 5.5: Using Logs to Solve Equations</td><td>p. 406 #1–9 odd, 25, 27, 29, 35, 41, 43, 45, 49, 53, 65<br>p. 374 #29</td></tr>
+<tr><td>Fri 10/30 · Day 5</td><td>9:49–10:42</td><td>More Practice with 5.5</td><td>Exponential Growth &amp; Decay Worksheet<br>Logs/Ln Review sheet</td></tr></table>
+
+<h3>Mon 10/26 · Catch Up Day</h3>
+<p>No class. Use it to finish anything left from Chapter 5: <a href="#/s/pc5-rad/lesson">5.1 Radicals</a>, <a href="#/s/pc5-radeq/lesson">5.1.A Radical Equations</a>, <a href="#/s/pc5-exp/lesson">5.2 Exponential Functions</a>, <a href="#/s/pc5-int/lesson">5.2.A Compound Interest</a>. Each section's Problem Set is there if you want more practice.</p>
+
+<h3>Tue 10/27 · Lessons 5.3–5.4, 5.4A <span class="pill no">HW Quiz</span></h3>
+<p>Book pages: <button class="chip" data-bk-open="pc5:book:43">p. 383 (5.3)</button> <button class="chip" data-bk-open="pc5:book:50">p. 390 (5.4)</button> <button class="chip" data-bk-open="pc5:book:57">p. 397 (5.4A)</button> · Lessons: <a href="#/s/pc5-log/lesson">5.3</a>, <a href="#/s/pc5-laws/lesson">5.4</a>, <a href="#/s/pc5-base/lesson">5.4.A</a></p>
+<div class="box"><h4>What you need for the quiz</h4><ul>
+<li><b>Inverses undo each other.</b> $\log 10^{k}=k$, $10^{\log x}=x$, $\ln e^{k}=k$, $e^{\ln x}=x$ (for $x\gt0$). Same for any base: $\log_b b^{k}=k$ and $b^{\log_b x}=x$.</li>
+<li><b>Translate.</b> $\log_b x=y$ means $b^{y}=x$. So $\log_{16}4=\frac12$ because $16^{1/2}=4$.</li>
+<li><b>Domain.</b> You can only take the log of a positive number: $\ln(x+1)$ needs $x+1\gt0$, so $x\gt-1$.</li>
+<li><b>Laws</b> (any base): $\log(vw)=\log v+\log w$, $\log\frac vw=\log v-\log w$, $\log v^{k}=k\log v$. A plain number like $1$ becomes a log first: $1=\log 10=\log_2 2=\ln e$.</li>
+<li><b>Not laws:</b> $\log(a+b)\ne\log a+\log b$, $\log_b(5x)\ne5\log_b x$, $(\ln x)^3\ne\ln x^3$.</li>
+<li><b>Graph shifts.</b> $\log(x-3)$ is $\log x$ moved right 3: vertical asymptote $x=3$, $x$-intercept $(4,0)$.</li>
+<li><b>Average rate of change</b> from $a$ to $b$: $\dfrac{f(b)-f(a)}{b-a}$.</li></ul></div>
+<div class="tip"><b>Writing as one log, step by step:</b> move every coefficient inside as a power first ($2\ln(x+1)=\ln(x+1)^2$), then combine: pluses multiply, minuses divide. Factor at the end ($\frac{x^2-9}{x+3}=x-3$).</div>
+
+<h3>Wed 10/28 · Drop</h3>
+<p>No class.</p>
+
+<h3>Thu 10/29 · Lesson 5.5: Using Logs to Solve Equations</h3>
+<p>Book pages: <button class="chip" data-bk-open="pc5:book:66">p. 406 (5.5)</button> <button class="chip" data-bk-open="pc5:book:34">p. 374 (5.2A)</button> · Lesson: <a href="#/s/pc5-eq/lesson">5.5</a></p>
+<div class="box"><h4>Three ways to solve</h4><ul>
+<li><b>Same base:</b> rewrite both sides with one base, then set exponents equal. $3^{x+1}=9^{5x}=3^{10x}$, so $x+1=10x$.</li>
+<li><b>Take a log of both sides:</b> $3^x=5\Rightarrow x\ln3=\ln5\Rightarrow x=\dfrac{\ln5}{\ln3}$.</li>
+<li><b>Quadratic in disguise:</b> $e^{2x}-5e^x+6=0$ with $u=e^x$ is $u^2-5u+6=0$. Throw out any $u\le0$, since $e^x$ and $4^x$ are always positive.</li></ul></div>
+<div class="warn"><b>Log equations:</b> combine into one log on each side, drop the logs, solve, then <b>check every answer in the original</b>. Any value that makes the inside of a log zero or negative is extraneous.</div>
+<p><b>Half-life:</b> $M(x)=c\,(.5)^{x/h}$, where $h$ is the half-life. <b>Interest:</b> $A=P(1+r)^t$ per period, and $A=Pe^{rt}$ for continuous compounding.</p>
+
+<h3>Fri 10/30 · More Practice with 5.5</h3>
+<p>The two worksheets are given out in class. The last problems in the Problem Set are practice in the same style (exponential growth and decay, then a logs/ln review), so you can warm up or check yourself.</p>
+<div class="box"><h4>Growth and decay models</h4><ul>
+<li>Grows by $r$ per period: $y=a(1+r)^t$. Shrinks by $r$: $y=a(1-r)^t$.</li>
+<li>Continuous: $y=ae^{kt}$ ($k\gt0$ growth, $k\lt0$ decay).</li>
+<li>Doubling every $d$: $y=a\cdot2^{t/d}$. Half-life $h$: $y=a(.5)^{t/h}$.</li></ul></div>
+</script>
+=== BANK ===
+@@ pc5-hw
+Q: <b>Tue 10/27 · p. 383 #25.</b> Evaluate without a calculator: $\log 10^{\sqrt{43}}$
+L: 1
+A: \sqrt{43}
+W: 43
+W: 10\sqrt{43}
+W: \dfrac{\sqrt{43}}{10}
+W: \log 43
+S: $\log x$ means $\log_{10}x$, and $\log 10^{k}=k$ for any $k$: the log asks "10 to what power gives this?", and the answer is right there in the exponent.
+So $\log 10^{\sqrt{43}}=\sqrt{43}$.
+---
+Q: <b>Tue 10/27 · p. 383 #27.</b> Evaluate without a calculator: $\ln e^{15}$
+L: 1
+A: 15
+W: e^{15}
+W: 15e
+W: \dfrac1{15}
+W: \ln 15
+S: $\ln$ and $e^x$ are inverses, so $\ln e^{k}=k$. Here $\ln e^{15}=15$.
+---
+Q: <b>Tue 10/27 · p. 383 #29.</b> Evaluate without a calculator: $\ln\sqrt e$
+L: 1
+A: \dfrac12
+W: \sqrt e
+W: 2
+W: 1
+W: \dfrac e2
+S: Write the root as a power: $\sqrt e=e^{1/2}$.
+Then $\ln e^{1/2}=\frac12$. (Book answer: $.5$.)
+---
+Q: <b>Tue 10/27 · p. 383 #31.</b> Evaluate without a calculator: $e^{\ln 931}$
+L: 1
+A: 931
+W: \ln 931
+W: e^{931}
+W: 931e
+W: \dfrac1{931}
+S: $e^{\ln x}=x$ for every $x\gt0$, because $\ln x$ is exactly the power of $e$ that gives $x$.
+So $e^{\ln 931}=931$.
+---
+Q: <b>Tue 10/27 · p. 383 #33.</b> Simplify: $\ln e^{x+y}$
+L: 1
+A: x+y
+W: e^{x+y}
+W: xy
+W: \ln x+\ln y
+W: (x+y)e
+S: $\ln e^{k}=k$ no matter what the exponent is, so $\ln e^{x+y}=x+y$.
+($\ln x+\ln y$ would be $\ln(xy)$, a different thing.)
+---
+Q: <b>Tue 10/27 · p. 383 #35.</b> Simplify: $e^{\ln x^2}$
+L: 1
+A: x^2
+W: 2x
+W: \ln x^2
+W: 2\ln x
+W: x
+S: $e^{\ln u}=u$ with $u=x^2$, so $e^{\ln x^2}=x^2$.
+---
+Q: <b>Tue 10/27 · p. 383 #43.</b> Find the domain of $f(x)=\ln(x+1)$.
+L: 1
+A: x\gt-1
+W: x\gt1
+W: x\ge-1
+W: x\gt0
+W: \text{all real numbers}
+S: A logarithm is only defined for positive inputs, so we need $x+1\gt0$, which means $x\gt-1$.
+$x=-1$ is not allowed: $\ln 0$ is undefined.
+---
+Q: <b>Tue 10/27 · p. 383 #45.</b> Find the domain of $h(x)=\log(-x)$.
+L: 1
+A: x\lt0
+W: x\gt0
+W: x\le0
+W: x\ne0
+W: x\gt-1
+S: We need $-x\gt0$. Multiplying by $-1$ flips the inequality: $x\lt0$.
+So the domain is every negative number. (For example $h(-10)=\log 10=1$.)
+---
+Q: <b>Tue 10/27 · p. 383 #57.</b> Which describes the graph of $f(x)=\log(x-3)$?
+L: 2
+A: Vertical asymptote $x=3$; crosses the $x$-axis at $(4,0)$; rises slowly to the right
+W: Vertical asymptote $x=-3$; crosses the $x$-axis at $(-2,0)$; rises slowly to the right
+W: Vertical asymptote $x=3$; crosses the $x$-axis at $(3,0)$; rises slowly to the right
+W: Vertical asymptote $x=0$; crosses the $x$-axis at $(1,0)$; shifted down 3
+W: Vertical asymptote $x=3$; crosses the $x$-axis at $(4,0)$; falls to the right
+S: $\log(x-3)$ is the graph of $\log x$ shifted <b>right</b> 3 (the sign inside flips).
+$\log x$ has vertical asymptote $x=0$ and passes through $(1,0)$ and $(10,1)$. Shifting right 3: asymptote $x=3$, points $(4,0)$ and $(13,1)$.
+The domain is $x\gt3$, and the graph still increases slowly, like $\log x$.
+---
+Q: <b>Tue 10/27 · p. 383 #69.</b> Find the average rate of change of $f(x)=\ln(x-2)$ as $x$ goes from $3$ to $5$.
+L: 2
+A: \dfrac{\ln 3}{2}\approx0.5493
+W: \ln 3\approx1.0986
+W: \dfrac{\ln 5-\ln 3}{2}\approx0.2554
+W: \dfrac{\ln 3}{3}\approx0.3662
+W: \dfrac{\ln 3}{5}\approx0.2197
+S: Average rate of change $=\dfrac{f(5)-f(3)}{5-3}$.
+$f(5)=\ln 3$ and $f(3)=\ln 1=0$.
+So the rate is $\dfrac{\ln 3-0}{2}=\dfrac{\ln 3}{2}\approx0.5493$.
+---
+Q: <b>Tue 10/27 · p. 383 #71.</b> Find the average rate of change of $g(x)=\log(x^2+x+1)$ as $x$ goes from $-2$ to $0$.
+L: 2
+A: -\dfrac{\log 3}{2}\approx-0.2386
+W: \dfrac{\log 3}{2}\approx0.2386
+W: -\log 3\approx-0.4771
+W: -2\log 3\approx-0.9542
+W: 0
+S: $g(0)=\log 1=0$ and $g(-2)=\log(4-2+1)=\log 3$.
+Rate $=\dfrac{g(0)-g(-2)}{0-(-2)}=\dfrac{0-\log 3}{2}=-\dfrac{\log 3}2\approx-0.2386$.
+The negative sign means $g$ goes down on average over this interval.
+---
+Q: <b>Tue 10/27 · p. 390 #1.</b> Write as a single logarithm: $\ln x^2+3\ln y$
+L: 1
+A: \ln(x^2y^3)
+W: \ln(x^2+y^3)
+W: \ln(3x^2y)
+W: 3\ln(x^2y)
+W: \ln(x^2y)^3
+S: Power Law first: $3\ln y=\ln y^3$.
+Then the Product Law: $\ln x^2+\ln y^3=\ln(x^2y^3)$.
+---
+Q: <b>Tue 10/27 · p. 390 #3.</b> Write as a single logarithm: $\log(x^2-9)-\log(x+3)$
+L: 1
+A: \log(x-3)
+W: \log(x+3)
+W: \dfrac{\log(x^2-9)}{\log(x+3)}
+W: \log(x^2-x-12)
+W: \log(x-9)
+S: Quotient Law: $\log(x^2-9)-\log(x+3)=\log\dfrac{x^2-9}{x+3}$.
+Factor: $\dfrac{(x-3)(x+3)}{x+3}=x-3$. So the answer is $\log(x-3)$.
+(The quotient of the logs, $\frac{\log(x^2-9)}{\log(x+3)}$, is not the same thing.)
+---
+Q: <b>Tue 10/27 · p. 390 #5.</b> Write as a single logarithm: $2(\ln x)-3(\ln x^2+\ln x)$
+L: 2
+A: \ln(x^{-7})
+W: \ln(x^{-1})
+W: \ln(x^{-4})
+W: \ln(x^{-3})
+W: \ln(x^{5})
+S: Inside the parentheses: $\ln x^2+\ln x=\ln x^3=3\ln x$.
+So the expression is $2\ln x-3(3\ln x)=2\ln x-9\ln x=-7\ln x$.
+Power Law: $-7\ln x=\ln x^{-7}$ (also $\ln\frac1{x^7}$).
+---
+Q: <b>Tue 10/27 · p. 390 #7.</b> Write as a single logarithm: $3\ln(e^2-e)-3$
+L: 2
+A: \ln(e-1)^3
+W: \ln(e^2-e)^3
+W: 3\ln(e-1)-3
+W: \ln(e-1)
+W: \ln(e^2-e-1)^3
+S: Factor inside: $e^2-e=e(e-1)$, so $\ln(e^2-e)=\ln e+\ln(e-1)=1+\ln(e-1)$.
+Then $3\ln(e^2-e)-3=3+3\ln(e-1)-3=3\ln(e-1)=\ln(e-1)^3$.
+(Or: write $3=3\ln e=\ln e^3$ and use the Quotient Law: $\ln\frac{(e^2-e)^3}{e^3}=\ln\left(\frac{e^2-e}{e}\right)^3=\ln(e-1)^3$.)
+---
+Q: <b>Tue 10/27 · p. 390 #9.</b> Write as a single logarithm: $\log(10x)+\log(20y)-1$
+L: 2
+A: \log(20xy)
+W: \log(200xy)
+W: \log(2xy)
+W: \log(30xy)
+W: \log(200xy-10)
+S: Write the $1$ as a log: $1=\log 10$.
+Then $\log(10x)+\log(20y)-\log 10=\log\dfrac{(10x)(20y)}{10}=\log\dfrac{200xy}{10}=\log(20xy)$.
+---
+Q: <b>Tue 10/27 · p. 397 #29.</b> Evaluate without a calculator: $\log 10^{\sqrt{97}}$
+L: 1
+A: \sqrt{97}
+W: 97
+W: 10^{\sqrt{97}}
+W: \dfrac{\sqrt{97}}{10}
+W: \log 97
+S: $\log 10^{k}=k$, so $\log 10^{\sqrt{97}}=\sqrt{97}$.
+---
+Q: <b>Tue 10/27 · p. 397 #31.</b> Simplify: $\log 10^{x^2+y^2}$
+L: 1
+A: x^2+y^2
+W: (x+y)^2
+W: 10^{x^2+y^2}
+W: \log(x^2+y^2)
+W: 2x+2y
+S: $\log 10^{k}=k$ with $k=x^2+y^2$. The answer is $x^2+y^2$ (not $(x+y)^2$, which has the extra $2xy$).
+---
+Q: <b>Tue 10/27 · p. 397 #33.</b> Evaluate without a calculator: $\log_{16}4$
+L: 1
+A: \dfrac12
+W: 4
+W: 2
+W: \dfrac14
+W: 64
+S: $\log_{16}4=y$ means $16^{y}=4$.
+Since $\sqrt{16}=4$, $16^{1/2}=4$, so $y=\frac12$.
+---
+Q: <b>Tue 10/27 · p. 397 #35.</b> Evaluate without a calculator: $\log_{\sqrt3}27$
+L: 2
+A: 6
+W: 3
+W: 9
+W: \dfrac32
+W: \dfrac16
+S: $\log_{\sqrt3}27=y$ means $(\sqrt3)^{y}=27$.
+Write both as powers of 3: $(3^{1/2})^{y}=3^{y/2}$ and $27=3^3$.
+So $\frac y2=3$, which gives $y=6$. Check: $(\sqrt3)^6=3^3=27$.
+---
+Q: <b>Tue 10/27 · p. 397 #49.</b> Write as the logarithm of a single quantity: $\log x-\log(x+3)+\log(x^2-9)$
+L: 2
+A: \log(x^2-3x)
+W: \log(x^2+3x)
+W: \log\dfrac{x(x+3)}{x^2-9}
+W: \log(x-3)
+W: \log(x^3-9x)
+S: Pluses multiply, the minus divides: $\log\dfrac{x(x^2-9)}{x+3}$.
+Factor: $x^2-9=(x-3)(x+3)$, and the $x+3$ cancels: $\log\big(x(x-3)\big)=\log(x^2-3x)$.
+---
+Q: <b>Tue 10/27 · p. 397 #55.</b> Write as the logarithm of a single quantity: $2\ln(x+1)-\ln(x+2)$
+L: 2
+A: \ln\dfrac{(x+1)^2}{x+2}
+W: \ln\dfrac{2(x+1)}{x+2}
+W: \ln\big((x+1)^2(x+2)\big)
+W: \ln\big((x+1)^2-(x+2)\big)
+W: \dfrac{\ln(x+1)^2}{\ln(x+2)}
+S: Power Law first: $2\ln(x+1)=\ln(x+1)^2$ (the 2 becomes an exponent, not a factor).
+Then the Quotient Law: $\ln(x+1)^2-\ln(x+2)=\ln\dfrac{(x+1)^2}{x+2}$.
+---
+Q: <b>Tue 10/27 · p. 397 #57.</b> Write as the logarithm of a single quantity: $\log_2(2x)-1$
+L: 2
+A: \log_2 x
+W: \log_2(2x-1)
+W: \log_2\dfrac x2
+W: \log_2(2x-2)
+W: \log_2(4x)
+S: In base 2, $1=\log_2 2$.
+So $\log_2(2x)-\log_2 2=\log_2\dfrac{2x}{2}=\log_2 x$.
+(Or: $\log_2(2x)=\log_2 2+\log_2 x=1+\log_2 x$, and subtracting 1 leaves $\log_2 x$.)
+---
+Q: <b>Tue 10/27 · p. 397 #69.</b> True or false: $\log_b\dfrac r5=\log_b r-\log_b 5$
+L: 1
+A: \text{True: it is the Quotient Law}
+W: \text{False: it should be } \dfrac{\log_b r}{\log_b 5}
+W: \text{False: it should be } \log_b r+\log_b 5
+W: \text{False: it should be } \log_b(r-5)
+W: \text{True, but only when } b=10
+S: The Quotient Law says $\log_b\dfrac vw=\log_b v-\log_b w$ for any base $b$ and positive $v,w$.
+With $v=r$ and $w=5$ this is exactly the statement, so it is <b>true</b>.
+---
+Q: <b>Tue 10/27 · p. 397 #71.</b> True or false: $\dfrac{\log_b r}{t}=\log_b\left(r^{1/t}\right)$
+L: 2
+A: \text{True: it is the Power Law}
+W: \text{False: it should be } \log_b\dfrac rt
+W: \text{False: it should be } t\log_b r
+W: \text{False: it should be } \log_b r-\log_b t
+W: \text{True, but only when } t\gt1
+S: The Power Law: $\log_b\left(r^{1/t}\right)=\frac1t\log_b r=\dfrac{\log_b r}{t}$.
+So the statement is <b>true</b> (for $t\ne0$).
+---
+Q: <b>Tue 10/27 · p. 397 #73.</b> True or false: $\log_5(5x)=5(\log_5 x)$
+L: 2
+A: \text{False: } \log_5(5x)=1+\log_5 x
+W: \text{True: it is the Power Law}
+W: \text{True: it is the Product Law}
+W: \text{False: } \log_5(5x)=5+\log_5 x
+W: \text{False: } \log_5(5x)=\log_5 x
+S: The Product Law gives $\log_5(5x)=\log_5 5+\log_5 x=1+\log_5 x$.
+The Power Law only moves an <b>exponent</b>: $\log_5(x^5)=5\log_5 x$. Here the 5 multiplies $x$, it is not an exponent.
+Check with $x=5$: $\log_5 25=2$, but $5\log_5 5=5$. So the statement is <b>false</b>.
+---
+Q: <b>Thu 10/29 · p. 406 #1.</b> Solve without using logarithms: $3^x=81$
+L: 1
+A: x=4
+W: x=27
+W: x=3
+W: x=\dfrac14
+W: x=9
+S: Write 81 as a power of 3: $81=3^4$.
+$3^x=3^4$, so $x=4$.
+---
+Q: <b>Thu 10/29 · p. 406 #3.</b> Solve without using logarithms: $3^{x+1}=9^{5x}$
+L: 2
+A: x=\dfrac19
+W: x=\dfrac1{10}
+W: x=9
+W: x=\dfrac15
+W: x=-\dfrac19
+S: Make the bases match: $9^{5x}=(3^2)^{5x}=3^{10x}$.
+So $3^{x+1}=3^{10x}$, and the exponents are equal: $x+1=10x$, so $1=9x$ and $x=\frac19$.
+---
+Q: <b>Thu 10/29 · p. 406 #5.</b> Solve without using logarithms: $3^{5x}\cdot9^{x^2}=27$
+L: 2
+A: x=\dfrac12\text{ or }x=-3
+W: x=-\dfrac12\text{ or }x=3
+W: x=\dfrac12\text{ only}
+W: x=\dfrac32\text{ or }x=-1
+W: x=1\text{ or }x=-\dfrac32
+S: Everything as a power of 3: $9^{x^2}=3^{2x^2}$ and $27=3^3$.
+Multiplying adds exponents: $3^{5x+2x^2}=3^3$, so $2x^2+5x=3$.
+$2x^2+5x-3=0$ factors as $(2x-1)(x+3)=0$, so $x=\frac12$ or $x=-3$. Both work (any real exponent is allowed).
+---
+Q: <b>Thu 10/29 · p. 406 #7.</b> Solve without using logarithms: $9^{x^2}=3^{-5x-2}$
+L: 2
+A: x=-2\text{ or }x=-\dfrac12
+W: x=2\text{ or }x=\dfrac12
+W: x=-\dfrac12\text{ only}
+W: x=-1\text{ or }x=-\dfrac52
+W: x=2\text{ or }x=-\dfrac12
+S: $9^{x^2}=(3^2)^{x^2}=3^{2x^2}$, so $2x^2=-5x-2$.
+$2x^2+5x+2=0$ factors as $(2x+1)(x+2)=0$, so $x=-\frac12$ or $x=-2$.
+---
+Q: <b>Thu 10/29 · p. 406 #9.</b> Solve $3^x=5$. Give the exact answer in natural logs and a decimal.
+L: 1
+A: x=\dfrac{\ln 5}{\ln 3}\approx1.465
+W: x=\ln\dfrac53\approx0.511
+W: x=\dfrac{\ln 3}{\ln 5}\approx0.683
+W: x=\ln5-\ln3\approx0.511
+W: x=\dfrac53
+S: Take $\ln$ of both sides: $\ln 3^x=\ln 5$.
+Power Law: $x\ln 3=\ln 5$, so $x=\dfrac{\ln5}{\ln3}\approx\dfrac{1.6094}{1.0986}\approx1.465$.
+Careful: $\frac{\ln5}{\ln3}$ is a quotient of logs, not $\ln\frac53$.
+---
+Q: <b>Thu 10/29 · p. 406 #25.</b> Solve: $e^{2x}-5e^x+6=0$
+L: 2
+A: x=\ln2\approx0.693\text{ or }x=\ln3\approx1.099
+W: x=2\text{ or }x=3
+W: x=\ln2\text{ only}
+W: x=e^2\text{ or }x=e^3
+W: x=-\ln2\text{ or }x=-\ln3
+S: Let $u=e^x$. Then $e^{2x}=(e^x)^2=u^2$, so the equation is $u^2-5u+6=0$.
+$(u-2)(u-3)=0$, so $u=2$ or $u=3$.
+Undo the substitution: $e^x=2\Rightarrow x=\ln2\approx0.693$, and $e^x=3\Rightarrow x=\ln3\approx1.099$.
+---
+Q: <b>Thu 10/29 · p. 406 #27.</b> Solve: $6e^{2x}-16e^x=6$
+L: 3
+A: x=\ln3\approx1.099
+W: x=\ln3\text{ or }x=\ln\left(-\tfrac13\right)
+W: x=3
+W: x=-\ln3
+W: x=\ln3\text{ or }x=-\ln3
+S: Let $u=e^x$: $6u^2-16u-6=0$. Divide by 2: $3u^2-8u-3=0$.
+Factor: $(3u+1)(u-3)=0$, so $u=3$ or $u=-\frac13$.
+$e^x$ is always positive, so $e^x=-\frac13$ is impossible. Only $e^x=3$, so $x=\ln3\approx1.099$.
+---
+Q: <b>Thu 10/29 · p. 406 #29.</b> Solve: $4^x+6\cdot4^{-x}=5$
+L: 3
+A: x=\dfrac12\text{ or }x=\dfrac{\ln3}{\ln4}\approx0.792
+W: x=2\text{ or }x=3
+W: x=\dfrac12\text{ only}
+W: x=\ln2\text{ or }x=\ln3
+W: x=\dfrac12\text{ or }x=\dfrac34
+S: Let $u=4^x$; then $4^{-x}=\frac1u$. The equation is $u+\frac6u=5$.
+Multiply by $u$: $u^2+6=5u$, so $u^2-5u+6=0$ and $u=2$ or $u=3$.
+$4^x=2$: since $4^{1/2}=2$, $x=\frac12$ (also $\frac{\ln2}{\ln4}=\frac12$). $4^x=3$: $x=\frac{\ln3}{\ln4}\approx0.792$.
+---
+Q: <b>Thu 10/29 · p. 406 #35.</b> Solve: $\ln(3x-5)=\ln11+\ln2$
+L: 1
+A: x=9
+W: x=6
+W: x=22
+W: x=\dfrac{13}3
+W: x=27
+S: Combine the right side with the Product Law: $\ln11+\ln2=\ln22$.
+$\ln(3x-5)=\ln22$, so $3x-5=22$ and $x=9$.
+Check: $3(9)-5=22\gt0$, so the log is defined.
+---
+Q: <b>Thu 10/29 · p. 406 #41.</b> Solve: $\ln x+\ln(x+1)=\ln3+\ln4$
+L: 2
+A: x=3
+W: x=3\text{ or }x=-4
+W: x=-4
+W: x=2
+W: x=12
+S: Product Law on both sides: $\ln\big(x(x+1)\big)=\ln12$, so $x^2+x=12$.
+$x^2+x-12=(x+4)(x-3)=0$, so $x=3$ or $x=-4$.
+Check: $x=-4$ makes $\ln x=\ln(-4)$, which is undefined, so it is extraneous. The only solution is $x=3$.
+---
+Q: <b>Thu 10/29 · p. 406 #43.</b> Solve: $\ln x=\ln3-\ln(x+5)$
+L: 3
+A: x=\dfrac{-5+\sqrt{37}}2\approx0.541
+W: x=\dfrac{-5\pm\sqrt{37}}2
+W: x=\dfrac{-5-\sqrt{37}}2
+W: x=\dfrac35
+W: x=\dfrac{-5+\sqrt{13}}2
+S: Move the log over: $\ln x+\ln(x+5)=\ln3$, so $\ln\big(x(x+5)\big)=\ln3$ and $x^2+5x=3$.
+Quadratic formula on $x^2+5x-3=0$: $x=\dfrac{-5\pm\sqrt{25+12}}2=\dfrac{-5\pm\sqrt{37}}2$.
+The minus root is negative, and $\ln x$ needs $x\gt0$, so only $x=\dfrac{-5+\sqrt{37}}2\approx0.541$ works.
+---
+Q: <b>Thu 10/29 · p. 406 #45.</b> Solve: $\ln(x+9)-\ln x=1$
+L: 2
+A: x=\dfrac9{e-1}\approx5.238
+W: x=\dfrac9e
+W: x=9(e-1)
+W: x=9e
+W: x=\dfrac9{e+1}
+S: Quotient Law: $\ln\dfrac{x+9}x=1$. Rewrite as an exponential: $\dfrac{x+9}x=e^1=e$.
+$x+9=ex$, so $9=ex-x=x(e-1)$ and $x=\dfrac9{e-1}\approx5.238$.
+It is positive, so both logs are defined.
+---
+Q: <b>Thu 10/29 · p. 406 #49.</b> Solve: $\log\sqrt{x^2-1}=2$
+L: 2
+A: x=\pm\sqrt{10001}
+W: x=\sqrt{10001}\text{ only}
+W: x=\pm\sqrt{101}
+W: x=\pm10
+W: x=\pm\sqrt{99}
+S: $\log y=2$ means $y=10^2=100$, so $\sqrt{x^2-1}=100$.
+Square both sides: $x^2-1=10000$, so $x^2=10001$ and $x=\pm\sqrt{10001}\approx\pm100.005$.
+Both work: $x^2-1$ is the same positive number for either sign.
+---
+Q: <b>Thu 10/29 · p. 406 #53.</b> A 300-gram sample of uranium decays to 200 grams in .26 billion years. Find the half-life. (Use $M(x)=c\,(.5)^{x/h}$.)
+L: 3
+A: \approx0.444\text{ billion years}
+W: \approx0.39\text{ billion years}
+W: \approx0.173\text{ billion years}
+W: \approx0.52\text{ billion years}
+W: \approx0.641\text{ billion years}
+S: With $c=300$, $M=200$ at $x=.26$: $200=300(.5)^{.26/h}$, so $(.5)^{.26/h}=\frac23$.
+Take $\ln$: $\frac{.26}h\ln .5=\ln\frac23$, so $h=\dfrac{.26\ln .5}{\ln(2/3)}=\dfrac{.26(-.6931)}{-.4055}\approx0.444$ billion years.
+Sanity check: only a third has decayed after .26 billion years, so the half-life must be longer than .26.
+---
+Q: <b>Thu 10/29 · p. 406 #65.</b> You invest $\$500$ at $5\%$ per year. How long until your money triples if interest is compounded (a) annually, (b) quarterly?
+L: 3
+A: \text{(a) about 22.5 years, (b) about 22.1 years}
+W: \text{(a) about 22.1 years, (b) about 22.5 years}
+W: \text{(a) about 14.2 years, (b) about 13.9 years}
+W: \text{(a) 40 years, (b) 40 years}
+W: \text{(a) about 22.5 years, (b) about 5.5 years}
+S: Tripling means $A=1500=3\cdot500$, so the $\$500$ cancels.
+(a) $(1.05)^t=3\Rightarrow t=\dfrac{\ln3}{\ln1.05}\approx22.5$ years.
+(b) Quarterly: rate $\frac{.05}4=.0125$ per quarter, $4t$ quarters: $(1.0125)^{4t}=3\Rightarrow4t=\dfrac{\ln3}{\ln1.0125}\approx88.44$, so $t\approx22.1$ years.
+Compounding more often makes it a little faster. (14.2 and 13.9 years are the doubling times.)
+---
+Q: <b>Thu 10/29 · p. 374 #29.</b> How long will it take to double an investment of $\$500$ at $7\%$ annual interest, compounded continuously?
+L: 2
+A: \approx9.9\text{ years}
+W: \approx10.2\text{ years}
+W: \approx14.3\text{ years}
+W: 7\text{ years}
+W: \approx0.099\text{ years}
+S: Continuous compounding: $A=Pe^{rt}$. Doubling: $1000=500e^{.07t}$, so $e^{.07t}=2$.
+$.07t=\ln2$, so $t=\dfrac{\ln2}{.07}\approx\dfrac{.6931}{.07}\approx9.9$ years.
+(10.2 years is the answer for 7% compounded <i>annually</i>: $\frac{\ln2}{\ln1.07}$.)
+---
+Q: <b>Fri 10/30 · Growth &amp; decay practice.</b> A town of 12,000 people grows by 3% each year. About how many people live there after 8 years?
+L: 1
+A: \approx15{,}201
+W: \approx14{,}880
+W: \approx12{,}360
+W: \approx15{,}256
+W: \approx9{,}406
+S: Growing 3% per year multiplies by $1.03$ each year: $P(t)=12000(1.03)^t$.
+$P(8)=12000(1.03)^8\approx12000(1.26677)\approx15{,}201$.
+(14,880 is simple interest, $12000+8(360)$; 9,406 would be 3% <i>decay</i>.)
+---
+Q: <b>Fri 10/30 · Growth &amp; decay practice.</b> A car bought for $\$24{,}000$ loses $15\%$ of its value every year. What is it worth after 5 years?
+L: 1
+A: \approx\$10{,}649
+W: \approx\$6{,}000
+W: \approx\$20{,}400
+W: \approx\$48{,}271
+W: \approx\$12{,}530
+S: Losing 15% keeps 85%, so multiply by $0.85$ each year: $V(t)=24000(0.85)^t$.
+$V(5)=24000(0.85)^5\approx24000(0.44371)\approx\$10{,}649$.
+($\$6{,}000$ is subtracting 15% of the <i>original</i> price each year.)
+---
+Q: <b>Fri 10/30 · Growth &amp; decay practice.</b> $\$2{,}000$ is invested at $4.5\%$ compounded continuously. What is it worth after 10 years?
+L: 1
+A: \approx\$3{,}136.62
+W: \approx\$3{,}105.94
+W: \$2{,}900.00
+W: \approx\$2{,}092.03
+W: \approx\$4{,}918.41
+S: Continuous compounding: $A=Pe^{rt}=2000e^{0.045\cdot10}=2000e^{0.45}$.
+$e^{0.45}\approx1.56831$, so $A\approx\$3{,}136.62$.
+($\$3{,}105.94$ is annual compounding, $2000(1.045)^{10}$.)
+---
+Q: <b>Fri 10/30 · Growth &amp; decay practice.</b> A substance has a half-life of 12 days. How much of an 80-gram sample is left after 30 days?
+L: 2
+A: \approx14.14\text{ g}
+W: 20\text{ g}
+W: \approx32\text{ g}
+W: \approx28.28\text{ g}
+W: 0\text{ g}
+S: $M(t)=80(0.5)^{t/12}$. After 30 days: $80(0.5)^{30/12}=80(0.5)^{2.5}$.
+$(0.5)^{2.5}\approx0.17678$, so about $14.14$ g remain.
+Check: 24 days (2 half-lives) leaves 20 g, and 36 days leaves 10 g, so 30 days should land between them.
+---
+Q: <b>Fri 10/30 · Growth &amp; decay practice.</b> A colony of 500 bacteria doubles every 20 minutes. How long until there are 64,000 bacteria?
+L: 2
+A: 140\text{ minutes}
+W: 128\text{ minutes}
+W: 7\text{ minutes}
+W: 2560\text{ minutes}
+W: 160\text{ minutes}
+S: $N(t)=500\cdot2^{t/20}$. Set it equal to 64,000: $2^{t/20}=\frac{64000}{500}=128=2^7$.
+So $\frac t{20}=7$ and $t=140$ minutes.
+---
+Q: <b>Fri 10/30 · Growth &amp; decay practice.</b> A population grows continuously from 5,000 to 8,000 in 6 years. What is the continuous growth rate $k$ in $P=5000e^{kt}$?
+L: 3
+A: k\approx7.83\%
+W: k=10\%
+W: k\approx8.15\%
+W: k\approx26.7\%
+W: k=60\%
+S: $8000=5000e^{6k}$, so $e^{6k}=1.6$.
+$6k=\ln1.6\approx0.4700$, so $k\approx0.0783$, about $7.83\%$ per year.
+(10% is the simple average, $\frac{60\%}{6}$; 8.15% would be the yearly rate with annual compounding.)
+---
+Q: <b>Fri 10/30 · Growth &amp; decay practice.</b> Carbon-14 has a half-life of about 5,730 years. A fossil has 40% of its original carbon-14. About how old is it?
+L: 3
+A: \approx7{,}575\text{ years}
+W: \approx3{,}438\text{ years}
+W: \approx4{,}222\text{ years}
+W: \approx2{,}292\text{ years}
+W: \approx11{,}460\text{ years}
+S: $0.40=(0.5)^{t/5730}$. Take $\ln$: $\ln0.40=\frac t{5730}\ln0.5$.
+$t=5730\cdot\dfrac{\ln0.40}{\ln0.5}\approx5730\cdot\dfrac{-0.9163}{-0.6931}\approx5730(1.322)\approx7{,}575$ years.
+Check: less than half is left, so it is older than one half-life (5,730) but younger than two (11,460).
+---
+Q: <b>Fri 10/30 · Logs/ln review.</b> Evaluate without a calculator: $\log_2 32+\ln e^3-\log 0.01$
+L: 1
+A: 10
+W: 6
+W: 8
+W: 4
+W: 0
+S: $\log_2 32=5$ (since $2^5=32$), $\ln e^3=3$, and $\log0.01=\log10^{-2}=-2$.
+$5+3-(-2)=10$.
+---
+Q: <b>Fri 10/30 · Logs/ln review.</b> Expand: $\ln\dfrac{x^3\sqrt y}{z^2}$
+L: 2
+A: 3\ln x+\tfrac12\ln y-2\ln z
+W: 3\ln x+\tfrac12\ln y+2\ln z
+W: 3\ln x\cdot\tfrac12\ln y-2\ln z
+W: \ln x^3+\ln\sqrt y-\ln z
+W: 3\ln x+2\ln y-2\ln z
+S: Product and Quotient Laws: $\ln x^3+\ln\sqrt y-\ln z^2$.
+Power Law on each, with $\sqrt y=y^{1/2}$: $3\ln x+\frac12\ln y-2\ln z$.
+---
+Q: <b>Fri 10/30 · Logs/ln review.</b> Condense into one logarithm: $2\log x-\log y+3\log z$
+L: 2
+A: \log\dfrac{x^2z^3}{y}
+W: \log\dfrac{x^2}{yz^3}
+W: \log(x^2-y+z^3)
+W: \log\dfrac{2x\cdot3z}{y}
+W: \log(x^2yz^3)
+S: Coefficients become exponents: $\log x^2-\log y+\log z^3$.
+Plus means multiply, minus means divide: $\log\dfrac{x^2z^3}{y}$.
+---
+Q: <b>Fri 10/30 · Logs/ln review.</b> Solve: $5e^{2x}-3=17$
+L: 2
+A: x=\ln2\approx0.693
+W: x=\ln4\approx1.386
+W: x=2
+W: x=\tfrac12\ln\tfrac{17}5
+W: x=\tfrac12\ln 14
+S: Isolate the exponential: $5e^{2x}=20$, so $e^{2x}=4$.
+$2x=\ln4$, so $x=\frac{\ln4}2=\ln4^{1/2}=\ln2\approx0.693$.
+---
+Q: <b>Fri 10/30 · Logs/ln review.</b> Solve: $\log_3(x+4)+\log_3(x-4)=2$
+L: 2
+A: x=5
+W: x=\pm5
+W: x=-5
+W: x=\sqrt{8}
+W: x=13
+S: Product Law: $\log_3\big((x+4)(x-4)\big)=2$, so $x^2-16=3^2=9$.
+$x^2=25$, so $x=\pm5$. But $x=-5$ makes $x-4=-9$, and the log of a negative number is undefined.
+The only solution is $x=5$.
+=== GENS ===
+GENS['pc5-hw']=[];   // the problem set is exactly the assigned homework, plus Friday's worksheet-style practice

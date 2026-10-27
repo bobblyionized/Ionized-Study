@@ -1,0 +1,236 @@
+=== LESSONS ===
+<script type="text/plain" id="L-wh4-tang">
+<h2>Tang and Song China</h2>
+<p class="meta">Textbook pp. 310–319 · Module 9, Lesson 1 (class reading pp. 310–317)</p>
+<div class="box"><h4>Big idea</h4>Under the Tang (618–907) and Song (960–1279), China had a long <b>golden age</b>: it became the richest, most powerful, and most advanced country in the world. Inventions from this time, like printing, gunpowder, and the compass, changed history.</div>
+<div class="tip"><b>Unit questions this lesson answers:</b> What were the major achievements of China’s Golden Age? How did the civil service exam lead to a bureaucracy?<br><b>Key terms:</b> Grand Canal, Tang Taizong, Wu Zhao, Song Dynasty, movable type, gentry</div>
+
+<h3>Setting the stage: the Sui reunite China</h3>
+<p>After the Han collapsed in AD 220, no emperor could hold China together; over 350 years more than 30 local dynasties rose and fell. By 589 an emperor named <b>Wendi</b> united north and south again and restored a strong central government as the first emperor of the <b>Sui Dynasty</b> (581–618).</p>
+<ul><li>The Sui’s greatest accomplishment was the <b>Grand Canal</b>, a waterway of more than 1,000 miles connecting the <b>Huang He</b> (Yellow River) and the <b>Chang Jiang</b> (Yangtze). It became a vital trade route between the northern cities and the rice-growing south.</li>
+<li>About a million peasants worked five years to dig it, and perhaps half died. Thousands more died rebuilding the Great Wall.</li>
+<li>Overworked and overtaxed, the people revolted, and in 618 the second Sui emperor was assassinated.</li></ul>
+
+<h3>The Tang Dynasty expands China (618–907)</h3>
+<p><b>Tang Taizong</b> (reigned 626–649) began the Tang’s great achievements. Born Li Shimin, a distinguished general, he took the throne by killing his brothers and forcing his father, the first Tang emperor, to step aside. Taizong means “Great Ancestor.”</p>
+<ul><li>His armies won back the northern and western lands lost since the Han and pushed China’s borders to Manchuria, Vietnam, and the Aral Sea.</li>
+<li>With gifted advisers he reformed the government and the law code, which became models for all of East Asia.</li></ul>
+<p><b>Wu Zhao</b> (625–705) came to Taizong’s court at 13 as one of his secondary wives. After he died she became the favored wife of his son, then empress. From about 660 she held the real power while weak emperors sat on the throne, and by 668 China’s influence reached Korea. In <b>690</b> she took the title of emperor herself, the <b>only woman ever to do so in China</b>. A strong leader, she kept building and expanding China until she lost power at 80.</p>
+<p>Tang rulers strengthened the central government: they expanded the roads and canals begun by the Sui, which pulled the empire together, and promoted foreign trade and better farming.</p>
+
+<h3>Scholar-officials: how the exam built a bureaucracy</h3>
+<ul><li>To manage their huge empire, the Tang needed a large bureaucracy. They <b>revived and expanded the civil service exam begun by the Han</b>.</li>
+<li>The few who passed the tough exams became an elite group of <b>scholar-officials</b>.</li>
+<li>In theory any man could take the exams, but only the wealthy could afford the education, and men with connections sometimes got high posts without testing.</li>
+<li>Still, the system created an intelligent, capable governing class. Before the Tang a few noble families dominated; now <b>talent and education mattered more than noble birth</b>, and many moderately wealthy families shared in governing China.</li></ul>
+
+<h3>The Tang lose power</h3>
+<ul><li>In the mid-700s, crushing taxes caused hardship but still did not cover the cost of wars and building.</li>
+<li>In <b>751</b> Muslim armies defeated the Chinese at the <b>Battle of Talas</b>, and Central Asia slipped out of Chinese control.</li>
+<li>Border attacks and rebellions wore the government down. In <b>907</b> rebels burned the capital, Ch’ang-an, and killed the last Tang emperor, a child.</li></ul>
+
+<h3>The Song Dynasty restores China (960–1279)</h3>
+<p>After the Tang fell, warlords split China. In <b>960</b> a general named <b>Taizu</b> reunited it as the first Song emperor. The Song ruled a <b>smaller</b> empire than the Han or Tang, but China stayed stable, powerful, and prosperous.</p>
+<ul><li>The Song never won back the western lands lost after 751 or the northern lands lost to nomads. They tried paying their northern enemies tribute in silver, silk, and tea, but it failed.</li>
+<li>In the early 1100s the <b>Jurchen</b>, a people from Manchuria, conquered the north (the Jin Empire) and forced the Song south across the Huang He. After <b>1127</b> the Song ruled only southern China: the <b>Southern Song</b> (1127–1279), with a grand new capital at <b>Hangzhou</b>.</li>
+<li>Even so, the south boomed and became China’s economic heartland; merchants grew rich trading with northern China, Central Asia, western Asia, and Europe.</li></ul>
+
+<h3>An era of prosperity and innovation</h3>
+<p>China’s population nearly doubled to about <b>100 million</b>; by the Song there were at least ten cities of a million people. China was the most populous and most advanced country in the world.</p>
+<table class="exmix"><tr><th>Achievement</th><th>What it was</th></tr>
+<tr><td><b>Movable type</b></td><td>Individual character blocks arranged in a frame to print a page, instead of carving a whole page into one block</td></tr>
+<tr><td><b>Gunpowder</b></td><td>Led in time to bombs, grenades, small rockets, and cannons</td></tr>
+<tr><td>Porcelain, the mechanical clock, <b>paper money</b></td><td>New goods and tools for trade and daily life</td></tr>
+<tr><td><b>Magnetic compass</b> for sailing</td><td>Made long sea voyages and ocean trade possible</td></tr>
+<tr><td>Mathematics</td><td>Advances in arithmetic and algebra; ideas like negative numbers spread south and west</td></tr>
+<tr><td>Medicine</td><td>Anatomy charts and models improved acupuncture</td></tr></table>
+<p><b>Agriculture.</b> Around 1000, China imported a <b>fast-ripening rice from Vietnam</b> that allowed <b>two harvests a year</b>; officials handed out seedlings across the country. Farmers also greatly expanded <b>terraced fields</b> (level platforms cut into hillsides), opening hilly land to farming. More food fed the growing cities.</p>
+<p><b>Trade and foreign contacts.</b> Tang armies guarded the Silk Roads; after China lost them, merchants turned to <b>ocean trade</b>, helped by the compass. China’s ports were the largest in the world, sending ships to Korea, Japan, India, the Persian Gulf, and Africa. Arab traders lived in Chinese cities. <b>Buddhism</b> spread from China to Vietnam, Korea, and Japan, while Islam and some Eastern Christian groups came into China.</p>
+<p><b>Revival of Confucianism.</b> After the Han fell, Buddhism had become China’s most important belief system. Late Tang and Song scholars reinterpreted Confucian texts for new questions, a movement called <b>Neo-Confucianism</b>. Because the Song exam required mastering the classics, it spread Confucian beliefs, which then reached Korea, Japan, and Vietnam.</p>
+<p><b>Poetry and art.</b> The Tang produced great poets: <b>Li Bo</b> wrote about life’s pleasures; <b>Tu Fu</b> praised order and Confucian virtues and wrote about the hardships of war. Song painters, influenced by <b>Daoism</b>, painted natural landscapes and single branches or flowers, mostly in black ink.</p>
+
+<h3>Changes in Chinese society</h3>
+<ul><li>People moved to cities, and there was more <b>social mobility</b> than ever. The civil service was the main way to rise.</li>
+<li>The old aristocratic families faded. A new, larger upper class of scholar-officials and their families, the <b>gentry</b>, won their status through <b>education and civil service posts</b> rather than land.</li>
+<li>Below them was an <b>urban middle class</b> of merchants, shopkeepers, skilled artisans, and minor officials; then laborers, soldiers, and servants. The <b>peasants</b> in the countryside were by far the largest class.</li>
+<li><b>Women’s status declined</b>, especially in upper-class city families. Upper-class girls had their feet tightly bound (<b>foot binding</b>), which crippled them for life; a woman with bound feet showed off her husband’s wealth because he could afford a “beautiful but impractical” wife. Peasant women, who worked in the fields, were affected less.</li></ul>
+
+<div class="box"><h4>Answering the unit questions</h4><ul>
+<li><b>Major achievements of the golden age:</b> reunification and expansion, the Grand Canal and roads, a revived civil service, movable type, gunpowder, porcelain, the compass, paper money, the mechanical clock, fast-ripening rice and terraces, huge ocean trade, Neo-Confucianism, and great poetry and painting.</li>
+<li><b>How the exam led to a bureaucracy:</b> to run their empire the Tang revived the Han exam; those who passed became scholar-officials, an educated governing class chosen for talent instead of noble birth. They became the gentry, the new upper class.</li></ul></div>
+<p class="meta">Tang vs. Song (Assessment #1). <b>Tang only:</b> large empire reaching Central Asia, Taizong and Wu Zhao, lost the Battle of Talas. <b>Song only:</b> smaller empire, lost the north to the Jurchen, capital at Hangzhou, most of the big inventions. <b>Both:</b> about 300 years each, strong central government, civil service exam, prosperity, and trade.</p>
+</script>
+<script type="text/plain" id="R-wh4-tang">
+<div class="cornell">
+<div class="cn-top"><div><span class="cn-k">Topic</span>Tang (618–907) and Song (960–1279) China: the golden age</div><div><span class="cn-k">Reading</span>pp. 310–319</div>
+<div class="cn-eq"><span class="cn-k">Essential questions</span>What were the major achievements of China’s Golden Age? How did the civil service exam lead to a bureaucracy?</div></div>
+<div class="cn-h"><span>Cues</span><span>Notes</span></div>
+<div class="cn-row"><div class="cn-cue">Sui Dynasty; Grand Canal</div><div class="cn-note"><ul><li>Wendi reunited China by 589 after 350 years of division.</li><li><b>Grand Canal</b>: 1,000+ miles linking the Huang He and Chang Jiang; north–south trade; built by a million peasants (half may have died).</li><li>Overworked, overtaxed people revolted; Sui ended 618.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Tang Taizong</div><div class="cn-note"><ul><li>Reigned 626–649; took power by killing brothers, pushing aside his father.</li><li>Borders to Manchuria, Vietnam, Aral Sea; reformed government and laws (models for East Asia).</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Wu Zhao</div><div class="cn-note"><ul><li>Wife of Taizong’s son; real power from about 660.</li><li>690: took the title emperor, the <b>only woman ever</b>; kept expanding China.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">How did the exam build a bureaucracy?</div><div class="cn-note"><ul><li>Tang revived and expanded the <b>Han</b> civil service exam.</li><li>Passers became <b>scholar-officials</b>; talent and education &gt; noble birth.</li><li>Flaws: the wealthy could afford study; connections.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Why the Tang fell</div><div class="cn-note"><ul><li>Crushing taxes (mid-700s); lost the <b>Battle of Talas</b> (751) → lost Central Asia.</li><li>Border attacks, rebellions; 907 rebels sacked Ch’ang-an.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Song Dynasty</div><div class="cn-note"><ul><li>Taizu reunited China in 960; smaller but stable, powerful, prosperous.</li><li>Paid tribute to the north (failed). <b>Jurchen</b> took the north → <b>Southern Song</b> after 1127, capital <b>Hangzhou</b>; the south became the economic heartland.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Golden-age inventions</div><div class="cn-note"><ul><li><b>Movable type</b> (individual character blocks), gunpowder, porcelain, mechanical clock, paper money, magnetic compass.</li><li>Math: algebra, negative numbers. Acupuncture.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Feeding 100 million</div><div class="cn-note"><ul><li>Fast-ripening rice from Vietnam → 2 crops a year; seedlings handed out.</li><li>Terraced fields on hillsides.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Trade and culture</div><div class="cn-note"><ul><li>Silk Roads lost → <b>ocean trade</b> with the compass; ports to Japan, India, Africa.</li><li>Buddhism spread to Korea, Japan, Vietnam; <b>Neo-Confucianism</b> revived Confucius.</li><li>Poets Li Bo and Tu Fu; Daoist-style landscape painting in black ink.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Gentry; society; women</div><div class="cn-note"><ul><li><b>Gentry</b>: scholar-officials and families; status from education and office, not land.</li><li>Urban middle class; peasants the largest class.</li><li>Women’s status fell; <b>foot binding</b> of upper-class girls.</li></ul></div></div>
+<div class="cn-sum"><span class="cn-k">Summary</span><p>The Sui reunited China and built the Grand Canal, then the Tang expanded the empire under Taizong and Wu Zhao and revived the civil service exam, creating scholar-officials chosen by talent. The Song ruled a smaller empire, losing the north to the Jurchen, yet it thrived: movable type, gunpowder, the compass, two rice crops a year, ocean trade, and a new gentry class made China the most advanced country in the world, even as women’s status declined.</p></div>
+</div>
+</script>
+=== BANK ===
+@@ wh4-tang
+Q: What was the Grand Canal, and why was it important?
+L: 1
+A: A Sui waterway linking the Huang He and the Chang Jiang, giving northern cities a trade route to the rice-growing south
+W: A Tang canal that connected China to the Persian Gulf
+W: A Qin waterway that protected the northern border from nomads
+W: A Song canal that drained the Gobi Desert for farming
+W: A Han channel that carried silk to Rome
+S: The Sui Dynasty’s greatest accomplishment, the Grand Canal ran more than 1,000 miles and was a vital route between the north and the southern rice region. About a million peasants dug it, and perhaps half died.
+---
+Q: Why did the Sui Dynasty fall after only two emperors?
+L: 2
+A: Endless forced labor on projects like the Grand Canal and the Great Wall, plus heavy taxes, turned the people against it.
+W: The Mongols conquered it.
+W: Muslim armies defeated it at the Battle of Talas.
+W: Its emperors refused to build roads.
+W: The Jurchen forced it to move south.
+S: Overworked and overtaxed, the people revolted, and in 618 a member of the court assassinated the second Sui emperor. The Sui still laid the foundation for the Tang.
+---
+Q: Who was Tang Taizong?
+L: 1
+A: The Tang emperor (626–649) who expanded China’s borders and reformed its government and law code
+W: The general who founded the Song Dynasty in 960
+W: The only woman to rule China as emperor
+W: The Sui emperor who built the Grand Canal
+W: A Tang poet who wrote about the hardships of war
+S: Born Li Shimin, Taizong (“Great Ancestor”) won back lost lands, pushed borders to Manchuria, Vietnam, and the Aral Sea, and reformed the government and laws that became models for East Asia.
+---
+Q: What made Wu Zhao unique in Chinese history?
+L: 1
+A: She is the only woman ever to take the title of emperor in China.
+W: She invented movable type.
+W: She founded the Song Dynasty.
+W: She was the first woman to pass the civil service exam.
+W: She ended foot binding.
+S: Wu Zhao held the real power from about 660 while weak emperors sat on the throne, and in 690 she took the title of emperor herself.
+---
+Q: <b>Unit question.</b> How did the civil service exam lead to a bureaucracy under the Tang?
+L: 2
+A: The Tang revived the Han exam to staff their government; those who passed became an elite group of scholar-officials who ran the empire.
+W: The exam chose generals, who became the bureaucracy.
+W: The exam let noble families pass government jobs to their sons.
+W: The exam was ended, so the emperor ruled alone.
+W: The exam chose merchants to run the government’s monopolies.
+S: To manage a huge empire, the Tang needed many officials. The few who passed the tough exams became scholar-officials, an intelligent, capable governing class.
+---
+Q: <b>Reading Check.</b> What resulted from the revival and expansion of the civil service system?
+L: 2
+A: Talent and education became more important than noble birth, so many moderately wealthy families shared in governing China.
+W: Only the old noble families could hold office.
+W: Peasants took over the government.
+W: The emperor lost all his power to the scholars.
+W: The government stopped collecting taxes.
+S: Before the Tang a few noble families dominated. As the exams grew in importance, talent and education mattered more than birth, though only the wealthy could afford to prepare.
+---
+Q: What happened at the Battle of Talas in 751?
+L: 2
+A: Muslim armies defeated the Chinese, and Central Asia passed out of Chinese control.
+W: The Tang defeated the Mongols and won Central Asia.
+W: The Song lost northern China to the Jurchen.
+W: Kublai Khan conquered southern China.
+W: Japan defeated a Chinese invasion fleet.
+S: After Talas, border attacks and rebellions chipped away at Tang power until rebels sacked the capital in 907.
+---
+Q: <b>Reading Check.</b> In what ways was China strengthened under the Song Dynasty, even though its empire was smaller?
+L: 2
+A: It stayed stable and prosperous: the economy boomed in the south, trade expanded, and inventions like movable type and the compass appeared.
+W: It won back all the western lands lost at Talas.
+W: It conquered Japan and Korea.
+W: It defeated the Jurchen and recovered the north.
+W: It ended the civil service exam.
+S: The Song never regained lost lands and retreated south after 1127, but the Southern Song saw rapid economic growth, huge trade, and many inventions.
+---
+Q: Who were the Jurchen, and what did they do to the Song?
+L: 2
+A: A people from Manchuria who conquered northern China and forced the Song to retreat south
+W: Arab traders who settled in Chinese port cities
+W: Mongol clans who founded the Yuan Dynasty
+W: Scholar-officials who took over the Song court
+W: Korean sailors who built the Song navy
+S: In the early 1100s the Jurchen established the Jin Empire in the north and pushed the Song south across the Huang He. After 1127 the Song ruled only the south, with its capital at Hangzhou.
+---
+Q: What is movable type?
+L: 1
+A: Printing with individual character blocks arranged in a frame to make up a page
+W: Carving a whole page of words into one large wooden block
+W: A way of writing on silk instead of paper
+W: A machine that writes characters automatically
+W: Sending letters by horse along the Silk Roads
+S: Before movable type, printers carved an entire page into one block. With movable type, a printer could rearrange individual characters for each new page.
+---
+Q: <b>Lesson 1 Assessment #3.</b> What practices allowed China to feed its growing population?
+L: 2
+A: Fast-ripening rice from Vietnam that allowed two harvests a year, seedlings handed out by officials, and terraced fields on hillsides
+W: Importing all its food from Europe
+W: Banning trade so farmers would stay on the land
+W: Paying tribute to the Jurchen in rice
+W: Moving everyone into cities
+S: Around 1000 China imported a fast-ripening rice, so farmers could harvest two crops a year instead of one. Terraced farming opened hilly land to rice.
+---
+Q: <b>Lesson 1 Assessment #4.</b> What impact did improvements in transportation have on Tang and Song China?
+L: 2
+A: Roads, canals, and better ships tied the empire together and made trade boom, both inside China and overseas.
+W: They let the Mongols invade more easily, which ended the golden age.
+W: They had no effect, because the Song banned trade.
+W: They moved most people out of the cities.
+W: They ended the use of the Grand Canal.
+S: The Tang expanded the Sui’s roads and canals, which pulled the empire together. After the Silk Roads were lost, the compass and better ships let sea trade expand to Korea, Japan, India, the Persian Gulf, and Africa.
+---
+Q: What were the gentry in Tang and Song China?
+L: 1
+A: A powerful upper class of scholar-officials and their families, whose status came from education and civil service rather than land
+W: The old aristocratic families who owned most of the land
+W: The urban middle class of merchants and artisans
+W: Peasants who worked for wealthy landowners
+W: Soldiers who guarded the frontier
+S: As the old aristocracy faded, a new, larger upper class emerged: scholar-officials and their families. Below them was an urban middle class, and peasants were the largest class.
+---
+Q: <b>Lesson 1 Assessment #5.</b> “Gaining power depends on merit, not birth.” Does this describe China under the Tang and Song?
+L: 3
+A: Partly: the exam made talent and education the main path to power, but only wealthy families could afford the education and some men got posts through connections.
+W: Completely: every peasant had an equal chance to become an official.
+W: Not at all: only the emperor’s family could hold office.
+W: Not at all: officials were chosen by a lottery.
+W: Completely: women could also take the exams.
+S: The exam opened government to talent rather than noble birth, and many moderately wealthy families shared power. But the cost of education and political connections limited it. (Opinion question; support your view with evidence like this.)
+---
+Q: <b>Reading Check.</b> How did foot binding reflect the changing status of Chinese women?
+L: 2
+A: It crippled upper-class women and showed that their value was in displaying their husband’s wealth, as women’s status declined.
+W: It showed that women had gained equal rights with men.
+W: It was required for women who passed the civil service exam.
+W: It helped peasant women work longer in the fields.
+W: It was a Confucian ritual of filial piety.
+S: Women’s status declined in the Tang and Song, especially among the upper classes in cities. A bound-foot woman reflected the wealth and prestige of a husband who could afford a beautiful but impractical wife. Peasant women, who worked in the fields, were affected less.
+---
+Q: What was Neo-Confucianism?
+L: 2
+A: A revival of Confucianism in which late Tang and Song scholars reinterpreted Confucian texts for new questions
+W: A new religion brought to China by Arab traders
+W: The Legalist philosophy of the Qin
+W: A Daoist style of landscape painting
+W: Buddhism after it spread to Japan
+S: After the Han fell, Buddhism became China’s most important belief system. Scholars answered by reinterpreting Confucian texts. The Song exam, which required mastering the classics, helped spread Neo-Confucianism to Korea, Japan, and Vietnam.
+---
+Q: <b>Unit question.</b> Which list best describes the major achievements of China’s golden age?
+L: 1
+A: Movable type, gunpowder, porcelain, the compass, and paper money
+W: The Great Wall, the terra-cotta warriors, and standard axles
+W: Paper, the collar harness, and the wheelbarrow
+W: The Forbidden City and Zheng He’s treasure ships
+W: Yurts, stirrups, and the Pax Mongolica
+S: These Tang and Song inventions, along with the mechanical clock, advances in math, fast-ripening rice, and great poetry and painting, made China the most advanced country in the world. (Paper and the wheelbarrow are Han; the Great Wall is Qin; the Forbidden City is Ming.)
+=== GENS ===
+GENS['wh4-tang']=[];

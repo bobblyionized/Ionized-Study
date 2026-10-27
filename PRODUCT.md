@@ -8,7 +8,7 @@ web
 
 ## Users
 
-One user: the student who built it. They are preparing for the AMC 10/12 and taking a Precalculus class that follows a textbook chapter by chapter, at Belmont High School (2026–27 block schedule). They use it in a browser on a Windows computer and on an iPhone (Safari, saved to the Home Screen).
+One user: the student who built it. They are preparing for the AMC 10/12 and taking a Precalculus class that follows a textbook chapter by chapter and a World History class that goes unit by unit, at Belmont High School (2026–27 block schedule). They use it in a browser on a Windows computer and on an iPhone (Safari, saved to the Home Screen).
 
 There is no other audience. Decisions can be tuned to exactly how this one person studies.
 
@@ -30,13 +30,14 @@ Progress and files follow them to every device. Success means they study here in
 It is built around one student's real workload, which no general study tool covers in one place:
 
 - **AMC 10/12:** a 20-year AMC 10 course with every past exam linked, about 7,100 problems with worked solutions, and AMC 10/12-style mock exams.
-- **Precalculus:** sections that match their textbook's chapters, the assigned review problems, and the textbook PDFs themselves.
+- **Precalculus:** sections that match their textbook's chapters, the assigned review and homework problems, and the textbook PDFs themselves.
+- **World History:** lessons that follow each class reading, Cornell-style review notes, practice questions built from the reading's own review questions, the unit planner, and a class-style unit test.
 - **School:** their school's actual bell schedule.
 
 ## Operating Context
 
-- **Timer screen (the landing page):** set a focus time, describe the session, keep a study-history log. Notebooks and focus music are reachable from here.
-- **Study areas:** a hub leads to two tracks, AMC and Precalculus, then topic → subtopic or section, with the tabs Lesson · Problem Set · Notebook · Graph. Mock exams are timed.
+- **Timer screen (the landing page):** "Go" goes straight into studying; "Set a timer" sets a focus time with a description; a study-history log. Notebooks and focus music (with playlists) are reachable from here.
+- **Study areas:** a hub leads to three tracks, AMC, Precalculus and World History, then topic (unit) → subtopic, section or lesson, with the tabs Lesson · Problem Set · Notebook · Graph (World History: Lesson · Review · Questions · Notebook). Mock exams and unit tests are timed.
 - **Sync code:** 8 characters, entered once per device. Progress, settings, block names, notebooks, textbook PDFs and music all follow the code.
 - **Clock sheet:** the Belmont High block schedule (7-day cycle, 1st/2nd lunch, Wednesdays, holidays and early releases) with a countdown to the next block, plus local and UTC time.
 - **Ask AI:** sends a problem to Google AI Mode in a new tab.

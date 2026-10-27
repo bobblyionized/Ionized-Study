@@ -1,0 +1,219 @@
+=== LESSONS ===
+<script type="text/plain" id="L-wh4-unify">
+<h2>The Unification of China</h2>
+<p class="meta">Textbook pp. 137–141 · Module 4, Lesson 4</p>
+<div class="box"><h4>Big idea</h4>The disorder of the warring states led Chinese thinkers to create three ethical systems: <b>Confucianism</b>, <b>Daoism</b>, and <b>Legalism</b>. Their ideas still shape China today.</div>
+<div class="tip"><b>Unit questions this lesson answers:</b> Why and how did Confucianism develop? What are the basic beliefs of Confucians? How do Legalism and Daoism compare to Confucianism?<br><b>Key terms:</b> Confucius, filial piety, Analects, bureaucracy, Daoism, Legalism, I Ching, yin and yang</div>
+
+<h3>Setting the stage: the warring states</h3>
+<p>The <b>Zhou Dynasty</b> ruled for about eight centuries (c. 1027–256 BC). For its first 300 years the Zhou kings controlled a large empire, and local rulers answered to the king. Later, the lords of these territories began acting like independent kings and fought each other almost constantly. This <b>warring states period</b> brought the Zhou down.</p>
+<p>In the chaos, China drifted away from its old values of <b>social order, harmony, and respect for authority</b>. Scholars and philosophers proposed different ways to bring those values back.</p>
+
+<h3>Confucius and the social order</h3>
+<p><b>Confucius</b> (551–479 BC) was China’s most influential scholar. Born into a poor family while the Zhou was in decline, he earned his living as a teacher of history, music, and moral character. He wanted to restore the order and moral living of earlier times.</p>
+<div class="box"><h4>The five relationships</h4>Confucius believed social order, harmony, and good government would return if society were organized around five relationships, each with its own code of proper conduct:
+<ol><li>ruler and subject</li><li>father and son</li><li>husband and wife</li><li>older brother and younger brother</li><li>friend and friend</li></ol>
+For example, rulers should be kind and live virtuously; in return, subjects should be loyal and obey the law. <b>Three of the five are family relationships.</b></div>
+<p><b>Filial piety</b> is respect for parents and ancestors. It meant devoting yourself to your parents while they lived and honoring their memory with rituals after they died. In the <i>Analects</i>, Confucius points out that people also feed their dogs and horses; what makes caring for parents different is <b>respect</b>.</p>
+<p>The duke of Lu made Confucius minister of justice, and legend says crime nearly vanished because of his good example. When the duke’s ways changed, Confucius resigned. He spent the rest of his life teaching and thought of himself as a failure because he never held high office. His students collected his sayings in a book called the <b>Analects</b>, and a later follower, <b>Mencius</b>, spread his ideas.</p>
+
+<h3>Confucian ideas about government</h3>
+<ul><li>Confucius taught that <b>education</b> could turn even a humbly born person into a gentleman. This laid the groundwork for a <b>bureaucracy</b>: a trained civil service, the people who run the government.</li>
+<li>A gentleman had four virtues: courteous in private life, precise in serving his master, generous in providing for the people, and fair when asking the people to serve.</li>
+<li>Education became the key to advancing in government.</li>
+<li>Confucianism is an <b>ethical system</b> (a system of right and wrong); scholars still debate whether it is a religion. It became the foundation of Chinese government and social order and spread across East Asia.</li></ul>
+
+<h3>Daoism: harmony with nature</h3>
+<p><b>Laozi</b>, who may have lived in the 500s BC (no one is sure he existed), taught that only the <b>natural order</b> matters. His book, the <i>Dao De Jing</i> (The Way of Virtue), says a universal force called the <b>Dao</b>, “the Way,” guides all things. His philosophy is called <b>Daoism</b>.</p>
+<ul><li>Of all creatures, only humans fail to follow the Dao: they argue about right and wrong, which Laozi saw as pointless.</li>
+<li>Government should do <b>as little as possible</b> and leave people alone. People should live simply and in harmony with nature.</li>
+<li>Daoists studied nature closely, which led to contributions in alchemy, astronomy, and medicine.</li>
+<li>Laozi’s own writing says that if powerful people centered themselves in the Dao, the world would transform naturally and people would be content and free of desire. So Daoists would <b>disapprove of a leader who builds an empire</b>.</li></ul>
+
+<h3>Legalism: strict laws and harsh punishments</h3>
+<p>The <b>Legalists</b> were practical political thinkers. They believed a <b>highly efficient and powerful government</b> was the key to restoring order, using the <b>law</b> to end disorder. <b>Hanfeizi</b> and <b>Li Si</b> were among its founders.</p>
+<ul><li>Reward people who do their duties well; punish the disobedient harshly. In practice they stressed <b>punishment</b> (for example, losing your ears or nose for leaving your village without a travel permit).</li>
+<li>Control ideas as well as actions: burn writings that might lead people to criticize the government. The ruler governs; the people obey.</li>
+<li>A prince of the new Qin Dynasty adopted Legalist ideas and used them to bring order to China.</li></ul>
+
+<h3>The I Ching and yin and yang</h3>
+<p>People less interested in these debates found answers elsewhere. The <b>I Ching</b> (Book of Changes) was a book of oracles: readers threw coins, interpreted the result, and read the matching prediction for good advice and common sense. The idea of <b>yin and yang</b> described two forces that together make up the rhythm of life. <b>Yin</b> is cold, dark, soft, and mysterious; <b>yang</b> is warm, bright, hard, and clear. The circle symbol shows them in balance, completing each other. Both helped people understand how they fit into the world.</p>
+
+<h3>Comparing the three ethical systems</h3>
+<table class="exmix"><tr><th></th><th>Confucianism</th><th>Daoism</th><th>Legalism</th></tr>
+<tr><td>When</td><td>Developed 551–479 BC</td><td>Started around 600–500 BC</td><td>Developed in the 400s BC</td></tr>
+<tr><td>Founders</td><td>Confucius; spread by Mencius</td><td>Laozi</td><td>Hanfeizi, Li Si</td></tr>
+<tr><td>Key to order</td><td>Family relationships and proper conduct</td><td>The natural order matters more than the social order</td><td>A powerful, efficient government</td></tr>
+<tr><td>Beliefs</td><td>Respect parents and elders; education matters for the person and society</td><td>A universal force (the Dao) guides all things; live simply, in harmony with nature</td><td>Punishments keep order; thinkers and ideas must be strictly controlled</td></tr>
+<tr><td>Government</td><td>Rule by good example; educated officials</td><td>Govern as little as possible</td><td>Strict laws, rewards, and harsh punishment</td></tr></table>
+<p><b>Which stress government and a well-ordered society?</b> Confucianism and Legalism. <b>Which is most moderate and balanced?</b> Confucianism: it values order like Legalism but builds it on respect, family, and education instead of fear.</p>
+
+<div class="box"><h4>Answering the unit questions</h4><ul>
+<li><b>Why and how did Confucianism develop?</b> The warring states period destroyed order and respect for authority. Confucius, teaching as the Zhou declined, wanted to restore the moral order of earlier times; his students recorded his teachings in the Analects and Mencius spread them.</li>
+<li><b>Basic beliefs of Confucians:</b> the five relationships with proper conduct in each; filial piety; rulers lead by virtue and good example; education makes a gentleman and a good official.</li>
+<li><b>How do Legalism and Daoism compare?</b> Legalism agrees that order matters but enforces it with strict laws and harsh punishment instead of virtue. Daoism rejects the focus on social order: follow nature and the Dao, and let government do as little as possible.</li></ul></div>
+</script>
+<script type="text/plain" id="R-wh4-unify">
+<div class="cornell">
+<div class="cn-top"><div><span class="cn-k">Topic</span>The Unification of China: three ethical systems</div><div><span class="cn-k">Reading</span>pp. 137–141</div>
+<div class="cn-eq"><span class="cn-k">Essential question</span>How did Chinese thinkers try to restore order during the warring states period?</div></div>
+<div class="cn-h"><span>Cues</span><span>Notes</span></div>
+<div class="cn-row"><div class="cn-cue">Why did these ideas develop?</div><div class="cn-note"><ul><li>Zhou Dynasty (c. 1027–256 BC) weakened; lords acted as independent kings.</li><li><b>Warring states period</b>: constant fighting; loss of order, harmony, respect for authority.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Who was Confucius?</div><div class="cn-note"><ul><li>551–479 BC; poor family; teacher of history, music, moral character.</li><li>Minister of justice in Lu; resigned; felt like a failure.</li><li>Students wrote his sayings in the <b>Analects</b>; <b>Mencius</b> spread them.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Five relationships</div><div class="cn-note"><ul><li>Ruler–subject, father–son, husband–wife, older–younger brother, friend–friend.</li><li>Each has a code of conduct (kind rulers ↔ loyal subjects). 3 of 5 are family.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Filial piety</div><div class="cn-note"><ul><li>Respect for parents and ancestors; devotion in life, rituals after death.</li><li>Feeding parents isn’t enough; respect is the difference.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Confucian government</div><div class="cn-note"><ul><li>Education turns anyone into a gentleman → groundwork for a <b>bureaucracy</b> (trained civil service).</li><li>Rule by good example. An <b>ethical system</b>; foundation of Chinese government; spread across East Asia.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Daoism</div><div class="cn-note"><ul><li><b>Laozi</b>, <i>Dao De Jing</i>; the <b>Dao</b> = “the Way,” a force guiding all things.</li><li>Natural order &gt; social order; live simply; government does as little as possible.</li><li>Studied nature: alchemy, astronomy, medicine. Against empire building.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Legalism</div><div class="cn-note"><ul><li><b>Hanfeizi, Li Si</b>. Powerful, efficient government + law = order.</li><li>Rewards and (mostly) harsh punishments; burn writings that criticize; adopted by the Qin.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">I Ching; yin and yang</div><div class="cn-note"><ul><li><b>I Ching</b> (Book of Changes): book of oracles, read by throwing coins.</li><li><b>Yin</b> (cold, dark, soft, mysterious) + <b>yang</b> (warm, bright, hard, clear) = balance, the rhythm of the universe.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Compare the three</div><div class="cn-note"><ul><li>Order through <b>morals and family</b> (Confucianism), through <b>nature and doing little</b> (Daoism), through <b>laws and fear</b> (Legalism).</li><li>Confucianism and Legalism both stress government and order; Confucianism is the most balanced.</li></ul></div></div>
+<div class="cn-sum"><span class="cn-k">Summary</span><p>The chaos of the warring states period pushed Chinese thinkers to find a way back to order. Confucius taught that order comes from five proper relationships, filial piety, and educated, virtuous leaders. Laozi’s Daoism said to follow the natural Way and govern as little as possible, while the Legalists said only strict laws and harsh punishments could keep order. The Qin would use Legalism; later dynasties built their governments on Confucianism.</p></div>
+</div>
+</script>
+=== BANK ===
+@@ wh4-unify
+Q: <b>Unit question.</b> Why did Confucianism and the other Chinese ethical systems develop?
+L: 1
+A: The warring states period at the end of the Zhou Dynasty destroyed order, and thinkers looked for ways to restore it.
+W: The Qin emperor ordered scholars to write new laws for his empire.
+W: Merchants on the Silk Roads brought new religions from Rome.
+W: The Mongols forced the Chinese to adopt new beliefs.
+W: Peace and wealth under the Han gave scholars free time to write.
+S: Late in the Zhou Dynasty, local lords acted as independent kings and fought constantly. China moved away from its old values of order, harmony, and respect for authority, so scholars like Confucius, Laozi, and the Legalists offered ways to bring them back.
+---
+Q: <b>Lesson 4 Assessment #3.</b> How did Confucius believe social order, harmony, and good government could be restored in China?
+L: 1
+A: By organizing society around five basic relationships, each with a code of proper conduct
+W: By giving the emperor unlimited power and punishing all disobedience harshly
+W: By letting people follow nature and keeping government as small as possible
+W: By burning books that encouraged people to criticize the government
+W: By consulting the I Ching before every important decision
+S: Confucius named five relationships: ruler and subject, father and son, husband and wife, older and younger brother, and friend and friend. If each followed its proper conduct (for example, kind rulers and loyal subjects), order and good government would return.
+---
+Q: Which of these is <b>not</b> one of Confucius’s five basic relationships?
+L: 1
+A: Merchant and customer
+W: Ruler and subject
+W: Father and son
+W: Older brother and younger brother
+W: Friend and friend
+S: The five relationships are ruler–subject, father–son, husband–wife, older brother–younger brother, and friend–friend. Three of the five are based on the family.
+---
+Q: What is filial piety?
+L: 1
+A: Respect for one’s parents and ancestors, shown in life and through rituals after death
+W: Loyalty of subjects to a strong ruler who uses harsh laws
+W: Living simply and in harmony with nature
+W: The balance between two opposite forces in the universe
+W: Passing an examination to earn a government job
+S: Confucius stressed that children should practice filial piety: devoting themselves to their parents during their lives and honoring their memories after death with rituals. In the Analects he says feeding your parents is not enough; respect is what makes it different from feeding animals.
+---
+Q: <b>Reading Check.</b> How did Confucius feel about the family?
+L: 2
+A: The family was the foundation of social order: three of his five relationships were family relationships, and children owed their parents respect.
+W: The family distracted people from serving the state, so it should be weakened.
+W: Families should follow the Dao and avoid all rules of behavior.
+W: Only rulers’ families mattered; ordinary families had no role in society.
+W: Family ties caused the warring states, so people should rely on laws instead.
+S: Confucius built his whole social order on family relationships (father–son, husband–wife, older–younger brother) and taught filial piety. Later Han Confucian values made the family central to the state, with the father as head.
+---
+Q: What is the Analects?
+L: 1
+A: A book of Confucius’s sayings collected by his students
+W: Laozi’s book about the Dao
+W: A book of oracles read by throwing coins
+W: The Legalists’ code of laws and punishments
+W: Sima Qian’s history of China
+S: After Confucius died, his students collected his words in the Analects. The Dao De Jing is Laozi’s book; the I Ching is the book of oracles.
+---
+Q: Confucius said education could turn a humbly born person into a gentleman. What did this lay the groundwork for?
+L: 2
+A: A bureaucracy: a trained civil service that runs the government
+W: An autocracy ruled by one all-powerful emperor
+W: A system of feudal lords who owned the land
+W: A council of priests who interpreted the Dao
+W: An army of peasant soldiers
+S: If education, not birth, made someone fit to govern, then officials could be trained. This idea led to a bureaucracy, and later to the Han civil service exam, which made education the key to a government career.
+---
+Q: Who is credited with founding Daoism, and what did he teach?
+L: 1
+A: Laozi; a universal force called the Dao guides all things, and people should live simply in harmony with nature.
+W: Confucius; society should be built on five relationships.
+W: Hanfeizi; a strong government should punish the disobedient.
+W: Mencius; filial piety is the highest virtue.
+W: Li Si; books that criticize the government should be burned.
+S: Laozi, author of the Dao De Jing (The Way of Virtue), taught that the Dao, “the Way,” guides everything. Only the natural order matters; people should live simply and government should do as little as possible.
+---
+Q: <b>Analyze a historical source.</b> Laozi wrote that “the Dao never does anything, yet through it all things are done,” and that people would be content with simple lives. How would Daoists feel about a leader who builds an empire?
+L: 2
+A: They would disapprove, because empire building is the opposite of doing little and living in harmony with nature.
+W: They would approve, because a large empire brings order to nature.
+W: They would approve, as long as the leader used harsh laws.
+W: They would not care, because Daoists had no views about rulers.
+W: They would approve, because conquest spreads the Dao to new lands.
+S: Daoists believed government should do as little as possible and people should be free of desire. A ruler chasing power and conquest would be acting against the Dao.
+---
+Q: <b>Reading Check.</b> How did the Legalists think a society could be made to run well?
+L: 1
+A: Through a highly efficient, powerful government that used strict laws, rewards, and harsh punishments
+W: Through rulers setting a good example of kindness and virtue
+W: Through people following the natural order with very little government
+W: Through families practicing filial piety
+W: Through reading oracles in the I Ching
+S: The Legalists, including Hanfeizi and Li Si, believed the law should end disorder. Rulers should reward those who did their duty and harshly punish the disobedient, and they stressed punishment more than rewards.
+---
+Q: Which practice was supported by the Legalists?
+L: 2
+A: Burning writings that might lead people to criticize the government
+W: Choosing officials by their knowledge of Confucius
+W: Letting people govern themselves with few laws
+W: Honoring ancestors with rituals
+W: Teaching history and music to commoners
+S: The Legalists wanted to control ideas as well as actions, so they suggested burning writings that encouraged criticism. In their view the prince governs and the people obey. The Qin later put this into practice.
+---
+Q: What do yin and yang represent?
+L: 1
+A: Two opposite forces, such as cold and warm or dark and bright, that balance each other in the rhythm of the universe
+W: The two founders of Daoism
+W: Good rulers and bad rulers in Confucian thought
+W: The rewards and punishments of Legalism
+W: The northern and southern halves of China
+S: Yin is cold, dark, soft, and mysterious; yang is warm, bright, hard, and clear. The circle divided into halves shows their harmony: the two forces complement each other.
+---
+Q: What was the I Ching?
+L: 1
+A: A book of oracles that people consulted, by throwing coins, to solve practical or moral problems
+W: The first emperor of a unified China
+W: A list of Legalist punishments
+W: Confucius’s book about government
+W: A Daoist temple
+S: The I Ching (Book of Changes), also spelled Yi Jing, gave good advice and common sense. Readers threw a set of coins, interpreted the result, and read the matching oracle.
+---
+Q: <b>Interpret the chart.</b> Which two ethical systems stress the importance of government and a well-ordered society?
+L: 2
+A: Confucianism and Legalism
+W: Daoism and Legalism
+W: Confucianism and Daoism
+W: Only Daoism
+W: All three equally
+S: Confucianism builds good government on family relationships and educated officials; Legalism builds it on powerful government and punishment. Daoism instead says the natural order matters more than the social order.
+---
+Q: <b>Lesson 4 Assessment #5.</b> How would followers of the three philosophies react to the idea that “all men are created equal”?
+L: 3
+A: Confucians and Legalists would reject it, since both rank people (in relationships or under the ruler); Daoists might come closest, since they cared about nature rather than social rank.
+W: All three would fully agree with it.
+W: Confucians would agree because of filial piety, but Daoists would reject it.
+W: Legalists would agree, because the law treats everyone the same as the ruler.
+W: None of them had any idea of rank or order, so the question would not matter to them.
+S: Confucianism is built on unequal relationships (ruler over subject, father over son, older over younger brother). Legalism says the ruler governs and the people obey. Daoism ignores social rank and focuses on living in harmony with nature, so it is the least opposed. (This is an opinion question; any answer needs reasons like these.)
+---
+Q: <b>Unit question.</b> How does Confucianism differ from Legalism?
+L: 2
+A: Confucianism seeks order through moral example, family relationships, and education; Legalism seeks order through strict laws and harsh punishment.
+W: Confucianism wants very little government; Legalism wants none at all.
+W: Confucianism was harsh and Legalism was gentle.
+W: Confucianism follows the Dao; Legalism follows yin and yang.
+W: They are the same system with two different names.
+S: Both want an orderly society, but Confucius relied on virtue: kind rulers, loyal subjects, filial piety, and educated officials. The Legalists relied on power: rewards, punishments, and control of ideas.
+=== GENS ===
+GENS['wh4-unify']=[];

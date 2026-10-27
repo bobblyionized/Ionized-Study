@@ -23,7 +23,7 @@ const wrapM=s=>{s=s.trim();return s.replace(/\\\$/g,'').includes('$')?s:'$'+s+'$
 
 function mkClassic(sub,f,i){
   const id=sub+'-c'+(i+1);const r=rng(hash(id));
-  const all=[f.A,...f.W].map(wrapM);const order=shuffle(r,[0,1,2,3,4]);
+  const all=[f.A,...f.W].map(isTextSub(sub)?s=>s.trim():wrapM);const order=shuffle(r,[0,1,2,3,4]);
   return{id,sub,src:'c',lvl:+f.L||2,q:fmt(f.Q),choices:order.map(k=>all[k]),ans:order.indexOf(0),sol:fmt(f.S)};
 }
 function mkGen(sub,gen,seed,id){

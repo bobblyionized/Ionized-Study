@@ -12,7 +12,7 @@ const BOOKS=(()=>{
         'pc4-ineq':[70,78],'pc4-abs':[79,82],'pc4-cplx':[83,89],'pc4-theory':[90,95],'pc4-review':[96,100]},
       extra:{review:[96,100],test:[101,102]}},
     pc5:{ch:5,offset:340,pages:86,docs:[['book','Textbook'],['ans1','Answers, part 1'],['ans2','Answers, part 2']],
-      secs:{'pc5-rad':[2,9],'pc5-radeq':[10,16],'pc5-exp':[17,28],'pc5-int':[29,34],'pc5-log':[35,44],'pc5-laws':[45,51],'pc5-base':[52,58],'pc5-eq':[59,68],'pc5-model':[69,78]},
+      secs:{'pc5-rad':[2,9],'pc5-radeq':[10,16],'pc5-exp':[17,28],'pc5-int':[29,34],'pc5-log':[35,44],'pc5-laws':[45,51],'pc5-base':[52,58],'pc5-eq':[59,68],'pc5-model':[69,78],'pc5-hw':[35,68]},
       extra:{review:[79,83],test:[84,86]}}};
   const has=new Set();                                   // "pc5:book" keys stored on this device
   /* ---------- IndexedDB ---------- */

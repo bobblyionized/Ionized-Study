@@ -1,0 +1,266 @@
+=== LESSONS ===
+<script type="text/plain" id="L-wh4-han">
+<h2>Han Emperors in China</h2>
+<p class="meta">Textbook pp. 256–265 · Module 7, Lesson 3</p>
+<div class="box"><h4>Big idea</h4>The Han Dynasty (202 BC–AD 220) expanded China’s borders and built a system of government, a centralized bureaucracy run by Confucian officials chosen by exam, that lasted for centuries. A strong central government has been part of Chinese life ever since.</div>
+<div class="tip"><b>Class goal:</b> identify the Han Dynasty’s role in unifying China.<br><b>Key terms:</b> Han Dynasty, centralized government, civil service, monopoly, assimilation</div>
+
+<h3>The Han restore unity</h3>
+<p>After Shi Huangdi died in 210 BC, his son was a weak, ineffective leader and the government fell apart. Peasants were bitter over high taxes, harsh labor quotas, and severe punishments, and they rebelled. Rival kings raised armies to win back their old lands.</p>
+<p><b>Liu Bang founds the Han.</b> Two leaders emerged from the civil war. <b>Xiang Yu</b>, an aristocratic general, would let warlords keep their territories if they accepted him as their feudal lord. <b>Liu Bang</b> was one of Xiang Yu’s generals. Liu Bang turned against him, won their final battle in <b>202 BC</b>, and declared himself the first emperor of the <b>Han Dynasty</b>.</p>
+<ul><li>The Han ruled for more than 400 years in two periods: the <b>Former Han</b> (about two centuries, until AD 9) and, after a short break, the <b>Later Han</b> (almost two more centuries).</li>
+<li>The Han shaped China so much that many Chinese still call themselves “people of the Han.”</li></ul>
+<div class="box"><h4>Liu Bang’s policies</h4><ul>
+<li><b>Internal:</b> destroyed the rival kings’ power and kept Shi Huangdi’s <b>centralized government</b>, in which a central authority controls the running of the state. Hundreds of local provinces called <b>commanderies</b> reported to him.</li>
+<li><b>Winning support:</b> he dropped Shi Huangdi’s strict Legalism, <b>lowered taxes</b>, and <b>softened harsh punishments</b>. People appreciated the peace and stability he brought.</li></ul></div>
+<p><b>Empress Lü.</b> When Liu Bang died in 195 BC, his son became emperor in name only; his mother, <b>Empress Lü</b>, really ruled. After her son died she kept control by naming infants as emperor. When she died in 180 BC, Liu Bang’s loyal supporters returned to power and executed her relatives. Palace plots like this happened throughout the Han: wives and their families competed to have their sons chosen as heir, and these power struggles sometimes kept the government from working well.</p>
+
+<h3>Wudi, the “Martial Emperor”</h3>
+<p><b>Wudi</b>, Liu Bang’s great-grandson, reigned from <b>141 to 87 BC</b>, longer than any other Han emperor. He continued centralizing and is called the <b>Martial (warlike) Emperor</b> because he expanded China through war.</p>
+<ul><li><b>The Xiongnu</b> were fierce nomads, deadly archers on horseback, who raided China’s farmland from the northern and western steppes. Earlier Han emperors paid them off with silk, rice, alcohol, and money, but the raids continued. Seeing that the bribes only made them stronger, Wudi sent more than <b>100,000 soldiers</b> against them, drove them into Central Asia, and settled troops on their old pastures.</li>
+<li>He allied with the <b>Yuezhi</b>, enemies of the Xiongnu (the Xiongnu had killed the Yuezhi king). Historian Sima Qian records that Wudi sent an envoy to make the alliance: <b>the enemy of his enemy was a useful friend</b>.</li>
+<li>He colonized Manchuria and Korea in the northeast and conquered south into present-day Vietnam. By the end of his reign the empire nearly reached the borders of present-day China.</li></ul>
+
+<h3>A highly structured society</h3>
+<p>The Chinese believed the emperor had <b>divine authority</b>: he linked heaven and earth. If he ruled well, China had peace and prosperity; if not, heaven showed its anger with earthquakes, floods, and famines.</p>
+<table class="exmix"><tr><th>Han social order, top to bottom</th></tr>
+<tr><td><b>Emperor</b>: considered semidivine</td></tr>
+<tr><td><b>Kings and governors</b>, appointed by the emperor, helped by state officials, nobles, and scholars</td></tr>
+<tr><td><b>Peasant farmers</b>: their food was vital to the empire</td></tr>
+<tr><td><b>Artisans and merchants</b></td></tr>
+<tr><td><b>Soldiers</b>, who guarded the frontiers</td></tr>
+<tr><td><b>Enslaved persons</b>, usually conquered peoples</td></tr></table>
+<p><b>Structures of government.</b> The emperor relied on a complex <b>bureaucracy</b>. Each <b>commandery</b> (province) had a governor who collected taxes, recruited laborers, and handed out justice. Peasants paid part of their crops in taxes, merchants paid taxes too, and peasants owed <b>a month of labor or military service every year</b>, which built roads, canals, and irrigation ditches, filled the armies, and expanded the Great Wall.</p>
+
+<h3>Confucianism, the road to success</h3>
+<ul><li>Wudi’s government employed more than <b>130,000 people</b> in 18 ranks of <b>civil service</b> jobs: government jobs won by passing <b>examinations</b>.</li>
+<li>Wudi favored Confucian scholars because Confucius taught exactly the qualities he wanted in officials: respect, generosity, truthfulness, <b>diligence</b> (hard work), and kindness. He set up a school where job seekers studied Confucius.</li>
+<li>Exams covered <b>history, law, literature, and Confucianism</b>. In theory anyone could take them; in practice only sons of <b>wealthy landowners</b> could afford the education. Even so, the system worked so well that it lasted until <b>1912</b>.</li>
+<li>Confucian values of the Han: the family is central to the well-being of the state; the father has complete authority; rulers govern <b>by example, not force</b>; government should educate the people as well as feed and protect them.</li>
+<li>Confucian ideas spread through the commanderies to Korea and Vietnam, and later to Japan.</li></ul>
+
+<h3>Han technology, commerce, and culture</h3>
+<ul><li><b>Paper</b> was invented in <b>AD 105</b>. It was cheaper than silk, so books and education spread; it was easier to keep records on than strips of wood, so the bureaucracy grew. (A Han official, Ts’ai Lun, made strong paper from mulberry bark, rags, and hemp; papermaking later spread to Korea, Japan, the Islamic world, and Europe.)</li>
+<li>The <b>collar harness</b> let horses pull much heavier loads than European harnesses. The Han also perfected a <b>two-bladed plow</b>, improved <b>iron tools</b>, invented the <b>wheelbarrow</b>, and used <b>water mills</b> to grind grain. These helped feed a population that grew to <b>60 million</b>.</li>
+<li><b>Agriculture versus commerce:</b> with so many to feed, farming was the most honored job and trade the least honored, yet trade and manufacturing mattered a lot. The government set up <b>monopolies</b> (exclusive control over making and selling a good) on <b>salt, iron, coins, and alcohol</b>, and ran silk mills. Silk-making became a <b>state secret</b>, and silk traveled the <b>Silk Roads</b> across Asia and, through India, to Rome.</li></ul>
+
+<h3>The Han unify Chinese culture</h3>
+<p><b>Assimilation</b> means making conquered peoples part of Chinese culture. The government sent Chinese farmers to settle new areas, encouraged them to marry local people, and set up schools to teach local people Confucianism, then appointed local scholars to government jobs.</p>
+<ul><li><b>Sima Qian</b> (145–85 BC), the Grand Historian, wrote <i>Records of the Grand Historian</i>, a history from ancient times to Wudi, by visiting historic sites, interviewing eyewitnesses, and studying records and artifacts.</li>
+<li>The <i>History of the Former Han Dynasty</i> was started by Ban Biao and finished by his son Ban Gu and daughter <b>Ban Zhao</b>, who also wrote <i>Lessons for Women</i> (be humble and obedient, but also hardworking).</li></ul>
+<p><b>Women’s roles.</b> Following Confucian teaching, most women lived quiet lives devoted to their families, working in the home and the family’s fields. Some upper-class women lived differently: a few empresses held great power, Daoist and later Buddhist nuns could be educated, and some women ran shops or practiced medicine.</p>
+
+<h3>The fall of the Han and their return</h3>
+<ul><li><b>The rich take advantage of the poor.</b> A father’s land was divided equally among his sons, so plots shrank each generation. Small farmers fell into debt to large landowners, who charged high interest and took the land when farmers could not pay. Large landowners paid no taxes, so the government squeezed the small farmers harder. The gap between rich and poor grew.</li>
+<li><b>Political instability.</b> Court advisers, servants, and powerful families plotted over who would be emperor; from about 32 BC to AD 9, one inexperienced emperor followed another, and peasant revolts spread.</li>
+<li><b>Wang Mang</b>, a Confucian scholar acting as regent for an infant emperor, took the throne in <b>AD 9</b>, ending the Former Han. He minted new money, opened public granaries, and took land from the rich to give to the poor. This angered powerful landholders, and his extra money led merchants to raise prices.</li>
+<li>In AD 11 a great flood left millions homeless; the granaries could not feed them. Peasant revolts broke out, the wealthy joined them, and rebels killed Wang Mang in <b>AD 23</b>. Within two years the Han family took back the throne: the <b>Later Han</b>.</li>
+<li>The Later Han regained Silk Road posts and was prosperous at first, but the same economic imbalance, palace plots, and unrest returned. By <b>220</b> the Han had broken into three rival kingdoms.</li></ul>
+
+<div class="box"><h4>The Han’s role in unifying China</h4><ul>
+<li><b>Politically:</b> restored unity after the Qin, kept a centralized government with commanderies, and expanded nearly to today’s borders.</li>
+<li><b>Through government:</b> a Confucian bureaucracy chosen by civil service exam that lasted until 1912.</li>
+<li><b>Culturally:</b> assimilation, a common written Chinese language across the empire, shared Confucian values, and histories that gave China a shared past. That is why Chinese call themselves “people of the Han.”</li></ul></div>
+</script>
+<script type="text/plain" id="R-wh4-han">
+<div class="cornell">
+<div class="cn-top"><div><span class="cn-k">Topic</span>Han Emperors in China (202 BC–AD 220)</div><div><span class="cn-k">Reading</span>pp. 256–265</div>
+<div class="cn-eq"><span class="cn-k">Essential question</span>What was the Han Dynasty’s role in unifying China?</div></div>
+<div class="cn-h"><span>Cues</span><span>Notes</span></div>
+<div class="cn-row"><div class="cn-cue">How did the Han begin?</div><div class="cn-note"><ul><li>Qin collapsed after Shi Huangdi died (210 BC): taxes, labor quotas, harsh punishments → revolts.</li><li><b>Liu Bang</b> defeated <b>Xiang Yu</b> in <b>202 BC</b> → first Han emperor.</li><li>Former Han (to AD 9) + Later Han (to 220): 400+ years.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Liu Bang’s policies</div><div class="cn-note"><ul><li><b>Centralized government</b>: central authority runs the state; provinces = <b>commanderies</b>.</li><li>Dropped strict Legalism: lower taxes, softer punishments → popular.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Empress Lü; palace plots</div><div class="cn-note"><ul><li>Ruled through her son and infant emperors (195–180 BC); her family executed after.</li><li>Wives competed for their sons to be heir → plots distracted the government.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Wudi</div><div class="cn-note"><ul><li>141–87 BC, “Martial Emperor”: expanded through war.</li><li>Stopped bribing the <b>Xiongnu</b>; sent 100,000+ soldiers; allied with the <b>Yuezhi</b>.</li><li>Took Manchuria, Korea, south to Vietnam.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Social order</div><div class="cn-note"><ul><li>Emperor (semidivine, link to heaven) → kings and governors → officials, nobles, scholars → peasants → artisans, merchants → soldiers → enslaved people.</li><li>Peasants: crop taxes + a month of labor or army service each year.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Civil service exam</div><div class="cn-note"><ul><li>Government jobs won by exams on history, law, literature, Confucianism; 130,000 employees, 18 ranks.</li><li>Wudi wanted Confucian virtues (diligence, kindness…) in officials.</li><li>Open in theory, but only the wealthy could prepare. Lasted until <b>1912</b>.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Technology</div><div class="cn-note"><ul><li><b>Paper (AD 105)</b> → books, education, bigger bureaucracy.</li><li>Collar harness, two-bladed plow, iron tools, wheelbarrow, water mills → fed 60 million people.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Monopoly; commerce</div><div class="cn-note"><ul><li><b>Monopoly</b>: exclusive control of making and selling a good: salt, iron, coins, alcohol.</li><li>Farming most honored, trade least honored but important; silk a state secret; Silk Roads to Rome.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Assimilation</div><div class="cn-note"><ul><li>Making conquered peoples part of Chinese culture: settlers, intermarriage, Confucian schools, local scholars in office.</li><li>Historians: <b>Sima Qian</b>; Ban Gu and <b>Ban Zhao</b>.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Women’s roles</div><div class="cn-note"><ul><li>Most: home and family fields. Some: powerful empresses, educated nuns, shopkeepers, doctors.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Why did the Han fall?</div><div class="cn-note"><ul><li>Land split among sons → debt → rich landowners (untaxed) took land → rich–poor gap.</li><li>Palace plots, weak emperors, revolts.</li><li><b>Wang Mang</b> took the throne AD 9; land reform angered the rich; flood AD 11; killed AD 23 → Later Han.</li><li>Same problems → three kingdoms by 220.</li></ul></div></div>
+<div class="cn-sum"><span class="cn-k">Summary</span><p>Liu Bang restored unity in 202 BC with a centralized government but softer rule than the Qin. Wudi expanded the empire and built a Confucian bureaucracy chosen by civil service exams. Inventions like paper, monopolies on key goods, the Silk Roads, and assimilation made the Han rich and unified, but a growing gap between rich and poor, palace plots, and revolts brought down the Former Han, then the Later Han by 220.</p></div>
+</div>
+</script>
+=== BANK ===
+@@ wh4-han
+Q: Who founded the Han Dynasty, and how?
+L: 1
+A: Liu Bang, one of Xiang Yu’s generals, who defeated Xiang Yu in 202 BC
+W: Xiang Yu, an aristocratic general, who defeated Liu Bang in 202 BC
+W: Shi Huangdi’s son, who renamed the Qin Dynasty
+W: Wudi, who conquered the Xiongnu
+W: Wang Mang, who overthrew the Qin
+S: After the Qin collapsed, Liu Bang turned against his commander Xiang Yu, won their final battle in 202 BC, and declared himself the first Han emperor.
+---
+Q: <b>Reading Check.</b> What were the main internal and external policies of the first Han rulers?
+L: 2
+A: Inside China, a centralized government with lower taxes and softer punishments; outside, expanding the empire and fighting the Xiongnu
+W: Inside China, strict Legalism and book burning; outside, peace with every neighbor
+W: Inside China, letting warlords keep their lands; outside, isolation
+W: Inside China, ending the civil service; outside, alliances with Rome
+W: Inside China, very little government; outside, paying tribute to Korea
+S: Liu Bang kept a centralized government with commanderies reporting to him but won support by lowering taxes and softening punishments. Wudi expanded the empire through war: against the Xiongnu, into Manchuria, Korea, and Vietnam.
+---
+Q: What is a centralized government?
+L: 1
+A: One in which a central authority controls the running of the state
+W: One in which local warlords rule their own lands
+W: One that does as little as possible
+W: One run by religious leaders
+W: One in which merchants make the laws
+S: Liu Bang followed Shi Huangdi’s policy of centralized government: hundreds of local provinces, called commanderies, reported to the central government.
+---
+Q: Why is Wudi called the “Martial Emperor”?
+L: 1
+A: He expanded the Chinese empire through war.
+W: He was the first emperor to unify China.
+W: He set up the civil service exam to choose generals.
+W: He married into a family of famous warriors.
+W: He ruled for the shortest time of any Han emperor.
+S: Martial means warlike. Wudi (141–87 BC) fought the Xiongnu, colonized Manchuria and Korea, and conquered south into Vietnam, expanding the empire nearly to present-day China’s borders.
+---
+Q: How did Wudi deal with the Xiongnu?
+L: 2
+A: He stopped paying them off, sent more than 100,000 soldiers against them, and allied with their enemies, the Yuezhi.
+W: He paid them larger bribes of silk and rice.
+W: He let them settle inside the Great Wall.
+W: He hired them to guard the Silk Roads.
+W: He married a Xiongnu princess to make peace.
+S: Earlier emperors bribed the Xiongnu, but the bribes only made them stronger. Wudi fought them, drove them into Central Asia, settled troops on their pastures, and sent an envoy to make an alliance with the Yuezhi.
+---
+Q: <b>Analyze a historical source.</b> Sima Qian wrote that the Xiongnu had defeated the Yuezhi king, and the Yuezhi held a grudge but had no one to help them. Why did Wudi want relations with the Yuezhi?
+L: 2
+A: The Yuezhi were enemies of the Xiongnu, so they could be allies against a common enemy.
+W: The Yuezhi had silk that Wudi wanted to buy.
+W: The Yuezhi were Confucian scholars who could join his government.
+W: The Yuezhi had threatened to invade China.
+W: The Yuezhi controlled the Grand Canal.
+S: Wudi wanted to defeat the Xiongnu. The Yuezhi hated the Xiongnu, so an alliance gave China a partner against the raiders.
+---
+Q: How did the Chinese view the Han emperor?
+L: 2
+A: As a semidivine link between heaven and earth; disasters like floods meant heaven was displeased with him
+W: As an ordinary man chosen by the peasants
+W: As a servant of the merchants
+W: As a Legalist judge with no special power
+W: As a Daoist monk who should do nothing
+S: Because the Chinese believed the emperor had divine authority, they accepted his power. If he ruled well there was peace and prosperity; if he failed, the heavens showed anger with earthquakes, floods, and famines.
+---
+Q: In the Han social order, which group ranked just below the kings, governors, officials, nobles, and scholars?
+L: 2
+A: Peasant farmers
+W: Merchants
+W: Soldiers
+W: Artisans
+W: Enslaved persons
+S: Peasants came next because their food was vital to the empire. Artisans and merchants were below them, then soldiers, and at the bottom enslaved persons, usually conquered peoples.
+---
+Q: What was the civil service under the Han?
+L: 1
+A: Government jobs that civilians won by passing examinations
+W: An army that guarded the frontiers
+W: Peasants’ yearly month of labor for the state
+W: A school where nobles learned to fight
+W: The emperor’s family and servants
+S: Wudi’s government had 18 ranks of civil service jobs. Applicants took exams in history, law, literature, and Confucianism.
+---
+Q: <b>Reading Check.</b> Why would Wudi want his officials to have qualities such as diligence?
+L: 2
+A: Hardworking, honest, respectful officials would run the huge bureaucracy well and serve the people.
+W: Diligent officials would be too busy to plot against him.
+W: Diligence was required by Legalist law.
+W: Only diligent people could pass the military exam.
+W: He wanted officials to follow the Daoist idea of doing nothing.
+S: Confucius taught that gentlemen should practice respect, generosity, truthfulness, diligence, and kindness. These were exactly the qualities Wudi wanted in the officials running a government of more than 130,000 people.
+---
+Q: The civil service exams were open to anyone in theory. Who could actually take them in practice?
+L: 2
+A: Mostly the sons of wealthy landowners, who could afford the education
+W: Any peasant who could read
+W: Only members of the emperor’s family
+W: Only soldiers who had served on the frontier
+W: Women as well as men from every class
+S: Few peasants could afford to educate their sons, so only sons of wealthy landowners had a real chance. Even with this flaw, the system worked so well that it lasted until 1912.
+---
+Q: <b>Reading Check.</b> Which Han inventions helped feed China’s huge population?
+L: 2
+A: The collar harness, the two-bladed plow, better iron tools, the wheelbarrow, and water mills
+W: Paper money, the compass, and gunpowder
+W: Movable type and porcelain
+W: The Great Wall and the terra-cotta warriors
+W: The Grand Canal and terraced rice fields
+S: The collar harness let horses pull heavier loads, the two-bladed plow and iron tools improved farming, and water mills ground grain. The population grew to 60 million.
+---
+Q: How did the invention of paper (AD 105) change the Han?
+L: 2
+A: Books became cheaper, education spread, and record keeping got easier, so the bureaucracy expanded.
+W: It let the Han print the first newspapers.
+W: It replaced silk as China’s main export to Rome.
+W: It was used to make paper money for the first time.
+W: It ended the civil service exams.
+S: Before paper, books were written on silk and records on strips of wood. Cheaper paper spread education, and it was much more convenient for keeping government records.
+---
+Q: What is a monopoly?
+L: 1
+A: Exclusive control by one group over the production and distribution of certain goods
+W: Making conquered peoples part of Chinese culture
+W: A government run by one all-powerful ruler
+W: A tax paid in crops
+W: A trade route across Asia
+S: The Han government set up monopolies on mining salt, forging iron, minting coins, and brewing alcohol, and for a time ran its own silk mills.
+---
+Q: <b>Lesson 3 Assessment #8.</b> Why was agriculture considered the most important and honored occupation in Han China?
+L: 1
+A: The population was so large that feeding everyone mattered most.
+W: Farmers paid no taxes.
+W: Confucius had been a farmer.
+W: Trade was against the law.
+W: Merchants refused to work.
+S: The population grew to 60 million. With so many people to feed, both scholars and ordinary people honored farming above all, even though trade and manufacturing were actually very important to the empire.
+---
+Q: What is assimilation, and how did the Han use it?
+L: 2
+A: Making conquered peoples part of Chinese culture, by sending Chinese settlers, encouraging intermarriage, and teaching Confucianism in schools
+W: Moving all conquered peoples to the capital
+W: Letting conquered peoples keep separate laws and rulers
+W: Forcing conquered peoples to build the Great Wall
+W: Paying conquered peoples to leave the empire
+S: The Han sent Chinese farmers to settle new areas, encouraged them to marry local people, set up schools to teach local people Confucianism, and then appointed local scholars to government posts.
+---
+Q: Who was Sima Qian?
+L: 1
+A: The Grand Historian, who wrote Records of the Grand Historian
+W: The founder of the Han Dynasty
+W: The empress who ruled through infant emperors
+W: The Confucian scholar who overthrew the Former Han
+W: The official who invented paper
+S: Sima Qian (145–85 BC) wrote a history of China from ancient times to Wudi, visiting sites, interviewing eyewitnesses, and studying records and artifacts.
+---
+Q: <b>Lesson 3 Assessment #4.</b> What role did most women play in Han society?
+L: 2
+A: Most lived quiet lives at home devoted to their families, working in the home and the family’s fields, though a few were powerful, educated, or ran businesses.
+W: Most served as government officials after passing exams.
+W: Most were soldiers on the frontier.
+W: Most ruled as empresses.
+W: Most were Buddhist nuns.
+S: Confucian teaching said women should devote themselves to their families, and most did, while helping the family’s economy. Some upper-class women were exceptions: powerful empresses, educated nuns, scholars like Ban Zhao, shopkeepers, and doctors.
+---
+Q: <b>Reading Check.</b> How did Wang Mang’s policies help cause his downfall?
+L: 3
+A: Taking land from the rich angered powerful landholders, and printing more money raised prices; after a great flood, the wealthy joined peasant revolts against him.
+W: He lowered taxes so much that the army had no money.
+W: He banned Confucianism, and the scholars rebelled.
+W: He invaded Japan and lost his fleet.
+W: He gave all the land to the nobles, and the peasants starved.
+S: Wang Mang minted new money, set up granaries, and planned to give rich families’ land to the poor. Landholders were furious, and more money led merchants to raise prices. After the AD 11 flood, revolts spread, the wealthy joined in, and rebels killed him in AD 23.
+---
+Q: <b>Lesson 3 Assessment #7.</b> Which problem weakened the Han Dynasty most, according to the reading?
+L: 3
+A: The growing gap between rich and poor, as small farmers lost land to untaxed large landowners
+W: Invasions by the Mongols
+W: The spread of Legalism
+W: The loss of the Grand Canal
+W: Too many scholars passing the exam
+S: Land was split among sons until plots were too small; farmers borrowed from large landowners at high interest and lost their land. Landowners paid no taxes, so the government squeezed small farmers harder, widening the rich–poor gap. Palace plots and revolts made it worse. (Opinion question; this is the reading’s main cause.)
+=== GENS ===
+GENS['wh4-han']=[];

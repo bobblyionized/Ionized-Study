@@ -8,7 +8,7 @@ const html = fs.readFileSync(file, 'utf8');
 const main = html.match(/<script id="main">([\s\S]*?)<\/script>/)[1];
 const bank = html.match(/<script type="text\/plain" id="bank">([\s\S]*?)<\/script>/)[1];
 const ctx = { console, Math, Date, JSON }; vm.createContext(ctx);
-vm.runInContext(main + '\n;this.API={loadData,SETS,GENS,mkGen,hash,SUBS,TOPICS,BANK:()=>BANK};', ctx);
+vm.runInContext(main + '\n;this.API={loadData,SETS,GENS,mkGen,hash,SUBS,TOPICS,BANK:()=>BANK,isTextSub};', ctx);
 const A = ctx.API; A.loadData(bank);
 let bad = 0; const err = m => { bad++; if (bad < 400) console.log('ERR', m); };
 let totalProblems = 0, totalClassic = 0;
@@ -16,7 +16,10 @@ for (const s of A.SUBS) {
   const set = A.SETS[s.id] || []; const c = set.filter(x => x.src === 'c').length;
   totalProblems += set.length; totalClassic += c;
   if (!html.includes(`id="L-${s.id}"`)) err(s.id + ' has no lesson');
-  if (set.length < 50) err(`${s.id} only ${set.length} problems (classic ${c}, gens ${(A.GENS[s.id] || []).length})`);
+  const text = A.isTextSub(s.id), min = text ? 10 : 50;          // reading subjects: 10-20 questions per lesson, plus Cornell review notes
+  if (set.length < min) err(`${s.id} only ${set.length} problems (classic ${c}, gens ${(A.GENS[s.id] || []).length})`);
+  if (text && !html.includes(`id="R-${s.id}"`)) err(s.id + ' has no review notes');
+  if (text) for (const it of A.BANK()[s.id] || []) if ([it.A, ...it.W].some(x => x.includes('$'))) err(s.id + ' math $ in a text answer: ' + it.Q.slice(0, 50));
   if (!c) err(s.id + ' has no hand-written problems');
   for (const it of A.BANK()[s.id] || []) {
     if (it.W.length !== 4) err(s.id + ' W count ' + it.W.length + ': ' + it.Q.slice(0, 60));

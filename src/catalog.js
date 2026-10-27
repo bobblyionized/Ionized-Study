@@ -182,12 +182,28 @@ const PC_CATALOG=[
    {id:'pc5-laws',sec:'5.4',name:'Properties of Logarithms',d:'the Product, Quotient, and Power Laws, expanding and combining logarithms, the Richter scale'},
    {id:'pc5-base',sec:'5.4.A',name:'Logarithms to Other Bases',d:'log base b, the logarithm laws for any base, the change of base formula'},
    {id:'pc5-eq',sec:'5.5',name:'Exponential and Logarithmic Equations',d:'solving with logarithms, half-life and carbon dating, equations quadratic in e^x, logarithmic equations and extraneous roots'},
-   {id:'pc5-model',sec:'5.6',name:'Exponential, Logarithmic, and Other Models',d:'choosing a model from data, ratios of successive values, power and logistic models'}]},
+   {id:'pc5-model',sec:'5.6',name:'Exponential, Logarithmic, and Other Models',d:'choosing a model from data, ratios of successive values, power and logistic models'},
+   {id:'pc5-hw',name:'Chapter 5 Homework',d:'Oct 26–30, day by day: every assigned problem from pp. 383, 390, 397, 406 and 374 with worked solutions (Tuesday’s HW quiz), plus growth/decay and logs/ln practice for Friday.'}]},
+ ]},
+];
+/* World History: one topic per unit, one subtopic per reading; each has a lesson, Cornell review notes (R-<id>) and practice questions */
+const WH_CATALOG=[
+ {area:'Units',note:'Follows the class unit by unit. Each lesson matches a textbook reading, with Cornell-style review notes and practice questions built from the reading and its review questions.',items:[
+  {id:'wh4',name:'Chinese Dynasties',unit:4,d:'Confucianism, Daoism and Legalism; the Qin unification and the Great Wall; the Han emperors; the Tang and Song golden age; the Mongols and Kublai Khan’s Yuan Dynasty; and the Ming.',subs:[
+   {id:'wh4-plan',name:'Unit Planner & Overview',d:'The class schedule from Oct 27 to Nov 24 with every reading and due date, the Nov 16 test and the inquiry project, a timeline of the dynasties, and a glossary of every key term.'},
+   {id:'wh4-unify',sec:'1',name:'The Unification of China',d:'pp. 137–141 · the warring states, Confucius and filial piety, Daoism, Legalism, the I Ching, and yin and yang'},
+   {id:'wh4-qin',sec:'2',name:'The Qin Dynasty',d:'pp. 141–143 · Shi Huangdi’s autocracy, centralization, the Great Wall, and the fall of the Qin'},
+   {id:'wh4-han',sec:'3',name:'Han Emperors in China',d:'pp. 256–265 · Liu Bang, centralized government, Wudi, the civil service exam, monopolies, assimilation, and the Han’s fall'},
+   {id:'wh4-tang',sec:'4',name:'Tang & Song China',d:'pp. 310–319 · the Grand Canal, Tang Taizong, Wu Zhao, scholar-officials, movable type, the gentry, and China’s golden age'},
+   {id:'wh4-mongol',sec:'5',name:'Rise of the Mongols',d:'pp. 320–325 · steppe pastoralists and clans, Genghis Khan’s conquests and tactics, the khanates, and the Pax Mongolica'},
+   {id:'wh4-kublai',sec:'6',name:'Kublai Khan & the Yuan Dynasty',d:'pp. 325–329 · Kublai Khan conquers China, Mongol rule, Marco Polo, the failed invasions of Japan, and the Yuan’s fall'},
+   {id:'wh4-ming',sec:'7',name:'The Ming Dynasty',d:'pp. 617–623 · Hongwu’s rise, Yonglo and the Forbidden City, Zheng He’s voyages, Ming stability, and the Manchus'}]},
  ]},
 ];
 const TRACKS=[
  {id:'amc',name:'AMC 10/12 Prep',cat:CATALOG,d:'Everything on the AMC 10 and AMC 12: lessons, thousands of problems, and full mock exams.'},
  {id:'pc',name:'General Precalculus',cat:PC_CATALOG,d:'A chapter-by-chapter precalculus course: functions and graphs, polynomial and rational functions, then exponential and logarithmic functions.'},
+ {id:'wh',name:'World History',cat:WH_CATALOG,text:true,d:'Unit by unit with the class: lessons that follow each reading, Cornell-style review notes, and practice questions. Starting with Unit 4, Chinese Dynasties.'},
 ];
 const TOPICS=[];const SUBS=[];
 for(const tr of TRACKS)for(const sec of tr.cat)for(const t of sec.items){t.area=sec.area;t.track=tr.id;TOPICS.push(t);for(const s of t.subs){s.topic=t.id;SUBS.push(s)}}
@@ -195,3 +211,4 @@ const trackOf=t=>TRACKS.find(x=>x.id===t.track);
 const amcTopics=()=>TOPICS.filter(t=>t.track==='amc');
 const findTopic=id=>TOPICS.find(t=>t.id===id);
 const subById=id=>SUBS.find(s=>s.id===id);
+const isTextSub=id=>{const s=subById(id),t=s&&findTopic(s.topic),tr=t&&trackOf(t);return!!(tr&&tr.text)};   // reading subjects: answers are words, not math

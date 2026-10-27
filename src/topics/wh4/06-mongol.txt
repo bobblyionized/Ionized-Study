@@ -1,0 +1,213 @@
+=== LESSONS ===
+<script type="text/plain" id="L-wh4-mongol">
+<h2>Rise of the Mongols</h2>
+<p class="meta">Textbook pp. 320–325, stopping at “Kublai Khan Becomes Emperor” · Module 9, Lesson 2</p>
+<div class="box"><h4>Big idea</h4>The Mongols, nomads from the steppe, conquered settled societies across much of Asia and built the <b>largest unified land empire in world history</b>. Their rule also helped spread Chinese ideas to the West by encouraging trade.</div>
+<div class="tip"><b>Unit questions this lesson answers:</b> Who were the Mongols, and how did they build the largest land empire in world history? What military tactics did Genghis Khan use in war?<br><b>Key terms:</b> pastoralist, clan, Genghis Khan, Pax Mongolica</div>
+
+<h3>Nomads of the Asian steppe</h3>
+<p>The <b>steppe</b> is a vast belt of dry grassland across Eurasia. It mattered to its neighbors in two ways: it was a <b>land trade route between East and West</b>, and it was home to <b>nomads who often raided, looted, and conquered</b> the settled lands around it.</p>
+<ul><li>The <b>western steppe</b> runs from Central Asia to eastern Europe (home of invaders like the Hittites). The <b>eastern steppe</b>, present-day Mongolia, was the first home of the Huns, the Turks, and the Mongols.</li>
+<li>Little rain falls, but short, hardy grasses grow. Temperatures in Mongolia swing from about −57°F in winter to 96°F in summer. The west is milder, so peoples historically moved <b>west and south</b>.</li></ul>
+<p><b>The nomadic way of life.</b> Nomads were <b>pastoralists</b>: they herded domesticated animals. They moved constantly to find pasture, but they did not wander; they followed a seasonal pattern back to the same campsites, and groups fought over grass and water rights.</p>
+<ul><li>They practically lived on horseback and depended on their animals for everything: meat and mare’s milk, clothing of skins and wool, and portable felt tents called <b>yurts</b>.</li>
+<li>They traveled in <b>clans</b>: kinship groups whose members claimed a common ancestor. Clans joined together when they needed a big force to attack an enemy or raid settled neighbors.</li></ul>
+<p><b>Nomads and settled peoples.</b> Often they traded peacefully: nomads swapped horses for grain, metal, cloth, and tea. But nomads, proud of their toughness, were sometimes tempted by the wealth of towns and took what they wanted. A <b>strong, organized</b> state could protect its frontier; a <b>weak, divided</b> one suffered more raids. Sometimes nomads conquered a whole empire, and over generations the conquerors became part of the civilization they ruled.</p>
+
+<h3>Genghis Khan unites the Mongols</h3>
+<ul><li>The Mongols had roamed the eastern steppe in loosely organized clans. Around 1200 a clan leader named <b>Temujin</b> set out to unite them, defeating his rivals one by one.</li>
+<li>When Temujin was about nine, the rival Tatars poisoned his father, and his family lived in deep poverty. He later took revenge on the Tatars. Driven by revenge and a love of conquest, he once said a man’s greatest fortune was to defeat his enemies and seize all they had.</li>
+<li>In <b>1206</b> he accepted the title <b>Genghis Khan</b>, “<b>universal ruler</b>” of the Mongol clans. Over the next 21 years he conquered much of Asia.</li>
+<li>His first goal was China; he invaded the northern <b>Jin</b> Empire in 1211. Then, after Muslims murdered Mongol traders and an ambassador, he launched a campaign of terror across Central Asia, destroying cities like Utrar, Samarkand, and Bukhara. By <b>1225</b> Central Asia was under Mongol control.</li></ul>
+
+<h3>Genghis the conqueror: his tactics</h3>
+<div class="box"><h4>Three keys to his success</h4><ol>
+<li><b>A brilliant organizer.</b> Following the Chinese military’s model, he grouped warriors into armies of <b>10,000</b>, divided into 1,000-man brigades, 100-man companies, and 10-man squads, each led by his most loyal, battle-proven men.</li>
+<li><b>A gifted strategist.</b> He used tricks to confuse enemies. In the <b>fake retreat</b>, a small cavalry unit attacked and then pretended to flee; when the enemy chased it, the rest of the Mongol army appeared and destroyed them.</li>
+<li><b>Cruelty as a weapon.</b> He terrified enemies into surrendering: a city that refused to open its gates might have its whole population killed. Fear spread ahead of his armies, and many towns gave up without a fight.</li></ol></div>
+<p><b>A mighty fighting force.</b> Mongol soldiers were superb horsemen who trained in yearly game hunts. Each rode with <b>three extra horses</b>, so he could stay in the saddle for up to ten days and cover as much as <b>120 miles a day</b>; if food ran out, he might drink his horse’s blood. The <b>stirrup</b>, invented on the steppe, let a rider stand, turn, and shoot arrows behind him. Warriors carried leather armor, a lance, a dagger, and a bow and arrows, and wore silk underwear that arrows often did not pierce. The army moved like a city, with families, livestock, and thousands of horses; <b>women</b> ran the camp, milked the animals, treated the wounded, and some fought. When attacking, warriors left the caravan and struck from several directions at once. All of this made the army <b>self-sufficient</b>.</p>
+
+<h3>The Mongol Empire</h3>
+<ul><li>Genghis Khan died of illness in <b>1227</b>. His sons and grandsons kept conquering: in less than 50 years the Mongols took territory from <b>China to Poland</b>, the largest unified land empire in history.</li>
+<li>They finished conquering northern China, invaded Korea, leveled the Russian city of Kiev, and reached the Adriatic Sea, with Venice and Vienna in reach. In the 1250s they stopped moving west and turned to Persia.</li>
+<li>By <b>1260</b> the empire was split into four <b>khanates</b>, each ruled by a descendant of Genghis:</li></ul>
+<table class="exmix"><tr><th>Khanate</th><th>Region</th></tr>
+<tr><td>Khanate of the Great Khan</td><td>Mongolia and China (also Korea)</td></tr>
+<tr><td>Khanate of Chagatai</td><td>Central Asia</td></tr>
+<tr><td>Ilkhanate</td><td>Persia</td></tr>
+<tr><td>Khanate of the Golden Horde</td><td>Russia</td></tr></table>
+<p><b>The Mongols as rulers.</b> Many areas they invaded never recovered: some cities’ populations were wiped out, and destroyed irrigation systems (as in the Tigris and Euphrates valleys) left land that could not support people again. Yet the Mongols were <b>tolerant in peace</b>: they rarely forced their beliefs or way of life on others, and some adopted local cultures (the Ilkhans and the Golden Horde became Muslim). These growing differences helped split the empire apart.</p>
+
+<h3>The Mongol Peace</h3>
+<p>From the mid-1200s to the mid-1300s, the Mongols kept stability, law, and order across much of Eurasia: the <b>Pax Mongolica</b>, or Mongol Peace. They guaranteed safe passage for caravans, travelers, and missionaries across the whole empire.</p>
+<ul><li>Trade between Europe and Asia had never been more active, and ideas and inventions traveled with the goods: Chinese innovations like <b>gunpowder</b> reached Europe.</li>
+<li>Some historians think the Mongols also spread the <b>bubonic plague</b> that devastated Europe in the 1300s, along the trade routes or through infected troops.</li></ul>
+
+<div class="box"><h4>Answering the unit questions</h4><ul>
+<li><b>Who were the Mongols?</b> Nomadic pastoralists from the eastern steppe (Mongolia) who lived on horseback in clans.</li>
+<li><b>How did they build the largest land empire?</b> Genghis Khan united the clans (1206); superb horsemanship, organization, clever tactics, and terror let them conquer Central Asia and northern China; his heirs pushed from China to Poland and ruled through four khanates.</li>
+<li><b>Genghis Khan’s tactics:</b> units of 10, 100, 1,000, and 10,000 under loyal commanders; tricks like the fake retreat; terror that made cities surrender without a fight; fast, self-sufficient cavalry with spare horses.</li></ul></div>
+</script>
+<script type="text/plain" id="R-wh4-mongol">
+<div class="cornell">
+<div class="cn-top"><div><span class="cn-k">Topic</span>Rise of the Mongols</div><div><span class="cn-k">Reading</span>pp. 320–325</div>
+<div class="cn-eq"><span class="cn-k">Essential questions</span>Who were the Mongols, and how did they build the largest land empire in world history? What tactics did Genghis Khan use?</div></div>
+<div class="cn-h"><span>Cues</span><span>Notes</span></div>
+<div class="cn-row"><div class="cn-cue">What is the steppe?</div><div class="cn-note"><ul><li>Dry grassland across Eurasia; western (Central Asia–Europe) and eastern (Mongolia).</li><li>Mattered as (1) an East–West trade route and (2) home of raiding nomads.</li><li>Harsh: −57°F to 96°F; people moved west and south.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Pastoralists; clans</div><div class="cn-note"><ul><li><b>Pastoralists</b>: herd domesticated animals; seasonal routes to the same camps.</li><li>Lived on horseback; meat, mare’s milk; <b>yurts</b>.</li><li><b>Clans</b>: kinship groups with a common ancestor; joined for big raids.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Nomads vs. settled peoples</div><div class="cn-note"><ul><li>Traded horses for grain, metal, cloth, tea; also raided.</li><li>Strong empire → defends frontier; weak → more raids or conquest.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Genghis Khan</div><div class="cn-note"><ul><li><b>Temujin</b>; father poisoned by Tatars; united the clans → <b>1206</b> “universal ruler.”</li><li>Invaded the Jin (north China) 1211; terror across Central Asia (Samarkand, Bukhara) by 1225.</li><li>Died 1227 of illness.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">His tactics</div><div class="cn-note"><ul><li><b>Organizer</b>: armies of 10,000 → 1,000 → 100 → 10.</li><li><b>Strategist</b>: fake retreat into an ambush.</li><li><b>Terror</b>: kill cities that resist → others surrender.</li><li>3 spare horses each, 120 miles a day, stirrups, self-sufficient moving camp.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">The empire and its khanates</div><div class="cn-note"><ul><li>Heirs: China to Poland in &lt;50 years; largest land empire ever.</li><li>By 1260 four khanates: <b>Great Khan</b> (Mongolia, China), <b>Chagatai</b> (Central Asia), <b>Ilkhanate</b> (Persia), <b>Golden Horde</b> (Russia).</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Mongols as rulers</div><div class="cn-note"><ul><li>Destructive in war (wiped-out cities, ruined irrigation).</li><li>Tolerant in peace; some became Muslim → cultural splits.</li></ul></div></div>
+<div class="cn-row"><div class="cn-cue">Pax Mongolica</div><div class="cn-note"><ul><li>“Mongol Peace,” mid-1200s to mid-1300s: safe travel and trade across Eurasia.</li><li>Most active East–West trade ever; gunpowder reached Europe; maybe spread the plague.</li></ul></div></div>
+<div class="cn-sum"><span class="cn-k">Summary</span><p>The Mongols were pastoral nomads of the eastern steppe who lived in clans and on horseback. Temujin united them in 1206 as Genghis Khan and, through brilliant organization, tricks like the fake retreat, and deliberate terror, conquered Central Asia and northern China. His heirs built the largest land empire in history, split into four khanates, and their Pax Mongolica opened safe trade between East and West.</p></div>
+</div>
+</script>
+=== BANK ===
+@@ wh4-mongol
+Q: What is a pastoralist?
+L: 1
+A: A nomad who herds domesticated animals
+W: A farmer who grows rice on terraced fields
+W: A scholar-official who passed the civil service exam
+W: A merchant who trades along the Silk Roads
+W: A priest who performs Daoist rituals
+S: Steppe nomads were pastoralists: constantly moving to find pasture for their herds, but following a familiar seasonal pattern back to the same campsites.
+---
+Q: What is a clan?
+L: 1
+A: A kinship group whose members claim to descend from a common ancestor
+W: A Mongol army of 10,000 soldiers
+W: One of the four regions of the Mongol Empire
+W: A portable felt tent
+W: A group of merchants traveling together
+S: Steppe nomads traveled in clans. Different clans sometimes joined forces to attack a common enemy or raid settled neighbors.
+---
+Q: Why was the steppe important to neighboring civilizations?
+L: 2
+A: It was a land trade route between East and West, and it was home to nomads who raided and conquered their neighbors.
+W: It was the best farmland in Asia.
+W: It held the gold mines that paid for the Great Wall.
+W: It was where Confucius taught.
+W: It was the capital of the Song Dynasty.
+S: The textbook calls the steppe’s significance twofold: a trade route connecting East and West, and home to nomads who swept down to plunder, loot, and conquer.
+---
+Q: <b>Reading Check.</b> How might a strong, organized empire defend its frontier against nomads?
+L: 2
+A: With organized armies, walls, and forts that a weak, divided state could not keep up
+W: By having no army so nomads would see no threat
+W: By moving its capital onto the steppe
+W: By banning all trade with nomads
+W: By letting each clan rule a province
+S: The reading says that when a state was strong and organized it could protect its frontier, but when it became divided and weak, nomads attacked more and took more plunder. China’s armies and the Great Wall are examples.
+---
+Q: What does the title Genghis Khan mean, and when did Temujin take it?
+L: 1
+A: “Universal ruler,” in 1206
+W: “First emperor,” in 221 BC
+W: “Great ancestor,” in 626
+W: “Martial emperor,” in 141 BC
+W: “Divine wind,” in 1281
+S: Around 1200 the clan leader Temujin began defeating his rivals one by one. In 1206 he accepted the title Genghis Khan, “universal ruler” of the Mongol clans.
+---
+Q: <b>Reading Check / Unit question.</b> What were some of the tactics Genghis Khan used in war?
+L: 2
+A: Tight organization into units of 10 to 10,000, tricks like the fake retreat, and terror that frightened cities into surrendering
+W: Paying enemies tribute to avoid fighting
+W: Building walls to block enemy armies
+W: Fighting only on foot with heavy armor
+W: Sending missionaries ahead to convert enemies
+S: Genghis was a brilliant organizer, a gifted strategist who used tricks like the fake retreat, and he used cruelty as a weapon: towns that resisted might be wiped out, so many surrendered without a fight.
+---
+Q: How did the Mongol “fake retreat” work?
+L: 2
+A: A small cavalry unit attacked, pretended to flee, and led the chasing enemy into the rest of the Mongol army.
+W: The whole army retreated so the enemy would follow them onto the steppe and starve.
+W: Soldiers hid inside yurts until the enemy left.
+W: The Mongols pretended to surrender and then attacked at night.
+W: They retreated behind the Great Wall.
+S: The enemy usually gave chase, and then the rest of the Mongol army appeared suddenly and slaughtered the surprised enemy.
+---
+Q: How did Genghis Khan organize his army?
+L: 1
+A: Into armies of 10,000, divided into brigades of 1,000, companies of 100, and squads of 10, led by loyal, battle-proven commanders
+W: Into clans, each fighting separately under its own chief
+W: Into one giant unit led by Genghis alone
+W: Into units of foot soldiers and war elephants
+W: Into units chosen by civil service exam
+S: Following the model of the Chinese military, he grouped warriors in these nested units and put his most battle-proven and loyal men in charge.
+---
+Q: Why did Genghis Khan use cruelty and terror?
+L: 2
+A: To frighten enemies into surrendering without a fight
+W: Because Mongol law required it
+W: To convert people to his religion
+W: To punish his own soldiers
+W: Because he had no army large enough to fight
+S: If a city refused to open its gates, he might kill its whole population. The terror spread ahead of his armies, and many towns surrendered without fighting.
+---
+Q: <b>Analyze visuals.</b> Which of these helped make the Mongol army self-sufficient?
+L: 2
+A: Extra horses for every soldier, herds of livestock traveling with the army, and women who ran the camp and treated the wounded
+W: Supply wagons sent from Chinese cities
+W: Payments from the Song emperors
+W: Forts built along the Silk Roads
+W: Food grown on terraced fields
+S: A Mongol army was like a moving city, with families, livestock, and tens of thousands of horses. Soldiers could even drink their horses’ blood if food was scarce.
+---
+Q: <b>Lesson 2 Assessment #3.</b> What parts of Mongol culture helped their military success?
+L: 3
+A: A life on horseback that made them superb riders, toughness from a harsh environment, and clan ties that let them unite for war
+W: A long tradition of building walls and forts
+W: Their skill at farming rice
+W: Their Confucian education
+W: Their large navy
+S: Nomads practically lived on horseback, were used to scarcity and hardship, and already joined clans together for raids. Yearly game hunts trained young warriors. (Opinion question; explain with evidence like this.)
+---
+Q: After Genghis Khan’s death, the empire was split into four khanates. Which khanate controlled Russia?
+L: 2
+A: The Golden Horde
+W: The Ilkhanate
+W: The Khanate of Chagatai
+W: The Khanate of the Great Khan
+W: The Jin Empire
+S: The four khanates were the Great Khan (Mongolia and China), Chagatai (Central Asia), the Ilkhanate (Persia), and the Golden Horde (Russia).
+---
+Q: <b>Reading Check.</b> What happened to the Mongol Empire after Genghis Khan’s death in 1227?
+L: 2
+A: His heirs kept conquering, from China to Poland, then split the empire into four khanates by 1260.
+W: It collapsed immediately and the clans scattered.
+W: China conquered it and made it part of the Song.
+W: It became one united Muslim state.
+W: His sons gave the land back to the people they had conquered.
+S: His sons and grandsons finished conquering northern China, invaded Korea, leveled Kiev, and reached the Adriatic, creating the largest unified land empire in history, ruled through four khanates.
+---
+Q: How did the Mongols treat conquered peoples once the fighting was over?
+L: 2
+A: They were tolerant: they rarely forced their beliefs or way of life on others, and some even adopted local cultures.
+W: They forced everyone to become nomads.
+W: They made Confucianism the official religion everywhere.
+W: They banned all trade.
+W: They required everyone to speak Mongolian.
+S: Ferocious in war, the Mongols were tolerant in peace. The Ilkhans and the Golden Horde even became Muslims. Growing cultural differences among the khanates helped split the empire.
+---
+Q: What was the Pax Mongolica?
+L: 1
+A: The “Mongol Peace,” when the Mongols kept order across Eurasia and made trade and travel safe
+W: The Mongols’ law code for their soldiers
+W: A treaty between the Mongols and Japan
+W: The wall the Mongols built across Russia
+W: The Mongol capital in China
+S: From the mid-1200s to the mid-1300s the Mongols guaranteed safe passage for trade caravans, travelers, and missionaries across their empire.
+---
+Q: <b>Lesson 2 Assessment #6.</b> What impact did the Mongol Peace have on interaction between East and West?
+L: 2
+A: Trade and travel between Europe and Asia reached new heights, and ideas and inventions like gunpowder moved west.
+W: It cut off all contact between Europe and Asia.
+W: It made China conquer Europe.
+W: It ended the use of the Silk Roads.
+W: It stopped the spread of disease.
+S: Trade between Europe and Asia had never been more active. Ideas and inventions traveled with the goods. Some historians think the bubonic plague also spread this way.
+=== GENS ===
+GENS['wh4-mongol']=[];

@@ -1,6 +1,6 @@
 /* ---------- problem card ---------- */
-/* hand-written problems are 'AMC-style' in the AMC track and 'Worked problem' in precalculus */
-const cLabel=sub=>{const s=subById(sub);return s&&findTopic(s.topic).track==='pc'?'Worked problem':'AMC-style'};
+/* hand-written problems are 'AMC-style' in the AMC track, 'Worked problem' in precalculus, 'Review question' in history */
+const cLabel=sub=>{const s=subById(sub),tr=s&&findTopic(s.topic).track;return tr==='pc'?'Worked problem':tr==='wh'?'Review question':'AMC-style'};
 const GIVEUP='<span class="fb-acts first"><button class="giveup-btn" type="button">Give up</button></span>';
 const ITEMS=new Map();   // id -> problem, so Ask AI can find the problem behind a card
 function cardHTML(it,num,opts={}){
@@ -47,7 +47,7 @@ function setView(sid,body){
   const set=SETS[sid];let filter='all';
   const statHTML=()=>{const st=subStats(sid);return`<div><b>${st.done}/${st.total}</b><span>attempted</span></div><div><b>${st.ok}</b><span>correct</span></div><div><b>${st.done?Math.round(st.ok/st.done*100):0}%</b><span>accuracy</span></div>`};
   body.innerHTML=`<div class="stat" id="sstat">${statHTML()}</div>
-  <div class="filters" id="flt">${[['all','All'],['c',cLabel(sid)],['g','Skill drills'],['1','★ Easy'],['2','★★ Medium'],['3','★★★ Hard'],['new','Unattempted'],['miss','Missed']].map(([k,n])=>`<button class="chip ${k==='all'?'on':''}" data-f="${k}">${n}</button>`).join('')}
+  <div class="filters" id="flt">${[['all','All'],...(set.some(x=>x.src==='g')?[['c',cLabel(sid)],['g','Skill drills']]:[]),['1','★ Easy'],['2','★★ Medium'],['3','★★★ Hard'],['new','Unattempted'],['miss','Missed']].map(([k,n])=>`<button class="chip ${k==='all'?'on':''}" data-f="${k}">${n}</button>`).join('')}
   <span class="spacer"></span><button class="chip" id="resetset">Reset this set</button></div><div id="plist"></div>`;
   const list=body.querySelector('#plist');
   function draw(){

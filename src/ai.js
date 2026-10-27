@@ -48,7 +48,9 @@ const AI=(()=>{
     const ch=it.choices.map((c,i)=>'('+L[i]+') '+plain(c)).join('   ');
     const tail='\n\nAnswer choices: '+ch+'\n\nThe correct answer is '+ans+'.'+
       (chosen!=null&&chosen!==it.ans?' I chose ('+L[chosen]+') '+plain(it.choices[chosen])+'. What mistake leads to that answer?':'');
-    const head='Explain step by step how to solve this math problem and why the answer is '+ans+'.\n\nProblem: ';
+    const head=typeof isTextSub==='function'&&isTextSub(it.sub)
+      ?'Explain this world history question and why the answer is '+ans+', using the history behind it.\n\nQuestion: '
+      :'Explain step by step how to solve this math problem and why the answer is '+ans+'.\n\nProblem: ';
     let q=plain(it.q);const room=1700-head.length-tail.length;  // keep the URL a safe length
     if(q.length>room)q=q.slice(0,Math.max(200,room-3))+'...';
     return head+q+tail;
