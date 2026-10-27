@@ -8,7 +8,7 @@ Each person's data lives under `/codes/<code>`, where the code is 8 random chara
 
 - Listing `/codes` or the root is denied, so codes cannot be enumerated.
 - Writes outside `/codes/<valid code>` are denied.
-- `security/database.rules.json` adds structure and size checks: only the data areas the site uses (`q`, `pr`, `mock`, `hist`, `set`, `pdf`, `nb`, `music`, `fonts`, `created`, `updated`), chunks under 600 KB, notebook pages under 9 MB, well-formed records. Paste it into Firebase console → Realtime Database → Rules → Publish.
+- `security/database.rules.json` adds structure and size checks: only the data areas the site uses (`q`, `pr`, `mock`, `hist`, `set`, `pdf` (including highlights and notes in `pdf/marks`), `nb`, `music`, `fonts`, `created`, `updated`), chunks under 600 KB, notebook pages under 9 MB, well-formed records. Paste it into Firebase console → Realtime Database → Rules → Publish.
 
 Music and textbook PDFs are stored only under the owner's code, never in this public repository.
 

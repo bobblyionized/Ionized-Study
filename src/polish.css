@@ -525,3 +525,46 @@ body.bkv-on .mu-btn{z-index:61}body.bkv-on .mu-panel{z-index:62}          /* mus
 @media (max-width:640px){.a11y-link{order:1}#crumbs{order:2}}
 .a11y-page{max-width:72ch}
 .a11y-page h2{margin-top:26px}
+
+/* ---------- textbook highlights and sticky notes ---------- */
+.bkv-page canvas{position:relative;z-index:0}
+.bkv-hl,.bkv-notes{position:absolute;inset:0;pointer-events:none}
+.bkv-hl{z-index:1;mix-blend-mode:multiply}
+.bkv-h{position:absolute;border-radius:2px;opacity:.5}
+.c-y{background:#ffe066}.c-g{background:#8fe08f}.c-b{background:#8fd3ff}.c-p{background:#ffb0d6}
+.textLayer{position:absolute;inset:0;overflow:hidden;line-height:1;text-align:initial;-webkit-text-size-adjust:none;text-size-adjust:none;forced-color-adjust:none;transform-origin:0 0;z-index:2}
+.textLayer span,.textLayer br{color:transparent;position:absolute;white-space:pre;cursor:text;transform-origin:0 0}
+.textLayer ::selection{background:rgba(40,90,255,.28)}
+.textLayer .endOfContent{display:block;position:absolute;inset:100% 0 0;z-index:-1;cursor:default;user-select:none}
+.bkv-pages.area .textLayer{pointer-events:none}
+.bkv-pages.area .bkv-page{cursor:crosshair;touch-action:none}
+.bkv-drag{position:absolute;z-index:3;border:1.5px dashed #5b6cff;background:rgba(91,108,255,.14);pointer-events:none}
+.bkv-notes{z-index:4;left:calc(100% + 14px);right:auto;width:230px}
+.bkv-note{position:absolute;left:0;width:100%;box-sizing:border-box;pointer-events:auto;background:#fff4b0;color:#2b2a24;border-radius:6px;box-shadow:0 6px 16px -6px rgba(0,0,0,.5);padding:6px 8px 8px;font-family:var(--ui);font-size:13.5px}
+.bkv-nh{display:flex;align-items:center;gap:6px;font-size:12px;color:#5f5a3c}
+.bkv-nh .q{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-style:italic}
+.bkv-nh .dot{flex:none;width:10px;height:10px;border-radius:50%;box-shadow:0 0 0 1px rgba(0,0,0,.2)}
+.bkv-nh button{flex:none;border:0;background:none;color:#5f5a3c;cursor:pointer;font-size:17px;line-height:1;padding:2px 5px;border-radius:4px}
+.bkv-nh button:hover,.bkv-nh button:focus-visible{background:rgba(0,0,0,.08);color:#000}
+.bkv-note textarea{display:block;width:100%;box-sizing:border-box;margin-top:4px;border:0;background:transparent;resize:none;overflow:hidden;font:inherit;font-size:14px;line-height:1.4;color:inherit;outline:none;min-height:40px}
+.bkv-note textarea::placeholder{color:#8a8467}
+.bkv-note:focus-within{box-shadow:0 0 0 2px #5b6cff,0 6px 16px -6px rgba(0,0,0,.5)}
+/* narrow screens: notes fold into pins on the page's right edge; tap one to open it */
+.bkv-pages.nn .bkv-notes{left:auto;right:6px;width:30px}
+.bkv-pages.nn .bkv-note{left:auto;right:0;width:30px;height:30px;padding:0;overflow:hidden;cursor:pointer}
+.bkv-pages.nn .bkv-note>*{display:none}
+.bkv-pages.nn .bkv-note::before{content:"✎";display:flex;align-items:center;justify-content:center;width:30px;height:30px;font-size:15px}
+.bkv-pages.nn .bkv-note.open{width:min(260px,78vw);height:auto;padding:6px 8px 8px;cursor:auto;z-index:2}
+.bkv-pages.nn .bkv-note.open::before{display:none}
+.bkv-pages.nn .bkv-note.open .bkv-nh{display:flex}.bkv-pages.nn .bkv-note.open textarea{display:block}
+.bkv-pop{position:fixed;z-index:70;display:flex;align-items:center;gap:4px;background:#1e2333;border-radius:10px;padding:5px;box-shadow:0 10px 26px rgba(0,0,0,.4);font-family:var(--ui)}
+.bkv-pop[hidden]{display:none}
+.bkv-pop button{border:0;background:none;color:#fff;font:inherit;font-size:13.5px;font-weight:600;padding:6px 9px;border-radius:7px;cursor:pointer;white-space:nowrap}
+.bkv-pop button:hover{background:rgba(255,255,255,.14)}
+.bkv-pop .sw{width:24px;height:24px;padding:0;border-radius:50%;border:2px solid rgba(255,255,255,.55)}
+.bkv-pop .sw:hover{border-color:#fff}.bkv-pop .sw.on{border-color:#fff;box-shadow:0 0 0 2px #5b6cff}
+.bkv-b.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.bkv-pop .sw.c-y{background:#ffe066}.bkv-pop .sw.c-g{background:#8fe08f}.bkv-pop .sw.c-b{background:#8fd3ff}.bkv-pop .sw.c-p{background:#ffb0d6}
+.bkv-notes:empty{display:none}          /* an empty notes column must not widen the page */
+.bkv-narrow{display:none}
+@media (max-width:560px){.bkv-wide{display:none}.bkv-narrow{display:inline}}

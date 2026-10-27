@@ -83,19 +83,19 @@ const BOOKS=(()=>{
     const tid=subTopic(sid);if(!tid)return'';const D=DATA[tid];
     if(D.reads&&D.reads[sid]){const [doc,ns]=D.reads[sid],k=tid+':'+doc;   // a history lesson: its own reading PDF
       return`<div class="bkbar">${ICON}<span><b>Reading</b> · ${span(ns)}</span><span class="sp"></span>
-        ${avail(k)?`<button class="btn sm" data-bk-open="${k}:1">Open the reading</button>`:`<button class="btn sm" data-bk-add="${k}" data-bk-then="1">Add the reading PDF</button>`}</div>`}
+        ${avail(k)?`<button class="btn sm" data-bk-open="${k}">Open the reading</button>`:`<button class="btn sm" data-bk-add="${k}" data-bk-then="1">Add the reading PDF</button>`}</div>`}
     const [a,b]=D.secs[sid],ok=avail(tid+':book');
     const range=`pp. ${bookPage(tid,a)}–${bookPage(tid,b)}`;const ans=D.docs.filter(d=>d[0]!=='book'&&avail(tid+':'+d[0]));
     return`<div class="bkbar">${ICON}<span><b>Textbook</b> · Chapter ${D.ch}, ${range}</span><span class="sp"></span>
       ${ok?`<button class="btn sm" data-bk-open="${tid}:book:${a}">Open ${range}</button>`:`<button class="btn sm" data-bk-add="${tid}:book" data-bk-then="${a}">Add your Chapter ${D.ch} PDF</button>`}
-      ${ans.map(d=>`<button class="btn sm" data-bk-open="${tid}:${d[0]}:1">${d[1]}</button>`).join('')}</div>`;
+      ${ans.map(d=>`<button class="btn sm" data-bk-open="${tid}:${d[0]}">${d[1]}</button>`).join('')}</div>`;
   }
   function chapterCard(tid){
     const D=DATA[tid];if(!D)return'';
     const row=([id,label])=>{const k=tid+':'+id,ok=avail(k),ns=readOf(tid,id);
       return`<div class="bkrow"><span class="bkname">${label}${id==='book'?` <span class="meta">book pp. ${bookPage(tid,1)}–${bookPage(tid,D.pages)}</span>`:ns?` <span class="meta">${span(ns)}</span>`:''}<span class="bkst" data-bk-st="${k}">${stText(k)}</span></span><span class="sp"></span>
       ${busy[k]==='failed'?`<button class="btn sm" data-bk-up="${k}">Try again</button>`:''}
-      ${ok?`<button class="btn sm pri" data-bk-open="${k}:1">Open</button><button class="btn sm" data-bk-add="${k}">Replace</button><button class="btn sm" data-bk-del="${k}">Remove</button>`
+      ${ok?`<button class="btn sm pri" data-bk-open="${k}">Open</button><button class="btn sm" data-bk-add="${k}">Replace</button><button class="btn sm" data-bk-del="${k}">Remove</button>`
          :`<button class="btn sm" data-bk-add="${k}">Add PDF</button>`}</div>`};
     if(D.reads)return`<div class="card bkcard"><div class="bkhead">${ICON}<div><b>Your Unit ${D.unit} readings</b><div class="meta">Add each reading’s PDF once and open it from its lesson. Files are saved to your sync code, so every device using your code gets them.</div></div></div>
       ${D.docs.map(row).join('')}</div>`;
@@ -129,32 +129,159 @@ const BOOKS=(()=>{
       s.onerror=()=>{lib=null;no(new Error('Could not load the PDF reader. Check your internet connection.'))};document.head.appendChild(s)});
     return lib}
   let V=null;                                            // current viewer state
+  const $b=()=>document.getElementById('bkvBody'),pageDiv=p=>document.querySelector(`#bkvPages .bkv-page[data-p="${p}"]`);
+  const Hs=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const mid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+
+  /* where you were in each file, kept on this device only: switching between the book and the answers comes back to the same spot */
+  const POS='amcprep.bkpos';
+  const posAll=()=>{try{return JSON.parse(localStorage.getItem(POS)||'{}')||{}}catch(e){return{}}};
+  function savePos(){if(!V||!V.ready)return;const d=pageDiv(V.cur),body=$b();if(!d)return;
+    const f=Math.max(0,Math.min(1,(body.scrollTop+10-d.offsetTop)/d.offsetHeight)),all=posAll();all[V.key]={p:V.cur,f:+f.toFixed(3),z:V.z};
+    try{localStorage.setItem(POS,JSON.stringify(all))}catch(e){}}
+  let posT=null;const savePosSoon=()=>{clearTimeout(posT);posT=setTimeout(savePos,250)};
+
+  /* ---------- highlights and sticky notes: /codes/<code>/pdf/marks/<file>/<id>, also cached on this device ----------
+     highlight {k:'h', p: pdf page, r: [[x,y,w,h]…] as fractions of the page, c: colour, t: the highlighted text, at}
+     note      {k:'n', p, y: fraction of the page, h: highlight id ('' for a loose note), v: the note, at}
+     removed   {del:1, at}                                                                                         */
+  const HL={y:'Yellow',g:'Green',b:'Blue',p:'Pink'};let lastC='y';
+  let marks={},marksKey=null;
+  const mkStore=k=>'amcprep.marks.'+(code()||'local')+'.'+k;
+  function loadMarks(k){marksKey=k;try{marks=JSON.parse(localStorage.getItem(mkStore(k))||'{}')||{}}catch(e){marks={}}}
+  const keepMarks=()=>{if(marksKey)try{localStorage.setItem(mkStore(marksKey),JSON.stringify(marks))}catch(e){}};
+  const num=(v,a,b)=>typeof v==='number'&&isFinite(v)&&v>=a&&v<=b;
+  function cleanMark(r){if(!r||typeof r!=='object'||!num(r.at,0,1e14))return null;if(r.del)return{del:1,at:r.at};   // anything synced is checked before use
+    if(!Number.isInteger(r.p)||r.p<1||r.p>5000)return null;
+    if(r.k==='h'){const rs=(Array.isArray(r.r)?r.r:Object.values(r.r||{})).map(q=>Array.isArray(q)?q:Object.values(q||{}))
+        .filter(q=>q.length===4&&q.every(x=>num(x,-.01,1.01))).slice(0,120);
+      return rs.length?{k:'h',p:r.p,r:rs,c:HL[r.c]?r.c:'y',t:String(r.t||'').slice(0,2000),at:r.at}:null}
+    if(r.k==='n')return{k:'n',p:r.p,y:num(r.y,0,1)?r.y:0,h:r.h&&safeId(r.h)?r.h:'',v:String(r.v||'').slice(0,5000),at:r.at};
+    return null}
+  const live=id=>!!(marks[id]&&!marks[id].del);
+  function pushMark(id){keepMarks();if(code()&&marksKey)rest('marks/'+enc(marksKey)+'/'+id,'PUT',marks[id]).catch(()=>{})}
+  async function pullMarks(k){if(!code())return;let m;try{m=await rest('marks/'+enc(k))}catch(e){return}if(marksKey!==k)return;m=m&&typeof m==='object'?m:{};
+    let changed=false;
+    for(const id in m){if(!safeId(id))continue;const r=cleanMark(m[id]);if(r&&(!marks[id]||r.at>marks[id].at)){marks[id]=r;changed=true}}
+    for(const id in marks)if(!m[id]||marks[id].at>(m[id].at||0))pushMark(id);     // made offline, or before this device had the code
+    if(changed){keepMarks();ensureRoom();paintMarks()}}
+  const noteT={};
+  function flushNotes(){for(const id in noteT){clearTimeout(noteT[id].t);noteT[id].fn()}}
+  function setMark(id,r){flushNotes();r.at=Date.now();marks[id]=r;pushMark(id);paintMarks(r.p,true)}
+  function dropMark(id){flushNotes();const p=marks[id]&&marks[id].p,at=Date.now();marks[id]={del:1,at};pushMark(id);
+    for(const n in marks)if(live(n)&&marks[n].k==='n'&&marks[n].h===id){marks[n]={del:1,at};pushMark(n)}   // a highlight's notes go with it
+    ensureRoom();paintMarks(p,true)}
+  const hasNotes=()=>Object.keys(marks).some(id=>live(id)&&marks[id].k==='n');
+  function paintMarks(only,force){if(!V||marksKey!==V.key)return;
+    document.querySelectorAll('#bkvPages .bkv-page').forEach(d=>{const p=+d.dataset.p;if(only&&p!==only)return;
+      const hs=[],ns=[];for(const id in marks){const m=marks[id];if(m.del||m.p!==p)continue;(m.k==='h'?hs:ns).push([id,m])}
+      d.querySelector('.bkv-hl').innerHTML=hs.map(([id,m])=>m.r.map(q=>`<i class="bkv-h c-${m.c}" style="left:${q[0]*100}%;top:${q[1]*100}%;width:${q[2]*100}%;height:${q[3]*100}%"></i>`).join('')).join('');
+      const nl=d.querySelector('.bkv-notes');if(!force&&nl.contains(document.activeElement))return;   // never wipe a note while it is being typed
+      const open=new Set([...nl.querySelectorAll('.bkv-note.open')].map(x=>x.dataset.nid));
+      ns.sort((a,b)=>a[1].y-b[1].y);
+      nl.innerHTML=ns.map(([id,m])=>{const h=m.h&&live(m.h)?marks[m.h]:null;
+        return`<div class="bkv-note${open.has(id)?' open':''}" data-nid="${id}" data-y="${m.y}"><div class="bkv-nh">${h?`<span class="dot c-${h.c}"></span><span class="q">${Hs(h.t||'Highlighted area')}</span>`:'<span class="q">Note</span>'}
+          <button type="button" data-ndel aria-label="Delete note" title="Delete note">×</button></div><textarea data-ntext rows="2" placeholder="Write a note…" aria-label="Note">${Hs(m.v)}</textarea></div>`}).join('');
+      arrange(d)})}
+  function arrange(d){const nl=d.querySelector('.bkv-notes'),H=d.offsetHeight;let bottom=-1e9;          // stack notes near their highlight without overlapping
+    nl.querySelectorAll('.bkv-note').forEach(el=>{const ta=el.querySelector('textarea');if(ta&&el.offsetParent){ta.style.height='auto';ta.style.height=ta.scrollHeight+'px'}
+      const top=Math.max((+el.dataset.y)*H,bottom+8);el.style.top=top+'px';bottom=top+el.offsetHeight})}
+  function ensureRoom(){if(V&&V.ready&&V.room!==roomFor())layout(true)}
+  const roomFor=()=>$b().clientWidth>=900&&hasNotes()?250:0;
+  function addNote(hid,p,y){const h=hid&&marks[hid],id=mid();
+    setMark(id,{k:'n',p:h?h.p:p,y:h?Math.max(0,Math.min(...h.r.map(q=>q[1]))):y,h:hid||'',v:''});ensureRoom();
+    requestAnimationFrame(()=>{const el=document.querySelector(`[data-nid="${id}"]`);if(!el)return;
+      if(V&&V.narrow){document.querySelectorAll('.bkv-note.open').forEach(x=>x.classList.remove('open'));el.classList.add('open');arrange(el.closest('.bkv-page'))}
+      el.scrollIntoView({block:'nearest',behavior:'smooth'});const ta=el.querySelector('textarea');if(ta)ta.focus({preventScroll:true})})}
+
+  /* the little menu over a selection or a highlight */
+  let P=null;
+  function pop(){let el=document.getElementById('bkvPop');if(el)return el;el=document.createElement('div');el.id='bkvPop';el.className='bkv-pop';el.hidden=true;document.body.appendChild(el);
+    el.addEventListener('pointerdown',e=>e.preventDefault());                    // keep the text selection while choosing
+    el.addEventListener('mousedown',e=>e.preventDefault());
+    el.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||!P)return;const a=b.dataset.a,c=b.dataset.c;
+      if(P.sel){if(c)lastC=c;const ids=P.sel.map(g=>{const id=mid();setMark(id,{k:'h',p:g.p,r:g.r,c:c||lastC,t:P.text});return id});
+        try{getSelection().removeAllRanges()}catch(_){}hidePop();if(a==='note')addNote(ids[0]);return}
+      if(P.hid&&live(P.hid)){if(c){lastC=c;setMark(P.hid,Object.assign({},marks[P.hid],{c}));showPop(P.x,P.y,{hid:P.hid});return}
+        const hid=P.hid;hidePop();if(a==='note')addNote(hid);else if(a==='del')dropMark(hid)}});
+    return el}
+  function showPop(x,y,ctx){const el=pop();P=Object.assign({x,y},ctx);const cur=ctx.hid&&marks[ctx.hid]?marks[ctx.hid].c:null;
+    el.innerHTML=Object.keys(HL).map(c=>`<button type="button" class="sw c-${c}${c===cur?' on':''}" data-c="${c}" aria-label="${ctx.hid?'Change to ':'Highlight '}${HL[c]}" title="${HL[c]}"></button>`).join('')
+      +(ctx.sel?'<button type="button" data-a="note">Highlight + note</button>':'<button type="button" data-a="note">Add note</button><button type="button" data-a="del">Remove</button>');
+    el.hidden=false;const w=el.offsetWidth,h=el.offsetHeight;
+    el.style.left=Math.max(8,Math.min(innerWidth-w-8,x-w/2))+'px';el.style.top=(y+h+8>innerHeight?Math.max(8,y-h-40):y)+'px'}
+  function hidePop(){P=null;const el=document.getElementById('bkvPop');if(el)el.hidden=true}
+  function mergeRects(rs){rs.sort((a,b)=>a[1]-b[1]||a[0]-b[0]);const out=[];
+    for(const q of rs){const l=out[out.length-1];if(l&&Math.abs(l[1]-q[1])<.004&&Math.abs(l[3]-q[3])<.006&&q[0]<=l[0]+l[2]+.012){const r=Math.max(l[0]+l[2],q[0]+q[2]);l[2]=+(r-l[0]).toFixed(4)}else out.push(q.slice())}
+    return out}
+  function checkSel(){if(!V)return;const s=getSelection();if(!s||s.isCollapsed||!s.rangeCount){if(P&&P.sel)hidePop();return}
+    const rg=s.getRangeAt(0),box=document.getElementById('bkvPages');if(!box||!box.contains(rg.commonAncestorContainer))return;
+    const pages=[...box.querySelectorAll('.bkv-page')].map(d=>[d,d.getBoundingClientRect()]).filter(([,r])=>r.bottom>0&&r.top<innerHeight),groups={};
+    for(const q of rg.getClientRects()){if(q.width<1||q.height<1)continue;const cx=q.left+q.width/2,cy=q.top+q.height/2;
+      const hit=pages.find(([,r])=>cx>=r.left&&cx<=r.right&&cy>=r.top&&cy<=r.bottom);if(!hit)continue;const [d,r]=hit;
+      (groups[d.dataset.p]=groups[d.dataset.p]||[]).push([(q.left-r.left)/r.width,(q.top-r.top)/r.height,q.width/r.width,q.height/r.height].map(v=>+v.toFixed(4)))}
+    const sel=Object.keys(groups).map(p=>({p:+p,r:mergeRects(groups[p])}));if(!sel.length)return;
+    const b=rg.getBoundingClientRect();showPop(b.left+b.width/2,b.bottom+10,{sel,text:s.toString().replace(/\s+/g,' ').trim().slice(0,2000)})}
+
   function shell(){
     let el=document.getElementById('bkv');if(el)return el;
     el=document.createElement('div');el.id='bkv';el.className='bkv';el.setAttribute('role','dialog');el.setAttribute('aria-label','Textbook');
     el.innerHTML=`<div class="bkv-top"><div class="bkv-tabs" id="bkvTabs"></div><span class="sp"></span>
       <div class="bkv-nav"><button class="bkv-b" id="bkvPrev" aria-label="Previous page">‹</button><label class="bkv-pg"><span id="bkvPre">p.</span><input id="bkvIn" inputmode="numeric" aria-label="Go to page"><span id="bkvOf"></span></label><button class="bkv-b" id="bkvNext" aria-label="Next page">›</button></div>
       <div class="bkv-nav"><button class="bkv-b" id="bkvOut" aria-label="Zoom out">−</button><button class="bkv-b" id="bkvFit" aria-label="Fit width">Fit</button><button class="bkv-b" id="bkvZin" aria-label="Zoom in">+</button></div>
+      <div class="bkv-nav"><button class="bkv-b" id="bkvArea" aria-pressed="false" title="Highlight an area by dragging a box (for scanned pages)"><span class="bkv-wide">Highlight a</span><span class="bkv-narrow">A</span>rea</button><button class="bkv-b" id="bkvNote" title="Add a sticky note on this page">+ Note</button></div>
       <button class="bkv-b bkv-x" id="bkvClose" aria-label="Close">${icon('x')}</button></div>
       <div class="bkv-body" id="bkvBody"><div class="bkv-msg" id="bkvMsg">Opening…</div><div class="bkv-pages" id="bkvPages"></div></div>`;
     document.body.appendChild(el);
-    const $=id=>el.querySelector('#'+id);
+    const $=id=>el.querySelector('#'+id),pages=$('bkvPages');
     $('bkvClose').onclick=close;
     $('bkvPrev').onclick=()=>V&&go(V.cur-1);$('bkvNext').onclick=()=>V&&go(V.cur+1);
     $('bkvOut').onclick=()=>V&&zoom(V.z/1.25);$('bkvZin').onclick=()=>V&&zoom(V.z*1.25);$('bkvFit').onclick=()=>V&&zoom(1);
+    $('bkvArea').onclick=()=>{if(!V)return;V.area=!V.area;$('bkvArea').classList.toggle('on',V.area);$('bkvArea').setAttribute('aria-pressed',String(V.area));pages.classList.toggle('area',V.area);hidePop()};
+    $('bkvNote').onclick=()=>{if(!V||!V.ready)return;const d=pageDiv(V.cur),body=$b();if(!d)return;
+      addNote('',V.cur,Math.max(0,Math.min(.95,(body.scrollTop+body.clientHeight*.3-d.offsetTop)/d.offsetHeight)))};
     $('bkvIn').addEventListener('keydown',e=>{if(e.key!=='Enter'||!V)return;const n=parseInt($('bkvIn').value,10);if(!isFinite(n))return;go(toPdf(V.tid,V.doc,n))});
-    $('bkvBody').addEventListener('scroll',()=>{if(V){track();sweep()}},{passive:true});
-    document.addEventListener('keydown',e=>{if(!V||!el.classList.contains('open'))return;if(e.key==='Escape')close();
+    $('bkvBody').addEventListener('scroll',()=>{if(V){track();sweep();savePosSoon();if(P&&P.hid)hidePop()}},{passive:true});
+    $('bkvBody').addEventListener('click',e=>{if(!V||e.target.closest('.bkv-note'))return;const s=getSelection();if(s&&!s.isCollapsed)return;
+      document.querySelectorAll('.bkv-note.open').forEach(x=>x.classList.remove('open'));
+      const d=e.target.closest('.bkv-page');if(!d||V.area){if(!V.area)hidePop();return}
+      const p=+d.dataset.p,r=d.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+      const id=Object.keys(marks).find(k=>live(k)&&marks[k].k==='h'&&marks[k].p===p&&marks[k].r.some(q=>x>=q[0]&&x<=q[0]+q[2]&&y>=q[1]-.004&&y<=q[1]+q[3]+.004));
+      if(id)showPop(e.clientX,e.clientY+14,{hid:id});else hidePop()});
+    /* sticky notes: type to edit (saved as you go), × to delete; on phones they fold into pins on the page edge */
+    pages.addEventListener('input',e=>{const ta=e.target.closest('[data-ntext]');if(!ta)return;const el=ta.closest('.bkv-note'),id=el.dataset.nid;arrange(el.closest('.bkv-page'));
+      if(noteT[id])clearTimeout(noteT[id].t);const fn=()=>{delete noteT[id];if(live(id)){marks[id]=Object.assign({},marks[id],{v:ta.value.slice(0,5000),at:Date.now()});pushMark(id)}};
+      noteT[id]={fn,t:setTimeout(fn,500)}});
+    pages.addEventListener('click',e=>{const del=e.target.closest('[data-ndel]');
+      if(del){const id=del.closest('.bkv-note').dataset.nid;flushNotes();if(marks[id]&&marks[id].v&&!confirm('Delete this note?'))return;dropMark(id);return}
+      const n=e.target.closest('.bkv-note');if(n&&V&&V.narrow&&!n.classList.contains('open')){document.querySelectorAll('.bkv-note.open').forEach(x=>x.classList.remove('open'));n.classList.add('open');arrange(n.closest('.bkv-page'));const ta=n.querySelector('textarea');if(ta)ta.focus({preventScroll:true})}});
+    /* area highlights: drag a box on the page */
+    let drag=null;
+    pages.addEventListener('pointerdown',e=>{if(!V||!V.area||e.button>0||e.target.closest('.bkv-note'))return;const d=e.target.closest('.bkv-page');if(!d)return;
+      e.preventDefault();try{d.setPointerCapture(e.pointerId)}catch(_){}const r=d.getBoundingClientRect();
+      drag={d,r,id:e.pointerId,x0:(e.clientX-r.left)/r.width,y0:(e.clientY-r.top)/r.height,el:document.createElement('div')};drag.el.className='bkv-drag';d.appendChild(drag.el)});
+    const box=e=>{const {r,x0,y0}=drag,x1=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width)),y1=Math.max(0,Math.min(1,(e.clientY-r.top)/r.height));
+      return[Math.min(x0,x1),Math.min(y0,y1),Math.abs(x1-x0),Math.abs(y1-y0)].map(v=>+v.toFixed(4))};
+    pages.addEventListener('pointermove',e=>{if(!drag||drag.id!==e.pointerId)return;const q=box(e);Object.assign(drag.el.style,{left:q[0]*100+'%',top:q[1]*100+'%',width:q[2]*100+'%',height:q[3]*100+'%'})});
+    const endDrag=e=>{if(!drag||drag.id!==e.pointerId)return;const q=box(e),p=+drag.d.dataset.p;drag.el.remove();drag=null;
+      if(e.type==='pointerup'&&q[2]>.01&&q[3]>.006){const id=mid();setMark(id,{k:'h',p,r:[q],c:lastC,t:''});showPop(e.clientX,e.clientY+14,{hid:id})}};
+    pages.addEventListener('pointerup',endDrag);pages.addEventListener('pointercancel',endDrag);
+    let selT=null;document.addEventListener('selectionchange',()=>{if(!V||!el.classList.contains('open'))return;clearTimeout(selT);selT=setTimeout(checkSel,250)});
+    document.addEventListener('keydown',e=>{if(!V||!el.classList.contains('open'))return;
+      if(e.target.tagName==='TEXTAREA'){if(e.key==='Escape')e.target.blur();return}
+      if(e.key==='Escape'){if(P)hidePop();else close()}
       else if(e.target.tagName!=='INPUT'&&(e.key==='ArrowRight'||e.key==='PageDown'))go(V.cur+1);else if(e.target.tagName!=='INPUT'&&(e.key==='ArrowLeft'||e.key==='PageUp'))go(V.cur-1)});
     window.addEventListener('resize',()=>{if(V&&el.classList.contains('open'))layout(true)});
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden&&V&&el.classList.contains('open'))pullMarks(V.key)});
+    document.addEventListener('amcprep:code',()=>{if(V){loadMarks(V.key);paintMarks(0,true);pullMarks(V.key)}});
     return el;
   }
   async function open(key,page){
     const [tid,doc]=key.split(':');const el=shell(),$=id=>el.querySelector('#'+id);
-    el.classList.add('open');document.body.classList.add('bkv-on');
-    $('bkvTabs').innerHTML=DATA[tid].docs.filter(d=>avail(tid+':'+d[0])).map(d=>`<button class="bkv-tab${d[0]===doc?' on':''}" data-bk-open="${tid}:${d[0]}:1">${d[1]}</button>`).join('');
-    if(V&&V.key===key){go(page||1);return}
-    if(V)teardown();
+    el.classList.add('open');document.body.classList.add('bkv-on');hidePop();
+    $('bkvTabs').innerHTML=DATA[tid].docs.filter(d=>avail(tid+':'+d[0])).map(d=>`<button class="bkv-tab${d[0]===doc?' on':''}" data-bk-open="${tid}:${d[0]}">${d[1]}</button>`).join('');
+    if(V&&V.key===key){if(page)go(page);return}
+    if(V){savePos();flushNotes();teardown()}
     $('bkvMsg').hidden=false;$('bkvMsg').textContent='Opening…';$('bkvPages').innerHTML='';
     try{
       if(cloud[key]&&(!has.has(key)||(localAt[key]||0)<cloud[key].at)){
@@ -162,23 +289,32 @@ const BOOKS=(()=>{
       const rec=await get(key);if(!rec)throw new Error('That PDF is not on this device or in your code yet.');
       const pdfjs=await loadLib();const data=new Uint8Array(await rec.blob.arrayBuffer());
       const pdf=await pdfjs.getDocument({data,isEvalSupported:false}).promise;const p1=await pdf.getPage(1);const vp=p1.getViewport({scale:1});
-      V={key,tid,doc,isBook:pageLabel(tid,doc,1)!=null,pdf,n:pdf.numPages,ar:vp.height/vp.width,z:1,cur:1,rendered:new Map(),obs:null};
+      const saved=posAll()[key];
+      V={key,tid,doc,isBook:pageLabel(tid,doc,1)!=null,pdf,n:pdf.numPages,ar:vp.height/vp.width,z:saved&&num(saved.z,.5,3)?saved.z:1,cur:1,rendered:new Map(),obs:null,area:false};
+      $('bkvArea').classList.remove('on');$('bkvArea').setAttribute('aria-pressed','false');$('bkvPages').classList.remove('area');
       $('bkvMsg').hidden=true;
       const want=doc==='book'?DATA[tid].pages:(readOf(tid,doc)||[]).length;if(V.isBook&&V.n!==want){$('bkvMsg').hidden=false;$('bkvMsg').textContent=`This file has ${V.n} pages, but this ${doc==='book'?'chapter':'reading'} should have ${want}, so page numbers may be off.`}
-      build();go(page||1,true);
+      loadMarks(key);build();V.ready=true;
+      if(page)go(page,true);                                   // a link to a section opens its page
+      else if(saved){go(saved.p,true);const d=pageDiv(V.cur);if(d)$b().scrollTop=d.offsetTop-10+(saved.f||0)*d.offsetHeight}   // otherwise, back where you were
+      else go(1,true);
+      pullMarks(key);
     }catch(e){$('bkvMsg').hidden=false;$('bkvMsg').textContent=e.message||'Could not open this PDF.'}
   }
   function build(){
     const box=document.getElementById('bkvPages');box.innerHTML='';
-    for(let i=1;i<=V.n;i++){const d=document.createElement('div');d.className='bkv-page';d.dataset.p=i;d.innerHTML=`<span class="bkv-num">${V.isBook?'p. '+pageLabel(V.tid,V.doc,i):'page '+i}</span>`;box.appendChild(d)}
+    for(let i=1;i<=V.n;i++){const d=document.createElement('div');d.className='bkv-page';d.dataset.p=i;
+      d.innerHTML=`<div class="bkv-hl"></div><div class="textLayer"></div><div class="bkv-notes"></div><span class="bkv-num">${V.isBook?'p. '+pageLabel(V.tid,V.doc,i):'page '+i}</span>`;box.appendChild(d)}
     layout(false);
     document.getElementById('bkvOf').textContent=V.isBook?` (${V.n} pages)`:` of ${V.n}`;document.getElementById('bkvPre').textContent=V.isBook?'p.':'';
   }
   function layout(keep){
-    const body=document.getElementById('bkvBody');const p=keep?V.cur:null;
-    const w=Math.min(body.clientWidth-24,980)*V.z;V.w=w;
+    const body=$b(),box=document.getElementById('bkvPages');const p=keep?V.cur:null;
+    V.narrow=body.clientWidth<900;V.room=roomFor();box.classList.toggle('nn',V.narrow);box.style.paddingRight=V.room+'px';   // a column for sticky notes on wide screens
+    const w=Math.min(body.clientWidth-24-V.room,980)*V.z;V.w=w;
     document.querySelectorAll('#bkvPages .bkv-page').forEach(d=>{d.style.width=w+'px';d.style.height=(w*V.ar)+'px'});
-    V.rendered.forEach((c,pg)=>{if(c.w!==w){const d=document.querySelector(`#bkvPages .bkv-page[data-p="${pg}"]`);unpaint(pg,d)}});
+    V.rendered.forEach((c,pg)=>{if(c.w!==w)unpaint(pg,pageDiv(pg))});
+    paintMarks(0,true);
     if(keep&&p)go(p,true);else sweep();
   }
   async function paint(p,d){
@@ -188,26 +324,29 @@ const BOOKS=(()=>{
       const c=document.createElement('canvas');c.width=Math.floor(vp.width);c.height=Math.floor(vp.height);c.style.width=tok.w+'px';c.style.height=(tok.w*base.height/base.width)+'px';
       await page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise;
       if(V.rendered.get(p)!==tok)return;d.querySelectorAll('canvas').forEach(x=>x.remove());d.appendChild(c);
+      const tl=d.querySelector('.textLayer');                  // selectable text over the page (scans have none: use "Highlight area")
+      if(tl&&window.pdfjsLib&&pdfjsLib.renderTextLayer){tl.innerHTML='';tl.style.setProperty('--scale-factor',sc);
+        try{const tc=await page.getTextContent();if(V.rendered.get(p)!==tok)return;await pdfjsLib.renderTextLayer({textContentSource:tc,container:tl,viewport:page.getViewport({scale:sc}),textDivs:[]}).promise}catch(e){}}
     }catch(e){if(V)V.rendered.delete(p)}
   }
   /* draw the pages near the visible area and free canvases far away (keeps memory low on phones) */
-  function sweep(){if(!V)return;const body=document.getElementById('bkvBody');const top=body.scrollTop,h=body.clientHeight;
+  function sweep(){if(!V)return;const body=$b();const top=body.scrollTop,h=body.clientHeight;
     document.querySelectorAll('#bkvPages .bkv-page').forEach(d=>{const p=+d.dataset.p,y0=d.offsetTop,y1=y0+d.offsetHeight;
       if(y1>top-h&&y0<top+2*h)paint(p,d);else if(y1<top-3*h||y0>top+4*h)unpaint(p,d)})}
-  function unpaint(p,d){if(!V||!V.rendered.has(p))return;V.rendered.delete(p);if(d)d.querySelectorAll('canvas').forEach(c=>{c.width=c.height=0;c.remove()})}
-  function go(p,instant){if(!V)return;p=Math.max(1,Math.min(V.n,p|0));const d=document.querySelector(`#bkvPages .bkv-page[data-p="${p}"]`);const body=document.getElementById('bkvBody');
+  function unpaint(p,d){if(!V||!V.rendered.has(p))return;V.rendered.delete(p);if(d){d.querySelectorAll('canvas').forEach(c=>{c.width=c.height=0;c.remove()});const tl=d.querySelector('.textLayer');if(tl&&!tl.contains(document.activeElement))tl.innerHTML=''}}
+  function go(p,instant){if(!V)return;p=Math.max(1,Math.min(V.n,p|0));const d=pageDiv(p);const body=$b();
     if(d)body.scrollTo({top:d.offsetTop-10,behavior:instant?'auto':'smooth'});V.cur=p;label();sweep();setTimeout(sweep,450)}
-  function track(){const body=document.getElementById('bkvBody');const mid=body.scrollTop+body.clientHeight*0.35;let cur=1;
+  function track(){const body=$b();const mid=body.scrollTop+body.clientHeight*0.35;let cur=1;
     document.querySelectorAll('#bkvPages .bkv-page').forEach(d=>{if(d.offsetTop<=mid)cur=+d.dataset.p});if(cur!==V.cur){V.cur=cur;label()}}
   function label(){const inp=document.getElementById('bkvIn');if(document.activeElement!==inp)inp.value=V.isBook?pageLabel(V.tid,V.doc,V.cur):V.cur}
-  function zoom(z){V.z=Math.max(0.5,Math.min(3,z));layout(true)}
-  function teardown(){if(!V)return;V.rendered.forEach((_,p)=>unpaint(p,document.querySelector(`#bkvPages .bkv-page[data-p="${p}"]`)));try{V.pdf.destroy()}catch(e){}V=null}
-  function close(){const el=document.getElementById('bkv');if(el)el.classList.remove('open');document.body.classList.remove('bkv-on')}
+  function zoom(z){V.z=Math.max(0.5,Math.min(3,z));layout(true);savePos()}
+  function teardown(){if(!V)return;V.rendered.forEach((_,p)=>unpaint(p,pageDiv(p)));try{V.pdf.destroy()}catch(e){}V=null}
+  function close(){if(V){savePos();flushNotes()}hidePop();const el=document.getElementById('bkv');if(el)el.classList.remove('open');document.body.classList.remove('bkv-on')}
 
   if(typeof document!=='undefined')document.addEventListener('click',e=>{
     const u=e.target.closest('[data-bk-up]');if(u){e.preventDefault();delete busy[u.dataset.bkUp];upload(u.dataset.bkUp);return}
     const o=e.target.closest('[data-bk-open]'),a=e.target.closest('[data-bk-add]'),d=e.target.closest('[data-bk-del]');
-    if(o){e.preventDefault();const [t,doc,p]=o.dataset.bkOpen.split(':');open(t+':'+doc,+p||1)}
+    if(o){e.preventDefault();const [t,doc,p]=o.dataset.bkOpen.split(':');open(t+':'+doc,p?+p:0)}   // no page: back where you left off
     else if(a){e.preventDefault();pick(a.dataset.bkAdd,a.dataset.bkThen)}
     else if(d){e.preventDefault();remove(d.dataset.bkDel)}
   });

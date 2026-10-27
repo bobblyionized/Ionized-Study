@@ -16,6 +16,7 @@
         "pdf": {
           "meta": { "$k": { ".validate": "newData.hasChildren(['n', 'at'])" } },
           "data": { "$k": { "$i": { ".validate": "newData.isString() && newData.val().length <= 600000" } } },
+          "marks": { "$k": { "$id": { ".validate": "$id.length <= 64 && newData.hasChildren(['at'])" } } },
           "$other": { ".validate": false }
         },
         "fonts": {
