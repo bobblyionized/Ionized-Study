@@ -59,7 +59,6 @@ const GENS={};
 /* ---------- extra helpers for generators ---------- */
 const O=(tex,v)=>({tex,v});
 const lcm=(a,b)=>a/gcd(a,b)*b;
-function isPrime(n){if(n<2)return false;for(let i=2;i*i<=n;i++)if(n%i===0)return false;return true}
 function factorize(n){const f={};for(let p=2;p*p<=n;p++)while(n%p===0){f[p]=(f[p]||0)+1;n/=p}if(n>1)f[n]=(f[n]||0)+1;return f}
 const ndiv=n=>Object.values(factorize(n)).reduce((a,e)=>a*(e+1),1);
 function sigmaDiv(n){let s=0;for(let i=1;i*i<=n;i++)if(n%i===0){s+=i;if(i*i!==n)s+=n/i}return s}

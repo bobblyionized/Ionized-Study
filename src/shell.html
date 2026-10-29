@@ -61,8 +61,6 @@ h4{margin:0 0 6px;font-size:15px;text-transform:uppercase;letter-spacing:.6px;co
 .tile.big .t{font-size:23px}
 .tile.big .d{font-size:15px}
 .secno{color:var(--accent);margin-right:2px}
-.bigtile{padding:26px}
-.bigtile .t{font-size:22px}
 .bar{height:6px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:4px}
 .bar>i{display:block;height:100%;background:var(--accent);border-radius:4px}
 .meta{font-size:12.5px;color:var(--muted)}
@@ -244,7 +242,6 @@ table.t th{background:var(--accent-weak)}
 .opt label.h{display:block;font-weight:700;margin-bottom:6px}
 .timer{font-variant-numeric:tabular-nums;font-weight:700;padding:4px 10px;border-radius:8px;background:var(--accent-weak);color:var(--accent)}
 .timer.low{background:var(--bad-weak);color:var(--bad)}
-.kbd{font-size:12px;color:var(--muted)}
 .empty{color:var(--muted);text-align:center;padding:30px}
 .katex-display{overflow-x:auto;overflow-y:hidden;padding:2px 0}
 .katex-display,.ch>span{scrollbar-width:thin;scrollbar-color:var(--line) transparent}
@@ -355,8 +352,8 @@ body.tm-running .tm-ring,body.tm-running .tm-ring-bg{opacity:1}
 .tm-code-btn:hover{border-color:var(--tp-muted)}
 .tm-code-hide{appearance:none;background:none;border:0;padding:0 0 0 2px;font:inherit;font-size:11px;letter-spacing:0;text-transform:none;color:var(--tp-muted);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
 .tm-code-hide:hover{color:var(--tp-fg)}
-.tm-code.hid .tm-code-val{letter-spacing:.18em;color:var(--tp-muted);cursor:default}
-.tm-code.hid .tm-sync{display:none}
+.tm-code.hid .tm-code-k,.tm-code.hid .tm-code-val,.tm-code.hid .tm-code-btn,.tm-code.hid .tm-sync{display:none}   /* hidden: only "Show code" stays */
+.tm-code.hid .tm-code-hide{font-size:13px;letter-spacing:.02em}
 @media (max-width:640px),(max-height:520px){.tm-code{position:static;align-items:center;text-align:center;margin-top:16px}}
 
 /* sheets */
@@ -448,14 +445,12 @@ textarea.tm-input{resize:vertical;min-height:84px;line-height:1.45}
   <a class="backtimer" id="backTimer" href="#/" title="Back to the timer menu">Timer</a>
   <a class="brand" href="#/home">Ionized <span>Study</span></a>
   <div class="crumbs" id="crumbs"></div>
-  <a class="a11y-link" href="#/accessibility">Accessibility</a>
 </div></header>
 <main id="app"></main>
 
 <!-- ======================= FOCUS TIMER: landing menu ======================= -->
 <div id="land">
   <div class="tm-top">
-    <a class="tm-a11y" href="#/accessibility">Accessibility</a>
     <div class="tm-brand">Ionized Study</div>
     <button class="tm-icon tm-mute" id="tmMute" aria-label="Mute sounds"></button>
   </div>
@@ -488,7 +483,7 @@ textarea.tm-input{resize:vertical;min-height:84px;line-height:1.45}
   </div>
   <button class="tm-histbtn" id="tmHistBtn"><svg viewBox="0 0 24 24"><path d="M3.5 12a8.5 8.5 0 1 0 2.5-6"/><path d="M3 4v4h4"/><path d="M12 7.5V12l3 2"/></svg>History</button>
   <div class="tm-code" id="tmCodeBox">
-    <div class="tm-code-label">Your code <button class="tm-code-hide" id="tmCodeHide" aria-pressed="false">Hide</button> <span class="tm-sync" id="tmSync" title="Sync status"><i></i><b>Connecting…</b></span></div>
+    <div class="tm-code-label"><span class="tm-code-k">Your code</span> <button class="tm-code-hide" id="tmCodeHide" aria-pressed="false">Hide</button> <span class="tm-sync" id="tmSync" title="Sync status"><i></i><b>Connecting…</b></span></div>
     <button class="tm-code-val" id="tmCode" title="Click to copy">········</button>
     <button class="tm-code-btn" id="tmSetCode">Set Code</button>
   </div>
@@ -503,6 +498,7 @@ textarea.tm-input{resize:vertical;min-height:84px;line-height:1.45}
     <div class="tm-tz"><div class="tm-tz-h">Universal time</div><div class="tm-tz-t" id="tmUtcT"></div><div class="tm-tz-d" id="tmUtcD"></div><div class="tm-tz-z">UTC · Coordinated Universal Time</div></div>
   </div>
   <div class="tm-blocks" id="tmBlocks"></div>
+  <p class="tm-a11y"><a href="#/accessibility" onclick="TM.closeSheet(true)">Accessibility statement</a></p>
   <div class="tm-row"><button class="tm-btn solid" id="tmTimeClose">Done</button></div>
 </div>
 

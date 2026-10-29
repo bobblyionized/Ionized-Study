@@ -88,7 +88,7 @@ const SYNC=(()=>{
   function showCode(){
     $('tmCode').textContent=hidden?'••••-••••':fmt(st.code);$('tmCodeCur').textContent=hidden?'••••-••••':fmt(st.code);
     $('tmCodeBox').classList.toggle('hid',hidden);$('tmCode').title=hidden?'Code hidden':'Click to copy';
-    const hb=$('tmCodeHide');hb.textContent=hidden?'Show':'Hide';hb.setAttribute('aria-pressed',String(hidden));
+    const hb=$('tmCodeHide');hb.textContent=hidden?'Show code':'Hide';hb.setAttribute('aria-pressed',String(hidden));
   }
 
   /* ---------- reconcile: pull, merge, push the difference ---------- */

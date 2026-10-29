@@ -95,9 +95,9 @@ const BOOKS=(()=>{
     const row=([id,label])=>{const k=tid+':'+id,ok=avail(k),ns=readOf(tid,id);
       return`<div class="bkrow"><span class="bkname">${label}${id==='book'?` <span class="meta">book pp. ${bookPage(tid,1)}–${bookPage(tid,D.pages)}</span>`:ns?` <span class="meta">${span(ns)}</span>`:''}<span class="bkst" data-bk-st="${k}">${stText(k)}</span></span><span class="sp"></span>
       ${busy[k]==='failed'?`<button class="btn sm" data-bk-up="${k}">Try again</button>`:''}
-      ${ok?`<button class="btn sm pri" data-bk-open="${k}">Open</button><button class="btn sm" data-bk-add="${k}">Replace</button><button class="btn sm" data-bk-del="${k}">Remove</button>`
+      ${ok?`<button class="btn sm pri" data-bk-open="${k}">Open</button><button class="btn sm fb-plain" data-bk-add="${k}">Replace</button><button class="btn sm fb-plain" data-bk-del="${k}">Remove</button>`
          :`<button class="btn sm" data-bk-add="${k}">Add PDF</button>`}</div>`};
-    if(D.reads)return`<div class="card bkcard"><div class="bkhead">${ICON}<div><b>Your Unit ${D.unit} readings</b><div class="meta">Add each reading’s PDF once and open it from its lesson. Files are saved to your sync code, so every device using your code gets them.</div></div></div>
+    if(D.reads)return`<div class="card bkcard"><div class="bkhead">${ICON}<div><b>Your ${Hs(typeof findTopic==='function'&&findTopic(tid)?findTopic(tid).name:'Unit '+D.unit)} readings</b><div class="meta">Add each reading’s PDF once and open it from its lesson. Files are saved to your sync code, so every device using your code gets them.</div></div></div>
       ${D.docs.map(row).join('')}</div>`;
     const ex=D.extra;const jump=avail(tid+':book')?`<div class="bkjump">Jump to: ${[['Chapter Review',ex.review],['Chapter Test',ex.test]].map(([n,r])=>`<button class="chip" data-bk-open="${tid}:book:${r[0]}">${n} (p. ${bookPage(tid,r[0])})</button>`).join(' ')}</div>`:'';
     return`<div class="card bkcard"><div class="bkhead">${ICON}<div><b>Your Chapter ${D.ch} textbook</b><div class="meta">Read the chapter here. Each section's lesson links straight to its pages. Files are saved to your sync code, so every device using your code gets them; each device downloads a copy the first time it opens one.</div></div></div>

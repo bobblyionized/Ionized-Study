@@ -61,8 +61,6 @@ h4{margin:0 0 6px;font-size:15px;text-transform:uppercase;letter-spacing:.6px;co
 .tile.big .t{font-size:23px}
 .tile.big .d{font-size:15px}
 .secno{color:var(--accent);margin-right:2px}
-.bigtile{padding:26px}
-.bigtile .t{font-size:22px}
 .bar{height:6px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:4px}
 .bar>i{display:block;height:100%;background:var(--accent);border-radius:4px}
 .meta{font-size:12.5px;color:var(--muted)}
@@ -244,7 +242,6 @@ table.t th{background:var(--accent-weak)}
 .opt label.h{display:block;font-weight:700;margin-bottom:6px}
 .timer{font-variant-numeric:tabular-nums;font-weight:700;padding:4px 10px;border-radius:8px;background:var(--accent-weak);color:var(--accent)}
 .timer.low{background:var(--bad-weak);color:var(--bad)}
-.kbd{font-size:12px;color:var(--muted)}
 .empty{color:var(--muted);text-align:center;padding:30px}
 .katex-display{overflow-x:auto;overflow-y:hidden;padding:2px 0}
 .katex-display,.ch>span{scrollbar-width:thin;scrollbar-color:var(--line) transparent}
@@ -355,8 +352,8 @@ body.tm-running .tm-ring,body.tm-running .tm-ring-bg{opacity:1}
 .tm-code-btn:hover{border-color:var(--tp-muted)}
 .tm-code-hide{appearance:none;background:none;border:0;padding:0 0 0 2px;font:inherit;font-size:11px;letter-spacing:0;text-transform:none;color:var(--tp-muted);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
 .tm-code-hide:hover{color:var(--tp-fg)}
-.tm-code.hid .tm-code-val{letter-spacing:.18em;color:var(--tp-muted);cursor:default}
-.tm-code.hid .tm-sync{display:none}
+.tm-code.hid .tm-code-k,.tm-code.hid .tm-code-val,.tm-code.hid .tm-code-btn,.tm-code.hid .tm-sync{display:none}   /* hidden: only "Show code" stays */
+.tm-code.hid .tm-code-hide{font-size:13px;letter-spacing:.02em}
 @media (max-width:640px),(max-height:520px){.tm-code{position:static;align-items:center;text-align:center;margin-top:16px}}
 
 /* sheets */
@@ -673,7 +670,6 @@ body.nbe-on{overflow:hidden}
 .nbe-fs{font-weight:700;font-size:17px;min-width:30px}
 .nbe-fsin{width:44px;font:inherit;font-size:14px;text-align:center;color:inherit;background:transparent;border:1px solid var(--line);border-radius:7px;padding:4px 2px;font-variant-numeric:tabular-nums}
 .nbe-fsin:focus,.nbe-font:focus{outline:2px solid #5b6cff;outline-offset:1px}
-.nbe-fsv{min-width:26px;text-align:center;font-size:14px;font-variant-numeric:tabular-nums;color:var(--muted)}
 .nbe-selbar{position:absolute;left:0;top:-44px;display:flex;gap:4px;background:#1e2333;border-radius:9px;padding:4px;box-shadow:0 6px 16px rgba(0,0,0,.3)}
 .nbe-sel-low .nbe-selbar{top:auto;bottom:-44px}
 .nbe-selbar button{border:0;background:none;color:#fff;font:inherit;font-size:13.5px;font-weight:600;padding:6px 10px;border-radius:6px;cursor:pointer}
@@ -959,12 +955,10 @@ body.bkv-on .mu-btn{z-index:61}body.bkv-on .mu-panel{z-index:62}          /* mus
 @media (prefers-reduced-motion:reduce){.cornell.cn-covered .cn-note{transition:none}}
 .lesson.cn-wrap{padding:0;background:none;border:0;box-shadow:none}   /* the notes carry their own frame */
 
-/* accessibility statement link: header (study pages) and the timer screen */
-.a11y-link{margin-left:auto;font-size:13.5px;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
-.a11y-link:hover,.a11y-link:focus-visible{color:var(--ink)}
-.tm-a11y{position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:12.5px;color:var(--tp-muted);text-decoration:underline;text-underline-offset:3px;padding:8px 4px}
-.tm-a11y:hover,.tm-a11y:focus-visible{color:var(--tp-fg)}
-@media (max-width:640px){.a11y-link{order:1}#crumbs{order:2}}
+/* accessibility statement link: in the clock sheet, just above Done */
+.tm-a11y{margin:4px 0 12px;text-align:center;font-size:13px}
+.tm-a11y a{color:var(--tp-muted);text-decoration:underline;text-underline-offset:3px}
+.tm-a11y a:hover,.tm-a11y a:focus-visible{color:var(--tp-fg)}
 .a11y-page{max-width:72ch}
 .a11y-page h2{margin-top:26px}
 
@@ -1018,14 +1012,12 @@ body.bkv-on .mu-btn{z-index:61}body.bkv-on .mu-panel{z-index:62}          /* mus
   <a class="backtimer" id="backTimer" href="#/" title="Back to the timer menu">Timer</a>
   <a class="brand" href="#/home">Ionized <span>Study</span></a>
   <div class="crumbs" id="crumbs"></div>
-  <a class="a11y-link" href="#/accessibility">Accessibility</a>
 </div></header>
 <main id="app"></main>
 
 <!-- ======================= FOCUS TIMER: landing menu ======================= -->
 <div id="land">
   <div class="tm-top">
-    <a class="tm-a11y" href="#/accessibility">Accessibility</a>
     <div class="tm-brand">Ionized Study</div>
     <button class="tm-icon tm-mute" id="tmMute" aria-label="Mute sounds"></button>
   </div>
@@ -1058,7 +1050,7 @@ body.bkv-on .mu-btn{z-index:61}body.bkv-on .mu-panel{z-index:62}          /* mus
   </div>
   <button class="tm-histbtn" id="tmHistBtn"><svg viewBox="0 0 24 24"><path d="M3.5 12a8.5 8.5 0 1 0 2.5-6"/><path d="M3 4v4h4"/><path d="M12 7.5V12l3 2"/></svg>History</button>
   <div class="tm-code" id="tmCodeBox">
-    <div class="tm-code-label">Your code <button class="tm-code-hide" id="tmCodeHide" aria-pressed="false">Hide</button> <span class="tm-sync" id="tmSync" title="Sync status"><i></i><b>Connecting…</b></span></div>
+    <div class="tm-code-label"><span class="tm-code-k">Your code</span> <button class="tm-code-hide" id="tmCodeHide" aria-pressed="false">Hide</button> <span class="tm-sync" id="tmSync" title="Sync status"><i></i><b>Connecting…</b></span></div>
     <button class="tm-code-val" id="tmCode" title="Click to copy">········</button>
     <button class="tm-code-btn" id="tmSetCode">Set Code</button>
   </div>
@@ -1073,6 +1065,7 @@ body.bkv-on .mu-btn{z-index:61}body.bkv-on .mu-panel{z-index:62}          /* mus
     <div class="tm-tz"><div class="tm-tz-h">Universal time</div><div class="tm-tz-t" id="tmUtcT"></div><div class="tm-tz-d" id="tmUtcD"></div><div class="tm-tz-z">UTC · Coordinated Universal Time</div></div>
   </div>
   <div class="tm-blocks" id="tmBlocks"></div>
+  <p class="tm-a11y"><a href="#/accessibility" onclick="TM.closeSheet(true)">Accessibility statement</a></p>
   <div class="tm-row"><button class="tm-btn solid" id="tmTimeClose">Done</button></div>
 </div>
 
@@ -23015,7 +23008,6 @@ const GENS={};
 /* ---------- extra helpers for generators ---------- */
 const O=(tex,v)=>({tex,v});
 const lcm=(a,b)=>a/gcd(a,b)*b;
-function isPrime(n){if(n<2)return false;for(let i=2;i*i<=n;i++)if(n%i===0)return false;return true}
 function factorize(n){const f={};for(let p=2;p*p<=n;p++)while(n%p===0){f[p]=(f[p]||0)+1;n/=p}if(n>1)f[n]=(f[n]||0)+1;return f}
 const ndiv=n=>Object.values(factorize(n)).reduce((a,e)=>a*(e+1),1);
 function sigmaDiv(n){let s=0;for(let i=1;i*i<=n;i++)if(n%i===0){s+=i;if(i*i!==n)s+=n/i}return s}
@@ -26752,9 +26744,9 @@ const BOOKS=(()=>{
     const row=([id,label])=>{const k=tid+':'+id,ok=avail(k),ns=readOf(tid,id);
       return`<div class="bkrow"><span class="bkname">${label}${id==='book'?` <span class="meta">book pp. ${bookPage(tid,1)}–${bookPage(tid,D.pages)}</span>`:ns?` <span class="meta">${span(ns)}</span>`:''}<span class="bkst" data-bk-st="${k}">${stText(k)}</span></span><span class="sp"></span>
       ${busy[k]==='failed'?`<button class="btn sm" data-bk-up="${k}">Try again</button>`:''}
-      ${ok?`<button class="btn sm pri" data-bk-open="${k}">Open</button><button class="btn sm" data-bk-add="${k}">Replace</button><button class="btn sm" data-bk-del="${k}">Remove</button>`
+      ${ok?`<button class="btn sm pri" data-bk-open="${k}">Open</button><button class="btn sm fb-plain" data-bk-add="${k}">Replace</button><button class="btn sm fb-plain" data-bk-del="${k}">Remove</button>`
          :`<button class="btn sm" data-bk-add="${k}">Add PDF</button>`}</div>`};
-    if(D.reads)return`<div class="card bkcard"><div class="bkhead">${ICON}<div><b>Your Unit ${D.unit} readings</b><div class="meta">Add each reading’s PDF once and open it from its lesson. Files are saved to your sync code, so every device using your code gets them.</div></div></div>
+    if(D.reads)return`<div class="card bkcard"><div class="bkhead">${ICON}<div><b>Your ${Hs(typeof findTopic==='function'&&findTopic(tid)?findTopic(tid).name:'Unit '+D.unit)} readings</b><div class="meta">Add each reading’s PDF once and open it from its lesson. Files are saved to your sync code, so every device using your code gets them.</div></div></div>
       ${D.docs.map(row).join('')}</div>`;
     const ex=D.extra;const jump=avail(tid+':book')?`<div class="bkjump">Jump to: ${[['Chapter Review',ex.review],['Chapter Test',ex.test]].map(([n,r])=>`<button class="chip" data-bk-open="${tid}:book:${r[0]}">${n} (p. ${bookPage(tid,r[0])})</button>`).join(' ')}</div>`:'';
     return`<div class="card bkcard"><div class="bkhead">${ICON}<div><b>Your Chapter ${D.ch} textbook</b><div class="meta">Read the chapter here. Each section's lesson links straight to its pages. Files are saved to your sync code, so every device using your code gets them; each device downloads a copy the first time it opens one.</div></div></div>
@@ -28059,7 +28051,7 @@ function cleanup(){if(window.__graphOff)window.__graphOff();if(timerHandle){clea
 const stars=l=>'★'.repeat(l)+'☆'.repeat(3-l);
 const fmtTime=s=>{s=Math.max(0,Math.round(s));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
 
-const WH_TEST={n:30,mins:40};                                    // a World History unit test: questions and minutes
+const CLASS_TEST={pc:{n:25,mins:50},wh:{n:30,mins:40}},WH_TEST=CLASS_TEST.wh;   // class-style tests: questions, minutes, scored as a percent
 const MOCKS={
   amc10:{name:'AMC 10 Mock Exam',short:'AMC 10 Mock',d:'25 questions from the AMC 10 topics only (no precalculus-only material) in 75 minutes, ordered easy to hard like the real AMC 10.',topics:()=>amcTopics().filter(t=>t.amc!=='12'),lv:[9,10,6]},
   amc12:{name:'AMC 12 Mock Exam',short:'AMC 12 Mock',d:'25 questions from every topic in 75 minutes, with a full share of AMC 12 precalculus (logs, trig, complex numbers, conics) and a harder mix.',topics:()=>amcTopics(),lv:[7,10,8],min12:6},
@@ -28211,7 +28203,7 @@ function topicPage(t){
   ${(pc||wh)&&typeof BOOKS!=='undefined'?BOOKS.chapterCard(t.id):''}
   <div class="grid">${cards}
   <button class="card tile mock" onclick="location.hash='#/mock/${t.id}'"><span class="t">${esc(t.name)} ${pc?'Chapter Test':wh?'Unit Test':'Mock Test'}</span>
-  <span class="d">${wh?`${WH_TEST.n} multiple-choice questions from every lesson in ${WH_TEST.mins} minutes, in the order the unit goes. Scored as a percent, like a class test.`:'25 questions in 75 minutes, ordered easy to hard, with AMC-style scoring (6 / 1.5 / 0).'}</span>
+  <span class="d">${wh?`${WH_TEST.n} multiple-choice questions from every lesson in ${WH_TEST.mins} minutes, in the order the unit goes. Scored as a percent, like a class test.`:pc?`${CLASS_TEST.pc.n} questions from every section in ${CLASS_TEST.pc.mins} minutes, ordered easy to hard. Scored as a percent.`:'25 questions in 75 minutes, ordered easy to hard, with AMC-style scoring (6 / 1.5 / 0).'}</span>
   <span class="meta">${last?'Last score: '+(last.pct?last.score+'%':last.score+' / 150'):'Not taken yet'}</span></button></div>
   <div class="row" style="margin-top:18px"><button class="btn fb-back" onclick="location.hash='${trackCrumb(t)[1]}'">All ${U[0]}s</button></div>`;
 }
@@ -28397,12 +28389,13 @@ function setView(sid,body){
 
 /* ---------- mock test ---------- */
 function mockPage(scope){
-  const M=MOCKS[scope],t=M?null:findTopic(scope);const pc=t&&t.track==='pc',wh=t&&t.track==='wh';
+  const M=MOCKS[scope],t=M?null:findTopic(scope);const pc=t&&t.track==='pc',wh=t&&t.track==='wh',CT=t&&CLASS_TEST[t.track];
   const kind=pc?'Chapter Test':wh?'Unit Test':'Mock Test',title=M?M.name:esc(t.name)+' '+kind;
   setCrumbs(t?[['Home','#/home'],trackCrumb(t),[t.name,'#/t/'+t.id],[kind]]:[['Home','#/home'],['AMC Prep','#/amc'],[M.short]]);
   const hist=PROG.mock.filter(m=>(m.topic||'seq')===scope).slice(-5).reverse();
   const about=M?esc(M.d)+' Scoring: 6 points for a correct answer, 1.5 for a blank, 0 for a wrong answer.'
-    :wh?`${WH_TEST.n} multiple-choice questions on ${esc(t.name)}, drawn from every lesson and kept in the order the unit goes. You have ${WH_TEST.mins} minutes. Your score is the percent you get right.`
+    :wh?`${CT.n} multiple-choice questions on ${esc(t.name)}, drawn from every lesson and kept in the order the unit goes. You have ${CT.mins} minutes. Your score is the percent you get right.`
+    :pc?`${CT.n} multiple-choice questions from every section of ${esc(t.name)}, ordered from easier to harder. You have ${CT.mins} minutes. Your score is the percent you get right.`
     :'25 multiple-choice questions on '+esc(t.name)+', ordered from easier to harder. You have 75 minutes. Scoring: 6 points for a correct answer, 1.5 for a blank, 0 for a wrong answer.';
   app.innerHTML=`<h1>${title}</h1><p class="sub">${about}</p>
    <div class="card"><div class="row"><button class="btn pri" id="mstart">Start test</button><span class="meta">Questions are drawn at random, so each attempt is different.</span></div>
@@ -28410,7 +28403,7 @@ function mockPage(scope){
   app.querySelector('#mstart').onclick=()=>startMock(scope);
 }
 function startMock(scope){
-  const M=MOCKS[scope],t=M?null:findTopic(scope),wh=!!(t&&t.track==='wh');
+  const M=MOCKS[scope],t=M?null:findTopic(scope),wh=!!(t&&t.track==='wh'),CT=t&&CLASS_TEST[t.track],pct=!!CT;   // class tests score as a percent
   const used=new Set();
   const free=arr=>arr.filter(x=>!used.has(x.id));
   const one=arr=>{const f=free(arr);if(!f.length)return null;const x=f[Math.floor(Math.random()*f.length)];used.add(x.id);return x};
@@ -28419,7 +28412,7 @@ function startMock(scope){
   let items=[];
   if(wh){                                                   // a class-style unit test: an even share from every lesson, kept in unit order
     const pools=t.subs.map(s=>SETS[s.id]||[]);let more=true;
-    while(items.length<WH_TEST.n&&more){more=false;for(const p of pools){if(items.length>=WH_TEST.n)break;const x=one(p);if(x){items.push(x);more=true}}}
+    while(items.length<CT.n&&more){more=false;for(const p of pools){if(items.length>=CT.n)break;const x=one(p);if(x){items.push(x);more=true}}}
     const at=new Map(t.subs.map((s,i)=>[s.id,i]));items.sort((a,b)=>at.get(a.sub)-at.get(b.sub));
   }else if(t){
     const all=[];for(const s of t.subs)for(const it of SETS[s.id]||[])all.push(it);
@@ -28439,9 +28432,9 @@ function startMock(scope){
     for(const lv of want){const x=slot(lv);if(x)items.push(x)}
   }
   if(!wh)items.sort((a,b)=>a.lvl-b.lvl);
-  const N=items.length;const ans=new Array(N).fill(null);const total=(wh?WH_TEST.mins:75)*60;const t0=Date.now();
-  app.innerHTML=`<div class="row" style="position:sticky;top:58px;z-index:5;background:var(--bg);padding:8px 0"><h1 style="margin:0">${wh?'Unit Test':'Mock Test'}</h1><span class="spacer"></span><span class="meta" id="mans">0/${N} answered</span><span class="timer" id="mtimer"></span><button class="btn pri" id="msubmit">Submit test</button></div>
-   <p class="meta">Click a choice to select it; click it again to clear it${wh?'':' (a blank is worth 1.5 points)'}. Nothing is graded until you submit.</p><div id="mlist">${items.map((it,i)=>cardHTML(it,i+1)).join('')}</div>
+  const N=items.length;const ans=new Array(N).fill(null);const total=(CT?CT.mins:75)*60;const t0=Date.now();
+  app.innerHTML=`<div class="row" style="position:sticky;top:58px;z-index:5;background:var(--bg);padding:8px 0"><h1 style="margin:0">${wh?'Unit Test':t&&t.track==='pc'?'Chapter Test':'Mock Test'}</h1><span class="spacer"></span><span class="meta" id="mans">0/${N} answered</span><span class="timer" id="mtimer"></span><button class="btn pri" id="msubmit">Submit test</button></div>
+   <p class="meta">Click a choice to select it; click it again to clear it${pct?'':' (a blank is worth 1.5 points)'}. Nothing is graded until you submit.</p><div id="mlist">${items.map((it,i)=>cardHTML(it,i+1)).join('')}</div>
    <div class="row"><span class="spacer"></span><button class="btn pri" id="msubmit2">Submit test</button></div>`;
   renderMath(app);
   const list=app.querySelector('#mlist');
@@ -28455,12 +28448,12 @@ function startMock(scope){
   app.querySelector('#msubmit').onclick=ask;app.querySelector('#msubmit2').onclick=ask;
   function finish(timeUp){
     mockLive=false;cleanup();let ok=0,blank=0;items.forEach((it,i)=>{if(ans[i]===null)blank++;else if(ans[i]===it.ans)ok++});const wrong=N-ok-blank;
-    const score=wh?Math.round(ok/Math.max(1,N)*100):ok*6+blank*1.5;
-    PROG.mock.push(Object.assign({at:Date.now(),score,ok,blank,topic:scope},wh?{pct:1}:{}));saveProg();
+    const score=pct?Math.round(ok/Math.max(1,N)*100):ok*6+blank*1.5;
+    PROG.mock.push(Object.assign({at:Date.now(),score,ok,blank,topic:scope},pct?{pct:1}:{}));saveProg();
     const secs=Math.min(total,(Date.now()-t0)/1000);
     const groups=t?t.subs.map(s=>[s.name,it=>it.sub===s.id]):M.topics().map(x=>[x.name,it=>subById(it.sub).topic===x.id]);
-    app.innerHTML=`<h1>${wh?'Unit Test':'Mock Test'} Results</h1>${timeUp?'<p class="sub">Time ran out, so the test was submitted automatically.</p>':''}
-     <div class="stat"><div><b>${score}${wh?'%':''}</b><span>${wh?'score':'score / 150'}</span></div><div><b>${ok}</b><span>correct</span></div><div><b>${wrong}</b><span>wrong</span></div><div><b>${blank}</b><span>blank</span></div><div><b>${fmtTime(secs)}</b><span>time used</span></div></div>
+    app.innerHTML=`<h1>${wh?'Unit Test':t&&t.track==='pc'?'Chapter Test':'Mock Test'} Results</h1>${timeUp?'<p class="sub">Time ran out, so the test was submitted automatically.</p>':''}
+     <div class="stat"><div><b>${score}${pct?'%':''}</b><span>${pct?'score':'score / 150'}</span></div><div><b>${ok}</b><span>correct</span></div><div><b>${wrong}</b><span>wrong</span></div><div><b>${blank}</b><span>blank</span></div><div><b>${fmtTime(secs)}</b><span>time used</span></div></div>
      <div class="card" style="margin-bottom:16px"><b>By ${wh?'lesson':t?'subtopic':'topic'}:</b> ${groups.map(([nm,f])=>{const its=items.map((it,i)=>[it,i]).filter(([it])=>f(it));if(!its.length)return'';const c=its.filter(([it,i])=>ans[i]===it.ans).length;return`<span class="pill ${c===its.length?'ok':c?'':'no'}" style="margin:3px">${esc(nm)} ${c}/${its.length}</span>`}).join('')}
      <div class="row" style="margin-top:12px"><button class="btn pri" id="again">Take another test</button><button class="btn" onclick="location.hash='${t?'#/t/'+t.id:'#/amc'}'">Back</button></div></div>
      <div id="mrev">${items.map((it,i)=>cardHTML(it,i+1,{extra:`<span class="meta">${esc(subById(it.sub).name)}</span>`})).join('')}</div>`;
@@ -28571,7 +28564,7 @@ const SYNC=(()=>{
   function showCode(){
     $('tmCode').textContent=hidden?'••••-••••':fmt(st.code);$('tmCodeCur').textContent=hidden?'••••-••••':fmt(st.code);
     $('tmCodeBox').classList.toggle('hid',hidden);$('tmCode').title=hidden?'Code hidden':'Click to copy';
-    const hb=$('tmCodeHide');hb.textContent=hidden?'Show':'Hide';hb.setAttribute('aria-pressed',String(hidden));
+    const hb=$('tmCodeHide');hb.textContent=hidden?'Show code':'Hide';hb.setAttribute('aria-pressed',String(hidden));
   }
 
   /* ---------- reconcile: pull, merge, push the difference ---------- */

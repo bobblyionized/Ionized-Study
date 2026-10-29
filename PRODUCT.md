@@ -36,7 +36,7 @@ It is built around one student's real workload, which no general study tool cove
 
 ## Operating Context
 
-- **Timer screen (the landing page):** "Go" goes straight into studying; "Set a timer" sets a focus time with a description; a study-history log. Notebooks and focus music (with playlists) are reachable from here.
+- **Timer screen (the landing page):** "Go" goes straight into studying; "Set a timer" sets a focus time with a description; a study-history log. Notebooks and focus music (with playlists) are reachable from here. A hidden sync code shows only "Show code"; the accessibility statement is linked from the clock sheet.
 - **Study areas:** a hub leads to three tracks, AMC, Precalculus and World History, then topic (unit) → subtopic, section or lesson, with the tabs Lesson · Problem Set · Notebook · Graph (World History: Lesson · Review · Questions · Notebook). Mock exams and unit tests are timed.
 - **Sync code:** 8 characters, entered once per device. Progress, settings, block names, notebooks, textbook PDFs and music all follow the code.
 - **Clock sheet:** the Belmont High block schedule (7-day cycle, 1st/2nd lunch, Wednesdays, holidays and early releases) with a countdown to the next block, plus local and UTC time.

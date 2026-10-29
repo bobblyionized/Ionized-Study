@@ -15,7 +15,7 @@ function cleanup(){if(window.__graphOff)window.__graphOff();if(timerHandle){clea
 const stars=l=>'★'.repeat(l)+'☆'.repeat(3-l);
 const fmtTime=s=>{s=Math.max(0,Math.round(s));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
 
-const WH_TEST={n:30,mins:40};                                    // a World History unit test: questions and minutes
+const CLASS_TEST={pc:{n:25,mins:50},wh:{n:30,mins:40}},WH_TEST=CLASS_TEST.wh;   // class-style tests: questions, minutes, scored as a percent
 const MOCKS={
   amc10:{name:'AMC 10 Mock Exam',short:'AMC 10 Mock',d:'25 questions from the AMC 10 topics only (no precalculus-only material) in 75 minutes, ordered easy to hard like the real AMC 10.',topics:()=>amcTopics().filter(t=>t.amc!=='12'),lv:[9,10,6]},
   amc12:{name:'AMC 12 Mock Exam',short:'AMC 12 Mock',d:'25 questions from every topic in 75 minutes, with a full share of AMC 12 precalculus (logs, trig, complex numbers, conics) and a harder mix.',topics:()=>amcTopics(),lv:[7,10,8],min12:6},
@@ -167,7 +167,7 @@ function topicPage(t){
   ${(pc||wh)&&typeof BOOKS!=='undefined'?BOOKS.chapterCard(t.id):''}
   <div class="grid">${cards}
   <button class="card tile mock" onclick="location.hash='#/mock/${t.id}'"><span class="t">${esc(t.name)} ${pc?'Chapter Test':wh?'Unit Test':'Mock Test'}</span>
-  <span class="d">${wh?`${WH_TEST.n} multiple-choice questions from every lesson in ${WH_TEST.mins} minutes, in the order the unit goes. Scored as a percent, like a class test.`:'25 questions in 75 minutes, ordered easy to hard, with AMC-style scoring (6 / 1.5 / 0).'}</span>
+  <span class="d">${wh?`${WH_TEST.n} multiple-choice questions from every lesson in ${WH_TEST.mins} minutes, in the order the unit goes. Scored as a percent, like a class test.`:pc?`${CLASS_TEST.pc.n} questions from every section in ${CLASS_TEST.pc.mins} minutes, ordered easy to hard. Scored as a percent.`:'25 questions in 75 minutes, ordered easy to hard, with AMC-style scoring (6 / 1.5 / 0).'}</span>
   <span class="meta">${last?'Last score: '+(last.pct?last.score+'%':last.score+' / 150'):'Not taken yet'}</span></button></div>
   <div class="row" style="margin-top:18px"><button class="btn fb-back" onclick="location.hash='${trackCrumb(t)[1]}'">All ${U[0]}s</button></div>`;
 }
