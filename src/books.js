@@ -12,7 +12,7 @@ const BOOKS=(()=>{
         'pc4-ineq':[70,78],'pc4-abs':[79,82],'pc4-cplx':[83,89],'pc4-theory':[90,95],'pc4-review':[96,100]},
       extra:{review:[96,100],test:[101,102]}},
     pc5:{ch:5,offset:340,pages:86,docs:[['book','Textbook'],['ans1','Answers, part 1'],['ans2','Answers, part 2']],
-      secs:{'pc5-rad':[2,9],'pc5-radeq':[10,16],'pc5-exp':[17,28],'pc5-int':[29,34],'pc5-log':[35,44],'pc5-laws':[45,51],'pc5-base':[52,58],'pc5-eq':[59,68],'pc5-model':[69,78],'pc5-hw':[35,68]},
+      secs:{'pc5-rad':[2,9],'pc5-radeq':[10,16],'pc5-exp':[17,28],'pc5-int':[29,34],'pc5-log':[35,44],'pc5-laws':[45,51],'pc5-base':[52,58],'pc5-eq':[59,68],'pc5-model':[69,78],'pc5-hw':[35,68],'pc5-review':[79,83]},
       extra:{review:[79,83],test:[84,86]}},
     /* history readings: one PDF per lesson; reads[sub] = [doc, book page of each pdf page] (the Han scan skips p. 262) */
     wh4:{unit:4,docs:[['unify','The Unification of China'],['qin','The Qin Dynasty'],['han','Han Emperors in China'],['tang','Tang and Song China'],['mongol','Rise of the Mongols'],['kublai','Kublai Khan'],['ming','Ming Dynasty']],

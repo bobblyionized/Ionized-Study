@@ -183,7 +183,8 @@ const PC_CATALOG=[
    {id:'pc5-base',sec:'5.4.A',name:'Logarithms to Other Bases',d:'log base b, the logarithm laws for any base, the change of base formula'},
    {id:'pc5-eq',sec:'5.5',name:'Exponential and Logarithmic Equations',d:'solving with logarithms, half-life and carbon dating, equations quadratic in e^x, logarithmic equations and extraneous roots'},
    {id:'pc5-model',sec:'5.6',name:'Exponential, Logarithmic, and Other Models',d:'choosing a model from data, ratios of successive values, power and logistic models'},
-   {id:'pc5-hw',name:'Chapter 5 Homework',d:'Oct 26–30, day by day: every assigned problem from pp. 383, 390, 397, 406 and 374 with worked solutions (Tuesday’s HW quiz), plus growth/decay and logs/ln practice for Friday.'}]},
+   {id:'pc5-hw',name:'Chapter 5 Homework',d:'Oct 26–30, day by day: every assigned problem from pp. 383, 390, 397, 406 and 374 with worked solutions (Tuesday’s HW quiz), plus growth/decay and logs/ln practice for Friday.'},
+   {id:'pc5-review',name:'Chapter 5 Test Review',d:'Every suggested review problem from p. 420 with worked solutions, a review of all five test lessons (5.1–5.5), and skill drills from each.'}]},
  ]},
 ];
 /* World History: one topic per unit, one subtopic per reading; each has a lesson, Cornell review notes (R-<id>) and practice questions */
